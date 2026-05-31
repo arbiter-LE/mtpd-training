@@ -26,7 +26,6 @@ async function doLogin() {
   const errEl  = document.getElementById('login-error');
   const btnEl  = document.getElementById('btn-login');
 
-  if (!ACTIVE_DEPARTMENT) { errEl.textContent = 'Please select your department first.'; return; }
   if (!input || !p) { errEl.textContent = 'Please enter your email and password.'; return; }
 
   errEl.textContent = '';
@@ -116,11 +115,6 @@ async function doLogout() {
   stopAllTimers();
   currentUser = null;
   if (_sb) await _sb.auth.signOut();
-  // Reset department selection
-  ACTIVE_DEPARTMENT = null;
-  _sb = null;
-  document.getElementById('login-dept').value = '';
-  document.getElementById('login-fields').style.display = 'none';
   document.getElementById('login-user').value = '';
   document.getElementById('login-pass').value = '';
   document.getElementById('login-error').textContent = '';

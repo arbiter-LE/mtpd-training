@@ -90,37 +90,23 @@ const completionData = {};
    ── Until then, localStorage keeps records in
       this browser on this device.
 ══════════════════════════════════════════ */
-// Supabase client — initialized after department selection
+// Supabase client — initialized from hostname on page load
 let _sb = null;
 
-function initSupabase(url, key) {
-  _sb = supabase.createClient(url, key);
-}
-
-/* ── Populate department dropdown on page load ── */
+/* ── Auto-initialize from subdomain ── */
 document.addEventListener('DOMContentLoaded', function() {
-  const select = document.getElementById('login-dept');
-  if (!select) return;
-  DEPARTMENT_REGISTRY.forEach(dept => {
-    const opt = document.createElement('option');
-    opt.value = dept.id;
-    opt.textContent = dept.name;
-    select.appendChild(opt);
-  });
-});
+  const dept = resolveDepartmentFromHostname();
+  if (!dept) {
+    // Unknown subdomain — show a generic error on the login card
+    const card = document.querySelector('.login-card');
+    if (card) card.innerHTML = '<p style="color:#f08090;text-align:center;padding:24px">Department not recognized.<br/>Contact your administrator.</p>';
+    return;
+  }
+  _sb = supabase.createClient(dept.supabaseUrl, dept.supabaseKey);
 
-function onDeptSelect() {
-  const id = document.getElementById('login-dept').value;
-  const fields = document.getElementById('login-fields');
-  const errEl = document.getElementById('login-error');
-  errEl.textContent = '';
-  if (!id) { fields.style.display = 'none'; return; }
-  const dept = getDepartment(id);
-  if (!dept) return;
-  setActiveDepartment(id);
-  initSupabase(dept.supabaseUrl, dept.supabaseKey);
-  fields.style.display = 'block';
-}
+  // Update nav badge if present
+  document.querySelectorAll('.nav-brand img').forEach(img => img.src = dept.badge);
+});
 
 const STORAGE_KEY = 'arbiter_le_training_v1';
 
