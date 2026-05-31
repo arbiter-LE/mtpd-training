@@ -115,9 +115,15 @@ _sb.auth.onAuthStateChange((event, session) => {
 async function doLogout() {
   stopAllTimers();
   currentUser = null;
-  await _sb.auth.signOut();
+  if (_sb) await _sb.auth.signOut();
+  // Reset department selection
+  ACTIVE_DEPARTMENT = null;
+  _sb = null;
+  document.getElementById('login-dept').value = '';
+  document.getElementById('login-fields').style.display = 'none';
   document.getElementById('login-user').value = '';
   document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').textContent = '';
   showScreen('screen-login');
 }
 
@@ -161,7 +167,7 @@ function renderProgressTable() {
 }
 
 /* ── Quiz Resume ────────────────────────── */
-const RESUME_KEY = () => currentUser ? 'mtpd_quiz_resume_' + currentUser.id : null;
+function RESUME_KEY() { return currentUser ? 'mtpd_quiz_resume_' + currentUser.id : null; }
 
 function saveQuizState() {
   const key = RESUME_KEY();
