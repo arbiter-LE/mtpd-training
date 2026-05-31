@@ -18,3 +18,7 @@ slide-*.jpg
 
 # Scripts
 push.sh
+_assets/push.sh
+
+# Claude Code config (local only)
+.claude/
