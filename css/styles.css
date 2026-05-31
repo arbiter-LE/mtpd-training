@@ -75,8 +75,9 @@
     .login-card h2 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
-    .form-group input { width: 100%; background: var(--input-bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 14px; padding: 10px 14px; outline: none; transition: border-color .2s; font-family: var(--font); }
-    .form-group input:focus { border-color: var(--accent); }
+    .form-group input, .form-group select { width: 100%; background: var(--input-bg); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 14px; padding: 10px 14px; outline: none; transition: border-color .2s; font-family: var(--font); appearance: none; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--accent); }
+    .form-group select option { background: var(--navy); color: var(--text); }
     .btn-primary { width: 100%; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hi) 100%); color: #0a1828; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 13px; cursor: pointer; transition: all .2s; font-family: var(--font); box-shadow: 0 4px 12px rgba(200,144,42,.3); }
     .btn-primary:hover { background: linear-gradient(135deg, var(--accent-hi) 0%, #f0b840 100%); box-shadow: 0 6px 20px rgba(200,144,42,.45); transform: translateY(-1px); }
     .login-error { color: #f08090; font-size: 12px; text-align: center; margin-top: 12px; min-height: 18px; }

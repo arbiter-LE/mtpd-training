@@ -90,10 +90,37 @@ const completionData = {};
    ── Until then, localStorage keeps records in
       this browser on this device.
 ══════════════════════════════════════════ */
-const SUPABASE_URL = 'https://lkikznncbpfcmgnnyigj.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6';
+// Supabase client — initialized after department selection
+let _sb = null;
 
-const _sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+function initSupabase(url, key) {
+  _sb = supabase.createClient(url, key);
+}
+
+/* ── Populate department dropdown on page load ── */
+document.addEventListener('DOMContentLoaded', function() {
+  const select = document.getElementById('login-dept');
+  if (!select) return;
+  DEPARTMENT_REGISTRY.forEach(dept => {
+    const opt = document.createElement('option');
+    opt.value = dept.id;
+    opt.textContent = dept.name;
+    select.appendChild(opt);
+  });
+});
+
+function onDeptSelect() {
+  const id = document.getElementById('login-dept').value;
+  const fields = document.getElementById('login-fields');
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  if (!id) { fields.style.display = 'none'; return; }
+  const dept = getDepartment(id);
+  if (!dept) return;
+  setActiveDepartment(id);
+  initSupabase(dept.supabaseUrl, dept.supabaseKey);
+  fields.style.display = 'block';
+}
 
 const STORAGE_KEY = 'arbiter_le_training_v1';
 

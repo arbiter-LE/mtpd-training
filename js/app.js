@@ -26,7 +26,8 @@ async function doLogin() {
   const errEl  = document.getElementById('login-error');
   const btnEl  = document.getElementById('btn-login');
 
-  if (!input || !p) { errEl.textContent = 'Please enter your badge number or email and password.'; return; }
+  if (!ACTIVE_DEPARTMENT) { errEl.textContent = 'Please select your department first.'; return; }
+  if (!input || !p) { errEl.textContent = 'Please enter your email and password.'; return; }
 
   errEl.textContent = '';
   btnEl.textContent = 'Verifying…';
