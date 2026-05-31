@@ -1,5 +1,7 @@
+/* ═══════════════════════════════════════════
+   Arbiter LE — Application Logic
+═══════════════════════════════════════════ */
 
-/* ── Screen Management ─────────────────── */
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -19,21 +21,45 @@ const DEMO_ROSTER = {
 const DEMO_PASSWORD = 'demo';
 
 async function doLogin() {
-  const email = document.getElementById('login-user').value.trim();
-  const p     = document.getElementById('login-pass').value;
-  const errEl = document.getElementById('login-error');
-  const btnEl = document.getElementById('btn-login');
+  const input  = document.getElementById('login-user').value.trim();
+  const p      = document.getElementById('login-pass').value;
+  const errEl  = document.getElementById('login-error');
+  const btnEl  = document.getElementById('btn-login');
 
-  if (!email || !p) { errEl.textContent = 'Please enter your email and password.'; return; }
+  if (!input || !p) { errEl.textContent = 'Please enter your badge number or email and password.'; return; }
 
   errEl.textContent = '';
   btnEl.textContent = 'Verifying…';
   btnEl.disabled = true;
 
-  const { data: authData, error: authError } = await _sb.auth.signInWithPassword({ email, password: p });
+  // ── Demo / badge-number login (no Supabase required) ──────────────────
+  const demoUser = DEMO_ROSTER[input.toLowerCase()] || DEMO_ROSTER[input];
+  if (demoUser && p === DEMO_PASSWORD) {
+    currentUser = { ...demoUser, id: demoUser.badge };
+    USERS[demoUser.badge] = { ...demoUser };
+    btnEl.textContent = 'SIGN IN';
+    btnEl.disabled = false;
+    if (demoUser.role === 'admin') {
+      showScreen('screen-admin');
+      await loadAllDataForAdmin();
+      renderAdminDashboard();
+    } else {
+      document.getElementById('officer-name-display').textContent  = demoUser.name;
+      document.getElementById('officer-badge-display').textContent = 'Badge #' + demoUser.badge;
+      document.getElementById('module-officer-name').textContent   = demoUser.name;
+      document.getElementById('scenario-officer-name').textContent = demoUser.name;
+      document.getElementById('quiz-officer-name').textContent     = demoUser.name;
+      document.getElementById('debrief-officer-name').textContent  = demoUser.name;
+      showOfficerDashboard();
+    }
+    return;
+  }
+
+  // ── Supabase email login ───────────────────────────────────────────────
+  const { data: authData, error: authError } = await _sb.auth.signInWithPassword({ email: input, password: p });
 
   if (authError || !authData.user) {
-    errEl.textContent = 'Invalid email or password. Please try again.';
+    errEl.textContent = 'Invalid credentials. Use badge number + "demo", or your department email.';
     btnEl.textContent = 'SIGN IN';
     btnEl.disabled = false;
     return;
