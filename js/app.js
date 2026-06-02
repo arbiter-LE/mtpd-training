@@ -398,23 +398,23 @@ function renderModuleContent() {
         </div>
       </div>
       <div class="content-block">
-        <h4>MTPD Arbiter LE Order 1.2 — Limits of Authority</h4>
+        <h4>MTPD Order 1.2 — Limits of Authority</h4>
         <h2>Pennsylvania gives you less than you might think on vehicle searches.</h2>
         <p>The federal automobile exception allows a warrantless vehicle search based on probable cause alone. <strong>Pennsylvania does not.</strong> Under the Pennsylvania Constitution, probable cause alone — without accompanying exigent circumstances — does not justify a warrantless vehicle search. This is a stricter standard than the federal floor, and it applies to every stop you make in this jurisdiction.</p>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.2 — Vehicle Searches</div>
+          <div class="sop-title">MTPD Order 1.2 — Vehicle Searches</div>
           <p>"Probable Cause to search, without any accompanying exigent circumstances, does not justify a warrantless search of a vehicle." Warrantless vehicle searches are permitted only via: consent, plain view, officer safety frisk of passenger compartment, or exigent circumstances — and exigency cannot be created by officer action.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.2 — Consent Searches</div>
+          <div class="sop-title">MTPD Order 1.2 — Consent Searches</div>
           <p>When a subject grants consent to search, officers shall use the department\'s <strong>Search and Seizure Consent Form (Attachment D)</strong> or ensure consent is recorded by mobile vehicle camera. If neither is used, the officer must provide a detailed written explanation in the incident report of how consent was given, the officer\'s demeanor, whether weapons were drawn, and the subject\'s apparent condition. Undocumented consent is legally vulnerable consent.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.2 — Crime Scene Searches</div>
+          <div class="sop-title">MTPD Order 1.2 — Crime Scene Searches</div>
           <p>"There is no crime scene exception to the search warrant requirement." When first on scene, your job is to preserve and secure — not to search. Warrantless entry of a residence is permitted only for consent, probable cause with specific exigent circumstances, or hot pursuit. When in doubt, secure the scene and get the warrant.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.2 — Inventory Searches</div>
+          <div class="sop-title">MTPD Order 1.2 — Inventory Searches</div>
           <p>Inventory searches shall be conducted on all vehicles placed in the department\'s impound lot and must be documented on the Vehicle Inventory Report form. Officers shall <strong>not</strong> conduct an inventory search when the sole purpose is to find evidence of a crime — this circumvents the warrant requirement. If evidence is discovered during an inventory search, <strong>stop the inventory and secure a search warrant before continuing.</strong></p>
         </div>
       </div>
@@ -435,7 +435,7 @@ function renderModuleContent() {
         <p>Courts do not evaluate your instincts. They evaluate whether a reasonable officer, with your specific training and experience, facing the specific facts you documented, would conclude that criminal activity was afoot. Generic conclusions cannot answer that question. Specific, articulable observations can.</p>
         <p>"Appeared nervous" carries no legal weight. "Driver would not maintain eye contact, hands were visibly trembling on the steering wheel, and responses were delayed approximately two seconds" — that\'s a probable cause foundation.</p>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 2.1 — MDVARS Mandatory Recording</div>
+          <div class="sop-title">MTPD Order 2.1 — MDVARS Mandatory Recording</div>
           <p>In-car video recording (MDVARS) is mandatory for all vehicle stops, pedestrian stops, vehicle searches, and any other significant law enforcement activity. The system auto-activates when emergency lights are activated or speed exceeds 75 mph. Officers must inform subjects their conversation is being recorded: <em>"I am Officer _____ of the Law Enforcement Training Platform. For documentation purposes this event is being recorded."</em></p>
           <p>Erasing, altering, or interfering with any MDVARS recording is strictly prohibited. All recordings are retained a minimum of 90 days. A court order or subpoena is required for release to non-criminal justice entities.</p>
         </div>
@@ -467,7 +467,7 @@ function renderModuleContent() {
         </div>
       </div>
       <div class="content-block">
-        <h4>MTPD Arbiter LE Order 1.3 — Use of Force Continuum</h4>
+        <h4>MTPD Order 1.3 — Use of Force Continuum</h4>
         <h2>Eight levels. Know where you are and why.</h2>
         <p>Your department operates under an eight-level use of force continuum. The continuum does not require sequential progression — levels may be skipped given the circumstances. But every level applied must be documented and justified.</p>
         <ul class="key-points">
@@ -481,17 +481,17 @@ function renderModuleContent() {
           <li><strong>Level 8 — Deadly Force</strong> — Only when legally justified, only as a last resort, only when lower levels have been ineffective or inappropriate. Applied with the understanding that the death of another human may result.</li>
         </ul>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.3 — Core Policy</div>
+          <div class="sop-title">MTPD Order 1.3 — Core Policy</div>
           <p>"They shall never use a greater degree of force than that which is lawful, reasonable, and necessary for the specific situation."</p>
           <p>"The use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished."</p>
         </div>
       </div>
       <div class="content-block">
-        <h4>MTPD Arbiter LE Order 1.3 — Reporting Requirements</h4>
+        <h4>MTPD Order 1.3 — Reporting Requirements</h4>
         <h2>The report is required. And it has rules.</h2>
-        <p>Officers must complete a Use of Force Report (Attachment A, Arbiter LE Order 1.3) whenever they discharge a firearm, take action resulting in injury or death, use or are alleged to have used physical force, apply Level 3 force, or apply force in excess of Level 4.</p>
+        <p>Officers must complete a Use of Force Report (Attachment A, MTPD Order 1.3) whenever they discharge a firearm, take action resulting in injury or death, use or are alleged to have used physical force, apply Level 3 force, or apply force in excess of Level 4.</p>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.3 — UoF Report Rules</div>
+          <div class="sop-title">MTPD Order 1.3 — UoF Report Rules</div>
           <p><strong>Timing:</strong> The Use of Force Report must be completed <strong>prior to the officer concluding their shift</strong> during which the use of force occurred. If injured and unable to report, the supervisor submits a written report before end of shift.</p>
           <p><strong>Separation:</strong> The Use of Force Report is strictly an internal management document. It <strong>shall not be attached to regular incident or supplemental reports</strong> and shall not be released to any person or entity outside the department without specific permission of the Chief of Police.</p>
           <p><strong>Supervisor notification:</strong> When a Use of Force Report is required, the shift supervisor shall be notified to respond to the scene if not already present.</p>
@@ -532,7 +532,7 @@ function renderModuleContent() {
           <p>Reports should be written as close to the incident as safely possible. Memory degrades rapidly under stress — specific details, sequences, and exact words fade within hours. When body camera footage is available, review it before writing. Your report should match the footage exactly because it should be based on the same sequence of events.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 1.3 — Use of Force Report Is a Separate Document</div>
+          <div class="sop-title">MTPD Order 1.3 — Use of Force Report Is a Separate Document</div>
           <p>The Use of Force Report (Attachment A, ALO 1.3) is an internal management document. It <strong>shall not be attached to your regular incident or supplemental report</strong> — ever. It shall not be released outside the department without the Chief of Police\'s specific authorization. It must be completed <strong>before you end your shift.</strong></p>
           <p>This separation matters: your incident report documents what happened for the case file. Your Use of Force Report documents your force decision for internal review. Confusing the two — or attaching them — creates evidentiary problems and policy violations.</p>
         </div>
@@ -555,16 +555,16 @@ function renderModuleContent() {
         <strong>Factual (holds up):</strong> "As I attempted to apply handcuffs, subject tensed both arms, pulled away from my grip, and rotated his upper body toward me. I applied a forward leg sweep, bringing subject to a controlled ground position. Subject ceased active resistance upon impact. Handcuffs applied."</p>
         <p>Every word in the second version answers a question a defense attorney would ask. That\'s the standard.</p>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 4.13 — Domestic Violence Narrative Checklist</div>
+          <div class="sop-title">MTPD Order 4.13 — Domestic Violence Narrative Checklist</div>
           <p>Every DV incident report narrative shall include, when applicable and available: (1) victim\'s second permanent address and close personal friend\'s contact; (2) relationship between victim and accused; (3) date/time of incident and whether accused appeared intoxicated; (4) what weapons were used or threatened; (5) description of injuries observed by officer; (6) description of injuries reported by victim but not observed — noted as not observed; (7) documentation of evidence tending to establish a crime was committed; (8) whether arrest was made or reason for electing not to arrest; (9) crimes charged; (10) if arrested and arraigned — bail set and any bail conditions; (11) names and ages of any children present and their relocation addresses; (12) notation of previous incidents known to officer or reported by victim.</p>
           <p>If probable cause existed but officer elected not to arrest: the narrative must contain a <strong>detailed explanation</strong> of the reasons. "Did not arrest" is not documentation.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 3.05/3.06 — Evidence Documentation</div>
+          <div class="sop-title">MTPD Order 3.05/3.06 — Evidence Documentation</div>
           <p>Every time evidence or property is received, a <strong>Property Record Form</strong> must be completed before end of shift. The form documents chain of custody at every transaction — who had it, when, why it moved, and where. All physical evidence is packaged in paper, sealed with evidence tape, and initialed with date across the tape seal. Packaging is labeled with the RMS incident number, item number, and any hazard warnings. Evidence stored in temporary lockers until property room is accessible.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 3.04 — Report Submission</div>
+          <div class="sop-title">MTPD Order 3.04 — Report Submission</div>
           <p>All reports shall be completed <strong>prior to end of tour of duty</strong> and submitted to the shift bin for supervisory approval, unless otherwise authorized by the shift supervisor. This applies to incident reports, arrest reports, use of force reports, and supplemental reports. Reports not submitted before end of shift require supervisor authorization — not officer discretion.</p>
         </div>
         <button class="btn-launch" onclick="startScenario('report-writing')">Proceed to Scenario Exercise →</button>
@@ -610,12 +610,12 @@ function renderModuleContent() {
         <p>A 302 involuntary examination is a significant legal intervention — it removes a person\'s liberty without their consent. The criteria exist for a reason, and courts have scrutinized 302 initiations that weren\'t grounded in documented specific facts.</p>
         <p>The standard requires a <strong>recent overt act, attempt, or threat</strong> establishing clear and present danger. Past psychiatric history supports context — it does not, by itself, establish current criteria. A statement like "I don\'t want to be here anymore," combined with medication non-compliance and a 2-day crisis episode, begins to build the standard. Document every element you observed. Let the facts carry the 302, not your general assessment that the situation seemed serious.</p>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 4.07 — Juvenile Detention Rules</div>
+          <div class="sop-title">MTPD Order 4.07 — Juvenile Detention Rules</div>
           <p>Juveniles shall not be detained in any lockup or cell that houses adults. When secure detention of a juvenile is necessary, it is limited to identification, investigation, processing, and transfer — and may <strong>not exceed six hours</strong> in any case. Juveniles held in secure detention must be separated from adult offenders by sight and sound and under continuous visual supervision of a sworn officer at all times.</p>
           <p>Fingerprints and photographs shall be taken of any juvenile alleged to have committed an act designated as a misdemeanor or felony. Juvenile records are kept separate from adult records and are not disclosed to the public without Chief of Police authorization.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 3.02 — Temporary Detention</div>
+          <div class="sop-title">MTPD Order 3.02 — Temporary Detention</div>
           <p>All detainees in the temporary holding area shall be thoroughly searched prior to entry regardless of any prior field search. Males, females, and juveniles under arrest must be separated by sight and sound using separate rooms or areas. All firearms must be secured in designated lock boxes before entry into any temporary detention area. Detainees may not be left unsupervised for more than <strong>10 minutes</strong> under any circumstances, and must be physically secured during any period of non-supervision.</p>
         </div>
         <button class="btn-launch" onclick="startScenario('crisis-intervention')">Proceed to Scenario Exercise →</button>
@@ -648,7 +648,7 @@ function renderModuleContent() {
       <div class="content-block">
         <h4>MTPD ALO 4.13 — Mandatory Arrest Authority</h4>
         <h2>When probable cause exists, the decision is made for you.</h2>
-        <p>MTPD Arbiter LE Order 4.13 establishes mandatory arrest protocols for domestic violence incidents. Officers shall arrest the primary aggressor when probable cause exists based on their observations or statements of witnesses or the victim. The policy covers incidents of Simple Assault, Harassment, and other qualifying offenses between household members or intimate partners.</p>
+        <p>MTPD Order 4.13 establishes mandatory arrest protocols for domestic violence incidents. Officers shall arrest the primary aggressor when probable cause exists based on their observations or statements of witnesses or the victim. The policy covers incidents of Simple Assault, Harassment, and other qualifying offenses between household members or intimate partners.</p>
         <div class="sop-box">
           <div class="sop-title">MTPD ALO 4.13 — Approach Protocol</div>
           <p>Officers responding to domestic disturbance calls shall approach the scene <strong>without lights or sirens within one block of the reported location.</strong> DV calls present unique officer safety risks. Arrival without warning allows for tactical assessment before contact and does not alert subjects who may escalate or flee. This is a required protocol, not a suggestion.</p>
@@ -906,7 +906,7 @@ function renderModuleContent() {
         <h4>Suppression Vulnerabilities — How Chains Break</h4>
         <h2>Defense attorneys are looking for one of four things.</h2>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 3.05/3.06 — Evidence Handling</div>
+          <div class="sop-title">MTPD Order 3.05/3.06 — Evidence Handling</div>
           <p>Evidence or property received by MTPD requires a Property Record Form completed before end of shift. The form documents every transaction in the chain — who had it, when, why it moved, and where it went. Every unsealed package must be noted. Every transfer requires documentation. The form is the chain — treat it as evidence itself.</p>
         </div>
         <p><strong>Gap in custody</strong> — any period the evidence cannot be accounted for. Prevent it by completing your Property Record Form while memory is fresh and securing items in designated lockers immediately.</p>
@@ -991,11 +991,11 @@ function renderModuleContent() {
       <div class="content-block">
         <h4>MTPD ALO 5.4 — De-escalation Policy</h4>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 5.4 — When De-escalation Is Required</div>
+          <div class="sop-title">MTPD Order 5.4 — When De-escalation Is Required</div>
           <p>Officers shall consider and employ de-escalation techniques in all situations where it is safe and feasible to do so before applying physical force. The determination of safety and feasibility is made by the officer on scene, based on the totality of circumstances — but it must be a genuine assessment, not a conclusion reached after the decision to use force was already made. When de-escalation is employed, officers shall document the specific techniques used, the subject\'s response, and the reason de-escalation was or was not continued.</p>
         </div>
         <div class="sop-box">
-          <div class="sop-title">MTPD Arbiter LE Order 5.4 — Core De-escalation Techniques</div>
+          <div class="sop-title">MTPD Order 5.4 — Core De-escalation Techniques</div>
           <p>Authorized and expected de-escalation techniques include: creating distance and slowing the pace of the encounter; using calm, non-threatening verbal communication; giving the subject space to make voluntary choices; reducing the number of officers present when safe; using a designated primary contact officer while others maintain supporting positions; and requesting CIT-trained personnel or mental health resources when available and appropriate.</p>
         </div>
       </div>
@@ -1160,7 +1160,7 @@ function getDebriefLegalSummary() {
   if (id === 'use-of-force') return `
     <h3>Key Legal Principles — Use of Force</h3>
     <p><strong>Graham v. Connor (1989)</strong> is the controlling standard for every use of force. Force must be objectively reasonable based on: severity of the crime, immediacy of the threat, and active resistance or evasion. All three factors must appear explicitly in your report.</p>
-    <p><strong>MTPD Arbiter LE Order 1.3 — Force Continuum:</strong> MTPD uses an eight-level continuum. Levels may be skipped given circumstances — but every level applied must be documented and justified. Force ends immediately when resistance ceases.</p>
+    <p><strong>MTPD Order 1.3 — Force Continuum:</strong> MTPD uses an eight-level continuum. Levels may be skipped given circumstances — but every level applied must be documented and justified. Force ends immediately when resistance ceases.</p>
     <p><strong>MTPD ALO 1.3 — Prohibited techniques:</strong> Carotid restraints and all choke holds or neck restraints are specifically and strictly prohibited — except when an officer or another is in imminent fear of death or serious bodily injury and no other alternative exists.</p>
     <p><strong>MTPD ALO 1.3 — Reporting:</strong> Use of Force Report must be completed before you end your shift. It is a separate internal document — never attach it to your incident report. Supervisor must be notified to scene. EMS required when injury is known, suspected, or alleged.</p>
     <p><strong>Pennsylvania Act 57 of 2020</strong> broadly defines reportable force to include display of a weapon and verbal commands used to compel compliance in a threatening encounter. When in doubt, file the report.</p>
@@ -1738,7 +1738,7 @@ function openFeedbackModal() {
       <label>Category</label>
       <select id="feedback-category">
         <option value="legal">Legal Reference / Case Law</option>
-        <option value="sop">Arbiter LE Order / SOP</option>
+        <option value="sop">MTPD Order / SOP</option>
         <option value="scenario">Scenario Issue</option>
         <option value="quiz">Quiz Question</option>
         <option value="content">Content Accuracy</option>
@@ -1803,7 +1803,7 @@ function renderAdminFeedback() {
   }
   listEl.innerHTML = stored.map(f => {
     const dt = f.submitted_at ? new Date(f.submitted_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '—';
-    const catLabel = {legal:'Legal Reference',sop:'Arbiter LE Order / SOP',scenario:'Scenario',quiz:'Quiz Question',content:'Content Accuracy',other:'Other'}[f.category] || f.category;
+    const catLabel = {legal:'Legal Reference',sop:'MTPD Order / SOP',scenario:'Scenario',quiz:'Quiz Question',content:'Content Accuracy',other:'Other'}[f.category] || f.category;
     return `<div class="feedback-item">
       <div class="feedback-item-header">
         <div class="feedback-item-meta"><strong>${f.module_title || f.module_id}</strong> &nbsp;·&nbsp; Badge ${f.badge_number} &nbsp;·&nbsp; ${dt}</div>
