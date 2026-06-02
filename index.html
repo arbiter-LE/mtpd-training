@@ -474,6 +474,136 @@
 <!-- ═══════════════════════════════════════
      JAVASCRIPT
 ═══════════════════════════════════════ -->
+
+<!-- ═══════════════ FEEDBACK MODAL ═══════════════ -->
+<div id="feedback-modal-overlay" class="modal-overlay">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Flag a Content Issue</h3>
+      <button class="modal-close" onclick="closeFeedbackModal()">✕</button>
+    </div>
+    <div id="feedback-form-body" class="modal-body"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ GLOSSARY / REFERENCE MODAL ═══════════════ -->
+<div id="glossary-overlay" class="modal-overlay">
+  <div class="modal-card modal-card-wide">
+    <div class="modal-header">
+      <h3>📖 Legal Reference & Glossary</h3>
+      <button class="modal-close" onclick="closeGlossary()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="text" id="glossary-search-input" class="glossary-search" placeholder="Search terms, cases, statutes…" oninput="filterGlossary(this.value)" />
+      <div class="glossary-tabs">
+        <button class="glossary-tab active" onclick="glossaryTab('all', this)">All</button>
+        <button class="glossary-tab" onclick="glossaryTab('legal', this)">Case Law</button>
+        <button class="glossary-tab" onclick="glossaryTab('term', this)">Terms</button>
+        <button class="glossary-tab" onclick="glossaryTab('sop', this)">SOPs</button>
+      </div>
+      <div class="glossary-list">
+
+        <!-- ── Case Law ── -->
+        <div class="glossary-entry" data-cat="legal" data-search="terry ohio stop frisk reasonable suspicion">
+          <div class="glossary-term">Terry v. Ohio, 392 U.S. 1 (1968)</div>
+          <div class="glossary-cat">Case Law</div>
+          <div class="glossary-def">Established the "stop and frisk" doctrine. Officers may conduct a brief investigatory stop based on reasonable articulable suspicion. A protective pat-down for weapons requires separate justification grounded in officer safety.</div>
+        </div>
+        <div class="glossary-entry" data-cat="legal" data-search="graham connor use of force objective reasonableness">
+          <div class="glossary-term">Graham v. Connor, 490 U.S. 386 (1989)</div>
+          <div class="glossary-cat">Case Law</div>
+          <div class="glossary-def">All use of force must be objectively reasonable under the totality of circumstances. Courts evaluate: (1) severity of the crime, (2) whether the subject poses an immediate threat, (3) whether the subject is actively resisting or evading.</div>
+        </div>
+        <div class="glossary-entry" data-cat="legal" data-search="tennessee garner deadly force fleeing felon">
+          <div class="glossary-term">Tennessee v. Garner, 471 U.S. 1 (1985)</div>
+          <div class="glossary-cat">Case Law</div>
+          <div class="glossary-def">Deadly force to stop a fleeing suspect is only constitutional if the officer has probable cause to believe the suspect poses a significant threat of death or serious physical injury to officers or others.</div>
+        </div>
+        <div class="glossary-entry" data-cat="legal" data-search="rodriguez united states traffic stop extension dog sniff">
+          <div class="glossary-term">Rodriguez v. United States, 575 U.S. 348 (2015)</div>
+          <div class="glossary-cat">Case Law</div>
+          <div class="glossary-def">A traffic stop may not be extended beyond the time needed to complete its purpose — even briefly — for a dog sniff, without independent reasonable suspicion. Timeline documentation is critical.</div>
+        </div>
+        <div class="glossary-entry" data-cat="legal" data-search="schneckloth bustamonte consent search voluntary">
+          <div class="glossary-term">Schneckloth v. Bustamonte, 412 U.S. 218 (1973)</div>
+          <div class="glossary-cat">Case Law</div>
+          <div class="glossary-def">Consent to search must be voluntary under the totality of circumstances. The government bears the burden of proving voluntariness. Consent scope is limited to what a reasonable person would understand it to cover.</div>
+        </div>
+        <div class="glossary-entry" data-cat="legal" data-search="miranda rights custodial interrogation warnings">
+          <div class="glossary-term">Miranda v. Arizona, 384 U.S. 436 (1966)</div>
+          <div class="glossary-cat">Case Law</div>
+          <div class="glossary-def">Prior to custodial interrogation, officers must advise subjects of their right to remain silent, that anything said can be used against them, and their right to an attorney. Miranda applies when a person is both in custody and being interrogated.</div>
+        </div>
+
+        <!-- ── Legal Terms ── -->
+        <div class="glossary-entry" data-cat="term" data-search="probable cause arrest search warrant">
+          <div class="glossary-term">Probable Cause</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">A reasonable belief, based on articulable facts and circumstances, that a crime has been, is being, or is about to be committed. Required for arrests and most searches. Higher standard than reasonable suspicion.</div>
+        </div>
+        <div class="glossary-entry" data-cat="term" data-search="reasonable articulable suspicion RAS terry stop">
+          <div class="glossary-term">Reasonable Articulable Suspicion (RAS)</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">A lower standard than probable cause. Requires specific, objective facts that, taken together, justify a brief investigatory stop. Officer must be able to articulate the specific facts — not a general hunch.</div>
+        </div>
+        <div class="glossary-entry" data-cat="term" data-search="exigent circumstances emergency warrantless entry">
+          <div class="glossary-term">Exigent Circumstances</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">Emergency situations that justify warrantless action. Includes: hot pursuit of a fleeing felon, imminent destruction of evidence, risk of harm to officers or others. Cannot be created by officer action.</div>
+        </div>
+        <div class="glossary-entry" data-cat="term" data-search="plain view doctrine seizure observation">
+          <div class="glossary-term">Plain View Doctrine</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">Officers may seize evidence without a warrant if: (1) officer is lawfully present, (2) the item is in plain view, and (3) its incriminating nature is immediately apparent. Does not justify a search — only seizure of what is already visible.</div>
+        </div>
+        <div class="glossary-entry" data-cat="term" data-search="fruit poisonous tree exclusionary rule suppression">
+          <div class="glossary-term">Fruit of the Poisonous Tree</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">Evidence obtained as a result of an illegal search, seizure, or interrogation is generally inadmissible — as is any additional evidence discovered as a direct result of that illegality.</div>
+        </div>
+        <div class="glossary-entry" data-cat="term" data-search="chain of custody evidence integrity property">
+          <div class="glossary-term">Chain of Custody</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">The documented record of who had possession of evidence, when, and why it changed hands. Every transaction must be recorded on the Property Record Form. A broken chain can render evidence inadmissible.</div>
+        </div>
+        <div class="glossary-entry" data-cat="term" data-search="use of force continuum levels proportional">
+          <div class="glossary-term">Use of Force Continuum</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">MTPD uses an eight-level continuum. Sequential progression is not required — levels may be skipped based on circumstances. Force must be proportional to the threat and must stop immediately when resistance ceases.</div>
+        </div>
+
+        <!-- ── SOPs ── -->
+        <div class="glossary-entry" data-cat="sop" data-search="ALO 1.2 vehicle search probable cause Pennsylvania">
+          <div class="glossary-term">ALO 1.2 — Vehicle Searches</div>
+          <div class="glossary-cat">MTPD Order</div>
+          <div class="glossary-def">Pennsylvania does not follow the federal automobile exception. Probable cause alone — without exigent circumstances — does not justify a warrantless vehicle search. Permitted exceptions: consent, plain view, officer safety frisk, or true exigency not created by officer action.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-search="ALO 1.3 use of force reporting attachment A">
+          <div class="glossary-term">ALO 1.3 — Use of Force Reporting</div>
+          <div class="glossary-cat">MTPD Order</div>
+          <div class="glossary-def">Use of Force Report (Attachment A) required when: firearm discharged, action results in injury/death, physical force used or alleged, Level 3+ force applied. Must be completed before end of shift. Separate from incident report — never attached to it.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-search="ALO 4.13 domestic violence mandatory arrest DV">
+          <div class="glossary-term">ALO 4.13 — Domestic Violence</div>
+          <div class="glossary-cat">MTPD Order</div>
+          <div class="glossary-def">Mandatory arrest when probable cause exists for Simple Assault or qualifying offense between household members/intimate partners. Victim consent is not required. Firearms must be seized when subject is subject to a qualifying PFA. Victim notification required at every contact.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-search="ALO 4.02 vehicle pursuit two unit maximum PIT">
+          <div class="glossary-term">ALO 4.02 — Vehicle Pursuits</div>
+          <div class="glossary-cat">MTPD Order</div>
+          <div class="glossary-def">Maximum two patrol units in any pursuit — hard limit, no exceptions. PIT maneuvers strictly prohibited under all circumstances. Supervisor authorization required from moment vehicle fails to stop. Termination criteria include school zones, danger exceeding need for apprehension.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-search="ALO 3.04 report submission end of tour">
+          <div class="glossary-term">ALO 3.04 — Report Submission</div>
+          <div class="glossary-cat">MTPD Order</div>
+          <div class="glossary-def">All reports completed before end of tour and submitted to shift bin for supervisory approval. Applies to incident, arrest, use of force, and supplemental reports. Late submission requires supervisor authorization.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/departments/registry.js"></script>
 <script src="js/config.js"></script>
