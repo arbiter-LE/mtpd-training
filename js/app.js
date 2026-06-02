@@ -1732,9 +1732,6 @@ function filterCitations(type, btn) {
 const FEEDBACK_KEY = 'mtpd_feedback_v1';
 
 function openFeedbackModal() {
-  document.getElementById('feedback-category').value = 'content';
-  document.getElementById('feedback-text').value = '';
-  document.getElementById('feedback-form-body').innerHTML = document.getElementById('feedback-form-body').innerHTML;
   // Re-render the form cleanly
   document.getElementById('feedback-form-body').innerHTML = `
     <div class="feedback-form-group">
@@ -1819,7 +1816,7 @@ function renderAdminFeedback() {
 
 
 /* ── Glossary ───────────────────────────── */
-let _glossaryActiveTab = 'all';
+var _glossaryActiveTab = 'all';
 
 function openGlossary() {
   document.getElementById('glossary-overlay').classList.add('open');
