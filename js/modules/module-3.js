@@ -2,7 +2,7 @@
 const SCENARIO_REPORT_WRITING = {
   id: 'scenario-report-writing',
   title: 'Route 113 — Foot Pursuit',
-  location: 'Route 113, Millbrook Township, PA',
+  location: 'Route 113, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {

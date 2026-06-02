@@ -2,7 +2,7 @@
 const SCENARIO_SEARCH_SEIZURE = {
   id: 'scenario-search-seizure',
   title: 'Route 29 — Traffic Stop',
-  location: 'Route 29 N, Millbrook Township, PA',
+  location: 'Route 29 N, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
 

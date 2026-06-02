@@ -2,7 +2,7 @@
 const SCENARIO_DOMESTIC_VIOLENCE = {
   id: 'scenario-dv',
   title: 'Old Skippack Road — Domestic Disturbance',
-  location: 'Old Skippack Road, Millbrook Township, PA',
+  location: 'Old Skippack Road, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {

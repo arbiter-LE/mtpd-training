@@ -376,7 +376,7 @@ function renderModuleContent() {
     document.getElementById('module-content-body').innerHTML = `
       <div class="content-block">
         <h4>Scenario</h4>
-        <h2>You stop a vehicle on Route 29 in Millbrook Township. The driver is nervous. You smell marijuana. What happens next will be decided — and scrutinized — based on your training, your judgment, and your documentation.</h2>
+        <h2>You stop a vehicle on Route 29 in Marlborough Township. The driver is nervous. You smell marijuana. What happens next will be decided — and scrutinized — based on your training, your judgment, and your documentation.</h2>
         <p>This module covers what the Fourth Amendment requires of you at every decision point — and what it doesn\'t protect you from if you get it wrong in court or on paper.</p>
       </div>
       <div class="content-block">

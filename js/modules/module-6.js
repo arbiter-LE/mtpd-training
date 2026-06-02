@@ -2,7 +2,7 @@
 const SCENARIO_VEHICLE_PURSUITS = {
   id: 'scenario-pursuits',
   title: 'Route 29 / Swamp Pike — Pursuit Decision',
-  location: 'Route 29, Millbrook Township, PA',
+  location: 'Route 29, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {

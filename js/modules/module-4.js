@@ -2,7 +2,7 @@
 const SCENARIO_CRISIS = {
   id: 'scenario-crisis',
   title: 'Covered Bridge Road — Welfare Check',
-  location: 'Covered Bridge Road, Millbrook Township, PA',
+  location: 'Covered Bridge Road, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {

@@ -2,7 +2,7 @@
 const SCENARIO_USE_OF_FORCE = {
   id: 'scenario-use-of-force',
   title: 'Mountain Road — Domestic Disturbance',
-  location: 'Mountain Road, Millbrook Township, PA',
+  location: 'Mountain Road, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
