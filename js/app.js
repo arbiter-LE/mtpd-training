@@ -619,7 +619,7 @@ function renderModuleContent() {
     document.getElementById('module-content-body').innerHTML = `
       <div class="content-block">
         <h4>Scenario</h4>
-        <h2>A mother calls because her son hasn\'t taken his medication in two days, said he didn\'t want to be here anymore, and won\'t answer her calls. He\'s at his house on Covered Bridge Road. You\'re first on scene.</h2>
+        <h2>A mother calls because her son hasn\'t taken his medication in two days, said he didn\'t want to be here anymore, and won\'t answer her calls. He\'s at his house on Main Street. You\'re first on scene.</h2>
         <p>This module covers Crisis Intervention Team (CIT) principles, the Pennsylvania Mental Health Procedures Act, de-escalation techniques specific to mental health encounters, and the legal framework for 302 involuntary examinations.</p>
       </div>
       <div class="content-block">
@@ -670,7 +670,7 @@ function renderModuleContent() {
     document.getElementById('module-content-body').innerHTML = `
       <div class="content-block">
         <h4>Scenario</h4>
-        <h2>A 911 hang-up from a residence on Old Skippack Road. A neighbor heard shouting and breaking glass. When you arrive, the door opens before you knock — and the story becomes anything but simple.</h2>
+        <h2>A 911 hang-up from a residence on Upper Ridge Road. A neighbor heard shouting and breaking glass. When you arrive, the door opens before you knock — and the story becomes anything but simple.</h2>
         <p>This module covers mandatory arrest authority under MTPD ALO 4.13, PFA enforcement, victim notification requirements, mandatory firearms seizure, and the documentation standard that makes or breaks a DV prosecution.</p>
       </div>
       <div class="content-block">

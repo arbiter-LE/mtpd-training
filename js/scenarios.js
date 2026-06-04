@@ -321,7 +321,7 @@ const SCENARIO_SEARCH_SEIZURE = {
           shortLabel: 'Minimal — no investigative record'
         },
         {
-          text: '"Traffic stop, Route 29 northbound at Baker Rd. Equipment violation — broken tail light. On approach, officer detected odor consistent with marijuana. Driver exhibited nervous behavior: no eye contact, hands trembling, delayed responses. Insufficient PC to conduct search at time of contact. Written warning issued. Driver released at 22:31. Observations documented for intelligence. PA tag [XXX-XXXX] forwarded to dispatch for zone awareness."',
+          text: '"Traffic stop, Route 29 northbound at Penny Road. Equipment violation — broken tail light. On approach, officer detected odor consistent with marijuana. Driver exhibited nervous behavior: no eye contact, hands trembling, delayed responses. Insufficient PC to conduct search at time of contact. Written warning issued. Driver released at 22:31. Observations documented for intelligence. PA tag [XXX-XXXX] forwarded to dispatch for zone awareness."',
           next: 'c2d_right',
           quality: 'good',
           shortLabel: 'Complete intelligence documentation'
@@ -915,14 +915,14 @@ const SCENARIO_REPORT_WRITING = {
 ══════════════════════════════════════════ */
 const SCENARIO_CRISIS = {
   id: 'scenario-crisis',
-  title: 'Covered Bridge Road — Welfare Check',
-  location: 'Covered Bridge Road, Marlborough Township, PA',
+  title: 'Main Street — Welfare Check',
+  location: 'Main Street, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
       type: 'scene', time: '14:22', weather: 'Overcast / 61°F', unit: 'Patrol Unit 4',
       narrative: [
-        'You are dispatched to a welfare check at a residential address on Covered Bridge Road. The caller is the subject\'s mother. She reports that her 31-year-old son has been in a mental health crisis for approximately two days, has not taken his prescribed medication, and made a statement this morning about "not wanting to be here anymore."',
+        'You are dispatched to a welfare check at a residential address on Main Street. The caller is the subject\'s mother. She reports that her 31-year-old son has been in a mental health crisis for approximately two days, has not taken his prescribed medication, and made a statement this morning about "not wanting to be here anymore."',
         'She does not know if he has access to weapons. He lives alone. You arrive to find the subject seated on his front porch steps, rocking slowly, arms folded across his chest. He appears to be speaking quietly to himself. He does not acknowledge your approach.'
       ],
       next: 'd1'
@@ -1235,14 +1235,14 @@ const SCENARIO_CRISIS = {
 ══════════════════════════════════════════ */
 const SCENARIO_DOMESTIC_VIOLENCE = {
   id: 'scenario-dv',
-  title: 'Old Skippack Road — Domestic Disturbance',
-  location: 'Old Skippack Road, Marlborough Township, PA',
+  title: 'Upper Ridge Road — Domestic Disturbance',
+  location: 'Upper Ridge Road, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
       type: 'scene', time: '22:47', weather: 'Clear / 54°F', unit: 'Patrol Unit 2',
       narrative: [
-        'Dispatch advises a 911 hang-up from a residence on Old Skippack Road. A second call came in from a neighbor reporting shouting and what sounded like breaking glass. The registered resident is Jessica Harmon, 29. PA JNET returns a prior incident at this address eight months ago — a DV report, no arrest at the time.',
+        'Dispatch advises a 911 hang-up from a residence on Upper Ridge Road. A second call came in from a neighbor reporting shouting and what sounded like breaking glass. The registered resident is Jessica Harmon, 29. PA JNET returns a prior incident at this address eight months ago — a DV report, no arrest at the time.',
         'You and your backup unit arrive two minutes apart. No lights or sirens within one block of the residence, per MTPD ALO 4.13. The house is dark except for a light in a rear room. You hear a male voice raised inside. As you approach the front door, a woman opens it. She has a visible bruise forming under her left eye. She says quietly: "He left out the back." A male is seen walking quickly toward the tree line.'
       ],
       next: 'd1'
@@ -1454,14 +1454,14 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
 ══════════════════════════════════════════ */
 const SCENARIO_VEHICLE_PURSUITS = {
   id: 'scenario-pursuits',
-  title: 'Route 29 / Swamp Pike — Pursuit Decision',
+  title: 'Route 29 / Swamp Creek Road — Pursuit Decision',
   location: 'Route 29, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
       type: 'scene', time: '01:14', weather: 'Overcast / 47°F', unit: 'Patrol Unit 1',
       narrative: [
-        'You initiate a traffic stop on Route 29 for a vehicle traveling 72 mph in a 45 zone. The vehicle — a dark blue Honda Accord — slows and pulls partially toward the shoulder, then accelerates rapidly, running through a red light at the Swamp Pike intersection and continuing southbound.',
+        'You initiate a traffic stop on Route 29 for a vehicle traveling 72 mph in a 45 zone. The vehicle — a dark blue Honda Accord — slows and pulls partially toward the shoulder, then accelerates rapidly, running through a red light at the Swamp Creek Road intersection and continuing southbound.',
         'You immediately activate your emergency equipment and advise dispatch. The time is 0114 hours. There is moderate late-night traffic. You have a partial plate. The vehicle has not been identified as stolen. The offense initiating the stop was a summary traffic violation.'
       ],
       next: 'd1'
@@ -1534,7 +1534,7 @@ const SCENARIO_VEHICLE_PURSUITS = {
     'd2': {
       type: 'decision',
       decisionNumber: 2,
-      situation: 'The pursuit has continued for approximately 90 seconds. The vehicle has taken a turn onto a residential road — Keeley Road. Speeds are now 55 mph on a 25 mph residential street. A second patrol unit has caught up and is now positioned two car lengths behind you, making this a two-unit pursuit. Dispatch has run the plate — it returns to a Marcus Webb, 23, with a suspended license. No felony warrants. Your supervisor comes over the radio and asks for your recommendation to continue or terminate.\n\nA third patrol unit is requesting to join from the opposite end of Keeley Road.',
+      situation: 'The pursuit has continued for approximately 90 seconds. The vehicle has taken a turn onto a residential road — Magazine Road. Speeds are now 55 mph on a 25 mph residential street. A second patrol unit has caught up and is now positioned two car lengths behind you, making this a two-unit pursuit. Dispatch has run the plate — it returns to a Marcus Webb, 23, with a suspended license. No felony warrants. Your supervisor comes over the radio and asks for your recommendation to continue or terminate.\n\nA third patrol unit is requesting to join from the opposite end of Magazine Road.',
       question: 'What is your recommendation to your supervisor, and what is your decision on the third unit?',
       options: [
         {
@@ -2218,7 +2218,7 @@ const SCENARIO_EI = {
 /* ── Scenario: Evidence & Chain of Custody ─ */
 const SCENARIO_EVIDENCE = {
   title: 'Evidence & Chain of Custody',
-  location: 'Residential Burglary — 412 Maple Creek Drive, Harleysville',
+  location: 'Residential Burglary — 412 E Campbell Road, Harleysville',
   totalDecisions: 3,
   nodes: {
     start: {

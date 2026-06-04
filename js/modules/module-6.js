@@ -1,14 +1,14 @@
 ══════════════════════════════════════════ */
 const SCENARIO_VEHICLE_PURSUITS = {
   id: 'scenario-pursuits',
-  title: 'Route 29 / Swamp Pike — Pursuit Decision',
+  title: 'Route 29 / Swamp Creek Road — Pursuit Decision',
   location: 'Route 29, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
       type: 'scene', time: '01:14', weather: 'Overcast / 47°F', unit: 'Patrol Unit 1',
       narrative: [
-        'You initiate a traffic stop on Route 29 for a vehicle traveling 72 mph in a 45 zone. The vehicle — a dark blue Honda Accord — slows and pulls partially toward the shoulder, then accelerates rapidly, running through a red light at the Swamp Pike intersection and continuing southbound.',
+        'You initiate a traffic stop on Route 29 for a vehicle traveling 72 mph in a 45 zone. The vehicle — a dark blue Honda Accord — slows and pulls partially toward the shoulder, then accelerates rapidly, running through a red light at the Swamp Creek Road intersection and continuing southbound.',
         'You immediately activate your emergency equipment and advise dispatch. The time is 0114 hours. There is moderate late-night traffic. You have a partial plate. The vehicle has not been identified as stolen. The offense initiating the stop was a summary traffic violation.'
       ],
       next: 'd1'
@@ -81,7 +81,7 @@ const SCENARIO_VEHICLE_PURSUITS = {
     'd2': {
       type: 'decision',
       decisionNumber: 2,
-      situation: 'The pursuit has continued for approximately 90 seconds. The vehicle has taken a turn onto a residential road — Keeley Road. Speeds are now 55 mph on a 25 mph residential street. A second patrol unit has caught up and is now positioned two car lengths behind you, making this a two-unit pursuit. Dispatch has run the plate — it returns to a Marcus Webb, 23, with a suspended license. No felony warrants. Your supervisor comes over the radio and asks for your recommendation to continue or terminate.\n\nA third patrol unit is requesting to join from the opposite end of Keeley Road.',
+      situation: 'The pursuit has continued for approximately 90 seconds. The vehicle has taken a turn onto a residential road — Magazine Road. Speeds are now 55 mph on a 25 mph residential street. A second patrol unit has caught up and is now positioned two car lengths behind you, making this a two-unit pursuit. Dispatch has run the plate — it returns to a Marcus Webb, 23, with a suspended license. No felony warrants. Your supervisor comes over the radio and asks for your recommendation to continue or terminate.\n\nA third patrol unit is requesting to join from the opposite end of Magazine Road.',
       question: 'What is your recommendation to your supervisor, and what is your decision on the third unit?',
       options: [
         {
@@ -269,7 +269,7 @@ function getVehiclePursuitQuestions() {
       feedback: 'Correct. MTPD ALO 4.02 specifically prohibits PIT (Precision Immobilization Technique) maneuvers. This is not a conditional prohibition — it is an absolute prohibition. Regardless of circumstances, supervisor authorization, or the nature of the offense, PIT maneuvers are not authorized under MTPD policy. The authorized alternative for vehicle interdiction is stop stick deployment, which requires supervisor authorization and is deployed by a unit not in active pursuit.'
     },
     {
-      scenario: 'A pursuit is terminated per supervisor order. The suspect vehicle is last seen northbound on Schoolhouse Road. You have a positive ID on the driver.',
+      scenario: 'A pursuit is terminated per supervisor order. The suspect vehicle is last seen northbound on Geryville Pike. You have a positive ID on the driver.',
       text: 'What documentation is required following a terminated pursuit under MTPD ALO 4.02?',
       options: [
         'No report is required for a terminated pursuit — only completed pursuits resulting in arrest require documentation.',

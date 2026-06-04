@@ -682,7 +682,7 @@ function getVehiclePursuitQuestions() {
       feedback: 'Correct. MTPD ALO 4.02 specifically prohibits PIT (Precision Immobilization Technique) maneuvers. This is not a conditional prohibition — it is an absolute prohibition. Regardless of circumstances, supervisor authorization, or the nature of the offense, PIT maneuvers are not authorized under MTPD policy. The authorized alternative for vehicle interdiction is stop stick deployment, which requires supervisor authorization and is deployed by a unit not in active pursuit.'
     },
     {
-      scenario: 'A pursuit is terminated per supervisor order. The suspect vehicle is last seen northbound on Schoolhouse Road. You have a positive ID on the driver.',
+      scenario: 'A pursuit is terminated per supervisor order. The suspect vehicle is last seen northbound on Geryville Pike. You have a positive ID on the driver.',
       text: 'What documentation is required following a terminated pursuit under MTPD ALO 4.02?',
       options: [
         'No report is required for a terminated pursuit — only completed pursuits resulting in arrest require documentation.',

@@ -313,7 +313,7 @@ const SCENARIO_SEARCH_SEIZURE = {
           shortLabel: 'Minimal — no investigative record'
         },
         {
-          text: '"Traffic stop, Route 29 northbound at Baker Rd. Equipment violation — broken tail light. On approach, officer detected odor consistent with marijuana. Driver exhibited nervous behavior: no eye contact, hands trembling, delayed responses. Insufficient PC to conduct search at time of contact. Written warning issued. Driver released at 22:31. Observations documented for intelligence. PA tag [XXX-XXXX] forwarded to dispatch for zone awareness."',
+          text: '"Traffic stop, Route 29 northbound at Penny Road. Equipment violation — broken tail light. On approach, officer detected odor consistent with marijuana. Driver exhibited nervous behavior: no eye contact, hands trembling, delayed responses. Insufficient PC to conduct search at time of contact. Written warning issued. Driver released at 22:31. Observations documented for intelligence. PA tag [XXX-XXXX] forwarded to dispatch for zone awareness."',
           next: 'c2d_right',
           quality: 'good',
           shortLabel: 'Complete intelligence documentation'

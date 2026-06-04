@@ -2,7 +2,7 @@
 /* ── Scenario: Evidence & Chain of Custody ─ */
 const SCENARIO_EVIDENCE = {
   title: 'Evidence & Chain of Custody',
-  location: 'Residential Burglary — 412 Maple Creek Drive, Harleysville',
+  location: 'Residential Burglary — 412 E Campbell Road, Harleysville',
   totalDecisions: 3,
   nodes: {
     start: {

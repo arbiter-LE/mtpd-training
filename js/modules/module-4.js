@@ -1,14 +1,14 @@
 ══════════════════════════════════════════ */
 const SCENARIO_CRISIS = {
   id: 'scenario-crisis',
-  title: 'Covered Bridge Road — Welfare Check',
-  location: 'Covered Bridge Road, Marlborough Township, PA',
+  title: 'Main Street — Welfare Check',
+  location: 'Main Street, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
       type: 'scene', time: '14:22', weather: 'Overcast / 61°F', unit: 'Patrol Unit 4',
       narrative: [
-        'You are dispatched to a welfare check at a residential address on Covered Bridge Road. The caller is the subject\'s mother. She reports that her 31-year-old son has been in a mental health crisis for approximately two days, has not taken his prescribed medication, and made a statement this morning about "not wanting to be here anymore."',
+        'You are dispatched to a welfare check at a residential address on Main Street. The caller is the subject\'s mother. She reports that her 31-year-old son has been in a mental health crisis for approximately two days, has not taken his prescribed medication, and made a statement this morning about "not wanting to be here anymore."',
         'She does not know if he has access to weapons. He lives alone. You arrive to find the subject seated on his front porch steps, rocking slowly, arms folded across his chest. He appears to be speaking quietly to himself. He does not acknowledge your approach.'
       ],
       next: 'd1'
