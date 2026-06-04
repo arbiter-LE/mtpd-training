@@ -71,6 +71,7 @@ let quizTotal       = 0;
 // Scenario state
 let scenarioPath    = [];   // [{question, choiceText, outcomeLabel, quality, legal}]
 let currentNode     = null;
+let currentNodeId   = null;
 let pendingNext     = null; // next node id after consequence is shown
 let scenarioDecisionCount = 0;
 let scenarioTotalDecisions = 0;
@@ -109,12 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const STORAGE_KEY = 'arbiter_le_training_v1';
-
-/* SHA-256 helper (Web Crypto API) */
-async function sha256(str) {
-  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-}
 
 /* Save one officer\'s module completion to Supabase */
 async function saveCompletionToSupabase(badgeNumber, modId, record) {

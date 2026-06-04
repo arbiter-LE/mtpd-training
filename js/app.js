@@ -8,18 +8,6 @@ function showScreen(id) {
 }
 
 /* ── Login ─────────────────────────────── */
-/* ── Demo Roster (offline, no Supabase required) ── */
-const DEMO_ROSTER = {
-  '1041': { name: 'Officer J. Reynolds', rank: 'Patrol Officer', role: 'officer', badge: '1041' },
-  '1098': { name: 'Officer M. Torres',   rank: 'Patrol Officer', role: 'officer', badge: '1098' },
-  '1134': { name: 'Officer D. Kim',      rank: 'Patrol Officer', role: 'officer', badge: '1134' },
-  '1187': { name: 'Officer L. Nguyen',   rank: 'Patrol Officer', role: 'officer', badge: '1187' },
-  '1203': { name: 'Officer C. Harris',   rank: 'Patrol Officer', role: 'officer', badge: '1203' },
-  '1247': { name: 'Officer T. Johnson',  rank: 'Patrol Officer', role: 'officer', badge: '1247' },
-  'admin': { name: 'Administrator',      rank: 'Command Staff',  role: 'admin',   badge: 'admin' },
-};
-const DEMO_PASSWORD = 'demo';
-
 async function doLogin() {
   const input  = document.getElementById('login-user').value.trim();
   const p      = document.getElementById('login-pass').value;
@@ -32,34 +20,11 @@ async function doLogin() {
   btnEl.textContent = 'Verifying…';
   btnEl.disabled = true;
 
-  // ── Demo / badge-number login (no Supabase required) ──────────────────
-  const demoUser = DEMO_ROSTER[input.toLowerCase()] || DEMO_ROSTER[input];
-  if (demoUser && p === DEMO_PASSWORD) {
-    currentUser = { ...demoUser, id: demoUser.badge };
-    USERS[demoUser.badge] = { ...demoUser };
-    btnEl.textContent = 'SIGN IN';
-    btnEl.disabled = false;
-    if (demoUser.role === 'admin') {
-      showScreen('screen-admin');
-      await loadAllDataForAdmin();
-      renderAdminDashboard();
-    } else {
-      document.getElementById('officer-name-display').textContent  = demoUser.name;
-      document.getElementById('officer-badge-display').textContent = 'Badge #' + demoUser.badge;
-      document.getElementById('module-officer-name').textContent   = demoUser.name;
-      document.getElementById('scenario-officer-name').textContent = demoUser.name;
-      document.getElementById('quiz-officer-name').textContent     = demoUser.name;
-      document.getElementById('debrief-officer-name').textContent  = demoUser.name;
-      showOfficerDashboard();
-    }
-    return;
-  }
-
-  // ── Supabase email login ───────────────────────────────────────────────
+  // ── Supabase Auth ──────────────────────────────────────────────────────
   const { data: authData, error: authError } = await _sb.auth.signInWithPassword({ email: input, password: p });
 
   if (authError || !authData.user) {
-    errEl.textContent = 'Invalid credentials. Use badge number + "demo", or your department email.';
+    errEl.textContent = 'Invalid credentials. Contact your administrator if you need access.';
     btnEl.textContent = 'SIGN IN';
     btnEl.disabled = false;
     return;
@@ -187,10 +152,14 @@ function checkResumeBanner() {
   const saved = localStorage.getItem(key);
   const bannerEl = document.getElementById('officer-resume-banner');
   if (!bannerEl) return;
-  if (!saved) { bannerEl.style.display = 'none'; return; }
+  // Quiz resume takes priority; if no quiz, check scenario pause
+  if (!saved) {
+    checkScenarioPauseBanner();
+    return;
+  }
   const state = JSON.parse(saved);
   const mod = MODULES.find(m => m.id === state.moduleId);
-  if (!mod) { bannerEl.style.display = 'none'; return; }
+  if (!mod) { bannerEl.style.display = 'none'; checkScenarioPauseBanner(); return; }
   const qNum = state.questionIndex + 1;
   bannerEl.style.display = 'block';
   bannerEl.innerHTML = `
@@ -234,6 +203,79 @@ function dismissResume() {
   clearQuizState();
   const bannerEl = document.getElementById('officer-resume-banner');
   if (bannerEl) bannerEl.style.display = 'none';
+}
+
+/* ── Scenario Pause / Resume ───────────── */
+function PAUSE_KEY() { return currentUser ? 'mtpd_scenario_pause_' + currentUser.id : null; }
+
+function pauseScenario() {
+  const key = PAUSE_KEY();
+  if (!key || !currentModule) return;
+  localStorage.setItem(key, JSON.stringify({
+    moduleId:             currentModule.id,
+    nodeId:               currentNodeId,
+    scenarioPath:         scenarioPath,
+    scenarioTotalDecisions: scenarioTotalDecisions,
+    useScenario2:         currentModule._activeScenario === currentModule.scenario2
+  }));
+  stopAllTimers();
+  showScreen('screen-officer');
+  renderOfficerDashboard();
+  checkResumeBanner();
+}
+
+function clearScenarioPause() {
+  const key = PAUSE_KEY();
+  if (key) localStorage.removeItem(key);
+}
+
+function checkScenarioPauseBanner() {
+  const key    = PAUSE_KEY();
+  const saved  = key && localStorage.getItem(key);
+  const banner = document.getElementById('officer-resume-banner');
+  if (!saved || !banner) return;
+  const state = JSON.parse(saved);
+  const mod   = MODULES.find(m => m.id === state.moduleId);
+  if (!mod) { clearScenarioPause(); return; }
+  const decisionsLeft = state.scenarioTotalDecisions - state.scenarioPath.length;
+  banner.style.display = 'block';
+  banner.innerHTML = `
+    <div class="resume-banner">
+      <p>You paused a scenario — <strong>${mod.title}</strong> — ${decisionsLeft > 0 ? decisionsLeft + ' decision' + (decisionsLeft !== 1 ? 's' : '') + ' remaining' : 'ready for debrief'}. Pick up where you left off.</p>
+      <div class="resume-banner-btns">
+        <button class="btn-dismiss-resume" onclick="dismissScenarioPause()">Dismiss</button>
+        <button class="btn-resume" onclick="resumeScenario()">Resume Scenario →</button>
+      </div>
+    </div>`;
+}
+
+function dismissScenarioPause() {
+  clearScenarioPause();
+  const banner = document.getElementById('officer-resume-banner');
+  if (banner) banner.style.display = 'none';
+}
+
+function resumeScenario() {
+  const key   = PAUSE_KEY();
+  const saved = key && localStorage.getItem(key);
+  if (!saved) return;
+  const state = JSON.parse(saved);
+  const mod   = MODULES.find(m => m.id === state.moduleId);
+  if (!mod) { clearScenarioPause(); return; }
+  clearScenarioPause();
+  currentModule = mod;
+  currentModule._activeScenario = state.useScenario2 && mod.scenario2 ? mod.scenario2 : mod.scenario;
+  scenarioPath           = state.scenarioPath || [];
+  scenarioTotalDecisions = state.scenarioTotalDecisions;
+  scenarioDecisionCount  = scenarioPath.length;
+  showScreen('screen-scenario');
+  window.scrollTo(0, 0);
+  const scen = currentModule._activeScenario;
+  document.getElementById('scenario-location-label').textContent = scen.location;
+  document.getElementById('scenario-title-label').textContent    = scen.title;
+  const feBadge = document.getElementById('field-exp-badge');
+  if (feBadge) feBadge.style.display = scen.fieldExperience ? 'inline-flex' : 'none';
+  renderScenarioNode(state.nodeId);
 }
 
 /* ── Officer Dashboard ─────────────────── */
@@ -449,7 +491,7 @@ function renderModuleContent() {
     document.getElementById('module-content-body').innerHTML = `
       <div class="content-block">
         <h4>Scenario</h4>
-        <h2>You respond to a domestic disturbance on Mountain Road. The subject is advancing toward you, flashlight raised. Every decision you make in the next thirty seconds — and how you document it afterward — will be evaluated against a federal standard.</h2>
+        <h2>You respond to a domestic disturbance on Sumneytown Pike. The subject is advancing toward you, flashlight raised. Every decision you make in the next thirty seconds — and how you document it afterward — will be evaluated against a federal standard.</h2>
         <p>This module covers the Graham v. Connor objective reasonableness standard, Pennsylvania Act 57 of 2020 reporting requirements, and what separates a defensible use of force report from one that ends a career.</p>
       </div>
       <div class="content-block">
@@ -1049,7 +1091,8 @@ function startScenario(moduleId) {
 function renderScenarioNode(nodeId) {
   const scen  = currentModule._activeScenario || currentModule.scenario;
   const nodes = scen.nodes;
-  currentNode = nodes[nodeId];
+  currentNode   = nodes[nodeId];
+  currentNodeId = nodeId;
   if (!currentNode) return;
 
   if (currentNode.type === 'debrief') { showDebrief(); return; }
@@ -1288,7 +1331,10 @@ function showDebrief() {
     <div class="debrief-legal-summary">
       ${getDebriefLegalSummary()}
     </div>
-    <button class="btn-proceed-quiz" onclick="startQuiz('${currentModule.id}')">Proceed to Knowledge Assessment →</button>
+    <div class="debrief-actions">
+      <button class="btn-review-module" onclick="startModule('${currentModule.id}')">← Review Module</button>
+      <button class="btn-proceed-quiz" onclick="startQuiz('${currentModule.id}')">Proceed to Knowledge Assessment →</button>
+    </div>
   `;
 }
 

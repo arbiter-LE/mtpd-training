@@ -441,14 +441,14 @@ const SCENARIO_SEARCH_SEIZURE = {
 ══════════════════════════════════════════ */
 const SCENARIO_USE_OF_FORCE = {
   id: 'scenario-use-of-force',
-  title: 'Mountain Road — Domestic Disturbance',
-  location: 'Mountain Road, Marlborough Township, PA',
+  title: 'Sumneytown Pike — Domestic Disturbance',
+  location: 'Sumneytown Pike, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     'start': {
       type: 'scene', time: '19:43', weather: 'Dusk / Clear', unit: 'Patrol Unit 5',
       narrative: [
-        'You respond to a domestic disturbance call on Mountain Road. A neighbor reported a loud argument. As you arrive, you observe a male subject — later identified as 38-year-old resident — standing on the front porch, yelling toward the front door.',
+        'You respond to a domestic disturbance call on Sumneytown Pike. A neighbor reported a loud argument. As you arrive, you observe a male subject — later identified as 38-year-old resident — standing on the front porch, yelling toward the front door.',
         'He notices you approaching and turns in your direction. He is holding a large aluminum flashlight, raised at shoulder height. He begins walking toward you. You estimate he is approximately 25 feet away.'
       ],
       next: 'd1'
