@@ -3,17 +3,16 @@
 ═══════════════════════════════════════════ */
 
 /* ── Schedule Engine ────────────────────── */
-// Program officially starts June 1, 2026.
+// Schedule start is per-department, defined in js/departments/registry.js.
 // Each module unlocks at the start of its week; due by that Sunday.
 // One week buffer before status flips to overdue.
-const SCHEDULE_START = new Date('2026-05-19T00:00:00'); // Monday — Week 1 opens
 
 function getSundayOfWeek(weekNumber) {
   // Returns the due date for a given 1-based week number.
   // Modules are due twice a month — every two weeks.
   // Weeks 1-2 share a due date, weeks 3-4 share one, etc.
   const biweeklyPeriod = Math.ceil(weekNumber / 2);
-  const d = new Date(SCHEDULE_START);
+  const d = new Date(ACTIVE_DEPARTMENT.scheduleStart);
   d.setDate(d.getDate() + (biweeklyPeriod * 14));
   d.setHours(23, 59, 59, 0);
   return d;
@@ -42,8 +41,8 @@ function getModuleSchedule(weekNumber) {
 }
 
 function getModuleOpenDate(weekNumber) {
-  // A module unlocks at the start of its week (weekNumber - 1 weeks after SCHEDULE_START)
-  const d = new Date(SCHEDULE_START);
+  // A module unlocks at the start of its week (weekNumber - 1 weeks after scheduleStart)
+  const d = new Date(ACTIVE_DEPARTMENT.scheduleStart);
   d.setDate(d.getDate() + (weekNumber - 1) * 7);
   d.setHours(0, 0, 0, 0);
   return d;

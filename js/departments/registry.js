@@ -12,15 +12,17 @@ const DEPARTMENT_REGISTRY = [
     badge: 'assets/mtpd-badge.png',
     supabaseUrl: 'https://lkikznncbpfcmgnnyigj.supabase.co',
     supabaseKey: 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6',
+    scheduleStart: new Date('2026-05-19T00:00:00'), // Monday — Week 1 opens
   },
   // ── Add new agencies below ────────────────
   // {
-  //   subdomain: 'springfield',   // springfield.arbiterle.com
-  //   name: 'Springfield Police Department',
-  //   shortName: 'SPD',
-  //   badge: 'assets/spd-badge.png',
+  //   subdomain: 'egpd',          // egpd.arbiterle.com
+  //   name: 'East Goshen Police Department',
+  //   shortName: 'EGPD',
+  //   badge: 'assets/egpd-badge.png',
   //   supabaseUrl: 'https://xxxxx.supabase.co',
   //   supabaseKey: 'sb_publishable_xxxxx',
+  //   scheduleStart: new Date('2026-XX-XXT00:00:00'), // Set to agency contract start date
   // },
 ];
 
