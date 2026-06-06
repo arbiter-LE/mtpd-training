@@ -12,7 +12,7 @@ const DEPARTMENT_REGISTRY = [
     badge: 'assets/mtpd-badge.png',
     supabaseUrl: 'https://lkikznncbpfcmgnnyigj.supabase.co',
     supabaseKey: 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6',
-    scheduleStart: new Date('2026-05-19T00:00:00'), // Monday — Week 1 opens
+    scheduleStart: new Date('2026-06-01T00:00:00'), // Monday — Week 1 opens
   },
   // ── Add new agencies below ────────────────
   // {
