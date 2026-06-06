@@ -1495,7 +1495,7 @@ function renderAdminDashboard() {
 }
 
 function renderAdminStats() {
-  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined);
+  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
   let compliant=0, overdueCount=0, totalComps=0, totalScores=[];
   officers.forEach(uid => {
     const done = completionData[uid]||{};
@@ -1523,7 +1523,7 @@ function renderAdminStats() {
 
 function renderAdminTable() {
   const filterVal = document.getElementById('filter-status').value;
-  const officers  = Object.keys(USERS).filter(k => USERS[k].role !== undefined);
+  const officers  = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
   const rows = officers.map(uid => {
     const user = USERS[uid];
     const done = completionData[uid]||{};
@@ -1562,7 +1562,7 @@ function renderAdminTable() {
 }
 
 function renderAdminModules() {
-  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined);
+  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
   document.getElementById('admin-modules-body').innerHTML = MODULES.map(m => {
     const completions = officers.filter(uid => completionData[uid]?.[m.id]);
     const scores = completions.map(uid => completionData[uid][m.id].score);
@@ -1581,7 +1581,7 @@ function renderAdminModules() {
 }
 
 function printComplianceReport() {
-  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined);
+  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
   const now = new Date();
   const dateStr = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
   const timeStr = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
