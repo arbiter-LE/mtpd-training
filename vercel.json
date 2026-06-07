@@ -13,12 +13,12 @@
     {
       "source": "/privacy-policy",
       "has": [{ "type": "host", "value": "arbiterle.com" }],
-      "destination": "/marketing/privacy-policy.html"
+      "destination": "/Marketing/privacy-policy.html"
     },
     {
       "source": "/",
       "has": [{ "type": "host", "value": "arbiterle.com" }],
-      "destination": "/marketing/index.html"
+      "destination": "/Marketing/index.html"
     }
   ],
   "headers": [
