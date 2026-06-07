@@ -46,6 +46,8 @@ MTPD is live. EGPD is commented out — not onboarded yet.
 
 **Check `git log --oneline -10` at the start of any session** involving routing, deployment, or anything structural. The revert history matters.
 
+**Never alter the verbiage of any agency operating procedure, general order, or policy — ever.** When an agency provides policy language, it must appear verbatim in all modules, scenarios, debriefs, and quiz questions. Do not paraphrase, simplify, reorder, or "clean up" the wording for any reason. These are legal documents and the agency owns the language. If the provided text is unclear or seems incorrect, stop and ask Andrew — do not edit it unilaterally.
+
 **Never use a road name in any module that is not on the approved list for that agency.** This applies to every department — MTPD, EGPD, or any future agency. Making up roads, or using roads from a neighboring jurisdiction, is a credibility problem that undermines the platform with law enforcement professionals who know their territory. If a scenario needs a road not on the list, stop and ask Andrew before inventing one. Do not borrow roads from one agency's list for another agency's modules.
 
 ### Approved Roads — MTPD (Marlborough Township)
