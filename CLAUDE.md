@@ -46,6 +46,24 @@ MTPD is live. EGPD is commented out — not onboarded yet.
 
 **Check `git log --oneline -10` at the start of any session** involving routing, deployment, or anything structural. The revert history matters.
 
+**Never use a road name in any module that is not on the approved list below.** Making up roads — or using roads from neighboring townships — is a credibility problem. MTPD covers Marlborough Township; roads must actually exist within or directly border that jurisdiction. If a scenario needs a road not on this list, stop and ask Andrew before inventing one.
+
+### Approved Roads — MTPD (Marlborough Township)
+
+| Road | Notes |
+|------|-------|
+| Sumneytown Pike | Primary patrol corridor |
+| Route 63 | |
+| Route 113 | |
+| Route 29 | |
+| Route 663 | |
+| Swamp Creek Road | |
+| Penny Road | |
+| Upper Ridge Road | |
+| Magazine Road | |
+| Main Street | Generic; use sparingly |
+| Green Lane (area) | Reference only — "Green Lane reservoir area", "Red Trail parking area at Green Lane" |
+
 ---
 
 ## Current Live State (as of 2026-06-07)
