@@ -35,6 +35,38 @@ async function doLogin() {
   btnEl.disabled = false;
 }
 
+async function doForgotPassword(e) {
+  e.preventDefault();
+  const email  = document.getElementById('login-user').value.trim();
+  const errEl  = document.getElementById('login-error');
+  const link   = document.getElementById('forgot-link');
+
+  if (!email) {
+    errEl.textContent = 'Enter your department email above, then click "Forgot password?"';
+    errEl.style.color = 'var(--gold)';
+    return;
+  }
+
+  link.textContent = 'Sending…';
+  link.style.pointerEvents = 'none';
+  errEl.textContent = '';
+
+  const { error } = await _sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + '/?reset=1'
+  });
+
+  link.textContent = 'Forgot password?';
+  link.style.pointerEvents = '';
+
+  if (error) {
+    errEl.textContent = 'Could not send reset email. Contact support@arbiterle.com.';
+    errEl.style.color = '';
+  } else {
+    errEl.textContent = 'Reset link sent — check your email.';
+    errEl.style.color = 'var(--gold)';
+  }
+}
+
 async function mountOfficerSession(authUid) {
   const { data: rows, error } = await _sb.from('officers').select('*').eq('auth_uid', authUid).limit(1);
   if (error || !rows || rows.length === 0) {
