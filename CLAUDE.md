@@ -46,7 +46,7 @@ MTPD is live. EGPD is commented out — not onboarded yet.
 
 **Check `git log --oneline -10` at the start of any session** involving routing, deployment, or anything structural. The revert history matters.
 
-**Never use a road name in any module that is not on the approved list below.** Making up roads — or using roads from neighboring townships — is a credibility problem. MTPD covers Marlborough Township; roads must actually exist within or directly border that jurisdiction. If a scenario needs a road not on this list, stop and ask Andrew before inventing one.
+**Never use a road name in any module that is not on the approved list for that agency.** This applies to every department — MTPD, EGPD, or any future agency. Making up roads, or using roads from a neighboring jurisdiction, is a credibility problem that undermines the platform with law enforcement professionals who know their territory. If a scenario needs a road not on the list, stop and ask Andrew before inventing one. Do not borrow roads from one agency's list for another agency's modules.
 
 ### Approved Roads — MTPD (Marlborough Township)
 
@@ -63,6 +63,12 @@ MTPD is live. EGPD is commented out — not onboarded yet.
 | Magazine Road | |
 | Main Street | Generic; use sparingly |
 | Green Lane (area) | Reference only — "Green Lane reservoir area", "Red Trail parking area at Green Lane" |
+
+### Approved Roads — EGPD (East Goshen Township)
+*Not yet populated — must be verified and approved by Andrew before any EGPD modules are written.*
+
+### Adding Roads to Any List
+Only add a road after Andrew explicitly confirms it is within that agency's jurisdiction. Note the source of confirmation in a comment if possible.
 
 ---
 
