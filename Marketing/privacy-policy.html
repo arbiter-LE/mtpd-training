@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Arbiter LE LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0a1828;
+      --navy-mid:   #152638;
+      --navy-light: #1e3448;
+      --steel:      #3c6478;
+      --accent:     #c8902a;
+      --accent-hi:  #e0a830;
+      --text:       #182535;
+      --text-muted: #5a7a92;
+      --border:     #c4d6e4;
+      --bg:         #f0f4f8;
+      --card:       #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      border-bottom: 2px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 40px;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-seal {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-text { line-height: 1.1; }
+
+    .nav-brand-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .nav-brand-text span {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-back {
+      color: #8aabcc;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 56px 40px 48px;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .page-header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .page-header h1 {
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      font-size: 14px;
+      color: #8aabcc;
+      letter-spacing: .5px;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+    }
+
+    .intro {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .policy-section {
+      margin-bottom: 40px;
+    }
+
+    .policy-section h2 {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-section h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+      letter-spacing: .5px;
+    }
+
+    .policy-section p {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      margin: 8px 0 14px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .policy-section ul li {
+      font-size: 15px;
+      color: var(--text);
+      padding: 5px 0 5px 20px;
+      position: relative;
+    }
+
+    .policy-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .contact-box {
+      background: var(--navy);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .contact-box p {
+      font-size: 14px;
+      color: #8aabcc;
+      margin-bottom: 4px;
+    }
+
+    .contact-box p:last-child { margin-bottom: 0; }
+
+    .contact-box a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-box a:hover { color: var(--accent-hi); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(200,144,42,.3);
+      padding: 24px 40px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: #4a6a82;
+      letter-spacing: 1px;
+    }
+
+    footer p span { color: var(--accent); }
+
+    footer a {
+      color: #4a6a82;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .page-header { padding: 40px 24px 36px; }
+      .content { padding: 40px 24px 60px; }
+      footer { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg class="nav-seal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="47" stroke="#c8902a" stroke-width="2"/>
+          <circle cx="50" cy="50" r="40" stroke="#c8902a" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="50" y="28" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="7" font-weight="800" letter-spacing="3" fill="#9ab8d0">ARBITER</text>
+          <text x="50" y="37" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5.5" font-weight="600" letter-spacing="2" fill="#9ab8d0">LAW ENFORCEMENT</text>
+          <line x1="50" y1="42" x2="50" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+          <line x1="36" y1="48" x2="64" y2="48" stroke="#c8902a" stroke-width="1.5"/>
+          <line x1="36" y1="48" x2="30" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="30" y1="58" x2="42" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="64" y1="48" x2="58" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="58" y1="58" x2="70" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="44" y1="72" x2="56" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+          <text x="50" y="84" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5" font-weight="600" letter-spacing="2" fill="#9ab8d0">PENNSYLVANIA</text>
+        </svg>
+        <div class="nav-brand-text">
+          <strong>Arbiter</strong>
+          <span>Law Enforcement LLC</span>
+        </div>
+      </a>
+      <a href="/" class="nav-back">← Back to Home</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <p class="page-label">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p>Effective June 6, 2026 · arbiterle.com</p>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="intro">
+      This policy describes how Arbiter LE LLC collects, uses, and protects information in connection with the Arbiter LE law enforcement training platform. It applies to all users, including agency administrators and enrolled officers.
+    </div>
+
+    <div class="policy-section">
+      <h2>1. Information We Collect</h2>
+      <h3>Officer Account Information</h3>
+      <p>When an agency enrolls officers on the Platform, Arbiter LE collects the following for each officer:</p>
+      <ul>
+        <li>Name and rank</li>
+        <li>Badge number (used as the account identifier)</li>
+        <li>Role designation (officer or administrator)</li>
+        <li>Department affiliation</li>
+      </ul>
+      <h3>Training Activity Data</h3>
+      <p>The Platform automatically records the following as officers complete training:</p>
+      <ul>
+        <li>Module completion status and completion dates</li>
+        <li>Quiz scores (last score, best score, and score history)</li>
+        <li>Number of training attempts per module</li>
+        <li>Time spent on each module</li>
+        <li>Scenario decision paths and outcomes</li>
+        <li>Remediation status</li>
+      </ul>
+      <h3>Technical and Usage Data</h3>
+      <p>Arbiter LE may collect standard technical data including device type, browser type, IP address, and session duration for platform security and stability monitoring. This data is not linked to individual officer records in reports.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. How We Use Information</h2>
+      <p>Arbiter LE uses collected information solely for the following purposes:</p>
+      <ul>
+        <li>Authenticating officer and administrator logins</li>
+        <li>Recording and displaying officer training progress within the Platform</li>
+        <li>Generating compliance reports accessible to authorized agency administrators</li>
+        <li>Improving platform performance, reliability, and training content quality</li>
+        <li>Communicating with agency administrators regarding platform status, updates, or technical issues</li>
+      </ul>
+      <p>Arbiter LE does not use officer data for advertising, marketing to individual officers, or sale to third parties under any circumstances.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. Aggregated and De-Identified Data</h2>
+      <p>Arbiter LE may use aggregated, de-identified data — data that cannot reasonably identify any individual officer or agency — for internal research, product improvement, and industry benchmarking. This data will never include names, badge numbers, or any other individually identifying information.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Data Storage and Security</h2>
+      <p>Officer data is stored in a cloud-hosted database with row-level security controls that prevent any officer from accessing another officer's records. Data is encrypted in transit using TLS and encrypted at rest.</p>
+      <p>Access to officer data is limited to: (1) the officer whose data it is, (2) authorized agency administrators within that officer's department, and (3) Arbiter LE personnel with a legitimate operational need.</p>
+      <p>Arbiter LE implements reasonable and industry-standard technical and organizational security measures to protect against unauthorized access, disclosure, or destruction of officer data.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Data Sharing and Disclosure</h2>
+      <p>Arbiter LE does not sell, rent, or trade officer data. We may disclose data only in the following limited circumstances:</p>
+      <ul>
+        <li>To the agency that enrolled the officer, through the administrative dashboard</li>
+        <li>To third-party service providers under confidentiality agreements, strictly as necessary to operate the Platform</li>
+        <li>If required by law, court order, or valid legal process</li>
+        <li>To protect the rights, safety, or property of Arbiter LE or the public in an emergency</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Data Retention</h2>
+      <p>Arbiter LE retains officer training records for the duration of the agency's active service agreement, plus thirty (30) days following termination to allow for data export. Upon written request, Arbiter LE will delete all officer records associated with that agency within fifteen (15) business days.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Officer Rights</h2>
+      <p>Officers whose data is processed on the Platform have the following rights, exercisable through their agency administrator:</p>
+      <ul>
+        <li>Right to access: obtain a copy of training records associated with their badge number</li>
+        <li>Right to correction: request correction of inaccurate records</li>
+        <li>Right to deletion: request deletion of records upon departure from the department or program termination</li>
+      </ul>
+      <p>Requests should be directed to the agency administrator, who may contact Arbiter LE at the address in Section 9.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>8. Changes to This Policy</h2>
+      <p>Arbiter LE may update this Privacy Policy from time to time. Material changes will be communicated to agency administrators at least fourteen (14) days prior to taking effect. Continued use of the Platform after the effective date constitutes acceptance of the updated Policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>9. Contact</h2>
+      <p>Questions regarding this Privacy Policy should be directed to:</p>
+      <div class="contact-box">
+        <p><strong style="color:#ffffff;">Arbiter LE LLC</strong></p>
+        <p><a href="mailto:admin@arbiterle.com">admin@arbiterle.com</a></p>
+        <p><a href="https://arbiterle.com">arbiterle.com</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Arbiter LE LLC</span> · Pennsylvania Municipal Law Enforcement Training · <a href="/">Home</a> · <a href="/privacy-policy">Privacy Policy</a></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arbiter Law Enforcement LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0a1828;
+      --navy-mid:   #152638;
+      --navy-light: #1e3448;
+      --steel:      #3c6478;
+      --accent:     #c8902a;
+      --accent-hi:  #e0a830;
+      --text:       #182535;
+      --text-muted: #5a7a92;
+      --border:     #c4d6e4;
+      --bg:         #f0f4f8;
+      --card:       #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      border-bottom: 2px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 40px;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-seal {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-text {
+      line-height: 1.1;
+    }
+
+    .nav-brand-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .nav-brand-text span {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #8aabcc;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+      padding: 100px 40px 90px;
+      text-align: center;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .hero-seal {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: clamp(14px, 2vw, 20px);
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    .hero-tagline {
+      margin-top: 24px;
+      font-size: clamp(15px, 2vw, 18px);
+      color: #9ab8d0;
+      letter-spacing: .5px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      margin-top: 40px;
+      display: inline-block;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 3px;
+      transition: background .2s;
+    }
+
+    .hero-cta:hover { background: var(--accent-hi); }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 40px;
+    }
+
+    section:nth-child(even) {
+      background: var(--card);
+    }
+
+    .section-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-inner h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .section-inner p {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 18px;
+      max-width: 680px;
+    }
+
+    .section-inner p:last-child { margin-bottom: 0; }
+
+    /* ── PRODUCT FEATURES ── */
+    .feature-list {
+      margin-top: 36px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .feature {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+      padding: 20px 24px;
+    }
+
+    .feature-num {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .feature h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ── PROOF STRIP ── */
+    .proof-strip {
+      background: var(--navy);
+      padding: 32px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .proof-item {
+      text-align: center;
+    }
+
+    .proof-item strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .proof-item span {
+      font-size: 11px;
+      color: #8aabcc;
+      letter-spacing: .5px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--navy-mid);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .contact-section .section-label { color: var(--accent); }
+
+    .contact-section h2 {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .contact-section p {
+      color: #8aabcc;
+      font-size: 15px;
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 44px;
+      border-radius: 3px;
+      transition: background .2s;
+    }
+
+    .contact-btn:hover { background: var(--accent-hi); }
+
+    /* ── DEMO FORM ── */
+    .demo-form {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .demo-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .demo-form .form-full { margin-bottom: 14px; }
+    .demo-form label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8aabcc;
+      margin-bottom: 6px;
+    }
+    .demo-form input,
+    .demo-form select,
+    .demo-form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(138,171,204,0.25);
+      border-radius: 3px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px 14px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .demo-form input:focus,
+    .demo-form select:focus,
+    .demo-form textarea:focus { border-color: var(--accent); }
+    .demo-form select option { background: #0f1e2e; color: #fff; }
+    .demo-form textarea { resize: vertical; min-height: 80px; }
+    .demo-form .hp { display: none; }
+    .demo-form .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px;
+      cursor: pointer;
+      transition: background .2s;
+      margin-top: 8px;
+    }
+    .demo-form .submit-btn:hover { background: var(--accent-hi); }
+    .demo-form .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-status {
+      margin-top: 16px;
+      font-size: 14px;
+      text-align: center;
+      min-height: 20px;
+    }
+    .form-status.success { color: #5dbf8a; }
+    .form-status.error { color: #f08090; }
+    @media(max-width:600px) { .demo-form .form-row { grid-template-columns: 1fr; } }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(200,144,42,.3);
+      padding: 24px 40px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: #4a6a82;
+      letter-spacing: 1px;
+    }
+
+    footer p span { color: var(--accent); }
+
+    footer a {
+      color: #4a6a82;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 24px 56px; }
+      section { padding: 56px 24px; }
+      .proof-strip { gap: 32px; padding: 28px 24px; }
+      .contact-section { padding: 56px 24px; }
+      footer { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <svg class="nav-seal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="47" stroke="#c8902a" stroke-width="2"/>
+          <circle cx="50" cy="50" r="40" stroke="#c8902a" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="50" y="28" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="7" font-weight="800" letter-spacing="3" fill="#9ab8d0" text-transform="uppercase">ARBITER</text>
+          <text x="50" y="37" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5.5" font-weight="600" letter-spacing="2" fill="#9ab8d0">LAW ENFORCEMENT</text>
+          <line x1="50" y1="42" x2="50" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+          <line x1="36" y1="48" x2="64" y2="48" stroke="#c8902a" stroke-width="1.5"/>
+          <line x1="36" y1="48" x2="30" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="30" y1="58" x2="42" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="64" y1="48" x2="58" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="58" y1="58" x2="70" y2="58" stroke="#c8902a" stroke-width="1"/>
+          <line x1="44" y1="72" x2="56" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+          <text x="50" y="84" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5" font-weight="600" letter-spacing="2" fill="#9ab8d0">PENNSYLVANIA</text>
+        </svg>
+        <div class="nav-brand-text">
+          <strong>Arbiter</strong>
+          <span>Law Enforcement LLC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why It Matters</a></li>
+        <li><a href="#product">The Platform</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <svg class="hero-seal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="47" stroke="#c8902a" stroke-width="1.5"/>
+      <circle cx="50" cy="50" r="40" stroke="#c8902a" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="50" y="28" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="7" font-weight="800" letter-spacing="3" fill="#9ab8d0">ARBITER</text>
+      <text x="50" y="37" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5.5" font-weight="600" letter-spacing="2" fill="#9ab8d0">LAW ENFORCEMENT</text>
+      <line x1="50" y1="42" x2="50" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+      <line x1="36" y1="48" x2="64" y2="48" stroke="#c8902a" stroke-width="1.5"/>
+      <line x1="36" y1="48" x2="30" y2="58" stroke="#c8902a" stroke-width="1"/>
+      <line x1="30" y1="58" x2="42" y2="58" stroke="#c8902a" stroke-width="1"/>
+      <line x1="64" y1="48" x2="58" y2="58" stroke="#c8902a" stroke-width="1"/>
+      <line x1="58" y1="58" x2="70" y2="58" stroke="#c8902a" stroke-width="1"/>
+      <line x1="44" y1="72" x2="56" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+      <text x="50" y="84" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5" font-weight="600" letter-spacing="2" fill="#9ab8d0">PENNSYLVANIA</text>
+    </svg>
+    <h1>Arbiter<span>Law Enforcement LLC</span></h1>
+    <p class="hero-tagline">Training Infrastructure for Municipal Law Enforcement</p>
+    <a href="#contact" class="hero-cta">Schedule a Demo</a>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2>Built From the Inside</h2>
+      <p>Arbiter LE LLC was built by an active municipal law enforcement officer with over 14 years of experience — including time as a Field Training Officer responsible for preparing the next generation of officers to do the job right.</p>
+      <p>The problem was simple and frustrating: small departments want to train their people to a high standard, but scenario-based training is expensive. Outside instructors, facility time, scheduling across shifts — it adds up fast, and most small departments don't have the budget. So training becomes inconsistent. Some officers get it, some don't. Nobody can prove who was trained on what, or when.</p>
+      <p>Arbiter LE exists to close that gap — professional, scenario-driven training that small departments can actually afford, with the documentation to back it up.</p>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <div class="proof-strip">
+    <div class="proof-item">
+      <strong>14+ Years</strong>
+      <span>Municipal Law Enforcement</span>
+    </div>
+    <div class="proof-item">
+      <strong>FTO Certified</strong>
+      <span>Field Training Officer</span>
+    </div>
+    <div class="proof-item">
+      <strong>&lt; 15 Min / Week</strong>
+      <span>Per Officer</span>
+    </div>
+    <div class="proof-item">
+      <strong>Any Device</strong>
+      <span>Phone, Tablet, Desktop</span>
+    </div>
+  </div>
+
+  <!-- WHY IT MATTERS -->
+  <section id="why">
+    <div class="section-inner">
+      <p class="section-label">Why It Matters</p>
+      <h2>Inconsistency Is Liability</h2>
+      <p>Inconsistent training isn't just an operational problem — it's a legal one.</p>
+      <p>When an officer is involved in a use-of-force incident, a pursuit, or a domestic violence response, one of the first questions asked is: <em>what was this officer trained to do, and can you prove it?</em> If the answer is "we trained everyone — we just can't document it," that's exposure.</p>
+      <p>Small departments face this disproportionately. Without the budget for regular scenario-based training, officers learn inconsistently — from each other, from experience, from whatever resources happen to be available. The standard varies officer to officer. So does the risk.</p>
+      <p>Arbiter LE gives every officer in your department access to the same high-quality, scenario-driven training — and gives command staff the records to prove it happened.</p>
+    </div>
+  </section>
+
+  <!-- THE PLATFORM -->
+  <section id="product">
+    <div class="section-inner">
+      <p class="section-label">The Platform</p>
+      <h2>Scenario-Based. SOP-Driven. Always On.</h2>
+      <p>Arbiter LE is an online scenario-based training platform built specifically for law enforcement.</p>
+      <p>Officers work through real-world scenarios — use of force, search and seizure, domestic violence response, pursuits, crisis intervention, and more — and your department's SOPs are woven directly into each one. Instead of officers reading policy in a vacuum, they encounter it in context, applied to situations they actually face on the job.</p>
+      <p>The goal is less than 15 minutes a week, designed to fit into a shift without pulling anyone off the road.</p>
+
+      <div class="feature-list">
+        <div class="feature">
+          <div class="feature-num">01</div>
+          <h3>Scenario-Based Training</h3>
+          <p>Officers engage with realistic situations before answering questions — applying policy, not just reading it.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">02</div>
+          <h3>SOP Integration</h3>
+          <p>Your department's standard operating procedures are embedded directly into each module — reviewed naturally, in context.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">03</div>
+          <h3>Command Dashboard</h3>
+          <p>Full visibility across the roster. Every completion is automatically documented — a clear, defensible record of who was trained on what, and when.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">04</div>
+          <h3>No Infrastructure Required</h3>
+          <p>No software to install, no scheduling headaches, no outside instructors. Accessible from any phone, anywhere — because we know an officer's time is never guaranteed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <p class="section-label">Get Started</p>
+    <h2>Ready to Build a Stronger Department?</h2>
+    <p>Tell us about your department and we'll be in touch within one business day to schedule a live demo.</p>
+
+    <form class="demo-form" id="demo-form" onsubmit="submitDemo(event)">
+      <div class="form-row">
+        <div>
+          <label for="df-name">Your Name</label>
+          <input type="text" id="df-name" name="name" placeholder="Chief John Smith" required />
+        </div>
+        <div>
+          <label for="df-title">Title / Rank</label>
+          <input type="text" id="df-title" name="title" placeholder="Chief of Police" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="df-dept">Department Name</label>
+          <input type="text" id="df-dept" name="department" placeholder="Your Department Name" required />
+        </div>
+        <div>
+          <label for="df-size">Number of Officers</label>
+          <select id="df-size" name="size" required>
+            <option value="" disabled selected>Select range</option>
+            <option>1–10</option>
+            <option>11–25</option>
+            <option>26–50</option>
+            <option>51–100</option>
+            <option>100+</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-full">
+        <label for="df-email">Department Email</label>
+        <input type="email" id="df-email" name="email" placeholder="you@yourdepartment.gov" required />
+      </div>
+      <div class="form-full">
+        <label for="df-msg">Anything you'd like us to know? (optional)</label>
+        <textarea id="df-msg" name="message" placeholder="Current training challenges, timeline, questions..."></textarea>
+      </div>
+      <!-- Honeypot — bots fill this, humans don't -->
+      <div class="hp">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <button type="submit" class="submit-btn" id="demo-submit">Request a Demo</button>
+      <div class="form-status" id="form-status"></div>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Arbiter LE LLC</span> · Pennsylvania Municipal Law Enforcement Training · Pricing subject to change · Annual contracts only · <a href="/privacy-policy">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    async function submitDemo(e) {
+      e.preventDefault();
+      const btn    = document.getElementById('demo-submit');
+      const status = document.getElementById('form-status');
+      const form   = document.getElementById('demo-form');
+
+      // Honeypot check
+      if (form.querySelector('[name="website"]').value) return;
+
+      btn.disabled    = true;
+      btn.textContent = 'Sending…';
+      status.textContent = '';
+      status.className   = 'form-status';
+
+      const payload = {
+        name:       form.querySelector('[name="name"]').value,
+        title:      form.querySelector('[name="title"]').value,
+        department: form.querySelector('[name="department"]').value,
+        size:       form.querySelector('[name="size"]').value,
+        email:      form.querySelector('[name="email"]').value,
+        message:    form.querySelector('[name="message"]').value,
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+        if (res.ok) {
+          form.reset();
+          status.textContent = '✓ Request received — we\'ll be in touch within one business day.';
+          status.className   = 'form-status success';
+          btn.textContent    = 'Request a Demo';
+          btn.disabled       = false;
+        } else {
+          throw new Error('server error');
+        }
+      } catch {
+        status.textContent = 'Something went wrong. Email us directly at andrew@arbiterle.com.';
+        status.className   = 'form-status error';
+        btn.textContent    = 'Request a Demo';
+        btn.disabled       = false;
+      }
+    }
+  </script>
+</body>
+</html>
