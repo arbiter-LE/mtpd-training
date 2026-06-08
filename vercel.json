@@ -16,6 +16,11 @@
       "destination": "/Marketing/privacy-policy.html"
     },
     {
+      "source": "/onboarding",
+      "has": [{ "type": "host", "value": "arbiterle.com" }],
+      "destination": "/Marketing/onboarding.html"
+    },
+    {
       "source": "/",
       "has": [{ "type": "host", "value": "arbiterle.com" }],
       "destination": "/Marketing/index.html"
