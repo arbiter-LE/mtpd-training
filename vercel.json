@@ -18,7 +18,7 @@
     {
       "source": "/onboarding",
       "has": [{ "type": "host", "value": "arbiterle.com" }],
-      "destination": "/Marketing/onboarding.html"
+      "destination": "/Marketing/onboarding"
     },
     {
       "source": "/",
