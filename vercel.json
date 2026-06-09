@@ -21,9 +21,9 @@
       "destination": "/Marketing/onboarding"
     },
     {
-      "source": "/",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "arbiterle.com" }],
-      "destination": "/Marketing/index.html"
+      "destination": "/Marketing/$1"
     }
   ],
   "headers": [
