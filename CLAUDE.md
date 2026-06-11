@@ -40,7 +40,7 @@ Multi-agency SaaS law enforcement training platform. Departments subscribe via s
 ## Rules
 
 **Always check `registry.js` before claiming any department is live.**
-MTPD is live. EGPD is commented out — not onboarded yet.
+MTPD and EGPD are both active in the registry. EGPD agreement signed (Chief Morris); Andrew confirmed 2026-06-11 — do not re-question EGPD's registry status.
 
 **Never overwrite Supabase URLs or anon keys in registry.js** without being explicitly asked. Each department has its own isolated Supabase project — mixing them up corrupts officer data.
 
@@ -127,10 +127,10 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 ---
 
-## Current Live State (as of 2026-06-10)
+## Current Live State (as of 2026-06-11)
 
 - **MTPD** — Andrew's own department. **Free forever — never a revenue source.** Creation lab and reference site. Live; schedule started June 1. 12 modules, weekly unlock, biweekly due dates.
-- **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first prospective paying agency). Pilot terms per service agreement: free for 3 months, 12 modules. Onboarding packet received 6/10. Registry entry commented out — stays off until agreement signed, Supabase project created, and roads list verified by Andrew.
+- **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). **Agreement signed** (Chief Morris); pilot terms: free for 3 months, 12 modules. Registry entry **active** with its own Supabase project; schedule starts June 17. 12 scenario-based modules live in code (`js/modules/module-egpd-*.js`). Outstanding: RLS recursion fix SQL to apply (`_database/2026-06-11-fix-rls-recursion.sql`), reading content not yet authored (scenario-first fallback covers it), `egpd.arbiterle.com` CNAME + Vercel alias not yet added.
 - **Email** — Full stack live: Cloudflare routing → Resend SMTP → Supabase auth emails from noreply@arbiterle.com.
 - **Routing** — Case-sensitivity fix committed (6f5ea15). Vercel deploy pending confirmation.
 
