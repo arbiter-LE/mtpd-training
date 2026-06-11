@@ -9,6 +9,7 @@ const DEPARTMENT_REGISTRY = [
     subdomain: 'mtpd',          // mtpd.arbiterle.com
     name: 'Marlborough Township Police Department',
     shortName: 'MTPD',
+    displayName: 'Marlborough Township PD',
     badge: 'assets/mtpd-badge.png',
     supabaseUrl: 'https://lkikznncbpfcmgnnyigj.supabase.co',
     supabaseKey: 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6',
@@ -19,6 +20,7 @@ const DEPARTMENT_REGISTRY = [
     subdomain: 'egpd', // egpd.arbiterle.com
     name: 'East Greenville Police Department',
     shortName: 'EGPD',
+    displayName: 'East Greenville PD',
     badge: 'assets/egpd-badge.png',
     supabaseUrl: 'https://kczrylxnrzkcwgivlqrs.supabase.co',
     supabaseKey: 'sb_publishable_W9kN8bhnwKwMCwKv5zu5GA_xhiq-vXR',
@@ -33,9 +35,11 @@ function resolveDepartmentFromHostname() {
   const hostname = window.location.hostname; // e.g. "mtpd.arbiterle.com"
   const subdomain = hostname.split('.')[0];  // e.g. "mtpd"
 
-  // Local dev fallback — default to first department
+  // Local dev — ?dept=egpd overrides; defaults to first department
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    ACTIVE_DEPARTMENT = DEPARTMENT_REGISTRY[0];
+    const deptParam = new URLSearchParams(window.location.search).get('dept');
+    ACTIVE_DEPARTMENT = DEPARTMENT_REGISTRY.find(d => d.subdomain === deptParam)
+      || DEPARTMENT_REGISTRY[0];
     return ACTIVE_DEPARTMENT;
   }
 

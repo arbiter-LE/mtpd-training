@@ -104,8 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   _sb = supabase.createClient(dept.supabaseUrl, dept.supabaseKey);
 
-  // Update nav badge if present
-  document.querySelectorAll('.nav-brand img').forEach(img => img.src = dept.badge);
+  // Update nav badge + name if present
+  document.querySelectorAll('.nav-brand img').forEach(img => {
+    img.src = dept.badge;
+    img.alt = dept.shortName;
+  });
+  document.querySelectorAll('.nav-brand .brand-text span').forEach(el => {
+    el.textContent = dept.displayName || dept.shortName;
+  });
 });
 
 const STORAGE_KEY = 'arbiter_le_training_v1';
