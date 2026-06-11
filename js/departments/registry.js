@@ -15,15 +15,15 @@ const DEPARTMENT_REGISTRY = [
     scheduleStart: new Date('2026-06-01T00:00:00'), // Monday — Week 1 opens
   },
   // ── Add new agencies below ────────────────
-  // {
-  //   subdomain: 'egpd',          // egpd.arbiterle.com
-  //   name: 'East Goshen Police Department',
-  //   shortName: 'EGPD',
-  //   badge: 'assets/egpd-badge.png',
-  //   supabaseUrl: 'https://xxxxx.supabase.co',
-  //   supabaseKey: 'sb_publishable_xxxxx',
-  //   scheduleStart: new Date('2026-XX-XXT00:00:00'), // Set to agency contract start date
-  // },
+  {
+    subdomain: 'egpd', // egpd.arbiterle.com
+    name: 'East Greenville Police Department',
+    shortName: 'EGPD',
+    badge: 'assets/egpd-badge.png',
+    supabaseUrl: 'https://kczrylxnrzkcwgivlqrs.supabase.co',
+    supabaseKey: 'sb_publishable_W9kN8bhnwKwMCwKv5zu5GA_xhiq-vXR',
+    scheduleStart: new Date('2026-06-17T00:00:00'), // Requested go-live per onboarding packet
+  },
 ];
 
 /* ── Active department (resolved from hostname on load) ── */
