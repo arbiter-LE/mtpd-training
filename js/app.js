@@ -446,6 +446,14 @@ function startModule(moduleId) {
 function renderModuleContent() {
   const id = currentModule.id;
 
+  // Data-driven path — modules that carry their own reading content (e.g. EGPD).
+  // MTPD modules have no contentHtml property, so the hardcoded branches below
+  // remain their source of truth (live module lock — do not edit).
+  if (currentModule.contentHtml) {
+    document.getElementById('module-content-body').innerHTML = currentModule.contentHtml;
+    return;
+  }
+
   if (id === 'search-seizure') {
     document.getElementById('module-content-body').innerHTML = `
       <div class="content-block">
@@ -1090,6 +1098,16 @@ function renderModuleContent() {
     return;
   }
 
+  // Fallback — scenario-first module page for any module without a dedicated
+  // reading branch or contentHtml (prevents a blank/stale reading page).
+  document.getElementById('module-content-body').innerHTML = `
+    <div class="content-block">
+      <h4>Scenario</h4>
+      <h2>${currentModule.scenario ? currentModule.scenario.title : currentModule.title}</h2>
+      <p>This module is scenario-based. Work through each decision point as you would on the street — your choices are evaluated against your department's policy and the controlling law presented during the exercise. A debrief and assessment follow.</p>
+      <button class="btn-launch" onclick="startScenario('${currentModule.id}')">Proceed to Scenario Exercise →</button>
+    </div>
+  `;
 }
 
 /* ═══════════════════════════════════════
@@ -1223,6 +1241,8 @@ function updateStepIndicator(decisionNum) {
 
 /* ── Debrief Legal Summaries ────────────── */
 function getDebriefLegalSummary() {
+  // Data-driven path — modules that carry their own debrief summary (e.g. EGPD).
+  if (currentModule && currentModule.debriefHtml) return currentModule.debriefHtml;
   const id = currentModule ? currentModule.id : 'search-seizure';
   if (id === 'search-seizure') return `
     <h3>Key Legal Principles — Search & Seizure</h3>
