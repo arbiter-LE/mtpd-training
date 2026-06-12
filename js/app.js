@@ -75,7 +75,7 @@ async function mountOfficerSession(authUid) {
     return;
   }
   const o = rows[0];
-  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, badge: o.badge_number };
+  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, badge: o.badge_number, email: o.email };
   USERS[o.badge_number] = { ...currentUser };
 
   if (o.role === 'admin') {
@@ -95,18 +95,22 @@ async function mountOfficerSession(authUid) {
 document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
 document.getElementById('login-user').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('login-pass').focus(); });
 
-/* ── Session restore on page load ────────── */
-(async () => {
-  const { data: { session } } = await _sb.auth.getSession();
-  if (session) await mountOfficerSession(session.user.id);
-})();
+/* ── Session restore on page load ──────────
+   _sb is null only on unrecognized subdomains (config.js shows
+   an error card there) — skip auth bootstrap in that case. */
+if (_sb) {
+  (async () => {
+    const { data: { session } } = await _sb.auth.getSession();
+    if (session) await mountOfficerSession(session.user.id);
+  })();
 
-_sb.auth.onAuthStateChange((event, session) => {
-  if (event === 'SIGNED_OUT') {
-    currentUser = null;
-    showScreen('screen-login');
-  }
-});
+  _sb.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_OUT') {
+      currentUser = null;
+      showScreen('screen-login');
+    }
+  });
+}
 
 async function doLogout() {
   stopAllTimers();
@@ -1546,8 +1550,23 @@ function renderAdminDashboard() {
   renderAdminStats(); renderAdminTable(); renderAdminModules();
 }
 
+/* Platform/support accounts (health-check bot, preview logins,
+   Arbiter LE staff admins) are excluded from every admin view —
+   agency command staff should only see their own personnel.
+   Covered: known badges, the ADMIN-<DEPT> badge convention
+   (e.g. ADMIN-EGPD), and any @arbiterle.com email. */
+const PLATFORM_BADGES = ['healthcheck', 'PREVIEW'];
+function isPlatformAccount(badge) {
+  if (PLATFORM_BADGES.includes(badge) || badge.startsWith('ADMIN-')) return true;
+  const email = USERS[badge]?.email;
+  return !!email && email.toLowerCase().endsWith('@arbiterle.com');
+}
+function rosterBadges() {
+  return Object.keys(USERS).filter(k => USERS[k].role !== undefined && !isPlatformAccount(k));
+}
+
 function renderAdminStats() {
-  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
+  const officers = rosterBadges();
   let compliant=0, overdueCount=0, totalComps=0, totalScores=[];
   officers.forEach(uid => {
     const done = completionData[uid]||{};
@@ -1575,7 +1594,7 @@ function renderAdminStats() {
 
 function renderAdminTable() {
   const filterVal = document.getElementById('filter-status').value;
-  const officers  = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
+  const officers  = rosterBadges();
   const rows = officers.map(uid => {
     const user = USERS[uid];
     const done = completionData[uid]||{};
@@ -1614,7 +1633,7 @@ function renderAdminTable() {
 }
 
 function renderAdminModules() {
-  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
+  const officers = rosterBadges();
   document.getElementById('admin-modules-body').innerHTML = MODULES.map(m => {
     const completions = officers.filter(uid => completionData[uid]?.[m.id]);
     const scores = completions.map(uid => completionData[uid][m.id].score);
@@ -1633,7 +1652,7 @@ function renderAdminModules() {
 }
 
 function printComplianceReport() {
-  const officers = Object.keys(USERS).filter(k => USERS[k].role !== undefined && k !== 'healthcheck');
+  const officers = rosterBadges();
   const now = new Date();
   const dateStr = now.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
   const timeStr = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });

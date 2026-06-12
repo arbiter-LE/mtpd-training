@@ -90,27 +90,33 @@ const completionData = {};
    ── Until then, localStorage keeps records in
       this browser on this device.
 ══════════════════════════════════════════ */
-// Supabase client — initialized from hostname on page load
+// Supabase client — must be created at script load, NOT on
+// DOMContentLoaded: app.js registers auth listeners at its own
+// top level, which runs before DOMContentLoaded fires. Deferring
+// this left _sb null there, killing session restore and every
+// top-level statement below the listener registration.
 let _sb = null;
+const _dept = resolveDepartmentFromHostname();
+if (_dept) {
+  _sb = supabase.createClient(_dept.supabaseUrl, _dept.supabaseKey);
+}
 
-/* ── Auto-initialize from subdomain ── */
+/* ── DOM-dependent department branding ── */
 document.addEventListener('DOMContentLoaded', function() {
-  const dept = resolveDepartmentFromHostname();
-  if (!dept) {
+  if (!_dept) {
     // Unknown subdomain — show a generic error on the login card
     const card = document.querySelector('.login-card');
     if (card) card.innerHTML = '<p style="color:#f08090;text-align:center;padding:24px">Department not recognized.<br/>Contact your administrator.</p>';
     return;
   }
-  _sb = supabase.createClient(dept.supabaseUrl, dept.supabaseKey);
 
   // Update nav badge + name if present
   document.querySelectorAll('.nav-brand img').forEach(img => {
-    img.src = dept.badge;
-    img.alt = dept.shortName;
+    img.src = _dept.badge;
+    img.alt = _dept.shortName;
   });
   document.querySelectorAll('.nav-brand .brand-text span').forEach(el => {
-    el.textContent = dept.displayName || dept.shortName;
+    el.textContent = _dept.displayName || _dept.shortName;
   });
 });
 
@@ -174,7 +180,8 @@ async function loadAllDataForAdmin() {
           role:  o.role,
           name:  o.name,
           badge: o.badge_number,
-          rank:  o.rank
+          rank:  o.rank,
+          email: o.email
         };
         if (!completionData[o.badge_number]) completionData[o.badge_number] = {};
       });
