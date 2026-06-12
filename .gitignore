@@ -1,24 +1,23 @@
-# Old versions / backups
-2026-05-16-training-platform.html
-2026-05-19-training-platform-v2.html
-2026-05-25-arbiter-le-demo.html
-2026-05-30-index-backup.html
-arbiter-le-index.html
+# Archived working files (superseded versions, past meetings, old drafts)
+_archive/
 
 # Office docs / pitch materials (not part of deployment)
 *.docx
 *.pptx
 *.pdf
 *.sql
+*.xlsx
 *.jpg
 ~$*
 
 # Slide previews
 slide-*.jpg
 
+# macOS
+.DS_Store
+
 # Scripts
 push.sh
-_assets/push.sh
 
 # Claude Code config (local only)
 .claude/

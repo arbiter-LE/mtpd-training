@@ -28,8 +28,9 @@ Multi-agency SaaS law enforcement training platform. Departments subscribe via s
 | File | What It Is |
 |------|-----------|
 | `js/departments/registry.js` | Department registry — source of truth for what's live |
-| `js/modules.js` | Module list, titles, week numbers |
-| `js/modules/module-N.js` | Per-module content (reading, scenario, quiz) |
+| `js/modules/<dept>/` | ALL of a department's module content lives in its own folder — never edit one department's files for another's request |
+| `js/modules/mtpd/modules-mtpd.js` | MTPD module list (titles, week numbers); `scenarios-mtpd.js` holds scenarios + quiz questions |
+| `js/modules/egpd/modules-egpd.js` | EGPD module list; per-module content in `module-egpd-N.js` |
 | `js/config.js` | Schedule engine, Supabase client init, state |
 | `vercel.json` | Routing rules — host-based rewrites |
 | `index.html` | Training platform entry point |
@@ -130,7 +131,7 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 ## Current Live State (as of 2026-06-11)
 
 - **MTPD** — Andrew's own department. **Free forever — never a revenue source.** Creation lab and reference site. Live; schedule started June 1. 12 modules, weekly unlock, biweekly due dates.
-- **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). **Agreement signed** (Chief Halteman); pilot terms: free for 3 months, 12 modules. Registry entry **active** with its own Supabase project; schedule starts June 17. 12 scenario-based modules live in code (`js/modules/module-egpd-*.js`). Live at egpd.arbiterle.com (DNS + Vercel alias verified 2026-06-11). Roster seeded + verified, RLS recursion fix applied (2026-06-11). Outstanding: welcome-email infrastructure not built on EGPD project (build only when Andrew approves the send), reading content not yet authored (scenario-first fallback covers it).
+- **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). **Agreement signed** (Chief Halteman); pilot terms: free for 3 months, 12 modules. Registry entry **active** with its own Supabase project; schedule starts June 17. 12 scenario-based modules live in code (`js/modules/egpd/module-egpd-N.js`). Live at egpd.arbiterle.com (DNS + Vercel alias verified 2026-06-11). Roster seeded + verified, RLS recursion fix applied (2026-06-11). Outstanding: welcome-email infrastructure not built on EGPD project (build only when Andrew approves the send), reading content not yet authored (scenario-first fallback covers it).
 - **Email** — Full stack live: Cloudflare routing → Resend SMTP → Supabase auth emails from noreply@arbiterle.com.
 - **Routing** — Case-sensitivity fix committed (6f5ea15). Vercel deploy pending confirmation.
 
@@ -141,9 +142,11 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 1. Get signed service agreement
 2. Create Supabase project for the department
 3. Add entry to `js/departments/registry.js` (uncomment template)
-4. Add badge to `assets/`
-5. Add subdomain CNAME in Cloudflare (proxy OFF)
-6. Add domain alias in Vercel
+4. Create `js/modules/<subdomain>/` for its module content; wire it into the loader block at the bottom of `index.html`
+5. Add badge to `assets/`
+6. Add subdomain CNAME in Cloudflare (proxy OFF)
+7. Add domain alias in Vercel
+8. File its SQL under `_database/<subdomain>/` and agency documents under `Agency Onboarding/<DEPT>/`
 
 ---
 

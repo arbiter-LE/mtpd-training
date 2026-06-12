@@ -1,4 +1,4 @@
-/* TEMP — EGPD review preview only. Not for production. Builds MODULES from the 12 EGPD modules. */
+/* EGPD — production module list. Builds MODULES from js/modules/egpd/module-egpd-N.js (loaded first by index.html). */
 const MODULES = [
     { id: 'egpd-search-seizure', category: 'Constitutional Law', title: 'Search & Seizure — Fourth Amendment', description: 'EGPD', duration: '20–25 min', weekNumber: 1, scenario: SCENARIO_SEARCH_SEIZURE, questions: getSearchSeizureQuestions() },
     { id: 'egpd-use-of-force', category: 'Use of Force', title: 'Use of Force Continuum', description: 'EGPD', duration: '15–20 min', weekNumber: 2, scenario: SCENARIO_USE_OF_FORCE, questions: getUseOfForceQuestions() },
