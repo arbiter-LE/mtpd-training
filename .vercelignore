@@ -1,0 +1,11 @@
+# Internal files — tracked in git but must NEVER deploy to the public site.
+# Anything not listed here that gets committed WILL be publicly fetchable
+# on every *.arbiterle.com subdomain. When adding a new internal folder,
+# add it here first.
+CLAUDE.md
+_archive
+_database
+_supabase
+Agency Onboarding
+email-signature.html
+2026-06-03-rate-card-design-philosophy.md

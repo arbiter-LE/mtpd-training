@@ -124,6 +124,8 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 **No destructive SQL.** Never run DROP/DELETE/TRUNCATE or schema migrations against any department's Supabase project without explicit confirmation naming that specific project.
 
+**Every committed file deploys publicly unless listed in `.vercelignore`.** This is a static deploy of the repo root — anything tracked in git is fetchable on every `*.arbiterle.com` subdomain. Internal files (CLAUDE.md, `_database/`, `_supabase/`, `Agency Onboarding/`, archives) must be in `.vercelignore` before they are committed. When creating a new internal folder, add it to `.vercelignore` first. Verify with a `curl` for the file on the live URL after deploy.
+
 **Folder hygiene.** Versioned working files get archived, not stacked in root. Keeps the repo deployable and findable.
 
 ---
