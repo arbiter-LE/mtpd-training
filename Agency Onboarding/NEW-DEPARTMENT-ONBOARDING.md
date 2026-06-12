@@ -87,6 +87,31 @@ Rules:
 
 Run the generated SQL in the Supabase SQL Editor.
 
+### 1E. Configure Auth URLs (REQUIRED — skipping this breaks password resets)
+
+Supabase defaults its Site URL to `http://localhost:3000`. If you skip this step, every password-reset email the project sends will redirect officers to localhost and dead-end them. This bit both MTPD and EGPD in June 2026 — do it at project creation, not after the first lockout report.
+
+In the new project: **Authentication → URL Configuration**
+
+1. **Site URL:** `https://<subdomain>.arbiterle.com`
+2. **Redirect URLs (allow-list)** — add:
+   - `https://<subdomain>.arbiterle.com`
+   - `https://<subdomain>.arbiterle.com/?reset=1`
+
+The platform's reset flow sends officers to `/?reset=1`, where the in-app "Set New Password" screen takes over. No other URLs should be on the list.
+
+### 1F. Configure Custom SMTP (Resend)
+
+Without custom SMTP, Supabase's built-in mailer limits the project to ~2 auth emails per hour and deliverability is poor — unusable for a real roster. Mirror MTPD's settings:
+
+In the new project: **Authentication → Emails → SMTP Settings**
+
+1. Enable **Custom SMTP**
+2. Host: `smtp.resend.com` · Port: `465` · Username: `resend`
+3. Password: the Resend API key (password manager — never commit it)
+4. Sender: `noreply@arbiterle.com` · Sender name: `Arbiter LE Training`
+5. Send a test password-reset email and confirm it arrives from `noreply@arbiterle.com` and the link lands on the department subdomain — not localhost.
+
 ---
 
 ## Phase 2 — Platform Configuration

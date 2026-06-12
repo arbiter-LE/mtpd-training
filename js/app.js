@@ -95,16 +95,80 @@ async function mountOfficerSession(authUid) {
 document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
 document.getElementById('login-user').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('login-pass').focus(); });
 
+/* ── Password recovery ──────────────────────
+   Reset emails land on /?reset=1 with Supabase recovery tokens in
+   the URL hash. In that state the user arrives already signed in
+   (recovery session) — we must show the set-new-password screen
+   instead of silently mounting their dashboard. */
+const _recoveryLanding = /[?&]reset=1/.test(window.location.search)
+                      || /type=recovery/.test(window.location.hash);
+const _recoveryLinkError = /error_description=([^&]+)/.exec(window.location.hash);
+
+async function doSetNewPassword() {
+  const p1    = document.getElementById('reset-pass-1').value;
+  const p2    = document.getElementById('reset-pass-2').value;
+  const errEl = document.getElementById('reset-error');
+  const btnEl = document.getElementById('btn-reset');
+
+  if (!p1 || !p2)    { errEl.textContent = 'Enter your new password in both fields.'; return; }
+  if (p1 !== p2)     { errEl.textContent = 'Passwords do not match.'; return; }
+  if (p1.length < 8) { errEl.textContent = 'Password must be at least 8 characters.'; return; }
+
+  errEl.textContent = '';
+  btnEl.textContent = 'Updating…';
+  btnEl.disabled = true;
+
+  const { data, error } = await _sb.auth.updateUser({ password: p1 });
+
+  btnEl.textContent = 'Update Password';
+  btnEl.disabled = false;
+
+  if (error || !data || !data.user) {
+    errEl.textContent = 'Could not update password — the reset link may have expired. Return to sign in and request a new one.';
+    return;
+  }
+
+  // Clean recovery tokens out of the URL, then enter the app normally.
+  window.history.replaceState(null, '', window.location.pathname);
+  document.getElementById('reset-pass-1').value = '';
+  document.getElementById('reset-pass-2').value = '';
+  await mountOfficerSession(data.user.id);
+}
+
+function backToLogin(e) {
+  e.preventDefault();
+  window.history.replaceState(null, '', window.location.pathname);
+  showScreen('screen-login');
+}
+
+document.getElementById('reset-pass-2').addEventListener('keydown', e => { if (e.key==='Enter') doSetNewPassword(); });
+document.getElementById('reset-pass-1').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('reset-pass-2').focus(); });
+
 /* ── Session restore on page load ──────────
    _sb is null only on unrecognized subdomains (config.js shows
    an error card there) — skip auth bootstrap in that case. */
 if (_sb) {
   (async () => {
+    if (_recoveryLanding) {
+      if (_recoveryLinkError) {
+        // Expired or already-used link — Supabase puts the reason in the hash.
+        window.history.replaceState(null, '', window.location.pathname);
+        document.getElementById('login-error').textContent =
+          'That reset link is no longer valid. Enter your email and click "Forgot password?" for a new one.';
+        showScreen('screen-login');
+      } else {
+        showScreen('screen-reset');
+      }
+      return; // never auto-mount the dashboard on a recovery landing
+    }
     const { data: { session } } = await _sb.auth.getSession();
     if (session) await mountOfficerSession(session.user.id);
   })();
 
   _sb.auth.onAuthStateChange((event, session) => {
+    if (event === 'PASSWORD_RECOVERY') {
+      showScreen('screen-reset');
+    }
     if (event === 'SIGNED_OUT') {
       currentUser = null;
       showScreen('screen-login');

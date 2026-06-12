@@ -37,6 +37,30 @@
   </div>
 </div>
 
+<!-- ═══════════════ PASSWORD RESET ═══════════════ -->
+<div id="screen-reset" class="screen">
+  <div class="login-header">
+    <h1>Arbiter LE</h1>
+    <div class="dept-name">Law Enforcement Training Platform</div>
+  </div>
+  <div class="login-card">
+    <h2>Set New Password</h2>
+    <div class="form-group">
+      <label>New Password</label>
+      <input type="password" id="reset-pass-1" placeholder="••••••••" autocomplete="new-password" />
+    </div>
+    <div class="form-group">
+      <label>Confirm New Password</label>
+      <input type="password" id="reset-pass-2" placeholder="••••••••" autocomplete="new-password" />
+    </div>
+    <button class="btn-primary" id="btn-reset" onclick="doSetNewPassword()">Update Password</button>
+    <div class="login-error" id="reset-error"></div>
+    <div style="text-align:center;margin-top:12px;">
+      <a href="#" onclick="backToLogin(event)" style="font-size:0.8rem;color:var(--text-muted);text-decoration:none;opacity:0.7;">Back to sign in</a>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════ OFFICER DASHBOARD ═══════════════ -->
 <div id="screen-officer" class="screen">
   <div class="app-wrapper">
