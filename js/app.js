@@ -144,6 +144,20 @@ function backToLogin(e) {
 document.getElementById('reset-pass-2').addEventListener('keydown', e => { if (e.key==='Enter') doSetNewPassword(); });
 document.getElementById('reset-pass-1').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('reset-pass-2').focus(); });
 
+/* ── Department-gated reference content ────
+   Glossary entries and admin citation sections tagged data-dept
+   render only on that department's platform. Cross-agency
+   confidentiality: one agency's orders must never appear on
+   another agency's site. Untagged elements are shared. */
+(function gateDepartmentContent() {
+  const sub = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT) ? ACTIVE_DEPARTMENT.subdomain : null;
+  document.querySelectorAll('[data-dept]').forEach(el => {
+    if (el.getAttribute('data-dept') !== sub) el.remove();
+  });
+  const goBtn = document.getElementById('cite-filter-go');
+  if (goBtn && sub) goBtn.textContent = sub.toUpperCase() + ' Orders';
+})();
+
 /* ── Session restore on page load ──────────
    _sb is null only on unrecognized subdomains (config.js shows
    an error card there) — skip auth bootstrap in that case. */
@@ -600,7 +614,7 @@ function renderModuleContent() {
       <div class="content-block">
         <h4>Scenario</h4>
         <h2>You respond to a domestic disturbance on Sumneytown Pike. The subject is advancing toward you, flashlight raised. Every decision you make in the next thirty seconds — and how you document it afterward — will be evaluated against a federal standard.</h2>
-        <p>This module covers the Graham v. Connor objective reasonableness standard, Pennsylvania Act 57 of 2020 reporting requirements, and what separates a defensible use of force report from one that ends a career.</p>
+        <p>This module covers the Graham v. Connor objective reasonableness standard, Pennsylvania's 2020 police reform acts (Acts 57 and 59), and what separates a defensible use of force report from one that ends a career.</p>
       </div>
       <div class="content-block">
         <h4>Core Principle</h4>
@@ -612,8 +626,8 @@ function renderModuleContent() {
           <p>The Supreme Court established three factors courts must consider: (1) the severity of the crime at issue, (2) whether the subject poses an immediate threat to the safety of officers or others, and (3) whether the subject is actively resisting arrest or attempting to evade by flight. These three factors must appear — explicitly and factually — in every use of force report.</p>
         </div>
         <div class="case-law-box">
-          <div class="case-title">Pennsylvania Act 57 of 2020</div>
-          <p>PA Act 57 significantly expanded use of force reporting requirements statewide. Any intentional use of force — including display of a weapon and verbal commands used to compel compliance in a threatening encounter — is a reportable use of force. When in doubt, document. The standard is broad by design.</p>
+          <div class="case-title">Pennsylvania Acts 57 &amp; 59 of 2020</div>
+          <p>Pennsylvania's 2020 reform package raised the stakes of every use of force record. Act 57 created a statewide database of officer separation and disciplinary records — including final discipline for excessive force — that follows an officer between departments for the rest of a career. Act 59 mandates annual training in use of force and de-escalation techniques. Neither changes the Graham standard, but both make thorough, accurate documentation the only safe practice. When in doubt, document.</p>
         </div>
       </div>
       <div class="content-block">
@@ -734,14 +748,14 @@ function renderModuleContent() {
         <h4>Core Principle</h4>
         <h2>Mental Health Calls Are Different — and the Law Reflects That</h2>
         <p>Individuals in mental health crisis do not respond to commands, authority, or force the way non-crisis individuals do. What triggers compliance in a standard encounter frequently triggers flight-or-fight in someone experiencing acute psychiatric distress. The approach that works on a combative suspect can transform a distressed person into a dangerous situation.</p>
-        <p>Pennsylvania law recognizes this. PA Act 57 of 2020 requires officers to consider de-escalation whenever it is safe and feasible. This is not optional guidance — it is a documented legal requirement.</p>
+        <p>Pennsylvania law and department policy recognize this. MTPD ALO 5.4 requires officers to consider and employ de-escalation techniques in all situations where it is safe and feasible to do so, and PA Act 59 of 2020 mandates annual statewide training in de-escalation. This is not optional guidance — it is a documented requirement.</p>
         <div class="case-law-box">
           <div class="case-title">Pennsylvania Mental Health Procedures Act — 50 P.S. § 7302</div>
           <p>A 302 involuntary examination may be initiated by a law enforcement officer when a person poses a clear and present danger to themselves or others based on a recent overt act, attempt, or threat. The officer must document the specific factual basis — a general mental health crisis or prior psychiatric history alone does not satisfy the standard. When criteria are met, document precisely. When they aren\'t, don\'t force the standard.</p>
         </div>
         <div class="case-law-box">
-          <div class="case-title">PA Act 57 of 2020 — De-escalation Requirement</div>
-          <p>Pennsylvania Act 57 codified the requirement that officers consider and, when safe and feasible, employ de-escalation techniques before applying force. In mental health encounters, this means your approach itself — your tone, distance, pace, and language — is part of your tactical and legal decision-making. Document de-escalation efforts as carefully as you document force.</p>
+          <div class="case-title">PA Act 59 of 2020 &amp; MTPD ALO 5.4 — De-escalation</div>
+          <p>Pennsylvania Act 59 of 2020 mandates annual de-escalation training for municipal officers — including techniques for interacting with individuals whose behavior indicates mental illness, intellectual disability, or autism. MTPD ALO 5.4 makes the operational requirement explicit: officers shall consider and employ de-escalation techniques where safe and feasible. In mental health encounters, your approach itself — your tone, distance, pace, and language — is part of your tactical and legal decision-making. Document de-escalation efforts as carefully as you document force.</p>
         </div>
       </div>
       <div class="content-block">
@@ -1127,7 +1141,7 @@ function renderModuleContent() {
       <div class="content-block">
         <h4>Core Principle</h4>
         <h2>De-escalation Is Not Passivity — It Is a Legal Requirement and a Tactical Skill</h2>
-        <p>Pennsylvania Act 57 of 2020 requires officers to use de-escalation techniques when safe and feasible before resorting to force. This is not a recommendation — it is a codified legal obligation. Officers who skip de-escalation when time and safety permitted are not only making a tactical error; they are creating legal exposure for themselves and the department.</p>
+        <p>MTPD ALO 5.4 requires officers to consider and employ de-escalation techniques in all situations where it is safe and feasible to do so before applying physical force, and Pennsylvania Act 59 of 2020 mandates annual statewide training in de-escalation. This is not a recommendation — it is a documented policy requirement. Officers who skip de-escalation when time and safety permitted are not only making a tactical error; they are creating policy violations and legal exposure for themselves and the department.</p>
         <p>De-escalation is not about backing down. It is about deploying your most effective tools first. Verbal skills, tactical positioning, time, and tone are tools. In most encounters involving a non-compliant or agitated person, they are more effective than physical force — and they build the documented record that protects you if force eventually becomes necessary.</p>
         <div class="case-law-box">
           <div class="case-title">Graham v. Connor, 490 U.S. 386 (1989) — De-escalation Dimension</div>
@@ -1326,7 +1340,7 @@ function getDebriefLegalSummary() {
     <p><strong>MTPD Order 1.3 — Force Continuum:</strong> MTPD uses an eight-level continuum. Levels may be skipped given circumstances — but every level applied must be documented and justified. Force ends immediately when resistance ceases.</p>
     <p><strong>MTPD ALO 1.3 — Prohibited techniques:</strong> Carotid restraints and all choke holds or neck restraints are specifically and strictly prohibited — except when an officer or another is in imminent fear of death or serious bodily injury and no other alternative exists.</p>
     <p><strong>MTPD ALO 1.3 — Reporting:</strong> Use of Force Report must be completed before you end your shift. It is a separate internal document — never attach it to your incident report. Supervisor must be notified to scene. EMS required when injury is known, suspected, or alleged.</p>
-    <p><strong>Pennsylvania Act 57 of 2020</strong> broadly defines reportable force to include display of a weapon and verbal commands used to compel compliance in a threatening encounter. When in doubt, file the report.</p>
+    <p><strong>Pennsylvania Act 57 of 2020</strong> created a statewide database of officer separation and disciplinary records — documented use-of-force history, including final discipline for excessive force, follows an officer between departments. Thorough, accurate reporting protects you. When in doubt, file the report.</p>
     <p><strong>Conclusory reports fail.</strong> "Feared for my safety" is a conclusion. "Subject advancing at approximately 25 feet, flashlight raised at shoulder height, non-responsive to verbal commands" is documentation that survives scrutiny.</p>`;
   if (id === 'report-writing') return `
     <h3>Key Legal Principles — Report Writing</h3>
@@ -1339,7 +1353,7 @@ function getDebriefLegalSummary() {
   if (id === 'crisis-intervention') return `
     <h3>Key Legal Principles — Crisis Intervention</h3>
     <p><strong>PA Mental Health Procedures Act (50 P.S. § 7302)</strong> authorizes a 302 involuntary examination when a person poses a clear and present danger based on a recent overt act, attempt, or threat. Prior history alone does not establish current criteria. Document the specific basis precisely.</p>
-    <p><strong>PA Act 57 of 2020</strong> requires officers to consider de-escalation whenever it is safe and feasible. This is a legal requirement, not optional guidance. Document your de-escalation efforts with the same care you document force.</p>
+    <p><strong>MTPD ALO 5.4</strong> requires officers to consider and employ de-escalation whenever it is safe and feasible, and <strong>PA Act 59 of 2020</strong> mandates annual statewide de-escalation training. This is a documented requirement, not optional guidance. Document your de-escalation efforts with the same care you document force.</p>
     <p><strong>The approach is the intervention.</strong> Authoritative commands trigger escalation in mental health crisis — calm, low-key contact is both tactically and legally the correct first response. Your demeanor is part of your tactics.</p>
     <p><strong>Escalation spikes are self-limiting.</strong> When a subject reaches a peak of agitation, reducing your own energy and creating space is more effective than additional commands. Wait for the spike to pass before re-engaging.</p>
     <p><strong>Voluntary action over forced intervention.</strong> Voluntary weapon surrender and voluntary evaluation, achieved through rapport, are almost always preferable outcomes — legally and tactically. Document every step that led to a voluntary resolution.</p>`;
@@ -1394,7 +1408,7 @@ function getDebriefLegalSummary() {
     <p><strong>A culture of silence is a liability.</strong> Departments that discourage wellness conversation carry the human and institutional cost of officers who deteriorate until a critical incident forces action. Officers who model help-seeking and peer support change the culture — and that change belongs to every officer who chooses it.`;
   if (id === 'de-escalation') return `
     <h3>Key Legal Principles — De-escalation</h3>
-    <p><strong>Pennsylvania Act 57 of 2020</strong> codified the requirement that officers consider and employ de-escalation techniques when safe and feasible before applying force. This is a legal obligation, not guidance. Officers who bypass available de-escalation when time and safety permitted face scrutiny under this standard in civil and criminal proceedings.</p>
+    <p><strong>MTPD ALO 5.4</strong> requires officers to consider and employ de-escalation techniques when safe and feasible before applying force, and <strong>Pennsylvania Act 59 of 2020</strong> mandates annual statewide training in de-escalation. This is a documented requirement, not guidance. Officers who bypass available de-escalation when time and safety permitted face scrutiny in policy review and civil proceedings.</p>
     <p><strong>Graham v. Connor (1989) — de-escalation dimension:</strong> Pennsylvania courts have applied the objective reasonableness standard to ask not only whether the force used was reasonable, but whether the officer took reasonable steps to avoid the need for force. Document specific de-escalation efforts — the technique used, how the subject responded, and what change in circumstances closed the de-escalation window.</p>
     <p><strong>MTPD ALO 5.4 — Documentation requirement:</strong> When de-escalation is employed, officers shall document the specific techniques used, the subject\'s response, and the reason de-escalation was or was not continued. "De-escalation was attempted" is not documentation. "Officer created distance, used calm verbal contact by name for approximately four minutes, subject began to lower voice and make eye contact" — that is documentation.</p>
     <p><strong>PA Mental Health Procedures Act — 50 P.S. § 7302:</strong> When a contact involves a person in possible acute psychiatric distress, de-escalation is both tactically and legally the correct first approach. A 302 involuntary examination requires a recent overt act, attempt, or threat establishing clear and present danger. Document the specific factual basis — and document de-escalation efforts that preceded any 302 initiation.</p>

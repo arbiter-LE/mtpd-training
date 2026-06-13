@@ -311,12 +311,12 @@
           <button class="cite-filter active" onclick="filterCitations('all',this)">All</button>
           <button class="cite-filter" onclick="filterCitations('caselaw',this)">Case Law</button>
           <button class="cite-filter" onclick="filterCitations('statute',this)">Statutes</button>
-          <button class="cite-filter" onclick="filterCitations('go',this)">MTPD Orders</button>
+          <button class="cite-filter" id="cite-filter-go" onclick="filterCitations('go',this)">MTPD Orders</button>
           <button class="cite-filter" onclick="filterCitations('research',this)">Research</button>
         </div>
 
         <!-- MODULE 1 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 1 — Search &amp; Seizure</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -335,13 +335,13 @@
         </div>
 
         <!-- MODULE 2 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 2 — Use of Force</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
             <tbody>
               <tr data-type="caselaw"><td class="cite-name">Graham v. Connor, 490 U.S. 386 (1989)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Objective reasonableness standard for all force decisions, judged from the perspective of a reasonable officer on scene. Three mandatory factors: (1) severity of the crime, (2) immediacy of threat to officers or others, (3) whether subject is actively resisting or evading. All three must appear explicitly in every Use of Force Report.</td></tr>
-              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 57 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Significantly expanded statewide UoF reporting requirements. Any intentional use of force — including display of a weapon and verbal commands used to compel compliance in a threatening encounter — is a reportable use of force. When in doubt, document.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pennsylvania Acts 57 &amp; 59 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Act 57 created a statewide database of officer separation and disciplinary records — final discipline for excessive force follows an officer between departments. Act 59 mandates annual training in use of force and de-escalation. When in doubt, document.</td></tr>
               <tr data-type="go"><td class="cite-name">MTPD ALO 1.3 — Use of Force Continuum</td><td><span class="cite-badge go">MTPD Order</span></td><td>Eight-level continuum; sequential progression not required — levels may be skipped given circumstances. Carotid restraints and all choke holds / neck restraints strictly prohibited except when facing imminent death or serious bodily injury with no other alternative available. Force ends immediately when resistance ceases or arrest is accomplished.</td></tr>
               <tr data-type="go"><td class="cite-name">MTPD ALO 1.3 — UoF Reporting Requirements</td><td><span class="cite-badge go">MTPD Order</span></td><td>Report (Attachment A) required when: firearm is discharged; action results in injury or death; physical force is used or alleged; Level 3 force is applied; or force exceeds Level 4. Must be completed before end of shift. Supervisor notification and scene response required. Medical attention (EMS) required when injury is known, suspected, or alleged — regardless of subject\'s claim.</td></tr>
             </tbody>
@@ -349,7 +349,7 @@
         </div>
 
         <!-- MODULE 3 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 3 — Report Writing</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -364,13 +364,13 @@
         </div>
 
         <!-- MODULE 4 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 4 — Crisis Intervention</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
             <tbody>
               <tr data-type="statute"><td class="cite-name">50 P.S. § 7302 — PA Mental Health Procedures Act</td><td><span class="cite-badge statute">Statute</span></td><td>302 involuntary examination authorized when officer documents a recent overt act, attempt, or threat establishing clear and present danger to self or others. Past psychiatric history or general crisis alone does not satisfy the standard. Document every observed element specifically — let the facts carry the 302.</td></tr>
-              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 57 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Officers must consider and, when safe and feasible, employ de-escalation techniques before applying force. Applies explicitly to mental health encounters. Document de-escalation efforts with the same specificity used to document any use of force or authority.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 59 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Mandates annual training in use of force and de-escalation techniques, including techniques for interacting with individuals whose behavior indicates mental illness, intellectual disability, or autism. MTPD ALO 5.4 sets the operational requirement: consider and employ de-escalation where safe and feasible. Document de-escalation efforts with the same specificity used to document any use of force or authority.</td></tr>
               <tr data-type="go"><td class="cite-name">MTPD ALO 4.07 — Juvenile Detention</td><td><span class="cite-badge go">MTPD Order</span></td><td>Juveniles shall not be detained in any cell housing adults. Secure detention limited to a maximum of 6 hours. Sight-and-sound separation from adult offenders required at all times. Continuous visual supervision by a sworn officer required. Fingerprints and photos taken for misdemeanor or felony offenses; records kept separate from adult records.</td></tr>
               <tr data-type="go"><td class="cite-name">MTPD ALO 3.02 — Temporary Detention</td><td><span class="cite-badge go">MTPD Order</span></td><td>All detainees thoroughly searched before entry regardless of prior field search. Males, females, and juveniles under arrest must be separated by sight and sound. All firearms secured in designated lock boxes before entry. Detainees may not be left unsupervised for more than 10 minutes under any circumstances.</td></tr>
             </tbody>
@@ -378,7 +378,7 @@
         </div>
 
         <!-- MODULE 5 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 5 — Domestic Violence Response</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -395,7 +395,7 @@
         </div>
 
         <!-- MODULE 6 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 6 — Motor Vehicle Pursuits</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -413,7 +413,7 @@
         </div>
 
         <!-- MODULE 7 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 7 — Leadership &amp; Supervision</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -427,7 +427,7 @@
         </div>
 
         <!-- MODULE 8 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 8 — Traffic Stops &amp; Vehicle Contacts</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -441,7 +441,7 @@
         </div>
 
         <!-- MODULE 9 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 9 — Emotional Intelligence</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -454,7 +454,7 @@
         </div>
 
         <!-- MODULE 10 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 10 — Evidence &amp; Chain of Custody</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -466,7 +466,7 @@
         </div>
 
         <!-- MODULE 11 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 11 — Officer Wellness</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
@@ -479,15 +479,188 @@
         </div>
 
         <!-- MODULE 12 -->
-        <div class="cite-module-section">
+        <div class="cite-module-section" data-dept="mtpd">
           <div class="cite-module-header">Module 12 — De-escalation: Legal Framework &amp; CIT</div>
           <table class="cite-table">
             <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
             <tbody>
               <tr data-type="caselaw"><td class="cite-name">Graham v. Connor, 490 U.S. 386 (1989)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Objective reasonableness standard applied by Pennsylvania courts to ask not only whether force used was reasonable, but whether the officer took reasonable steps to avoid the need for force. An officer who bypasses available de-escalation when time and safety permitted faces scrutiny under this standard in any resulting civil or criminal proceeding.</td></tr>
               <tr data-type="statute"><td class="cite-name">50 P.S. § 7302 — PA Mental Health Procedures Act</td><td><span class="cite-badge statute">Statute</span></td><td>In mental health contacts, the officer\'s approach — particularly whether de-escalation was employed — is part of the record when a 302 is initiated. Document de-escalation efforts with the same specificity used to document any other use of authority. The 302 standard: recent overt act, attempt, or threat establishing clear and present danger.</td></tr>
-              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 57 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Codified requirement that officers use de-escalation techniques when safe and feasible before applying force. This is a legal obligation — not discretionary guidance. Officers who bypass available de-escalation create legal exposure for themselves and the department. Document techniques used, subject\'s response, and reason de-escalation was or was not continued.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 59 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Mandates annual statewide training in de-escalation techniques. MTPD ALO 5.4 sets the operational requirement: officers shall consider and employ de-escalation when safe and feasible before applying force. Officers who bypass available de-escalation when time and safety permitted create policy violations and legal exposure. Document techniques used, the subject's response, and the reason de-escalation was or was not continued.</td></tr>
               <tr data-type="go"><td class="cite-name">MTPD ALO 5.4 — De-escalation Policy</td><td><span class="cite-badge go">MTPD Order</span></td><td>Officers shall consider and employ de-escalation techniques in all situations where it is safe and feasible before applying physical force. The safety and feasibility determination must be a genuine assessment — not a conclusion reached after the decision to use force was already made. Authorized techniques include: creating distance, calm verbal communication, giving subject space to choose, reducing officer presence when safe, designating a single contact officer, and requesting CIT or mental health resources when appropriate.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 1 — Search &amp; Seizure</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="caselaw"><td class="cite-name">Terry v. Ohio, 392 U.S. 1 (1968)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Investigative stop requires individualized reasonable articulable suspicion; a protective frisk requires separate justification — reasonable suspicion the person is armed and dangerous. Refusal of consent neither eliminates Terry authority nor supplies suspicion.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Commonwealth v. Alexander, 243 A.3d 177 (Pa. 2020)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Overruled Commonwealth v. Gary. Under Pa. Const. Art. I, § 8, a warrantless vehicle search requires both probable cause AND exigent circumstances — either alone is insufficient. Obtaining a warrant is the default.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Commonwealth v. Barr, 266 A.3d 25 (Pa. 2021)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>The odor of marijuana alone no longer establishes probable cause in Pennsylvania. Odor remains a legitimate factor in the totality of the circumstances.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Commonwealth v. Enimpah, 106 A.3d 695 (Pa. 2014)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>At a suppression hearing the Commonwealth bears the burden of production and persuasion to establish that evidence was lawfully obtained. Conclusory reports cannot carry that burden — specific, articulable documentation can.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Schneckloth v. Bustamonte, 412 U.S. 218 (1973) / Florida v. Jimeno, 500 U.S. 248 (1991)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Consent must be voluntary under the totality of circumstances; scope is measured by objective reasonableness. General vehicle consent does not automatically include a locked container — clarify scope or obtain specific consent.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Horton v. California, 496 U.S. 128 (1990)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Plain view seizure requires lawful presence, an item in plain view, and incriminating character that is immediately apparent. Applies during consent searches and warrant executions alike.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Chimel v. California, 395 U.S. 752 (1969) / Arizona v. Gant, 556 U.S. 332 (2009)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Search incident to arrest covers the person and the area within immediate control at arrest (a worn backpack qualifies). Gant sharply limits vehicle searches incident to arrest.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pa. Const. Art. I, § 8</td><td><span class="cite-badge statute">Statute</span></td><td>Pennsylvania provides broader search-and-seizure protection than the federal Fourth Amendment floor — the foundation of Alexander\u2019s probable-cause-plus-exigency rule.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 2 — Use of Force</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="caselaw"><td class="cite-name">Graham v. Connor, 490 U.S. 386 (1989)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Objective reasonableness from the perspective of a reasonable officer on scene: severity of the crime, immediacy of the threat, active resistance or evasion. All three factors belong in every use of force report.</td></tr>
+              <tr data-type="statute"><td class="cite-name">18 Pa. C.S. § 508 — Use of Force in Law Enforcement</td><td><span class="cite-badge statute">Statute</span></td><td>Statutory authority and limits for police use of force, including deadly force. GO 1.3.1(A) ties the department\u2019s legally binding restrictions to Title 18, Chapter 5 and applicable case law.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3.1(B) — Use of Force Continuum</td><td><span class="cite-badge go">EGPD Order</span></td><td>Eight levels beginning with Verbal Control. Escalation only when a lower level has been examined or discarded as impractical, or tried and failed; any level may be skipped given the presenting circumstances (1.3.1(C)(2)). Carotid restraints and choke holds strictly prohibited (Level 4).</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3.2 — Use of Deadly Force</td><td><span class="cite-badge go">EGPD Order</span></td><td>Deadly force only in defense of human life or imminent serious physical injury, or to prevent escape where the subject committed or attempted a forcible felony or possesses a deadly weapon or otherwise indicates they will endanger life unless arrested without delay.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3.4 — Conducted Electrical Weapons</td><td><span class="cite-badge go">EGPD Order</span></td><td>Each discharge cycle is a separate use of force that must be justified. Prohibited near flammables and where a fall could cause death. Heightened caution for vulnerable subjects. Verbal warning when circumstances permit.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3.5 / 1.3.6 — Medical Attention and Reporting</td><td><span class="cite-badge go">EGPD Order</span></td><td>EMS when injury is known or suspected. Use of Force Report required for firearm discharge, injury or alleged injury, physical force used or alleged, lethal/less-lethal application, or Level 3+ force — completed before end of shift; reviewed by the Chief; strictly internal.</td></tr>
+              <tr data-type="statute"><td class="cite-name">18 Pa. C.S. § 4906 — False Reports</td><td><span class="cite-badge statute">Statute</span></td><td>Falsifying a police report is a criminal offense. Document what happened — not what you wish had happened.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pennsylvania Acts 57 &amp; 59 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Act 57: statewide database of separation and disciplinary records — excessive-force discipline follows an officer between departments. Act 59: mandatory annual training in use of force and de-escalation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 3 — Report Writing</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="caselaw"><td class="cite-name">Illinois v. Gates, 462 U.S. 213 (1983)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Probable cause is evaluated under the totality of the circumstances and must rest on specific articulable facts. \u201cTraining and experience\u201d is valid only when tethered to stated facts.</td></tr>
+              <tr data-type="statute"><td class="cite-name">18 Pa. C.S. § 4904 / § 4906</td><td><span class="cite-badge statute">Statute</span></td><td>Unsworn falsification and false reports. Reconstructed quotes and retroactive alterations are criminal exposure — supplement with disclosure instead.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3, Policy — Documentation Standard</td><td><span class="cite-badge go">EGPD Order</span></td><td>\u201cOfficers using force must be able to articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected. Full disclosure of the circumstances\u2026 shall be thoroughly documented.\u201d</td></tr>
+              <tr data-type="research"><td class="cite-name">Contemporaneous documentation</td><td><span class="cite-badge research">Research</span></td><td>Write as soon as safely possible; review body camera footage and notes first. Memory degrades within hours; reports that conflict with footage hand defense counsel a credibility attack.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 4 — Crisis Intervention</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="statute"><td class="cite-name">50 P.S. § 7302 — Mental Health Procedures Act</td><td><span class="cite-badge statute">Statute</span></td><td>Involuntary emergency examination (302) requires clear and present danger to self or others based on a recent overt act, attempt, or threat — documented with the specific factual basis. A civil process, not an arrest. Voluntary transport requires ongoing voluntary consent.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Graham v. Connor, 490 U.S. 386 (1989)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Force must be objectively reasonable for the threat as it exists at the moment — walking toward a vehicle, without more, is not a threat justifying a drawn firearm.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 59 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Mandates annual de-escalation training, including techniques for interacting with individuals whose behavior indicates mental illness, intellectual disability, or autism.</td></tr>
+              <tr data-type="research"><td class="cite-name">PERF ICAT / CIT (Memphis Model)</td><td><span class="cite-badge research">Research</span></td><td>De-escalation when safe and feasible: calm low-key contact, reduce your own energy during escalation spikes, one voice, time and distance, address weapon disclosures directly and calmly.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 5 — Domestic Violence Response</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="go"><td class="cite-name">GO 4.13.2 — Response Procedures</td><td><span class="cite-badge go">EGPD Order</span></td><td>No sirens or emergency lights in the vicinity; do not park directly in front; approach from flanking positions. All active domestic incidents are high risk.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 4.13.5(A) — Required Arrests</td><td><span class="cite-badge go">EGPD Order</span></td><td>Mandatory warrantless arrest, as in a felony, when recent physical injury or other corroborative evidence is observed and probable cause exists for a qualifying offense against a household member. Victim consent is not an element; supervisor authorization is not a precondition.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 4.13.6 — Seizure of Weapons</td><td><span class="cite-badge go">EGPD Order</span></td><td>The arresting officer shall seize all weapons used by the defendant in the commission of an alleged offense — secured, chain of custody, held until court disposition. Not consent-based.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 4.13.7 — Victim Rights Notifications</td><td><span class="cite-badge go">EGPD Order</span></td><td>Oral and written notice of safe shelter, DV services, hotline, and PFA rights under 23 Pa.C.S. Ch. 61 — with the victim\u2019s signed receipt attached to the incident report.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 4.13.9 / 4.13.10 — Protection Orders</td><td><span class="cite-badge go">EGPD Order</span></td><td>Arrest authorized on probable cause whether or not the violation occurred in the officer\u2019s presence; mandatory for violation of a Ch. 61 final order, with Indirect Criminal Contempt charged in addition. Notify the protected party of arrest and disposition; document as a Supplemental Incident Report.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 4.13.11 — Required Reports</td><td><span class="cite-badge go">EGPD Order</span></td><td>Narratives include injuries observed AND injuries described but not observed (so indicated). If probable cause existed and no arrest was made, a detailed explanation of the reasons is required.</td></tr>
+              <tr data-type="statute"><td class="cite-name">23 Pa. C.S. Ch. 61 / § 6105; 18 Pa. C.S. §§ 2701\u20132709.1</td><td><span class="cite-badge statute">Statute</span></td><td>Protection From Abuse Act and law-enforcement responsibilities; qualifying offenses for mandatory DV arrest (Simple Assault, Aggravated Assault, REAP, Terroristic Threats, Stalking, Involuntary Manslaughter).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 6 — Motor Vehicle Pursuits</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="go"><td class="cite-name">Pursuits Directive — Offense Threshold</td><td><span class="cite-badge go">EGPD Order</span></td><td>Pursuit only where the offense constitutes a forcible felony against a person, or the offender is escaping with a deadly weapon or otherwise indicates they will endanger life or inflict serious bodily injury unless arrested without delay.</td></tr>
+              <tr data-type="go"><td class="cite-name">Pursuit Decision-Making Matrix</td><td><span class="cite-badge go">EGPD Order</span></td><td>Forcible felony: may pursue, continuously assessing risk. Property felonies, misdemeanors, infractions: do not pursue, or terminate — at every risk level.</td></tr>
+              <tr data-type="go"><td class="cite-name">Regulations 1\u20137 — Termination</td><td><span class="cite-badge go">EGPD Order</span></td><td>Terminate when hazard outweighs the need to apprehend; on lost radio contact; when sight is lost more than briefly; when the offender can be identified and apprehended later; immediately on supervisor order — communicated at once to dispatch (Montgomery County DEC radio). No discipline for deciding to terminate.</td></tr>
+              <tr data-type="go"><td class="cite-name">Regulation 8 — Firearms</td><td><span class="cite-badge go">EGPD Order</span></td><td>Discharge from a moving vehicle strictly prohibited except as the ultimate measure of self-defense or defense of another when the suspect is employing deadly force.</td></tr>
+              <tr data-type="go"><td class="cite-name">Regulation 9 — Ramming / PIT / Roadblocks</td><td><span class="cite-badge go">EGPD Order</span></td><td>Vehicular contact and roadblocks involve deadly force under 18 Pa. C.S. § 508 and GO 1.3.1/1.3.2 — strictly prohibited unless and only if deadly force is authorized.</td></tr>
+              <tr data-type="go"><td class="cite-name">Regulation 11 — Unit Limits</td><td><span class="cite-badge go">EGPD Order</span></td><td>Primary and secondary unit only, absent supervisor approval. Other units position to monitor escape routes and channel — not block — the pursuit.</td></tr>
+              <tr data-type="go"><td class="cite-name">Regulation 17 — Outside Pursuits</td><td><span class="cite-badge go">EGPD Order</span></td><td>Pursuits originating outside East Greenville shall not be joined or continued by East Greenville officers; the supervisor/OIC determines what assistance is provided.</td></tr>
+              <tr data-type="statute"><td class="cite-name">75 Pa. C.S. § 3105 / Ch. 63 Subch. C</td><td><span class="cite-badge statute">Statute</span></td><td>Emergency vehicle operation and pursuit provisions. Pursuit participation does not relieve the statutory duty to drive with due regard for the safety of all persons.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 7 — Leadership &amp; Supervision</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="caselaw"><td class="cite-name">Terry v. Ohio, 392 U.S. 1 (1968)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Individualized reasonable articulable suspicion required for any investigative stop — group presence does not supply it. The senior officer who permits suspicionless stops trains the next violation.</td></tr>
+              <tr data-type="statute"><td class="cite-name">18 Pa. C.S. § 3503 — Criminal Trespass</td><td><span class="cite-badge statute">Statute</span></td><td>Defiant trespasser enforcement requires notice: posted signage, fencing, or direct prior communication. An owner\u2019s call to police does not substitute.</td></tr>
+              <tr data-type="statute"><td class="cite-name">18 Pa. C.S. § 4904 — Unsworn Falsification</td><td><span class="cite-badge statute">Statute</span></td><td>A report is a sworn document. Altering it under social pressure is falsification; pressure to alter gets reported to the chain of command.</td></tr>
+              <tr data-type="research"><td class="cite-name">PERF Leadership Research</td><td><span class="cite-badge research">Research</span></td><td>Demonstrated judgment in ambiguous situations — not seniority or test scores — is the strongest predictor of supervisory readiness. Private, direct, one-on-one correction is the highest-value supervisory action at the patrol level.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 8 — Traffic Stops &amp; Vehicle Contacts</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="caselaw"><td class="cite-name">Pennsylvania v. Mimms, 434 U.S. 106 (1977) / Maryland v. Wilson, 519 U.S. 408 (1997)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Officers may order the driver — and passengers — out of a lawfully stopped vehicle as a matter of course. The order must serve genuine safety purposes.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Rodriguez v. United States, 575 U.S. 348 (2015)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>A stop may not be extended beyond its purpose without independent reasonable suspicion. Refusal to consent is not reasonable suspicion.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Commonwealth v. Alexander, 243 A.3d 177 (Pa. 2020)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Warrantless vehicle search requires probable cause AND exigent circumstances; a warrant is the default. A stopped vehicle with controlled occupants is rarely an exigency.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Commonwealth v. Barr, 266 A.3d 25 (Pa. 2021)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Marijuana odor alone does not establish probable cause; it is one factor in the totality. Odor plus corroborating observations, documented specifically, can build probable cause.</td></tr>
+              <tr data-type="caselaw"><td class="cite-name">Fields v. City of Philadelphia, 862 F.3d 353 (3d Cir. 2017)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>The First Amendment protects recording police performing official duties in public — controlling law for Pennsylvania. Do not order recording stopped; do not use officer safety as pretext.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 9 — Emotional Intelligence</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="go"><td class="cite-name">GO 4.13.7 — Victim Notifications</td><td><span class="cite-badge go">EGPD Order</span></td><td>Accurate information about services, PFA rights, and process at every DV contact is a policy obligation — false reassurance about custody timelines is inconsistent with it.</td></tr>
+              <tr data-type="statute"><td class="cite-name">23 Pa. C.S. Ch. 61 — Protection From Abuse</td><td><span class="cite-badge statute">Statute</span></td><td>PFA framework underlying the honest-and-actionable victim conversation: what an order can do and how the victim advocate can assist with emergency filings.</td></tr>
+              <tr data-type="statute"><td class="cite-name">42 Pa. C.S. §§ 5950 / 5952</td><td><span class="cite-badge statute">Statute</span></td><td>Confidentiality for communications to critical incident stress management team members and trained peer support members. Knowing the actual protections lets you convey them credibly to a struggling colleague.</td></tr>
+              <tr data-type="research"><td class="cite-name">IACP Victim-Engagement Research</td><td><span class="cite-badge research">Research</span></td><td>Officer demeanor in the first 60 seconds is the strongest predictor of victim cooperation. Hostility, minimization, and recantation are normal trauma responses — not deception.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 10 — Evidence &amp; Chain of Custody</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="statute"><td class="cite-name">Pa. R. Crim. P. 581 — Suppression</td><td><span class="cite-badge statute">Statute</span></td><td>Collection and scene-preservation failures are attacked at suppression and go to the weight and credibility of the evidence at trial. The Commonwealth must establish the chain.</td></tr>
+              <tr data-type="statute"><td class="cite-name">18 Pa. C.S. § 4902 — Perjury</td><td><span class="cite-badge statute">Statute</span></td><td>Testify to what your documentation shows; acknowledge gaps without speculating. Asserting certainty about a period you cannot recall is false testimony under oath.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 4.13.6(B)\u2013(D) — Evidence Handling</td><td><span class="cite-badge go">EGPD Order</span></td><td>Seized items secured and processed per proper evidence collection practices, maintained with chain of custody in the property management system, held until court disposition.</td></tr>
+              <tr data-type="research"><td class="cite-name">Forensic Packaging Standards</td><td><span class="cite-badge research">Research</span></td><td>In-place photography before collection, scale reference, multiple angles. Biological evidence in paper — never airtight plastic; hard items in sealed, labeled plastic. Every handler documented: name, time, reason.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 11 — Officer Wellness</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="statute"><td class="cite-name">42 Pa. C.S. § 5950 — CISM Confidentiality</td><td><span class="cite-badge statute">Statute</span></td><td>Communications from an officer to a critical incident stress management team member cannot be disclosed in legal proceedings without the officer\u2019s consent. Exceptions: clear and present danger; express consent.</td></tr>
+              <tr data-type="statute"><td class="cite-name">42 Pa. C.S. § 5952 — Peer Support Members</td><td><span class="cite-badge statute">Statute</span></td><td>Extends protections to trained peer support members (minimum 24 hours of training in listening, assessment, referral, and basic CISM).</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3.7 — Post-Incident Review and Counseling</td><td><span class="cite-badge go">EGPD Order</span></td><td>After a death or serious injury from an officer\u2019s actions: removal from line duty pending administrative review — not a suspension or discipline. Post-shooting psychological evaluation at department expense within 30 days; return to full duty on certification of fitness.</td></tr>
+              <tr data-type="statute"><td class="cite-name">Pennsylvania Act 59 of 2020</td><td><span class="cite-badge statute">Statute</span></td><td>Officers evaluated as having PTSD symptoms are placed on administrative duty until cleared — early identification is built into state law.</td></tr>
+              <tr data-type="research"><td class="cite-name">Ruderman Family Foundation White Paper (2018)</td><td><span class="cite-badge research">Research</span></td><td>Police officers and firefighters are more likely to die by suicide than in the line of duty; stigma around seeking help is the central barrier to early intervention.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cite-module-section" data-dept="egpd">
+          <div class="cite-module-header">Module 12 — De-escalation</div>
+          <table class="cite-table">
+            <thead><tr><th style="width:28%">Citation</th><th style="width:12%">Type</th><th>Key Rule / Application</th></tr></thead>
+            <tbody>
+              <tr data-type="caselaw"><td class="cite-name">Graham v. Connor, 490 U.S. 386 (1989) / Tennessee v. Garner, 471 U.S. 1 (1985)</td><td><span class="cite-badge caselaw">Case Law</span></td><td>Objective reasonableness under the totality — the subject\u2019s mental state and whether the threat is self-directed are part of the totality. Garner bounds deadly force against fleeing subjects.</td></tr>
+              <tr data-type="statute"><td class="cite-name">50 P.S. § 7302 — Mental Health Procedures Act</td><td><span class="cite-badge statute">Statute</span></td><td>302 involuntary examination: severely mentally disabled and in need of immediate treatment — clear and present danger evidenced by the officer\u2019s observations. A civil process; not a shortcut around de-escalation that is working.</td></tr>
+              <tr data-type="go"><td class="cite-name">GO 1.3, Policy — Humanity and Control</td><td><span class="cite-badge go">EGPD Order</span></td><td>All persons treated with humanity, courtesy, and dignity; officers shall not engage in acts that might incite physical aggression; emphasis on obtaining control rather than forcing submission. Verbal Control is Level 1 — the foundation.</td></tr>
+              <tr data-type="research"><td class="cite-name">PERF ICAT / CIT</td><td><span class="cite-badge research">Research</span></td><td>Time and distance are tactical assets; a subject who is talking is not acting. Hold backup when tactical movement escalates the subject; request CIT or mobile crisis rather than closing. CIT-trained responses measurably reduce use-of-force rates.</td></tr>
             </tbody>
           </table>
         </div>
@@ -594,37 +767,67 @@
           <div class="glossary-cat">Legal Term</div>
           <div class="glossary-def">The documented record of who had possession of evidence, when, and why it changed hands. Every transaction must be recorded on the Property Record Form. A broken chain can render evidence inadmissible.</div>
         </div>
-        <div class="glossary-entry" data-cat="term" data-search="use of force continuum levels proportional">
+        <div class="glossary-entry" data-cat="term" data-dept="mtpd" data-search="use of force continuum levels proportional">
           <div class="glossary-term">Use of Force Continuum</div>
           <div class="glossary-cat">Legal Term</div>
           <div class="glossary-def">MTPD uses an eight-level continuum. Sequential progression is not required — levels may be skipped based on circumstances. Force must be proportional to the threat and must stop immediately when resistance ceases.</div>
         </div>
+        <div class="glossary-entry" data-cat="term" data-dept="egpd" data-search="use of force continuum levels proportional">
+          <div class="glossary-term">Use of Force Continuum</div>
+          <div class="glossary-cat">Legal Term</div>
+          <div class="glossary-def">EGPD General Order 1.3.1(B) establishes an eight-level continuum beginning with Verbal Control (Level 1). The continuum escalates only when a lower level has been examined or discarded as impractical, or has been tried and failed — though any level may be skipped, or escalation reduced, given the presenting circumstances (GO 1.3.1(C)(2)). Force ends immediately when resistance ceases.</div>
+        </div>
 
         <!-- ── SOPs ── -->
-        <div class="glossary-entry" data-cat="sop" data-search="ALO 1.2 vehicle search probable cause Pennsylvania">
+        <div class="glossary-entry" data-cat="sop" data-dept="mtpd" data-search="ALO 1.2 vehicle search probable cause Pennsylvania">
           <div class="glossary-term">ALO 1.2 — Vehicle Searches</div>
           <div class="glossary-cat">MTPD Order</div>
           <div class="glossary-def">Pennsylvania does not follow the federal automobile exception. Probable cause alone — without exigent circumstances — does not justify a warrantless vehicle search. Permitted exceptions: consent, plain view, officer safety frisk, or true exigency not created by officer action.</div>
         </div>
-        <div class="glossary-entry" data-cat="sop" data-search="ALO 1.3 use of force reporting attachment A">
+        <div class="glossary-entry" data-cat="sop" data-dept="mtpd" data-search="ALO 1.3 use of force reporting attachment A">
           <div class="glossary-term">ALO 1.3 — Use of Force Reporting</div>
           <div class="glossary-cat">MTPD Order</div>
           <div class="glossary-def">Use of Force Report (Attachment A) required when: firearm discharged, action results in injury/death, physical force used or alleged, Level 3+ force applied. Must be completed before end of shift. Separate from incident report — never attached to it.</div>
         </div>
-        <div class="glossary-entry" data-cat="sop" data-search="ALO 4.13 domestic violence mandatory arrest DV">
+        <div class="glossary-entry" data-cat="sop" data-dept="mtpd" data-search="ALO 4.13 domestic violence mandatory arrest DV">
           <div class="glossary-term">ALO 4.13 — Domestic Violence</div>
           <div class="glossary-cat">MTPD Order</div>
           <div class="glossary-def">Mandatory arrest when probable cause exists for Simple Assault or qualifying offense between household members/intimate partners. Victim consent is not required. Firearms must be seized when subject is subject to a qualifying PFA. Victim notification required at every contact.</div>
         </div>
-        <div class="glossary-entry" data-cat="sop" data-search="ALO 4.02 vehicle pursuit two unit maximum PIT">
+        <div class="glossary-entry" data-cat="sop" data-dept="mtpd" data-search="ALO 4.02 vehicle pursuit two unit maximum PIT">
           <div class="glossary-term">ALO 4.02 — Vehicle Pursuits</div>
           <div class="glossary-cat">MTPD Order</div>
           <div class="glossary-def">Maximum two patrol units in any pursuit — hard limit, no exceptions. PIT maneuvers strictly prohibited under all circumstances. Supervisor authorization required from moment vehicle fails to stop. Termination criteria include school zones, danger exceeding need for apprehension.</div>
         </div>
-        <div class="glossary-entry" data-cat="sop" data-search="ALO 3.04 report submission end of tour">
+        <div class="glossary-entry" data-cat="sop" data-dept="mtpd" data-search="ALO 3.04 report submission end of tour">
           <div class="glossary-term">ALO 3.04 — Report Submission</div>
           <div class="glossary-cat">MTPD Order</div>
           <div class="glossary-def">All reports completed before end of tour and submitted to shift bin for supervisory approval. Applies to incident, arrest, use of force, and supplemental reports. Late submission requires supervisor authorization.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-dept="egpd" data-search="GO 1.3 use of force continuum chokehold resistance">
+          <div class="glossary-term">GO 1.3 — Use of Force</div>
+          <div class="glossary-cat">EGPD Order</div>
+          <div class="glossary-def">Officers shall never use a greater degree of force than that which is lawful, reasonable, and necessary for the specific situation. Eight-level continuum beginning with Verbal Control. Carotid restraints and other choke holds or neck restraints are specifically and strictly prohibited. Force ends immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-dept="egpd" data-search="GO 1.3.2 deadly force forcible felony defense of life">
+          <div class="glossary-term">GO 1.3.2 — Use of Deadly Force</div>
+          <div class="glossary-cat">EGPD Order</div>
+          <div class="glossary-def">Deadly force only when justified under 18 Pa.C.S. § 508: in defense of human life (including the officer's own) or of a person in imminent danger of serious physical injury, or to prevent escape where the subject has committed or attempted a forcible felony or possesses a deadly weapon or otherwise indicates they will endanger life unless arrested without delay. Warning shots prohibited (GO 1.3.3).</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-dept="egpd" data-search="GO 1.3.6 use of force report end of shift internal">
+          <div class="glossary-term">GO 1.3.6 — Use of Force Reporting</div>
+          <div class="glossary-cat">EGPD Order</div>
+          <div class="glossary-def">Use of Force Report required for: firearm discharge (non-training), any action resulting in or alleged to result in injury or death, use or alleged use of physical force, application of lethal/less-lethal weapons, or Level 3 (OC) force or greater than Level 4. Completed before end of shift. Strictly an internal management document — never attached to the incident report, released only with the Chief's permission.</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-dept="egpd" data-search="GO 4.13 domestic violence mandatory arrest weapon seizure PFA">
+          <div class="glossary-term">GO 4.13 — Domestic Violence</div>
+          <div class="glossary-cat">EGPD Order</div>
+          <div class="glossary-def">Mandatory warrantless arrest when recent physical injury or other corroborative evidence is observed and probable cause exists for a qualifying offense against a household member (4.13.5). Weapons used in the offense shall be seized (4.13.6). Oral and written victim rights notice with signed receipt at every DV response (4.13.7). Arrest is mandatory for violation of a final PFA order, with Indirect Criminal Contempt charged in addition (4.13.9).</div>
+        </div>
+        <div class="glossary-entry" data-cat="sop" data-dept="egpd" data-search="pursuit directive matrix forcible felony primary secondary PIT ramming">
+          <div class="glossary-term">Motor Vehicle Pursuits Directive</div>
+          <div class="glossary-cat">EGPD Order</div>
+          <div class="glossary-def">Pursuit only for a forcible felony against a person, or an offender escaping with a deadly weapon or otherwise indicating they will endanger life. Decision-Making Matrix: misdemeanors and infractions — do not pursue, or terminate, at every risk level. Primary and secondary unit only absent supervisor approval (Reg. 11). Ramming, PIT, and roadblocks prohibited unless deadly force is authorized (Reg. 9). No discipline for deciding to terminate (Reg. 5).</div>
         </div>
 
       </div>
