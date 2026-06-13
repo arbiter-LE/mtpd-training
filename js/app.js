@@ -158,6 +158,29 @@ document.getElementById('reset-pass-1').addEventListener('keydown', e => { if (e
   if (goBtn && sub) goBtn.textContent = sub.toUpperCase() + ' Orders';
 })();
 
+/* ── Co-branded login ──────────────────────
+   Lead the login/reset screens with the active agency's own patch
+   and name; keep a small "Powered by Arbiter LE" mark beneath. All
+   driven from ACTIVE_DEPARTMENT, so every agency (and every future
+   one) is branded with no per-screen markup. */
+(function brandLoginForDepartment() {
+  const d = (typeof ACTIVE_DEPARTMENT !== 'undefined') ? ACTIVE_DEPARTMENT : null;
+  if (!d) return;
+  document.querySelectorAll('.login-header .shield img').forEach(img => {
+    if (d.badge) { img.src = d.badge; img.alt = d.name + ' badge'; }
+  });
+  document.querySelectorAll('.login-header h1').forEach(h => {
+    h.textContent = d.displayName || d.name;
+  });
+  document.querySelectorAll('.login-card').forEach(card => {
+    if (card.nextElementSibling && card.nextElementSibling.classList.contains('powered-by')) return;
+    const tag = document.createElement('div');
+    tag.className = 'powered-by';
+    tag.innerHTML = 'Powered by <strong>Arbiter LE</strong>';
+    card.insertAdjacentElement('afterend', tag);
+  });
+})();
+
 /* ── Session restore on page load ──────────
    _sb is null only on unrecognized subdomains (config.js shows
    an error card there) — skip auth bootstrap in that case. */

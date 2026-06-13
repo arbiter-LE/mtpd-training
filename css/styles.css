@@ -114,6 +114,8 @@
     .btn-primary { width: 100%; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hi) 100%); color: var(--navy); border: none; border-radius: var(--radius); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 13px; cursor: pointer; transition: all .2s; font-family: var(--font); box-shadow: 0 4px 12px rgba(200,144,42,.3); }
     .btn-primary:hover { background: linear-gradient(135deg, var(--accent-hi) 0%, #f0b840 100%); box-shadow: 0 6px 20px rgba(200,144,42,.45); transform: translateY(-1px); }
     .login-error { color: #f08090; font-size: 12px; text-align: center; margin-top: 12px; min-height: 18px; }
+    .powered-by { margin-top: 22px; text-align: center; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--chrome-mut); }
+    .powered-by strong { color: var(--accent); font-weight: 700; letter-spacing: 1px; }
 
     /* ── Stats & Cards ───────────────────── */
     .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 28px; }
