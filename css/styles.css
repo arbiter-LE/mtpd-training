@@ -96,8 +96,8 @@
     .progress-table tbody tr:hover { background: var(--navy-light); }
 
     /* ── Login ───────────────────────────── */
-    #screen-login { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(160deg, var(--login-1) 0%, var(--login-2) 40%, var(--login-3) 70%, var(--login-4) 100%); }
-    #screen-login.active { display: flex; }
+    #screen-login, #screen-reset { min-height: 100vh; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(160deg, var(--login-1) 0%, var(--login-2) 40%, var(--login-3) 70%, var(--login-4) 100%); }
+    #screen-login.active, #screen-reset.active { display: flex; }
     .login-header { text-align: center; margin-bottom: 36px; }
     .login-header .shield { font-size: 56px; margin-bottom: 12px; filter: drop-shadow(0 2px 8px rgba(200,146,42,.4)); display: flex; justify-content: center; }
     .login-header .shield img { display: block; }
