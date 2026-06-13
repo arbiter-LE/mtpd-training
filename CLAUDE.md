@@ -100,6 +100,12 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 **Case law verification.** Any court case cited in a module (Graham v. Connor, Terry v. Ohio, etc.) must be verified for accurate holding and current status before inclusion. Never paraphrase a holding from memory.
 
+**Legal citations — the registry is law.** `_legal/citations-registry.md` is the single source of truth for every statute, case, and legal authority in the platform. Hard rules:
+- **No legal citation ships unless it is in the registry as `GOOD LAW`** with a verification date inside the cadence window. Holdings are verified against a **primary source** (statute text on legis.state.pa.us / pacodeandbulletin.gov, or the court opinion on pacourts.us / official reporter) — **never written or "remembered" from model memory.** Cite the source URL in the registry.
+- **Run `_legal/check-citations.sh` before committing any content that touches a legal citation**, and resolve every flag. It hard-blocks overruled law taught as current (e.g. Commonwealth v. Gary) and known conflations (Act 57 of 2020 is the police **hiring/separation-database** law — never use-of-force or de-escalation; that is Act 59 of 2020). Wire it as a pre-commit hook.
+- **Overruled/superseded authority may appear only in explicit "no longer good law" framing** — never as current law.
+- **Re-verification cadence:** re-verify all `GOOD LAW` entries **quarterly** (next due 2026-09-13) and **before every new agency onboard**; clear every `PENDING` row a new agency's content relies on before that agency goes live. EGPD's not-yet-live content still has `PENDING` cites — they must be verified before June 17.
+
 **No real names.** No real officer, suspect, or civilian names in scenarios. Fictional names only — and never a name matching a real member of the agency.
 
 ---
