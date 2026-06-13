@@ -492,7 +492,7 @@ const SCENARIO_USE_OF_FORCE = {
         'Pennsylvania law and department policy define use of force to include any intentional act used to compel compliance, including voice commands in a threatening encounter. Failing to report this interaction leaves you exposed if the subject later claims excessive force, injuries, or civil rights violations.',
         'No report means no record. No record means no protection.'
       ],
-      legal: 'Under PA Act 57 of 2020, officers must document any use of force, broadly defined. A reportable use of force includes the display of a weapon, physical force, and verbal commands used to compel compliance in circumstances where non-compliance would result in physical force. When in doubt, document.',
+      legal: 'Under department use-of-force policy and Pennsylvania\'s use-of-force reporting requirements, officers must document any use of force, broadly defined. A reportable use of force includes the display of a weapon, physical force, and verbal commands used to compel compliance in circumstances where non-compliance would result in physical force. When in doubt, document.',
       next: 'd3'
     },
     'c2a_wrong': {
@@ -562,7 +562,7 @@ const SCENARIO_USE_OF_FORCE = {
         'Your report accurately reflects that verbal commands were not issued prior to deployment and explains why — the speed of the advance, the distance, and the immediate threat posed by the raised impact weapon did not allow time for additional commands. That\'s a defensible force decision.',
         'Accurate documentation of a difficult situation is always better than inflated documentation that contradicts body camera footage.'
       ],
-      legal: 'PA Act 57 of 2020 requires accurate, complete use of force reports. The law does not require de-escalation in every situation — it requires that force decisions be objectively reasonable. If a threat is immediate and de-escalation is not feasible, document that specifically.',
+      legal: 'Pennsylvania\'s use-of-force reporting requirements and department policy call for accurate, complete use of force reports. The law does not require de-escalation in every situation — it requires that force decisions be objectively reasonable. If a threat is immediate and de-escalation is not feasible, document that specifically.',
       next: 'd3'
     },
     'c2b_right': {
@@ -945,7 +945,7 @@ const SCENARIO_CRISIS = {
         'Your direct approach and commanding tone cause the subject to snap upright. He begins yelling, pacing the porch, and moves toward the front door. You have lost the window for a calm contact. The situation has escalated from a distressed subject to a potential crisis standoff.',
         'For individuals in a mental health crisis, authoritative commands often trigger fight-or-flight responses that have nothing to do with compliance. The approach matters more than the words.'
       ],
-      legal: 'Pennsylvania\'s Mental Health Procedures Act (MHPA, 50 P.S. § 7302) authorizes involuntary examination when a person poses a clear and present danger to themselves or others. But getting to that point safely requires de-escalation, not escalation. PA Act 57 of 2020 requires officers to consider de-escalation whenever it is safe to do so.',
+      legal: 'Pennsylvania\'s Mental Health Procedures Act (MHPA, 50 P.S. § 7302) authorizes involuntary examination when a person poses a clear and present danger to themselves or others. But getting to that point safely requires de-escalation, not escalation. PA Act 59 of 2020 requires officers to consider de-escalation whenever it is safe to do so.',
       next: 'd2a'
     },
     'c1b': {
@@ -1012,7 +1012,7 @@ const SCENARIO_CRISIS = {
         'You reduce your own volume, step back slightly, and wait. Your partner arrives and mirrors your calm energy. After approximately three minutes, the subject stops pacing and sits back down. You re-engage with the same low-key approach: "That looked rough. You okay?" He begins to talk.',
         'The situation has returned to a workable contact. You can now work toward a voluntary evaluation or a 302 if criteria are met.'
       ],
-      legal: 'De-escalation is not just a technique — under PA Act 57 of 2020 and department policy, officers are required to consider de-escalation whenever it is safe and feasible. Documented de-escalation efforts protect the officer and the department.',
+      legal: 'De-escalation is not just a technique — under PA Act 59 of 2020 and department policy, officers are required to consider de-escalation whenever it is safe and feasible. Documented de-escalation efforts protect the officer and the department.',
       next: 'd3'
     },
     'd2b': {

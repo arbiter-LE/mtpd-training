@@ -242,7 +242,7 @@ function getUseOfForceQuestions() {
     },
     {
       scenario: 'After a Taser deployment during a domestic disturbance call, your supervisor instructs you to complete a use of force report. Your body camera captured the full incident.',
-      text: 'Under Pennsylvania Act 57 of 2020, which of the following is a reportable use of force under Pennsylvania law?',
+      text: 'Under Pennsylvania law and department policy, which of the following is a reportable use of force?',
       options: [
         'Only deployments of CEW (Taser), OC spray, or physical control techniques resulting in injury.',
         'Any intentional use of force against a person, including display of a weapon and verbal commands used to compel compliance in a threatening encounter.',
@@ -250,7 +250,7 @@ function getUseOfForceQuestions() {
         'Any use of force that results in a complaint by the subject or a civilian witness.'
       ],
       correct: 1,
-      feedback: 'Correct. PA Act 57 of 2020 defines reportable use of force broadly to include any intentional act used to compel compliance — including display of a weapon and verbal commands in circumstances where non-compliance would result in physical force. When in doubt, document. A report filed and not needed is far less damaging than a report that should have been filed and wasn\'t.'
+      feedback: 'Correct. Pennsylvania\'s use-of-force reporting requirements and department policy define reportable use of force broadly to include any intentional act used to compel compliance — including display of a weapon and verbal commands in circumstances where non-compliance would result in physical force. When in doubt, document. A report filed and not needed is far less damaging than a report that should have been filed and wasn\'t.'
     },
     {
       scenario: 'A use of force report states: "Subject was aggressive and I feared for my safety. I used verbal commands to gain compliance." Defense counsel argues the report does not satisfy the Graham standard.',
@@ -452,7 +452,7 @@ function getCrisisQuestions() {
         'The officer should have waited for a mental health co-responder before making any contact.'
       ],
       correct: 2,
-      feedback: 'Correct. Crisis Intervention Training (CIT) research consistently shows that individuals in mental health crisis respond to authoritative commands differently than non-crisis individuals. Commands that trigger compliance in normal encounters frequently trigger fight-or-flight responses in someone in acute distress. A calm, low-key approach — slow movement, quiet voice, non-threatening positioning — significantly reduces escalation risk. PA Act 57 of 2020 requires officers to consider de-escalation whenever it is safe and feasible.'
+      feedback: 'Correct. Crisis Intervention Training (CIT) research consistently shows that individuals in mental health crisis respond to authoritative commands differently than non-crisis individuals. Commands that trigger compliance in normal encounters frequently trigger fight-or-flight responses in someone in acute distress. A calm, low-key approach — slow movement, quiet voice, non-threatening positioning — significantly reduces escalation risk. PA Act 59 of 2020 requires officers to consider de-escalation whenever it is safe and feasible.'
     },
     {
       scenario: 'A subject in a mental health crisis has been escalating. He is now pacing and yelling, but has no visible weapon and has not made a specific threat. Your partner has just arrived.',
