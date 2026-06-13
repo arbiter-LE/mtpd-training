@@ -1,4 +1,62 @@
 /* ══════════════════════════════════════════
+   READING — Motor Vehicle Pursuits (EGPD)
+══════════════════════════════════════════ */
+const READING_VEHICLE_PURSUITS = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A sedan with an expired registration accelerates away from your stop near Main St &amp; 6th St at 0114 hours. Whether you may pursue is not a judgment call — the department's Motor Vehicle Pursuits Directive has already decided it.</h2>
+    <p>This module covers the directive's offense threshold, the Pursuit Decision-Making Matrix, unit responsibilities, and the regulations that govern every pursuit from initiation to termination.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Offense Threshold</h4>
+    <h2>Pursuit is reserved for forcible felonies and deadly-weapon escapes.</h2>
+    <div class="sop-box">
+      <div class="sop-title">Motor Vehicle Pursuits Directive — Purpose</div>
+      <p>"The offense for which the vehicle is being pursued must constitute the commission of, or attempt to commit, a forcible felony against a person, or the offender is attempting to escape and possesses a deadly weapon, or otherwise indicates that he/she will endanger human life or inflict serious bodily injury unless arrested without delay." And the governing priority: "While police officers are to make reasonable efforts to apprehend the drivers and occupants of fleeing vehicles, the safety of the public and persons involved in the pursuit is the most important priority."</p>
+    </div>
+    <p>The directive defines a <strong>forcible felony</strong> as "the crimes of murder, voluntary manslaughter, rape, robbery, kidnapping (except parental kidnapping not involving force), involuntary deviate sexual intercourse, arson endangering persons, aggravated assault causing serious bodily injury." Fleeing a lawful stop does not, by itself, elevate the offense level — an equipment violation plus flight is still a summary-level matter.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Pursuit Decision-Making Matrix</h4>
+    <h2>For misdemeanors and infractions, the answer is the same at every risk level.</h2>
+    <ul class="key-points">
+      <li><strong>Forcible Felony — Imminent Threat:</strong> "May pursue: continue to assess risks" at Low and Moderate risk. At High risk: "May pursue: discontinue if risks exceed known threat to public safety if capture is delayed."</li>
+      <li><strong>Felony — Property:</strong> "Do not pursue, or terminate" — at every risk level.</li>
+      <li><strong>Misdemeanors:</strong> "Do not pursue, or terminate" at Low and Moderate; "Do not pursue" at High.</li>
+      <li><strong>Infractions (Summary):</strong> "Do not pursue, or terminate" at Low and Moderate; "Do not pursue" at High.</li>
+    </ul>
+    <p>There is no "continue briefly to assess" category for misdemeanors and infractions. If new information later establishes a forcible felony or a deadly-weapon indicator, that is a new pursuit decision made at that time, on its own facts — each decision is evaluated on what is known when it is made. Officers weigh the directive's criteria continuously: safety risk, seriousness of the offense, potential for harm if the suspect escapes, road and weather conditions, vehicle type, time of day, distance and duration, location (residential areas, parks, school zones), the likelihood of later identification, and officer experience. "Participation in a motor vehicle pursuit does not relieve police officers from the statutory duty to drive with due regard for the safety of all persons."</p>
+  </div>
+  <div class="content-block">
+    <h4>Responsibilities</h4>
+    <h2>The primary unit owns the information flow.</h2>
+    <ul class="key-points">
+      <li><strong>Initiating officer (primary unit)</strong> shall provide the dispatcher: "location and direction of travel; description of the fleeing vehicle and occupant(s) if possible; reason for the motor vehicle pursuit including the seriousness of the offenses involved; information which would aid in the apprehension"; and "any information which would be useful in evaluating the risks." The primary unit updates dispatch on progress and requests additional units. An unmarked vehicle relinquishes the pursuit to a marked unit as soon as prudent; every pursuing vehicle uses functioning emergency lights and siren.</li>
+      <li><strong>Secondary unit</strong> assists, notifies dispatch when joining, relays information if the primary cannot, and "shall not pass the primary unit unless directed to do so."</li>
+      <li><strong>Communications Center</strong> clears the primary frequency with a tone alert, notifies the shift supervisor, notifies adjacent jurisdictions the pursuit may enter, keeps a written record, and runs CLEAN/NCIC checks on the suspect vehicle.</li>
+      <li><strong>Field supervisor</strong> monitors by radio, ensures compliance with the directive and the matrix, orders termination when continuation would not be reasonable or prudent, and terminates East Greenville participation in another jurisdiction's pursuit when the criteria require it.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Vehicle Pursuit Regulations</h4>
+    <h2>The rules that end pursuits — and the ones that prohibit ending them by force.</h2>
+    <ul class="key-points">
+      <li><strong>Regulation 1:</strong> Any officer terminates "when the hazardous condition caused by the events surrounding the pursuit outweighs the need to apprehend the fleeing vehicle."</li>
+      <li><strong>Regulations 2–4:</strong> Terminate on loss of radio communications; when sight of the offender is lost for more than a brief period; and "when sufficient information has been obtained to identify and apprehend the offender later."</li>
+      <li><strong>Regulation 5:</strong> "Disciplinary action will not be taken against police personnel for deciding to terminate a pursuit."</li>
+      <li><strong>Regulations 6–7:</strong> All officers immediately terminate on a supervisor's direction — and the decision to terminate "shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System."</li>
+      <li><strong>Regulation 8:</strong> "The discharge of firearms from a moving vehicle during a motor vehicle pursuit is strictly prohibited, EXCEPT as the ultimate measure of self-defense or defense of another, when the suspect is employing deadly force." A weapon displayed but not fired does not meet this standard.</li>
+      <li><strong>Regulation 9:</strong> Discharging firearms at moving vehicles, "ramming or other intervention constituting vehicular contact" (including PIT), and "roadblocks or other roadway obstacles" involve deadly force, are regulated by 18 PA C.S.A. § 508 and General Orders 1.3.1/1.3.2, and "are strictly prohibited, unless and only if deadly force is authorized."</li>
+      <li><strong>Regulation 10:</strong> SUVs and vehicles not pursuit-rated, and vehicles transporting non-sworn persons, shall not become directly involved.</li>
+      <li><strong>Regulation 11:</strong> "Unless otherwise approved by a supervisor the pursuit shall consist of the primary and secondary unit only. Other police units should be responding and positioning themselves as to monitor escape routes, and channel (not block) the pursuit." Offense severity does not create an exception — only supervisor approval does.</li>
+      <li><strong>Regulations 13–16:</strong> Pursuits originating from traffic infractions or misdemeanors are terminated as soon as possible; ensure medical assistance to anyone injured; never pursue the wrong direction on a limited-access highway; communicate with neighboring jurisdictions a pursuit may enter.</li>
+      <li><strong>Regulation 17:</strong> "Pursuits originating outside East Greenville and entering East Greenville shall not be joined or continued by East Greenville Police Officers." The supervisor/OIC requests information and determines what assistance is to be provided.</li>
+    </ul>
+    <button class="btn-launch" onclick="startScenario('egpd-vehicle-pursuits')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Motor Vehicle Pursuits (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_VEHICLE_PURSUITS = {

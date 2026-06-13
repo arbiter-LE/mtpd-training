@@ -1,4 +1,48 @@
 /* ══════════════════════════════════════════
+   READING — Crisis Intervention (EGPD)
+══════════════════════════════════════════ */
+const READING_CRISIS = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A welfare check near 3rd St &amp; State St: a 31-year-old man in crisis for two days, off his medication, who told his mother he "didn't want to be here anymore." How you approach the first thirty feet determines everything that follows.</h2>
+    <p>This module covers Pennsylvania's Mental Health Procedures Act, Crisis Intervention Team (CIT) contact principles, and the legal boundaries of voluntary and involuntary intervention.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Legal Framework</h4>
+    <h2>The 302 is a civil tool with a specific threshold — not a shortcut.</h2>
+    <div class="case-law-box">
+      <div class="case-title">Mental Health Procedures Act — 50 P.S. § 7302</div>
+      <p>An officer may initiate an involuntary emergency examination (a "302") when a person is severely mentally disabled and in need of immediate treatment — posing a <strong>clear and present danger to themselves or others, based on a recent overt act, attempt, or threat</strong>. The officer must document the specific factual basis. A general mental health crisis, agitation, or psychiatric history alone does not satisfy the standard; psychosis alone does not satisfy it either. This is a civil process — the person is transported for psychiatric evaluation, not arrest.</p>
+    </div>
+    <ul class="key-points">
+      <li><strong>Voluntary means voluntary — at every moment.</strong> A person who agreed to voluntary transport may withdraw consent at any point before transport. Once withdrawn, the prior agreement is void. Proceeding anyway, without 302 criteria currently met, is unlawful detention. Family pressure does not create legal authority; neither does your belief that the person needs help.</li>
+      <li><strong>Coercion vitiates consent.</strong> "You have to come — transport is already waiting" implies consequences that do not exist. Transport obtained through pressure or deception is not voluntary, creates civil liability, and undermines any subsequent evaluation.</li>
+      <li><strong>If criteria are met, use the tool.</strong> Re-engage, reassess against the 302 standard, and if the person presents a clear and present danger — initiate the formal process. If not: document the contact thoroughly, provide crisis resources, and coordinate family and mental-health follow-up. A well-documented welfare contact is a professional outcome.</li>
+      <li><strong>Warrantless entry needs more than worry.</strong> A statement about access to a means of self-harm, without more, may not meet the exigent-circumstances threshold for entering a residence. Courts ask whether the threat was immediate and specific. Work toward consent — it is always cleaner.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>CIT Contact Principles</h4>
+    <h2>A person in crisis does not process authority the way a compliant subject does.</h2>
+    <p>Commands that produce compliance in routine encounters frequently trigger fight-or-flight in someone in acute distress. The approach matters more than the words. National best practice — PERF's ICAT decision-making model and the CIT (Memphis Model) framework adopted nationwide — directs officers to use de-escalation whenever it is safe and feasible. So does this department's expectation, reflected in General Order 1.3's emphasis on obtaining control rather than forcing submission.</p>
+    <ul class="key-points">
+      <li><strong>Slow, low, and level.</strong> Approach at a non-threatening angle, slow your movement, quiet your voice, get on the person's level when safe. "Your mom asked me to come check on you. Mind if I sit with you for a minute?" opens doors that commands close.</li>
+      <li><strong>Ride out the spike.</strong> When an escalation spike hits — pacing, yelling, agitation — reduce your own energy, create space, and wait. Spikes are self-limiting when they aren't fed. More commands or closing distance during a spike prolongs it.</li>
+      <li><strong>Address disclosures directly and calmly.</strong> If the person mentions "something inside he could use," you cannot ignore it — and you don't have to break rapport to address it. A calm clarifying question ("Are you telling me you have a gun inside?") assesses the threat without triggering defensiveness, and opens the path to voluntary surrender of the weapon.</li>
+      <li><strong>Weapon knowledge changes positioning, not posture.</strong> Knowing a firearm is in the house informs where you stand, where your partner stands, and what you watch. It does not convert a welfare check into a tactical operation — a distressed person on his porch is not a SWAT call.</li>
+      <li><strong>Don't confirm or challenge psychotic content.</strong> Work around hallucinations by addressing the emotional state: "I can see this is really distressing for you." Offer limited choices to restore a sense of agency. Challenging delusions intensifies distress; confirming them reinforces it.</li>
+      <li><strong>One voice, defined roles.</strong> One officer leads contact; others hold safety positions without appearing tactical. On high-risk geometry (a ledge, a rooftop), establish a perimeter, reduce stimulation, request CIT and mobile crisis resources early, and initiate calm contact while they respond.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Time Is a Tactic</h4>
+    <h2>De-escalation that is working is never a delay.</h2>
+    <p>Thirty-five minutes of verbal contact that is producing calm is the approach succeeding, not failing. When a supervisor asks for status, give an honest progress report — the subject is de-escalating, an abrupt tactical change risks re-escalation, recommend a defined additional window. Good supervisors support patient de-escalation when they get clear communication. And time spent on a call never substitutes for the 302's legal standard: clear and present danger is established by the person's conduct, not by your investment in the encounter.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-crisis-intervention')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Crisis Intervention (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_CRISIS = {
@@ -33,7 +77,7 @@ const SCENARIO_CRISIS = {
         'Your direct approach and commanding tone cause the subject to snap upright. He begins yelling, pacing the porch, and moves toward the front door. You have lost the window for a calm contact. The situation has escalated from a distressed subject to a potential crisis standoff.',
         'For individuals in a mental health crisis, authoritative commands often trigger fight-or-flight responses that have nothing to do with compliance. The approach matters more than the words.'
       ],
-      legal: 'Pennsylvania\'s Mental Health Procedures Act (MHPA, 50 P.S. § 7302) authorizes involuntary examination when a person poses a clear and present danger to themselves or others. But getting to that point safely requires de-escalation, not escalation. PA Act 57 of 2020 requires officers to consider de-escalation whenever it is safe to do so.',
+      legal: 'Pennsylvania\'s Mental Health Procedures Act (MHPA, 50 P.S. § 7302) authorizes involuntary examination when a person poses a clear and present danger to themselves or others. But getting to that point safely requires de-escalation, not escalation. National best practice — PERF\'s ICAT model and CIT protocols — directs officers to use de-escalation whenever it is safe and feasible.',
       next: 'd2a'
     },
     'c1b': {
@@ -100,7 +144,7 @@ const SCENARIO_CRISIS = {
         'You reduce your own volume, step back slightly, and wait. Your partner arrives and mirrors your calm energy. After approximately three minutes, the subject stops pacing and sits back down. You re-engage with the same low-key approach: "That looked rough. You okay?" He begins to talk.',
         'The situation has returned to a workable contact. You can now work toward a voluntary evaluation or a 302 if criteria are met.'
       ],
-      legal: 'De-escalation is not just a technique — under PA Act 57 of 2020 and department policy, officers are required to consider de-escalation whenever it is safe and feasible. Documented de-escalation efforts protect the officer and the department.',
+      legal: 'De-escalation is not just a technique — under nationally recognized standards (PERF ICAT, CIT) and the department\'s expectations, officers should employ de-escalation whenever it is safe and feasible. Documented de-escalation efforts protect the officer and the department.',
       next: 'd3'
     },
     'd2b': {
@@ -281,10 +325,10 @@ const SCENARIO_CRISIS = {
       heading: 'Voluntary consent can be withdrawn at any time — placing him in the vehicle without legal authority is unlawful detention.',
       narrative: [
         'Voluntary is exactly what it says. He can withdraw consent at any point prior to transport. Once he withdraws consent, the prior agreement is void. Physically placing him in the vehicle now — without a valid § 302 emergency commitment or other lawful authority — constitutes unlawful detention, and potentially assault.',
-        'The family member\'s pressure does not create legal authority. Your belief that he needs help does not create legal authority. What creates legal authority is meeting the criteria under 50 Pa. C.S. § 302: clear and present danger to self or others based on observed behavior.',
+        'The family member\'s pressure does not create legal authority. Your belief that he needs help does not create legal authority. What creates legal authority is meeting the criteria under 50 P.S. § 7302 (MHPA § 302): clear and present danger to self or others based on observed behavior.',
         'If he no longer meets those criteria, you document and disengage. If he does still meet them, initiate an involuntary commitment — do not manufacture a different basis.'
       ],
-      legal: '50 Pa. C.S. § 302 authorizes involuntary emergency examination when an officer observes conduct constituting clear and present danger to self or others. Voluntary transport requires ongoing voluntary consent. Withdrawal of consent without § 302 authority present means the transport cannot proceed.',
+      legal: '50 P.S. § 7302 (MHPA § 302) authorizes involuntary emergency examination when an officer observes conduct constituting clear and present danger to self or others. Voluntary transport requires ongoing voluntary consent. Withdrawal of consent without § 302 authority present means the transport cannot proceed.',
       next: 'debrief'
     },
     'c3-good': {
@@ -341,7 +385,7 @@ function getCrisisQuestions() {
         'The officer should have waited for a mental health co-responder before making any contact.'
       ],
       correct: 2,
-      feedback: 'Correct. Crisis Intervention Training (CIT) research consistently shows that individuals in mental health crisis respond to authoritative commands differently than non-crisis individuals. Commands that trigger compliance in normal encounters frequently trigger fight-or-flight responses in someone in acute distress. A calm, low-key approach — slow movement, quiet voice, non-threatening positioning — significantly reduces escalation risk. PA Act 57 of 2020 requires officers to consider de-escalation whenever it is safe and feasible.'
+      feedback: 'Correct. Crisis Intervention Training (CIT) research consistently shows that individuals in mental health crisis respond to authoritative commands differently than non-crisis individuals. Commands that trigger compliance in normal encounters frequently trigger fight-or-flight responses in someone in acute distress. A calm, low-key approach — slow movement, quiet voice, non-threatening positioning — significantly reduces escalation risk. National best practice — PERF\'s ICAT model and CIT protocols — directs officers to use de-escalation whenever it is safe and feasible.'
     },
     {
       scenario: 'A subject in a mental health crisis has been escalating. He is now pacing and yelling, but has no visible weapon and has not made a specific threat. Your partner has just arrived.',

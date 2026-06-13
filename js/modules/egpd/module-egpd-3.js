@@ -1,4 +1,54 @@
 /* ══════════════════════════════════════════
+   READING — Report Writing (EGPD)
+══════════════════════════════════════════ */
+const READING_REPORT_WRITING = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A foot pursuit at Main St &amp; 4th St ends in a takedown and an arrest. Now you have to write the report. The DA's office will read it. So will defense counsel — line by line, against your body camera footage.</h2>
+    <p>This module covers what separates a report that builds a case from a report that loses one: contemporaneous documentation, facts over conclusions, and absolute integrity in what appears on the page.</p>
+  </div>
+  <div class="content-block">
+    <h4>Core Principle</h4>
+    <h2>Write soon, write from verified sources, write your own observations.</h2>
+    <ul class="key-points">
+      <li><strong>Contemporaneous documentation.</strong> Reports should be written as soon as safely possible after an incident, while observations are most accurate. Memory degrades within hours — a report written at 2:15 AM from recollection alone will be missing distances, exact commands, and timeline. The goal is a record that reflects your knowledge at the time of the event, not your reconstructed memory.</li>
+      <li><strong>Review your sources first.</strong> When body camera footage and field notes exist, review them before writing. A report that says the subject "immediately fled" when the footage shows a 4-second pause hands defense counsel a credibility attack — even when you were being honest. Precision grounded in verified facts is the defense.</li>
+      <li><strong>Your report, your observations.</strong> A police report is a sworn account of the officer's personal observations. A partner who arrived during the takedown can document what they personally witnessed from arrival forward — they cannot document your pursuit, your contact, or your use of force. A narrative written by an officer who was not present for the events is hearsay and creates problems no writing skill can fix.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Facts vs. Conclusions</h4>
+    <h2>"Resisted arrest" is a conclusion. Courts need the facts underneath it.</h2>
+    <p>Legal conclusions — "resisted arrest," "became combative," "force was proportionate," "based on my training and experience, I believed the subject was involved in criminal activity" — tell a reader what to conclude without giving them the facts to evaluate the conclusion. They do not survive cross-examination.</p>
+    <p>The defensible standard is specific, sequential, body-movement-level documentation: <em>"As I attempted to apply handcuffs, subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep, bringing subject to a controlled ground position. Subject ceased active resistance. Handcuffs applied."</em> A judge reading that can reconstruct the encounter. The same rule applies to observations: not "seemed nervous," but "hands visibly trembling, voice elevated in pitch, avoided eye contact, checked mirrors repeatedly."</p>
+    <div class="case-law-box">
+      <div class="case-title">Illinois v. Gates, 462 U.S. 213 (1983)</div>
+      <p>Probable cause is evaluated under the totality of the circumstances — and it must be supported by specific articulable facts, not conclusory statements. "Training and experience" references are valid only when tethered to stated facts: what you observed, heard, and detected, and how those specific facts established probable cause for the specific offense charged.</p>
+    </div>
+    <div class="sop-box">
+      <div class="sop-title">EGPD General Order 1.3 — The Use of Force Narrative Standard</div>
+      <p>"Officers using force must be able to articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected. Full disclosure of the circumstances requiring the use of force, and the type and extent of force, shall be thoroughly documented." Every use of force narrative should capture: the subject's specific action that prompted the response, the specific force applied, the sequence and timeline, and what happened after — compliance, injury, medical response.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>Report Integrity</h4>
+    <h2>What appears in quotation marks must be what was actually said.</h2>
+    <p>A police report is a legal document. Reconstructing a quote you did not capture — even when the "spirit" is accurate — is a false official statement. Under 18 Pa. C.S. § 4904 (unsworn falsification to authorities) and § 4906 (false reports), fabricated content creates criminal exposure, and a single discovered reconstruction destroys your credibility as a witness in every future case.</p>
+    <ul class="key-points">
+      <li><strong>Gap in your notes?</strong> Follow up with the witness or victim, document the follow-up contact (date, time, method), and distinguish clearly between direct quotes, paraphrased summaries, and your own observations.</li>
+      <li><strong>Forgot something after filing?</strong> Document it now as a supplement, noting that it was captured from memory rather than contemporaneous notes. Omitting known facts weakens the case; silently inserting them into a finished report is misconduct. Transparency preserves both the information and your integrity.</li>
+      <li><strong>Writing around a gap doesn't work either.</strong> "Victim provided a statement consistent with the injuries observed" is conclusory — it avoids fabrication but may fail to establish probable cause. Get the detail and document it properly.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Stops That End Without an Arrest</h4>
+    <h2>Field intelligence that isn't recorded doesn't exist.</h2>
+    <p>The decision not to arrest or not to search can be legally sound. Failing to document what you observed is not. Undocumented observations cannot support a future probable cause determination, cannot corroborate another department's investigation, and are lost entirely if you are later called to testify. Every stop that generates observations — out-of-state plates, masking odors, behavioral indicators, a tag forwarded for regional awareness — deserves a complete CAD entry, even when the contact ends with a warning.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-report-writing')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Report Writing (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_REPORT_WRITING = {

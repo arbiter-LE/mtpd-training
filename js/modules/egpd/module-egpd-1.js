@@ -1,4 +1,60 @@
 /* ══════════════════════════════════════════
+   READING — Search & Seizure (EGPD)
+══════════════════════════════════════════ */
+const READING_SEARCH_SEIZURE = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>You stop a vehicle on Blaker Dr for a tail light. The driver is nervous. You detect an odor you recognize as marijuana. What happens next will be decided — and scrutinized — based on your training, your judgment, and your documentation.</h2>
+    <p>This module covers what the Fourth Amendment and the Pennsylvania Constitution require of you at every decision point of a search or seizure — and why Pennsylvania officers operate under stricter rules than the federal floor.</p>
+  </div>
+  <div class="content-block">
+    <h4>Core Principle</h4>
+    <h2>Warrantless searches are presumptively unreasonable.</h2>
+    <p>The Fourth Amendment protects persons against unreasonable searches and seizures. Pennsylvania adds a second layer: Article I, Section 8 of the Pennsylvania Constitution, which Pennsylvania courts have repeatedly held provides <strong>greater</strong> privacy protection than the federal baseline. The foundational rule in both systems: a warrantless search is presumptively unreasonable, and the burden is on the Commonwealth — not the defendant — to justify it.</p>
+    <div class="case-law-box">
+      <div class="case-title">Terry v. Ohio, 392 U.S. 1 (1968)</div>
+      <p>Officers may conduct a brief investigatory stop based on reasonable, articulable suspicion that criminal activity is afoot. A protective frisk for weapons requires separate justification — reasonable suspicion that the person is armed and dangerous. A frisk on that basis does not require consent, and a refusal of consent neither eliminates Terry authority nor supplies suspicion that was not already there.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">Commonwealth v. Enimpah, 106 A.3d 695 (Pa. 2014)</div>
+      <p>At a suppression hearing, the Commonwealth bears the burden of production and persuasion to establish that the challenged evidence was lawfully obtained. Practically, that burden is carried — or dropped — by the specificity of the officer's report and testimony. A report built on conclusions gives the Commonwealth nothing to carry it with.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>Vehicle Searches in Pennsylvania — Current Law</h4>
+    <h2>Probable cause alone does not get you into a vehicle in this Commonwealth.</h2>
+    <p>This is the area where Pennsylvania law has moved most in the last decade, and where officers trained on older standards make suppression-hearing mistakes.</p>
+    <div class="case-law-box">
+      <div class="case-title">Commonwealth v. Alexander, 243 A.3d 177 (Pa. 2020)</div>
+      <p>The Pennsylvania Supreme Court overruled <em>Commonwealth v. Gary</em> (2014) and held that under Article I, Section 8, a warrantless vehicle search requires <strong>both probable cause and exigent circumstances</strong>. Either alone is insufficient. Obtaining a warrant is the default; if you search without one, a court will ask whether exigency made getting a warrant not reasonably practicable.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">Commonwealth v. Barr, 266 A.3d 25 (Pa. 2021)</div>
+      <p>Because medical marijuana is lawful in Pennsylvania, the odor of marijuana <strong>alone</strong> no longer establishes probable cause. Odor remains a legitimate <em>factor</em> in the totality of the circumstances — it simply cannot do the job by itself. Odor plus corroborating observations, documented with specificity, can still build probable cause.</p>
+    </div>
+    <p>The practical sequence on a vehicle stop: treat odor as one factor, develop and document the totality, and when probable cause exists without true exigency — secure the vehicle and get the warrant. A K9 open-air sniff, supported by independent reasonable suspicion under <em>Rodriguez</em>, can contribute to probable cause; it does not eliminate the warrant requirement.</p>
+  </div>
+  <div class="content-block">
+    <h4>Recognized Exceptions to the Warrant Requirement</h4>
+    <ul class="key-points">
+      <li><strong>Consent</strong> — Must be voluntary, not the product of duress or coercion (<em>Schneckloth v. Bustamonte</em>, 1973). Scope is measured by objective reasonableness — what a reasonable person would have understood by the exchange (<em>Florida v. Jimeno</em>, 1991). General consent to search a vehicle does not automatically include a locked container; consent to search a living room does not extend to an attached garage. When scope is ambiguous, clarify before you proceed.</li>
+      <li><strong>Search Incident to Lawful Arrest</strong> — Extends to the person and the area within their immediate control at the time of arrest (<em>Chimel v. California</em>, 1969). A backpack being worn at arrest qualifies. <em>Arizona v. Gant</em> (2009) sharply limits vehicle searches incident to arrest — know the distinction.</li>
+      <li><strong>Plain View</strong> — Requires lawful presence, an item in plain view, and incriminating character that is immediately apparent (<em>Horton v. California</em>, 1990). Applies during consent searches and warrant executions alike — but a locked safe, unlisted documents, or items needing further examination do not satisfy "immediately apparent."</li>
+      <li><strong>Terry Frisk</strong> — Reasonable suspicion the person is armed and dangerous authorizes a pat-down for weapons. Consent is a separate authority; its refusal changes nothing about Terry.</li>
+      <li><strong>Abandonment</strong> — Property voluntarily abandoned carries no Fourth Amendment expectation of privacy. The controlling question is the voluntary relinquishment of control, not whether the property landed on public or private ground.</li>
+      <li><strong>Exigent Circumstances</strong> — Hot pursuit, imminent destruction of evidence, immediate threat to safety. Exigency cannot be manufactured by officer conduct — and in Pennsylvania it is a required element, alongside probable cause, of any warrantless vehicle search.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>The Documentation Standard</h4>
+    <h2>Vague reports lose suppression hearings. Specific reports win them.</h2>
+    <p>Courts do not evaluate your instincts. They evaluate whether a reasonable officer, with your training and experience, observing the specific facts you documented, would reach the conclusion you reached. "Appeared nervous" and "detected an odor of marijuana" are conclusions. "Driver would not maintain eye contact, hands visibly trembling on the wheel, responses delayed approximately two seconds; strong odor consistent with fresh marijuana from the open driver's window at approximately three feet, consistent with training and seven years of patrol experience" — that is a foundation a court can evaluate.</p>
+    <p>Consent documentation must address voluntariness, not just the fact of consent: the exact words of the request and response, weapon status, tone, the subject's apparent condition, and the absence of coercion. And every stop that generates observations — including stops that end in a warning — deserves complete documentation. Field intelligence that is not recorded does not exist.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-search-seizure')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Search & Seizure (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_SEARCH_SEIZURE = {
@@ -29,7 +85,7 @@ const SCENARIO_SEARCH_SEIZURE = {
       question: 'Based on your observations, what is your next action?',
       options: [
         {
-          text: 'Immediately ask the driver to step out and search the vehicle. The odor of marijuana establishes probable cause under Pennsylvania law.',
+          text: 'Immediately ask the driver to step out and search the vehicle. The odor of marijuana gives you probable cause, and probable cause is all you need.',
           next: 'c1a',
           quality: 'risky',
           shortLabel: 'Searched immediately on odor alone'
@@ -63,9 +119,9 @@ const SCENARIO_SEARCH_SEIZURE = {
       heading: 'You search the vehicle.',
       narrative: [
         'You ask the driver to step out and conduct a search of the vehicle interior. Under the rear passenger seat you locate a plastic bag containing approximately 14 grams of marijuana and a digital scale. You place the driver under arrest and transport to the Montgomery County lockup.',
-        'Six weeks later, defense counsel files a motion to suppress. At the suppression hearing, the court reviews your report. Your documentation states: driver "appeared nervous" and officer "detected the odor of marijuana." The court finds this conclusory language insufficient to establish the specificity required for probable cause under Commonwealth v. Enimpah (2014). The motion is granted. Evidence suppressed. The case is dismissed.'
+        'Six weeks later, defense counsel files a motion to suppress — and wins on two independent grounds. First, under Commonwealth v. Barr (2021), the odor of marijuana alone no longer establishes probable cause in Pennsylvania, and your report documents the supporting observations only as driver "appeared nervous" — conclusory language the court cannot weigh. Second, under Commonwealth v. Alexander (2020), even probable cause would not have justified this search: a warrantless vehicle search in Pennsylvania requires probable cause AND exigent circumstances, and no exigency existed — the vehicle was stopped, the scene controlled. Evidence suppressed. Case dismissed.'
       ],
-      legal: 'The odor of marijuana may establish probable cause in Pennsylvania, but your documentation must be specific and articulable — not conclusory. "Appeared nervous" is a conclusion. Courts require specificity: which behaviors, what odor intensity, from what distance, and how your training and experience supported your assessment.',
+      legal: 'Commonwealth v. Alexander (2020): warrantless vehicle searches in Pennsylvania require both probable cause and exigent circumstances — a warrant is the default. Commonwealth v. Barr (2021): the odor of marijuana is a factor in the totality of the circumstances but cannot establish probable cause by itself. And at the suppression hearing, the Commonwealth bears the burden of proving the search lawful (Commonwealth v. Enimpah, 2014) — a burden a conclusory report cannot carry.',
       next: 'd2a'
     },
     'd2a': {
@@ -203,9 +259,9 @@ const SCENARIO_SEARCH_SEIZURE = {
       heading: 'K9 is en route.',
       narrative: [
         'You return to your patrol vehicle. You document your observations in CAD in real time: odor detected, driver behavioral observations, and your request for K9. You have a lawful basis to maintain the stop — the equipment violation keeps the vehicle there while you develop the situation.',
-        'Montgomery County K9 Unit arrives 11 minutes later. The handler conducts a free air sniff of the vehicle exterior. The dog alerts on the driver\'s door seam. Probable cause is now independently established. You conduct the search and locate 14 grams of marijuana, a digital scale, and $840 in cash in the center console.'
+        'Montgomery County K9 Unit arrives 11 minutes later. The handler conducts a free air sniff of the vehicle exterior. The dog alerts on the driver\'s door seam. The alert, combined with your documented observations, establishes probable cause. With no exigent circumstances — the vehicle is stopped and the occupants controlled — you secure the vehicle and obtain a search warrant, as Commonwealth v. Alexander requires. The search locates 14 grams of marijuana, a digital scale, and $840 in cash in the center console, all of it on a warrant that will survive any suppression motion.'
       ],
-      legal: 'Rodriguez v. United States (2015) limits how long a traffic stop may be extended for a dog sniff — it cannot extend the stop\'s duration beyond what is needed for the original purpose without independent reasonable suspicion. Here, the odor you detected provides that independent reasonable suspicion. Your CAD documentation preserves the timeline.',
+      legal: 'Rodriguez v. United States (2015) limits how long a traffic stop may be extended for a dog sniff — it cannot extend the stop\'s duration beyond what is needed for the original purpose without independent reasonable suspicion. Here, the odor plus your documented behavioral observations provide that suspicion, and your CAD documentation preserves the timeline. Commonwealth v. Alexander (2020): once probable cause exists, absent exigent circumstances the next step is a warrant — not a roadside search.',
       next: 'd2c'
     },
     'd2c': {
@@ -469,16 +525,16 @@ function getSearchSeizureQuestions() {
       feedback: 'Correct. Under the plain view doctrine (Horton v. California, 1990), you may seize evidence without a warrant when you are lawfully present, the item is in plain view, and its incriminating character is immediately apparent. A scale with white powder residue in a residence meets this standard.'
     },
     {
-      scenario: 'You stop a vehicle and develop probable cause to search based on the odor of marijuana. Your report later states only that the driver "appeared nervous" and you "detected an odor of marijuana."',
+      scenario: 'You stop a vehicle and develop probable cause to search based on the odor of marijuana combined with other observations. Your report later states only that the driver "appeared nervous" and you "detected an odor of marijuana."',
       text: 'What is the primary legal problem with this documentation in a Pennsylvania suppression hearing?',
       options: [
         'Nervousness alone can never contribute to a probable cause determination in Pennsylvania.',
         'The documentation uses conclusory language without the specific, articulable facts required to support the probable cause determination.',
-        'Odor-based probable cause is no longer recognized in Pennsylvania following recent legislative changes.',
+        'Reports may only describe observations made after the search began, not before.',
         'There is no legal problem — odor plus nervous behavior always establishes probable cause in Pennsylvania courts.'
       ],
       correct: 1,
-      feedback: 'Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. "Appeared nervous" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. Commonwealth v. Enimpah (2014) is controlling.'
+      feedback: 'Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. "Appeared nervous" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. This matters doubly after Commonwealth v. Barr (2021), where odor is only a factor in the totality — and at the suppression hearing the Commonwealth bears the burden of proving the search lawful (Commonwealth v. Enimpah, 2014), which a conclusory report cannot carry.'
     },
     {
       scenario: 'During a foot pursuit, a suspect tosses a bag into an open dumpster on the side of a private parking lot before you apprehend him.',

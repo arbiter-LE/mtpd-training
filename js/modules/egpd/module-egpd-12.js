@@ -1,4 +1,48 @@
 
+/* ── Reading: De-escalation ─────────────── */
+const READING_DEESCALATION = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A plaza parking lot on Washington St. A man in crisis is pressing a folding knife against his own forearm, telling you "they put something in my arm." He hasn't threatened anyone but himself. What you do in the next sixty seconds either opens a conversation or starts a standoff.</h2>
+    <p>This module covers de-escalation as a tactical discipline: the legal standard it operates under, the techniques that work on a subject in crisis, and the professionalism that continues after the scene resolves.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Legal Standard</h4>
+    <h2>Reasonableness is judged on the totality — and mental state is part of the totality.</h2>
+    <div class="case-law-box">
+      <div class="case-title">Graham v. Connor, 490 U.S. 386 (1989)</div>
+      <p>Force is evaluated by objective reasonableness from the perspective of a reasonable officer on scene, under the totality of the circumstances: the severity of the crime, whether the subject poses an immediate threat, and whether the subject is resisting or evading. A subject in mental health crisis whose threat is self-directed, who is not advancing, and who is engaging verbally does not present the threat picture that justifies a drawn firearm at initial contact — and prior violence history informs positioning and awareness, not the force applied to current behavior. Tennessee v. Garner (1985) adds the boundary for deadly force against fleeing subjects.</p>
+    </div>
+    <div class="sop-box">
+      <div class="sop-title">EGPD General Order 1.3 — The Department's Own Floor</div>
+      <p>"It is the policy of the department that all persons, regardless of their involvement in a situation, shall be treated with humanity, courtesy, and the dignity due any human being, to the extent that such treatment is allowed by the subject's resistance." Officers "shall not be argumentative or engage in acts that might incite a subject to become physically aggressive," and "emphasis shall always be upon obtaining control over the resistance situation rather than forcing submission." Verbal Control is Use of Force Level 1 — the foundation of the continuum.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">Mental Health Procedures Act — 50 P.S. § 7302</div>
+      <p>Officers may initiate an involuntary emergency examination (302) when a person is severely mentally disabled and in need of immediate treatment — a clear and present danger to themselves or others, evidenced by the officer's observations. It is a civil process: transport for psychiatric evaluation, not arrest. That distinction shapes what you say to the subject and the family, and how you write the report. The 302 exists for situations that require it — not as a 10-minute shortcut around de-escalation that is working.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>The Techniques</h4>
+    <h2>Time and distance are tactical assets. A subject who is talking is not acting.</h2>
+    <p>PERF's ICAT (Integrating Communications, Assessment, and Tactics) model — adopted nationally alongside CIT protocols developed through the Memphis Model — frames de-escalation as a decision-making discipline: when tactically feasible, create time and distance, communicate calmly, and avoid the authority cues that read as threat to a person in psychological crisis. CIT-trained responses measurably reduce use-of-force rates in mental health contacts.</p>
+    <ul class="key-points">
+      <li><strong>Distance, cover, holstered weapon.</strong> Position at distance with partial cover, hands visible. A drawn firearm and shouted commands are accelerant to a person in psychosis — command presence that works on a rational subject reads as confirmation of their worst fears.</li>
+      <li><strong>Calm contact, normal volume, a name.</strong> "I'm not here to hurt you. My name's [yours]. What's yours?" A subject who gives you his name has started a conversation. Slow the pace. The goal at first contact is contact — not compliance.</li>
+      <li><strong>Hold your backup.</strong> When tactical movement makes a subject in crisis tighten his grip, tactical movement has become a negative variable. Signal hold, keep talking, and request the right escalation: CIT officers or a mobile crisis team — not closure. A forced takedown on a decompensating subject with a blade against his own body is predictably dangerous to everyone, including your officers.</li>
+      <li><strong>Ignore the gallery.</strong> "Just tase him and get it over with" is not a tactical input. Crowd management belongs to a secondary officer; force decisions belong to the circumstances, policy, and law.</li>
+      <li><strong>Barricaded, no confirmed weapon, talking through a door:</strong> time, distance, communication. No ultimatums. Keep them engaged while specialized resources respond — a talking subject is within patrol scope to manage.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>After the Scene</h4>
+    <h2>The professionalism doesn't go off when the handcuffs go on.</h2>
+    <p>An upset family member demanding your badge number in front of a crowd is the last de-escalation of the call. Provide your name and badge number without hesitation — it is required, and hesitation reads as concealment. Acknowledge the concern without defensiveness, explain the complaint process, offer your supervisor. Do not litigate the incident on the sidewalk: detailed justifications under emotional pressure look defensive, invite argument, and can create inconsistencies with your official report. Your body camera, radio traffic, and documentation are where your conduct is recorded — facilitating the complaint process is what confidence in sound conduct looks like.</p>
+    <p>And when a colleague asks why you spent 45 minutes on a call you could have "302'd in ten": the de-escalation worked. The subject left calm, connected to services, without unnecessary trauma — a better outcome for him, the community, and the department. Defending the professional use of de-escalation, by name and with reasoning, is how a culture that values it gets built.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-de-escalation')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
 /* ── Scenario: De-escalation ────────────── */
 const SCENARIO_DEESCALATION = {
   title: 'De-escalation',
@@ -57,7 +101,7 @@ const SCENARIO_DEESCALATION = {
       heading: 'You slowed it down. He is still talking to you.',
       narrative: [
         'You positioned yourself at roughly 20 feet, with a parked vehicle at your flank for partial cover. Hands visible but not on your weapon. You spoke at normal volume — not loud, not commanding.',
-        '"Hey. I\'m not here to hurt you. My name\'s Officer Curtis. What\'s your name?"',
+        '"Hey. I\'m not here to hurt you. My name\'s Officer Hale. What\'s your name?"',
         'He stopped pacing. "Marcus."',
         '"Marcus. I can see something\'s wrong. I\'m not going to rush you." You maintained eye contact. The knife was still in his hand. But he was talking. The window was open.'
       ],

@@ -1,4 +1,40 @@
 
+/* ── Reading: Officer Wellness ──────────── */
+const READING_WELLNESS = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>After a difficult child welfare call, your partner of three years says it flatly, like a fact: "I don't feel anything anymore. I haven't in a while." No supervisors around. He's unlocking his car. What you do with that sentence may be the most important intervention of your career.</h2>
+    <p>This module covers the recognized signs of operational stress injury, the peer's role in early intervention, the confidentiality protections that make help safe to seek, and the standard you owe yourself.</p>
+  </div>
+  <div class="content-block">
+    <h4>Recognizing the Signs</h4>
+    <h2>Emotional numbing is a symptom, not adaptation.</h2>
+    <ul class="key-points">
+      <li><strong>The vocabulary:</strong> secondary traumatic stress (STS) and operational stress injury (OSI) are documented occupational health conditions in law enforcement — physiological responses to sustained trauma exposure, not character failures. Emotional numbing, depersonalization ("watching everything from far away"), detachment, and loss of empathy are recognized symptoms and the pathway to burnout.</li>
+      <li><strong>The visible pattern:</strong> behavioral change observed by peers — increased callouts, short temper on calls, dark humor that shifts in character, withdrawal from the squad, coming in early and leaving late without explanation — is among the earliest indicators of distress, often visible to colleagues before it surfaces in self-report or supervisory review. No single behavior alarms; the accumulating pattern is the signal.</li>
+      <li><strong>The stakes:</strong> the Ruderman Family Foundation's 2018 white paper found police officers and firefighters more likely to die by suicide than in the line of duty — and identified stigma around seeking help as the central barrier to early intervention.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>The Peer's Role</h4>
+    <h2>Officers in distress rarely ask first. That's why peers go first.</h2>
+    <p>Law enforcement culture selects for people who push through difficulty without complaint — the same trait that makes officers effective makes them unlikely to reach out. Waiting for a struggling colleague to come to you usually means waiting for a crisis. The research-supported first response is direct, private engagement: name what you've noticed, without accusation or pressure; create space to talk; mention peer support or EAP as something that exists for exactly this; follow up.</p>
+    <p>When informal support hasn't produced change and performance begins creating safety risk on calls — a freeze at a key moment, a partner you had to cover — the threshold for escalating support (not discipline) has been crossed. Tell them what you observed, tell them you're going to peer support, give them the chance to self-refer first, and follow through. That is not betrayal; an officer who cannot safely perform their duties is a danger to themselves, their partners, and the public — and protecting them from intervention is abandonment dressed as loyalty.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Protections</h4>
+    <h2>Confidentiality is real — and knowing its actual limits makes it credible.</h2>
+    <p>In Pennsylvania, communications from a law enforcement officer to a critical incident stress management team member are confidential under 42 Pa.C.S. § 5950 and cannot be disclosed in legal proceedings without the officer's consent; § 5952 extends protections to trained peer support members. Confidentiality is not absolute — communications indicating a clear and present danger, and (under standard program design) disclosures of criminal conduct, fall outside it, the same limits that apply to mental health professionals. Peer support officers state these limits up front.</p>
+    <p>A voluntary wellness contact or EAP self-referral is distinct from a fitness-for-duty evaluation: the former is confidential and does not automatically trigger administrative action; the latter is a formal administrative process. EGPD's own General Order 1.3.7 reflects the same philosophy after the most serious incidents — mandatory post-shooting psychological evaluation at department expense, with reassignment that "shall not be considered a suspension or disciplinary action." Early, voluntary engagement is consistently associated with better outcomes and longer careers.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Standard You Owe Yourself</h4>
+    <h2>Stop saying "fine" when you're not.</h2>
+    <p>Three days of five-hour sleep produces impairment comparable to an unlawful blood alcohol level — and officers in that state are making high-stakes decisions. A personal day is rest, not a plan; if you return, say "fine" at the next check-in, and resume the same pace, you've pressed pause on the pattern, not addressed it. The wellness-informed answer to a sergeant's "how are you holding up?" is calibrated honesty: acknowledge the weight, note what's stable, name what you're monitoring in yourself — without dramatizing or minimizing. Critical incident debriefs work the same way: normalized, encouraged, standard practice — because early engagement with post-incident support measurably reduces long-term psychological injury.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-officer-wellness')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
 /* ── Scenario: Officer Wellness ─────────── */
 const SCENARIO_WELLNESS = {
   title: 'Officer Wellness',
@@ -11,7 +47,7 @@ const SCENARIO_WELLNESS = {
       weather: 'Clear',
       unit: 'Unit 7903',
       narrative: [
-        'You\'ve worked with your patrol partner, Officer Diaz, for three years. He\'s one of the best officers in the division — reliable, calm under pressure, good instincts. Over the last two months, something has changed.',
+        'You\'ve worked with your patrol partner, Officer Hartman, for three years. He\'s one of the best officers in the division — reliable, calm under pressure, good instincts. Over the last two months, something has changed.',
         'He\'s been calling out more. When he\'s in, he\'s short-tempered on calls — snapping at complainants, using dismissive language he wouldn\'t have used before. Last week he made a sarcastic comment about a suicide call that made you uncomfortable. Tonight, after a difficult child welfare check, he said flatly: "I don\'t feel anything anymore. I haven\'t in a while."',
         'You\'re both in the parking lot after shift. No supervisors around. He didn\'t say it looking for a response — he said it like a fact.'
       ],
@@ -20,7 +56,7 @@ const SCENARIO_WELLNESS = {
     d1: {
       type: 'decision',
       decisionNumber: 1,
-      situation: 'Diaz\'s statement — "I don\'t feel anything anymore" — is sitting in the air between you. He\'s unlocking his car. He\'s not visibly distressed, but what he said describes a significant psychological symptom.',
+      situation: 'Hartman\'s statement — "I don\'t feel anything anymore" — is sitting in the air between you. He\'s unlocking his car. He\'s not visibly distressed, but what he said describes a significant psychological symptom.',
       question: 'How do you respond in this moment?',
       options: [
         {
@@ -41,10 +77,10 @@ const SCENARIO_WELLNESS = {
       type: 'consequence',
       outcomeClass: 'outcome-bad',
       outcomeLabel: 'The Moment Passed — And So Did He',
-      heading: 'You said nothing. Three weeks later, Diaz was involved in a use-of-force incident that is now under review.',
+      heading: 'You said nothing. Three weeks later, Hartman was involved in a use-of-force incident that is now under review.',
       narrative: [
         'Emotional numbing — "I don\'t feel anything anymore" — is a recognized symptom of operational stress injury and secondary trauma. It is not a rough patch. It is a warning sign that a person\'s psychological resources have been depleted.',
-        'Diaz\'s behavior on calls deteriorated over the following weeks. The use-of-force incident was not egregious, but his report documentation was inconsistent and his on-scene demeanor was captured on body camera in a way that raised questions.',
+        'Hartman\'s behavior on calls deteriorated over the following weeks. The use-of-force incident was not egregious, but his report documentation was inconsistent and his on-scene demeanor was captured on body camera in a way that raised questions.',
         'He is now facing an internal investigation. The outcome might have been different if someone had said something three weeks earlier. The most important intervention you will ever make for a fellow officer may happen in a parking lot at midnight — not on a critical incident.'
       ],
       legal: 'IACP officer wellness guidance and the COPS Office peer support research base: Peer-observed behavioral change is widely identified as one of the earliest indicators of operational stress injury — often visible to colleagues before it surfaces in self-report or supervisory review. Officers who observe signs of significant stress, psychological distress, or behavioral change in a colleague are encouraged to make contact and connect them with peer support. Early peer intervention is consistently identified as a high-leverage point for preventing escalation to crisis.',
@@ -66,7 +102,7 @@ const SCENARIO_WELLNESS = {
     d2: {
       type: 'decision',
       decisionNumber: 2,
-      situation: 'Over the next week, Diaz\'s behavior on calls has not improved. You\'ve spoken with him twice informally. He hasn\'t reached out to peer support. Yesterday he was visibly impaired in his judgment during a domestic — he froze at a key moment and you had to step in. You are now genuinely concerned about his safety and the safety of others on calls with him.',
+      situation: 'Over the next week, Hartman\'s behavior on calls has not improved. You\'ve spoken with him twice informally. He hasn\'t reached out to peer support. Yesterday he was visibly impaired in his judgment during a domestic — he froze at a key moment and you had to step in. You are now genuinely concerned about his safety and the safety of others on calls with him.',
       question: 'What do you do?',
       options: [
         {
@@ -76,7 +112,7 @@ const SCENARIO_WELLNESS = {
           next: 'c2-bad'
         },
         {
-          text: 'Tell Diaz directly that what you saw yesterday crosses a line — that you\'re concerned about him and you\'re going to talk to the peer support coordinator. Give him the chance to get ahead of it himself. Then follow through.',
+          text: 'Tell Hartman directly that what you saw yesterday crosses a line — that you\'re concerned about him and you\'re going to talk to the peer support coordinator. Give him the chance to get ahead of it himself. Then follow through.',
           shortLabel: 'Tell him directly — involve peer support, give him the chance',
           quality: 'good',
           next: 'c2-good'
@@ -89,9 +125,9 @@ const SCENARIO_WELLNESS = {
       outcomeLabel: 'It Escalated — On a Call',
       heading: 'The code held. So did the deterioration.',
       narrative: [
-        'Diaz froze again the following Tuesday — this time during a foot pursuit. He lost the subject and submitted a report that left out the freeze entirely. A supervisor reviewing the body camera footage noticed the gap and opened an investigation.',
+        'Hartman froze again the following Tuesday — this time during a foot pursuit. He lost the subject and submitted a report that left out the freeze entirely. A supervisor reviewing the body camera footage noticed the gap and opened an investigation.',
         'The internal review uncovered three weeks of documented behavioral decline. When asked whether other officers had observed changes, your name came up. You had said nothing.',
-        'The code of silence that felt like loyalty was actually abandonment. Diaz needed intervention, not protection from the truth about what was happening to him. An officer who cannot safely perform their duties on calls is a danger to themselves, their partners, and the public. Peer support exists for this reason.'
+        'The code of silence that felt like loyalty was actually abandonment. Hartman needed intervention, not protection from the truth about what was happening to him. An officer who cannot safely perform their duties on calls is a danger to themselves, their partners, and the public. Peer support exists for this reason.'
       ],
       legal: 'Duty to partner and duty to intervene: Allowing an officer in psychological crisis to continue active patrol without intervention creates liability for the department and danger for the officer, their partners, and the public. Pennsylvania law does not impose criminal liability for failure to report officer wellness concerns — but departmental policy and professional obligation create clear expectations.',
       next: 'd3'
@@ -102,7 +138,7 @@ const SCENARIO_WELLNESS = {
       outcomeLabel: 'He Got Help. You Made the Call.',
       heading: 'It wasn\'t easy. It was right.',
       narrative: [
-        '"Diaz, what happened yesterday on that call — I can\'t pretend I didn\'t see it. I\'m not going to your supervisor to burn you. I\'m going to peer support because I\'m worried about you and I need someone with more tools than I have. I want you to make the call today. If you do, I\'ll back you all the way."',
+        '"Hartman, what happened yesterday on that call — I can\'t pretend I didn\'t see it. I\'m not going to your supervisor to burn you. I\'m going to peer support because I\'m worried about you and I need someone with more tools than I have. I want you to make the call today. If you do, I\'ll back you all the way."',
         'He was quiet for a long time. Then: "Okay."',
         'He contacted the peer support coordinator that afternoon. He was placed on a temporary administrative assignment while working with a department-connected therapist — not as a punishment, but to give him the space to recover. He came back to patrol eight weeks later. He told you it was the first time in two years he felt like himself.'
       ],

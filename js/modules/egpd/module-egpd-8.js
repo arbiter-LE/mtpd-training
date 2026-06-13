@@ -1,4 +1,55 @@
 /* ══════════════════════════════════════════
+   READING — Traffic Stops & Vehicle Contacts (EGPD)
+══════════════════════════════════════════ */
+const READING_TRAFFIC_STOPS = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A brake-light stop on Blaker Dr. A moderate odor of marijuana from the open window, shaking hands, a frozen passenger. What you may lawfully do next has changed twice in the last decade — and officers trained on the old rules lose suppression hearings.</h2>
+    <p>This module covers the controlling law of the vehicle stop: occupant control, stop duration, Pennsylvania's current vehicle search standard, documentation, and the situations that test your judgment at the roadside.</p>
+  </div>
+  <div class="content-block">
+    <h4>Controlling the Stop</h4>
+    <h2>Occupants out of the vehicle: settled. Extending the stop: strictly limited.</h2>
+    <div class="case-law-box">
+      <div class="case-title">Pennsylvania v. Mimms, 434 U.S. 106 (1977) / Maryland v. Wilson, 519 U.S. 408 (1997)</div>
+      <p><em>Mimms</em>: officers may order the driver out of a lawfully stopped vehicle as a matter of course — no additional justification required. <em>Wilson</em> extends that authority to passengers. The officer-safety interest outweighs the minimal added intrusion. The order must serve genuine safety purposes — not the suppression of protected activity like recording.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">Rodriguez v. United States, 575 U.S. 348 (2015)</div>
+      <p>A stop may not be extended beyond the time needed to complete its purpose — citation, records checks, documents returned — without independent reasonable suspicion. Refusal to consent to a search is not reasonable suspicion; exercising a constitutional right cannot be the basis for detention. Once the purpose is complete and no independent basis exists, return the documents and let the driver leave.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>Vehicle Searches — Pennsylvania's Current Standard</h4>
+    <h2>Two cases changed everything. Know them both.</h2>
+    <div class="case-law-box">
+      <div class="case-title">Commonwealth v. Alexander, 243 A.3d 177 (Pa. 2020)</div>
+      <p>Overruled <em>Commonwealth v. Gary</em> (2014). Under Article I, Section 8 of the Pennsylvania Constitution, a warrantless vehicle search requires <strong>both probable cause and exigent circumstances</strong> — either alone is insufficient. Obtaining a warrant is the default; a reviewing court will ask whether exigency made getting one not reasonably practicable. A stopped vehicle with controlled occupants is rarely an exigency.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">Commonwealth v. Barr, 266 A.3d 25 (Pa. 2021)</div>
+      <p>Because medical marijuana is lawful in Pennsylvania, the odor of marijuana <strong>alone</strong> no longer establishes probable cause. Odor remains a legitimate factor in the totality of the circumstances — odor plus corroborating observations (behavior, plain-view material, admissions) can still build probable cause.</p>
+    </div>
+    <p>The roadside sequence under current law: document the odor and every corroborating observation with specificity; develop the totality within the stop's lawful scope; and when probable cause exists without true exigency — secure the vehicle and apply for the warrant. A warrant-authorized search does not depend on the subject's consent, and an objection ("I don't consent — I know my rights") does not suspend it. Document the objection verbatim and proceed within the warrant's scope. Consent is different: when consent is the legal basis of a search, its withdrawal ends the search.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Documentation Standard</h4>
+    <h2>"Detected an odor of marijuana" is a conclusion — and a suppression vulnerability.</h2>
+    <p>At a suppression hearing the Commonwealth must establish the factual basis for probable cause with specificity. Proper documentation includes: the precise location where the odor was detected ("upon approaching the open driver's window"), its strength and character, when it was detected relative to the contact, and every corroborating behavioral observation. After <em>Barr</em>, where odor is only a factor, the corroborating facts are not garnish — they are the probable cause.</p>
+  </div>
+  <div class="content-block">
+    <h4>Roadside Judgment Calls</h4>
+    <ul class="key-points">
+      <li><strong>Missing registration with a plausible explanation</strong> — a recent purchase, a receipt in hand: verify through the MDT, document what the driver provided and what your check returned, and use discretion consistent with department policy. Impoundment and arrest are disproportionate to a verifiable explanation.</li>
+      <li><strong>Suspected impairment despite adequate SFSTs</strong> — passing field sobriety tests reduces probable cause but does not automatically eliminate it; impairment can be drug-based. Document every observation (driving pattern, physical indicators, each SFST component), consider a Drug Recognition Expert evaluation where available, and decide on the documented totality — never on intuition alone.</li>
+      <li><strong>Vehicle registered to a warrant subject, license comes back to someone else</strong> — a driver matching the registered owner's physical description provides reasonable suspicion to investigate further under Terry: ask the driver to step out, request additional identifying information, and resolve the identity question. Arrest requires probable cause developed through that investigation, not the plate return alone.</li>
+      <li><strong>A bystander or passenger recording you</strong> — under <em>Fields v. City of Philadelphia</em> (3d Cir. 2017), the First Amendment protects recording police performing official duties in public. Do not order recording stopped, and do not dress a recording objection up as an "officer safety" order — courts look to actual motivation. Your professional conduct is the answer to the camera.</li>
+    </ul>
+    <button class="btn-launch" onclick="startScenario('egpd-traffic-stops')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Traffic Stops & Vehicle Contacts (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_TRAFFIC_STOPS = {
@@ -25,14 +76,14 @@ const SCENARIO_TRAFFIC_STOPS = {
       question: 'What is your lawful course of action regarding the marijuana odor?',
       options: [
         {
-          text: 'Return the documents and conclude the stop — the odor alone is insufficient probable cause in Pennsylvania given recent case law, and extending the stop without more risks a Rodriguez violation.',
-          shortLabel: 'Conclude stop — odor insufficient for extension',
+          text: 'Return the documents and conclude the stop — after Commonwealth v. Barr, the odor means nothing in Pennsylvania, and there is no lawful basis to do anything further.',
+          shortLabel: 'Conclude stop — treat odor as legally meaningless',
           quality: 'bad',
           next: 'c1-bad'
         },
         {
-          text: 'The odor of marijuana from the vehicle, combined with the driver\'s behavior, provides probable cause to search the vehicle under Pennsylvania law — conduct the search without extending the stop\'s purpose.',
-          shortLabel: 'Odor + conduct = probable cause — search without unnecessary extension',
+          text: 'Treat the odor as one factor in the totality of the circumstances. Document your specific observations — the odor, the shaking hands, the avoidance — and continue the investigation lawfully: if probable cause develops and no exigency exists, secure the vehicle and apply for a search warrant.',
+          shortLabel: 'Odor = one factor — build totality, warrant if PC develops',
           quality: 'good',
           next: 'c1-good'
         }
@@ -42,42 +93,42 @@ const SCENARIO_TRAFFIC_STOPS = {
       type: 'consequence',
       outcomeClass: 'outcome-bad',
       outcomeLabel: 'Incorrect Application of PA Search Law',
-      heading: 'In Pennsylvania, odor of marijuana can establish probable cause to search a vehicle.',
+      heading: 'Barr made odor insufficient by itself — it did not make odor meaningless.',
       narrative: [
-        'Rodriguez v. United States (2015) prohibits extending a stop beyond its original purpose without reasonable suspicion of additional criminal activity. That\'s the federal floor. But in Pennsylvania, the odor of marijuana emanating from a vehicle has consistently been held by courts to establish probable cause for a warrantless vehicle search under the automobile exception.',
-        'Commonwealth v. Gary (2014) and subsequent Pennsylvania cases confirm that probable cause — including odor — supports a warrantless search. The stop is not being "extended" for an unrelated purpose; the search is proceeding on independent probable cause.',
-        'Concluding the stop here without acting on that probable cause is both legally incorrect and a missed enforcement opportunity.'
+        'Commonwealth v. Barr (2021) holds that the odor of marijuana alone no longer establishes probable cause in Pennsylvania, because medical marijuana made lawful possession common. But the same decision preserves odor as a legitimate factor in the totality of the circumstances.',
+        'Here you have more than odor: a moderate odor from the open window, visibly shaking hands, eye-contact avoidance, and a frozen passenger. Walking away without documenting those observations — or developing them through lawful conversation during the stop you are still completing — abandons an investigation the law permits.',
+        'And if the totality does ripen into probable cause, Commonwealth v. Alexander (2020) tells you what comes next: not a roadside search, but a secured vehicle and a warrant application, unless true exigent circumstances exist.'
       ],
-      legal: 'Commonwealth v. Gary (2014): Pennsylvania adopted the federal automobile exception — probable cause alone supports a warrantless vehicle search without requiring exigent circumstances. Odor of marijuana emanating from a vehicle has been recognized by Pennsylvania courts as establishing probable cause. Rodriguez limits extensions without reasonable suspicion, but does not preclude action on independent probable cause developed during the stop.',
+      legal: 'Commonwealth v. Barr, 266 A.3d 25 (Pa. 2021): the odor of marijuana is a factor in the totality of the circumstances but cannot establish probable cause alone. Commonwealth v. Alexander, 243 A.3d 177 (Pa. 2020): a warrantless vehicle search requires both probable cause and exigent circumstances — obtaining a warrant is the default. Rodriguez v. United States (2015) governs the stop\'s duration: investigation within the stop\'s lawful scope is permitted; extension requires independent reasonable suspicion.',
       next: 'd2'
     },
     'c1-good': {
       type: 'consequence',
       outcomeClass: 'outcome-good',
-      outcomeLabel: 'Correct — Probable Cause Established',
-      heading: 'Odor of marijuana establishes probable cause under Pennsylvania law. The search is lawful.',
+      outcomeLabel: 'Correct — Current Pennsylvania Law Applied',
+      heading: 'Odor is a factor. The totality builds probable cause. The warrant does the rest.',
       narrative: [
-        'Commonwealth v. Gary (2014) confirmed Pennsylvania\'s adoption of the federal automobile exception — probable cause alone, without exigent circumstances, supports a warrantless vehicle search. The odor of marijuana from the vehicle provides that probable cause.',
-        'You are not "extending" the stop for an unrelated purpose — you are acting on independent probable cause developed during a lawful stop. Rodriguez does not apply to restrict action based on probable cause that arises during the stop\'s execution.',
-        'Order both occupants out of the vehicle (Mimms and Wilson authorize this), and conduct the search. Document the specific basis for probable cause: the odor, the driver\'s behavior, and the precise moment it was detected.'
+        'You document the specifics in real time: moderate odor of marijuana from the open driver\'s window detected on approach, the driver\'s visibly shaking hands, his avoidance of eye contact, the passenger\'s frozen posture. During the stop, in plain view, you also observe loose plant material on the center console. The totality now establishes probable cause.',
+        'Under Commonwealth v. Alexander, probable cause alone does not authorize a roadside search — a warrantless vehicle search requires probable cause AND exigent circumstances. The vehicle is stopped, the occupants are controlled, and nothing prevents you from getting a warrant. So you order both occupants out (Pennsylvania v. Mimms and Maryland v. Wilson authorize this as a matter of course), secure the vehicle, and apply for a search warrant.',
+        'Your affidavit writes itself, because you documented the basis with specificity: what you smelled, where and when you detected it, what you observed, and the plain-view corroboration.'
       ],
-      legal: 'Pennsylvania v. Mimms (1977): Officers may order the driver out of a stopped vehicle as a matter of course. Maryland v. Wilson (1997): Extends Mimms to passengers. Commonwealth v. Gary (2014): Probable cause supports a warrantless vehicle search in Pennsylvania. Document the basis for probable cause specifically — "odor of marijuana" requires a specific description of where it was detected, its strength, and the circumstances.',
+      legal: 'Pennsylvania v. Mimms (1977): officers may order the driver out of a lawfully stopped vehicle as a matter of course. Maryland v. Wilson (1997): extends Mimms to passengers. Commonwealth v. Barr (2021): odor is a factor, not standalone probable cause. Commonwealth v. Alexander (2020): absent exigent circumstances, probable cause leads to a warrant — not a warrantless roadside search.',
       next: 'd2'
     },
     d2: {
       type: 'decision',
       decisionNumber: 2,
-      situation: 'Both occupants are out of the vehicle. The driver, now standing at the rear, says: "You can\'t search my car without a warrant. I know my rights." The passenger is cooperative and quiet. You are about to begin the search.',
+      situation: 'The vehicle was secured and your search warrant application — built on the odor, the behavioral observations, and the plant material in plain view — was approved by the on-call magisterial district judge. Both occupants are out of the vehicle. As you begin executing the warrant, the driver, standing at the rear, says: "You can\'t search my car. I don\'t consent to this. I know my rights." The passenger is cooperative and quiet.',
       question: 'How do you respond to the driver\'s objection?',
       options: [
         {
-          text: 'Explain that his consent is not required because you have probable cause based on the marijuana odor — proceed with the search, document his objection in the report.',
-          shortLabel: 'Explain legal basis, proceed, document objection',
+          text: 'Explain briefly that the search is authorized by a warrant and his consent is not required — proceed with the search, and document his objection verbatim in the report.',
+          shortLabel: 'Explain warrant authority, proceed, document objection',
           quality: 'good',
           next: 'c2-good'
         },
         {
-          text: 'Stop the search — the driver has clearly invoked his rights and proceeding over his objection without a warrant risks suppression.',
+          text: 'Stop the search — he has clearly invoked his rights, and proceeding over an explicit objection risks suppression.',
           shortLabel: 'Stop search on driver\'s objection',
           quality: 'bad',
           next: 'c2-bad'
@@ -87,27 +138,27 @@ const SCENARIO_TRAFFIC_STOPS = {
     'c2-bad': {
       type: 'consequence',
       outcomeClass: 'outcome-bad',
-      outcomeLabel: 'Incorrect — Objection Does Not Override Probable Cause',
-      heading: 'A subject\'s objection does not nullify probable cause. The search was lawful.',
+      outcomeLabel: 'Incorrect — Objection Does Not Override a Warrant',
+      heading: 'A subject\'s objection does not nullify judicial authorization. The search is lawful.',
       narrative: [
-        'The automobile exception does not require consent. Probable cause — independently established through the odor and behavior — authorizes the search regardless of the driver\'s objection. His statement "I know my rights" is not an invocation of a right that applies here.',
-        'The Fourth Amendment prohibits unreasonable searches. A search based on probable cause is not unreasonable. Stopping a lawful search because a subject objects is a tactical and legal error.',
-        'Stopping here leaves contraband in the vehicle, fails to act on lawfully established probable cause, and signals to the subject that objections override established legal standards.'
+        'A search warrant is judicial authorization. It does not depend on the subject\'s consent, and an objection — however emphatic — does not suspend it. "I don\'t consent" matters when consent is the legal basis for a search; it is irrelevant when a warrant is.',
+        'The Fourth Amendment prohibits unreasonable searches. A search executed under a valid warrant, within its scope, is the constitutional gold standard of reasonableness. Stopping a warrant-authorized search because a subject objects is a tactical and legal error.',
+        'Stopping here leaves evidence in the vehicle, fails to execute lawful judicial process, and signals to the subject that objections override legal authority.'
       ],
-      legal: 'The automobile exception (Carroll v. United States, 1925; Commonwealth v. Gary, 2014) is not consent-based. A subject\'s objection cannot vitiate probable cause. Document the objection in your report — it is relevant context — but it does not alter the legal basis for the search. If the subject physically interferes with the search, that is a separate criminal matter.',
+      legal: 'A warrant-authorized search does not require consent, and an objection cannot vitiate it. Document the objection verbatim in your report — it is relevant context — but it does not alter the legal basis for the search. If the subject physically interferes with the search, that is a separate criminal matter.',
       next: 'd3'
     },
     'c2-good': {
       type: 'consequence',
       outcomeClass: 'outcome-good',
-      outcomeLabel: 'Correct — Probable Cause Does Not Require Consent',
+      outcomeLabel: 'Correct — A Warrant Does Not Require Consent',
       heading: 'Brief, calm, accurate explanation. Proceed. Document.',
       narrative: [
-        '"I\'m not asking for consent — I have probable cause based on the odor of marijuana from your vehicle. You can observe from here." That\'s the entire conversation. No argument, no escalation.',
+        '"I\'m not asking for consent — this search is authorized by a warrant signed by a judge. You can observe from here." That\'s the entire conversation. No argument, no escalation.',
         'Document the driver\'s objection verbatim in your report. It is relevant context and demonstrates your awareness that the subject disputed the search — and that your legal basis was independent of his consent.',
-        'The search proceeds. If contraband is found, the chain of custody and probable cause documentation are the foundation of the prosecution. Your report language matters as much as the physical evidence.'
+        'The search proceeds. If contraband is found, the warrant, the affidavit\'s specific probable cause documentation, and the chain of custody are the foundation of the prosecution. Your report language matters as much as the physical evidence.'
       ],
-      legal: 'Consent is irrelevant when probable cause exists under the automobile exception. Document: (1) the exact moment and location where the odor was detected, (2) the driver\'s behavior, (3) the driver\'s verbal objection and your response, (4) items found and their exact location in the vehicle. Vague probable cause documentation — "detected an odor of marijuana" without detail — creates suppression vulnerability at the preliminary hearing.',
+      legal: 'Consent is irrelevant when a search is authorized by a warrant. Document: (1) the specific observations that built probable cause and when each was made, (2) the warrant\'s issuance and scope, (3) the driver\'s verbal objection and your response, (4) items found and their exact location in the vehicle. Vague probable cause documentation — "detected an odor of marijuana" without detail — is what gets affidavits and searches challenged.',
       next: 'd3'
     },
 
@@ -147,7 +198,7 @@ const SCENARIO_TRAFFIC_STOPS = {
         'Ordering the passenger to stop filming creates a Fourth Amendment seizure issue (the passenger is being ordered to do something) and a First Amendment violation. If you then stop and frisk or detain them further based on the filming alone, you have compounded the violation.',
         'The correct response is to perform your duties professionally and allow the recording to happen. Your conduct is the answer to whatever concerns the filming might raise.'
       ],
-      legal: 'First Amendment right to record police in public has been affirmed by multiple circuit courts. In the Third Circuit (which covers Pennsylvania), officers may not lawfully seize recording devices or order people to stop recording without consent or independent legal justification. Doing so creates civil liability.',
+      legal: 'The First Amendment right to record police in public was affirmed for the Third Circuit (which covers Pennsylvania) in Fields v. City of Philadelphia (2017). Officers may not lawfully seize recording devices or order people to stop recording without consent or independent legal justification. Doing so creates civil liability.',
       next: 'debrief'
     },
     'c3-good': {
@@ -160,7 +211,7 @@ const SCENARIO_TRAFFIC_STOPS = {
         'By continuing without addressing the filming, you avoid a constitutional violation, demonstrate confidence in your own conduct, and complete the stop without unnecessary escalation.',
         'Officers who understand that transparency serves them professionally, legally, and in terms of public trust perform better in their careers and face fewer complaints.'
       ],
-      legal: 'Glik v. Cunniffe (1st Cir.), Sharp v. Baltimore (4th Cir.), and Kelly v. Borough of Carlisle (3rd Cir.) establish the right to record police in public. Pennsylvania law does not prohibit recording of law enforcement performing official duties in public spaces.',
+      legal: 'Fields v. City of Philadelphia, 862 F.3d 353 (3d Cir. 2017) — the controlling case for Pennsylvania — holds that the First Amendment protects photographing, filming, and audio recording of police performing official duties in public, by anyone with a recording device. Glik v. Cunniffe (1st Cir. 2011) reached the same conclusion. Pennsylvania law does not prohibit recording law enforcement performing official duties in public spaces.',
       next: 'debrief'
     },
     'c3-neutral': {
@@ -208,36 +259,36 @@ function getTrafficStopQuestions() {
     },
     {
       scenario: 'During a traffic stop, you detect a strong odor of marijuana emanating from the interior of the vehicle. The registration and license are clean.',
-      text: 'Under Commonwealth v. Gary and Pennsylvania\'s automobile exception, what does the odor of marijuana establish?',
+      text: 'Under Commonwealth v. Barr (2021) and Commonwealth v. Alexander (2020), what does the odor of marijuana establish, and what does a vehicle search require?',
       options: [
-        'Reasonable suspicion to extend the stop and call for a K9.',
-        'Probable cause to conduct a warrantless search of the vehicle.',
-        'The odor alone is insufficient — you must observe marijuana in plain view.',
-        'You must apply for a search warrant before proceeding.'
+        'The odor alone establishes probable cause, and probable cause alone supports an immediate warrantless search.',
+        'The odor is one factor in the totality of the circumstances — it cannot establish probable cause alone — and even with probable cause, a warrantless vehicle search requires exigent circumstances. The default is to secure the vehicle and obtain a warrant.',
+        'The odor is legally meaningless in Pennsylvania and may not be considered at all.',
+        'The odor establishes reasonable suspicion that obligates you to call a K9 before any further action.'
       ],
       correct: 1,
-      feedback: 'Correct. Commonwealth v. Gary (2014) adopted the federal automobile exception in Pennsylvania — probable cause alone supports a warrantless vehicle search without requiring exigent circumstances. Pennsylvania courts have consistently recognized the odor of marijuana emanating from a vehicle as establishing probable cause for a search. Document the specific basis: where detected, strength of the odor, and any corroborating factors. A K9 is not required when the officer independently has probable cause.'
+      feedback: 'Correct. Commonwealth v. Barr (2021): because medical marijuana is lawful in Pennsylvania, odor alone no longer establishes probable cause — but it remains a legitimate factor in the totality of the circumstances. Commonwealth v. Alexander (2020) overruled Commonwealth v. Gary and held that a warrantless vehicle search requires both probable cause AND exigent circumstances; obtaining a warrant is the default. Document the specific basis: where the odor was detected, its strength, and the corroborating factors that complete the totality.'
     },
     {
-      scenario: 'You are conducting a lawful probable-cause vehicle search. The driver says loudly: "You need a warrant. I don\'t consent to this search."',
+      scenario: 'You are executing a search warrant on a vehicle, issued on probable cause you developed during a stop. The driver says loudly: "You need my permission. I don\'t consent to this search."',
       text: 'How does the driver\'s objection affect the legality of your search?',
       options: [
-        'The objection requires you to stop and document before proceeding.',
+        'The objection requires you to stop and re-apply for a warrant that addresses it.',
         'The objection is a valid invocation of Fourth Amendment rights that suspends the search.',
-        'The objection is irrelevant — probable cause under the automobile exception is not consent-based.',
-        'You must inform him of your legal basis before continuing.'
+        'The objection is irrelevant — a warrant-authorized search does not depend on consent. Document the objection verbatim and proceed.',
+        'You must obtain a supervisor\'s approval to continue over an explicit objection.'
       ],
       correct: 2,
-      feedback: 'Correct. The automobile exception is not consent-based. When you have probable cause under Commonwealth v. Gary, consent is irrelevant and an objection does not vitiate the legal basis for the search. The driver\'s statement should be documented verbatim in your report — it is relevant context — but it does not alter the lawfulness of the search. Stopping a lawful probable-cause search because a subject objects is a legal error. If he physically interferes, that is a separate criminal matter.'
+      feedback: 'Correct. A search warrant is judicial authorization — it does not require the subject\'s consent, and an objection does not vitiate it. Consent matters when consent is the legal basis for the search (and consent searches end when consent is withdrawn); it is irrelevant when a warrant is the basis. Document the driver\'s statement verbatim — it is relevant context — and proceed within the warrant\'s scope. If he physically interferes, that is a separate criminal matter.'
     },
     {
-      scenario: 'You are preparing your report for a vehicle search conducted on probable cause based on the odor of marijuana. Your draft currently reads: "Upon approaching the vehicle, I detected an odor of marijuana."',
+      scenario: 'You are preparing your warrant affidavit and report for a vehicle search based on the odor of marijuana combined with other observations. Your draft currently reads: "Upon approaching the vehicle, I detected an odor of marijuana."',
       text: 'What is the most significant problem with this probable cause documentation?',
       options: [
         'It does not include the driver\'s response to the search.',
         'It is a conclusion without the specific, articulable facts that support it — insufficient for a suppression hearing.',
         'It does not specify which officer detected the odor.',
-        'It must reference Commonwealth v. Gary by name to be legally sufficient.'
+        'It must reference Commonwealth v. Alexander by name to be legally sufficient.'
       ],
       correct: 1,
       feedback: 'Correct. "Detected an odor of marijuana" is a conclusion, not documentation of probable cause. At a suppression hearing, the Commonwealth must establish the factual basis for probable cause with specificity. Proper documentation includes: the precise location where the odor was detected (e.g., "upon approaching the driver\'s open window"), the strength and character of the odor, when it was detected relative to the contact, and any corroborating behavioral observations. Vague probable cause language is the most common suppression vulnerability in vehicle search cases in Pennsylvania.'

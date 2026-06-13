@@ -1,4 +1,69 @@
 /* ══════════════════════════════════════════
+   READING — Domestic Violence (EGPD)
+══════════════════════════════════════════ */
+const READING_DOMESTIC_VIOLENCE = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A 911 hang-up on Cherry Street. A neighbor hears shouting and breaking glass. The woman who answers the door has a bruise forming under her eye and tells you she doesn't want to press charges. Department policy has already answered most of the questions you're about to face.</h2>
+    <p>This module covers EGPD General Order 4.13 — the department's Domestic Violence directive — from response and mandatory arrest through weapon seizure, victim notification, PFA enforcement, and reporting.</p>
+  </div>
+  <div class="content-block">
+    <h4>General Order 4.13 — Policy</h4>
+    <h2>Domestic violence is investigated and managed as any other crime.</h2>
+    <div class="sop-box">
+      <div class="sop-title">GO 4.13, Policy</div>
+      <p>"It is the policy of the department to view domestic violence as being within the scope of the criminal justice system and to ensure that incidents of domestic violence are investigated and managed as any other crime, regardless of the relationship of the victim and the offender." The directive implements 23 Pa.C.S. (the Domestic Relations title), including Section 6105's responsibilities for law enforcement agencies.</p>
+    </div>
+    <div class="sop-box">
+      <div class="sop-title">GO 4.13.2 — Response Procedures</div>
+      <p>"Responding officers should avoid any use of sirens and emergency lights in the vicinity of the scene of the incident" and "should not park police vehicles directly in front of any residence... but rather, approach the site from flanking positions that yield the most advantageous tactical considerations. All active domestic related incidents shall be considered high risk and be approached using standard precautionary measures." Make an initial external assessment before any committed approach; a hostage or barricade indication means containment and a supervisor, not entry.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>GO 4.13.5 — Required Arrests Upon Probable Cause</h4>
+    <h2>This arrest decision is yours to evaluate — not the victim's to grant.</h2>
+    <div class="sop-box">
+      <div class="sop-title">GO 4.13.5(A) — The Mandatory Arrest Provision</div>
+      <p>"When recent physical injury to a victim or other corroborative evidence, is observed by an officer investigating a domestic violence incident, the officer shall arrest without a warrant, as in a felony, when probable cause exists to believe the following crimes have been committed against a spouse or other person with whom the alleged person resides or has formerly resided: Involuntary Manslaughter [Pa.C.S. 2504], Simple Assault [Pa.C.S. 2701], Aggravated Assault [Pa.C.S. 2702 (a)(3),(4),(5)], Recklessly Endangering [Pa.C.S. 2705], Terroristic Threats [Pa C.S. 2706], Stalking [Pa C.S. 2709.1]."</p>
+    </div>
+    <p>Note what is absent from that provision: victim consent, and supervisor authorization. A visible fresh injury plus a consistent victim account establishes probable cause for Simple Assault — and the arrest is then required. Victims frequently request no arrest; that is a common, expected trauma response, and it does not change the obligation. Once a mandatory arrest is made, the charging decision belongs to the Commonwealth, not the victim. The defendant is removed from the scene, transported for processing, and afforded a preliminary arraignment — "in no case shall the arresting officer release the defendant from custody rather than taking the defendant before an issuing authority."</p>
+  </div>
+  <div class="content-block">
+    <h4>GO 4.13.6 — Seizure of Weapons</h4>
+    <h2>A weapon is defined by how it was used — not by what it is or who owns it.</h2>
+    <div class="sop-box">
+      <div class="sop-title">GO 4.13.6 — Weapon Seizure Requirements</div>
+      <p>"The arresting officer shall seize all weapons used by the defendant in the commission of an alleged offense." Seized weapons "shall be secured and processed in accordance with proper evidence collection and preservation practices," "maintained with a proper chain of custody and entered into the property management system," with "custody... maintained until a disposition of the case is determined by a court of jurisdiction."</p>
+    </div>
+    <p>A cell phone used to strike a victim is a weapon used in the commission of the offense — seizure is mandatory, not discretionary, and it does not depend on anyone's consent. Do not frame a mandatory evidence seizure as a consent request; consent can be refused, and the stated basis for your action matters in court.</p>
+  </div>
+  <div class="content-block">
+    <h4>GO 4.13.7 — Victim Rights Notifications</h4>
+    <h2>Oral and written notice, every DV response — with a signed receipt.</h2>
+    <p>Upon responding to a domestic violence case, the officer shall provide the abused person with oral and written notice of the availability of safe shelter and domestic violence services, including the hotline number. The written notice (in English and Spanish) advises the victim of the right to petition for a Protection From Abuse order under 23 Pa.C.S. Ch. 61 — including orders restraining the abuser, directing the abuser to leave the household, protecting the residence, school, business, or place of employment, and addressing custody and support. The victim acknowledges receipt by signature, and the receipt is returned and attached to the incident report.</p>
+  </div>
+  <div class="content-block">
+    <h4>GO 4.13.9 / 4.13.10 — Protection Orders</h4>
+    <h2>A final PFA violation is a mandatory arrest — whenever it is disclosed.</h2>
+    <div class="sop-box">
+      <div class="sop-title">GO 4.13.9 — Enforcement</div>
+      <p>An officer may arrest for a Protection Order violation upon probable cause "whether or not the violation of the Order occurred in the presence of the officer." For final orders: "A police officer shall arrest a defendant for violating an order issued under 23 Pa.C.S., Chapter 61" — verified through CLEAN or the issuing authority. Following arrest, "a charge of 'Indirect Criminal Contempt' shall be completed by the arresting officer, in addition to any other charges," and the defendant is taken before the court without unnecessary delay.</p>
+    </div>
+    <p>Under GO 4.13.10, the arresting officer makes reasonable efforts to notify the protected party of the arrest as soon as possible, and of the disposition at arraignment within 24 hours — and "all notices, and actions completed in attempting notice, shall be documented by the officer as a Supplemental Incident Report." A PFA violation disclosed during a follow-up call — even one the victim never reported at the time — triggers these obligations the moment it is disclosed.</p>
+  </div>
+  <div class="content-block">
+    <h4>GO 4.13.11 — Required Reports</h4>
+    <h2>The narrative standard — including when you don't arrest.</h2>
+    <p>Incident report narratives should include, where applicable: the relationship between victim and accused; weapons used or threatened; <strong>"a description of any injuries observed by the officer"</strong> and <strong>"a description of any injuries described by the victim, but not observed by the officer, and an indication that the injury was not observed"</strong>; evidence tending to establish that a crime was committed; whether an arrest was made or the reason for electing not to arrest; children present; and prior incidents known to the officer or reported by the victim or witnesses.</p>
+    <div class="sop-box">
+      <div class="sop-title">GO 4.13.11(A)(3)(b) — The Non-Arrest Explanation</div>
+      <p>"If the officer did not arrest or seek an arrest warrant, even though probable cause existed and an arrest was authorized, a detailed explanation of the reason(s) for the officer's decision not to arrest shall be included in the narrative section of the incident report." "Parties separated for the evening. No arrest made." does not satisfy this requirement.</p>
+    </div>
+    <button class="btn-launch" onclick="startScenario('egpd-domestic-violence')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Domestic Violence (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_DOMESTIC_VIOLENCE = {
@@ -10,7 +75,7 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
     'start': {
       type: 'scene', time: '22:47', weather: 'Clear / 54°F', unit: 'Patrol Unit 2',
       narrative: [
-        'Dispatch advises a 911 hang-up from a residence on Cherry Street. A second call came in from a neighbor reporting shouting and what sounded like breaking glass. The registered resident is Danielle Cruz, 27. CLEAN returns a prior incident at this address eight months ago — a DV report, no arrest at the time.',
+        'Dispatch advises a 911 hang-up from a residence on Cherry Street. A second call came in from a neighbor reporting shouting and what sounded like breaking glass. The registered resident is Danielle Weaver, 27. CLEAN returns a prior incident at this address eight months ago — a DV report, no arrest at the time.',
         'You and your backup unit arrive two minutes apart. Per EGPD General Order 4.13.2, you avoid using sirens and emergency lights in the vicinity of the scene, and approach from flanking positions rather than parking directly in front of the residence. The house is dark except for a light in a rear room. You hear a male voice raised inside. As you approach the front door, a woman opens it. She has a visible bruise forming under her left eye. She says quietly: "He left out the back." A male is seen walking quickly toward the tree line.'
       ],
       next: 'd1'
@@ -18,7 +83,7 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
     'd1': {
       type: 'decision',
       decisionNumber: 1,
-      situation: 'You are at the front door with Danielle Cruz. She has a fresh bruise under her left eye. She tells you the male who just fled is her husband, Brian Cruz, 30. She says they had an argument, he "pushed her into the door frame," and she hit her face. She now says she does not want to press charges. Your backup unit is at the rear of the property watching the tree line.\n\nDanielle says: "I just want him to leave for the night. Can you just make him come back and get his stuff and go somewhere else?"',
+      situation: 'You are at the front door with Danielle Weaver. She has a fresh bruise under her left eye. She tells you the male who just fled is her husband, Brian Weaver, 30. She says they had an argument, he "pushed her into the door frame," and she hit her face. She now says she does not want to press charges. Your backup unit is at the rear of the property watching the tree line.\n\nDanielle says: "I just want him to leave for the night. Can you just make him come back and get his stuff and go somewhere else?"',
       question: 'What is your immediate course of action regarding a potential arrest?',
       options: [
         {
@@ -61,7 +126,7 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
       outcomeLabel: 'Delay Creates Risk',
       heading: 'Supervisor consultation is not required to make a mandatory arrest.',
       narrative: [
-        'EGPD General Order 4.13.5 does not require supervisor authorization before making a DV arrest when probable cause exists. Taking time to consult before acting — while a subject is actively fleeing — may allow Brian Cruz to exit the area entirely.',
+        'EGPD General Order 4.13.5 does not require supervisor authorization before making a DV arrest when probable cause exists. Taking time to consult before acting — while a subject is actively fleeing — may allow Brian Weaver to exit the area entirely.',
         'The correct approach is to immediately act on the probable cause you already have, notify dispatch of the fleeing DV suspect, and brief your supervisor as part of your follow-up — not as a precondition.',
         'Documentation and supervisor notification happen after the fact, not before.'
       ],
@@ -75,7 +140,7 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
       heading: 'Probable cause is yours to evaluate — not the victim\'s to grant.',
       narrative: [
         'You observe a fresh bruise under Danielle\'s left eye. She provides a statement that her husband pushed her into the door frame. That combination — your direct observation of injury plus a victim statement of recent physical contact by the accused — establishes probable cause for Simple Assault under 18 Pa.C.S. § 2701.',
-        'Under General Order 4.13.5, this arrest is mandatory. Victim preference is not a controlling factor. You immediately advise dispatch of a fleeing DV suspect, update your backup unit on Brian Cruz\'s description and direction, and begin the process for apprehension.',
+        'Under General Order 4.13.5, this arrest is mandatory. Victim preference is not a controlling factor. You immediately advise dispatch of a fleeing DV suspect, update your backup unit on Brian Weaver\'s description and direction, and begin the process for apprehension.',
         'You also begin the General Order 4.13.7 victim notification requirements and start your narrative checklist for documentation under 4.13.11.'
       ],
       legal: 'EGPD General Order 4.13.5(A): officers shall arrest without a warrant, as in a felony, when probable cause exists for Simple Assault [18 Pa.C.S. 2701] against a household member. The probable cause determination is the officer\'s — a visible injury plus a consistent victim account satisfies the standard.',
@@ -84,7 +149,7 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
     'd2': {
       type: 'decision',
       decisionNumber: 2,
-      situation: 'Brian Cruz is located at a neighbor\'s property two blocks away and taken into custody without incident. Back at the residence, Danielle is cooperative. While speaking with her, she shows you a cracked phone screen and says Brian struck her in the face with his cell phone during the argument before she opened the door for you. The phone is sitting on the kitchen counter.\n\nDanielle asks you to just note the phone in the report. "He\'s already in custody," she says. "It\'s just his phone, he\'ll need it back."',
+      situation: 'Brian Weaver is located at a neighbor\'s property two blocks away and taken into custody without incident. Back at the residence, Danielle is cooperative. While speaking with her, she shows you a cracked phone screen and says Brian struck her in the face with his cell phone during the argument before she opened the door for you. The phone is sitting on the kitchen counter.\n\nDanielle asks you to just note the phone in the report. "He\'s already in custody," she says. "It\'s just his phone, he\'ll need it back."',
       question: 'What is your obligation regarding the phone used in the assault?',
       options: [
         {
@@ -149,7 +214,7 @@ const SCENARIO_DOMESTIC_VIOLENCE = {
     'd3': {
       type: 'decision',
       decisionNumber: 3,
-      situation: 'Two hours after Brian Cruz\'s arrest, Danielle calls the station. She is upset. She says she wants to drop the charges and get the phone back. While on the call, she also mentions that Brian has a final Protection From Abuse order against him from a prior relationship — and that he showed up at her workplace on Cherry Street last week, which she never reported. Your supervisor patches the call to you.',
+      situation: 'Two hours after Brian Weaver\'s arrest, Danielle calls the station. She is upset. She says she wants to drop the charges and get the phone back. While on the call, she also mentions that Brian has a final Protection From Abuse order against him from a prior relationship — and that he showed up at her workplace on Cherry Street last week, which she never reported. Your supervisor patches the call to you.',
       question: 'How do you handle Danielle\'s call?',
       options: [
         {

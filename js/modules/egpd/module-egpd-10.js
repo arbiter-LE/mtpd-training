@@ -1,4 +1,40 @@
 
+/* ── Reading: Evidence & Chain of Custody (EGPD) ─ */
+const READING_EVIDENCE = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>First on scene at a residential burglary on Cherry St: a smashed rear window, a screwdriver with paint transfer, a cell phone that isn't the homeowners'. Detectives are 25 minutes out, the homeowners want inside, and your supervisor wants you clear for another call. Every pressure on you right now points toward breaking the chain.</h2>
+    <p>This module covers first-officer scene preservation, in-place documentation, forensic packaging, the chain of custody from collection to courtroom — and how to testify about it honestly.</p>
+  </div>
+  <div class="content-block">
+    <h4>First Officer Responsibilities</h4>
+    <h2>You own the scene until you hand it off — and ownership means keeping everyone out.</h2>
+    <ul class="key-points">
+      <li><strong>No unauthorized access — including victims and property owners</strong> — until detectives or crime scene personnel have documented and cleared the scene. A well-meaning homeowner who kicks a phone under the refrigerator or picks up the screwdriver has just handed defense counsel a contamination argument. Scene contamination is the most common chain-of-custody vulnerability in burglary prosecutions.</li>
+      <li><strong>Get what you need from outside the perimeter:</strong> names, contact information, and a preliminary list of known missing items can all be collected in the driveway, documented in your notes, without anyone entering the scene.</li>
+      <li><strong>Leave items exactly as found.</strong> Document locations in your notes and prevent access. Even "protective" moving or bagging of an item before it is photographed in place breaks the chain — good intentions included.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Collection Standards</h4>
+    <h2>In-place photography first. Correct packaging always. Every handler documented.</h2>
+    <ul class="key-points">
+      <li><strong>In-place documentation:</strong> photograph the item from multiple angles in its exact discovered position, with a scale reference where available, before anyone touches it. Written descriptions and sketches supplement photography — they do not replace it.</li>
+      <li><strong>Packaging by evidence type:</strong> biological material (blood, saliva, tissue, swabs) goes in <strong>paper</strong> — never airtight plastic, which traps moisture, accelerates bacterial growth, and degrades DNA. Hard items — tools, electronics — go in plastic, sealed and labeled. Improvised packaging from a patrol trunk is how location data on a suspect's phone becomes inadmissible.</li>
+      <li><strong>The chain itself:</strong> every person who handles the evidence is documented — name, time, and reason for transfer — from collection through property room submission to lab intake. For a hospital blood draw in a DUI case: date and time of collection, the nurse's name and facility, the kit ID number, how it was sealed, your transport, and your property room submission. Pennsylvania DUI prosecutions frequently hinge on exactly this record.</li>
+      <li><strong>A firearm at an unsecured scene</strong> is the responding officer's responsibility: photograph in place, note the exact location, collect using safety protocol, and document the recovery. Leaving evidence unattended for hours awaiting detectives creates the gap you were trying to avoid.</li>
+      <li><strong>Supervisor pressure to shortcut?</strong> Communicate, don't just comply — and don't flatly refuse. "Detectives are 8 minutes out; if I collect now without proper packaging and in-place photography, we risk the chain of custody" gives a supervisor what they need to make an informed call. Improvised collection to clear a call faster is how prosecutions collapse months later.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>When the Chain Is Questioned</h4>
+    <h2>Honest testimony about what you documented beats false certainty every time.</h2>
+    <p>Six months from now, defense counsel will find the four-hour window you can't specifically remember. Testify to exactly what your documentation shows; acknowledge gaps without speculating about what occurred during them. Asserting confidence about a period you have no memory of is not testimony — it is speculation under oath, and 18 Pa. C.S. § 4902 (perjury) is where overstated certainty lands. Pennsylvania courts allow for minor documentation gaps where standard procedure is established and the evidence's integrity is corroborated; they do not forgive a witness caught overstating.</p>
+    <p>Prepare by reviewing your documentation before trial, identifying gaps before defense counsel does, and flagging them to the prosecutor. And if you ever sign evidence out and the seal looks disturbed: stop, notify the property room supervisor, document the observation contemporaneously, and tell the prosecutor before the court date — never carry a known integrity question into a courtroom undisclosed.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-evidence-chain-of-custody')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
 /* ── Scenario: Evidence & Chain of Custody (EGPD) ─ */
 const SCENARIO_EVIDENCE = {
   title: 'Evidence & Chain of Custody',
@@ -47,7 +83,7 @@ const SCENARIO_EVIDENCE = {
         'The scene is compromised. The forensic value of both items has been significantly reduced. Detectives will note the contamination in their report. If this case goes to prosecution, defense counsel will use the compromised chain of custody to challenge the evidence.',
         'Preserving the scene is not a courtesy to detectives — it is a legal requirement. First officers own the scene until they hand it off. That ownership means keeping everyone out, including victims.'
       ],
-      legal: 'Pennsylvania Rules of Criminal Procedure Rule 573: Evidence collected or compromised in violation of proper procedures is subject to suppression. First officer scene preservation duties include preventing unauthorized access to the crime scene by all persons, including victims and property owners, until CIU/detectives assume control.',
+      legal: 'Compromised scenes are attacked two ways: at suppression (Pa.R.Crim.P. 581) where collection procedures are challenged, and at trial, where contamination and chain gaps go to the weight and credibility of the evidence. First officer scene preservation duties include preventing unauthorized access to the crime scene by all persons, including victims and property owners, until detectives assume control.',
       next: 'd2'
     },
     'c1-good': {

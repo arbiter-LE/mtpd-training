@@ -1,4 +1,82 @@
 /* ══════════════════════════════════════════
+   READING — Use of Force (EGPD)
+══════════════════════════════════════════ */
+const READING_USE_OF_FORCE = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>You respond to a domestic disturbance on Washington St. A subject is advancing toward you, flashlight raised. Every decision you make in the next thirty seconds — and how you document it afterward — will be measured against General Order 1.3 and a federal standard.</h2>
+    <p>This module covers the East Greenville Police Department Use of Force Continuum (General Order 1.3), the deadly force standard, CEW restrictions, and the reporting requirements that follow every use of force.</p>
+  </div>
+  <div class="content-block">
+    <h4>General Order 1.3 — Policy</h4>
+    <h2>Never a greater degree of force than is lawful, reasonable, and necessary.</h2>
+    <div class="sop-box">
+      <div class="sop-title">GO 1.3, Policy — The Standard</div>
+      <p>"It is the policy of the department that all persons, regardless of their involvement in a situation, shall be treated with humanity, courtesy, and the dignity due any human being, to the extent that such treatment is allowed by the subject's resistance." Officers "shall never use a greater degree of force than that which is lawful, reasonable, and necessary for the specific situation." Such force may be used: to affect an arrest, to overcome unlawful resistance, to prevent an escape from custody, or to neutralize an unlawful assault. <strong>"The use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished."</strong> Emphasis is always on obtaining control over the resistance situation rather than forcing submission.</p>
+    </div>
+    <div class="sop-box">
+      <div class="sop-title">GO 1.3, Policy — The Articulation Requirement</div>
+      <p>"Officers using force must be able to articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected. Full disclosure of the circumstances requiring the use of force, and the type and extent of force, shall be thoroughly documented" in the departmentally required Use of Force Report. Justification is limited to the facts known or perceived by the officer at the time — facts unknown to the officer, no matter how compelling, cannot be considered later.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">Graham v. Connor, 490 U.S. 386 (1989)</div>
+      <p>Force is judged by objective reasonableness — from the perspective of a reasonable officer on scene, based on facts known at the time. Courts weigh: (1) the severity of the crime, (2) whether the subject poses an immediate threat, and (3) whether the subject is actively resisting or evading. GO 1.3.1(A) ties the department's legal restrictions to the Pennsylvania Crimes Code, Title 18, Chapter 5, and applicable state and federal case law — which means following department training is relevant, but it does not by itself satisfy the independent legal standard.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>GO 1.3.1(B) — The Use of Force Continuum</h4>
+    <h2>Eight levels. The continuum starts with your voice.</h2>
+    <p>The continuum escalates "only when each lower level of force has been examined or discarded as impractical in the current circumstance, or which has been tried and has failed in the encounter." The analysis may be nearly instantaneous — but it must happen.</p>
+    <ul class="key-points">
+      <li><strong>Level 1 — Verbal Control.</strong> Advice, persuasion, admonitions, or orders. "The volume and tone of the officer's comments may also be an effective tool to assume control over a situation without having to progress to any higher level of force." Profanity or argumentative conduct is never acceptable. This is the foundation of the continuum.</li>
+      <li><strong>Level 2 — Escort.</strong> Physical maneuvering of a reluctant but non-resisting subject — by definition precluding pain or injury.</li>
+      <li><strong>Level 3 — Chemical Agents (OC).</strong> Restricted to defense against threats or assault, effecting a lawful arrest of a non-compliant subject, preventing a crime, or where lower levels are exhausted or would be ineffective.</li>
+      <li><strong>Level 4 — Control and Compliance.</strong> Strength, leverage, takedowns, holds, and come-alongs. <strong>"The use of carotid restraint or other 'choke holds' or neck restraints are specifically and strictly prohibited."</strong></li>
+      <li><strong>Level 5 — Unarmed Striking Techniques.</strong> Fists, hands, elbows, knees, feet — where higher levels are not necessary and lower levels would be inappropriate or have failed.</li>
+      <li><strong>Level 6 — K-9 (if applicable).</strong> Certified working dogs and handlers only, within policy, or bona fide mutual aid.</li>
+      <li><strong>Level 7 — Striking Implement.</strong> Restricted to quelling physical confrontations where higher levels are not necessary and lower levels would be inappropriate or ineffective.</li>
+      <li><strong>Level 8 — Deadly or Potentially Deadly Force.</strong> Only when legally justified, when the need is strong and compelling, only as a last resort.</li>
+    </ul>
+    <div class="sop-box">
+      <div class="sop-title">GO 1.3.1(C)(2) — Skipping Levels</div>
+      <p>"Nothing in this policy shall infer that any given level cannot be skipped in the escalation, given those presenting circumstances, or that any escalation cannot be reduced given other presenting circumstances." Flexibility exists — but it does not excuse failing to consider Level 1 (distance, cover, verbal commands) as the starting point absent a reason to skip it.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>GO 1.3.2 — Use of Deadly Force</h4>
+    <h2>Deadly force has exactly one lane. Know its edges.</h2>
+    <div class="sop-box">
+      <div class="sop-title">GO 1.3.2(A) — When Deadly Force Is Justified</div>
+      <p>Under Title 18, Chapter 5, Section 508(a), deadly force is justified only when the officer believes: "The action is in defense of human life, including the officer's own life, or in defense of any person in imminent danger of serious physical injury," or when the officer reasonably believes both that "such force is necessary to prevent the arrest from being defeated by resistance or escape" and "the person to be arrested has committed or attempted a forcible felony or is attempting to escape and possesses a deadly weapon, or otherwise indicates that he/she will endanger human life or inflict serious bodily injury unless arrested without delay."</p>
+    </div>
+    <p>Officers fire "to stop and incapacitate an assailant from completing a potentially deadly act," aiming at center body mass. Warning shots are prohibited under GO 1.3.3, as is firing at or from a moving vehicle except in the narrow deadly-force exceptions stated there. An aluminum flashlight at 25 feet, without more, does not place an encounter inside 1.3.2 — overstating a threat to justify a force decision is worse than honestly acknowledging an imperfect one.</p>
+  </div>
+  <div class="content-block">
+    <h4>GO 1.3.4 — Conducted Electrical Weapons</h4>
+    <h2>Every CEW cycle is a separate use of force.</h2>
+    <ul class="key-points">
+      <li><strong>Prohibited environments:</strong> where flammable, volatile, or explosive material is known to be present, and where the subject's fall could likely result in death (water, elevated structures) — unless deadly force is justified.</li>
+      <li><strong>Discharge cycles:</strong> only the number reasonably necessary. "Each separate discharge cycle of the CEW is a separate use of force that must be justified." When tactically reasonable, handcuff or control the subject during incapacitation.</li>
+      <li><strong>Vulnerable subjects:</strong> heightened injury risk for children, the elderly, persons of small stature, and those reasonably believed pregnant, equipped with a pacemaker, or in obvious ill health.</li>
+      <li><strong>Drive-stun:</strong> absent exigency or deadly-force justification, do not intentionally target areas susceptible to crush injury.</li>
+      <li><strong>Warning:</strong> "When circumstances permit and it is tactfully sound, a verbal warning that a 'Taser' will be used, and an opportunity for the subject to comply with verbal commands, should be given by the officer prior to discharging a CEW." It is expected when feasible — not an absolute prerequisite. If no warning was given, document why circumstances did not permit one.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>GO 1.3.5 / 1.3.6 — Medical Attention and Reporting</h4>
+    <h2>The Use of Force Report is due before you go home.</h2>
+    <p>Under GO 1.3.5, after a use of force, officers shall arrange for EMS to examine, treat, and/or transport the subject when an injury is known or suspected. Refusals of medical attention are documented with the names of attending EMS personnel.</p>
+    <div class="sop-box">
+      <div class="sop-title">GO 1.3.6(A) — When a Use of Force Report Is Required</div>
+      <p>Officers shall complete a Use of Force Report whenever they: discharge a firearm (other than routine training, recreational purposes, or animal disposal — animal disposal is documented on an incident report instead); take any action that results in, or is alleged to have resulted in, injury or death of another person; use physical force, or are alleged to have used physical force, on another person; apply force through lethal or less-lethal weapons; or apply Level 3 (OC) force or force in excess of Level 4. The "Details" section must narrate the actions of both the suspect and the officer. Each officer involved completes and signs a separate report.</p>
+    </div>
+    <p>The report "shall be completed prior to the officer(s) concluding their shift during which the use of force occurred" — GO 1.3.6(A)(4). All Use of Force Reports are reviewed by the Chief of Police or designee for compliance (1.3.6(D)). Non-compliance findings may result in remedial training, a Professional Conduct investigation, or discipline (1.3.6(F)). Filing a false report is a crime under 18 Pa. C.S. § 4906 — document what happened, not what you wish had happened. Purely verbal contact that never escalates past Level 1 does not itself trigger the formal report, but the incident narrative should still reflect the encounter.</p>
+    <p>One more provision worth knowing before you ever need it: under GO 1.3.7, an officer involved in a death or serious bodily injury incident is removed from line duty pending administrative review — a non-disciplinary measure that protects both the officer and the investigation.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-use-of-force')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Use of Force (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_USE_OF_FORCE = {
@@ -41,7 +119,7 @@ const SCENARIO_USE_OF_FORCE = {
       situation: 'Your supervisor asks how you would document this contact. The subject stopped when commanded — no weapon was deployed, no physical contact made.',
       question: 'Which documentation correctly reflects General Order 1.3\'s requirements?',
       options: [
-        { text: '"Subject was aggressive and I feared for my safety. Verbal commands used to gain compliance."', next: 'c2a_wrong', quality: 'bad', shortLabal: 'Conclusory', shortLabel: 'Conclusory — no factual basis' },
+        { text: '"Subject was aggressive and I feared for my safety. Verbal commands used to gain compliance."', next: 'c2a_wrong', quality: 'bad', shortLabel: 'Conclusory — no factual basis' },
         { text: '"Subject advancing approximately 25 feet, holding aluminum flashlight raised at shoulder height, yelling, non-responsive to officer presence. Officer issued verbal commands (Use of Force Level 1) and created distance. Subject complied. No further force used or required."', next: 'c2a_right', quality: 'good', shortLabel: 'Specific, factual, ties to continuum level' },
         { text: '"No force used. Subject complied with verbal commands. No report required."', next: 'c2a_none', quality: 'bad', shortLabel: 'Incorrect — no use of force occurred at all' },
         { text: '"Used verbal commands per training. Situation resolved without injury."', next: 'c2a_wrong', quality: 'bad', shortLabel: 'Incomplete — missing factual basis' },

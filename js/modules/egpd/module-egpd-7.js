@@ -1,4 +1,53 @@
 /* ══════════════════════════════════════════
+   READING — Leadership & Supervision (EGPD)
+══════════════════════════════════════════ */
+const READING_LEADERSHIP = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>You're the senior officer. Your junior partner wants to run six teenagers in a hotel parking lot near Main St &amp; 2nd St "to see what pops." What you do in the next two minutes is a legal decision, a supervisory decision, and a lesson your partner will carry to every call you're not on.</h2>
+    <p>This module covers the legal foundations a field leader enforces, the craft of correcting and developing junior officers, and the integrity decisions that define supervisory readiness before any rank is awarded.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Legal Floor a Leader Holds</h4>
+    <h2>Leadership in the field starts with knowing what the law actually permits.</h2>
+    <div class="case-law-box">
+      <div class="case-title">Terry v. Ohio, 392 U.S. 1 (1968)</div>
+      <p>An investigative stop requires <strong>individualized</strong> reasonable articulable suspicion of criminal activity. Group presence — even in response to a complaint — does not supply the basis for stopping any individual in the group. Running subjects without that foundation creates Fourth Amendment violations and civil exposure, and a senior officer who allows it trains the next violation.</p>
+    </div>
+    <div class="case-law-box">
+      <div class="case-title">18 Pa. C.S. § 3503 — Criminal Trespass (Defiant Trespasser)</div>
+      <p>Lawful trespass enforcement requires notice: the property posted with conspicuous signage, fenced in a manner designed to exclude intruders, or the subject having received direct prior communication that entry is not permitted. A property owner's call to police — even repeated calls — does not substitute for proper notice. The professional response without notice in place: document the request, disperse voluntarily where possible, and advise the owner on the formal process for the future.</p>
+    </div>
+  </div>
+  <div class="content-block">
+    <h4>Developing Officers</h4>
+    <h2>What you model today gets repeated tomorrow — on calls where you're not there.</h2>
+    <ul class="key-points">
+      <li><strong>Correct privately, directly, briefly.</strong> Corrections delivered one-on-one, without an audience, grounded in law and policy, build the officer. Public corrections create resentment and close down learning. "Here's why I took it that way — no posted signage, no articulable suspicion for individual stops. Twenty minutes of clean contact beats a civil complaint." That's the whole lesson.</li>
+      <li><strong>Friction is an opening.</strong> A junior officer's frustration ("that took 20 minutes — we could've been done in five") is a teaching moment. Let it pass unaddressed and their default — move fast, run everyone — survives to the next solo shift.</li>
+      <li><strong>Judgment is the credential.</strong> Police Executive Research Forum (PERF) leadership research identifies demonstrated judgment in ambiguous situations — not seniority, arrest statistics, or test scores — as the strongest predictor of supervisory readiness. Brief, direct, one-on-one corrections are among the highest-value supervisory actions available at the patrol level.</li>
+      <li><strong>Accountability means owning outcomes.</strong> Own the decision and the result, explain the reasoning, identify what you'd change. That is distinct from blame (pointing outward) and from collapsing under critique. Officers who show this pattern earn supervisory trust faster than any other quality.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Supervisory Situations</h4>
+    <h2>The recurring tests — and the professional responses.</h2>
+    <ul class="key-points">
+      <li><strong>Officers disputing publicly:</strong> separate them immediately, move it out of public view, hear both sides individually, then address the conduct (the public dispute) and the underlying issue (the disagreement) as two distinct matters. Taking sides publicly costs you both officers.</li>
+      <li><strong>A pattern forming (three lates in two weeks):</strong> have the direct, documented conversation now — name the pattern, state the expectation, ask if there's something you should know. A formal reprimand without a prior conversation skips the coaching step; waiting for a fourth occurrence normalizes the conduct.</li>
+      <li><strong>A subordinate frustrated with command-level policy:</strong> acknowledge the concern, explain the policy as best you know it, and direct them to the appropriate channel — union, chain of command, formal feedback. Venting alongside them undermines your authority; dismissing them ends their engagement.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Integrity Under Pressure</h4>
+    <h2>Your report is not negotiable — and pressure to change it gets documented.</h2>
+    <p>A police report is a sworn document. "We handle things in-house" is not authority over your documentation — altering a report under social pressure is falsification under 18 Pa. C.S. § 4904 (unsworn falsification to authorities), and it compounds whatever the original issue was with a second, more serious one.</p>
+    <p>When a colleague — at any seniority — pressures you to change a report: acknowledge the concern without validating it, state clearly that the report reflects what occurred and will not change, and report the conversation to your supervisor. Contemporaneous reporting creates a protected record; silence, even without compliance, can later read as acquiescence. This moment — a hallway, no cameras — is exactly where the credibility that supervision requires is built or lost.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-leadership')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Leadership & Supervision (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_LEADERSHIP = {
@@ -12,20 +61,20 @@ const SCENARIO_LEADERSHIP = {
       weather: 'Clear',
       unit: 'Unit 7903',
       narrative: [
-        'You are on patrol with Officer Cartagena, who has 18 months on the job. You are the senior officer. A resident flags you down near Main St & 2nd St and reports that a group of teenagers has been blocking a hotel parking lot entrance for over two hours. The owner called twice but received no response.',
+        'You are on patrol with Officer Brooks, who has 18 months on the job. You are the senior officer. A resident flags you down near Main St & 2nd St and reports that a group of teenagers has been blocking a hotel parking lot entrance for over two hours. The owner called twice but received no response.',
         'As you pull into the lot, you observe six teenagers — loud, some with open beverages, but no visible weapons and no evidence of a crime in progress. No trespassing signage is visible. The hotel manager steps outside and gestures at the group.',
-        'Cartagena says without hesitation: "Let\'s just run them all — if anything pops we can lock someone up and that clears the lot fast."'
+        'Brooks says without hesitation: "Let\'s just run them all — if anything pops we can lock someone up and that clears the lot fast."'
       ],
       next: 'd1'
     },
     d1: {
       type: 'decision',
       decisionNumber: 1,
-      situation: 'Cartagena is already stepping toward the group. The hotel manager is watching. The teenagers have noticed you.',
+      situation: 'Brooks is already stepping toward the group. The hotel manager is watching. The teenagers have noticed you.',
       question: 'How do you handle the initial approach?',
       options: [
         {
-          text: 'Follow Cartagena\'s lead — run all six, see what comes back, and clear the scene efficiently.',
+          text: 'Follow Brooks\'s lead — run all six, see what comes back, and clear the scene efficiently.',
           shortLabel: 'Run everyone without articulated basis',
           quality: 'bad',
           next: 'c1-bad'
@@ -42,11 +91,11 @@ const SCENARIO_LEADERSHIP = {
       type: 'consequence',
       outcomeClass: 'outcome-bad',
       outcomeLabel: 'Fourth Amendment Exposure',
-      heading: 'Running everyone without articulable suspicion creates legal liability — and sends Cartagena the wrong lesson.',
+      heading: 'Running everyone without articulable suspicion creates legal liability — and sends Brooks the wrong lesson.',
       narrative: [
         'Terry v. Ohio requires individualized reasonable articulable suspicion before a stop. Presence in a parking lot, even in a group, does not establish that threshold absent specific conduct. Running all six without a lawful basis exposes the department to civil liability and suppresses any evidence obtained.',
-        'Two of the six have no record. The other four return nothing actionable. The lot is cleared — but the department absorbs the liability, and Cartagena walks away believing this is the correct approach.',
-        'As the senior officer, your actions are the standard Cartagena will apply on calls where you\'re not there to supervise. What you model today gets repeated tomorrow.'
+        'Two of the six have no record. The other four return nothing actionable. The lot is cleared — but the department absorbs the liability, and Brooks walks away believing this is the correct approach.',
+        'As the senior officer, your actions are the standard Brooks will apply on calls where you\'re not there to supervise. What you model today gets repeated tomorrow.'
       ],
       legal: 'Terry v. Ohio (1968): An investigative stop requires individualized reasonable articulable suspicion of criminal activity. Group presence does not supply the basis for individual stops. Running subjects without that foundation creates Fourth Amendment violations and civil exposure.',
       next: 'd2'
@@ -59,7 +108,7 @@ const SCENARIO_LEADERSHIP = {
       narrative: [
         'You speak with the hotel manager — who has not filed a formal trespass notice and has no posted signage meeting Pennsylvania\'s trespass statute requirements. Two of the teenagers leave voluntarily during the conversation. You document the manager\'s request and advise them on the formal trespass process for future incidents.',
         'The remaining four disperse without enforcement action. No Fourth Amendment exposure. Clean documentation.',
-        'More importantly: Cartagena observed you slow down a fast situation and make a reasoned decision. That\'s a lesson that doesn\'t require a classroom.'
+        'More importantly: Brooks observed you slow down a fast situation and make a reasoned decision. That\'s a lesson that doesn\'t require a classroom.'
       ],
       legal: '18 Pa. C.S. § 3503 (Criminal Trespass): For a lawful trespass order, the property must be posted, fenced, or the subject must have received direct communication that entry is not permitted. Without posted signage or a prior warning, presence alone does not support trespass. Advise the manager on proper notice procedures.',
       next: 'd2'
@@ -67,7 +116,7 @@ const SCENARIO_LEADERSHIP = {
     d2: {
       type: 'decision',
       decisionNumber: 2,
-      situation: 'Back in the car. Cartagena seems frustrated — quiet, stiff. As you clear the call, Cartagena says: "That took 20 minutes. We could\'ve been done in five."',
+      situation: 'Back in the car. Brooks seems frustrated — quiet, stiff. As you clear the call, Brooks says: "That took 20 minutes. We could\'ve been done in five."',
       question: 'How do you respond?',
       options: [
         {
@@ -90,8 +139,8 @@ const SCENARIO_LEADERSHIP = {
       outcomeLabel: 'Missed Teaching Moment',
       heading: 'You kept the peace but lost the opportunity.',
       narrative: [
-        'Cartagena\'s frustration was an opening — a chance to explain the legal reasoning behind the decision and build a better officer. You let it close.',
-        'Without correction, Cartagena\'s default remains: move fast, run everyone, clear the call. On a solo patrol next week, that default leads to a Fourth Amendment violation with no senior officer to slow it down.',
+        'Brooks\'s frustration was an opening — a chance to explain the legal reasoning behind the decision and build a better officer. You let it close.',
+        'Without correction, Brooks\'s default remains: move fast, run everyone, clear the call. On a solo patrol next week, that default leads to a Fourth Amendment violation with no senior officer to slow it down.',
         'Supervisory leadership is not only about making the right call in the field. It\'s about ensuring the officers around you understand why the right call was right.'
       ],
       legal: 'PERF Leadership Research: The top predictor of supervisory readiness is demonstrated judgment in ambiguous situations. Teaching moments — especially brief, direct, one-on-one corrections — are among the highest-value supervisory actions available at the patrol level.',
@@ -104,7 +153,7 @@ const SCENARIO_LEADERSHIP = {
       heading: 'You addressed it cleanly. No lecture, no audience, one clear message.',
       narrative: [
         '"Here\'s why I took it that way — no posted signage, no prior warning, no articulable suspicion for individual stops. Running them was a Fourth Amendment problem waiting to happen. Twenty minutes of clean contact beats a civil complaint." That\'s all it takes.',
-        'No embarrassment. No public correction. Cartagena heard the reasoning and has something to work with.',
+        'No embarrassment. No public correction. Brooks heard the reasoning and has something to work with.',
         'This is what patrol-level supervision looks like — brief, direct, grounded in law and policy, and delivered without an audience. It doesn\'t require a sergeant\'s badge.'
       ],
       legal: 'Senior officers are expected to model and reinforce professional standards in the field. Correction of junior officer conduct should occur through proper channels and, where possible, privately — to preserve working relationships and reinforce the lesson without public friction.',

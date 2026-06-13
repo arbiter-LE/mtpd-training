@@ -1,4 +1,39 @@
 /* ══════════════════════════════════════════
+   READING — Emotional Intelligence (EGPD)
+══════════════════════════════════════════ */
+const READING_EI = `
+  <div class="content-block">
+    <h4>Scenario</h4>
+    <h2>A follow-up welfare check on a DV victim. She answers the door with crossed arms: "I already talked to your people." There's a bruise on her forearm that isn't in the original report. The next sixty seconds decide whether you leave with evidence and her trust — or with a closed door.</h2>
+    <p>This module covers emotional intelligence as an operational skill: trauma-informed victim contact, self-regulation under provocation, reading and supporting the officers around you — and yourself.</p>
+  </div>
+  <div class="content-block">
+    <h4>Trauma-Informed Victim Contact</h4>
+    <h2>Hostility from a victim is a trauma response — not deception, and not a closed case.</h2>
+    <ul class="key-points">
+      <li><strong>The first 60 seconds carry the contact.</strong> IACP research on victim engagement identifies officer demeanor in the opening moments as the strongest predictor of victim cooperation with the criminal justice process. Victims who experience the initial contact as controlling, dismissive, or skeptical are significantly less likely to give statements or pursue protective orders.</li>
+      <li><strong>Read the behavior correctly.</strong> Hostility, minimization, and recantation are normal, self-protective trauma responses in DV victims — rooted in fear, shame, prior negative law-enforcement experiences, and the dynamics of abusive relationships. They are not indicators of deception, and they are not evidence the incident was minor.</li>
+      <li><strong>Acknowledge before you ask.</strong> Leading with the evidence ("explain that bruise") treats a person in crisis like a subject and closes the door. Acknowledging her position without challenging it — "I'm not here to make anything harder; you don't have to talk to me" — keeps the window open.</li>
+      <li><strong>Never offer false reassurance.</strong> A victim who has been through the system knows arraignment timelines and bail realities. "He's not getting out anytime soon" is recognized instantly as untrue, and it collapses the trust you built. The professional response is honest and actionable: what the arraignment process actually looks like, what a PFA order is and how to get one today, and how to reach the victim advocate. EGPD General Order 4.13.7 requires officers to provide DV victims oral and written notice of available services and their rights under 23 Pa.C.S. Ch. 61 — accurate information is a policy obligation, not a courtesy.</li>
+      <li><strong>New evidence in a follow-up is still evidence.</strong> An injury identified during a welfare contact is documented in a supplemental report with specificity: location, approximate size and coloration, the victim's account of when and how it occurred (clearly attributed), and photographs. In many DV prosecutions, the follow-up contact contains the most damaging evidence.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Self-Regulation</h4>
+    <h2>The officer's nervous system sets the ceiling of the encounter.</h2>
+    <p>Self-regulation is the ability to manage your own emotional state under provocation — absorbing hostility without returning it, and responding from training and judgment rather than reaction. A hostile, irrational, or disrespectful subject is typically responding to fear, pain, or trauma, not targeting you personally. Officers who match hostility with hostility escalate encounters that could have been contained; self-regulation is a tactical skill that directly affects call outcomes, use-of-force rates, and community trust.</p>
+    <p>It applies between officers too. When a partner's approach escalates a scene, the move is to absorb it — step in, redirect the subject's attention to you, re-stabilize with a quiet tone — and address the partner privately after the scene resolves. Public correction of a partner is itself an escalation. And when a person in custody discloses personal trauma during transport, brief genuine acknowledgment — "that sounds really hard" — without interrogation or exploitation is both the ethical and the professionally sound response.</p>
+  </div>
+  <div class="content-block">
+    <h4>Reading the Officers Around You — and Yourself</h4>
+    <h2>Emotional numbness on scenes that used to affect you is a signal, not adaptation.</h2>
+    <p>Feeling nothing on calls that previously had impact is a recognized early indicator of secondary traumatic stress and the pathway to burnout — not strength, and not normal compartmentalization. The same applies to a partner gone quiet, short-tempered, and withdrawn over weeks: behavioral pattern change is among the earliest visible signs of operational stress, and a direct, private check-in — naming what you've noticed, without pressure, mentioning peer support or EAP as an option — is the intervention that research supports.</p>
+    <p>In Pennsylvania, communications with critical incident stress management team members are confidential under 42 Pa.C.S. § 5950, and § 5952 extends protections to trained peer support members. EAP services are confidential. Early, voluntary engagement with these resources produces dramatically better outcomes than crisis-point intervention — and knowing the protections accurately means you can convey them credibly to a colleague who needs them.</p>
+    <button class="btn-launch" onclick="startScenario('egpd-emotional-intelligence')">Proceed to Scenario Exercise →</button>
+  </div>
+`;
+
+/* ══════════════════════════════════════════
    SCENARIO — Emotional Intelligence (EGPD)
 ══════════════════════════════════════════ */
 const SCENARIO_EI = {
@@ -94,7 +129,7 @@ const SCENARIO_EI = {
         '"Okay. Thanks." She closed the door.',
         'False reassurance is one of the most damaging things an officer can offer a DV victim. It is not kindness — it is a failure to respect her intelligence and her reality. She will be less likely to call for help the next time because she knows she cannot rely on accurate information from law enforcement.'
       ],
-      legal: 'EGPD General Order 4.13 — Officers shall provide DV victims with accurate information about the criminal justice process, including arraignment, bail, and protective order procedures. Victim notification requirements under Pennsylvania law (23 Pa. C.S. § 6106) include providing information about available legal remedies and victim services.',
+      legal: 'EGPD General Order 4.13.7 — Officers shall provide DV victims oral and written notice of the availability of safe shelter and domestic violence services, and of their rights under 23 Pa.C.S. Ch. 61. Accurate information about the criminal justice process — arraignment, bail, protective order procedures — is part of that obligation; misleading reassurance is inconsistent with it.',
       next: 'd3'
     },
     'c2-good': {
@@ -160,7 +195,7 @@ const SCENARIO_EI = {
         'Mentioning peer support or EAP without pressure keeps the door open without creating shame. Officers are more likely to use resources when a trusted colleague mentioned them — not when they find a brochure on a bulletin board.',
         'This is leadership. It does not happen in briefings. It happens in break rooms.'
       ],
-      legal: 'Pennsylvania Act 192 provide confidentiality protections for peer support contacts. EAP services are confidential and do not affect employment status in most circumstances. Officers should be aware of these protections so they can accurately convey them to peers seeking help.',
+      legal: '42 Pa.C.S. § 5950 makes communications to critical incident stress management team members confidential, and § 5952 extends protections to trained peer support members. EAP services are confidential and do not affect employment status in most circumstances. Officers should be aware of these protections so they can accurately convey them to peers seeking help.',
       next: 'debrief'
     },
     'c3-neutral': {
