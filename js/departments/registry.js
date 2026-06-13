@@ -40,9 +40,15 @@ function resolveDepartmentFromHostname() {
     const deptParam = new URLSearchParams(window.location.search).get('dept');
     ACTIVE_DEPARTMENT = DEPARTMENT_REGISTRY.find(d => d.subdomain === deptParam)
       || DEPARTMENT_REGISTRY[0];
-    return ACTIVE_DEPARTMENT;
+  } else {
+    ACTIVE_DEPARTMENT = DEPARTMENT_REGISTRY.find(d => d.subdomain === subdomain) || null;
   }
 
-  ACTIVE_DEPARTMENT = DEPARTMENT_REGISTRY.find(d => d.subdomain === subdomain) || null;
+  // Per-department visual theme: sets html[data-theme="<subdomain>"], which
+  // applies that agency's token overrides in styles.css. No attribute = MTPD
+  // default (:root). Each new agency gets a theme block keyed to its subdomain.
+  if (ACTIVE_DEPARTMENT) {
+    document.documentElement.setAttribute('data-theme', ACTIVE_DEPARTMENT.subdomain);
+  }
   return ACTIVE_DEPARTMENT;
 }
