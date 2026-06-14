@@ -841,18 +841,18 @@
 <script src="js/departments/registry.js"></script>
 <script src="js/config.js"></script>
 <script>
-  /* Each department's content lives in js/modules/<subdomain>/.
-     Only one department's files load per page — they intentionally
-     define the same globals (MODULES, SCENARIO_*, get*Questions). */
+  /* Each department's content lives in js/modules/<subdomain>/ and is
+     declared as moduleScripts in js/departments/registry.js. Only the
+     active department's scripts load per page — they intentionally define
+     the same globals (MODULES, SCENARIO_*, get*Questions). This is
+     data-driven on purpose: adding a department is a registry edit, with
+     no branch to update here. An unknown subdomain loads nothing and falls
+     through to the "Department not recognized" screen (see config.js). */
   resolveDepartmentFromHostname();
-  if (ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.subdomain === 'egpd') {
-    for (let i = 1; i <= 12; i++) {
-      document.write('<script src="js/modules/egpd/module-egpd-' + i + '.js"><\/script>');
-    }
-    document.write('<script src="js/modules/egpd/modules-egpd.js"><\/script>');
-  } else {
-    document.write('<script src="js/modules/mtpd/scenarios-mtpd.js"><\/script>');
-    document.write('<script src="js/modules/mtpd/modules-mtpd.js"><\/script>');
+  if (ACTIVE_DEPARTMENT && Array.isArray(ACTIVE_DEPARTMENT.moduleScripts)) {
+    ACTIVE_DEPARTMENT.moduleScripts.forEach(function(src) {
+      document.write('<script src="' + src + '"><\/script>');
+    });
   }
 </script>
 <script src="js/app.js"></script>

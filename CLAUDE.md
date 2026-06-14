@@ -47,6 +47,8 @@ MTPD and EGPD are both active in the registry. EGPD agreement signed (Chief Halt
 
 **Never add a department to the registry as active** unless Andrew confirms the service agreement is signed and the Supabase project is ready.
 
+**Shared engine, per-department data.** `js/app.js`, `js/config.js`, `index.html`, and `css/styles.css` are shared by every department — never fork them per agency (that guarantees drift). Express department differences as **data in `registry.js`**: `moduleScripts` (the content files to load) and `features` (capability flags like `supervisorTrack`). Shared code branches on `ACTIVE_DEPARTMENT.features.*`, **never** on `if (subdomain === 'egpd')`, and must default safe when a capability is absent. The script loader in `index.html` is registry-driven — an unknown subdomain loads nothing and hits the "Department not recognized" screen rather than silently serving another agency's content. Before shipping any change to a shared file, run **`node _dev/smoke-departments.js`** (builds every registered department, validates its modules, and blocks hardcoded subdomains in the engine) and verify **both** live subdomains — one shared-file change touches every agency at once.
+
 **Vercel/Linux is case-sensitive. macOS is not.** Always match folder names exactly — `Marketing/` not `marketing/`, `assets/` not `Assets/`.
 
 **Check `git log --oneline -10` at the start of any session** involving routing, deployment, or anything structural. The revert history matters.
@@ -149,8 +151,8 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 1. Get signed service agreement
 2. Create Supabase project for the department
-3. Add entry to `js/departments/registry.js` (uncomment template)
-4. Create `js/modules/<subdomain>/` for its module content; wire it into the loader block at the bottom of `index.html`
+3. Add entry to `js/departments/registry.js` (uncomment template), including its `moduleScripts` list and any `features` flags
+4. Create `js/modules/<subdomain>/` for its module content — it loads via the registry's `moduleScripts`, so **no `index.html` edit is needed**
 5. Add badge to `assets/`
 6. Add subdomain CNAME in Cloudflare (proxy OFF)
 7. Add domain alias in Vercel

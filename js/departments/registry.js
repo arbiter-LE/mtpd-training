@@ -14,6 +14,16 @@ const DEPARTMENT_REGISTRY = [
     supabaseUrl: 'https://lkikznncbpfcmgnnyigj.supabase.co',
     supabaseKey: 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6',
     scheduleStart: new Date('2026-06-01T00:00:00'), // Monday — Week 1 opens
+    // Content scripts for this department, loaded in order by index.html.
+    // They define the same globals (MODULES, SCENARIO_*, get*Questions);
+    // only the active department's scripts load per page.
+    moduleScripts: [
+      'js/modules/mtpd/scenarios-mtpd.js',
+      'js/modules/mtpd/modules-mtpd.js',
+    ],
+    // Per-department capability flags. Shared code branches on these, never
+    // on the subdomain. Absent/false = the feature is off for this department.
+    features: {},               // MTPD: no supervisor track
   },
   // ── Add new agencies below ────────────────
   {
@@ -25,6 +35,22 @@ const DEPARTMENT_REGISTRY = [
     supabaseUrl: 'https://kczrylxnrzkcwgivlqrs.supabase.co',
     supabaseKey: 'sb_publishable_W9kN8bhnwKwMCwKv5zu5GA_xhiq-vXR',
     scheduleStart: new Date('2026-06-17T00:00:00'), // Requested go-live per onboarding packet
+    moduleScripts: [
+      'js/modules/egpd/module-egpd-1.js',
+      'js/modules/egpd/module-egpd-2.js',
+      'js/modules/egpd/module-egpd-3.js',
+      'js/modules/egpd/module-egpd-4.js',
+      'js/modules/egpd/module-egpd-5.js',
+      'js/modules/egpd/module-egpd-6.js',
+      'js/modules/egpd/module-egpd-7.js',
+      'js/modules/egpd/module-egpd-8.js',
+      'js/modules/egpd/module-egpd-9.js',
+      'js/modules/egpd/module-egpd-10.js',
+      'js/modules/egpd/module-egpd-11.js',
+      'js/modules/egpd/module-egpd-12.js',
+      'js/modules/egpd/modules-egpd.js',   // builds MODULES from the above
+    ],
+    features: { supervisorTrack: true },   // EGPD: supervisor reading + graded quiz
   },
 ];
 

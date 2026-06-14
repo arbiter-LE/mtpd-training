@@ -1530,9 +1530,10 @@ function activeContentHtml(m) {
 function renderTrackToggle(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
-  // Only for admins, and only where this department actually has supervisor
-  // content (e.g. EGPD) — otherwise the toggle would be a no-op (e.g. MTPD).
-  const deptHasSupervisorTrack = MODULES.some(m => m.supervisorContentHtml);
+  // Only for admins, and only where the active department declares the
+  // supervisor track in the registry (features.supervisorTrack). Branch on
+  // the declared capability, never on the subdomain.
+  const deptHasSupervisorTrack = !!(ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.features && ACTIVE_DEPARTMENT.features.supervisorTrack);
   if (!currentUser || currentUser.role !== 'admin' || !deptHasSupervisorTrack) { el.style.display = 'none'; return; }
   const cur = effectiveTrack();
   el.style.display = '';
