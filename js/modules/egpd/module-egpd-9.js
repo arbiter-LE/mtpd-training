@@ -315,3 +315,142 @@ function getEIQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Emotional Intelligence (EGPD)
+   EI as a supervisory function: model self-regulation, coach
+   trauma-informed contact, read your officers, watch the load.
+══════════════════════════════════════════ */
+const SUPERVISOR_EI = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>Your nervous system set the ceiling on a scene as an officer. As a supervisor it sets the ceiling on a squad.</h2>
+    <p>The officer version of this module is about managing yourself and reading the person in front of you. As a supervisor the same skill operates on your people: your regulation under pressure is the temperature the whole squad takes its cue from, reading your officers is now part of the job rather than a kindness, and the trauma-informed contact you model becomes the department's victim-engagement standard. Emotional intelligence stops being a personal trait and becomes a supervisory function.</p>
+  </div>
+  <div class="content-block">
+    <h4>Make Trauma-Informed Contact a Coached Standard</h4>
+    <p>The IACP finding the officer learned — that demeanor in the first 60 seconds is the strongest predictor of victim cooperation — is something you now enforce across a squad. On review and in debrief, treat a closed door on a DV follow-up not as "the victim wouldn't talk" but as a contact worth examining: did the officer lead with the evidence, or acknowledge before asking? Did they offer false reassurance — "he's not getting out" — that a system-experienced victim sees through, or honest, actionable information plus the GO 4.13.7 notice of services and rights under 23 Pa.C.S. Ch. 61? Hostility, minimization, and recantation are trauma responses, not closed cases. An officer who reads them as deception is one whose victim-contact technique you coach — because in many DV prosecutions the follow-up holds the most damaging evidence.</p>
+  </div>
+  <div class="content-block">
+    <h4>Model and Protect Self-Regulation</h4>
+    <p>Self-regulation is a tactical skill that drives use-of-force rates and complaints, and your officers calibrate theirs to yours. The supervisor who stays level when a subject — or an officer — is hostile teaches that the badge absorbs provocation rather than returning it. Watch for the partner-escalation dynamic on scene and in reports: the move is to absorb and redirect, then correct privately, because a public correction of an officer is itself an escalation. What you model on a chaotic scene, and how you debrief the officer who lost composure — privately, as development, not humiliation — is how regulation spreads through a squad.</p>
+  </div>
+  <div class="content-block">
+    <h4>Reading Your Officers Is the Job Now</h4>
+    <ul class="key-points">
+      <li><strong>Behavioral change is the early signal.</strong> A normally steady officer gone quiet, short-tempered, and withdrawn over weeks is showing the earliest visible sign of operational stress — and you see it across shifts in a way a single partner cannot.</li>
+      <li><strong>Numbness is a red flag, not resilience.</strong> An officer — or you — feeling nothing on calls that used to land is an early indicator of secondary traumatic stress, not strength. Name it rather than admire it.</li>
+      <li><strong>The direct, private check-in is the supported intervention.</strong> Name what you have noticed without pressure, mention peer support or EAP as an option, and do it before the crisis, not after.</li>
+      <li><strong>Do not outsource the human step.</strong> Flagging an officer to your own supervisor or to wellness services is appropriate as a follow-up — never as a substitute for the conversation only you, who works beside them, can have.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Know the Protections So You Can Convey Them Credibly</h4>
+    <p>An officer will not engage a resource they believe is not confidential. In Pennsylvania, communications with critical incident stress management team members are confidential under 42 Pa.C.S. § 5950, and § 5952 extends protections to trained peer support members; EAP services are confidential as well. Knowing those protections accurately — not vaguely — is what lets you tell a struggling officer the truth about what reaching out actually risks, which is usually far less than they fear. Early, voluntary engagement produces dramatically better outcomes than crisis-point intervention, and your credibility about confidentiality is often the difference between an officer who calls and one who does not.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Cumulative Load Is Yours to Watch</h4>
+    <p>No single call breaks an officer; the accumulation does, and you are positioned to see the accumulation. Track the run of hard calls a particular officer has absorbed — the child welfare check, the fatal, the suicide — rotate exposure where you can, build the debrief and the check-in into the rhythm of the unit rather than reserving them for after a catastrophe, and treat your own numbness as the same signal you would act on in someone else. The officers you keep whole are the ones still doing this work, and doing it well, years from now.</p>
+  </div>
+`;
+
+function getEISupervisorQuestions() {
+  return [
+    {
+      scenario: 'An officer\'s DV follow-up contact ended with the victim closing the door. The report summarizes it as "victim uncooperative, refused to provide a statement."',
+      text: 'How should you handle this in review and debrief?',
+      options: [
+        'Accept the summary — if the victim refused to talk, there is nothing more to examine.',
+        'Examine the contact itself: did the officer lead with the evidence or acknowledge before asking? Hostility and a closed door are trauma responses, not a closed case, and the technique is coachable — especially since the follow-up often holds the most damaging DV evidence.',
+        'Direct the officer to force the issue more firmly at the next contact.',
+        'Close the case, since an uncooperative victim cannot be prosecuted.'
+      ],
+      correct: 1,
+      feedback: 'Correct. "Victim uncooperative" is often a technique problem, not a dead end. IACP research ties cooperation to the officer\'s demeanor in the first 60 seconds; hostility and minimization are trauma responses. A supervisor coaches the trauma-informed approach because the follow-up contact frequently contains the most important evidence in a DV prosecution.'
+    },
+    {
+      scenario: 'A report shows the officer told a fearful DV victim, "He\'s not getting out anytime soon — you have nothing to worry about," to reassure her.',
+      text: 'What is your supervisory assessment?',
+      options: [
+        'It was a kind and appropriate way to calm the victim.',
+        'It was a mistake to coach: a system-experienced victim recognizes false reassurance about arraignment and bail, and it collapses trust. GO 4.13.7 requires accurate information about services and rights under 23 Pa.C.S. Ch. 61 — honest and actionable beats reassuring and inaccurate.',
+        'It was fine because the officer was trying to help.',
+        'It was acceptable as long as the officer also took a report.'
+      ],
+      correct: 1,
+      feedback: 'Correct. False reassurance is one of the most damaging things an officer can offer a DV victim — they know how arraignment and bail work, and the overstatement destroys trust. The standard, consistent with GO 4.13.7, is accurate information plus actionable options (PFA, victim advocate). The supervisor coaches honest and actionable.'
+    },
+    {
+      scenario: 'On a volatile call you are supervising, one of your officers raises their voice and issues a command that visibly escalates the subject.',
+      text: 'What is the right response, in the moment and afterward?',
+      options: [
+        'Correct the officer out loud immediately so the subject sees you are taking control.',
+        'Absorb the escalation in the moment — step in, redirect the subject\'s attention, re-stabilize with a calm tone — and address the officer\'s approach privately afterward, because public correction of an officer is itself an escalation and you model regulation for the squad.',
+        'Let the officer continue so as not to undermine their authority.',
+        'Pull the officer from the scene and finish the call yourself without comment.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The effective move is to absorb and redirect, then correct privately. A public correction escalates the scene and undermines the officer. How a supervisor handles this — calm in the moment, development in private — models the self-regulation that drives use-of-force rates and complaints across the whole squad.'
+    },
+    {
+      scenario: 'A normally steady, even-keeled officer on your squad has been quiet, short-tempered on a couple of calls, and withdrawn for about three weeks.',
+      text: 'What is your supervisory responsibility?',
+      options: [
+        'Wait for the officer to come to you — pushing would be intrusive.',
+        'Recognize the behavioral change as an early sign of operational stress and have a direct, private check-in — name what you have noticed without pressure and mention peer support or EAP — before it reaches a crisis.',
+        'Document the short temper as a performance issue and move toward discipline.',
+        'Ignore it unless it begins to affect the officer\'s arrest numbers.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A marked behavioral pattern change is among the earliest visible signs of operational stress, and a supervisor sees it across shifts. The supported intervention is a direct, private check-in — naming the change without pressure and offering resources — done early, not after a crisis.'
+    },
+    {
+      scenario: 'An officer tells you they have stopped feeling anything on scenes that used to affect them, and frames it as a sign they are getting tougher and more professional.',
+      text: 'How should you read and respond to this?',
+      options: [
+        'Affirm it — emotional distance is healthy adaptation that comes with experience.',
+        'Treat it as a red flag, not resilience: emotional numbing is an early indicator of secondary traumatic stress and a pathway to burnout. Name it as such and encourage early, confidential engagement with peer support or EAP.',
+        'Note it approvingly as evidence the officer is ready for higher-stress assignments.',
+        'Take no action unless the officer\'s performance declines.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Feeling nothing on calls that used to land is an early indicator of secondary traumatic stress, not strength or adaptation. A supervisor names it rather than admiring it and points the officer toward early, confidential intervention — which produces far better outcomes than waiting for a crisis.'
+    },
+    {
+      scenario: 'You are concerned about a struggling officer and consider simply flagging them to your own supervisor and the wellness program.',
+      text: 'Is that sufficient?',
+      options: [
+        'Yes — escalating to your supervisor and wellness discharges your responsibility.',
+        'No — flagging upward is appropriate as a follow-up but not a substitute for the direct, peer-level check-in only you, who works beside the officer, can have. Do the human step first, then involve other resources.',
+        'Yes — peer-level conversations are outside a supervisor\'s role.',
+        'No — you should avoid involving wellness entirely and handle it alone.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A sergeant or wellness referral carries a different, more evaluative weight, and kicking it upward as the only move skips the most important step. The peer connection — naming what you see, without pressure — comes first; the formal follow-up complements it rather than replacing it.'
+    },
+    {
+      scenario: 'You want to encourage a reluctant officer to use peer support or EAP, but the officer is worried it will end up in their personnel file or affect their job.',
+      text: 'Why does it matter that you know the confidentiality protections accurately?',
+      options: [
+        'It does not — the officer should use the resources regardless of the details.',
+        'Because an officer will not engage a resource they believe is not confidential, and accurate knowledge — that 42 Pa.C.S. § 5950 protects critical incident stress management communications, § 5952 extends it to trained peer support members, and EAP is confidential — lets you tell them the truth about the low risk, which is often what decides whether they reach out.',
+        'Because you are required to record which officers use which services.',
+        'Because confidentiality protections do not apply to law enforcement.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Officers do not use resources they think are not confidential. Knowing the protections accurately — 42 Pa.C.S. § 5950 and § 5952 for peer/CISM communications, and EAP confidentiality — lets a supervisor convey the truth credibly, and that credibility is frequently the difference between an officer who calls and one who does not.'
+    },
+    {
+      scenario: 'Over a short span, one of your officers has handled a string of traumatic calls — a child welfare seizure, a fatal crash, and a completed suicide.',
+      text: 'What is the appropriate supervisory action?',
+      options: [
+        'Nothing specific — each officer is expected to handle whatever calls come their way.',
+        'Manage the cumulative load: it is the accumulation, not a single call, that breaks officers, and you are positioned to see it. Track the exposure, rotate hard calls where possible, and build debriefs and check-ins into the unit\'s rhythm rather than reserving them for after a catastrophe.',
+        'Wait until the officer requests time off before taking any action.',
+        'Assign the officer additional high-stress calls to build tolerance.'
+      ],
+      correct: 1,
+      feedback: 'Correct. No single call breaks an officer; the accumulation does, and the supervisor is the one positioned to see the run of hard calls. Tracking exposure, rotating where possible, and building debriefs and check-ins into the routine — rather than waiting for a crisis — is how a supervisor keeps officers whole over a career.'
+    },
+  ];
+}

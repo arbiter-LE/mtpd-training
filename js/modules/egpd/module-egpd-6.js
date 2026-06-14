@@ -372,3 +372,143 @@ function getVehiclePursuitQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Motor Vehicle Pursuits (EGPD)
+   The field supervisor is a named, real-time role in the
+   directive — a live control on the event, not a later reviewer.
+══════════════════════════════════════════ */
+const SUPERVISOR_VEHICLE_PURSUITS = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>In a pursuit the directive names you. The field supervisor is a live control on the event — not a reviewer after the fact.</h2>
+    <p>Most of your supervisory work is review. A pursuit is different: the Motor Vehicle Pursuits Directive makes the field supervisor a participant in real time — monitoring by radio, ensuring compliance with the directive and the matrix, and ordering termination when continuation is no longer reasonable or prudent. The officer in the car has tunnel vision by design; you have the radio, the whole board, and the authority to end it. The priority the directive sets — "the safety of the public and persons involved in the pursuit is the most important priority" — is yours to enforce in the exact moment the officer's adrenaline is arguing the other way.</p>
+  </div>
+  <div class="content-block">
+    <h4>Monitor Against the Matrix — Out Loud, in Real Time</h4>
+    <h2>Your first question is always the offense level.</h2>
+    <p>The matrix decides most pursuits before judgment enters: for misdemeanors and infractions the answer is "do not pursue, or terminate" at every risk level, and a pursuit may be initiated or continued only for a forcible felony, or an offender escaping who possesses a deadly weapon or otherwise indicates he will endanger life. As you monitor, the offense level is your first question — and "fleeing a lawful stop" does not elevate it. An equipment violation plus flight is still a summary matter, and a pursuit running on that is one you terminate, not one you wait out. If new information later establishes a forcible felony, that is a new decision on its own facts; it never retroactively justifies the seconds that preceded it.</p>
+  </div>
+  <div class="content-block">
+    <h4>Termination Is Your Call — and It Is Protected</h4>
+    <p>The directive gives you the termination authority and removes the disincentive to use it. Regulation 1: any officer terminates when the hazard outweighs the need to apprehend. Regulation 5: "disciplinary action will not be taken against police personnel for deciding to terminate a pursuit." Regulation 6: all officers immediately terminate on a supervisor's direction. Read together: you are expected to terminate when the balance tips, your officers are protected for doing so on their own, and your order ends it for everyone. When you order a termination it "shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System" (Regulation 7) — confirm it was acknowledged, not merely transmitted.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Control Points Only You Hold</h4>
+    <ul class="key-points">
+      <li><strong>Unit count (Regulation 11).</strong> The pursuit is primary and secondary only unless you approve otherwise. Severity of the offense does not expand it — only your approval does. A unit joining on its own initiative is yours to redirect to monitor escape routes and channel (not block) the pursuit.</li>
+      <li><strong>Deadly-force interventions (Regulations 8 and 9).</strong> Firearm discharge from a moving vehicle, PIT, ramming, and roadblocks are deadly force under 18 PA C.S.A. § 508 and General Orders 1.3.1/1.3.2 — strictly prohibited unless deadly force is authorized. An officer cannot self-authorize a PIT to "end the threat"; a displayed-but-not-fired weapon is not an active deadly-force attack, and that determination runs through § 508 and GO 1.3.</li>
+      <li><strong>Outside pursuits (Regulation 17).</strong> A pursuit entering East Greenville from another jurisdiction "shall not be joined or continued" by your officers. The supervisor/OIC requests information and determines what assistance, if any, is provided — that decision is yours, not the responding officer's.</li>
+      <li><strong>Vehicle and occupant limits (Regulation 10).</strong> Non-pursuit-rated vehicles and any vehicle carrying non-sworn passengers do not become directly involved. Watch the board for who is actually rolling.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Manage the Board, Not Just the Chase</h4>
+    <p>The primary unit owns the information flow; you own the picture around it. Make sure the Communications Center clears the frequency with a tone alert, notifies adjacent jurisdictions the pursuit may enter, runs CLEAN/NCIC on the suspect vehicle, and keeps the written record — and that units are positioned to channel escape routes rather than stack up behind the primary. Your role is to keep the response proportionate and contained: channel, not block; monitor, not swarm — so the apprehension never costs more than the offense is worth.</p>
+  </div>
+  <div class="content-block">
+    <h4>After the Pursuit — Review, and the Culture You Protect</h4>
+    <p>When it ends, the review is yours too. Was the offense threshold actually met at initiation? Did the unit count stay within Regulation 11 or your approval? Were any prohibited interventions used, and were they authorized through § 508 and GO 1.3 if so? Then reinforce the culture Regulation 5 was written to protect: an officer who terminated a pursuit that was slipping past the matrix made the right call, and your debrief should say so plainly. What you praise — disciplined termination, not merely a successful apprehension — is what your officers will reach for on the next one.</p>
+  </div>
+`;
+
+function getVehiclePursuitSupervisorQuestions() {
+  return [
+    {
+      scenario: 'A pursuit has just been called out over the radio. You are the field supervisor on duty.',
+      text: 'Under the Motor Vehicle Pursuits Directive, what is your role?',
+      options: [
+        'To review the pursuit paperwork after the incident concludes; the supervisor has no role during the pursuit itself.',
+        'To be a live control on the event: monitor by radio, ensure compliance with the directive and the Pursuit Decision-Making Matrix, and order termination when continuation is no longer reasonable or prudent.',
+        'To take over as the primary unit so the most senior officer is leading the chase.',
+        'To stay off the radio so the primary unit\'s transmissions are not interrupted.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The directive makes the field supervisor a real-time participant: monitoring by radio, ensuring compliance with the directive and the matrix, and ordering termination when continuation would not be reasonable or prudent. The officer in the car has tunnel vision; the supervisor has the whole board and the authority to end the pursuit.'
+    },
+    {
+      scenario: 'You are monitoring a pursuit by radio. The primary unit reports the only known offenses are an expired registration and fleeing the stop. The vehicle is running through residential streets at high speed.',
+      text: 'What should you do?',
+      options: [
+        'Let it continue — the driver\'s decision to flee elevates the matter and justifies the pursuit.',
+        'Order termination: under the matrix, misdemeanors and infractions are "do not pursue, or terminate" at every risk level, and fleeing a lawful stop does not elevate a summary offense.',
+        'Wait to see whether the vehicle is connected to a more serious crime before deciding.',
+        'Authorize additional units to help end the pursuit faster.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The matrix directs "do not pursue, or terminate" for misdemeanors and infractions at all risk levels. An expired registration plus flight is a summary matter, and flight does not raise the offense level. The supervisor terminates it; if a forcible felony later emerges, that is a separate decision on its own facts.'
+    },
+    {
+      scenario: 'An officer on her own initiative terminated a pursuit when the hazard began to outweigh the need to apprehend, and the suspect got away. Another supervisor wants her counseled for "letting him go."',
+      text: 'What is the correct position?',
+      options: [
+        'Counsel the officer — terminating a pursuit that could have ended in an arrest reflects poorly on the unit.',
+        'Support the officer: Regulation 5 states that disciplinary action will not be taken against personnel for deciding to terminate a pursuit, and the directive makes public and officer safety the highest priority. Her decision should be reinforced, not punished.',
+        'Take no position; pursuit decisions are not a supervisory concern once the pursuit ends.',
+        'Discipline the primary unit\'s partner instead for not taking over.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Regulation 5 explicitly protects the decision to terminate from discipline, and Regulation 1 makes termination the right call when the hazard outweighs the need to apprehend. Punishing a sound termination undermines exactly the judgment the directive is built to encourage.'
+    },
+    {
+      scenario: 'A justified pursuit for an armed robbery is underway with a primary and a secondary unit. A third unit joins on its own initiative, citing the seriousness of the offense.',
+      text: 'As the supervisor, what do you do about the third unit?',
+      options: [
+        'Allow it — the seriousness of an armed robbery justifies additional units joining the pursuit.',
+        'Redirect it: under Regulation 11 the pursuit is the primary and secondary unit only unless you approve otherwise. Direct the third unit to position to monitor escape routes and channel — not join — the pursuit. Severity does not expand the unit count; only your approval does.',
+        'Order all three units to box in the suspect vehicle immediately.',
+        'Remove the secondary unit so the third can take its place.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Regulation 11 limits the pursuit to the primary and secondary unit unless a supervisor approves otherwise, with other units positioning to monitor escape routes and channel the pursuit. The seriousness of the underlying crime is not an exception — only supervisor approval is.'
+    },
+    {
+      scenario: 'During a pursuit, the primary unit radios you asking for permission to perform a PIT maneuver to end it. The suspect displayed a handgun a moment ago but has not fired.',
+      text: 'How do you respond?',
+      options: [
+        'Authorize the PIT — a displayed weapon justifies using the vehicle to stop the threat.',
+        'Do not authorize a PIT on these facts: ramming and vehicular contact are deadly force under Regulation 9, strictly prohibited unless deadly force is authorized under 18 PA C.S.A. § 508 and GO 1.3.1/1.3.2. A displayed-but-not-fired weapon is not an active deadly-force attack; communicate the threat and continuously reassess termination.',
+        'Tell the primary it is their call to make in the moment.',
+        'Authorize the secondary unit to discharge a firearm at the tires instead.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Regulation 9 treats PIT, ramming, and roadblocks as deadly force, prohibited unless deadly force is authorized under § 508 and GO 1.3. A weapon displayed but not fired has not reached the threshold of the suspect employing deadly force. An officer cannot use a PIT as a substitute for that determination, and the supervisor should not authorize one here.'
+    },
+    {
+      scenario: 'A pursuit that began in a neighboring jurisdiction crosses into East Greenville. One of your officers asks whether to join and take it over.',
+      text: 'What is your decision under Regulation 17?',
+      options: [
+        'Direct the officer to join and assume the pursuit, since it is now in East Greenville.',
+        'Direct that East Greenville officers shall not join or continue the pursuit; as supervisor/OIC you request information about the nature of the pursuit and determine what assistance, if any, is to be provided.',
+        'Order a roadblock at the borough line to stop the pursuit before it enters.',
+        'Tell the officer to stay completely uninvolved, including refusing to gather any information.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Regulation 17 provides that pursuits originating outside East Greenville and entering it shall not be joined or continued by East Greenville officers. The supervisor/OIC requests information and determines what assistance is provided — coordinated support is possible, but joining the pursuit is not, and that decision is the supervisor\'s.'
+    },
+    {
+      scenario: 'You have decided that an ongoing pursuit must end and you order termination.',
+      text: 'Under Regulation 7, what must happen with that order?',
+      options: [
+        'It can be documented in the after-action report; immediate communication is not required.',
+        'The decision to terminate shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System — and you should confirm it was acknowledged, not just transmitted.',
+        'Only the primary unit needs to hear it, by phone, after the pursuit.',
+        'It takes effect only once the suspect vehicle is out of sight.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Regulation 7 requires that a termination be immediately and clearly communicated to dispatch via the Montgomery County radio system so all units and the Communications Center know the pursuit has ended. A supervisor should verify the termination was acknowledged across the involved units.'
+    },
+    {
+      scenario: 'In a post-pursuit debrief, one officer terminated a marginal pursuit per the matrix and the suspect escaped, while another made a risky high-speed apprehension on a separate call that barely stayed within policy.',
+      text: 'What should your debrief reinforce?',
+      options: [
+        'Praise only the apprehension — results are what matter in pursuit work.',
+        'Reinforce the disciplined termination as the model: public and officer safety is the directive\'s highest priority, Regulation 5 protects the decision to terminate, and what you praise is what officers will repeat on the next pursuit.',
+        'Criticize the officer who terminated for not finding a way to make the arrest.',
+        'Avoid comment on either decision to prevent second-guessing.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The directive makes safety the highest priority and Regulation 5 protects termination decisions from discipline. A supervisor who praises disciplined termination — not just successful apprehension — shapes the judgment officers will bring to the next pursuit. Rewarding only results trains the wrong instinct.'
+    },
+  ];
+}

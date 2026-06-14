@@ -327,3 +327,143 @@ function getReportWritingQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Report Writing (EGPD)
+   The report-review craft: how a supervisor reads, returns,
+   and develops officers through the reports that cross the desk.
+══════════════════════════════════════════ */
+const SUPERVISOR_REPORT_WRITING = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>Your notation on a returned report teaches more report-writing than any classroom — if it is specific enough to act on.</h2>
+    <p>In this module the officer's report came back with a sergeant's notation. From your side of the desk, that notation is the highest-leverage coaching you do. Every report you approve carries your name; every report you return is a lesson. And the discipline of review mirrors the discipline of writing: be specific. "Needs work" teaches nothing. "Timeline unclear — sequence the takedown movement by movement, and tie each force application to the resistance that prompted it" teaches the standard and tells the officer exactly what a defensible report looks like.</p>
+  </div>
+  <div class="content-block">
+    <h4>Read Every Report for Conclusions Wearing the Clothes of Facts</h4>
+    <h2>The most common defect you will return is the conclusion that pretends to be a fact.</h2>
+    <p>"Resisted arrest." "Became combative." "Appeared nervous." "Based on my training and experience, I believed the subject was involved in criminal activity." Each tells the reader what to conclude without the facts to evaluate it, and none survives cross-examination. On review, mark every such phrase and require the facts underneath: which arm, which direction, the triggering movement, the officer's specific response, and what happened after. The same rule governs probable cause — under <em>Illinois v. Gates</em> (1983), PC rests on specific articulable facts. "I believed the subject was involved in criminal activity" is a conclusion you send back for the facts that support it, with the training-and-experience reference tethered to what was actually observed.</p>
+  </div>
+  <div class="content-block">
+    <h4>Some Problems Are Not Writing Problems</h4>
+    <h2>A few returns are not coaching. They are integrity findings — and only the reviewer catches them.</h2>
+    <p>Most returns improve prose. A few are different in kind. If a report's quoted statements, timeline, or use-of-force account conflict with the body-camera footage, you are no longer editing — you are looking at a possible false official statement under 18 Pa. C.S. § 4904 (unsworn falsification) and § 4906 (false reports), and that is a Professional Conduct matter, not a revise-and-resubmit. This is why review means actually comparing the report against the footage and the field notes, not just reading for clarity. A reconstructed quote, a sequence that does not match the video, a fact that surfaced only after a legal challenge — each is a flag you cannot coach away, and missing it because you only read the words is the failure that follows the case into court.</p>
+  </div>
+  <div class="content-block">
+    <h4>Returning a Report for a Gap — the Right Way and the Wrong Way</h4>
+    <ul class="key-points">
+      <li><strong>Direct the right fix.</strong> When a gap exists — a missing victim quote, an unclear injury description — instruct the officer to follow up with the witness or victim and document the follow-up contact (date, time, method), not to reconstruct from memory. Reconstructing a quote is fabrication even when the spirit is accurate.</li>
+      <li><strong>Don't accept writing around the gap.</strong> Conclusory filler — "victim provided a statement consistent with the injuries observed" — avoids fabrication but may fail to establish probable cause. Return it for the specific detail; a clean-sounding conclusion is still a conclusion.</li>
+      <li><strong>Late facts go in disclosed, never silent.</strong> A fact discovered after filing belongs in a supplement that notes it was captured from memory rather than contemporaneous notes. A silent insertion into a finished report is misconduct; a disclosed supplement is integrity. Make sure your officers know the difference before they need it.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Contemporaneous Documentation and the Stops That Never Became Arrests</h4>
+    <p>Two habits to reinforce on review. First, contemporaneous documentation: reports written hours later from memory lose distances, exact commands, and timeline. Encourage officers to review footage and notes and write as soon as safely possible — and when they didn't, read for the tell-tale gaps and missing sequence. Second, hold the same standard for stops that ended without an arrest. Field intelligence that is not recorded does not exist, and a CAD entry of "warning issued" preserves nothing for the next investigation. The contacts that never became arrests are the ones most likely to be under-documented — and the ones most easily fixed by a supervisor who insists on the standard before the record is closed.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Reviewer Is Also a Developer</h4>
+    <p>Track what you return. One officer who writes conclusions instead of facts is a coaching conversation. A squad that does it is a training need you own. The patterns in the reports you review are the clearest signal you have of where your people need development, and addressing them upstream — a roll-call standard, a worked example, a targeted session — is how the report-writing SOP becomes a habit rather than a correction you make one report at a time.</p>
+  </div>
+`;
+
+function getReportWritingSupervisorQuestions() {
+  return [
+    {
+      scenario: 'An officer\'s arrest report is unclear and conclusory in places. You are returning it for revision.',
+      text: 'Which supervisory notation best develops the officer and produces a defensible report?',
+      options: [
+        '"Needs work — revise and resubmit."',
+        '"Timeline unclear — sequence the takedown movement by movement, and tie each force application to the specific resistance that prompted it. Replace \'resisted arrest\' with what the subject physically did."',
+        '"Rewrite the whole thing, it isn\'t good enough."',
+        '"Approved with reservations — I\'ll note my concerns verbally later."'
+      ],
+      correct: 1,
+      feedback: 'Correct. A specific, actionable notation teaches the standard and tells the officer exactly what a defensible report requires. Vague notations ("needs work") teach nothing and produce another weak draft. The discipline of review mirrors the discipline of writing: be specific.'
+    },
+    {
+      scenario: 'A report you are reviewing documents a use of force as: "Subject resisted arrest. Force was used and was proportionate to the resistance encountered."',
+      text: 'What is the correct supervisory action?',
+      options: [
+        'Approve it — courts accept general use-of-force summaries from officers.',
+        'Return it: "resisted arrest" and "proportionate" are conclusions, not facts. Require the body-movement-level detail — which arm, which direction, the triggering movement, the officer\'s response, and the outcome — that supports the charge and survives cross-examination.',
+        'Edit the conclusions into facts yourself and approve it.',
+        'Forward it to discipline because the wording is inadequate.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Conclusions like "resisted" and "proportionate" tell a reader what to conclude without the facts to evaluate it, and they do not survive cross-examination. The reviewer returns the report for the specific, sequential facts — not by rewriting the officer\'s observations, which only the officer can attest to.'
+    },
+    {
+      scenario: 'A report\'s probable cause section reads, in full: "Based on my training and experience, I believed the subject was involved in criminal activity."',
+      text: 'How should you handle this on review?',
+      options: [
+        'Approve it — a training-and-experience reference is sufficient to establish probable cause.',
+        'Return it: under Illinois v. Gates, probable cause must rest on specific articulable facts. "I believed" is a conclusion; the report must state what was observed, heard, and detected, with the training-and-experience reference tethered to those facts.',
+        'Reject the arrest entirely because the officer cited training and experience.',
+        'Approve it but tell the officer to remove the training-and-experience language, which courts disallow.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Illinois v. Gates (1983) requires probable cause to be supported by specific articulable facts under the totality of the circumstances. A bare "I believed" is conclusory. The training-and-experience reference is valid only when tied to the facts actually observed — so the report goes back for those facts.'
+    },
+    {
+      scenario: 'While reviewing a report, you compare it to the body-camera footage and find the officer\'s written account of the takedown materially conflicts with what the video shows.',
+      text: 'How should you treat this finding?',
+      options: [
+        'As a routine revise-and-resubmit — return it for the officer to align the wording with the footage.',
+        'As a possible integrity matter: a report conflicting with the footage may be a false official statement under 18 Pa. C.S. § 4904 and § 4906, which is a Professional Conduct matter rather than a writing correction.',
+        'As acceptable — written reports and footage are not expected to match.',
+        'As a footage error; defer to the officer\'s written account over the video.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A report that materially conflicts with the body-camera footage is not a prose problem. It raises a possible false official statement under 18 Pa. C.S. § 4904 / § 4906 and is handled as a Professional Conduct matter — distinct from coaching an officer on clearer writing.'
+    },
+    {
+      scenario: 'You are training a newer supervisor on how to review reports.',
+      text: 'What is the essential discipline of report review that catches integrity problems?',
+      options: [
+        'Reading the report quickly for clarity and grammar, then approving if it reads well.',
+        'Actually comparing the report against the available body-camera footage and field notes — not just reading the words — so that reconstructed quotes, mismatched sequences, and after-the-fact facts are caught before the report becomes the record.',
+        'Approving any report that contains a probable cause section, regardless of content.',
+        'Relying on the officer\'s certification that the report is accurate and not reviewing source material.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The integrity flags — a reconstructed quote, a timeline that does not match the video, a fact that appeared only after a legal challenge — are visible only when the reviewer compares the report against the footage and notes. Reading for clarity alone misses exactly the problems that follow a case into court.'
+    },
+    {
+      scenario: 'An officer\'s field notes are missing the exact words a victim used. You are returning the report and instructing the officer on how to close the gap.',
+      text: 'What should you direct the officer to do?',
+      options: [
+        'Reconstruct the victim\'s statement from memory, since the officer remembers the gist of it.',
+        'Contact the victim to clarify, document the follow-up contact (date, time, method), and distinguish clearly in the report between direct quotes, paraphrased summaries, and the officer\'s own observations.',
+        'Leave the statement out entirely rather than risk any inaccuracy.',
+        'Insert an approximate quote in quotation marks and note that it is "close enough."'
+      ],
+      correct: 1,
+      feedback: 'Correct. The right way to close a gap is verification, not reconstruction. A follow-up contact documented with date, time, and method — with quotes, summaries, and observations clearly distinguished — strengthens the report. Reconstructing a quote from memory is fabrication, even when the spirit is accurate.'
+    },
+    {
+      scenario: 'An officer resubmits a revised report. The victim-statement section now reads: "Victim provided a statement consistent with the injuries observed."',
+      text: 'Is this revision acceptable?',
+      options: [
+        'Yes — it avoids fabrication, so it is sufficient.',
+        'No — it is conclusory and may fail to establish probable cause. Return it for the specific content of the statement and the specific injuries, obtained and documented properly.',
+        'Yes — general summaries are preferred over specific quotes in police reports.',
+        'No — the officer should be disciplined for submitting a weak revision.'
+      ],
+      correct: 1,
+      feedback: 'Correct. "Writing around the gap" with conclusory language avoids fabrication but can still fail the legal standard. Under Gates, probable cause needs specific articulable facts. Return the report for the actual content of the statement and the specific injuries — a clean-sounding conclusion is still a conclusion.'
+    },
+    {
+      scenario: 'An officer comes to you because they realized, after filing, that they omitted a witness statement taken at the scene.',
+      text: 'What is the correct supervisory guidance?',
+      options: [
+        'Tell the officer to insert the statement into the original report as if it had been there from the start.',
+        'Have the officer document it as a disclosed supplement, noting that it was captured from memory rather than contemporaneous notes — never a silent insertion into the finished report.',
+        'Tell the officer to omit it, since it was not in the original.',
+        'Direct the officer to wait and add it only if the defense raises the issue.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Omitting known facts weakens the case, but silently inserting them into a finished report is misconduct. The correct path is a disclosed supplement that notes the information was captured from memory. Transparency preserves both the information and the officer\'s integrity.'
+    },
+  ];
+}

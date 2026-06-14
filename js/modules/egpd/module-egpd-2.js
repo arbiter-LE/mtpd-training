@@ -473,3 +473,142 @@ function getUseOfForceQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Use of Force (EGPD)
+   Built on GO 1.3.6(D)-(F) and 1.3.7 — the department's own
+   supervisory review provisions. SOP quoted verbatim.
+══════════════════════════════════════════ */
+const SUPERVISOR_USE_OF_FORCE = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>Every Use of Force Report in this department crosses your desk. General Order 1.3.6(D) makes the review your job.</h2>
+    <p>Under GO 1.3.6(D), all Use of Force Reports are reviewed by the Chief of Police or designee for compliance — and as a supervisor you are that designee. The officer's job is to articulate the force. Your job is to test that articulation against General Order 1.3 before it becomes the department's record, and to decide what you are holding: a complete, compliant report, a report that needs more, or an incident that warrants a Professional Conduct investigation under 1.3.6(F).</p>
+  </div>
+  <div class="content-block">
+    <h4>The Articulation Requirement Is Your Review Checklist</h4>
+    <h2>GO 1.3 tells the officer what to write. On review, it tells you what to look for.</h2>
+    <p>General Order 1.3, Policy, requires the officer to "articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected." On review that becomes a checklist. Does the report state the facts known to the officer at the time — distance, the subject's actions, what was in hand — rather than conclusions like "feared for my safety"? Does it identify the continuum level applied and show that lower levels were examined or discarded as impractical, or tried and failed (1.3.1(B))? Justification "is limited to the facts known or perceived by the officer at the time" — a compelling fact the officer did not know cannot be imported after the fact, and a report reaching for one is a flag.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Two Checkpoints That Catch the Worst Problems</h4>
+    <p>First, the stop-point. GO 1.3, Policy: "The use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished." Force applied to a handcuffed, compliant subject is outside policy on its face — read the timeline of every report for it. Second, skipped levels. GO 1.3.1(C)(2) permits skipping levels "given those presenting circumstances," but a report that jumps to a high level of force must explain why the lower levels were impractical. A skipped level with no explanation is the gap that becomes a civil complaint — and it is far cheaper to send the report back for that explanation now than to answer for its absence in litigation.</p>
+  </div>
+  <div class="content-block">
+    <h4>Reviewing Weapons Force</h4>
+    <ul class="key-points">
+      <li><strong>CEW — count the cycles.</strong> "Each separate discharge cycle of the CEW is a separate use of force that must be justified" (GO 1.3.4). Confirm each cycle is separately justified, that the GO 1.3.4(D) fall-risk and subject-vulnerability factors were considered, and that a verbal warning was given when feasible — or that the report explains why circumstances did not permit one.</li>
+      <li><strong>Deadly force — confirm the lane.</strong> GO 1.3.2 is narrow: defense of human life, or a subject who committed or attempted a forcible felony, or is escaping while possessing a deadly weapon or otherwise indicating they will endanger life. An object that is not a deadly weapon does not place an incident in 1.3.2. Watch for threat overstatement — it is worse on review than an honestly imperfect decision.</li>
+      <li><strong>Prohibited acts are conduct issues, not writing issues.</strong> Carotid and other neck restraints are "specifically and strictly prohibited" (GO 1.3.1(B), Level 4); warning shots and firing at or from a moving vehicle are prohibited outside the narrow exceptions (1.3.3). A report describing any of these does not get returned for a rewrite — it gets escalated.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Procedure, Deadlines, and the Line You Never Cross</h4>
+    <p>Confirm the procedural obligations are satisfied: EMS arranged to examine, treat, or transport when injury is known or suspected and whenever a CEW was used, with EMS personnel named on any refusal (GO 1.3.5); the Use of Force Report completed "prior to the officer(s) concluding their shift" (1.3.6(A)(4)); and a separate signed report from each involved officer. Then hold the line on accuracy. A report that conflicts with body-camera footage is the gravest finding you can make — filing a false report is a crime under 18 Pa. C.S. § 4906, and it is a separate question from whether the force was justified. The force may survive review. A false report does not, and neither does the career attached to it.</p>
+  </div>
+  <div class="content-block">
+    <h4>Matching the Outcome to the Finding</h4>
+    <p>GO 1.3.6(F) gives you a graduated set of outcomes, and matching the outcome to the finding is the supervisory judgment that protects both the officer and the department. A tactical or policy gap paired with an honest, self-aware account points to remedial training under 1.3.6(F)(a). A pattern, a prohibited act, or a false report points to a Professional Conduct investigation or discipline. And know GO 1.3.7 before you need it: an officer involved in a death or serious-bodily-injury incident is removed from line duty pending administrative review — a non-disciplinary measure that protects the officer and the integrity of the investigation, and one you may have to initiate on scene. Document your compliance finding either way; your review is part of the record.</p>
+  </div>
+`;
+
+function getUseOfForceSupervisorQuestions() {
+  return [
+    {
+      scenario: 'A Use of Force Report from one of your officers is in your queue. The department has assigned you as the designee who reviews use-of-force documentation.',
+      text: 'Under General Order 1.3.6(D), what is the purpose of your review?',
+      options: [
+        'To re-decide whether you personally would have used force, substituting your judgment for the officer\'s.',
+        'To review the report for compliance with General Order 1.3 — testing whether the force is articulated and justified under policy — and to determine whether the matter is compliant, needs more documentation, or warrants a Professional Conduct investigation under 1.3.6(F).',
+        'To forward the report to the District Attorney without review, since use of force is a legal matter.',
+        'To file the report as written; supervisory review of use-of-force reports is optional under the policy.'
+      ],
+      correct: 1,
+      feedback: 'Correct. General Order 1.3.6(D) provides that all Use of Force Reports are reviewed by the Chief of Police or designee for compliance. The reviewing supervisor tests the report against GO 1.3 and, under 1.3.6(F), the finding can lead to remedial training, a Professional Conduct investigation, or discipline.'
+    },
+    {
+      scenario: 'A Use of Force Report you are reviewing states, in its entirety on justification: "The subject was aggressive and I feared for my safety, so I used force to gain compliance."',
+      text: 'What is the correct supervisory action on this report?',
+      options: [
+        'Approve it — an officer\'s statement that they feared for their safety satisfies General Order 1.3.',
+        'Return it as non-compliant: GO 1.3 requires the officer to articulate the facts and the reason the level of force was selected. "Feared for my safety" is a conclusion, not the observed facts — distance, the subject\'s actions, what was in hand — that justify it.',
+        'Forward it to discipline immediately without giving the officer a chance to document the facts.',
+        'Approve it but add your own narrative of what you believe happened.'
+      ],
+      correct: 1,
+      feedback: 'Correct. General Order 1.3, Policy, requires officers to "articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected." A conclusory statement of fear does not meet that standard. The report goes back for the specific facts before it becomes the record.'
+    },
+    {
+      scenario: 'A report\'s timeline shows the subject was handcuffed, seated, and no longer resisting when the officer applied a control hold that caused an injury.',
+      text: 'How should you assess this on review?',
+      options: [
+        'It is acceptable because the subject was under arrest, and force may continue throughout custody.',
+        'It is outside policy on its face: GO 1.3 requires that force "end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished." This is a conduct issue to investigate, not a documentation issue to rewrite.',
+        'It is acceptable as long as the officer subjectively perceived some risk.',
+        'It cannot be evaluated because General Order 1.3 does not address force after handcuffing.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 1.3, Policy, requires force to end when resistance ceases or the arrest is accomplished. Force against a handcuffed, compliant, non-resisting subject falls outside the policy on its face — a finding that points to a Professional Conduct investigation under 1.3.6(F), not a return for better wording.'
+    },
+    {
+      scenario: 'A Use of Force Report documents three separate CEW discharge cycles during one encounter. The narrative justifies the first cycle but says nothing about the second and third.',
+      text: 'What does General Order 1.3.4 require you to look for here?',
+      options: [
+        'Nothing further — justifying the first cycle covers the entire deployment.',
+        'Each discharge cycle is a separate use of force that must be separately justified. The report must justify the second and third cycles as well, and address the 1.3.4(D) fall-risk and vulnerability factors and the verbal warning — so it goes back for that justification.',
+        'The report should be rejected outright because more than one CEW cycle is always excessive.',
+        'Only the total number of cycles matters; individual justification is not required.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 1.3.4 states that "each separate discharge cycle of the CEW is a separate use of force that must be justified." A report justifying only the first cycle is incomplete; on review you require justification for every cycle, plus the 1.3.4(D) factors and the verbal-warning question.'
+    },
+    {
+      scenario: 'An officer\'s report characterizes an aluminum flashlight the subject was holding as "a deadly weapon" to support the decision to present a firearm under General Order 1.3.2.',
+      text: 'How should you treat this characterization on review?',
+      options: [
+        'Accept it — any object in a subject\'s hand can be characterized as a deadly weapon at the officer\'s discretion.',
+        'Scrutinize it: GO 1.3.2 is narrow, and an object that is not a deadly weapon does not place the incident in 1.3.2. Overstating the threat to fit the force is a flag — an honestly imperfect decision is more defensible than an inflated one.',
+        'Accept it because the subject was advancing, which automatically justifies deadly-force options.',
+        'Reject the entire report and impose discipline solely because a firearm was drawn.'
+      ],
+      correct: 1,
+      feedback: 'Correct. General Order 1.3.2 limits deadly force to a narrow set of circumstances. An aluminum flashlight, without more, does not make the encounter a 1.3.2 situation. Threat overstatement to justify a force decision is a review flag; honest acknowledgment of an imperfect-but-reasonable decision is more defensible.'
+    },
+    {
+      scenario: 'A report describes the officer using a neck restraint to bring a resisting subject under control. The technique worked and the subject was cuffed without further incident.',
+      text: 'What is the correct supervisory response?',
+      options: [
+        'Approve it — the technique was effective and the subject was resisting.',
+        'Treat it as a conduct issue: carotid restraints and other neck restraints are "specifically and strictly prohibited" under General Order 1.3, so this is escalated to a Professional Conduct review, not returned for a rewrite.',
+        'Return it for a rewrite so the officer can describe the neck restraint more favorably.',
+        'Approve it but recommend the officer attend a refresher on neck-restraint technique.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 1.3 (Level 4) states that carotid restraints and other "choke holds" or neck restraints are "specifically and strictly prohibited." Effectiveness does not cure a prohibited act. This is a conduct matter for investigation under 1.3.6(F), not a documentation problem.'
+    },
+    {
+      scenario: 'Body-camera footage shows no verbal warning was given before a CEW deployment. The officer\'s report states that a warning was given. The CEW deployment itself appears to have been within policy.',
+      text: 'What is your finding on review?',
+      options: [
+        'Because the deployment was justified, the inaccurate warning statement is immaterial and the report can be approved.',
+        'The conflict between the report and the footage is the gravest finding available: filing a false report is a crime under 18 Pa. C.S. § 4906 and is a separate matter from whether the force was justified. The force may survive review; the false statement does not.',
+        'Edit the report yourself to match the footage and approve it.',
+        'Disregard the footage in favor of the officer\'s written account.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A report that conflicts with the footage is the most serious finding a reviewer can make. Under 18 Pa. C.S. § 4906 a false report is a crime, separate from the justification analysis. GO 1.3.6(D)-(F) review exists precisely to catch this — the justified force does not rescue the false statement.'
+    },
+    {
+      scenario: 'After reviewing a report, you find a genuine tactical gap — the officer skipped a lower level of force without fully explaining why — but the account is honest, specific, self-aware about the error, and no one was injured.',
+      text: 'Under General Order 1.3.6(F), what outcome best fits this finding?',
+      options: [
+        'Immediate disciplinary action, because any tactical gap is misconduct.',
+        'Remedial training under 1.3.6(F)(a): a tactical or policy gap paired with an honest, self-aware account points to training, while patterns, prohibited acts, and false reports point to a Professional Conduct investigation or discipline.',
+        'No action of any kind — tactical gaps are never a supervisory concern.',
+        'Forward the matter to the District Attorney for criminal review.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 1.3.6(F) provides graduated outcomes. A tactical or policy gap with an honest, self-aware account is the classic remedial-training case under 1.3.6(F)(a). Matching the outcome to the finding — training for gaps, investigation/discipline for patterns, prohibited acts, or false reports — is the core supervisory judgment.'
+    },
+  ];
+}

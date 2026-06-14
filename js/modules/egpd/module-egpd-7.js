@@ -329,3 +329,144 @@ function getLeadershipQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Leadership & Supervision (EGPD)
+   The patrol module earns the rank through judgment; the overlay
+   exercises it — progressive discipline, culture, integrity, development.
+══════════════════════════════════════════ */
+const SUPERVISOR_LEADERSHIP = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>Everything that made you ready for the rank now operates at scale — with formal tools, a paper trail, and people who answer to you.</h2>
+    <p>The officer-level version of this material is about demonstrating the judgment that earns supervision. You are past that. As a supervisor the same instincts — slow the fast situation, correct privately, own the outcome — now carry formal weight: your correction can become documented progressive discipline, your example sets a squad's culture, and you are the person to whom integrity problems get reported rather than the one reporting them. The craft does not change. The stakes and the tools do.</p>
+  </div>
+  <div class="content-block">
+    <h4>Coaching vs. Formal Action — Knowing the Line</h4>
+    <h2>Most development happens in conversation. Know when it has to become a record.</h2>
+    <p>The highest-value supervisory action is still the brief, private, law-grounded correction, and most officer development should live there — in conversations that never generate paper. But you also own the escalation. A single lapse is a coaching moment; a pattern, like three lates in two weeks, is a direct, documented conversation now — name the pattern, state the expectation, ask whether there is something you should know — before it becomes a formal reprimand. Skipping the coaching step straight to discipline breeds resentment; waiting past a clear pattern for a "fourth occurrence" normalizes it. The judgment you are paid for is knowing which rung of that ladder a situation sits on, and documenting from the moment it leaves coaching.</p>
+  </div>
+  <div class="content-block">
+    <h4>You Set the Floor Others Train To</h4>
+    <p>A senior officer's example trains the next call they are not on. A supervisor's example trains a squad. When you let a junior officer "run everyone in the lot" slide, or wave through a report that says only "resisted arrest," you have not made one exception — you have set the floor. Terry still requires individualized reasonable suspicion; 18 Pa. C.S. § 3503 still requires actual notice before trespass enforcement; the legal floor you hold is the legal floor your people will hold when you are off shift. Reinforcing it in the moment — and praising the officer who slowed a fast situation down rather than the one who cleared it fastest — is how the standard survives contact with a busy night.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Recurring Supervisory Tests</h4>
+    <ul class="key-points">
+      <li><strong>Officers disputing in public.</strong> Separate them immediately, move it out of public view, hear each individually, then address the conduct (the public dispute) and the underlying disagreement as two distinct matters. Taking a public side costs you both officers.</li>
+      <li><strong>A subordinate frustrated with command policy you cannot change.</strong> Acknowledge the concern, explain the policy as best you know it, and route them to the proper channel — union, chain of command, formal feedback. Venting alongside them undermines your authority; dismissing them ends their engagement.</li>
+      <li><strong>A pattern forming.</strong> Move to a documented conversation before formal action; the record protects the officer, you, and the department if escalation becomes necessary.</li>
+      <li><strong>Accountability.</strong> Model owning outcomes — the decision, the result, what you would change — because your people calibrate their own accountability to yours.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>You Are Now the One Integrity Gets Reported To</h4>
+    <h2>The pressure that used to come at you now comes through you.</h2>
+    <p>In the patrol scenario a senior officer leaned on the reporting officer to soften a report — "we handle things in-house." As a supervisor you are on the other end of that dynamic. Two obligations follow. First, you never apply that pressure: a report reflects what occurred, and "fixing" it for a struggling officer is unsworn falsification under 18 Pa. C.S. § 4904 — your rank makes it worse, not better. Second, when an officer brings you a report of pressure to alter documentation, you document it and act, because if it is happening to them it is happening to others, and your response is the signal that decides whether your people trust the chain of command with the truth.</p>
+  </div>
+  <div class="content-block">
+    <h4>Develop People on Purpose</h4>
+    <p>The patrol leader corrects what goes wrong in front of them. A supervisor develops people deliberately. PERF's research ties supervisory readiness to demonstrated judgment in ambiguous situations — so create those reps: debrief the calls that went right and ask why, hand a capable officer the next ambiguous call and watch how they reason through it, name the judgment you want and praise it when you see it. The officers you develop on purpose are the ones who will hold the line on the shift you are not working — and building them is the part of the job that outlasts any single arrest, report, or call.</p>
+  </div>
+`;
+
+function getLeadershipSupervisorQuestions() {
+  return [
+    {
+      scenario: 'An officer on your squad has been late to shift three times in two weeks. The officer is otherwise a strong performer, and you have not formally addressed it yet.',
+      text: 'What is the correct supervisory action at this stage?',
+      options: [
+        'Issue a formal written reprimand immediately to establish a record.',
+        'Have a direct, documented conversation now — name the pattern, state the expectation, and ask if there is something you should know — before any formal action, while still creating a record.',
+        'Wait for a fourth occurrence before doing anything, since three is within normal variation.',
+        'Mention it casually with no documentation, since the officer is a strong performer.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A pattern requires engagement, but jumping straight to a formal reprimand skips the coaching step and breeds resentment, while waiting for a "fourth occurrence" normalizes the conduct. A direct, documented conversation now — pattern, expectation, and a chance to surface context — is the right rung of the ladder, and it protects the officer, you, and the department if escalation follows.'
+    },
+    {
+      scenario: 'A junior officer on your squad wants to run a group of subjects with no individualized basis "to see what pops." You correct it. A peer supervisor asks why you make a big deal of small field calls.',
+      text: 'Why does holding this line matter beyond the single call?',
+      options: [
+        'It does not really matter — running names is harmless and clears scenes quickly.',
+        'Because the legal floor you hold becomes the floor your officers hold when you are off shift: Terry requires individualized reasonable suspicion, and allowing a suspicionless sweep both creates Fourth Amendment exposure now and trains the next violation on a call you will not be on.',
+        'Because the subjects might file complaints, which is the only real risk.',
+        'Because senior officers are required to make all stop decisions personally.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A supervisor\'s example sets the squad\'s floor. Terry v. Ohio requires individualized reasonable articulable suspicion; allowing a group sweep is both a Fourth Amendment problem now and a lesson that survives to the shifts you do not work. Holding the line — and praising the officer who slows a fast situation down — is how the standard endures.'
+    },
+    {
+      scenario: 'Two officers under your supervision begin a heated dispute about a call in the station parking lot. Several other officers are watching.',
+      text: 'What is the correct supervisory response?',
+      options: [
+        'Let them work it out — interpersonal disputes are not a supervisor\'s concern.',
+        'Separate them immediately, move the conversation out of public view, hear each perspective individually, and then address the public conduct and the underlying disagreement as two distinct matters — without taking a public side.',
+        'Side openly with whichever officer is correct about the call to settle it fast.',
+        'Document it and forward it up the chain without intervening.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A public dispute damages cohesion and trust. The immediate response is intervention, not documentation: separate, move it private, hear both sides, then treat the conduct and the underlying issue separately. Taking a public side undermines your credibility with both officers and the watching squad.'
+    },
+    {
+      scenario: 'An officer on your squad is frustrated with a command-level policy they believe is unfair. You do not have authority to change it.',
+      text: 'What is the appropriate supervisory response?',
+      options: [
+        'Agree with the officer and vent alongside them — it builds rapport.',
+        'Acknowledge the concern, explain what the policy requires and why to the extent you know it, and route the officer to the proper channel — union, chain of command, or formal feedback — if they believe it warrants review.',
+        'Tell the officer that policy is not open for discussion and send them back to work.',
+        'Promise to raise it at the next supervisors\' meeting without intending to follow through.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Dismissing the concern ends engagement; venting alongside the officer undermines your own authority and the chain of command. Acknowledging, explaining, and directing the officer to the proper feedback channel respects their voice while reinforcing the structure — and your standing within it.'
+    },
+    {
+      scenario: 'A struggling officer wrote a report with a problem in it. Another supervisor quietly suggests you "fix it in-house" to keep it off the officer\'s record and protect his career.',
+      text: 'What is your obligation?',
+      options: [
+        'Adjust the report discreetly — protecting a developing officer\'s record is part of supporting your people.',
+        'Refuse: a report reflects what occurred, and altering it is unsworn falsification under 18 Pa. C.S. § 4904. Your rank makes that worse, not better — handle the underlying performance issue through coaching or progressive discipline, not by changing the record.',
+        'Have the officer rewrite it to say whatever keeps it off his record.',
+        'Approve it as written and say nothing, since it is not your report.'
+      ],
+      correct: 1,
+      feedback: 'Correct. "Handling it in-house" by altering a sworn report is falsification under 18 Pa. C.S. § 4904, and a supervisor doing it compounds the problem with the authority of rank. The performance issue is addressed through coaching or progressive discipline; the report itself reflects what occurred and does not change.'
+    },
+    {
+      scenario: 'An officer on your squad comes to you privately and reports that a senior officer pressured them to alter a report, saying the department "handles things in-house."',
+      text: 'How do you respond?',
+      options: [
+        'Tell the officer to handle it themselves and avoid the senior officer.',
+        'Document the report of pressure and act on it through the chain of command — if it is happening to this officer it is likely happening to others, and your response signals whether your people can trust the chain with the truth.',
+        'Advise the officer to quietly change the report to avoid conflict.',
+        'Take no action unless the officer files a formal written complaint first.'
+      ],
+      correct: 1,
+      feedback: 'Correct. As a supervisor you are the chain of command an officer reports to. Pressure to falsify documentation must be documented and acted on — a single instance usually signals a pattern affecting others, and how you respond determines whether officers trust the chain of command with integrity problems in the future.'
+    },
+    {
+      scenario: 'A call you supervised ended with a less-than-ideal outcome, though your decision-making was sound given what you knew. A superior questions the result.',
+      text: 'Which behavior best models the accountability you want your officers to learn?',
+      options: [
+        'Emphasize that the conditions made any other outcome impossible.',
+        'Own the decision and the outcome, explain the reasoning behind it, and identify what you would do differently — because your officers calibrate their own accountability to what they see you model.',
+        'Identify which other personnel and factors contributed to the result.',
+        'Defer entirely to the superior\'s assessment to preserve the relationship.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Accountability means owning the decision and the result, explaining the reasoning, and naming what you would change — distinct from blame and from collapsing under critique. A supervisor who models this teaches it: officers calibrate their own accountability to their supervisor\'s, so what you demonstrate becomes the squad\'s standard.'
+    },
+    {
+      scenario: 'You want to build the judgment of the officers on your squad over time, not just correct mistakes as they happen.',
+      text: 'What distinguishes deliberate development from simply correcting errors?',
+      options: [
+        'There is no difference — correcting errors as they occur is the whole of officer development.',
+        'Deliberate development creates judgment reps on purpose: debrief calls that went right and ask why, assign a capable officer the next ambiguous call and observe their reasoning, and name and praise the judgment you want — building officers who hold the line on shifts you do not work.',
+        'Deliberate development means sending officers to more outside training and otherwise leaving them alone.',
+        'Deliberate development is the responsibility of the training division, not the field supervisor.'
+      ],
+      correct: 1,
+      feedback: 'Correct. PERF research ties supervisory readiness to demonstrated judgment in ambiguous situations, so a supervisor develops people by creating those situations deliberately — debriefing successes, assigning ambiguous calls, and naming and praising the judgment they want to see. That is what builds officers who hold the standard when the supervisor is not present.'
+    },
+  ];
+}

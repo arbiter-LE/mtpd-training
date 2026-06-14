@@ -331,3 +331,143 @@ function getTrafficStopQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Traffic Stops (EGPD)
+   Reviewing the highest-volume report for two clocks and a camera:
+   Rodriguez duration, Alexander/Barr search authority, recording.
+══════════════════════════════════════════ */
+const SUPERVISOR_TRAFFIC_STOPS = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>The traffic stop is the most common report you review — and the most common place a suppression motion or a civil complaint is born.</h2>
+    <p>Your officers run more traffic stops than any other contact, which makes the traffic-stop report the highest-volume thing you review and the most frequent source of suppression motions and citizen complaints. Review it for two clocks and one camera: how long the stop lasted and what justified each extension; what authority — warrant or consent — the search rested on; and how the officer handled being recorded. Get those right on review and most of your department's Fourth and First Amendment exposure never leaves your desk.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Rodriguez Clock</h4>
+    <h2>Read the timeline for the moment the stop's purpose ended.</h2>
+    <p>Under Rodriguez v. United States, a stop may not last longer than the time needed to complete its purpose — citation, records checks, documents returned — without independent reasonable suspicion. On review, find the moment the purpose was complete and ask what justified anything after it. The trap is the refusal-to-consent extension: a driver saying "no" to a search is not reasonable suspicion, because exercising a constitutional right cannot be the basis for detention. A report that prolongs a completed stop on a refusal, or stalls for a K9 with no independent suspicion, is a suppression problem you catch before it is filed. Mimms and Wilson let your officers order occupants out as a matter of course — they do not let them hold a finished stop open.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Alexander / Barr Search Review</h4>
+    <p>The post-Alexander, post-Barr review is the search-and-seizure standard applied to the roadside: a warrantless vehicle search requires probable cause AND exigent circumstances, and a stopped vehicle with controlled occupants is rarely an exigency. After Barr, odor is a factor in the totality, not standalone probable cause. So when a report shows a warrantless roadside search, confirm both prongs are stated as facts; when it shows a warrant, confirm the affidavit's probable cause is specific. And recognize the officer who secured the vehicle and obtained a warrant rather than searching at the roadside — that is current Pennsylvania law done exactly right, and your review should say so out loud.</p>
+  </div>
+  <div class="content-block">
+    <h4>Reviewing the Affidavit and the Warrant Execution</h4>
+    <ul class="key-points">
+      <li><strong>Affidavit specificity.</strong> "Detected an odor of marijuana" is a conclusion and the most common suppression vulnerability in vehicle cases. The affidavit must state where the odor was detected, its strength and character, when, and every corroborating observation — after Barr the corroboration is the probable cause, not garnish. Return thin affidavits before they reach the judge.</li>
+      <li><strong>Warrant vs. consent.</strong> A warrant-authorized search does not depend on consent, and a driver's objection — "I don't consent" — does not suspend it. Confirm the report proceeded within the warrant's scope and documented the objection verbatim. Where consent was the basis instead, confirm the search stopped if consent was withdrawn.</li>
+      <li><strong>Identity investigations.</strong> A plate returning to a warrant subject plus a driver matching the description is reasonable suspicion to investigate under Terry — not probable cause to arrest on the plate alone. Confirm any arrest was built on the investigation, not the registration return.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>The Camera Is a Supervisory Issue Too</h4>
+    <h2>A pretextual "officer safety" order is one a reviewer can see through — and so can a jury.</h2>
+    <p>Under Fields v. City of Philadelphia, the First Amendment protects recording police performing official duties in public. On review and in the field, watch for the recording objection dressed up as an "officer safety" order — courts look to the actual motivation, and so should you. If a report orders a bystander or passenger to stop filming, or returns them to a vehicle on a safety rationale the body-camera footage contradicts, that is a constitutional and complaint exposure you address directly. Teach your officers the line: a genuine safety concern about someone outside a vehicle is documented and real; the camera is not the concern, and their professional conduct is the answer to it.</p>
+  </div>
+  <div class="content-block">
+    <h4>Patterns and the Disparity Question</h4>
+    <p>Traffic enforcement is where patterns matter most to public trust. Across your officers' stops you can see what no single stop shows: who is getting extended detentions and consent-search requests, whether "odor" is doing too much work in one officer's reports, whether refusals are quietly becoming reasons to prolong. Review for those patterns, correct the documentation habits that produce suppression, and keep the stop data clean — because in traffic enforcement the aggregate is the story the department will someday have to answer for, and you are the first person positioned to see it.</p>
+  </div>
+`;
+
+function getTrafficStopSupervisorQuestions() {
+  return [
+    {
+      scenario: 'A traffic-stop report shows the officer completed the citation and records check and had the documents ready to return, then held the driver and asked for consent to search. The driver refused. The officer kept the driver detained while waiting for a K9, with no other articulated basis.',
+      text: 'What is the correct supervisory assessment?',
+      options: [
+        'Approve it — officers may always hold a vehicle for a K9 once they suspect drugs.',
+        'Flag it as a suppression problem: under Rodriguez v. United States the stop could not be extended past its completed purpose without independent reasonable suspicion, and refusal to consent is not reasonable suspicion.',
+        'Approve it because the driver\'s refusal to consent is itself suspicious.',
+        'Approve it as long as the K9 ultimately alerted.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Rodriguez v. United States (2015) bars extending a stop beyond the time needed to complete its purpose without independent reasonable suspicion. The purpose was complete when the documents were ready to return, and a refusal to consent cannot supply reasonable suspicion. Holding the driver for a K9 on that basis is an unlawful extension you catch on review.'
+    },
+    {
+      scenario: 'A report articulates, as part of the basis for prolonging a stop, that "the driver refused to consent to a search, which heightened the officer\'s suspicion."',
+      text: 'How should you treat that articulation?',
+      options: [
+        'Accept it — a refusal to consent is a reasonable factor to weigh.',
+        'Reject it: exercising a constitutional right cannot be the basis for detention, so a refusal to consent is not reasonable suspicion and cannot justify extending the stop. The extension is unlawful absent independent articulable facts.',
+        'Accept it if the officer also noted the driver seemed nervous.',
+        'Accept it because the driver could have consented if he had nothing to hide.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A refusal to consent is the exercise of a right and cannot be used as reasonable suspicion or as a reason to prolong a stop. A report that leans on the refusal to justify an extension documents its own Fourth Amendment problem — the reviewer flags it.'
+    },
+    {
+      scenario: 'A report shows the officer developed probable cause during a stop, then — with the vehicle stopped and occupants controlled — secured the vehicle and obtained a search warrant rather than searching at the roadside.',
+      text: 'How should you assess this on review?',
+      options: [
+        'Mark it inefficient — the officer should have searched immediately to save time.',
+        'Recognize it as exactly correct under current Pennsylvania law: Commonwealth v. Alexander requires probable cause and exigent circumstances for a warrantless vehicle search, a controlled scene is rarely exigent, and the warrant is the default — acknowledge the officer\'s judgment.',
+        'Flag it because obtaining a warrant suggests the probable cause was weak.',
+        'Require the officer to justify why no exigency existed before approving.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Under Commonwealth v. Alexander (2020), a warrantless vehicle search needs both probable cause and exigent circumstances, and a stopped vehicle with controlled occupants rarely supplies exigency. Securing the vehicle and getting a warrant is the model behavior — and recognizing it in review reinforces the habit you want repeated.'
+    },
+    {
+      scenario: 'A warrant affidavit for a vehicle search comes to you for review before it goes to the magisterial district judge. The probable cause section reads, in full: "Upon approaching the vehicle, I detected an odor of marijuana."',
+      text: 'What should you do?',
+      options: [
+        'Forward it — the odor of marijuana is sufficient probable cause for the warrant.',
+        'Return it: "detected an odor of marijuana" is a conclusion and the most common suppression vulnerability. After Barr the affidavit must state where the odor was detected, its strength and character, when, and the corroborating observations that complete the probable cause.',
+        'Forward it but tell the officer to cite Alexander by name.',
+        'Reject the warrant entirely because odor can never support a vehicle search.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A conclusory odor statement is the classic affidavit weakness. Under Commonwealth v. Barr odor is only a factor, so the corroborating facts are the probable cause — the affidavit needs the specific location, strength, timing, and behavioral observations before it goes to the judge.'
+    },
+    {
+      scenario: 'A report states that the officer stopped executing a valid search warrant on a vehicle because the driver objected, saying "I don\'t consent to this search."',
+      text: 'How should you handle this on review?',
+      options: [
+        'Approve it — the driver\'s objection properly suspended the search.',
+        'Correct it: a warrant-authorized search does not depend on consent, and an objection does not suspend it. The officer should have proceeded within the warrant\'s scope and documented the objection verbatim — stopping was an error to address.',
+        'Approve it but require a new warrant addressing the objection.',
+        'Treat the objection as withdrawal of consent that ended the search.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Consent is irrelevant when a warrant is the basis for a search; an objection is relevant context to document, not grounds to stop. The officer should have continued within the warrant\'s scope. The reviewer corrects the misunderstanding so it is not repeated.'
+    },
+    {
+      scenario: 'Body-camera footage shows an officer ordered a bystander on the public sidewalk to stop filming a traffic stop. The officer\'s report characterizes the order as based on "officer safety."',
+      text: 'What is the correct supervisory response?',
+      options: [
+        'Accept the officer-safety rationale at face value and approve the report.',
+        'Address it directly: under Fields v. City of Philadelphia the First Amendment protects recording police in public, courts look to the actual motivation, and a recording objection dressed up as "officer safety" — contradicted here by the footage — is a constitutional and complaint exposure.',
+        'Approve it because any recording during a stop is a legitimate safety concern.',
+        'Take no action unless the bystander files a formal complaint.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Fields v. City of Philadelphia (3d Cir. 2017) protects recording police performing public duties. Where the body-camera footage contradicts a stated "officer safety" rationale for stopping a recording, the pretext is visible to a reviewer and to a court. The supervisor addresses it directly and teaches the line between a genuine safety concern and suppressing a camera.'
+    },
+    {
+      scenario: 'A report documents an arrest whose sole stated basis is that the stopped vehicle\'s plate returned to a subject with a felony warrant — even though the driver presented a license in a different name that came back clean.',
+      text: 'What does your review require?',
+      options: [
+        'Approve it — a vehicle registered to a warrant subject justifies arresting the driver.',
+        'Flag it: the plate return plus a matching description is reasonable suspicion to investigate under Terry, not probable cause to arrest. Any arrest must be built on the identity investigation, not the registration return alone.',
+        'Approve it because the clean license is probably fraudulent.',
+        'Reject the stop entirely as unsupported.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A plate returning to a warrant subject, with a driver matching the description, supports a reasonable-suspicion investigation under Terry — stepping the driver out and resolving identity. Probable cause to arrest must come from that investigation, not from the registration return by itself.'
+    },
+    {
+      scenario: 'Reviewing one officer\'s traffic stops over time, you notice a recurring pattern: stops frequently extended after the citation is complete, repeated consent-search requests, and searches resting heavily on "odor" with little corroboration.',
+      text: 'What is your supervisory responsibility?',
+      options: [
+        'None — each stop is evaluated alone and prior stops are irrelevant.',
+        'Review the pattern: correct the documentation and detention habits that produce suppression and complaints, reinforce the Rodriguez and Barr standards, and keep the stop data clean — the aggregate is a public-trust and liability issue you are first positioned to see.',
+        'Wait until a suppression motion is granted before addressing anything.',
+        'Increase the officer\'s stop quota to improve enforcement numbers.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Traffic enforcement patterns visible only in the aggregate — extended detentions, frequent consent requests, odor-only searches — are exactly what a supervisor is positioned to catch and correct. Addressing the habits upstream prevents suppression and complaints and protects the department on the disparity questions it may later have to answer.'
+    },
+  ];
+}

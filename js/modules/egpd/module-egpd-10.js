@@ -315,3 +315,142 @@ function getEvidenceQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Evidence & Chain of Custody (EGPD)
+   The module's decisive mistake is a supervisor's order. The
+   overlay owns that, and the property-room/system responsibility.
+══════════════════════════════════════════ */
+const SUPERVISOR_EVIDENCE = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>In this module the pressure to break the chain comes from a supervisor on the radio. That supervisor is you.</h2>
+    <p>Most of these scenarios test the officer. This one tests you. The decisive mistake in the module — "collect the items, transport them, clear for the priority call" — is a supervisor's order, given for a real and sympathetic reason: you have another call holding and a finite number of units. The supervisory discipline is to recognize that the eight minutes you save by shortcutting a scene can cost a prosecution six months later, and to solve the staffing problem without solving it on the evidence. Resource the scene; do not sacrifice it.</p>
+  </div>
+  <div class="content-block">
+    <h4>Answer the Pushback Correctly</h4>
+    <p>When an officer keys up and says, "Sarge, detectives are eight minutes out — if I collect now without proper packaging and in-place photography we risk the chain of custody," that officer is doing exactly what this department needs. The wrong response is to override them to clear a call; the right one is "Understood — hold the scene, I'll get another unit." An officer with the judgment and the spine to push back on a shortcut is protecting the case and the department, and how you receive that pushback decides whether they ever offer it again. Reward it. A supervisor who punishes a well-reasoned objection trains compliance — and compliance is how chains of custody break.</p>
+  </div>
+  <div class="content-block">
+    <h4>Read the Chain for the Gap Before Defense Counsel Does</h4>
+    <p>Every person who handles evidence is documented — name, time, reason for transfer — from collection through property-room submission to lab intake, and your review reads for the break in that sequence. The unsigned transfer, the four-hour window with no handoff name, the item collected before it was photographed in place, biological material sealed in plastic instead of paper: each is a vulnerability a reviewer can catch while it is still fixable. For a DUI blood draw, confirm the full record — collection time, the nurse and facility, the kit ID, the seal, the transport, the property-room submission — because Pennsylvania DUI prosecutions hinge on exactly that chain. Catching the gap on review and disclosing it to the prosecutor is far better than discovering it on the stand.</p>
+  </div>
+  <div class="content-block">
+    <h4>You Own the System, Not Just the Case</h4>
+    <ul class="key-points">
+      <li><strong>Integrity is a department responsibility.</strong> Seals, logs, submission discipline, and a property room that can withstand an audit are systems you own — a weak system turns every officer's good collection into a vulnerability.</li>
+      <li><strong>A disturbed seal is a stop-everything event.</strong> If an officer reports a seal that looks tampered, it is documented contemporaneously, the property-room supervisor is notified, and the prosecutor is told before the court date — never carried into a courtroom undisclosed.</li>
+      <li><strong>Standardize the kit.</strong> Improvised packaging from a patrol trunk is a recurring, preventable failure — make sure your units carry and use proper forensic packaging so the chain never depends on what happened to be in someone's trunk.</li>
+      <li><strong>Reinforce first-officer ownership.</strong> The responding officer owns the scene until handoff, including keeping victims and owners out — the most common contamination in burglary cases is the well-meaning homeowner.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Prepare Officers to Testify Honestly</h4>
+    <p>Six months out, defense counsel finds the gap and your officer is on the stand. Prepare them: review the documentation before trial, identify the gaps before the defense does, flag them to the prosecutor, and testify to exactly what the record shows — acknowledging a gap without speculating about it. The officer who asserts false certainty about a window they do not remember is one 18 Pa. C.S. § 4902 (perjury) problem away from losing the case and their credibility in every future one. Build the culture where an honest "I don't recall that specific transfer, but the documented chain reflects standard procedure" is understood as strength — because courts forgive a minor documented gap far sooner than a witness caught overstating.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Standard You Set Is the One That Survives a Busy Night</h4>
+    <p>Evidence discipline erodes under exactly the conditions you manage — short staffing, stacked calls, the pull to clear a scene and move on. Every shortcut you authorize, and every one you refuse, tells your officers what the real standard is when the board is full. Hold it when it is inconvenient, resource the scenes that need holding, and make proper collection the path of least resistance rather than the heroic exception — because the case that collapses at trial is almost always the one where someone, somewhere, decided eight minutes mattered more than the chain.</p>
+  </div>
+`;
+
+function getEvidenceSupervisorQuestions() {
+  return [
+    {
+      scenario: 'You have a high-priority call holding across the borough and a finite number of units. One of your officers is preserving a burglary scene with two items of evidence untouched on the floor; detectives are eight minutes out.',
+      text: 'What is the correct supervisory move?',
+      options: [
+        'Order the officer to bag the items in whatever is in the patrol car and transport them so they can clear for the priority call.',
+        'Solve the staffing problem without sacrificing the scene: hold the scene for the handoff and send another unit to the priority call — the minutes saved by shortcutting collection can cost the prosecution months later.',
+        'Tell the officer to leave the evidence unattended and respond to the priority call now.',
+        'Cancel the detectives and have the patrol officer process the scene alone to save time.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The decisive mistake in this scenario is a supervisor\'s order to shortcut a preserved scene to clear a call. The discipline is to resource the scene — hold it for proper handoff and route another unit to the priority call — because improvised collection to save eight minutes is how prosecutions collapse.'
+    },
+    {
+      scenario: 'You order an officer to collect and transport evidence to clear for another call. The officer responds: "Sarge, detectives are eight minutes out — if I collect now without proper packaging and in-place photography, we risk the chain of custody."',
+      text: 'What is the right response?',
+      options: [
+        'Override the officer — your order to clear the call stands regardless.',
+        'Support the officer: "Understood, hold the scene, I\'ll get another unit." The officer is protecting the case, and rewarding that judgment is what keeps officers willing to raise it.',
+        'Reprimand the officer for questioning a direct order.',
+        'Tell the officer to collect the evidence but document that they objected.'
+      ],
+      correct: 1,
+      feedback: 'Correct. An officer who pushes back on a shortcut with sound reasoning is doing exactly what the department needs. The right response is to hold the scene and resource the other call. How a supervisor receives that pushback determines whether officers ever offer it again — punishing it trains the compliance that breaks chains of custody.'
+    },
+    {
+      scenario: 'During pre-trial review of a case file, you find the chain-of-custody record has an approximately four-hour transfer window with no handoff contact name and no signature for the transfer.',
+      text: 'What should you do?',
+      options: [
+        'Nothing — minor gaps are common and the defense probably will not notice.',
+        'Catch it now: the unsigned, unnamed transfer is a fixable, disclosable vulnerability. Flag it to the prosecutor before trial so it can be addressed, rather than letting the officer discover it under cross-examination.',
+        'Instruct the officer to fill in a plausible name and time from memory.',
+        'Remove the evidence from the case to avoid the issue.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A reviewer who reads the chain for the break can catch the unsigned transfer while it is still fixable. Disclosing it to the prosecutor before trial is far better than discovering it on the stand — and fabricating a name to close the gap would be a far more serious problem.'
+    },
+    {
+      scenario: 'A report shows that an officer collected a biological swab from a scene and sealed it in a plastic evidence bag.',
+      text: 'How should you handle this on review?',
+      options: [
+        'Approve it — any sealed, labeled container is acceptable for evidence.',
+        'Correct it: biological evidence must be packaged in paper, not airtight plastic, which traps moisture and degrades DNA. Address the specific item and treat the error as a training and kit-standardization issue.',
+        'Approve it as long as the bag was labeled correctly.',
+        'Reject the entire case because the swab is now worthless.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Biological material goes in paper; airtight plastic traps moisture, accelerates bacterial growth, and degrades DNA. The reviewer catches the packaging error, addresses the specific item, and treats the recurring risk as a training and kit-standardization responsibility.'
+    },
+    {
+      scenario: 'An officer signs evidence out of the property room for an upcoming court date and reports to you that the seal appears to have been disturbed.',
+      text: 'What is the correct protocol?',
+      options: [
+        'Tell the officer to take it to court anyway — it is probably just a storage artifact.',
+        'Stop: have the officer document the observation contemporaneously, notify the property-room supervisor, and notify the prosecutor before the court date — a known integrity question is never carried into a courtroom undisclosed.',
+        'Have the officer re-seal the evidence and note the re-sealing.',
+        'Tell the officer to open it and confirm nothing is missing before court.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A disturbed seal is a chain-of-custody integrity event. It is documented contemporaneously, the property-room supervisor is notified, and the prosecutor is told before the court date. Carrying a known integrity question into court undisclosed creates a far larger problem than addressing it beforehand.'
+    },
+    {
+      scenario: 'You are explaining to a newer supervisor why chain-of-custody integrity is a supervisory and department responsibility, not just an individual officer\'s.',
+      text: 'What is the best explanation?',
+      options: [
+        'It is not — chain of custody is entirely the collecting officer\'s job.',
+        'Because integrity depends on systems the supervisor owns — seals, logs, submission discipline, an auditable property room, and standardized packaging — and a weak system turns every officer\'s careful collection into a vulnerability.',
+        'Because supervisors personally collect all evidence.',
+        'Because only supervisors are allowed to testify about evidence.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Chain-of-custody integrity rests on systems — seals, logs, submission discipline, an auditable property room, and standardized forensic packaging — that are supervisory responsibilities. When the system is weak, even a careful collection becomes a vulnerability, which is why it is a department-level concern.'
+    },
+    {
+      scenario: 'One of your officers will be cross-examined on a documentation gap in a chain of custody at an upcoming trial.',
+      text: 'How do you prepare the officer?',
+      options: [
+        'Tell the officer to assert confidently that the evidence was never tampered with, to project authority.',
+        'Have the officer review the documentation beforehand, identify the gap before the defense does, flag it to the prosecutor, and testify to exactly what the record shows — acknowledging the gap without speculating, since false certainty about an unremembered window risks perjury under 18 Pa. C.S. § 4902.',
+        'Advise the officer to answer every chain-of-custody question with "standard procedure was followed."',
+        'Tell the officer to avoid the subject and let the prosecutor handle it.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The officer should review the documentation, surface the gap early, flag it to the prosecutor, and testify truthfully to the record while acknowledging the gap. Asserting false certainty about an unremembered period is speculation under oath and a § 4902 perjury risk — and courts forgive a documented gap far sooner than a witness caught overstating.'
+    },
+    {
+      scenario: 'Your unit is short-staffed and calls are stacking up. You notice the temptation — across several scenes — to clear faster by cutting corners on evidence handling.',
+      text: 'What is your responsibility as the supervisor in these conditions?',
+      options: [
+        'Authorize shortcuts during busy periods — efficiency has to win when the board is full.',
+        'Hold the standard when it is inconvenient: every shortcut you authorize or refuse signals the real standard to your officers, so resource the scenes that need holding and make proper collection the path of least resistance rather than the heroic exception.',
+        'Leave it to each officer to decide how much to cut under pressure.',
+        'Reduce evidence collection requirements during high-call-volume shifts.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Evidence discipline erodes under exactly the conditions a supervisor manages — short staffing and stacked calls. What you authorize and what you refuse defines the real standard, so the job is to hold it when it is inconvenient, resource the scenes that need it, and make proper collection the default rather than a heroic exception.'
+    },
+  ];
+}

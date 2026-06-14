@@ -317,3 +317,143 @@ function getWellnessQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Officer Wellness (EGPD)
+   The peer catches it; the supervisor owns the system around it —
+   culture, the official mechanisms, GO 1.3.7, and modeling honesty.
+══════════════════════════════════════════ */
+const SUPERVISOR_WELLNESS = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>A peer catches it in the parking lot. You build the conditions that decide whether anyone says it out loud.</h2>
+    <p>The officer version of this module is about the peer who hears "I don't feel anything anymore" at midnight and what they do next. As a supervisor you own the system around that moment: whether your squad believes help is safe to seek, whether the official mechanisms are ready when informal support is not enough, and whether your own reflexive "fine" at every check-in is teaching your people to say it back. The sergeant asking "how are you holding up?" in this module is you — and how you ask, and how you answer when asked, sets the squad's permission to be honest.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Stigma Problem Is Yours to Solve</h4>
+    <p>The Ruderman finding — that officers are more likely to die by suicide than in the line of duty, with stigma as the central barrier — is, for a supervisor, a culture problem you control. Officers will not use a resource they believe will cost them their assignment or their standing, so your job is to make the safe path legible: a voluntary wellness contact or EAP self-referral is confidential and distinct from a fitness-for-duty evaluation, peer support and critical-incident-stress-management communications are confidential under 42 Pa.C.S. § 5950 and § 5952, and accessing them is not a career risk. Say that out loud, repeatedly — and back it with how you actually treat the officer who uses it. One officer quietly penalized for seeking help teaches the whole squad never to.</p>
+  </div>
+  <div class="content-block">
+    <h4>Know and Use the Official Mechanisms</h4>
+    <p>When informal peer support is not enough, you are the one who moves it into the official lane — and the line between support and discipline has to stay clean. A wellness referral and a fitness-for-duty evaluation are different things: the first protects and is confidential, the second is a formal administrative process, and confusing them in front of your people poisons the well. GO 1.3.7 models the department's own philosophy after the most serious incidents — mandatory post-incident psychological evaluation at department expense, with reassignment that "shall not be considered a suspension or disciplinary action." Use that same framing of support, not punishment, whenever you act, and make sure both the officer and the squad understand which lane they are in.</p>
+  </div>
+  <div class="content-block">
+    <h4>When You Must Act</h4>
+    <ul class="key-points">
+      <li><strong>The duty to act.</strong> An officer who cannot safely perform — a freeze at a key moment, a partner who had to cover — has crossed from informal support to escalated support (not discipline). Protecting them from intervention is abandonment dressed as loyalty.</li>
+      <li><strong>Lead with transparency.</strong> Tell the officer what you observed, that you are moving to peer support because you are concerned, and give them the chance to self-refer first — then follow through.</li>
+      <li><strong>Do not let the code of silence operate on your watch.</strong> When a review later asks who saw the decline, "everyone noticed and no one said anything" is a culture failure you own. Make raising concern about a colleague safe and expected.</li>
+      <li><strong>Reassignment is protection, not a mark.</strong> Frame any administrative assignment during recovery as space to recover, consistent with GO 1.3.7's non-disciplinary model — not as a stain on the officer's record.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>How You Ask, and How You Answer</h4>
+    <h2>"How are you holding up?" is a real question, or it is noise. Make it real.</h2>
+    <p>A check-in delivered as a formality gets "fine" and teaches the officer the question was theater. Ask it like you mean it, in a setting that allows a real answer, and be ready to actually receive one. And model the answer: a sergeant visibly running on three days of five-hour sleep, snapping and saying "fine," is training the squad to do exactly the same. The wellness-informed answer — and the one you want your people to learn — is calibrated honesty: acknowledge the weight, name what is stable, say what you are watching in yourself. When your officers see you do that, "fine" stops being the only acceptable answer on the shift.</p>
+  </div>
+  <div class="content-block">
+    <h4>Watch the Cumulative Load — and Normalize the Debrief</h4>
+    <p>You are positioned to see what no single officer sees: who has absorbed the line-of-duty death, the child fatality, the contested use-of-force review, the run of nights without enough sleep. Three days of five-hour sleep produces impairment comparable to an unlawful blood alcohol level, and your people are making high-stakes decisions in that state. Track the load, rotate exposure where you can, normalize critical-incident debriefs as standard practice rather than a signal of weakness, and treat your own numbness as the same warning you would act on in someone else. Early, normalized engagement is what produces the careers that last — and keeping your people whole is the part of this job that no arrest total will ever measure.</p>
+  </div>
+`;
+
+function getWellnessSupervisorQuestions() {
+  return [
+    {
+      scenario: 'You want fewer of your officers to suffer in silence with operational stress. You are thinking about how to use the Ruderman Foundation finding that officers are more likely to die by suicide than in the line of duty, with stigma as the central barrier.',
+      text: 'As a supervisor, how do you act on this?',
+      options: [
+        'Treat it as an individual problem — each officer is responsible for their own mental health.',
+        'Treat the stigma as a culture problem you control: make the safe path legible by stating clearly and repeatedly that wellness contacts and EAP are confidential and distinct from fitness-for-duty, and back it by how you treat officers who use them — because one officer quietly penalized for seeking help teaches the whole squad not to.',
+        'Require every officer to attend mandatory counseling to remove the stigma.',
+        'Avoid discussing mental health so officers do not feel singled out.'
+      ],
+      correct: 1,
+      feedback: 'Correct. For a supervisor, the stigma the Ruderman white paper identifies is a culture problem within their control. Making the confidential, non-career-threatening path legible — and proving it by how officers who seek help are treated — is the work. A single officer punished for reaching out undoes it for everyone.'
+    },
+    {
+      scenario: 'You are moving a struggling officer\'s situation from informal peer support into an official channel.',
+      text: 'Why must the distinction between a wellness referral and a fitness-for-duty evaluation stay clean?',
+      options: [
+        'They are the same thing, so the distinction does not matter.',
+        'Because a wellness referral is protective and confidential while a fitness-for-duty evaluation is a formal administrative process — confusing the two in front of your people frames support as punishment and discourages everyone from ever seeking help.',
+        'Because only fitness-for-duty evaluations are confidential.',
+        'Because wellness referrals are always disciplinary and should be treated as such.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A wellness referral protects and is confidential; a fitness-for-duty evaluation is a formal administrative process. Keeping the lanes distinct — and being clear which one an officer is in — is what prevents support from being experienced as discipline, which is what keeps officers willing to engage.'
+    },
+    {
+      scenario: 'An officer in your command has just been through a serious critical incident, and you are deciding how to handle the post-incident period.',
+      text: 'How does GO 1.3.7 model the department\'s approach, and how should you frame it?',
+      options: [
+        'It treats post-incident reassignment as a suspension, so you should frame it as discipline.',
+        'It requires post-incident psychological evaluation at department expense and provides that reassignment "shall not be considered a suspension or disciplinary action" — so you frame any administrative assignment during recovery as support and space to recover, not punishment.',
+        'It leaves all post-incident wellness to the officer\'s discretion with no department role.',
+        'It prohibits any reassignment after a critical incident.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 1.3.7 reflects the support-not-punishment philosophy: mandatory post-incident psychological evaluation at department expense, with reassignment that is expressly not a suspension or disciplinary action. A supervisor uses that same framing whenever acting on wellness — protection and recovery, not a mark against the officer.'
+    },
+    {
+      scenario: 'One of your officers has been declining for weeks. Informal peer support has not changed things, and yesterday the officer froze during a domestic and a partner had to step in to manage the scene.',
+      text: 'What is your obligation now?',
+      options: [
+        'Keep it informal and protect the officer\'s privacy — escalating would feel like a betrayal.',
+        'Act: the officer has crossed from informal support to escalated support (not discipline). Tell them what you observed, that you are moving to peer support because you are concerned, give them the chance to self-refer first, and follow through — an officer who cannot safely perform is a danger to themselves, their partners, and the public.',
+        'Open an internal affairs complaint about the performance failure.',
+        'Wait for another incident before doing anything, to be sure it is a pattern.'
+      ],
+      correct: 1,
+      feedback: 'Correct. When informal support has not worked and performance is creating a safety risk, the threshold for escalated support has been crossed. The right move is transparency plus follow-through: name what you saw, move to peer support, and give the officer the chance to self-refer. Protecting an unsafe officer from intervention is abandonment dressed as loyalty.'
+    },
+    {
+      scenario: 'After an officer\'s breakdown, a review finds that many people on the squad had noticed the decline for weeks, but no one said anything.',
+      text: 'What does this reveal, and what is the supervisor\'s responsibility?',
+      options: [
+        'Nothing — what officers choose to report among themselves is not a supervisory matter.',
+        'It reveals a culture failure the supervisor owns: making it safe and expected to raise concern about a colleague is the supervisor\'s job, and a squad where everyone notices but no one speaks is a condition the supervisor is responsible for changing.',
+        'It shows the officers were correct to stay silent and protect their colleague.',
+        'It is solely the fault of the individual officers who failed to report.'
+      ],
+      correct: 1,
+      feedback: 'Correct. "Everyone noticed and no one said anything" is a culture failure a supervisor owns. The code of silence operating around officer wellness is something the supervisor is responsible for dismantling — by making it safe and expected to raise concern about a colleague before a crisis.'
+    },
+    {
+      scenario: 'You ask an officer "how are you holding up?" as you pass in the hallway, and get a quick "fine" without breaking stride.',
+      text: 'What does a wellness-informed supervisor understand about that exchange?',
+      options: [
+        'It confirms the officer is doing well and no follow-up is needed.',
+        'A check-in delivered as a formality reliably gets "fine" and teaches the officer the question was theater — so the practice is to ask it like you mean it, in a setting that allows a real answer, and be ready to receive one.',
+        'Officers should be required to give a detailed wellness report on demand.',
+        'The hallway is the ideal place for meaningful wellness conversations.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A perfunctory check-in produces a reflexive "fine" and signals that the question is theater. A wellness-informed supervisor asks in a way and a setting that make a real answer possible, and is prepared to actually receive one.'
+    },
+    {
+      scenario: 'You have been running on three days of five-hour sleep, you have been short with your squad, and you keep answering "fine" when anyone asks how you are doing.',
+      text: 'Why does your own behavior here matter as a supervisor?',
+      options: [
+        'It does not — a supervisor\'s personal wellness is separate from the squad\'s.',
+        'Because your example sets the squad\'s permission: a visibly depleted supervisor snapping and saying "fine" trains officers to do the same, while modeling calibrated honesty — acknowledging the weight, naming what is stable, saying what you are watching in yourself — shows them that "fine" is not the only acceptable answer.',
+        'Because supervisors are exempt from wellness expectations and should hide any strain.',
+        'Because the impairment from sleep loss only affects line officers, not supervisors.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A supervisor models the squad\'s wellness norms. A depleted supervisor masking it with "fine" teaches officers to mask too; modeling calibrated honesty gives them permission to answer honestly. And sleep-deprivation impairment — comparable to an unlawful BAC at three days of five-hour sleep — affects the supervisor\'s high-stakes decisions just as much.'
+    },
+    {
+      scenario: 'You notice one of your officers has absorbed a string of traumatic incidents over a short span — a line-of-duty death, a child fatality, and a contested use-of-force review — on top of heavy overtime.',
+      text: 'What is the appropriate supervisory action?',
+      options: [
+        'Leave it alone — officers are expected to handle whatever the job brings.',
+        'Manage the cumulative load you are uniquely positioned to see: track the exposure, rotate hard calls where possible, normalize critical-incident debriefs as standard practice rather than a sign of weakness, and watch for sleep-driven impairment in high-stakes decisions.',
+        'Assign the officer more high-stress calls to build resilience.',
+        'Wait for the officer to show a visible breakdown before acting.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The supervisor sees the accumulation no single officer can — the run of traumatic calls plus sleep deficit. Tracking the load, rotating exposure, and normalizing debriefs as routine (not weakness) is the supervisory work, and three days of five-hour sleep produces impairment comparable to an unlawful BAC in someone making life-and-death decisions.'
+    },
+  ];
+}

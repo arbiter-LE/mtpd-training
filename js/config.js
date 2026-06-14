@@ -57,6 +57,11 @@ function isModuleAvailable(module) {
 
 /* ── State ──────────────────────────────── */
 let currentUser     = null;
+// Admin-only preview override: when an admin sets a track via the
+// "Viewing as" toggle, the content resolver uses it instead of the
+// admin's own track. null = use the logged-in user's real track,
+// so non-admin supervisors and admins-with-a-track are unaffected.
+let previewTrackOverride = null;
 let currentModule   = null;
 let moduleTimer     = null;
 let quizTimer       = null;

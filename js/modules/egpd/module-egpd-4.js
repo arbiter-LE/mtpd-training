@@ -461,3 +461,144 @@ function getCrisisQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Crisis Intervention (EGPD)
+   The supervisor's role: resource and protect de-escalation,
+   review the 302 against its legal standard, catch consent traps.
+══════════════════════════════════════════ */
+const SUPERVISOR_CRISIS = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>When de-escalation is working, your job is to protect the clock — not run it out.</h2>
+    <p>On a crisis call you are often not the contact officer. You are the voice on the radio asking for status, or the supervisor on the perimeter deciding what to commit. Both roles carry the same trap: the pull to "wrap it up." A subject who is calmer after 35 minutes is the approach succeeding, and an abrupt tactical change risks re-escalation. When your officer gives you an honest progress report — subject de-escalating, recommend a defined additional window — supporting that is the supervisory decision that keeps everyone safe. Time spent never substitutes for the 302's legal standard, but your impatience never justifies ending an approach that is working.</p>
+  </div>
+  <div class="content-block">
+    <h4>You Own the Environment Around the Contact</h4>
+    <h2>The contact officer manages the person. You manage the scene.</h2>
+    <p>While your officer works the conversation, you work the conditions: establish a perimeter, reduce stimulation — lights, sirens, the number of officers visible — keep one primary voice with defined roles, and request CIT and mobile-crisis resources early, before they are needed rather than after. On high-risk geometry such as a ledge or a rooftop, that resourcing decision is yours to make and to document. And calibrate the response to the threat actually presented, not the one you fear: a distressed person legally owning a firearm and seated on his porch is not a SWAT call. Escalating the response to match a weapon you merely know about manufactures the crisis you were called to prevent — and exposes the department.</p>
+  </div>
+  <div class="content-block">
+    <h4>Read Every 302 for the Standard, Not the Worry</h4>
+    <h2>The question on review is the one the court will ask.</h2>
+    <p>When a 302 reaches you, test it against 50 P.S. § 7302: does the documentation show a clear and present danger to self or others based on a recent overt act, attempt, or threat? Agitation, psychiatric history, medication non-compliance, and psychosis alone do not satisfy the standard — the report must state the specific conduct. A 302 written to "resolve the situation" rather than because the criteria were met is a civil-liberty problem and a liability, and catching it before it becomes the department's is your job. If the criteria are genuinely met, the tool is appropriate and the report should show why; if they are not, the answer is a documented welfare contact, not a manufactured commitment.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Consent Traps Only a Reviewer Reliably Catches</h4>
+    <ul class="key-points">
+      <li><strong>Withdrawn consent.</strong> Voluntary transport requires ongoing consent. If the report shows the subject agreed and then changed their mind, the prior agreement is void — proceeding without current 302 criteria is unlawful detention. Read for the moment consent was withdrawn and what happened next.</li>
+      <li><strong>Coerced consent.</strong> "Transport is already waiting" and "you have to come" imply consequences that do not exist. Transport obtained by pressure or deception is not voluntary and creates civil liability — flag the language wherever it appears.</li>
+      <li><strong>Warrantless entry.</strong> A statement about access to a means of self-harm, without more, may not meet the exigency threshold for entering a residence. Confirm the report establishes an immediate, specific threat or consent — not just concern.</li>
+      <li><strong>Family pressure.</strong> A family member's urging does not create legal authority. Make sure neither your officer's report nor your own on-scene decision rests on it.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Reward the De-escalation You Want Repeated</h4>
+    <p>General Order 1.3 emphasizes obtaining control rather than forcing submission, and de-escalation is the department's expectation whenever it is safe and feasible. On review, confirm the report documents the de-escalation effort — the approach, the time taken, the resources requested, the choices offered — because that record protects the officer and the department. And recognize the outcome for what it is: a well-documented welfare contact that ended without a transport, with crisis resources provided and family coordinated, is a professional success, not a non-event. What you acknowledge in review is what your officers will reach for on the next call.</p>
+  </div>
+  <div class="content-block">
+    <h4>After the Call — the Part That Isn't in the Statute</h4>
+    <p>Crisis calls take a toll, and a suicidal-subject contact — especially one that ends badly — is exactly the kind of incident a supervisor should flag for peer support and a personal check-in, not just a report review. Closing the loop runs two directions: on the person (mobile crisis or community follow-up offered and documented) and on the officer (a conversation, not a form). None of that appears in 50 P.S. § 7302, but it shows up in whether your people are still standing a year from now.</p>
+  </div>
+`;
+
+function getCrisisSupervisorQuestions() {
+  return [
+    {
+      scenario: 'An officer is 35 minutes into a mental health call using verbal de-escalation. The subject is noticeably calmer but still refusing assistance. The officer reports the approach is working and recommends a defined additional window. You feel pressure to clear the call.',
+      text: 'What is the correct supervisory response?',
+      options: [
+        'Direct the officer to move to a physical resolution to clear the call.',
+        'Support a defined additional window: a subject who is de-escalating reflects the approach succeeding, and an abrupt tactical change after relationship-building risks re-escalation. Time on the call is a tactic when it is working.',
+        'Order an immediate 302 because the call has taken too long.',
+        'Pull the officer off and replace them with a fresh unit to restart the contact.'
+      ],
+      correct: 1,
+      feedback: 'Correct. De-escalation that is producing calm is the approach working, not failing. When the contact officer gives an honest progress report, supporting a defined additional window is the supervisory decision that protects everyone. Time spent never creates the 302 legal standard, but it should not be cut short when it is working.'
+    },
+    {
+      scenario: 'A subject in a mental health crisis legally owns a firearm kept inside his home. He is seated on his porch, distressed but not threatening anyone, and engaging with your contact officer. You are making the resourcing decision.',
+      text: 'How should you calibrate the response?',
+      options: [
+        'Request a SWAT/tactical team — the presence of a firearm makes this a tactical incident.',
+        'Calibrate to the threat actually presented: establish a perimeter, reduce stimulation, and request CIT and mobile-crisis resources, while the contact officer maintains a calm approach. A distressed person on his porch is not a SWAT call.',
+        'Order officers to make immediate entry to secure the firearm.',
+        'Clear all units and disengage entirely, since a firearm is present.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Knowledge of a legally owned firearm informs positioning and awareness — it does not convert a welfare check into a tactical operation. Escalating the response to match a weapon you merely know about, rather than a threat actually presented, manufactures the crisis and exposes the department. Perimeter, reduced stimulation, and CIT/mobile-crisis resources are the right calls.'
+    },
+    {
+      scenario: 'A 302 from one of your officers documents that the subject was agitated, had a psychiatric history, and had stopped taking medication. It does not describe any recent overt act, attempt, or threat to self or others.',
+      text: 'How should you handle this 302 on review?',
+      options: [
+        'Approve it — agitation plus a psychiatric history and medication non-compliance satisfies the 302 standard.',
+        'Flag it: under 50 P.S. § 7302 a 302 requires a clear and present danger based on a recent overt act, attempt, or threat. History, agitation, and non-compliance alone do not meet the standard — the report must state the specific dangerous conduct or it does not support an involuntary commitment.',
+        'Approve it because the officer was concerned for the subject\'s welfare.',
+        'Forward it to the magistrate without review, since 302 determinations are medical, not supervisory.'
+      ],
+      correct: 1,
+      feedback: 'Correct. 50 P.S. § 7302 requires clear and present danger based on a recent overt act, attempt, or threat. Agitation, history, and medication non-compliance do not by themselves satisfy that standard. A 302 lacking the specific dangerous conduct is a civil-liberty and liability problem the reviewer must catch.'
+    },
+    {
+      scenario: 'A report shows the subject initially agreed to voluntary transport for evaluation, then changed his mind in the parking lot and said he was not going. He was calm and coherent and not under any commitment order. The officer placed him in the vehicle and transported him anyway, without assessing 302 criteria.',
+      text: 'What is your finding?',
+      options: [
+        'No issue — the subject\'s earlier agreement to go was binding consent.',
+        'This is unlawful detention: voluntary consent can be withdrawn at any time before transport, the prior agreement is void once withdrawn, and absent current 302 criteria there was no authority to transport.',
+        'No issue — the officer\'s belief that the subject needed help supplied the authority.',
+        'The transport was lawful because a family member urged the officer to take him.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Voluntary means voluntary at every moment. Once consent is withdrawn the prior agreement is void, and transporting without current 50 P.S. § 7302 criteria is unlawful detention. Neither the officer\'s belief nor family pressure creates legal authority.'
+    },
+    {
+      scenario: 'On review, a report\'s basis for transport reads: "Advised subject that transport was already en route and that he had to come with us." The subject then complied.',
+      text: 'How should you treat this on review?',
+      options: [
+        'Accept it — the subject ultimately agreed, so consent was given.',
+        'Flag it as coercion: implying the subject had no choice when he legally did is pressure, not consent. Coerced transport is not voluntary, creates civil liability, and undermines the evaluation.',
+        'Accept it because logistics had already been arranged.',
+        'Treat it as a 302, since the subject was transported.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Coercion vitiates consent. "Transport is already waiting / you have to come" implies consequences that do not exist. Transport obtained through pressure or deception is not voluntary and exposes the department — a flag the reviewer raises before the report closes.'
+    },
+    {
+      scenario: 'A report documents that the officer entered the subject\'s residence based solely on the subject\'s earlier statement that there was "something inside he could use." There is no documented consent and no description of an immediate, specific threat at the time of entry.',
+      text: 'What should your review of the entry conclude?',
+      options: [
+        'The entry was clearly justified — any mention of a means of self-harm authorizes entry.',
+        'The entry is questionable: a statement about access to a means of self-harm, without more, may not meet the exigency threshold for a warrantless entry. The report needs an immediate, specific threat or documented consent — flag the gap.',
+        'The entry was lawful because the officer was conducting a welfare check.',
+        'Entry into a residence never requires justification during a mental health call.'
+      ],
+      correct: 1,
+      feedback: 'Correct. PA courts evaluate whether the threat was immediate and specific. A general statement about a means of self-harm, without more, may not satisfy exigent circumstances for a warrantless entry. The reviewer flags the entry where the report does not establish immediacy or consent.'
+    },
+    {
+      scenario: 'An officer\'s welfare-check report ends with no transport: the subject did not meet 302 criteria, but the report documents the de-escalation approach used, the time taken, crisis resources provided, and coordination with the family for follow-up.',
+      text: 'How should you assess this outcome on review?',
+      options: [
+        'Mark it deficient because no enforcement action or transport resulted.',
+        'Recognize it as a professional success: a well-documented welfare contact with de-escalation, resources, and family coordination is a sound outcome — and acknowledging it reinforces the practice you want repeated on the next call.',
+        'Require the officer to file a 302 retroactively to justify the time spent.',
+        'Take no notice — outcomes without arrests do not warrant supervisory attention.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A documented welfare contact that ends without a transport, with resources provided and family coordinated, is a professional outcome. Documented de-escalation protects the officer and the department, and recognizing it in review reinforces the behavior you want your officers to repeat.'
+    },
+    {
+      scenario: 'One of your officers has just handled a difficult call involving a suicidal subject. The report is complete and accurate.',
+      text: 'Beyond reviewing the report, what is part of your supervisory responsibility?',
+      options: [
+        'Nothing further — once the report is accurate, the supervisor\'s role is finished.',
+        'Close the loop on the officer\'s well-being: flag the incident for peer support and conduct a personal check-in, recognizing that suicidal-subject calls take a toll that a completed report does not capture.',
+        'Order the officer back into service immediately to demonstrate resilience.',
+        'Document that the officer showed no visible distress and move on.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Crisis calls, especially suicidal-subject contacts, take a toll. A supervisor\'s job includes flagging the incident for peer support and a genuine check-in — a conversation, not just a form. That follow-through is part of keeping officers healthy over the long run, even though it appears nowhere in the statute.'
+    },
+  ];
+}

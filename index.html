@@ -99,6 +99,7 @@
         <button class="officer-tab" onclick="officerTab('progress', event)">My Progress</button>
       </div>
       <div id="officer-tab-modules">
+        <div id="track-toggle-dash" class="track-toggle" style="display:none"></div>
         <div class="modules-grid" id="modules-grid"></div>
       </div>
       <div id="officer-tab-progress" class="hidden">
@@ -127,6 +128,7 @@
       <div class="nav-right"><div class="nav-user"><strong id="module-officer-name">Officer</strong></div><button class="btn-flag-content" onclick="openFeedbackModal()" title="Flag a content issue">📋 Flag Issue</button><button class="btn-open-glossary" onclick="openGlossary()">📖 Reference</button><button class="btn-logout" onclick="doLogout()">Sign Out</button></div>
     </nav>
     <div id="admin-preview-banner" class="admin-preview-banner">🔒 Admin Preview — This module is not yet open to officers.</div>
+    <div id="track-toggle-module" class="track-toggle" style="display:none"></div>
     <div class="module-header-bar">
       <button class="btn-back" onclick="showOfficerDashboard()">← Dashboard</button>
       <div class="module-title-group">

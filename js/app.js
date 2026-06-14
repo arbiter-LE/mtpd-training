@@ -75,7 +75,7 @@ async function mountOfficerSession(authUid) {
     return;
   }
   const o = rows[0];
-  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, badge: o.badge_number, email: o.email };
+  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, track: o.track || 'patrol', badge: o.badge_number, email: o.email };
   USERS[o.badge_number] = { ...currentUser };
 
   if (o.role === 'admin') {
@@ -216,6 +216,7 @@ if (_sb) {
 async function doLogout() {
   stopAllTimers();
   currentUser = null;
+  previewTrackOverride = null;
   if (_sb) await _sb.auth.signOut();
   document.getElementById('login-user').value = '';
   document.getElementById('login-pass').value = '';
@@ -322,7 +323,7 @@ function resumeQuiz() {
   quizCorrect    = state.correctCount;
   quizTotal      = state.quizTotal;
   quizSeconds    = state.secondsElapsed || 0;
-  const questions = currentModule.questions;
+  const questions = activeQuestions(currentModule);
   showScreen('screen-quiz');
   window.scrollTo(0, 0);
   document.getElementById('quiz-module-label').textContent = currentModule.category;
@@ -425,6 +426,7 @@ function showOfficerDashboard() {
 
 function renderOfficerDashboard() {
   if (!currentUser) return;
+  renderTrackToggle('track-toggle-dash');
   const uid  = currentUser.id;
   const done = completionData[uid] || {};
   const completed = Object.values(done).filter(r => r.passed).length;
@@ -541,6 +543,7 @@ function startModule(moduleId) {
     }
   }
 
+  renderTrackToggle('track-toggle-module');
   renderModuleContent();
   moduleTimer = setInterval(() => {
     moduleSeconds++;
@@ -554,8 +557,8 @@ function renderModuleContent() {
   // Data-driven path — modules that carry their own reading content (e.g. EGPD).
   // MTPD modules have no contentHtml property, so the hardcoded branches below
   // remain their source of truth (live module lock — do not edit).
-  if (currentModule.contentHtml) {
-    document.getElementById('module-content-body').innerHTML = currentModule.contentHtml;
+  if (activeContentHtml(currentModule)) {
+    document.getElementById('module-content-body').innerHTML = activeContentHtml(currentModule);
     return;
   }
 
@@ -1496,15 +1499,71 @@ function showDebrief() {
 }
 
 /* ── Quiz ───────────────────────────────── */
+/* ── Role-aware content (supervisor track) ──
+   Supervisors (currentUser.track === 'supervisor') get the module's own
+   supervisor reading addendum + quiz set when the module provides them.
+   Everyone else — and any module without supervisor variants — falls back
+   to the standard patrol content. One resolver, used at every read site. */
+// The track whose content is currently served. Admins can override their
+// own track via the "Viewing as" toggle (previewTrackOverride); everyone
+// else — including admins who haven't touched the toggle — uses their real
+// track, so Halteman/Mascio still get the graded supervisor track by default.
+function effectiveTrack() {
+  if (!currentUser) return null;
+  if (currentUser.role === 'admin' && previewTrackOverride) return previewTrackOverride;
+  return currentUser.track || 'patrol';
+}
+function activeQuestions(m) {
+  return (effectiveTrack() === 'supervisor' && m && m.supervisorQuestions)
+    ? m.supervisorQuestions
+    : (m ? m.questions : []);
+}
+function activeContentHtml(m) {
+  return (effectiveTrack() === 'supervisor' && m && m.supervisorContentHtml)
+    ? m.supervisorContentHtml
+    : (m ? m.contentHtml : '');
+}
+
+// Admin-only "Viewing as" toggle. Renders a Patrol/Supervisor segmented
+// control into containerId (hidden for non-admins), highlighting the
+// effective track. Flipping it re-renders whatever the admin is viewing.
+function renderTrackToggle(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  // Only for admins, and only where this department actually has supervisor
+  // content (e.g. EGPD) — otherwise the toggle would be a no-op (e.g. MTPD).
+  const deptHasSupervisorTrack = MODULES.some(m => m.supervisorContentHtml);
+  if (!currentUser || currentUser.role !== 'admin' || !deptHasSupervisorTrack) { el.style.display = 'none'; return; }
+  const cur = effectiveTrack();
+  el.style.display = '';
+  el.innerHTML =
+    '<span class="track-toggle-label">Viewing as</span>' +
+    '<div class="track-seg">' +
+      '<button class="track-opt' + (cur === 'patrol' ? ' active' : '') + '" onclick="setPreviewTrack(\'patrol\')">Patrol</button>' +
+      '<button class="track-opt' + (cur === 'supervisor' ? ' active' : '') + '" onclick="setPreviewTrack(\'supervisor\')">Supervisor</button>' +
+    '</div>';
+}
+
+function setPreviewTrack(track) {
+  previewTrackOverride = track;
+  // Re-render whatever admin is currently looking at.
+  const onModule = document.getElementById('screen-module').classList.contains('active');
+  if (onModule && currentModule) {
+    renderModuleContent();
+    renderTrackToggle('track-toggle-module');
+  }
+  renderTrackToggle('track-toggle-dash');
+}
+
 function startQuiz(moduleId) {
   stopAllTimers();
   currentModule  = MODULES.find(m => m.id === moduleId);
-  if (!currentModule || !currentModule.questions.length) return;
+  if (!currentModule || !activeQuestions(currentModule).length) return;
   currentQuizIdx = 0;
   quizCorrect    = 0;
   quizAnswered   = false;
   quizSeconds    = 0;
-  quizTotal      = currentModule.questions.length;
+  quizTotal      = activeQuestions(currentModule).length;
   showScreen('screen-quiz');
   window.scrollTo(0, 0);
   document.getElementById('quiz-module-label').textContent = currentModule.category;
@@ -1514,7 +1573,7 @@ function startQuiz(moduleId) {
 }
 
 function renderQuestion() {
-  const q = currentModule.questions[currentQuizIdx];
+  const q = activeQuestions(currentModule)[currentQuizIdx];
   quizAnswered = false;
   document.getElementById('btn-next-q').disabled    = true;
   document.getElementById('btn-next-q').textContent = currentQuizIdx === quizTotal-1 ? 'Submit Assessment →' : 'Next Question →';
@@ -1537,7 +1596,7 @@ function renderQuestion() {
 function selectAnswer(idx) {
   if (quizAnswered) return;
   quizAnswered = true;
-  const q = currentModule.questions[currentQuizIdx];
+  const q = activeQuestions(currentModule)[currentQuizIdx];
   const isCorrect = (idx === q.correct);
   if (isCorrect) quizCorrect++;
   for (let i=0; i<q.options.length; i++) {

@@ -326,3 +326,142 @@ function getDeescalationQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — De-escalation (EGPD)
+   De-escalation survives only if the department rewards it —
+   a supervisory choice. Review force against the Graham threat picture.
+══════════════════════════════════════════ */
+const SUPERVISOR_DEESCALATION = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>De-escalation is a tactic your officers will use only if the department actually values it. Whether it does is a choice you make every shift.</h2>
+    <p>Officers learn fast what the department truly rewards — speed and a cleared call, or the forty-five minutes that ended without force. The "you could've 302'd him in ten" pressure in this module often comes from a supervisor, and your answer to it is the culture. On a crisis call your job is to resource and protect the de-escalation; after it, your job is to review the force decision honestly and praise the restraint the metrics will never capture. A department that values de-escalation is built one debrief at a time, by the supervisor who names a no-force outcome as the win it is.</p>
+  </div>
+  <div class="content-block">
+    <h4>Review the Force Decision Against the Threat Picture</h4>
+    <p>When you review a use of force — or a use of force avoided — on a subject in crisis, the lens is Graham v. Connor: objective reasonableness on the totality, including the subject's mental state and whether the threat is self-directed or aimed at others. A subject who is not advancing, is engaging verbally, and is holding a blade against his own arm does not present the threat picture that justifies a drawn firearm at initial contact — and a report that drew or closed on that picture is one you examine. Prior violence history informs positioning and awareness, not the force applied to current behavior, so watch for reports that import history to justify present force. Tennessee v. Garner sets the deadly-force boundary for fleeing subjects. The question on review is always the threat as it existed at the moment force was used — not the officer's discomfort with the situation.</p>
+  </div>
+  <div class="content-block">
+    <h4>Resource and Protect — Do Not Rush</h4>
+    <p>On scene you own the tempo and the resources. The most common way a workable crisis contact goes bad is tactical movement the subject reads as threat — a flanking officer who makes him tighten his grip. The supervisory move is to hold that movement, protect the conversation that is working, and request the right escalation: CIT officers or a mobile crisis team, not closure. De-escalation that is producing engagement is not delay, and "the situation has gone on long enough" is impatience, not a tactical assessment. Time and distance are assets you protect, and the 302 is for situations that require it under 50 P.S. § 7302 — not a ten-minute shortcut around a de-escalation that is working.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Control Points on a Crisis Force Scene</h4>
+    <ul class="key-points">
+      <li><strong>Hold the gallery out of the decision.</strong> "Just tase him" from a bystander is not a tactical input, and crowd management is a secondary officer's job — keep the force decision with the circumstances, policy, and law.</li>
+      <li><strong>Calibrate to the threat presented.</strong> A self-directed knife and a talking subject is not a SWAT call or a takedown; escalating the response to the weapon rather than the behavior manufactures the danger.</li>
+      <li><strong>Require the de-escalation to be documented.</strong> The report and radio traffic should show the time taken, the techniques used, the resources requested, and why force was or was not used — that record protects the officer and the department and models the standard.</li>
+      <li><strong>Know the 302 line.</strong> Confirm any involuntary commitment rests on a clear-and-present-danger observation under 50 P.S. § 7302, not on convenience.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>The Post-Incident Interaction Is Part of the Call</h4>
+    <p>The last de-escalation of a crisis call is often the upset family member demanding a badge number in front of a crowd, and how your officers handle it is part of the record. Reinforce the standard: provide name and badge number without hesitation — it is required, and hesitation reads as concealment — acknowledge the concern without defensiveness, explain the complaint process, and offer a supervisor, which may be you. Coach officers not to litigate the incident on the sidewalk; detailed justifications under emotional pressure look defensive and can create inconsistencies with the official report. The body camera, the radio traffic, and the documentation are where conduct is recorded, and facilitating a complaint is what confidence in sound conduct looks like. When the supervisor offered is you, model exactly that.</p>
+  </div>
+  <div class="content-block">
+    <h4>Build the Culture by Defending It Out Loud</h4>
+    <p>The metrics on a shift count arrests and cleared calls; they do not count the standoff that ended with a man setting a knife down and getting treatment. That gap is yours to close. Defend the professional use of de-escalation by name and with reasoning — in debriefs, in evaluations, in how you answer the officer who asks why a colleague spent forty-five minutes — because the only thing that turns de-escalation from a slogan into a habit is a supervisor who treats the no-force outcome as the best police work on the shift. CIT-trained responses measurably reduce use of force in mental health contacts; your recognition is what makes officers reach for them.</p>
+  </div>
+`;
+
+function getDeescalationSupervisorQuestions() {
+  return [
+    {
+      scenario: 'An officer spent forty-five minutes de-escalating a subject in crisis to a no-force outcome — the subject set down a knife and was connected to services. A colleague remarks that the officer could have "302\'d him in ten minutes and been done."',
+      text: 'What is the correct supervisory stance?',
+      options: [
+        'Agree — efficiency matters, and a faster 302 would have cleared the call sooner.',
+        'Name the outcome as the win it is: a subject who left calm and connected to services, without unnecessary trauma or an involuntary commitment that may not have been warranted, is the best police work on the shift — and de-escalation only becomes a habit if the supervisor rewards it.',
+        'Stay neutral — it is not a supervisor\'s place to weigh in on how long a call took.',
+        'Counsel the officer to be faster next time to keep the unit available.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Officers learn what the department actually rewards. A no-force outcome with the subject connected to services is the win, and the 302 is for situations that require it — not a shortcut around a working de-escalation. A supervisor who names that outcome as excellent police work is how a de-escalation culture gets built.'
+    },
+    {
+      scenario: 'A report shows an officer drew a firearm at initial contact on a subject who was holding a knife against his own forearm, not advancing, and engaging verbally with officers.',
+      text: 'How should you assess the force decision on review?',
+      options: [
+        'Approve it — any subject holding a weapon justifies a drawn firearm.',
+        'Examine it under Graham v. Connor: a self-directed threat, a subject who is not advancing and is engaging verbally, does not present the threat picture that justifies a drawn firearm at initial contact, and de-escalation is required where tactically feasible.',
+        'Approve it because the officer felt unsafe.',
+        'Refer it straight to discipline without review.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Graham v. Connor judges force by objective reasonableness on the totality, including the subject\'s mental state and whether the threat is self-directed. A non-advancing, verbally engaging subject with a self-directed knife does not justify a drawn firearm at initial contact, and the reviewer examines that decision against the actual threat picture.'
+    },
+    {
+      scenario: 'A use-of-force report on a subject in crisis justifies the force primarily by citing the subject\'s prior history of violence, although the subject\'s behavior at the time had not crossed into an immediate threat.',
+      text: 'How should the prior history factor into your review?',
+      options: [
+        'Prior violence history justifies a higher force level regardless of current behavior.',
+        'Flag the reasoning: prior history informs positioning and awareness, not the force applied to current behavior. Graham evaluates the threat as it existed at the moment force was used, so importing history to justify present force is a review concern.',
+        'Disregard the history entirely as irrelevant bias.',
+        'Approve it because any history of violence makes force reasonable.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Prior history is legitimate context for positioning, backup, and awareness — not a substitute for evaluating current behavior. Graham v. Connor applies to the specific facts of the specific encounter, so a report that leans on history to justify force against a non-threatening present behavior is one the reviewer flags.'
+    },
+    {
+      scenario: 'You are supervising a crisis scene where an officer has built rapport with an armed subject. A flanking officer\'s movement causes the subject to tighten his grip on the knife.',
+      text: 'What is the right supervisory move?',
+      options: [
+        'Order the flanking officer to keep closing to take the subject into custody quickly.',
+        'Signal the flanking officer to hold, protect the conversation that is working, and request CIT or a mobile crisis team — tactical movement that escalates the subject has become a negative variable, and closure is not the goal.',
+        'Have all officers draw weapons to establish overwhelming presence.',
+        'Pull the contact officer back and restart the approach with fresh personnel.'
+      ],
+      correct: 1,
+      feedback: 'Correct. When tactical movement makes a subject in crisis tighten up, the movement has become a negative variable. The supervisor holds it, protects the working conversation, and requests the right escalation — CIT or mobile crisis — rather than tactical closure on an armed, decompensating subject.'
+    },
+    {
+      scenario: 'At a crisis scene, bystanders are loudly urging officers to "just tase him." The subject is self-directed with a knife, not advancing, and is still talking to officers.',
+      text: 'How should you direct the response?',
+      options: [
+        'Factor in the bystander pressure — public expectation for a fast resolution matters.',
+        'Keep the force decision with the circumstances, policy, and law: bystander pressure is not a tactical input, crowd management belongs to a secondary officer, and a self-directed, talking subject does not meet the threshold for a CEW deployment.',
+        'Deploy the CEW to satisfy the crowd and resolve the scene quickly.',
+        'Clear the scene of officers until the crowd disperses.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Tactical decisions rest on the circumstances, policy, and law — not bystander pressure or demands for speed. Crowd management is a secondary officer\'s responsibility, and a non-advancing, verbally engaging subject whose threat is self-directed does not meet the force threshold that would justify a CEW.'
+    },
+    {
+      scenario: 'A report documents that an officer initiated a 302 involuntary commitment to resolve a crisis call quickly, even though the subject was calm, engaging verbally, and de-escalating.',
+      text: 'What should your review confirm?',
+      options: [
+        'Nothing — a 302 is always justified when an officer wants to resolve a call.',
+        'Confirm the 302 rests on a clear-and-present-danger observation under 50 P.S. § 7302: it is a civil tool for situations that require it, not a shortcut around a de-escalation that is working, and a 302 used for convenience is a review concern.',
+        'Approve it because any mental health crisis automatically meets the 302 standard.',
+        'Approve it because the call was resolved without a use of force.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A 302 under 50 P.S. § 7302 requires a clear and present danger to self or others based on the officer\'s observations. It exists for situations that require it — not as a ten-minute shortcut around a working de-escalation. The reviewer confirms the documented observations actually support the involuntary commitment.'
+    },
+    {
+      scenario: 'After a crisis call, an upset family member loudly demands an officer\'s badge number and announces an intent to file a complaint, in front of a gathered crowd.',
+      text: 'What standard should you reinforce — and model when the supervisor offered is you?',
+      options: [
+        'Have the officer refuse to engage and walk away to avoid escalation.',
+        'Provide name and badge number without hesitation, acknowledge the concern without defensiveness, explain the complaint process, and offer a supervisor — without litigating the incident on the sidewalk, since the body camera and documentation are where conduct is recorded.',
+        'Have the officer explain in detail why every action was justified to settle the matter on scene.',
+        'Tell the family member that complaints are not accepted at the scene.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The post-incident interaction is the last de-escalation of the call. Providing identifying information without hesitation, acknowledging the concern, explaining the complaint process, and offering a supervisor is the standard — and litigating the incident on the sidewalk looks defensive and can create inconsistencies with the report. When the supervisor offered is you, model exactly that.'
+    },
+    {
+      scenario: 'Your shift metrics count arrests and cleared calls but do not capture the standoff that ended with a subject voluntarily surrendering a weapon and getting treatment.',
+      text: 'What is the supervisor\'s role in light of that gap?',
+      options: [
+        'Accept the metrics as the complete picture of performance.',
+        'Close the gap by defending de-escalation explicitly — in debriefs, evaluations, and in answering the "why did it take so long" question — because recognition is what turns de-escalation from a slogan into a habit, and CIT-trained responses measurably reduce use of force in mental health contacts.',
+        'Adjust the metrics to penalize calls that take longer than average.',
+        'Leave recognition to formal awards and stay out of it day to day.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The metrics will not count the no-force standoff that ended well, so the supervisor closes that gap by defending de-escalation by name and with reasoning. That recognition is what makes officers reach for de-escalation, which CIT research shows measurably reduces use of force in mental health encounters.'
+    },
+  ];
+}

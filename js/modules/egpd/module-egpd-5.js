@@ -380,3 +380,143 @@ function getDomesticViolenceQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Domestic Violence (EGPD)
+   Built on GO 4.13's mandatory provisions — the supervisor's
+   review is where those mandates hold or quietly erode.
+══════════════════════════════════════════ */
+const SUPERVISOR_DOMESTIC_VIOLENCE = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>GO 4.13 takes the hardest domestic-violence decisions out of the moment and puts them in policy. Your review is where policy actually holds.</h2>
+    <p>Domestic violence is the area where an officer faces the most pressure to do the wrong thing for sympathetic reasons — a victim begging not to arrest, a quiet scene, a long night. General Order 4.13 answers most of those questions in advance with mandatory provisions, and your review is where those mandates are enforced or quietly eroded. The directive treats domestic violence "as any other crime, regardless of the relationship of the victim and the offender." Your job is to make sure the report you approve reflects that — not the path of least resistance an exhausted officer took at 3 a.m.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Most Important Review You Do — the Non-Arrest</h4>
+    <h2>When there was no arrest, read the narrative first.</h2>
+    <p>The most consequential thing you review in a DV report is a decision not to arrest. GO 4.13.11(A)(3)(b) requires that when probable cause existed and an arrest was authorized but the officer did not arrest, the narrative contain a detailed explanation of the reasons. "Parties separated for the evening. No arrest made." does not satisfy it — and a report like that, waved through, is exactly the eight-months-ago history that haunts the next call to the same address. On any DV non-arrest, confirm whether observed injury plus probable cause for a 4.13.5 offense were present. If they were, the question is not how well the officer explained the non-arrest — it is why an arrest was not made at all.</p>
+  </div>
+  <div class="content-block">
+    <h4>Mandatory Arrest and the Limits of the Victim's Role</h4>
+    <p>GO 4.13.5 requires a warrantless arrest, as in a felony, when recent physical injury is observed and probable cause exists for the listed offenses against a household member. Two things you confirm on review and reinforce with your officers: victim consent is not an element — a request for no arrest is a common, expected trauma response that does not change the obligation; and supervisor authorization is not a precondition — officers act on the probable cause they have and brief you after, rather than waiting for permission while a suspect walks into the tree line. Once a mandatory arrest is made, the charging decision belongs to the Commonwealth, not the victim — and protecting that is your job. An informal "let's sit down and talk about dropping the charges" with a recanting victim is a case-integrity problem you head off before it happens.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Mandatory Mechanics You Verify on Every DV Report</h4>
+    <ul class="key-points">
+      <li><strong>Weapon seizure (4.13.6).</strong> Any item used in the commission of the offense — a phone, a lamp, anything — is evidence and "shall be seized," processed with chain of custody, and held until court disposition. Confirm it was seized as evidence, not framed as a consent request. Consent can be refused; the stated basis matters in court.</li>
+      <li><strong>Victim-rights notification (4.13.7).</strong> Oral and written notice of shelter, services, the hotline, and PFA rights under 23 Pa.C.S. Ch. 61, with the victim's signed receipt attached to the report. A DV report missing the signed receipt is incomplete and goes back.</li>
+      <li><strong>PFA enforcement (4.13.9 / 4.13.10).</strong> A final-PFA violation is a mandatory arrest whenever it is disclosed — even a past, unreported one — with an Indirect Criminal Contempt charge and protected-party notification documented as a Supplemental Incident Report. Confirm disclosed violations were acted on, not merely noted in passing.</li>
+      <li><strong>Narrative completeness (4.13.11).</strong> Relationship, weapons used or threatened, injuries observed AND injuries reported-but-not-observed with that distinction stated, children present, and prior incidents known or reported.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>Patterns, Repeat Addresses, and Lethality</h4>
+    <p>Domestic violence is where the patterns in your reports carry the highest stakes. A repeat address, an escalating series of "no arrest" contacts, a victim who recants and re-reports — these are the signals that precede the worst outcomes, and you see them across reports in a way no single officer can. Track repeat locations, flag escalation, and make sure a string of under-documented non-arrests is caught as a pattern and corrected. In domestic violence, the report you wave through is sometimes the warning no one acted on.</p>
+  </div>
+  <div class="content-block">
+    <h4>The High-Risk Approach Is Yours to Enforce</h4>
+    <p>GO 4.13.2 treats every active domestic as high risk: no sirens or emergency lights in the vicinity of the scene, flanking approach rather than parking out front, an external assessment before any committed approach, and — on a hostage or barricade indication — containment and a supervisor, not entry. As the supervisor you own the tactical posture as much as the legal one. Make sure your units approach the way the directive requires and are backed and braced, because domestic calls injure more officers than almost any other run they will take.</p>
+  </div>
+`;
+
+function getDomesticViolenceSupervisorQuestions() {
+  return [
+    {
+      scenario: 'A DV report you are reviewing shows the officer observed a fresh injury and had a consistent victim account — probable cause for Simple Assault against a household member — but made no arrest. The narrative reads, in full: "Parties separated for the evening. No arrest made."',
+      text: 'What is the correct supervisory action?',
+      options: [
+        'Approve it — the officer documented that the parties separated, which resolves the incident.',
+        'Reject it: GO 4.13.11(A)(3)(b) requires a detailed explanation when probable cause existed but no arrest was made — and where observed injury plus PC for a 4.13.5 offense were present, the deeper question is why a mandatory arrest was not made at all.',
+        'Approve it but add a note reminding the officer to write more next time.',
+        'Approve it because arrest is discretionary when the parties separate voluntarily.'
+      ],
+      correct: 1,
+      feedback: 'Correct. The non-arrest is the most consequential thing you review in a DV report. "No arrest made" does not satisfy GO 4.13.11(A)(3)(b)\'s detailed-explanation requirement, and where observed injury and PC for a 4.13.5 offense existed, the failure to arrest is itself a policy violation — not just a documentation gap.'
+    },
+    {
+      scenario: 'An officer on a DV scene radios you for authorization to arrest. He has observed a fresh injury and has probable cause for Simple Assault, but the victim is objecting to an arrest, and the suspect is still on scene.',
+      text: 'How do you respond?',
+      options: [
+        'Tell the officer to hold off until you arrive to personally authorize the arrest.',
+        'Advise that no authorization is needed: under GO 4.13.5 the arrest is mandatory once probable cause exists, victim consent is not an element, and the officer should act now and brief you after — waiting risks the suspect leaving.',
+        'Tell the officer to defer to the victim\'s wishes since she is the protected party.',
+        'Direct the officer to take a report and refer the matter to detectives for a warrant.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 4.13.5 makes the arrest mandatory on probable cause and does not require supervisor authorization. Victim consent is not an element, and a request for no arrest is an expected trauma response that does not change the obligation. Officers act on the PC they have and brief afterward.'
+    },
+    {
+      scenario: 'A DV report documents that the officer seized the phone the defendant used to strike the victim, but records it as a "consent seizure" — the victim gave permission to take it.',
+      text: 'How should you treat this on review?',
+      options: [
+        'Approve it — consent was obtained, so the seizure is properly documented.',
+        'Correct the stated basis: under GO 4.13.6 a weapon used in the commission of the offense shall be seized as evidence regardless of consent. Framing a mandatory evidence seizure as a consent seizure creates a vulnerability, because consent can be refused and the stated basis matters in court.',
+        'Reject the seizure entirely because the victim should not be asked about the defendant\'s property.',
+        'Require a warrant before the phone can be held as evidence.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 4.13.6 makes seizure of a weapon used in the commission of an offense mandatory and independent of consent. The result here is right but the authority is wrong — documenting it as a consent seizure invites a challenge. It should be recorded as evidence of the offense.'
+    },
+    {
+      scenario: 'You are reviewing a completed DV incident report. It documents the arrest, the injuries, and the weapon seizure, but there is no signed victim-rights receipt attached.',
+      text: 'Is the report complete?',
+      options: [
+        'Yes — the arrest and evidence are documented, which is what matters.',
+        'No — GO 4.13.7 requires oral and written notice of shelter, services, the hotline, and PFA rights, with the victim\'s signed receipt attached to the report. Missing the signed receipt makes the report incomplete; return it.',
+        'Yes — victim notification is only required if the victim asks about her options.',
+        'No — but only the hotline number is required, not a signed receipt.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 4.13.7 requires both oral and written notice of services and PFA rights under 23 Pa.C.S. Ch. 61, and a victim-signed receipt attached to the incident report. A DV report without the signed receipt is incomplete and goes back for it.'
+    },
+    {
+      scenario: 'A DV report notes, in a single passing line, that the victim disclosed the defendant — who is subject to a final PFA order — had shown up at her workplace the prior week, which she never reported. The officer took no action on that disclosure.',
+      text: 'What does your review require?',
+      options: [
+        'Nothing — the workplace incident is in the past and was not witnessed by an officer.',
+        'The disclosed final-PFA violation must be acted on: GO 4.13.9 makes arrest mandatory for a Chapter 61 final-order violation whether or not it occurred in an officer\'s presence, with an Indirect Criminal Contempt charge and protected-party notification documented as a Supplemental Incident Report.',
+        'Refer the victim to civil court to handle the PFA violation herself.',
+        'Note it for intelligence only; a past violation cannot be charged.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 4.13.9 authorizes and requires arrest for a final-PFA violation whether or not it occurred in the officer\'s presence, with a charge of Indirect Criminal Contempt and documentation as a Supplemental Incident Report under 4.13.10. A disclosed violation that was only "noted" has not been handled — your review catches it.'
+    },
+    {
+      scenario: 'A victim from an active DV case calls the station wanting to "drop the charges." The handling officer proposes inviting her in for an informal sit-down to discuss the charges and the seized phone.',
+      text: 'What is the correct supervisory guidance?',
+      options: [
+        'Approve the informal meeting — accommodating the victim builds trust.',
+        'Redirect it: once a mandatory arrest is made the charging decision belongs to the Commonwealth, not the victim. Informal contact about dropping charges threatens case integrity; explain the framework professionally and document all post-arrest victim contact.',
+        'Tell the officer to grant the request and release the phone, since the victim no longer wants to proceed.',
+        'Have the officer avoid all contact with the victim until the case is closed.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Recantation and intervention are well-documented DV responses, but under GO 4.13 the charging decision is the Commonwealth\'s once a mandatory arrest is made. An informal sit-down about dropping charges is a case-integrity risk; the right approach is a professional explanation of the process and documented post-arrest contact.'
+    },
+    {
+      scenario: 'Reviewing reports across your squad, you notice the same residential address has generated several domestic calls over the past year, several ending in under-documented non-arrests, with escalating injuries described each time.',
+      text: 'What is your supervisory responsibility?',
+      options: [
+        'None — each call stands on its own and prior calls are not relevant to new ones.',
+        'Treat the pattern as a high-priority signal: track the repeat location, flag the escalation, correct the non-arrest documentation going forward, and ensure the history informs the response — DV patterns across reports precede the worst outcomes and only the supervisor sees them.',
+        'Bar officers from responding to that address to avoid liability.',
+        'Wait until a serious injury occurs before treating the address differently.'
+      ],
+      correct: 1,
+      feedback: 'Correct. A repeat address with escalating injuries and under-documented non-arrests is exactly the cross-report pattern a supervisor is positioned to catch. Tracking it, flagging escalation, and correcting the documentation is core supervisory responsibility — in DV, the unaddressed pattern is often the warning that was missed.'
+    },
+    {
+      scenario: 'Your units are dispatched to an active domestic disturbance. You are coordinating the response.',
+      text: 'Under GO 4.13.2, what approach should you ensure your officers use?',
+      options: [
+        'A full lights-and-sirens code-3 response to establish presence quickly.',
+        'No sirens or emergency lights in the vicinity of the scene, a flanking approach rather than parking directly in front, and an external assessment before any committed approach — with containment and a supervisor, not entry, on any hostage or barricade indication.',
+        'A single officer making rapid entry to separate the parties before backup arrives.',
+        'Staging a block away indefinitely until the parties exit on their own.'
+      ],
+      correct: 1,
+      feedback: 'Correct. GO 4.13.2 treats every active domestic as high risk: avoid sirens and lights near the scene, approach from flanking positions, make an external assessment first, and on a hostage or barricade indication, contain and call a supervisor rather than entering. The supervisor owns the tactical posture as much as the legal one.'
+    },
+  ];
+}

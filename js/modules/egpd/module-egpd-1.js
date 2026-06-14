@@ -586,3 +586,143 @@ function getSearchSeizureQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR OVERLAY — Search & Seizure (EGPD)
+   Appended to the officer reading before the scenario button.
+   Command lens on the same law the patrol officer just read —
+   no new legal authority introduced; review craft + EGPD practice.
+══════════════════════════════════════════ */
+const SUPERVISOR_SEARCH_SEIZURE = `
+  <div class="content-block">
+    <h4>Supervisor Focus</h4>
+    <h2>The report is now yours. Your approval is a representation that this stop, this search, and this documentation will survive scrutiny.</h2>
+    <p>As a supervisor you are the last review before an officer's work becomes the official record and the foundation of a prosecution. A suppression problem is cheap to fix at your desk and expensive to fix in a motion hearing six weeks later. Your task at review is not to rewrite the officer's report — it is to know, on sight, the difference between a report that needs a better sentence and a search that no sentence can save.</p>
+  </div>
+  <div class="content-block">
+    <h4>Reviewing a Vehicle Search</h4>
+    <h2>Every warrantless vehicle search in a report must affirmatively show probable cause <em>and</em> exigent circumstances.</h2>
+    <p>Under <em>Commonwealth v. Alexander</em> (2020), a warrantless vehicle search in Pennsylvania requires both probable cause and exigent circumstances — the warrant is the default. When you review a vehicle-search arrest, look for both elements stated as facts, not assumed. If the report establishes probable cause but the vehicle was stopped and the scene controlled, ask the question the suppression court will ask: what made obtaining a warrant impracticable? If the honest answer is "nothing," the officer should have secured the vehicle and sought a warrant — and that is a coaching conversation now, not a dismissed case later.</p>
+    <p>Watch specifically for the <strong>odor-alone search</strong>. Under <em>Commonwealth v. Barr</em> (2021), the odor of marijuana cannot establish probable cause by itself. A report whose entire basis for the search is "odor of marijuana" is suppression-bound no matter how well it is written. That is not a documentation problem you can return for a rewrite — it is a search problem, and the lesson is for training and the next stop.</p>
+  </div>
+  <div class="content-block">
+    <h4>The Review Distinction That Matters Most</h4>
+    <h2>You cannot fix an unlawful search with better writing.</h2>
+    <p>Two reports can carry the identical phrase "appeared nervous." In one, the stop and search were lawful and the officer simply wrote conclusions instead of facts — that report goes back for a rewrite to the specificity standard: specific behaviors, sensory detail, distance, duration, and how the officer's training and experience informed the assessment. In the other, the search itself had no lawful basis — and no amount of specificity will rescue it. The supervisor's core skill is telling these two apart <em>before</em> the report is filed. Assess the legality of the search first; assess the quality of the documentation second.</p>
+  </div>
+  <div class="content-block">
+    <h4>Reviewing Consent and Plain View</h4>
+    <ul class="key-points">
+      <li><strong>Consent voluntariness</strong> — A report that says only "driver consented" is incomplete and goes back before filing. Under <em>Schneckloth v. Bustamonte</em> (1973) voluntariness is judged on the totality, so the report must capture the exact words of the request and response, weapon status, the officer's tone and demeanor, the subject's apparent condition, and the absence of coercion.</li>
+      <li><strong>Consent scope</strong> — Under <em>Florida v. Jimeno</em> (1991) scope is measured by objective reasonableness. If an officer opened a locked container on a general consent to search the vehicle without clarifying scope, flag it — that is a suppression exposure, not a clean search.</li>
+      <li><strong>Plain view</strong> — Confirm the report establishes lawful presence and that the incriminating nature was immediately apparent (<em>Horton v. California</em>, 1990). "Might contain contraband" is not "immediately apparent."</li>
+      <li><strong>Constructive-possession charging</strong> — In a shared vehicle, a dual arrest built on proximity alone is exposure you are approving with your signature. <em>Commonwealth v. Macolino</em> (1983) requires knowledge plus the intent and power to control. Look for separation, independent interviews, and the location and packaging of the contraband in the report — investigation, not assumption.</li>
+    </ul>
+  </div>
+  <div class="content-block">
+    <h4>From Catch to Correction</h4>
+    <p>Catching the defect is half the job. The purpose of this platform — and of supervisory review — is to make the SOP the natural habit. When you return a report, document what you returned and why, coach to the standard, and track patterns. One officer searching on odor alone is a coaching moment. The same officer doing it a third time is a supervisory and training issue, and an unaddressed pattern becomes the department's exposure, not just the officer's. Review, document, coach, and escalate when the pattern warrants it.</p>
+    <p>Hold the same standard for the stops that did not end in arrest. A legally correct decision not to search still demands complete documentation of what was observed; field intelligence that is not recorded does not exist, and a stop logged only as "warning issued" preserves nothing for the next investigation. Every report you approve carries your name.</p>
+  </div>
+`;
+
+function getSearchSeizureSupervisorQuestions() {
+  return [
+    {
+      scenario: 'You are reviewing an arrest report before it is filed. The officer\'s entire stated basis for a warrantless search of the vehicle is "officer detected the odor of marijuana emanating from the vehicle." The stop occurred on Blaker Dr; the vehicle was stopped and both occupants were controlled.',
+      text: 'What is the correct supervisory assessment of this search?',
+      options: [
+        'Return the report for a rewrite — once the odor is described with more specificity, the search is justified.',
+        'This is a legal defect in the search itself, not a documentation problem: under Commonwealth v. Barr odor alone cannot establish probable cause, and better writing cannot cure it. Address it as training and corrective action.',
+        'Approve it — the odor of marijuana is probable cause to search a vehicle in Pennsylvania.',
+        'Approve it but add a note that exigent circumstances were present because the vehicle could be driven away.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Commonwealth v. Barr (2021) holds that the odor of marijuana cannot establish probable cause by itself. A search resting solely on odor is unlawful regardless of how specifically it is documented — this is a search problem, not a writing problem, and the appropriate response is corrective action and training, not a rewrite.'
+    },
+    {
+      scenario: 'An officer\'s report establishes solid probable cause to search a vehicle. The narrative shows the vehicle was stopped in a parking lot, the driver was detained, and a second unit was on scene. The officer then searched the vehicle on the roadside without a warrant.',
+      text: 'What should your review flag?',
+      options: [
+        'Nothing — probable cause alone authorizes a warrantless vehicle search in Pennsylvania.',
+        'The report is missing exigent circumstances. Under Commonwealth v. Alexander, a warrantless vehicle search requires probable cause AND exigency; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.',
+        'The report should be approved because the probable cause is strong enough to make exigency unnecessary.',
+        'The only problem is that the officer did not get written consent before searching.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Commonwealth v. Alexander (2020) requires both probable cause and exigent circumstances for a warrantless vehicle search in Pennsylvania. A controlled scene undercuts exigency — the lawful path was to secure the vehicle and seek a warrant. This is the most common post-Alexander review catch.'
+    },
+    {
+      scenario: 'Two arrest reports cross your desk the same shift. Both contain the phrase "the driver appeared nervous." In Report A, the underlying stop and search were lawful and well-supported; the officer simply wrote conclusions. In Report B, the search had no lawful basis to begin with.',
+      text: 'What is the correct supervisory response to each?',
+      options: [
+        'Return both for the same specificity rewrite — the problem in each is the conclusory language.',
+        'Approve both — "appeared nervous" is acceptable shorthand in a police report.',
+        'Return Report A for a rewrite to the specificity standard; flag Report B as an unlawful search that better writing cannot cure. Assess legality first, then documentation.',
+        'Return Report B for a rewrite and approve Report A as written.'
+      ],
+      correct: 2,
+      feedback: 'Correct. The core supervisory skill is distinguishing a documentation problem from a legal defect. Report A is fixable with articulable facts; Report B cannot be saved by any amount of specificity because the search itself was unlawful. Always assess the legality of the search before the quality of the writing.'
+    },
+    {
+      scenario: 'An officer\'s report documents a consent search of a vehicle. The only entry regarding consent reads: "Driver consented to the search."',
+      text: 'What is the appropriate supervisory action before this report is filed?',
+      options: [
+        'Approve it — the officer stated that consent was given, which is all that is required.',
+        'Return it before filing — consent documentation must address voluntariness under Schneckloth: the exact words of the request and response, weapon status, tone and demeanor, the subject\'s apparent condition, and the absence of coercion.',
+        'Approve it but instruct the officer to obtain written consent forms going forward.',
+        'Reject the arrest entirely — a verbal consent search can never be documented sufficiently.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Under Schneckloth v. Bustamonte (1973) voluntariness is judged on the totality of the circumstances. A bare "driver consented" gives a suppression court nothing to weigh. The report should be returned to capture the voluntariness factors before it becomes the record.'
+    },
+    {
+      scenario: 'During your review you find that an officer obtained a general verbal consent to "search the vehicle," then opened a locked container in the trunk and found contraband. The report does not show that the officer clarified whether the consent reached the locked container.',
+      text: 'How should you assess the scope of this search?',
+      options: [
+        'General consent to search a vehicle automatically includes every locked container inside it, so the search is clean.',
+        'Under Florida v. Jimeno, consent scope is measured by objective reasonableness; a general consent does not automatically reach a locked container. This is a suppression exposure and should be flagged, with the legal basis for opening the container documented if one exists.',
+        'The locked container itself created probable cause, so consent scope is irrelevant.',
+        'The search is fine as long as the officer believed the consent covered the container.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Florida v. Jimeno (1991) measures consent scope by what a reasonable person would have understood. A general vehicle consent does not automatically include a locked container. Absent clarification or an independent legal basis (plain view, probable cause), opening it is a suppression risk you should flag before filing.'
+    },
+    {
+      scenario: 'An officer arrested both occupants of a shared vehicle after locating contraband behind the driver\'s seat. One occupant spontaneously claimed sole ownership. The report bases both arrests on the fact that both people were in the car.',
+      text: 'Should you approve the dual arrest as documented?',
+      options: [
+        'Yes — proximity to contraband in a shared vehicle establishes constructive possession for everyone present.',
+        'No. Under Commonwealth v. Macolino, constructive possession requires knowledge plus the intent and power to control — proximity alone is not enough. The report should show separation, independent interviews, and the location and packaging of the contraband before a dual arrest is approved.',
+        'Yes — the spontaneous ownership claim can be sorted out by the district attorney later.',
+        'No — release both occupants, because a disputed ownership claim defeats probable cause entirely.'
+      ],
+      correct: 1,
+      feedback: 'Correct. Commonwealth v. Macolino (1983) requires more than proximity for constructive possession. Approving a dual arrest built on proximity alone is approving exposure. The investigation — separation, independent interviews, location and packaging — must support each arrest, and that should be visible in the report before you sign it.'
+    },
+    {
+      scenario: 'Over a two-month span, the same officer has now conducted three separate vehicle searches whose only documented basis was the odor of marijuana. You have already coached the officer once after the first instance.',
+      text: 'What is the appropriate supervisory response now?',
+      options: [
+        'Continue informal verbal coaching — repetition will eventually correct the behavior.',
+        'Nothing further is needed; each stop is a separate event and the officer means well.',
+        'Move beyond a single coaching moment: documented corrective action and targeted training, because an unaddressed pattern is now a department exposure, not just an individual officer\'s error, and should be escalated as the pattern warrants.',
+        'Reassign the officer away from traffic enforcement permanently without documentation.'
+      ],
+      correct: 2,
+      feedback: 'Correct. One instance is a coaching moment; a repeated pattern after coaching is a supervisory and training issue that must be documented and escalated. An unaddressed pattern of unlawful searches becomes the department\'s liability. Review, document, coach, and escalate when the pattern warrants it.'
+    },
+    {
+      scenario: 'An officer lawfully decided not to search a vehicle after a stop on Blaker Dr because probable cause was lacking. The CAD entry for the stop reads, in full: "Traffic stop — equipment violation — written warning issued — released."',
+      text: 'Is this documentation acceptable on supervisory review?',
+      options: [
+        'Yes — the officer made the correct legal decision not to search, so minimal documentation is sufficient.',
+        'Yes — no arrest was made, so no further documentation is required.',
+        'No — the decision not to search can be legally correct while the documentation is still deficient. Hold the same standard as an arrest report: the officer\'s observations should be documented completely, because field intelligence that is not recorded does not exist.',
+        'No — the officer should have searched the vehicle to be thorough.'
+      ],
+      correct: 2,
+      feedback: 'Correct. A legally sound decision not to search still demands complete documentation of what was observed. A stop logged only as "warning issued" preserves nothing for the next investigation. Supervisors should hold inconclusive stops to the same documentation standard as arrests — the legal decision and the documentation are judged separately.'
+    },
+  ];
+}
