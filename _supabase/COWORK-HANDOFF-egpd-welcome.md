@@ -1,5 +1,18 @@
 # Cowork Handoff — EGPD launch-morning welcome emails
 
+> ## ✅ ALREADY DEPLOYED & ARMED — DO NOT RE-RUN THE DEPLOY STEPS BELOW
+>
+> Deployed and armed by Cowork **2026-06-13**, and **re-verified 2026-06-14**: exactly one
+> active cron job `egpd-welcome-launch` (jobid 1) in the EGPD project, targeting EGPD's own
+> function URL, schedule `0 12 17 6 *`, `active=true`. No duplicate in EGPD; MTPD has no
+> `pg_cron` at all. The roster is clean — exactly 3 recipients (Oliver 8507, Altomare 8509,
+> Hopwood 8510), no PREVIEW, no `8508`.
+>
+> **Running STEP 0's create/secrets/schedule steps again would create a duplicate function
+> or cron.** This doc is retained for reference and for the **post-launch verification** and
+> **cancel/re-run** procedures only. If you need to confirm it's still armed, run the verify
+> query (not the deploy): `select jobname, schedule, active from cron.job where jobname = 'egpd-welcome-launch';`
+
 **Goal:** Arm an automated send so every EGPD officer receives their "set your password"
 welcome email at **08:00 ET on June 17** (= 12:00 UTC). A `pg_cron` job calls an edge
 function that sends the mail, stamps each officer, and unschedules itself. All setup is
