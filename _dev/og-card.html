@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:1200px;height:630px;overflow:hidden;}
+  body{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    background:linear-gradient(150deg,#0a1828 0%,#152638 55%,#1e3448 100%);
+    color:#fff;
+    width:1200px;height:630px;
+    position:relative;
+    display:flex;flex-direction:column;
+    justify-content:center;
+    padding:0 90px;
+    border-bottom:8px solid #c8902a;
+  }
+  .seal{position:absolute;top:70px;right:90px;width:150px;height:150px;}
+  .eyebrow{
+    font-size:20px;font-weight:700;letter-spacing:6px;text-transform:uppercase;
+    color:#c8902a;margin-bottom:26px;
+  }
+  h1{
+    font-size:74px;font-weight:900;line-height:1.04;letter-spacing:1px;
+    text-transform:uppercase;max-width:920px;
+  }
+  h1 .gold{color:#e0a830;}
+  .sub{
+    margin-top:34px;font-size:27px;line-height:1.4;color:#9ab8d0;max-width:860px;font-weight:400;
+  }
+  .brand{
+    position:absolute;bottom:54px;left:90px;
+    font-size:19px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#8aabcc;
+  }
+  .brand span{color:#c8902a;}
+</style>
+</head>
+<body>
+  <svg class="seal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="47" stroke="#c8902a" stroke-width="2"/>
+    <circle cx="50" cy="50" r="40" stroke="#c8902a" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="50" y="28" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" letter-spacing="3" fill="#9ab8d0">ARBITER</text>
+    <text x="50" y="37" text-anchor="middle" font-family="Arial" font-size="5.5" font-weight="600" letter-spacing="2" fill="#9ab8d0">LAW ENFORCEMENT</text>
+    <line x1="50" y1="42" x2="50" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+    <line x1="36" y1="48" x2="64" y2="48" stroke="#c8902a" stroke-width="1.5"/>
+    <line x1="36" y1="48" x2="30" y2="58" stroke="#c8902a" stroke-width="1"/>
+    <line x1="30" y1="58" x2="42" y2="58" stroke="#c8902a" stroke-width="1"/>
+    <line x1="64" y1="48" x2="58" y2="58" stroke="#c8902a" stroke-width="1"/>
+    <line x1="58" y1="58" x2="70" y2="58" stroke="#c8902a" stroke-width="1"/>
+    <line x1="44" y1="72" x2="56" y2="72" stroke="#c8902a" stroke-width="1.5"/>
+    <text x="50" y="84" text-anchor="middle" font-family="Arial" font-size="5" font-weight="600" letter-spacing="2" fill="#9ab8d0">PENNSYLVANIA</text>
+  </svg>
+
+  <div class="eyebrow">Arbiter Law Enforcement</div>
+  <h1>Training Built On <span class="gold">Your</span> Policies</h1>
+  <div class="sub">Scenario-based, SOP-driven training for small municipal departments — with the documentation to back it up.</div>
+  <div class="brand">ARBITER<span>LE</span> &nbsp;·&nbsp; arbiterle.com</div>
+</body>
+</html>
