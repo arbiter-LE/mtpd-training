@@ -2048,6 +2048,15 @@ function closeFeedbackModal() {
   document.getElementById('feedback-modal-overlay').classList.remove('open');
 }
 
+/* ── Platform policy / disclaimer ───────────── */
+function openPolicyModal() {
+  document.getElementById('policy-modal-overlay').classList.add('open');
+}
+
+function closePolicyModal() {
+  document.getElementById('policy-modal-overlay').classList.remove('open');
+}
+
 async function submitFeedback() {
   const cat  = document.getElementById('feedback-category').value;
   const text = (document.getElementById('feedback-text').value || '').trim();

@@ -51,7 +51,7 @@
       --accent-hi:  #d4a23e;
     }
     html[data-theme="egpd"] body { background: #eef1ec; }
-    body { font-family: var(--font); background: #e6eef5; color: var(--text); min-height: 100vh; font-size: 15px; line-height: 1.5; }
+    body { font-family: var(--font); background: #e6eef5; color: var(--text); min-height: 100vh; font-size: 15px; line-height: 1.5; padding-bottom: 34px; }
     .hidden { display: none !important; }
     .screen { display: none; }
     .screen.active { display: block; }
@@ -457,6 +457,18 @@
 .modal-close { background: none; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: color .2s; }
 .modal-close:hover { color: var(--text); }
 .modal-body { padding: 24px; overflow-y: auto; flex: 1; }
+
+/* ── Platform policy footer ─────────────────────────────── */
+.platform-footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,.08); padding: 6px 16px; text-align: center; font-size: 11px; letter-spacing: .5px; color: rgba(255,255,255,.45); z-index: 90; }
+.platform-footer a { color: rgba(255,255,255,.6); text-decoration: none; cursor: pointer; transition: color .2s; }
+.platform-footer a:hover { color: var(--accent); }
+.platform-footer .footer-brand { color: var(--accent); font-weight: 700; }
+
+/* ── Platform policy modal (reuses .modal-overlay / .modal-card) ── */
+.policy-content h4 { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin: 20px 0 8px; }
+.policy-content h4:first-child { margin-top: 0; }
+.policy-content p { margin-bottom: 10px; line-height: 1.6; font-size: 14px; color: var(--text); }
+.policy-content p:last-child { margin-bottom: 0; }
 
 /* ── Feedback modal ─────────────────────────────────────── */
 .feedback-form-group { margin-bottom: 16px; }
