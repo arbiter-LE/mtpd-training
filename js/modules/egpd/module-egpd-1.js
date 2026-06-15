@@ -726,3 +726,174 @@ function getSearchSeizureSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Search & Seizure (EGPD)
+   The command-lens exercise: you review Officer Dunlap's Blaker Dr
+   arrest before it's filed. Same incident, supervisor's decisions.
+══════════════════════════════════════════ */
+const SCENARIO_SEARCH_SEIZURE_SUP = {
+  id: 'scenario-search-seizure-sup',
+  title: 'Supervisor Review — Blaker Dr Stop',
+  location: 'Report Review Desk, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene',
+      time: '23:40',
+      weather: 'End of Shift',
+      unit: 'Shift Supervisor',
+      narrative: [
+        'End of shift. Officer Dunlap\'s arrest report from a vehicle stop on Blaker Dr is in your review queue — your approval files it with the Montgomery County DA.',
+        'The stop began as a tail-light equipment violation. Dunlap reports detecting an odor of marijuana, searching the vehicle at the roadside, and recovering roughly 14 grams and a digital scale. Both occupants were out of the car and a second unit was on scene. Your signature is a representation that this stop, this search, and this documentation will survive a suppression hearing.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision',
+      decisionNumber: 1,
+      situation: 'You read the report. The entire stated basis for the warrantless roadside search is one line: "Officer detected the odor of marijuana emanating from the vehicle." Nothing about the vehicle being stopped and controlled, no corroborating observations, no warrant.',
+      question: 'How do you handle the report?',
+      options: [
+        { text: 'Approve it as written — the odor of marijuana is probable cause to search a vehicle.', next: 'c1a', quality: 'bad', shortLabel: 'Approved on odor alone' },
+        { text: 'Return it for a rewrite — once Dunlap describes the odor with more specificity, the search is justified.', next: 'c1b', quality: 'risky', shortLabel: 'Sent back for a better-written odor description' },
+        { text: 'Flag it as a defect in the search itself, not the writing — odor alone is not PC after Barr and there was no exigency under Alexander. Hold the filing and address it as training and corrective action.', next: 'c1c', quality: 'good', shortLabel: 'Identified an unlawful search, not a writing problem' },
+        { text: 'Sign it, but add your own note that exigent circumstances existed because the car could have been driven away.', next: 'c1d', quality: 'bad', shortLabel: 'Manufactured exigency to save the search' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Approved a Suppression-Bound Case',
+      heading: 'Odor alone doesn\'t get into a vehicle in this Commonwealth — and now your name is on it.',
+      narrative: [
+        'Six weeks later the evidence is suppressed on two independent grounds and the case is dismissed. Under Commonwealth v. Barr, the odor of marijuana cannot establish probable cause by itself; under Commonwealth v. Alexander, even probable cause would have required exigent circumstances, and a stopped, controlled vehicle is not an exigency.',
+        'Worse than the lost case: Dunlap now believes searching on odor alone is approved practice, because you approved it. What you sign is what your officers learn.'
+      ],
+      legal: 'Commonwealth v. Barr (2021): odor of marijuana is a factor in the totality, not standalone probable cause. Commonwealth v. Alexander (2020): a warrantless vehicle search requires both probable cause and exigent circumstances — the warrant is the default.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'You Can\'t Write Your Way Out of This',
+      heading: 'A better sentence won\'t save an unlawful search.',
+      narrative: [
+        'Returning the report for more specific language treats this like a documentation problem. It isn\'t. The search rested on odor alone with no exigency — it is suppression-bound no matter how well it is written, and a polished version of the same unlawful search still loses.',
+        'The supervisor\'s core skill is telling a writing problem from a legal defect. This is the second kind. Sending it back for prose tells Dunlap the fix is wording, when the lesson is the search.'
+      ],
+      legal: 'Commonwealth v. Barr (2021): a search resting solely on odor is unlawful regardless of how specifically it is documented. Specificity cures a conclusory report; it cannot cure an illegal search.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught Before It Was Filed',
+      heading: 'You separated the legal defect from the writing — exactly the review that protects the department.',
+      narrative: [
+        'You hold the filing, document the issue, and set up a coaching conversation with Dunlap. The search is the problem, not the prose: odor alone is not probable cause after Barr, and even with PC, a stopped vehicle with controlled occupants is not the exigency Alexander requires. The lawful path was to secure the vehicle and seek a warrant.',
+        'A defect caught at your desk is a training moment. The same defect discovered at a suppression hearing is a dismissed case and a credibility hit. You bought the cheaper one.'
+      ],
+      legal: 'Commonwealth v. Alexander (2020): warrant is the default; PC plus exigency is required for a warrantless vehicle search. Commonwealth v. Barr (2021): odor is a factor, not standalone PC.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Made It Worse',
+      heading: 'Writing in an exigency that didn\'t exist is a credibility problem on top of a search problem.',
+      narrative: [
+        'A stopped vehicle with both occupants out and a second unit on scene is not an exigency, and adding a supervisor\'s note claiming one is overstating the facts to fit the search. Defense counsel will dismantle it, and an inaccurate justification undermines the evidence and your own credibility as a reviewer.',
+        'Overstating a threat or an exigency to rescue a decision is always worse on review than honestly acknowledging the decision was wrong.'
+      ],
+      legal: 'Commonwealth v. Alexander (2020): exigency must be real — hot pursuit, imminent destruction of evidence, immediate safety threat. A controlled roadside scene does not qualify, and it cannot be created on paper after the fact.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision',
+      decisionNumber: 2,
+      situation: 'Setting the search aside, you notice a pattern: this is the third report this month in which Dunlap searched a vehicle on odor alone. You coached him verbally after the first one.',
+      question: 'How do you handle the pattern?',
+      options: [
+        { text: 'One more verbal reminder — he\'s a good officer, he\'ll come around.', next: 'c2a', quality: 'risky', shortLabel: 'Another informal verbal coaching' },
+        { text: 'Documented corrective action plus targeted training now — a repeated pattern after coaching is a supervisory and training issue, and an unaddressed pattern is the department\'s exposure.', next: 'c2b', quality: 'good', shortLabel: 'Documented corrective action + training' },
+        { text: 'Nothing — each stop is a separate event and he means well.', next: 'c2c', quality: 'bad', shortLabel: 'Took no action on the pattern' },
+        { text: 'Pull him off traffic enforcement permanently, effective immediately, no paperwork.', next: 'c2d', quality: 'bad', shortLabel: 'Undocumented permanent reassignment' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Coaching Already Failed Once',
+      heading: 'Repetition after coaching is a signal, not a reason to repeat the coaching.',
+      narrative: [
+        'You already coached Dunlap verbally after the first instance, and here is the third. Another informal reminder leaves the pattern — and the growing liability — exactly where it is, with no record that you addressed it.',
+        'One instance is a coaching moment. A pattern after coaching is a supervisory and training issue that needs to be documented.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Matched the Response to the Finding',
+      heading: 'Document, train, and escalate the pattern — that\'s the graduated response that protects everyone.',
+      narrative: [
+        'You document the corrective action, schedule targeted training on the current vehicle-search standard, and note the pattern in case it continues. This protects Dunlap (he gets a clear, fair path to correct), the department (the exposure is being actively managed), and any future prosecution.',
+        'An unaddressed pattern of unlawful searches is how an individual officer\'s error becomes the department\'s liability. You moved it off that track.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'The Pattern Is the Exposure',
+      heading: 'Treating three unlawful searches as three unrelated events is how the liability compounds.',
+      narrative: [
+        'Proximity in time matters: three odor-alone searches in a month, after coaching, is a documented pattern waiting to be discovered — in a civil suit, in discovery, in a string of suppressed cases. "He means well" is not a defense the department gets to raise.',
+        'Catching the pattern is half your job. Acting on it is the other half.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Right Concern, Wrong Process',
+      heading: 'Discipline with no documentation and no process is its own exposure.',
+      narrative: [
+        'A permanent reassignment imposed on the spot, with no documented basis and no corrective-action record, is disproportionate and procedurally exposed — it invites a grievance and leaves the actual training gap unaddressed.',
+        'The pattern is real and worth acting on, but the answer is documented corrective action and training, not an undocumented punishment.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision',
+      decisionNumber: 3,
+      situation: 'A different matter lands the same shift: defense counsel has emailed the department alleging that on an earlier Dunlap arrest, a consent search exceeded its scope — he opened a locked box in the trunk on a general "you can search the car" consent. Dunlap asks you how to write it up.',
+      question: 'What do you direct him to do?',
+      options: [
+        { text: 'Tell him to write that general consent to search the vehicle covered all containers inside it.', next: 'c3a', quality: 'bad', shortLabel: 'Claim general consent covered the locked box' },
+        { text: 'Direct him to document exactly what consent was given, whether he clarified the scope, and the actual legal basis for opening the box — plain view, expanded consent, or independent PC, whatever is accurate.', next: 'c3b', quality: 'good', shortLabel: 'Document the true scope and legal basis' },
+        { text: 'Tell him to wait for the prosecutor before putting any legal reasoning in the report.', next: 'c3c', quality: 'risky', shortLabel: 'Hold the report until the prosecutor weighs in' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Overstating Scope Invites Suppression',
+      heading: 'A general consent does not automatically reach a locked container.',
+      narrative: [
+        'Under Florida v. Jimeno, consent scope is measured by objective reasonableness — what a reasonable person would have understood. Directing Dunlap to assert that "search the car" covered a locked trunk box, with no clarification on the record, is legally inaccurate and hands defense counsel the suppression argument.',
+        'Papering over a gap in the consent inquiry compounds the original problem. If the scope wasn\'t clarified, that\'s a lesson for next time — not something to write away.'
+      ],
+      legal: 'Florida v. Jimeno (1991): the scope of consent is objective; general consent to search a vehicle does not automatically include a locked container absent clarification or an independent legal basis.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Accurate Documentation Protects the Case',
+      heading: 'Document the real scope and the real legal basis — that\'s what survives the motion.',
+      narrative: [
+        'You direct Dunlap to write exactly what consent was given, whether he clarified the scope, and the specific doctrine that authorized opening the box — plain view, an expansion of consent, or probable cause developed during the search, whichever is accurate. The prosecutor now has a clear record to defend.',
+        'If there was a gap in the consent inquiry, the accurate report surfaces it honestly. That is how reports survive suppression and how your reviews build credibility rather than spend it.'
+      ],
+      legal: 'Florida v. Jimeno (1991): scope is objective. Horton v. California (1990): plain-view seizure requires lawful access and immediately apparent incriminating character. Document which doctrine actually applies to each action taken.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'The Facts Shouldn\'t Wait',
+      heading: 'The officer documents the facts now; the prosecutor argues the law later.',
+      narrative: [
+        'A report is a contemporaneous record of what the officer observed and did — the consent exchange, the scope, the actions taken. Holding it until the prosecutor weighs in delays facts that should already be on paper and makes the eventual report look shaped by legal strategy rather than memory.',
+        'Have Dunlap document the facts accurately now. The prosecutor handles the legal argument; that is a separate job from the factual record.'
+      ],
+      legal: 'Police reports are contemporaneous records; courts scrutinize reports written or revised after a legal challenge arises. Document the consent exchange and the actions taken as accurately and specifically as possible, without waiting.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

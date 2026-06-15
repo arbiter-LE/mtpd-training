@@ -454,3 +454,168 @@ function getEvidenceSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Evidence & Chain of Custody (EGPD)
+   The shortcut pressure is the supervisor's. Officer Whitt at the
+   Cherry St burglary scene.
+══════════════════════════════════════════ */
+const SCENARIO_EVIDENCE_SUP = {
+  id: 'scenario-evidence-sup',
+  title: 'Supervisor — Cherry St Burglary Scene',
+  location: 'Cherry St, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '14:30', weather: 'Clear / 74°F', unit: 'Shift Supervisor',
+      narrative: [
+        'A high-priority call is holding across the borough and you have a finite number of units. Officer Whitt is first on a residential burglary on Cherry St — a smashed window, a screwdriver with paint transfer, and a cell phone that isn\'t the homeowners\' on the kitchen floor. Detectives are eight minutes out.',
+        'In most of these scenarios the pressure to break the chain comes from the field. In this one, it comes from you.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Whitt has the scene preserved and the evidence untouched. You need a unit for the priority call.',
+      question: 'What do you do?',
+      options: [
+        { text: 'Hold the scene for the eight-minute handoff and send a different unit to the priority call — the minutes saved by shortcutting can cost the prosecution months later.', next: 'c1a', quality: 'good', shortLabel: 'Resourced the scene, didn\'t sacrifice it' },
+        { text: 'Order Whitt to bag the items in whatever is in his patrol car and transport them so he can clear.', next: 'c1b', quality: 'bad', shortLabel: 'Ordered the improvised collection' },
+        { text: 'Tell Whitt to leave the evidence and respond to the priority call now.', next: 'c1c', quality: 'bad', shortLabel: 'Left the evidence unattended' },
+        { text: 'Cancel the detectives and have Whitt process the scene alone to save time.', next: 'c1d', quality: 'bad', shortLabel: 'Cancelled detectives to save time' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Resourced the Scene',
+      heading: 'You solved the staffing problem without solving it on the evidence.',
+      narrative: [
+        'You hold the scene for the handoff and route another unit to the priority call. The eight minutes you\'d save by shortcutting collection can cost a prosecution six months later, and the discipline is to fix the staffing problem somewhere other than the chain of custody.',
+        'Detectives arrive, photograph in place, collect with proper packaging, and sign the chain with Whitt as the preserving officer. The case proceeds with clean evidence.'
+      ],
+      legal: 'Chain-of-custody practice: in-place photography before collection, proper forensic packaging, and documented handlers. Improvised collection to clear a call faster is how prosecutions collapse.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Ordered the Break',
+      heading: 'Patrol-trunk bags and no in-place photos is how the cell-phone data gets suppressed.',
+      narrative: [
+        'Ordering Whitt to bag the items in whatever\'s in his car, with no in-place photography and no proper packaging, is the decisive mistake — and it\'s yours. Months later a suppression motion excludes the cell-phone location data, and the case collapses. The eight minutes weren\'t worth the prosecution.',
+        'The decision not to break the chain was yours to make. You made the wrong one.'
+      ],
+      legal: 'Chain-of-custody practice: improvised packaging and missing in-place documentation create suppression vulnerabilities that defense counsel are trained to exploit.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Evidence Left Unattended',
+      heading: 'An unsecured scene with no one on it is a contamination argument waiting to happen.',
+      narrative: [
+        'Pulling Whitt off and leaving the evidence unattended hands the defense a contamination and chain-of-custody argument — anyone could have entered, the items could be moved, damaged, or disputed. First-officer scene preservation exists precisely to prevent this.',
+        'Hold the scene and resource the other call.'
+      ],
+      legal: 'Chain-of-custody practice: the first officer owns the scene until handoff; leaving evidence unattended creates integrity and contamination problems.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Wrong Way to Save Time',
+      heading: 'Cancelling detectives to have a patrol officer rush the scene trades the case for the clock.',
+      narrative: [
+        'Cancelling the crime-scene resources to have Whitt process a burglary alone, under time pressure, abandons the in-place documentation and proper packaging the case needs. You\'d save minutes and lose the forensic value of the screwdriver and phone.',
+        'Let the detectives do their job; resource the priority call another way.'
+      ],
+      legal: 'Chain-of-custody practice: proper collection and in-place documentation protect the evidence; rushing the scene to save time defeats the purpose.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Suppose you had pushed to collect. Whitt keys up: "Sarge, detectives are eight minutes out — if I collect now without proper packaging and in-place photography, we risk the chain of custody."',
+      question: 'How do you respond to the pushback?',
+      options: [
+        { text: 'Support it — "Understood, hold the scene, I\'ll get another unit." The officer is protecting the case, and rewarding that judgment keeps officers willing to raise it.', next: 'c2a', quality: 'good', shortLabel: 'Backed the officer\'s pushback' },
+        { text: 'Override the officer — your order to clear the call stands regardless.', next: 'c2b', quality: 'bad', shortLabel: 'Overrode the pushback' },
+        { text: 'Reprimand the officer for questioning a direct order.', next: 'c2c', quality: 'bad', shortLabel: 'Reprimanded the officer' },
+        { text: 'Tell the officer to collect the evidence but document that he objected.', next: 'c2d', quality: 'risky', shortLabel: 'Collected anyway, noted the objection' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Rewarded the Right Instinct',
+      heading: 'An officer with the judgment and the spine to push back on a shortcut is protecting the case.',
+      narrative: [
+        'You back him — hold the scene, get another unit. Whitt is doing exactly what the department needs, and how you receive that pushback determines whether he, or anyone, ever offers it again.',
+        'A supervisor who punishes a well-reasoned objection trains compliance, and compliance is how chains of custody break. You reinforced the opposite.'
+      ],
+      legal: 'Chain-of-custody practice: the preserving officer\'s judgment protects the prosecution; the supervisor\'s job is to resource the scene, not to override sound objections.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Overrode the Save',
+      heading: 'Overriding a sound objection to clear a call is how the case is lost — and how you lose the next warning.',
+      narrative: [
+        'Forcing the improvised collection over Whitt\'s correct objection produces the suppression problem he was trying to prevent. And it teaches him — and everyone who hears about it — to stop raising these flags, which is how the next chain breaks silently.',
+        'The right response was to hold the scene and resource the other call.'
+      ],
+      legal: 'Chain-of-custody practice: improvised collection compromises the evidence; overriding the objection both risks the case and suppresses future warnings.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Punished the Judgment',
+      heading: 'Reprimanding the officer for the objection trains the compliance that breaks chains.',
+      narrative: [
+        'Treating a well-reasoned chain-of-custody objection as insubordination teaches the squad never to question a shortcut again. That is precisely backward: you want officers who will key up and protect the case, even when it complicates your staffing.',
+        'Reward the pushback; resource the scene.'
+      ],
+      legal: 'Chain-of-custody practice: an officer protecting the chain is doing the department\'s work; punishing it produces silent failures.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'The Note Doesn\'t Fix It',
+      heading: 'Collecting anyway and noting the objection still breaks the chain.',
+      narrative: [
+        'Having Whitt collect improperly but document that he objected preserves a paper trail and still loses the evidence. The note doesn\'t cure the suppression problem; the improvised collection does the damage either way.',
+        'The point of the objection is to change the decision — hold the scene and get another unit.'
+      ],
+      legal: 'Chain-of-custody practice: documenting an objection does not remediate an improper collection; the evidence is still compromised.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'Weeks later, in pre-trial review of a different case file, you find the chain-of-custody record has an approximately four-hour transfer window with no handoff contact name and no signature.',
+      question: 'What do you do?',
+      options: [
+        { text: 'Catch it now and flag it to the prosecutor before trial — the unsigned, unnamed transfer is a fixable, disclosable vulnerability, far better surfaced now than discovered under cross-examination.', next: 'c3a', quality: 'good', shortLabel: 'Disclosed the gap to the prosecutor' },
+        { text: 'Nothing — minor gaps are common and the defense probably won\'t notice.', next: 'c3b', quality: 'bad', shortLabel: 'Let the gap ride' },
+        { text: 'Have the officer fill in a plausible name and time from memory to close the gap.', next: 'c3c', quality: 'bad', shortLabel: 'Filled in the gap from memory' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Surfaced It Before the Stand',
+      heading: 'A reviewer who reads the chain for the break can fix it while it\'s still fixable.',
+      narrative: [
+        'You flag the unsigned, unnamed four-hour transfer to the prosecutor before trial so it can be addressed — through the lab intake records, the property-room log, and the analyst\'s testimony — rather than discovered by defense counsel under cross-examination.',
+        'Catching the gap on review and disclosing it is far better than an officer stumbling into it on the stand and having his credibility, and the case, collapse.'
+      ],
+      legal: '18 Pa. C.S. § 4902 (perjury) backdrop: an officer who overstates certainty about an unremembered window risks false testimony; disclosing the documented gap pre-trial avoids that.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Hoping It\'s Missed',
+      heading: 'Counting on the defense not noticing is not a plan.',
+      narrative: [
+        'Letting the gap ride bets the case on defense counsel missing a documentation hole they are specifically trained to find. When they find it at trial — with no advance disclosure — it lands as a surprise that undermines the whole chain, instead of a managed issue.',
+        'Flag it to the prosecutor now, while it\'s still fixable.'
+      ],
+      legal: 'Chain-of-custody practice: documentation gaps are best surfaced and disclosed pre-trial; an undisclosed gap discovered at trial does maximum damage.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'That\'s Fabrication',
+      heading: 'Filling in a name and time from memory invents a record.',
+      narrative: [
+        'Directing the officer to supply a plausible name and time to close the gap manufactures chain-of-custody documentation that doesn\'t reflect what actually happened — a far more serious problem than the gap itself, and one that can constitute false official statements.',
+        'Disclose the real gap to the prosecutor. Never paper it over.'
+      ],
+      legal: '18 Pa. C.S. § 4902 / § 4904: fabricating a chain-of-custody entry is a false official statement, not a fix.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

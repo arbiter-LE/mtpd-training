@@ -354,7 +354,8 @@ function pauseScenario() {
     nodeId:               currentNodeId,
     scenarioPath:         scenarioPath,
     scenarioTotalDecisions: scenarioTotalDecisions,
-    useScenario2:         currentModule._activeScenario === currentModule.scenario2
+    useScenario2:         currentModule._activeScenario === currentModule.scenario2,
+    useSupervisorScenario: currentModule._activeScenario === currentModule.supervisorScenario
   }));
   stopAllTimers();
   showScreen('screen-officer');
@@ -402,7 +403,8 @@ function resumeScenario() {
   if (!mod) { clearScenarioPause(); return; }
   clearScenarioPause();
   currentModule = mod;
-  currentModule._activeScenario = state.useScenario2 && mod.scenario2 ? mod.scenario2 : mod.scenario;
+  currentModule._activeScenario = state.useSupervisorScenario && mod.supervisorScenario ? mod.supervisorScenario
+    : (state.useScenario2 && mod.scenario2 ? mod.scenario2 : mod.scenario);
   scenarioPath           = state.scenarioPath || [];
   scenarioTotalDecisions = state.scenarioTotalDecisions;
   scenarioDecisionCount  = scenarioPath.length;
@@ -1223,14 +1225,17 @@ function renderModuleContent() {
 ═══════════════════════════════════════ */
 function startScenario(moduleId) {
   currentModule = MODULES.find(m => m.id === moduleId);
-  if (!currentModule || !currentModule.scenario) return;
+  if (!currentModule || !activeScenario(currentModule)) return;
   stopAllTimers();
   scenarioPath = [];
   scenarioDecisionCount  = 0;
-  // Pick alternate scenario on retake if available
+  // Supervisors get the command-lens scenario where one exists; otherwise pick
+  // the alternate (scenario2) on retake, else the standard patrol scenario.
   const uid  = currentUser ? currentUser.id : null;
   const prev = uid && completionData[uid] && completionData[uid][moduleId];
-  if (prev && currentModule.scenario2) {
+  if (effectiveTrack() === 'supervisor' && currentModule.supervisorScenario) {
+    currentModule._activeScenario = currentModule.supervisorScenario;
+  } else if (prev && currentModule.scenario2) {
     currentModule._activeScenario = currentModule.scenario2;
   } else {
     currentModule._activeScenario = currentModule.scenario;
@@ -1522,6 +1527,11 @@ function activeContentHtml(m) {
   return (effectiveTrack() === 'supervisor' && m && m.supervisorContentHtml)
     ? m.supervisorContentHtml
     : (m ? m.contentHtml : '');
+}
+function activeScenario(m) {
+  return (effectiveTrack() === 'supervisor' && m && m.supervisorScenario)
+    ? m.supervisorScenario
+    : (m ? m.scenario : null);
 }
 
 // Admin-only "Viewing as" toggle. Renders a Patrol/Supervisor segmented

@@ -457,3 +457,167 @@ function getWellnessSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Officer Wellness (EGPD)
+   Owning the system around the moment a peer catches it. Officer Pruitt.
+══════════════════════════════════════════ */
+const SCENARIO_WELLNESS_SUP = {
+  id: 'scenario-wellness-sup',
+  title: 'Supervisor — The System Around Wellness',
+  location: 'Patrol Division, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '22:00', weather: 'End of Shift', unit: 'Squad Supervisor',
+      narrative: [
+        'A peer catches it in the parking lot. You build the conditions that decide whether anyone says it out loud. Officer Pruitt has been declining for weeks, and as a supervisor you own the system around that moment: whether your squad believes help is safe to seek, and whether the official mechanisms are ready when informal support isn\'t enough.',
+        'The sergeant asking "how are you holding up?" is you — and how you handle the next three things sets the squad\'s permission to be honest.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'You want fewer of your officers suffering in silence. The Ruderman finding is in your head — officers are more likely to die by suicide than in the line of duty, with stigma as the central barrier.',
+      question: 'How do you act on it as a supervisor?',
+      options: [
+        { text: 'Treat the stigma as a culture problem you control — say clearly and repeatedly that wellness contacts and EAP are confidential and distinct from fitness-for-duty, and back it by how you treat officers who use them.', next: 'c1a', quality: 'good', shortLabel: 'Made the safe path legible' },
+        { text: 'Treat it as an individual problem — each officer is responsible for their own mental health.', next: 'c1b', quality: 'bad', shortLabel: 'Made it the individual\'s problem' },
+        { text: 'Require every officer to attend mandatory counseling to remove the stigma.', next: 'c1c', quality: 'bad', shortLabel: 'Mandated counseling for everyone' },
+        { text: 'Avoid discussing mental health so officers don\'t feel singled out.', next: 'c1d', quality: 'bad', shortLabel: 'Avoided the topic' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'You Made Help Safe to Seek',
+      heading: 'The stigma the Ruderman white paper identifies is a culture problem within your control.',
+      narrative: [
+        'You make the safe path legible: a voluntary wellness contact or EAP self-referral is confidential and distinct from a fitness-for-duty evaluation, peer-support and CISM communications are confidential under 42 Pa.C.S. § 5950 and § 5952, and using them is not a career risk. Then you prove it by how you treat the officers who reach out.',
+        'Officers won\'t use a resource they think will cost them their standing. One officer quietly penalized for seeking help teaches the whole squad never to — and you are the one who sets that either way.'
+      ],
+      legal: '42 Pa.C.S. § 5950 (CISM confidentiality) and § 5952 (trained peer-support members); EAP confidentiality. A voluntary wellness contact is distinct from a fitness-for-duty evaluation.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Can\'t Outsource the Culture',
+      heading: 'Calling it an individual problem ignores the part you actually control.',
+      narrative: [
+        'Treating wellness as each officer\'s private responsibility abandons the lever a supervisor holds — the culture that decides whether help feels safe to seek. The Ruderman finding is precisely that stigma, not the absence of resources, is the barrier, and stigma is a supervisory and cultural problem.',
+        'Make the confidential, non-career-threatening path legible, and back it with how you treat people who use it.'
+      ],
+      legal: 'Officer-wellness research: stigma is the central barrier to early intervention, and it is addressed at the culture level the supervisor controls.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Mandates Don\'t Remove Stigma',
+      heading: 'Compelling everyone into counseling produces defensive compliance, not trust.',
+      narrative: [
+        'Mandatory counseling for the whole squad treats a trust problem with a coercion solution. It produces guarded, going-through-the-motions participation and can deepen the sense that needing help is a mark against you — the opposite of what reduces stigma.',
+        'The work is making voluntary, confidential help credible and safe, and proving it by example.'
+      ],
+      legal: 'Officer-wellness research: voluntary, confidential engagement is associated with better outcomes; coerced participation tends to be defensive.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Silence Is the Stigma',
+      heading: 'Not talking about it lets the stigma stand.',
+      narrative: [
+        'Avoiding the subject so no one feels singled out leaves the existing silence — and the existing stigma — exactly in place. Officers read that silence as confirmation that wellness isn\'t something you raise here.',
+        'Name the resources, name the confidentiality, and normalize using them. The supervisor\'s voice is part of what makes help safe to seek.'
+      ],
+      legal: 'Officer-wellness research: normalizing resources and confidentiality reduces stigma; silence reinforces it.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Pruitt has kept declining. Informal support hasn\'t changed things, and yesterday he froze during a domestic and a partner had to step in to manage the scene.',
+      question: 'What do you do?',
+      options: [
+        { text: 'Act — this is escalated support, not discipline. Tell Pruitt what you observed, that you\'re moving to peer support because you\'re concerned, give him the chance to self-refer first, and follow through.', next: 'c2a', quality: 'good', shortLabel: 'Escalated support with transparency' },
+        { text: 'Keep it informal and protect his privacy — escalating would feel like a betrayal.', next: 'c2b', quality: 'bad', shortLabel: 'Stayed informal' },
+        { text: 'Open an internal affairs complaint about the performance failure.', next: 'c2c', quality: 'bad', shortLabel: 'Opened an IA complaint' },
+        { text: 'Wait for another incident before doing anything, to be sure it\'s a pattern.', next: 'c2d', quality: 'bad', shortLabel: 'Waited for another incident' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Escalated Support, the Right Way',
+      heading: 'When performance creates a safety risk, the threshold for escalated support — not discipline — is crossed.',
+      narrative: [
+        'You tell Pruitt plainly what you saw, that you\'re moving to peer support because you\'re concerned for him, and that he should make the call himself first — and you follow through regardless. An officer who can\'t safely perform is a danger to himself, his partners, and the public, and protecting him from intervention is abandonment dressed as loyalty.',
+        'Transparency plus follow-through is the move: support, not punishment, but support that actually happens.'
+      ],
+      legal: '42 Pa.C.S. § 5950 / § 5952 (confidential peer support). When informal support fails and safety is at risk, escalated support is the response.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Loyalty Misapplied',
+      heading: 'Staying informal after a freeze on a call leaves an unsafe officer on the street.',
+      narrative: [
+        'Keeping it informal to protect Pruitt\'s privacy, after he froze on a domestic and a partner had to cover, leaves a genuine safety risk in place. The code of silence that feels like loyalty is actually abandonment — Pruitt needs intervention, not protection from the truth about what\'s happening to him.',
+        'Move to escalated support, with transparency and follow-through.'
+      ],
+      legal: 'Officer-wellness practice: when performance creates safety risk, escalated support is warranted; allowing an unsafe officer to continue is a danger and a liability.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Wrong Lane',
+      heading: 'An IA complaint treats an operational-stress crisis as misconduct.',
+      narrative: [
+        'Opening an internal affairs complaint frames Pruitt\'s freeze — a likely operational-stress response — as a disciplinary matter. That both misses the wellness intervention he needs and tells the squad that struggling gets you investigated, which guarantees no one will admit to struggling.',
+        'The lane here is escalated support: transparency, peer support, follow-through — kept clearly distinct from discipline.'
+      ],
+      legal: 'Officer-wellness practice: wellness escalation is distinct from a disciplinary or fitness-for-duty process; conflating them discourages help-seeking.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Waiting Is a Gamble',
+      heading: 'You already have the pattern — and the next incident could be the serious one.',
+      narrative: [
+        'Waiting for another incident to be "sure" ignores that the freeze on the domestic, after weeks of decline and failed informal support, is the pattern. The next event you\'re waiting on could be the one where someone gets hurt.',
+        'Act now: escalated support, transparently, with follow-through.'
+      ],
+      legal: 'Officer-wellness practice: a documented decline plus a safety-relevant failure is sufficient to act; waiting risks a worse outcome.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'Separately, another officer on your squad has just been through a serious critical incident. You\'re deciding how to handle the post-incident period and how to frame it for her and the squad.',
+      question: 'How do you frame it?',
+      options: [
+        { text: 'Use GO 1.3.7\'s model — mandatory post-incident psychological evaluation at department expense, with reassignment that "shall not be considered a suspension or disciplinary action" — and present any administrative assignment as support and space to recover.', next: 'c3a', quality: 'good', shortLabel: 'Framed it as support, per GO 1.3.7' },
+        { text: 'Frame the post-incident reassignment as a suspension, so it\'s clear it\'s serious.', next: 'c3b', quality: 'bad', shortLabel: 'Framed it as discipline' },
+        { text: 'Leave the post-incident period entirely to the officer\'s discretion, with no department role.', next: 'c3c', quality: 'bad', shortLabel: 'Left it to the officer' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Support, Not Punishment',
+      heading: 'GO 1.3.7 already models the department\'s philosophy — use it.',
+      narrative: [
+        'You apply the framing GO 1.3.7 sets after the most serious incidents: a mandatory psychological evaluation at department expense, with reassignment that is expressly not a suspension or disciplinary action. You present the administrative assignment as space to recover, and you make sure both the officer and the squad understand which lane she\'s in.',
+        'Keeping support and discipline cleanly separate — and saying so out loud — is what keeps officers willing to engage after the next critical incident.'
+      ],
+      legal: 'GO 1.3.7: mandatory post-incident psychological evaluation at department expense; reassignment "shall not be considered a suspension or disciplinary action."',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Poisoned the Well',
+      heading: 'Framing post-incident support as a suspension teaches everyone to dread the support.',
+      narrative: [
+        'Calling the reassignment a suspension turns GO 1.3.7\'s protective measure into a punishment in the squad\'s eyes. The next officer who goes through a critical incident will fight the evaluation and hide the strain, because you taught them support and discipline are the same thing.',
+        'GO 1.3.7 is explicit that the reassignment is not disciplinary — frame it that way.'
+      ],
+      legal: 'GO 1.3.7: post-incident reassignment is expressly not a suspension or disciplinary action; framing it as discipline misstates the policy.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'The Department Has a Role',
+      heading: 'Leaving it entirely to the officer ignores what GO 1.3.7 requires.',
+      narrative: [
+        'After a serious critical incident, GO 1.3.7 provides for a mandatory evaluation at department expense and a non-disciplinary reassignment — this is not left to the officer\'s discretion, precisely because officers in that moment tend to wave off help they need.',
+        'Apply the policy, and frame it as the support it is.'
+      ],
+      legal: 'GO 1.3.7: post-incident psychological evaluation is mandatory and at department expense; it is not discretionary for the officer.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

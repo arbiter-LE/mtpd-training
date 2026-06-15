@@ -465,3 +465,179 @@ function getDeescalationSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — De-escalation (EGPD)
+   Supervising Officer Doyle's Washington St plaza crisis, reviewing
+   the force decision, and setting the culture.
+══════════════════════════════════════════ */
+const SCENARIO_DEESCALATION_SUP = {
+  id: 'scenario-deescalation-sup',
+  title: 'Supervisor — Washington St Plaza Crisis',
+  location: 'Washington St, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '15:47', weather: 'Overcast / 61°F', unit: 'Field Supervisor',
+      narrative: [
+        'You are supervising the plaza on Washington St, where Officer Doyle has made contact with a man in crisis who is pressing a folding knife against his own forearm. The threat is self-directed; the subject is talking to Doyle.',
+        'De-escalation is a tactic your officers will use only if the department values it — and whether it does is a choice you make every shift. Today you resource the scene, review the force decision, and set the culture after.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Doyle has built rapport — the subject is engaging and hasn\'t cut himself. A flanking officer shifts position, and the subject notices and tightens his grip on the knife.',
+      question: 'How do you direct the response?',
+      options: [
+        { text: 'Signal the flanking officer to hold, protect the conversation that\'s working, and request CIT or a mobile crisis team — tactical movement that escalates the subject has become a negative variable.', next: 'c1a', quality: 'good', shortLabel: 'Held movement, protected the conversation' },
+        { text: 'Order the flanking officer to keep closing and take the subject into custody.', next: 'c1b', quality: 'bad', shortLabel: 'Ordered tactical closure' },
+        { text: 'Have all officers draw their weapons to establish a show of force.', next: 'c1c', quality: 'bad', shortLabel: 'Ordered a show of force' },
+        { text: 'Pull Doyle and restart the contact with fresh personnel.', next: 'c1d', quality: 'bad', shortLabel: 'Swapped the contact officer' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Protected What Was Working',
+      heading: 'When movement makes a subject in crisis tighten up, the movement is the problem.',
+      narrative: [
+        'You signal the flanking officer to hold and keep Doyle on the conversation, and you request CIT and mobile crisis. Tactical movement that causes a decompensating subject to tighten his grip has become a negative variable, and closure is not the goal — the working conversation is.',
+        'A few minutes later the subject sets the knife down for the arriving crisis officer. No force, no injury, because you protected the one thing that was working.'
+      ],
+      legal: 'CIT/ICAT practice and GO 1.3 (control over the resistance situation rather than forcing submission): time and distance are tactical assets; tactical closure on an armed, decompensating subject is predictably dangerous.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Forced It',
+      heading: 'Tactical closure on a self-directed, decompensating subject is how people get hurt.',
+      narrative: [
+        'Ordering the flanking officer to keep closing abandons the rapport Doyle built and forces contact on a subject who is fearful and disorganized. A person in psychotic decompensation with a blade against his own body does not respond to closure the way a rational, resistant subject does — the predictable result is the subject cutting himself, an officer injured, and a use of force that was avoidable.',
+        'Time and rapport were the tools. Closure threw them away.'
+      ],
+      legal: 'Graham v. Connor and CIT practice: forced contact on a self-directed, engaging subject does not meet the threshold for custody without exhausting de-escalation.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Accelerant',
+      heading: 'A show of force on a person in crisis confirms their worst fears.',
+      narrative: [
+        'Ordering officers to draw on a man holding a knife to his own arm — not advancing, engaging verbally — is accelerant. Command presence that works on a rational subject reads as confirmation of catastrophe to someone in psychosis, and the encounter goes from a workable contact to a standoff.',
+        'Reduce stimulation, hold positions, and protect the conversation; don\'t escalate the display.'
+      ],
+      legal: 'CIT practice and GO 1.3: drawn weapons and shows of force escalate persons in psychological crisis; the calibrated response is distance, cover, and continued calm contact.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Reset the Rapport to Zero',
+      heading: 'Swapping the contact officer mid-crisis forces the subject to start over with a stranger.',
+      narrative: [
+        'Pulling Doyle and inserting fresh personnel discards the fragile rapport that is the only thing keeping this contained. A person in crisis re-engaging with a new officer usually re-escalates, not resets cleanly.',
+        'Support the officer who has the connection; resource him with CIT and positioning, don\'t replace him.'
+      ],
+      legal: 'CIT practice: continuity of a single primary voice is central; disrupting an effective contact risks re-escalation.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'On a similar call last month, you\'re reviewing the report. The officer drew his firearm at initial contact on a subject who was holding a knife to his own forearm, not advancing, and engaging verbally with officers.',
+      question: 'How do you assess the force decision?',
+      options: [
+        { text: 'Examine it under Graham v. Connor — a self-directed threat, a subject not advancing and engaging verbally, does not present the threat picture that justifies a drawn firearm at initial contact, and de-escalation is required where tactically feasible.', next: 'c2a', quality: 'good', shortLabel: 'Examined it against the threat picture' },
+        { text: 'Approve it — any subject holding a weapon justifies a drawn firearm.', next: 'c2b', quality: 'bad', shortLabel: 'Approved on the weapon alone' },
+        { text: 'Approve it because the officer felt unsafe.', next: 'c2c', quality: 'bad', shortLabel: 'Approved on subjective fear' },
+        { text: 'Refer it straight to discipline without reviewing the facts.', next: 'c2d', quality: 'bad', shortLabel: 'Jumped to discipline' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Judged It on the Facts',
+      heading: 'Graham asks about the threat as it existed — not the officer\'s discomfort.',
+      narrative: [
+        'You evaluate the force under Graham v. Connor: objective reasonableness on the totality, including the subject\'s mental state and whether the threat is self-directed. A non-advancing subject, engaging verbally, with a knife against his own arm does not present the threat picture that justifies a drawn firearm at initial contact, and de-escalation was required where feasible.',
+        'The question on review is always the threat at the moment force was used — and you held it to that.'
+      ],
+      legal: 'Graham v. Connor (1989): objective reasonableness on the totality, including mental state and whether the threat is self-directed; de-escalation is required where tactically feasible.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'A Weapon Isn\'t the Whole Picture',
+      heading: 'Holding a weapon doesn\'t, by itself, justify a drawn firearm at initial contact.',
+      narrative: [
+        'Approving on the presence of a weapon alone skips the analysis Graham requires. A self-directed threat, a subject not advancing and engaging verbally, is a different threat picture than a subject attacking — and treating any weapon as automatic justification for a drawn firearm endorses exactly the escalation that gets crisis subjects killed.',
+        'Evaluate the threat as it existed, and whether de-escalation was feasible.'
+      ],
+      legal: 'Graham v. Connor (1989): force is judged on the totality and the actual threat; a self-directed, non-advancing subject is not the same threat picture as an attack.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Subjective Fear Isn\'t the Test',
+      heading: 'Graham is objective — what a reasonable officer faced, not what this one felt.',
+      narrative: [
+        'Approving because the officer felt unsafe substitutes a subjective standard for the objective one Graham sets. The review asks whether a reasonable officer, on these facts — self-directed threat, no advance, verbal engagement — would have drawn at initial contact, not whether this officer was afraid.',
+        'Assess the objective threat picture and the feasibility of de-escalation.'
+      ],
+      legal: 'Graham v. Connor (1989): the standard is objective reasonableness from the perspective of a reasonable officer on scene, not the officer\'s subjective fear.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Review First',
+      heading: 'Skipping the analysis to discipline gets the order wrong.',
+      narrative: [
+        'Referring it straight to discipline without examining the facts skips the review the decision requires. There may be a real problem here — a drawn firearm on a self-directed, engaging subject — but the finding has to come from applying Graham to the facts, and the outcome (training versus discipline) follows from that.',
+        'Examine it against the threat picture first, then match the response to the finding.'
+      ],
+      legal: 'Graham v. Connor (1989): the force is analyzed on its facts; the supervisory outcome follows the finding, not a reflex to discipline.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'In a squad debrief, two outcomes sit side by side: Doyle spent forty-five minutes de-escalating the plaza subject to a no-force resolution — the man set the knife down and was connected to services — while another officer, on a separate call, made a risky high-speed apprehension that barely stayed within policy.',
+      question: 'What does your debrief reinforce?',
+      options: [
+        { text: 'Reinforce Doyle\'s disciplined de-escalation as the model — public and officer safety is the priority, and your recognition is what makes officers reach for it; CIT-trained responses measurably reduce use of force.', next: 'c3a', quality: 'good', shortLabel: 'Praised the disciplined de-escalation' },
+        { text: 'Praise only the apprehension — results are what matter.', next: 'c3b', quality: 'bad', shortLabel: 'Praised only the apprehension' },
+        { text: 'Criticize Doyle for not finding a way to make an arrest.', next: 'c3c', quality: 'bad', shortLabel: 'Criticized the no-force outcome' },
+        { text: 'Stay neutral on both to avoid second-guessing.', next: 'c3d', quality: 'risky', shortLabel: 'Said nothing about either' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Rewarded the Right Thing',
+      heading: 'The metrics won\'t count the no-force standoff that ended well — so you do.',
+      narrative: [
+        'You name Doyle\'s outcome as the best police work on the shift: a man who left calm, connected to services, without unnecessary trauma or an involuntary commitment that may not have been warranted. Public and officer safety is the priority, and what you praise is what your officers will reach for on the next call.',
+        'Defending de-escalation by name and with reasoning is the only thing that turns it from a slogan into a habit — and CIT-trained responses measurably reduce use of force in these encounters.'
+      ],
+      legal: 'GO 1.3 (obtaining control over forcing submission) and CIT research: de-escalation reduces use-of-force rates; supervisory recognition drives whether officers use it.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Trained the Wrong Instinct',
+      heading: 'Praising only the apprehension teaches officers that results beat restraint.',
+      narrative: [
+        'Holding up the risky apprehension as the win, while the disciplined no-force outcome goes unmentioned, tells the squad that speed and an arrest matter more than the safest resolution. That is exactly the instinct that produces avoidable force.',
+        'Recognize the disciplined de-escalation — that is the behavior you want repeated.'
+      ],
+      legal: 'GO 1.3 and CIT research: rewarding only results trains the wrong instinct; the no-force outcome is the model.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Punished the Best Outcome',
+      heading: 'Criticizing a no-force resolution tells officers de-escalation isn\'t valued here.',
+      narrative: [
+        'Faulting Doyle for not finding a way to arrest a man who voluntarily surrendered a weapon and got help inverts the priority. Public and officer safety is the directive\'s highest priority, and a calm, connected-to-services resolution is the outcome the department wants.',
+        'Praise it. What you criticize, your officers stop doing.'
+      ],
+      legal: 'GO 1.3: the safety of the public and persons involved is the highest priority; a voluntary, no-force resolution is the preferred outcome.',
+      next: 'debrief'
+    },
+    'c3d': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Silence Sends a Message Too',
+      heading: 'Saying nothing leaves the metrics to do the talking — and they favor the arrest.',
+      narrative: [
+        'Staying neutral feels safe, but it lets the unspoken scoreboard — arrests and cleared calls — define success, which quietly favors the risky apprehension over the no-force outcome. The de-escalation that the numbers will never capture goes unrecognized.',
+        'Close that gap out loud: name the disciplined de-escalation as the model.'
+      ],
+      legal: 'GO 1.3 and CIT research: supervisory recognition is what makes de-escalation a habit; silence cedes the message to the metrics.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

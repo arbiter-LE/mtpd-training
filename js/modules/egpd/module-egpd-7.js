@@ -470,3 +470,167 @@ function getLeadershipSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Leadership & Supervision (EGPD)
+   Exercising the rank across one shift with junior Officer Ferro.
+══════════════════════════════════════════ */
+const SCENARIO_LEADERSHIP_SUP = {
+  id: 'scenario-leadership-sup',
+  title: 'Supervisor — A Shift That Tests the Rank',
+  location: 'Patrol Division, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '15:00', weather: 'Clear', unit: 'Squad Supervisor',
+      narrative: [
+        'You have the squad today. The instincts that earned you the rank — slow the fast situation, correct privately, own the outcome — now carry formal weight: your correction can become documented progressive discipline, and your example sets the squad\'s culture.',
+        'Three things land this shift, and each one tests how you exercise the rank.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Officer Ferro, otherwise a strong performer, has been late to shift three times in two weeks. You have not formally addressed it yet.',
+      question: 'What do you do?',
+      options: [
+        { text: 'Have a direct, documented conversation now — name the pattern, state the expectation, and ask if there\'s something you should know — before any formal action, while still creating a record.', next: 'c1a', quality: 'good', shortLabel: 'Documented coaching conversation now' },
+        { text: 'Issue a formal written reprimand immediately to establish a record.', next: 'c1b', quality: 'risky', shortLabel: 'Jumped to a written reprimand' },
+        { text: 'Wait for a fourth occurrence before doing anything — three is within normal variation.', next: 'c1c', quality: 'bad', shortLabel: 'Waited for a fourth instance' },
+        { text: 'Mention it casually in passing, with no documentation.', next: 'c1d', quality: 'bad', shortLabel: 'Casual, undocumented mention' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'The Right Rung of the Ladder',
+      heading: 'A documented conversation now — pattern, expectation, and a chance to surface context.',
+      narrative: [
+        'You name the pattern, state the expectation clearly, and ask whether there\'s something you should know — there may be a wellness or personal issue behind it. You document the conversation. This is the right rung: coaching before formal action, with a record that protects Ferro, you, and the department if it escalates.',
+        'Skipping straight to discipline breeds resentment; waiting for a fourth instance normalizes the conduct. You did neither.'
+      ],
+      legal: null,
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Skipped the Coaching Step',
+      heading: 'A written reprimand before a conversation skips a rung — and breeds resentment.',
+      narrative: [
+        'Jumping straight to a formal reprimand on a strong performer, without first having the direct conversation, skips the coaching step and teaches Ferro to fear the process rather than correct the behavior. It also forecloses the chance to learn whether something is driving the lateness.',
+        'Have the documented conversation first. Escalate to formal discipline only if the pattern continues after that.'
+      ],
+      legal: null,
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Waiting Normalizes It',
+      heading: 'Three lates in two weeks is already a pattern.',
+      narrative: [
+        'Waiting for a fourth occurrence tells Ferro — and anyone watching — that the standard is negotiable. A pattern of unchallenged conduct is exactly how small issues become large ones, and the longer you wait the harder it is to address fairly.',
+        'Engage now, with a documented conversation.'
+      ],
+      legal: null,
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'No Record, No Standard',
+      heading: 'A casual, undocumented mention isn\'t supervision — it\'s avoidance.',
+      narrative: [
+        'A passing comment with no documentation neither sets a clear expectation nor creates the record you\'ll need if the pattern continues. It lets you feel like you addressed it while leaving the standard exactly where it was.',
+        'Name the pattern directly, set the expectation, and document the conversation.'
+      ],
+      legal: null,
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Later, two officers on your squad begin a heated dispute about a call in the station parking lot. Several other officers are watching.',
+      question: 'How do you respond?',
+      options: [
+        { text: 'Separate them immediately, move it out of public view, hear each perspective individually, then address the public conduct and the underlying disagreement as two distinct matters — without taking a public side.', next: 'c2a', quality: 'good', shortLabel: 'Separated, private, addressed both issues' },
+        { text: 'Side openly with whichever officer is right about the call to settle it fast.', next: 'c2b', quality: 'bad', shortLabel: 'Took a public side' },
+        { text: 'Let them work it out — interpersonal disputes aren\'t a supervisor\'s concern.', next: 'c2c', quality: 'bad', shortLabel: 'Let them sort it out' },
+        { text: 'Document it and forward it up the chain without intervening.', next: 'c2d', quality: 'risky', shortLabel: 'Documented without intervening' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'De-escalated, Then Addressed',
+      heading: 'Intervention first, then the two issues handled separately.',
+      narrative: [
+        'You separate them, move the conversation out of public view, hear each side individually, and then deal with the public conduct and the underlying disagreement as distinct matters. Taking a public side would have cost you credibility with both officers and the watching squad.',
+        'The immediate job was de-escalation; the follow-up was treating the conduct and the substance separately. You did both.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Lost Both Officers',
+      heading: 'Taking a public side in a parking-lot dispute undermines you with everyone watching.',
+      narrative: [
+        'Publicly siding with one officer to end it fast humiliates the other in front of the squad and signals that the way to win a disagreement is to argue loudest where the supervisor can hear. You damage your credibility with both officers and the team.',
+        'Separate them, hear each privately, and address the conduct and the substance apart from each other.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Cohesion Erodes',
+      heading: 'A public dispute among your officers is exactly a supervisor\'s concern.',
+      narrative: [
+        'Letting it run damages unit cohesion and public trust, and signals that this kind of confrontation is acceptable on your watch. The first priority is intervention — separate the parties and move it private — not standing back.',
+        'Then address the conduct and the underlying issue as two matters.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Documentation Isn\'t Intervention',
+      heading: 'Writing it up while it plays out in public skips the part only you can do now.',
+      narrative: [
+        'Documenting may be appropriate afterward, but kicking it up the chain as your first and only move leaves the dispute escalating in front of the squad. The immediate response is to intervene — separate, move private, hear both sides — and then handle conduct and substance.',
+        'Intervene first; document as a follow-up if warranted.'
+      ],
+      legal: null,
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'End of shift, a senior officer with eighteen years on pulls you aside — two other officers within earshot — about a struggling junior officer\'s report that has a problem in it. "Look, the kid doesn\'t need this on his record. We handle things in-house. Just fix it."',
+      question: 'How do you respond?',
+      options: [
+        { text: 'Quietly adjust the report to keep the problem off the junior officer\'s record.', next: 'c3a', quality: 'bad', shortLabel: 'Altered the report to protect the kid' },
+        { text: 'Refuse — a report reflects what occurred, and altering it is unsworn falsification under 18 Pa. C.S. § 4904; your rank makes that worse. Handle the underlying performance issue through coaching or progressive discipline, not by changing the record.', next: 'c3b', quality: 'good', shortLabel: 'Held the line, addressed performance properly' },
+        { text: 'Have the junior officer rewrite the report to bury the problem.', next: 'c3c', quality: 'bad', shortLabel: 'Had it rewritten to hide the issue' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Falsification With a Stripe',
+      heading: '"Handling it in-house" by altering a report is a crime — and your rank makes it worse.',
+      narrative: [
+        'A police report is a sworn document. Adjusting it to keep a problem off an officer\'s record is unsworn falsification under 18 Pa. C.S. § 4904, and a supervisor doing it compounds the original issue with the authority of rank. Seniority — the senior officer\'s or yours — is not authority over the truth of a report.',
+        'If this surfaces, it is not a policy violation; it is a criminal one, and it takes your career with it.'
+      ],
+      legal: '18 Pa. C.S. § 4904: altering a report to change what it reflects is unsworn falsification. Rank does not create authority over documentation.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Held the Line',
+      heading: 'The report reflects what occurred; the performance issue gets handled the right way.',
+      narrative: [
+        'You decline to alter the report — it reflects what happened, and changing it is falsification under § 4904, made worse by your rank. The struggling officer\'s problem is real and gets addressed through coaching or progressive discipline, which actually helps him, rather than through a falsified record that endangers you both.',
+        'Holding this line now, in a hallway with witnesses, is exactly the integrity the rank requires.'
+      ],
+      legal: '18 Pa. C.S. § 4904: a report reflects what occurred; performance issues are addressed through coaching or progressive discipline, not by altering the record.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Same Crime, One Step Removed',
+      heading: 'Having him rewrite it to bury the problem is still falsifying the record.',
+      narrative: [
+        'Directing the junior officer to rewrite the report to hide the problem doesn\'t launder it — it just adds him to the falsification and uses your rank to pressure him into it. The report still has to reflect what actually occurred.',
+        'Address the underlying performance issue openly through coaching or progressive discipline, and leave the record honest.'
+      ],
+      legal: '18 Pa. C.S. § 4904: rewriting a report to conceal a problem is falsification regardless of who holds the pen.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

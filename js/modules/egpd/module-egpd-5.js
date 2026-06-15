@@ -520,3 +520,167 @@ function getDomesticViolenceSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Domestic Violence (EGPD)
+   GO 4.13 review of Officer Briggs's Cherry St domestic.
+══════════════════════════════════════════ */
+const SCENARIO_DOMESTIC_VIOLENCE_SUP = {
+  id: 'scenario-dv-sup',
+  title: 'Supervisor Review — Cherry St Domestic',
+  location: 'Report Review Desk, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '23:55', weather: 'Report Review', unit: 'Reviewing Supervisor',
+      narrative: [
+        'Officer Briggs\'s report from a domestic on Cherry St is in your review queue. A 911 hang-up; the woman who answered the door had a fresh bruise forming under her eye; the husband fled out the back before officers arrived.',
+        'General Order 4.13 takes the hardest DV decisions out of the moment and puts them in policy. Your review is where those mandatory provisions hold — or quietly erode.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Briggs observed the fresh injury and had a consistent victim account — probable cause for Simple Assault against a household member. But no arrest was made, and the narrative reads, in full: "Parties separated for the evening. No arrest made."',
+      question: 'How do you handle the report?',
+      options: [
+        { text: 'Approve it — the parties separated, so the situation resolved itself.', next: 'c1a', quality: 'bad', shortLabel: 'Approved the non-arrest as written' },
+        { text: 'Reject it — GO 4.13.11(A)(3)(b) requires a detailed explanation when PC existed, and where observed injury plus PC for a 4.13.5 offense were present, the deeper failure is that no mandatory arrest was made at all.', next: 'c1b', quality: 'good', shortLabel: 'Flagged the missing mandatory arrest' },
+        { text: 'Approve it but add a note reminding Briggs to write more next time.', next: 'c1c', quality: 'risky', shortLabel: 'Approved with a reminder to write more' },
+        { text: 'Approve it — arrest is discretionary when the parties separate voluntarily.', next: 'c1d', quality: 'bad', shortLabel: 'Treated the arrest as discretionary' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'A Mandatory Arrest Was Missed',
+      heading: 'GO 4.13.5 doesn\'t let the parties separating substitute for an arrest.',
+      narrative: [
+        'When an officer observes recent physical injury and has probable cause for Simple Assault against a household member, GO 4.13.5 requires a warrantless arrest, as in a felony. Approving "parties separated, no arrest" signs off on a policy violation — and this is exactly the eight-months-ago history that haunts the next call to the same address.',
+        'Domestic violence is investigated and managed "as any other crime, regardless of the relationship." Your signature is supposed to enforce that.'
+      ],
+      legal: 'GO 4.13.5(A): officers shall arrest without a warrant when recent physical injury is observed and PC exists for the listed offenses, including Simple Assault (18 Pa.C.S. § 2701).',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught the Real Failure',
+      heading: 'You read the non-arrest first — and saw it for what it was.',
+      narrative: [
+        'You reject the report. GO 4.13.11(A)(3)(b) requires a detailed explanation when PC existed and no arrest was made, and "parties separated, no arrest" does not satisfy it. But the deeper issue is not the thin writing — it is that observed injury plus PC for a 4.13.5 offense made the arrest mandatory, and one was not made.',
+        'The non-arrest is the most consequential thing you review in a DV report. You treated it that way.'
+      ],
+      legal: 'GO 4.13.5 (mandatory arrest on PC) and GO 4.13.11(A)(3)(b) (detailed non-arrest explanation required). Where injury and PC were present, the failure is the non-arrest itself.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'You Fixed the Symptom',
+      heading: 'A reminder to write more misses that the arrest itself was required.',
+      narrative: [
+        'Telling Briggs to write more next time treats this as a documentation gap. It is more than that: with observed injury and PC for Simple Assault, GO 4.13.5 made the arrest mandatory. Better writing about a non-arrest does not cure a non-arrest that should not have happened.',
+        'Address the actual failure — the missing mandatory arrest — not just the thin narrative.'
+      ],
+      legal: 'GO 4.13.5: the arrest was mandatory on PC. The documentation standard in 4.13.11(A)(3)(b) is secondary to the arrest obligation here.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Not Discretionary',
+      heading: 'GO 4.13.5 makes the arrest mandatory — separation doesn\'t change that.',
+      narrative: [
+        'Treating the arrest as discretionary because the parties separated misreads the policy. GO 4.13.5 requires the arrest on probable cause; victim consent is not an element, and neither is whether the parties have separated for the night.',
+        'Approving this on a discretion theory institutionalizes exactly the under-enforcement the directive was written to end.'
+      ],
+      legal: 'GO 4.13.5(A): mandatory warrantless arrest on PC; not discretionary, and not contingent on the parties\' separation.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'The husband was later located and arrested. Two more things in the file: Briggs documented that the husband struck the victim with his cell phone but left the phone at the scene "since he\'s in custody and it\'s his property," and there is no signed victim-rights receipt attached.',
+      question: 'What does your review require?',
+      options: [
+        { text: 'Approve it — the phone is the arrestee\'s property and the notification can happen later.', next: 'c2a', quality: 'bad', shortLabel: 'Approved despite the two gaps' },
+        { text: 'Flag both — GO 4.13.6 makes a weapon used in the offense a mandatory evidence seizure regardless of ownership, and GO 4.13.7 requires the victim\'s signed rights receipt attached to the report.', next: 'c2b', quality: 'good', shortLabel: 'Flagged the seizure and the missing receipt' },
+        { text: 'Approve the phone decision — it belongs to the husband — but ask for the receipt.', next: 'c2c', quality: 'bad', shortLabel: 'Accepted leaving the weapon behind' },
+        { text: 'Require a warrant before the phone can be seized as evidence.', next: 'c2d', quality: 'bad', shortLabel: 'Demanded a warrant for the weapon' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Evidence Left Behind',
+      heading: 'A weapon used in the offense isn\'t the arrestee\'s personal property to leave.',
+      narrative: [
+        'The phone was the instrument of the assault, which makes it evidence of the crime — GO 4.13.6 requires the arresting officer to seize all weapons used in the commission of an alleged offense, regardless of who owns it. Approving the report with the weapon left at the scene loses evidence supporting the charge, and the missing signed victim-rights receipt leaves the report incomplete under 4.13.7.',
+        'Both are mandatory mechanics. Your review is where they get verified.'
+      ],
+      legal: 'GO 4.13.6 (seize weapons used in the offense; chain of custody) and GO 4.13.7 (oral and written victim notice with a signed receipt attached).',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught Both Mandatory Steps',
+      heading: 'You verified the seizure and the victim-rights receipt — the mechanics that don\'t bend.',
+      narrative: [
+        'You flag that the phone, used to strike the victim, is evidence that GO 4.13.6 requires be seized and processed with chain of custody regardless of ownership, and that the report is incomplete without the signed victim-rights receipt GO 4.13.7 requires. Both go back before the report is filed.',
+        'These are the mandatory mechanics a reviewer checks on every DV report — and "it\'s his phone" does not override an evidence seizure.'
+      ],
+      legal: 'GO 4.13.6: weapon used in the offense seized and processed. GO 4.13.7: oral/written notice and signed receipt attached to the incident report.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Half Right',
+      heading: 'Getting the receipt is correct; accepting the abandoned weapon is not.',
+      narrative: [
+        'You were right to require the victim-rights receipt, but accepting that the phone could be left because it belongs to the husband misses that it is evidence first and property second. GO 4.13.6 makes seizing a weapon used in the offense mandatory regardless of ownership.',
+        'Require both: the seizure and the receipt.'
+      ],
+      legal: 'GO 4.13.6: a weapon used in the commission of the offense is seized as evidence regardless of ownership.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'No Warrant Needed',
+      heading: 'GO 4.13.6 is independent seizure authority — a warrant isn\'t the issue.',
+      narrative: [
+        'Demanding a warrant for the phone misreads the basis. GO 4.13.6 provides independent authority to seize a weapon used in the commission of an alleged offense — the seizure is mandatory and does not depend on a warrant or on consent. The error in the report is that the weapon was left behind, not that it lacked a warrant.',
+        'Direct the seizure under 4.13.6, processed with chain of custody.'
+      ],
+      legal: 'GO 4.13.6: mandatory seizure of a weapon used in the offense; independent of warrant or consent.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'Two hours later the victim calls the station wanting to drop the charges. While on the line, she mentions the husband — who is subject to a final PFA order from a prior relationship — showed up at her workplace last week, which she never reported. Briggs asks how to handle it.',
+      question: 'What do you direct?',
+      options: [
+        { text: 'Tell Briggs to invite her in for an informal sit-down to talk through dropping the charges.', next: 'c3a', quality: 'bad', shortLabel: 'Invited an informal drop-the-charges meeting' },
+        { text: 'Explain the charging decision belongs to the Commonwealth once a mandatory arrest is made, and act on the disclosed final-PFA violation — mandatory arrest under 4.13.9, an Indirect Criminal Contempt charge, and a Supplemental Incident Report.', next: 'c3b', quality: 'good', shortLabel: 'Protected the case and acted on the PFA violation' },
+        { text: 'Have Briggs transfer the call to another unit without briefing anyone on the background.', next: 'c3c', quality: 'risky', shortLabel: 'Cold-transferred the call' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Case-Integrity Risk',
+      heading: 'An informal drop-the-charges meeting threatens the case — and buries a reportable PFA violation.',
+      narrative: [
+        'Recantation is a well-documented DV response, but under GO 4.13 the charging decision belongs to the Commonwealth once a mandatory arrest is made, not the victim. An informal sit-down to discuss dropping charges is a case-integrity problem — and by steering toward it, you never act on the final-PFA violation she just disclosed, which is itself a mandatory-arrest matter under 4.13.9.',
+        'Two failures in one move: the case and the PFA violation both slip.'
+      ],
+      legal: 'GO 4.13.5 / 4.13.9: charging is the Commonwealth\'s after a mandatory arrest; a disclosed final-PFA violation must be acted on regardless of when it occurred.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Protected the Case, Acted on the Violation',
+      heading: 'You explained the framework and treated the disclosure as the mandatory-arrest matter it is.',
+      narrative: [
+        'You have Briggs explain, professionally and without judgment, that the arrest proceeded under mandatory authority and the charging decision is the Commonwealth\'s. And you treat the workplace appearance as a disclosed final-PFA violation: GO 4.13.9 makes arrest mandatory whether or not it occurred in an officer\'s presence, with an Indirect Criminal Contempt charge and the contact documented as a Supplemental Incident Report.',
+        'A disclosed violation that gets only "noted" has not been handled. You handled it.'
+      ],
+      legal: 'GO 4.13.9 (mandatory arrest for a final-PFA violation, ICC charge) and 4.13.10 (protected-party notification documented as a Supplemental Incident Report).',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'The Disclosure Could Be Lost',
+      heading: 'A cold transfer risks the PFA violation getting dropped in the handoff.',
+      narrative: [
+        'Transferring without a brief leaves the receiving officer blind to who the victim is, what was seized, and — critically — that she just disclosed a final-PFA violation that triggers a mandatory arrest under 4.13.9. A thirty-second brief before any transfer is part of a professional handoff.',
+        'However it is routed, the disclosed violation has to be documented and acted on, not lost.'
+      ],
+      legal: 'GO 4.13.9 / 4.13.10: obligations attach the moment a violation is disclosed; a transfer must carry the facts so the receiving officer can act and document.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

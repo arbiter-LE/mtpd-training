@@ -467,3 +467,168 @@ function getReportWritingSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Report Writing (EGPD)
+   The report-review craft: reviewing Officer Vance's foot-pursuit
+   report before it's filed.
+══════════════════════════════════════════ */
+const SCENARIO_REPORT_WRITING_SUP = {
+  id: 'scenario-report-writing-sup',
+  title: 'Supervisor Review — Main St Foot Pursuit',
+  location: 'Report Review Desk, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '00:30', weather: 'Report Review', unit: 'Reviewing Supervisor',
+      narrative: [
+        'Officer Vance\'s report from a foot pursuit and takedown near Main St & 4th St is in your review queue before it goes to the DA. Vance stopped a speeding vehicle, the driver fled on foot, and after a chase the subject shoved him and was taken to the ground.',
+        'The body camera captured the whole encounter. The DA will read this report, and so will defense counsel — line by line, against the footage. Your review is the last check before it becomes the record.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'The use-of-force section reads, in full: "Subject resisted arrest. Force was used and was proportionate to the resistance encountered."',
+      question: 'How do you handle it?',
+      options: [
+        { text: 'Approve it — courts accept general use-of-force summaries from officers.', next: 'c1a', quality: 'bad', shortLabel: 'Approved the conclusory summary' },
+        { text: 'Return it for the body-movement-level facts — which arm, which direction, the triggering movement, the officer\'s response, the outcome — that support the charge and survive cross-examination.', next: 'c1b', quality: 'good', shortLabel: 'Returned for specific, sequential facts' },
+        { text: 'Edit the conclusions into facts yourself and approve it.', next: 'c1c', quality: 'bad', shortLabel: 'Rewrote the officer\'s observations' },
+        { text: 'Forward it to discipline because the wording is inadequate.', next: 'c1d', quality: 'risky', shortLabel: 'Escalated weak wording to discipline' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Conclusions Don\'t Survive Cross',
+      heading: '"Resisted" and "proportionate" tell a judge nothing.',
+      narrative: [
+        '"Resisted arrest" and "proportionate" are legal conclusions, not facts. They tell the reader what to conclude without the specific actions — which arm moved, in which direction, what triggered the response — that a resisting charge and a force decision actually rest on. Approved as written, this report hands defense counsel a credibility attack and may not support the charge.',
+        'And it is checkable: the body camera will show exactly what happened, and a conclusory report that doesn\'t match the video is worse than no report.'
+      ],
+      legal: 'Reports documenting force must describe the subject\'s specific actions and the specific force applied. "Resisted" is a conclusion; the underlying body-movement facts are what make it supportable.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Returned for the Facts',
+      heading: 'You sent it back for the sequential, body-movement detail that survives a motion.',
+      narrative: [
+        'Your notation is specific: sequence the takedown movement by movement, tie each application of force to the resistance that prompted it, and replace "resisted arrest" with what the subject physically did. That is the standard, and a precise notation teaches it better than any classroom.',
+        'A report written to that level lets a judge reconstruct the encounter and leaves defense counsel no gap to exploit.'
+      ],
+      legal: 'A defensible use-of-force narrative documents the specific action by the subject, the specific force applied, the sequence, and the outcome. Each element protects the officer and the charge.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Not Yours to Write',
+      heading: 'Only the officer can attest to what the officer observed.',
+      narrative: [
+        'Editing the conclusions into facts yourself means putting observations into a sworn report that you did not make — what Vance saw and felt is his to attest to, not yours to supply. The report stops being a reliable account of his perceptions, and that surfaces badly under cross-examination.',
+        'Return it with a specific notation and have Vance write his own observations to the standard.'
+      ],
+      legal: 'Police reports are sworn accounts of the reporting officer\'s personal observations. A supervisor returns and coaches; the supervisor does not author the officer\'s account.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Coaching, Not Discipline',
+      heading: 'A weak first draft is a teaching moment, not misconduct.',
+      narrative: [
+        'Jumping to discipline over conclusory wording skips the development step and teaches officers to fear the review rather than learn from it. Most report defects are exactly this: a fixable writing problem that a specific notation corrects.',
+        'Return it for the facts. Save discipline for integrity problems — which the next step is about.'
+      ],
+      legal: null,
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'You do what review actually requires and compare the report against the body-camera footage. The takedown account in the report materially conflicts with what the video shows.',
+      question: 'How do you treat this finding?',
+      options: [
+        { text: 'As a routine revise-and-resubmit — return it for Vance to align the wording with the footage.', next: 'c2a', quality: 'bad', shortLabel: 'Treated it as a wording fix' },
+        { text: 'As a possible integrity matter — a report conflicting with the footage may be a false official statement under 18 Pa. C.S. § 4904 / § 4906, handled as a Professional Conduct matter, not coaching.', next: 'c2b', quality: 'good', shortLabel: 'Escalated as a possible false statement' },
+        { text: 'As acceptable — written reports and footage are not expected to match exactly.', next: 'c2c', quality: 'bad', shortLabel: 'Accepted the mismatch' },
+        { text: 'Defer to Vance\'s written account over the video.', next: 'c2d', quality: 'bad', shortLabel: 'Took the report over the footage' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'This Isn\'t a Wording Fix',
+      heading: 'A report that conflicts with the footage is not a prose problem.',
+      narrative: [
+        'Returning it as a routine revise-and-resubmit treats a possible false statement as a style note. A material conflict between the report and the video is exactly the integrity flag a reviewer exists to catch — and "fix the wording so it matches the video now" risks coaching an officer into conforming a false account rather than addressing it.',
+        'This goes to Professional Conduct, not back to the keyboard.'
+      ],
+      legal: '18 Pa. C.S. § 4904 (unsworn falsification) / § 4906 (false reports): a report that materially conflicts with the evidence raises a false-statement question, distinct from a writing correction.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught the Integrity Flag',
+      heading: 'You compared the report to the footage — and treated the conflict as what it is.',
+      narrative: [
+        'A material conflict between the written account and the video is a possible false official statement under 18 Pa. C.S. § 4904 / § 4906, and it is handled as a Professional Conduct matter — not coaching, not a rewrite. The discipline that catches this is the discipline of actually comparing the report to the source material, not just reading it for clarity.',
+        'Missing this because you only read the words is the failure that follows a case into court.'
+      ],
+      legal: '18 Pa. C.S. § 4904 / § 4906: a report conflicting with the body-camera footage is a possible false statement, addressed through Professional Conduct rather than revision.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Not Acceptable',
+      heading: 'A material conflict with the footage is not normal variation.',
+      narrative: [
+        'Minor differences in emphasis are one thing; a material conflict between the report\'s account of the takedown and what the video shows is another. Waving it through as expected variation lets a possible false statement become the official record, and it tells your officers the video and the report don\'t have to agree.',
+        'Treat the conflict as the integrity flag it is.'
+      ],
+      legal: '18 Pa. C.S. § 4904 / § 4906: a material report-vs-footage conflict is a false-statement question, not acceptable variance.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'The Video Doesn\'t Defer',
+      heading: 'Choosing the written account over the footage is how the problem reaches court intact.',
+      narrative: [
+        'Defaulting to Vance\'s report over the video resolves the conflict in exactly the wrong direction. The footage is the contemporaneous record; a report that contradicts it is the document with the problem, and accepting it over the video means the false statement survives your review.',
+        'The conflict is a Professional Conduct matter, and the footage is the reference.'
+      ],
+      legal: '18 Pa. C.S. § 4904 / § 4906: where the report conflicts with the footage, the footage governs the integrity question; the conflict is investigated, not resolved in favor of the report.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'A separate report from Vance has a gap: his field notes are missing the victim\'s exact words. He tells you he closed the gap by reconstructing the quote from memory — "the gist is right."',
+      question: 'What do you direct him to do?',
+      options: [
+        { text: 'Leave the reconstructed quote in — the gist is accurate, and that\'s close enough.', next: 'c3a', quality: 'bad', shortLabel: 'Allowed a reconstructed quote' },
+        { text: 'Contact the victim to clarify, document the follow-up (date, time, method), and distinguish in the report between direct quotes, paraphrased summaries, and his own observations.', next: 'c3b', quality: 'good', shortLabel: 'Directed verification, not reconstruction' },
+        { text: 'Have him write around it — "victim provided a statement consistent with the injuries observed" — without quoting her.', next: 'c3c', quality: 'risky', shortLabel: 'Wrote around the gap with conclusory language' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Reconstruction Is Fabrication',
+      heading: 'What appears in quotation marks must be what was actually said.',
+      narrative: [
+        'A reconstructed quote presented as a direct statement is a false official statement, even when the spirit is accurate and the intent is honest. If it surfaces in court — and defense attorneys find these — it does not just affect this case; it goes to Vance\'s credibility as a witness in every future one, and creates criminal exposure under 18 Pa. C.S. § 4904.',
+        'Allowing it tells your officers that "close enough" is acceptable in a sworn document. It is not.'
+      ],
+      legal: '18 Pa. C.S. § 4904: a reconstructed quote written as a direct statement is unsworn falsification. Document only what can be verified.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Verification, Not Reconstruction',
+      heading: 'You directed the right way to close a gap — follow up and document, never reconstruct.',
+      narrative: [
+        'You have Vance contact the victim to clarify, document the follow-up contact with date, time, and method, and clearly distinguish direct quotes from summaries and from his own observations. A report revised with additional verification is stronger than the original, not weaker.',
+        'That is the standard your review reinforces — gaps get closed by verification, and the document stays tied to verifiable facts.'
+      ],
+      legal: 'Pennsylvania practice requires reports to contain sufficient verified facts; distinguishing quotes, summaries, and observations is what makes a report defensible at a hearing.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Avoids Fabrication, Fails the Standard',
+      heading: 'Writing around the gap is honest — and still legally thin.',
+      narrative: [
+        '"Victim provided a statement consistent with the injuries observed" avoids fabrication, but it is conclusory and may fail to establish probable cause if the actual content matters. Under Illinois v. Gates, the report needs specific articulable facts — the words she actually used — not a clean-sounding summary.',
+        'Don\'t settle for writing around it. Direct Vance to get the detail and document it properly.'
+      ],
+      legal: 'Illinois v. Gates (1983): probable cause rests on specific articulable facts under the totality. A conclusory summary may not meet that standard even though it avoids fabrication.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

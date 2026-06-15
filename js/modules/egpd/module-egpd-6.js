@@ -512,3 +512,178 @@ function getVehiclePursuitSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Motor Vehicle Pursuits (EGPD)
+   The field supervisor as a live control on Officer Tana's pursuit.
+══════════════════════════════════════════ */
+const SCENARIO_VEHICLE_PURSUITS_SUP = {
+  id: 'scenario-pursuits-sup',
+  title: 'Field Supervisor — Main St Pursuit',
+  location: 'Main St & 6th St, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '01:14', weather: 'Overcast / 47°F', unit: 'Field Supervisor',
+      narrative: [
+        'Officer Tana has just called out a pursuit near Main St & 6th St. You are the field supervisor on duty — and in a pursuit the Motor Vehicle Pursuits Directive does not make you a reviewer after the fact. It names you a live control on the event.',
+        'The officer in the car has tunnel vision by design. You have the radio, the whole board, and the authority to end it. The directive\'s priority is yours to enforce: "the safety of the public and persons involved in the pursuit is the most important priority."'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Tana reports the only known offenses are an expired registration and fleeing the stop. The vehicle is running through residential streets at roughly 50 mph.',
+      question: 'What do you do?',
+      options: [
+        { text: 'Order termination — the matrix is "do not pursue, or terminate" for misdemeanors and infractions at every risk level, and fleeing a lawful stop doesn\'t elevate a summary offense.', next: 'c1a', quality: 'good', shortLabel: 'Ordered termination per the matrix' },
+        { text: 'Let it continue — fleeing from a lawful stop justifies the pursuit.', next: 'c1b', quality: 'bad', shortLabel: 'Let it run on the flight alone' },
+        { text: 'Wait to see whether the vehicle is connected to a more serious crime before deciding.', next: 'c1c', quality: 'risky', shortLabel: 'Waited for more information' },
+        { text: 'Authorize additional units to help end the pursuit faster.', next: 'c1d', quality: 'bad', shortLabel: 'Added units to a non-qualifying pursuit' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Terminated to the Matrix',
+      heading: 'Offense level first — and an expired registration is not a pursuit.',
+      narrative: [
+        'You order termination. The matrix directs "do not pursue, or terminate" for misdemeanors and infractions at every risk level, and a pursuit may be initiated or continued only for a forcible felony or a deadly-weapon escape. An expired registration plus flight is a summary matter, and flight does not raise it.',
+        'You confirm the termination is acknowledged across the units. If a forcible felony later emerges, that is a new decision on its own facts.'
+      ],
+      legal: 'Pursuit Decision-Making Matrix: misdemeanors/infractions — "do not pursue, or terminate" at all risk levels. Regulation 7: termination communicated immediately via the Montgomery County radio system.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Flight Isn\'t the Threshold',
+      heading: 'A summary offense doesn\'t become a pursuit because the driver ran.',
+      narrative: [
+        'Letting the pursuit run because the driver fled inverts the directive. The offense level is the threshold, and "fleeing a lawful stop" does not, by itself, elevate an equipment violation — every additional second at 50 mph through a residential area for a summary offense is the exact risk the matrix exists to prevent.',
+        'Your first question on any pursuit is the offense level. Here it required termination.'
+      ],
+      legal: 'Pursuit directive: pursuit requires a forcible felony or a deadly-weapon escape. Flight from a lawful stop does not elevate a summary offense.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Waiting Is Still Pursuing',
+      heading: '"Continue while I assess" is a pursuit the matrix already says to terminate.',
+      narrative: [
+        'There is no "continue briefly to assess" category for infractions and misdemeanors — at every risk level the directive is "do not pursue, or terminate." Every second you wait is a continued pursuit at an offense level that does not permit one, regardless of what you learn afterward.',
+        'Terminate now. If new information establishes a forcible felony, that is a fresh decision made at that time.'
+      ],
+      legal: 'Pursuit Decision-Making Matrix: for misdemeanors and infractions there is no provision for continuing pending further information.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'More Units, More Risk',
+      heading: 'Adding units to a pursuit that shouldn\'t exist multiplies the hazard.',
+      narrative: [
+        'Authorizing additional units to end a non-qualifying pursuit faster compounds the problem — more vehicles at speed through residential streets for a summary offense, which is precisely the public-safety risk the directive prioritizes against.',
+        'The pursuit should be terminated, not reinforced.'
+      ],
+      legal: 'Pursuit directive: safety of the public is the most important priority; the matrix requires termination for this offense level, not added units.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Moments later dispatch advises the vehicle matches one used in an armed robbery — a handgun was displayed. That is a forcible felony, and a pursuit is now justified. A third unit, on its own initiative, falls in behind the primary and secondary, citing the seriousness of the crime.',
+      question: 'What do you do about the third unit?',
+      options: [
+        { text: 'Allow it — an armed robbery is serious enough to justify additional units joining.', next: 'c2a', quality: 'bad', shortLabel: 'Let severity expand the pursuit' },
+        { text: 'Redirect it — under Regulation 11 the pursuit is primary and secondary only unless you approve otherwise; position the third unit to monitor escape routes and channel, not join.', next: 'c2b', quality: 'good', shortLabel: 'Held it to primary + secondary' },
+        { text: 'Order all three units to box in the suspect vehicle immediately.', next: 'c2c', quality: 'bad', shortLabel: 'Ordered an immediate box-in' },
+        { text: 'Remove the secondary unit so the third can take its place.', next: 'c2d', quality: 'bad', shortLabel: 'Swapped units mid-pursuit' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Severity Doesn\'t Expand It',
+      heading: 'Only supervisor approval expands the unit count — not the seriousness of the crime.',
+      narrative: [
+        'Initiating the pursuit is now correct, but allowing a third unit to join on its own initiative violates Regulation 11: the pursuit is the primary and secondary unit only unless a supervisor approves otherwise. The seriousness of the underlying offense is not an exception — only your approval is.',
+        'A unit freelancing into the pursuit is a regulation violation no matter how serious the triggering crime.'
+      ],
+      legal: 'Regulation 11: primary and secondary unit only unless otherwise approved by a supervisor; other units monitor escape routes and channel, not join.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Held the Unit Count',
+      heading: 'You let the pursuit proceed on proper grounds and kept the geometry under control.',
+      narrative: [
+        'An armed robbery with a displayed handgun meets the threshold, so the pursuit is justified — and you hold it to the primary and secondary unit, directing the third to position to monitor escape routes and channel rather than join. Regulation 11 reserves that expansion to your approval alone.',
+        'Channel, not swarm. You kept the response proportionate while it ran.'
+      ],
+      legal: 'Regulation 11: the pursuit is primary and secondary only absent supervisor approval; other units position to monitor and channel.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'A Box-In Is Deadly Force',
+      heading: 'Ordering three units to box in a moving vehicle isn\'t a control tactic.',
+      narrative: [
+        'Boxing in a moving suspect vehicle is vehicular contact — a deadly-force intervention under Regulation 9, strictly prohibited unless deadly force is authorized under 18 PA C.S.A. § 508 and GO 1.3.1/1.3.2. Ordering it here, before that determination, is both a unit-count and a deadly-force violation in one move.',
+        'Keep it to primary and secondary, channel the escape routes, and reassess continuously.'
+      ],
+      legal: 'Regulation 9: ramming, vehicular contact, and roadblocks are deadly force, prohibited unless deadly force is authorized under § 508 and GO 1.3.1/1.3.2.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Unnecessary Churn',
+      heading: 'Swapping the secondary for the third unit mid-pursuit creates risk for no reason.',
+      narrative: [
+        'Removing the secondary so the third can take over introduces confusion and maneuvering into an active pursuit with no benefit. Regulation 11 already gives you a clean structure — primary and secondary, with other units channeling — and the third unit\'s right place is monitoring escape routes, not replacing a unit already in position.',
+        'Leave the structure intact and direct the third unit to channel.'
+      ],
+      legal: 'Regulation 11: primary and secondary unit only unless a supervisor approves otherwise; other units monitor and channel.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'The pursuit continues toward a residential stretch. The front-seat passenger leans out and points a handgun in the primary unit\'s direction but does not fire. The primary radios you asking for permission to perform a PIT maneuver to end it.',
+      question: 'How do you respond?',
+      options: [
+        { text: 'Authorize the PIT — a displayed weapon justifies using the vehicle to stop the threat.', next: 'c3a', quality: 'bad', shortLabel: 'Authorized the PIT' },
+        { text: 'Do not authorize it — ramming and vehicular contact are deadly force under Regulation 9, prohibited unless deadly force is authorized under § 508 and GO 1.3; a displayed-but-not-fired weapon is not an active deadly-force attack. Communicate the threat and reassess termination.', next: 'c3b', quality: 'good', shortLabel: 'Denied the PIT, reassessed termination' },
+        { text: 'Tell the primary it\'s his call to make in the moment.', next: 'c3c', quality: 'risky', shortLabel: 'Punted the decision to the primary' },
+        { text: 'Authorize the secondary unit to discharge a firearm at the tires instead.', next: 'c3d', quality: 'bad', shortLabel: 'Authorized shooting at the vehicle' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'PIT Isn\'t a Shortcut',
+      heading: 'A displayed weapon doesn\'t convert a PIT into authorized deadly force.',
+      narrative: [
+        'Authorizing the PIT treats a deadly-force intervention as a routine pursuit-ender. Regulation 9 makes ramming and vehicular contact deadly force, strictly prohibited unless deadly force is authorized under § 508 and GO 1.3 — and a handgun pointed but not fired has not reached the threshold of the suspect employing deadly force.',
+        'An officer cannot use a PIT as a substitute for that determination, and you should not authorize one on these facts.'
+      ],
+      legal: 'Regulation 9: PIT/ramming/roadblocks prohibited unless deadly force is authorized under 18 PA C.S.A. § 508 and GO 1.3.1/1.3.2.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Held the Deadly-Force Line',
+      heading: 'You denied the PIT and kept the decision where the policy puts it.',
+      narrative: [
+        'You decline to authorize the PIT: a weapon displayed but not fired is not the suspect employing deadly force, and Regulation 9 prohibits vehicular contact unless deadly force is authorized under § 508 and GO 1.3. You have the threat broadcast immediately and continuously weigh, under Regulation 1, whether the hazard now outweighs the need to apprehend — ready to terminate and communicate it.',
+        'The threat changed the risk picture, not the legal threshold for ramming a car on a residential street.'
+      ],
+      legal: 'Regulation 8 (firearm discharge from a moving vehicle prohibited except as the ultimate self-defense against an offender employing deadly force), Regulation 9 (deadly-force interventions prohibited absent authorization), Regulation 1 (terminate when hazard outweighs need to apprehend).',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'That\'s Your Call to Make',
+      heading: 'A deadly-force intervention isn\'t something to leave to the officer with tunnel vision.',
+      narrative: [
+        'Telling the primary it\'s his call abdicates exactly the control the directive puts in your hands. A PIT is a deadly-force decision governed by § 508 and GO 1.3, and you — with the radio and the whole board — are part of that determination, not a bystander to it.',
+        'Deny the PIT on these facts, have the threat communicated, and keep weighing termination.'
+      ],
+      legal: 'Regulation 9 and the field-supervisor role: deadly-force interventions are not the contact officer\'s unilateral call; the supervisor is a live control on the event.',
+      next: 'debrief'
+    },
+    'c3d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Shooting at the Car Is Worse',
+      heading: 'Authorizing fire at a moving vehicle on a residential street is the catastrophe Regulation 8 prevents.',
+      narrative: [
+        'Discharging a firearm at the suspect vehicle, based on a display rather than an active deadly-force attack, violates Regulation 8 and creates exactly the risk to officers, occupants, and bystanders the regulation is written to prevent. "Shoot the tires" is not a controlled option on a residential street at speed.',
+        'Hold fire absent an actual deadly-force attack, communicate the threat, and reassess termination under Regulation 1.'
+      ],
+      legal: 'Regulation 8: discharge of firearms from a moving vehicle during a pursuit is strictly prohibited except as the ultimate measure of self-defense or defense of another when the suspect is employing deadly force.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

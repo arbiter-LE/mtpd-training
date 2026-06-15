@@ -454,3 +454,178 @@ function getEISupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Emotional Intelligence (EGPD)
+   EI as a supervisory function: coach the contact, read the officer.
+══════════════════════════════════════════ */
+const SCENARIO_EI_SUP = {
+  id: 'scenario-ei-sup',
+  title: 'Supervisor — Coaching the Contact, Reading the Officer',
+  location: 'Patrol Division, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '11:30', weather: 'Overcast', unit: 'Squad Supervisor',
+      narrative: [
+        'Two of Officer Salas\'s reports are in your queue, and Salas himself has been on your mind. As a supervisor, emotional intelligence stops being a personal trait and becomes a function: your regulation sets the squad\'s temperature, and reading your officers is now part of the job.',
+        'The trauma-informed contact you coach becomes the department\'s victim-engagement standard — and the officer you read in time is the one still standing a year from now.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Salas\'s DV follow-up contact ended with the victim closing the door. His report summarizes it: "Victim uncooperative, refused to provide a statement."',
+      question: 'How do you handle it in review and debrief?',
+      options: [
+        { text: 'Examine the contact itself — did Salas lead with the evidence or acknowledge before asking? Hostility and a closed door are trauma responses, not a closed case, and the technique is coachable.', next: 'c1a', quality: 'good', shortLabel: 'Coached the trauma-informed approach' },
+        { text: 'Accept the summary — if the victim refused to talk, there\'s nothing more to examine.', next: 'c1b', quality: 'bad', shortLabel: 'Accepted "uncooperative" at face value' },
+        { text: 'Direct Salas to force the issue more firmly at the next contact.', next: 'c1c', quality: 'bad', shortLabel: 'Told him to push harder' },
+        { text: 'Close the case — an uncooperative victim can\'t be prosecuted.', next: 'c1d', quality: 'bad', shortLabel: 'Closed the case' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Coached the Technique',
+      heading: '"Uncooperative" is often a technique problem, not a dead end.',
+      narrative: [
+        'You examine the contact: did Salas lead with the evidence, or acknowledge the victim\'s position before asking anything? IACP research ties cooperation to the officer\'s demeanor in the first sixty seconds, and hostility and minimization are trauma responses, not proof there\'s nothing to say.',
+        'You coach the trauma-informed approach — because in many DV prosecutions the follow-up contact holds the most damaging evidence, and the technique is exactly what unlocks it.'
+      ],
+      legal: 'GO 4.13 follow-up practice and IACP victim-engagement research: officer demeanor in the opening of a contact is the strongest predictor of victim cooperation; hostility is a trauma response, not a closed case.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'A Closed Door Isn\'t a Closed Case',
+      heading: 'Taking "uncooperative" at face value misses a coachable contact.',
+      narrative: [
+        'Accepting the summary treats a closed door as the end of the story. It is usually the result of an approach that read as controlling or skeptical — and the officer\'s technique, not the victim\'s character, is what a supervisor can change.',
+        'Examine the contact and coach the trauma-informed approach; the follow-up often carries the key evidence.'
+      ],
+      legal: 'IACP research: victims who experience the initial contact as controlling or dismissive are far less likely to cooperate; the approach is the variable.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Pushing Harder Closes It Further',
+      heading: 'Force is the opposite of what a trauma-informed contact needs.',
+      narrative: [
+        'Directing Salas to push harder next time doubles down on the very thing that closed the door. A DV victim presenting as hostile is showing a self-protective trauma response; pressure deepens it. The skill is to acknowledge before asking, not to escalate the ask.',
+        'Coach the approach, not more force.'
+      ],
+      legal: 'IACP research: hostility and minimization are trauma responses; a controlling approach reduces cooperation rather than increasing it.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Closed Too Soon',
+      heading: 'An uncooperative first contact doesn\'t end the case.',
+      narrative: [
+        'Closing the case treats the victim\'s trauma response as a final answer. Recantation and reluctance are common and do not mean the incident didn\'t happen — and the follow-up contact, handled with a trauma-informed approach, is frequently where the strongest evidence comes from.',
+        'Coach the contact and keep the case alive.'
+      ],
+      legal: 'GO 4.13 and IACP practice: victim reluctance is expected and does not foreclose the case; the follow-up contact often yields the most damaging evidence.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Salas\'s second report shows that, to reassure a fearful DV victim, he told her: "He\'s not getting out anytime soon — you have nothing to worry about."',
+      question: 'What\'s your assessment?',
+      options: [
+        { text: 'Coach it as a mistake — a system-experienced victim recognizes false reassurance about arraignment and bail, and it collapses trust. GO 4.13.7 requires accurate information about services and rights — honest and actionable beats reassuring and inaccurate.', next: 'c2a', quality: 'good', shortLabel: 'Coached against false reassurance' },
+        { text: 'It was a kind and appropriate way to calm the victim.', next: 'c2b', quality: 'bad', shortLabel: 'Approved the reassurance' },
+        { text: 'It was fine because Salas was trying to help.', next: 'c2c', quality: 'bad', shortLabel: 'Excused it as good intentions' },
+        { text: 'It was acceptable as long as he also took a report.', next: 'c2d', quality: 'bad', shortLabel: 'Treated it as harmless' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Honest and Actionable',
+      heading: 'False reassurance is one of the most damaging things an officer can offer a DV victim.',
+      narrative: [
+        'You coach Salas: a victim who has been through the system knows arraignment timelines and bail realities, and "he\'s not getting out" is recognized instantly as untrue — collapsing the trust he was building. GO 4.13.7 requires accurate information about services and rights under 23 Pa.C.S. Ch. 61, and the standard is honest and actionable: what arraignment actually looks like, what a PFA is and how to get one, how to reach the victim advocate.',
+        'Honest and actionable beats reassuring and inaccurate every time.'
+      ],
+      legal: 'GO 4.13.7: oral and written notice of services and the victim\'s rights under 23 Pa.C.S. Ch. 61; accurate information is a policy obligation, and false reassurance is inconsistent with it.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'It Wasn\'t Kindness',
+      heading: 'A system-experienced victim sees through "he\'s not getting out."',
+      narrative: [
+        'Approving the reassurance misreads it as comfort. It is a failure to respect the victim\'s intelligence and reality — she knows how bail works, and when the overstatement is exposed, she trusts law enforcement less and is less likely to call next time.',
+        'Coach the honest, actionable standard GO 4.13.7 requires.'
+      ],
+      legal: 'GO 4.13.7: accurate information about the process and the victim\'s options; misleading reassurance undermines the obligation.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Intentions Aren\'t the Standard',
+      heading: 'Meaning well doesn\'t make false reassurance acceptable.',
+      narrative: [
+        'Excusing it because Salas was trying to help lets good intentions substitute for the standard. The harm — eroded trust and a victim less likely to engage — happens regardless of intent, and GO 4.13.7 sets an accuracy obligation that good intentions don\'t satisfy.',
+        'Coach honest, actionable information.'
+      ],
+      legal: 'GO 4.13.7: the obligation is accurate information; intent does not cure inaccurate reassurance.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Not Harmless',
+      heading: 'Taking a report doesn\'t offset misleading the victim.',
+      narrative: [
+        'Whether or not Salas also filed a report, telling a DV victim something false about custody damages the trust the contact depends on. The two aren\'t a trade — the report is required, and so is accurate information under 4.13.7.',
+        'Coach the standard: honest and actionable, with the services and rights notice.'
+      ],
+      legal: 'GO 4.13.7: accurate information and the victim-rights notice are required regardless of whether a report was taken.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'Salas himself has changed. Normally steady, he\'s been quiet, short-tempered on a couple of calls, and withdrawn for about three weeks — following a run of hard calls.',
+      question: 'What\'s your responsibility?',
+      options: [
+        { text: 'Have a direct, private check-in — name what you\'ve noticed without pressure, mention peer support or EAP — before it reaches a crisis.', next: 'c3a', quality: 'good', shortLabel: 'Direct private check-in, before a crisis' },
+        { text: 'Wait for Salas to come to you — pushing would be intrusive.', next: 'c3b', quality: 'bad', shortLabel: 'Waited for him to come to you' },
+        { text: 'Document the short temper as a performance issue and move toward discipline.', next: 'c3c', quality: 'bad', shortLabel: 'Treated it as a discipline matter' },
+        { text: 'Flag him to your sergeant and the wellness program, and step back.', next: 'c3d', quality: 'risky', shortLabel: 'Escalated up without the personal step' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Read Him in Time',
+      heading: 'A marked behavioral change is the earliest visible sign of operational stress.',
+      narrative: [
+        'You sit down with Salas and name what you\'ve seen — the quiet, the short temper, the withdrawal over the past few weeks — without pressure, and you mention peer support and EAP as options that exist for exactly this. A behavioral pattern change after a run of hard calls is among the earliest signs of operational stress, and a supervisor sees it across shifts in a way a single partner can\'t.',
+        'Early, the conversation is a check-in. Late, it\'s a crisis. You caught it early.'
+      ],
+      legal: 'PA peer-support confidentiality (42 Pa.C.S. § 5950 for CISM, § 5952 for trained peer support) and EAP confidentiality: knowing the protections lets you convey them credibly to an officer who needs them.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Waiting Means Waiting for a Crisis',
+      heading: 'Officers in distress rarely ask first — that\'s the nature of the profession.',
+      narrative: [
+        'The job selects for people who push through without complaint, which is exactly what makes them unlikely to reach out. Waiting for Salas to come to you usually means waiting until something breaks. The three-week pattern is the signal, and ignoring it isn\'t giving space — it\'s leaving him alone in a hard place.',
+        'You don\'t need the perfect words. You just have to show up and ask.'
+      ],
+      legal: 'Officer-wellness practice: peer-observed behavioral change is among the earliest indicators of operational stress; early engagement produces far better outcomes than crisis-point intervention.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Discipline Misreads the Signal',
+      heading: 'A short temper after a run of hard calls is a wellness signal, not just a performance issue.',
+      narrative: [
+        'Documenting the irritability as a performance matter on the way to discipline treats a likely operational-stress response as misconduct. That both misses the chance to help Salas and teaches the squad that showing strain gets you written up — which guarantees no one shows it.',
+        'Start with the private check-in and the wellness resources; a performance track, if needed, comes later and separately.'
+      ],
+      legal: 'Officer-wellness practice: behavioral change is an early stress indicator; the supported first response is a direct, private check-in, not discipline.',
+      next: 'debrief'
+    },
+    'c3d': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Don\'t Skip the Human Step',
+      heading: 'Flagging it up is fine as a follow-up — not as a substitute for the conversation only you can have.',
+      narrative: [
+        'A sergeant or wellness referral can be appropriate, but kicking it upward as your first and only move skips the peer connection. Salas works beside you and trusts you; a check-in from you lands differently than an evaluative-feeling referral from above.',
+        'Do the personal check-in first; involve other resources as a complement, not a replacement.'
+      ],
+      legal: 'Officer-wellness practice: the peer/personal check-in comes first; formal referral complements it rather than substituting for it.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

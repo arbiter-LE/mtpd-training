@@ -602,3 +602,168 @@ function getCrisisSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Crisis Intervention (EGPD)
+   Field-supervising Officer Cole's 3rd & State welfare check,
+   then reviewing the 302.
+══════════════════════════════════════════ */
+const SCENARIO_CRISIS_SUP = {
+  id: 'scenario-crisis-sup',
+  title: 'Supervisor — 3rd & State Welfare Check',
+  location: '3rd St & State St, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '14:55', weather: 'Overcast / 61°F', unit: 'Field Supervisor',
+      narrative: [
+        'You are the field supervisor monitoring Officer Cole\'s welfare check near 3rd St & State St — a man in crisis, off his medication, who told his mother he "didn\'t want to be here anymore." Cole is the contact officer; you have the radio and the whole board.',
+        'On a crisis call your job is to resource and protect the de-escalation while it works, and to review the paperwork that follows. The contact officer manages the person; you manage the scene.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'Thirty-five minutes in, Cole radios that the subject is noticeably calmer but still refusing assistance, and recommends a defined additional window. You have another call holding and feel the pull to clear this one.',
+      question: 'How do you respond?',
+      options: [
+        { text: 'Support a defined additional window — a subject who is de-escalating reflects the approach working, and an abrupt change risks re-escalation.', next: 'c1a', quality: 'good', shortLabel: 'Supported a defined window' },
+        { text: 'Direct Cole to move to a physical resolution to clear the call.', next: 'c1b', quality: 'bad', shortLabel: 'Ordered a physical resolution' },
+        { text: 'Order an immediate 302 because the call has taken too long.', next: 'c1c', quality: 'bad', shortLabel: 'Ordered a 302 to end the call' },
+        { text: 'Pull Cole off and send a fresh unit to restart the contact.', next: 'c1d', quality: 'bad', shortLabel: 'Replaced the contact officer mid-call' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Protected the Clock',
+      heading: 'De-escalation that is working is not a delay — and supporting it is your call.',
+      narrative: [
+        'You grant a defined additional window and route the holding call to another unit. A subject who is calmer after thirty-five minutes is the approach succeeding, and an abrupt tactical change to save time is what re-escalates these encounters.',
+        'When the contact officer gives an honest progress report, backing it is the supervisory decision that keeps everyone safe.'
+      ],
+      legal: 'PA Mental Health Procedures Act (50 P.S. § 7302) and CIT/ICAT practice: de-escalation is the tactically superior option when time and safety permit; time spent does not by itself create the 302 standard, and it should not be cut short when it is working.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Re-escalated It',
+      heading: 'Forcing a resolution on a subject who was de-escalating is how these go wrong.',
+      narrative: [
+        'Ordering a physical resolution because the call is taking time throws away the one thing that was working. A person in crisis who has been calming for thirty-five minutes can decompensate instantly when the approach abruptly changes, and now your officers are forcing contact on someone who was nearly there voluntarily.',
+        'Impatience is not a tactical assessment. The right call was to protect the window.'
+      ],
+      legal: '50 P.S. § 7302: a 302 requires clear and present danger, not a desire to clear the call. CIT practice: forced contact on a decompensating subject is predictably dangerous to everyone.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Time Doesn\'t Make a 302',
+      heading: 'A 302 needs clear and present danger — not a long call.',
+      narrative: [
+        'Ordering an involuntary commitment to end a call substitutes the clock for the legal standard. Under 50 P.S. § 7302 a 302 requires a clear and present danger based on a recent overt act, attempt, or threat — the duration of the contact is not evidence of that.',
+        'If the criteria are genuinely met, the tool is appropriate; if they are not, the answer is more time or a documented welfare contact, not a manufactured commitment.'
+      ],
+      legal: '50 P.S. § 7302: clear and present danger based on a recent overt act, attempt, or threat. Time on the call does not satisfy the standard.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Threw Away the Rapport',
+      heading: 'Swapping the contact officer mid-call resets everything that was working.',
+      narrative: [
+        'Cole has spent thirty-five minutes building a fragile rapport. Pulling him and inserting a fresh officer forces the subject to start over with a stranger, which on a crisis call usually means re-escalation, not a clean handoff.',
+        'Support the officer who has the connection. Resource him; don\'t replace him.'
+      ],
+      legal: 'CIT practice: continuity of a single primary voice is central to de-escalation. Disrupting an effective contact for a fresh unit risks re-escalation.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'New information: the subject legally owns a firearm kept inside the house. He is seated on his porch, distressed but not threatening anyone, still engaging with Cole. One responding unit suggests calling out SWAT.',
+      question: 'How do you resource the scene?',
+      options: [
+        { text: 'Request a SWAT/tactical team — a firearm in the house makes this a tactical incident.', next: 'c2a', quality: 'bad', shortLabel: 'Escalated to SWAT' },
+        { text: 'Calibrate to the threat actually presented — perimeter, reduce stimulation, request CIT and mobile crisis, keep Cole on calm contact.', next: 'c2b', quality: 'good', shortLabel: 'Calibrated: perimeter + CIT, not SWAT' },
+        { text: 'Order officers to make immediate entry to secure the firearm.', next: 'c2c', quality: 'bad', shortLabel: 'Ordered entry to secure the gun' },
+        { text: 'Clear all units and disengage entirely, since a firearm is present.', next: 'c2d', quality: 'bad', shortLabel: 'Disengaged because a gun was present' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Manufactured the Crisis',
+      heading: 'A distressed man on his porch is not a SWAT call.',
+      narrative: [
+        'Escalating the response to match a weapon you merely know about, rather than a threat actually presented, manufactures the very crisis you were called to prevent — and exposes the department. A legally owned firearm inside the house informs positioning and awareness; it does not convert a welfare check into a tactical operation.',
+        'The right resourcing is a perimeter, reduced stimulation, and CIT or mobile crisis — not a tactical team.'
+      ],
+      legal: 'Graham v. Connor and CIT practice: the response is calibrated to the threat presented. Knowledge of a firearm changes positioning, not the nature of the call.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Calibrated to the Threat',
+      heading: 'You managed the environment without inflating the response.',
+      narrative: [
+        'You establish a perimeter, reduce stimulation, request CIT and mobile crisis, and keep Cole on calm contact. The firearm informs where your people stand and what they watch — it does not change the basic principle that a calm, respectful approach is the correct first contact on a mental-health call.',
+        'On high-risk geometry that resourcing decision is yours to make and document. You made the proportionate one.'
+      ],
+      legal: 'CIT practice: perimeter, reduced stimulation, and early specialized resources are the right response to a contained crisis; the calm approach continues while they respond.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Entry Without a Basis',
+      heading: 'Forcing entry to grab the gun blows up a contact that was working.',
+      narrative: [
+        'Ordering entry to secure a firearm the subject has not threatened anyone with abandons the de-escalation and likely triggers the exact crisis you were preventing — and a warrantless entry on these facts is legally shaky besides. The subject is engaging on his porch; the firearm is a positioning concern, not a reason to breach.',
+        'Contain, resource, and keep the conversation going.'
+      ],
+      legal: '50 P.S. § 7302 and Fourth Amendment exigency: a statement about a means of self-harm, without more, may not meet the threshold for warrantless entry. Work toward consent and de-escalation.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Abandonment Isn\'t an Option',
+      heading: 'Disengaging from a suicidal subject because a gun is in the house leaves him alone in crisis.',
+      narrative: [
+        'Clearing all units because a firearm is present abandons a person who is a clear welfare concern and was actively engaging with your officer. The presence of a legally owned firearm calls for careful positioning and resources, not withdrawal.',
+        'Stay, contain, and bring CIT and mobile crisis to the scene.'
+      ],
+      legal: 'CIT practice and duty of care: a contained, engaging crisis subject is managed with resources and positioning, not by disengaging because a weapon is in the home.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'The call resolved with a voluntary evaluation. Now Cole\'s paperwork is in front of you. His 302 petition documents agitation, a psychiatric history, and medication non-compliance — but no recent overt act, attempt, or threat. A separate line notes he told the subject "transport is already waiting" to get him to agree.',
+      question: 'How do you handle the review?',
+      options: [
+        { text: 'Approve the 302 — agitation, history, and non-compliance are enough.', next: 'c3a', quality: 'bad', shortLabel: 'Approved a 302 without the standard' },
+        { text: 'Flag both issues — the 302 lacks the clear-and-present-danger conduct § 7302 requires, and "transport is already waiting" is coercion, not voluntary consent.', next: 'c3b', quality: 'good', shortLabel: 'Flagged the 302 standard and the coercion' },
+        { text: 'Approve it because Cole was genuinely concerned for the subject\'s welfare.', next: 'c3c', quality: 'bad', shortLabel: 'Approved on the officer\'s good intentions' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'That\'s Not the Standard',
+      heading: 'History and agitation alone don\'t meet § 7302.',
+      narrative: [
+        'Approving this 302 signs off on an involuntary commitment that does not meet its legal threshold. Under 50 P.S. § 7302 a 302 requires a clear and present danger based on a recent overt act, attempt, or threat — agitation, a psychiatric history, and medication non-compliance are not that, and a 302 written without the conduct is a civil-liberty problem and a liability.',
+        'It is your job to catch this before it becomes the department\'s.'
+      ],
+      legal: '50 P.S. § 7302: clear and present danger based on a recent overt act, attempt, or threat; history and non-compliance alone do not satisfy it.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught Both Traps',
+      heading: 'You read the 302 for the standard, and the consent for coercion.',
+      narrative: [
+        'You flag that the 302 documentation lacks the specific dangerous conduct § 7302 requires, and that "transport is already waiting" implies a consequence that did not exist — coercion, not voluntary consent. Transport obtained by pressure is not voluntary and exposes the department; an involuntary commitment without the clear-and-present-danger conduct does not hold.',
+        'These are exactly the traps a reviewer reliably catches and a single officer in the moment may not.'
+      ],
+      legal: '50 P.S. § 7302: a 302 requires clear and present danger. Coerced transport — implying the subject has no choice when he legally does — is not voluntary consent.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Good Intentions Aren\'t the Test',
+      heading: 'Concern for welfare is not the legal standard for an involuntary commitment.',
+      narrative: [
+        'Cole\'s concern was genuine, and that is not what § 7302 measures. The standard is a clear and present danger based on the subject\'s conduct — and approving a 302 because the officer meant well lets sympathy substitute for the legal threshold the document requires.',
+        'If the criteria are met, document the conduct; if they are not, a documented welfare contact is the right outcome.'
+      ],
+      legal: '50 P.S. § 7302: the test is the subject\'s dangerous conduct, not the officer\'s concern. Sympathy does not satisfy the standard.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

@@ -612,3 +612,179 @@ function getUseOfForceSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Use of Force (EGPD)
+   GO 1.3.6(D) compliance review of Officer Mercer's Use of Force
+   Report from the Washington St domestic.
+══════════════════════════════════════════ */
+const SCENARIO_USE_OF_FORCE_SUP = {
+  id: 'scenario-use-of-force-sup',
+  title: 'Supervisor Review — Washington St Use of Force',
+  location: 'Use of Force Review, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '20:10', weather: 'Post-Incident', unit: 'Reviewing Supervisor',
+      narrative: [
+        'Officer Mercer\'s Use of Force Report from the Washington St domestic is in your queue. Under General Order 1.3.6(D), all Use of Force Reports are reviewed by the Chief or designee for compliance — tonight that designee is you.',
+        'Mercer drew his firearm on a subject who was advancing with a raised aluminum flashlight at roughly 25 feet. No shots were fired; the subject complied and was arrested. Three weeks later, a civil-rights complaint arrived alleging the force was excessive.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'The justification section of Mercer\'s report reads, in full: "I believed my life was in danger and I reacted accordingly." There are no facts — no distance, no description of the object, no account of the subject\'s specific actions.',
+      question: 'How do you handle the report?',
+      options: [
+        { text: 'Approve it — an officer\'s statement that he believed his life was in danger satisfies the policy.', next: 'c1a', quality: 'bad', shortLabel: 'Approved a conclusory justification' },
+        { text: 'Return it as non-compliant — GO 1.3 requires the officer to articulate the facts and why the level of force was selected; "feared for my life" is a conclusion, not the observed facts.', next: 'c1b', quality: 'good', shortLabel: 'Returned for articulated facts' },
+        { text: 'Forward it straight to discipline without letting Mercer document the facts first.', next: 'c1c', quality: 'risky', shortLabel: 'Jumped to discipline before documentation' },
+        { text: 'Rewrite the narrative yourself to make it defensible.', next: 'c1d', quality: 'bad', shortLabel: 'Wrote the officer\'s narrative for him' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Conclusion, Not Justification',
+      heading: 'A statement of fear is not the articulation GO 1.3 requires.',
+      narrative: [
+        'General Order 1.3 requires that officers "articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected." Approving a bare "I feared for my life" leaves the department defending a complaint with a report that contains no facts — no distance, no description of the threat, no account of what the subject did.',
+        'Internal affairs and a civil court evaluate facts, not feelings. You just signed off on a record that gives them none.'
+      ],
+      legal: 'General Order 1.3, Policy: officers must articulate the facts and the reason the level of force was selected. A conclusory statement of fear does not meet the standard.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Returned for the Facts',
+      heading: 'You sent it back for what GO 1.3 actually requires — the articulable facts.',
+      narrative: [
+        'You return the report and tell Mercer what it needs: the distance, the object in the subject\'s hand, the subject\'s specific actions and speed, the options he had, and the reason he selected the force he did. That is the articulation General Order 1.3 demands.',
+        'Returning it for the facts is not the same as prejudging the force — it is giving the officer the chance to document a decision so a reviewer can actually evaluate it.'
+      ],
+      legal: 'General Order 1.3, Policy: "Officers using force must be able to articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected."',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Skipped a Step',
+      heading: 'Discipline before documentation gets the order wrong.',
+      narrative: [
+        'There may be a force problem here, but you can\'t know that from a report with no facts in it. Forwarding straight to discipline, before Mercer has documented what actually happened, skips the compliance review GO 1.3.6(D) puts in your hands and risks an unfair, unsupported finding.',
+        'First get the articulated facts. Then the finding — training, investigation, or discipline — follows from what the facts show.'
+      ],
+      legal: 'General Order 1.3.6(D)-(F): the reviewing supervisor first tests the report for compliance; the graduated outcomes follow the finding.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Not Your Report to Write',
+      heading: 'A supervisor cannot author the officer\'s account of what the officer perceived.',
+      narrative: [
+        'The Use of Force Report is Mercer\'s sworn account of the facts known to him at the time. You cannot supply those — only he can attest to what he saw, the distance he perceived, and why he chose what he chose. Writing it for him corrupts the record and creates a far worse problem than a weak first draft.',
+        'Return it, tell him the standard, and have him document his own observations.'
+      ],
+      legal: 'General Order 1.3, Policy: justification is limited to the facts known or perceived by the officer at the time. The officer attests to those facts; the supervisor reviews them.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Mercer\'s revised report comes back with the facts — and one new line: he characterizes the aluminum flashlight as "a deadly weapon" to support drawing his firearm under GO 1.3.2.',
+      question: 'How do you treat that characterization?',
+      options: [
+        { text: 'Accept it — any object in a subject\'s hand can be characterized as a deadly weapon at the officer\'s discretion.', next: 'c2a', quality: 'bad', shortLabel: 'Accepted the deadly-weapon label' },
+        { text: 'Scrutinize it — GO 1.3.2 is narrow, an aluminum flashlight without more is not a deadly-weapon situation, and overstating the threat to fit the force is a flag.', next: 'c2b', quality: 'good', shortLabel: 'Flagged the threat overstatement' },
+        { text: 'Accept it because the subject was advancing, which makes deadly-force options reasonable.', next: 'c2c', quality: 'bad', shortLabel: 'Accepted it on "he was advancing"' },
+        { text: 'Reject the entire report and impose discipline solely because a firearm was drawn.', next: 'c2d', quality: 'risky', shortLabel: 'Disciplined solely for drawing the firearm' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'The Label Doesn\'t Fit',
+      heading: 'Calling a flashlight a deadly weapon to fit 1.3.2 is exactly the overstatement to catch.',
+      narrative: [
+        'GO 1.3.2 limits deadly force to defense of human life, or a subject who committed or attempted a forcible felony, or is escaping while possessing a deadly weapon. An aluminum flashlight, without more, does not place the encounter inside that lane — and accepting the label rather than questioning it lets a strained justification become the department\'s official position.',
+        'Overstating a threat to justify a force decision is worse on review than an honestly imperfect decision.'
+      ],
+      legal: 'General Order 1.3.2(A): deadly force is justified only in the narrow circumstances stated. An object that is not a deadly weapon does not convert the encounter into a 1.3.2 situation.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught the Overstatement',
+      heading: 'You held GO 1.3.2 to its actual boundaries.',
+      narrative: [
+        'You note that an aluminum flashlight at 25 feet, without more, does not establish a 1.3.2 deadly-force situation, and you flag the "deadly weapon" characterization as an overstatement. The better record is an honest one: the subject advanced with a raised impact weapon, Mercer assessed the threat quickly, and verbal commands with distance and cover under Level 1 would have been the correct first response.',
+        'An honest, self-aware account is more defensible — in internal review and in court — than a strained one that reaches for a label the facts don\'t support.'
+      ],
+      legal: 'General Order 1.3.2(A): the deadly-force lane is narrow. General Order 1.3.1(B): Verbal Control (Level 1) is the foundation of the continuum.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Advancing Isn\'t the Test',
+      heading: 'Forward movement with an impact weapon doesn\'t make it a deadly-force situation.',
+      narrative: [
+        'GO 1.3.2 does not turn on whether the subject was advancing — it turns on the narrow conditions the policy states. Accepting "he was advancing" as the justification for the deadly-weapon label endorses the same overstatement, and it teaches Mercer that the way to defend a force decision is to inflate the threat.',
+        'The honest framing — impact weapon, quick assessment, Level 1 should have come first — is the defensible one.'
+      ],
+      legal: 'General Order 1.3.2(A): deadly force is limited to the stated circumstances; advancing with an aluminum flashlight, without more, is not among them.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-neutral', outcomeLabel: 'Too Far the Other Way',
+      heading: 'Disciplining solely for drawing the firearm skips the analysis the policy requires.',
+      narrative: [
+        'Rejecting the whole report and moving to discipline just because a firearm was presented overcorrects. GO 1.3.1(C)(2) allows levels to be skipped given the circumstances; the issue here is the overstated "deadly weapon" label and the tactical gap, not the mere fact a weapon was drawn.',
+        'Flag the overstatement, evaluate the decision against the facts, and match the outcome to the finding — which is the next question.'
+      ],
+      legal: 'General Order 1.3.1(C)(2): nothing requires escalating through every level; the review is of the justification and the documentation, not the simple fact a level was skipped.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'With the facts documented honestly, the picture is clear: a real tactical gap (Mercer skipped Level 1 verbal commands and distance), but no injury, no prior incidents, and a candid, self-aware account in which Mercer himself identifies the error.',
+      question: 'Under GO 1.3.6(F), what outcome fits this finding?',
+      options: [
+        { text: 'Immediate disciplinary action — any tactical gap is misconduct.', next: 'c3a', quality: 'bad', shortLabel: 'Discipline for the tactical gap' },
+        { text: 'Remedial training under 1.3.6(F)(a) — a tactical gap with an honest, self-aware account points to training, while patterns, prohibited acts, and false reports point to investigation or discipline.', next: 'c3b', quality: 'good', shortLabel: 'Remedial training, matched to the finding' },
+        { text: 'No action — tactical gaps are not a supervisory concern.', next: 'c3c', quality: 'bad', shortLabel: 'Took no action' },
+        { text: 'Forward to the District Attorney for criminal review.', next: 'c3d', quality: 'bad', shortLabel: 'Referred for criminal review' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Punished the Honesty',
+      heading: 'Disciplining a candid, self-aware account trains officers to stop being candid.',
+      narrative: [
+        'GO 1.3.6(F) gives graduated outcomes precisely so the response matches the finding. A genuine tactical gap, honestly documented, with no injury and no pattern, is the textbook remedial-training case — and disciplining it teaches every officer watching that the safe move is to never admit an error in a report.',
+        'Save discipline for patterns, prohibited acts, and false reports. This is none of those.'
+      ],
+      legal: 'General Order 1.3.6(F): remedial training, Professional Conduct investigation, or discipline, matched to the finding. An honest tactical gap points to training.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Outcome Matched the Finding',
+      heading: 'Remedial training is exactly the 1.3.6(F)(a) response to an honest tactical gap.',
+      narrative: [
+        'You direct remedial training on the continuum and on distance, cover, and Level 1 verbal commands, and you document the incident as a learning event rather than a misconduct finding. Mercer\'s candor and self-awareness are what make this the right call — and rewarding them keeps your officers willing to document honestly.',
+        'The complaint is answered with an honest record and a corrective outcome. That is the review working as designed.'
+      ],
+      legal: 'General Order 1.3.6(F)(a): remedial training is the available, non-disciplinary outcome where a report shows a tactical or policy gap rather than misconduct.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'A Gap Left Uncorrected',
+      heading: 'No action means the same tactical gap rides along to the next call.',
+      narrative: [
+        'Treating a real tactical gap as a non-event wastes the entire point of the review. The next time Mercer faces an impact weapon, nothing has changed — and the department has a documented complaint with no corrective response attached, which itself reads badly later.',
+        'The gap is genuine; the right answer is to correct it through training, not to ignore it.'
+      ],
+      legal: 'General Order 1.3.6(F): the review exists to produce a matched outcome — here, remedial training. Taking no action is not one of the options the finding supports.',
+      next: 'debrief'
+    },
+    'c3d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Wrong Forum',
+      heading: 'A tactical gap with no injury and an honest account is not a criminal referral.',
+      narrative: [
+        'Referring this to the DA treats a training issue as a crime. There was no injury, no prohibited act, no false report — nothing that belongs in a criminal forum. Misusing that referral burns credibility you will need when a case genuinely warrants it.',
+        'Match the outcome to the finding: this one is remedial training under 1.3.6(F)(a).'
+      ],
+      legal: 'General Order 1.3.6(F): outcomes run from remedial training to Professional Conduct investigation to discipline. Criminal referral is reserved for conduct that warrants it — an honest tactical gap does not.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};

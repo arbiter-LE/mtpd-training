@@ -471,3 +471,167 @@ function getTrafficStopSupervisorQuestions() {
     },
   ];
 }
+
+/* ══════════════════════════════════════════
+   SUPERVISOR SCENARIO — Traffic Stops (EGPD)
+   Reviewing Officer Kemp's stops: two clocks and a camera.
+══════════════════════════════════════════ */
+const SCENARIO_TRAFFIC_STOPS_SUP = {
+  id: 'scenario-traffic-stops-sup',
+  title: 'Supervisor Review — Kemp\'s Traffic Stops',
+  location: 'Report Review Desk, East Greenville Borough, PA',
+  totalDecisions: 3,
+  nodes: {
+    'start': {
+      type: 'scene', time: '23:15', weather: 'Report Review', unit: 'Reviewing Supervisor',
+      narrative: [
+        'A stack of Officer Kemp\'s traffic-stop reports and a warrant affidavit are in your review queue. Your officers run more traffic stops than any other contact, which makes this the highest-volume thing you review and the most frequent source of suppression motions and citizen complaints.',
+        'You read for two clocks and one camera: how long each stop lasted and what justified the extension, what authority the search rested on, and how Kemp handled being recorded.'
+      ],
+      next: 'd1'
+    },
+    'd1': {
+      type: 'decision', decisionNumber: 1,
+      situation: 'The first report: Kemp completed the citation and records check on a Blaker Dr stop and had the documents ready to return, then held the driver and asked for consent to search. The driver refused. Kemp kept him detained for a K9, with no other articulated basis.',
+      question: 'How do you assess it?',
+      options: [
+        { text: 'Flag it as a suppression problem — under Rodriguez the stop couldn\'t be extended past its completed purpose without independent reasonable suspicion, and refusal to consent is not reasonable suspicion.', next: 'c1a', quality: 'good', shortLabel: 'Flagged the unlawful extension' },
+        { text: 'Approve it — officers may always hold a vehicle for a K9 once they suspect drugs.', next: 'c1b', quality: 'bad', shortLabel: 'Approved the K9 hold' },
+        { text: 'Approve it — the driver\'s refusal to consent is itself suspicious.', next: 'c1c', quality: 'bad', shortLabel: 'Treated refusal as suspicion' },
+        { text: 'Approve it as long as the K9 ultimately alerted.', next: 'c1d', quality: 'bad', shortLabel: 'Approved because the dog alerted' },
+      ]
+    },
+    'c1a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Caught the Rodriguez Problem',
+      heading: 'You found the moment the stop\'s purpose ended — and what came after it.',
+      narrative: [
+        'Under Rodriguez v. United States, a stop cannot be extended beyond the time needed to complete its purpose without independent reasonable suspicion. The purpose was complete when the documents were ready to return, and a refusal to consent cannot supply reasonable suspicion. Holding the driver for a K9 on that basis is an unlawful extension — and you caught it before it was filed.',
+        'That is the first clock. Read every traffic report for the moment the purpose ended.'
+      ],
+      legal: 'Rodriguez v. United States (2015): no extension past the completed purpose without independent reasonable suspicion; refusal to consent is the exercise of a right, not suspicion.',
+      next: 'd2'
+    },
+    'c1b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'That\'s the Suppression',
+      heading: 'There is no general authority to hold a finished stop for a K9.',
+      narrative: [
+        'Approving the K9 hold endorses exactly the unlawful extension Rodriguez prohibits. Once the citation is issued and the documents are ready to return, the stop\'s purpose is complete; absent independent reasonable suspicion, the driver goes. "We suspected drugs" without articulable facts is not that suspicion.',
+        'This is a suppression motion you could have prevented at your desk.'
+      ],
+      legal: 'Rodriguez v. United States (2015): a completed stop cannot be prolonged for a dog sniff without independent reasonable suspicion.',
+      next: 'd2'
+    },
+    'c1c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Refusal Isn\'t Suspicion',
+      heading: 'Exercising a constitutional right can\'t be the basis for detention.',
+      narrative: [
+        'Treating the refusal to consent as suspicion punishes the driver for invoking a right, and it cannot lawfully justify extending the stop. A report that leans on the refusal documents its own Fourth Amendment problem.',
+        'Without independent articulable facts, the extension is unlawful — approving it adopts the error.'
+      ],
+      legal: 'Rodriguez v. United States (2015): a refusal to consent is the exercise of a right and cannot supply reasonable suspicion or justify prolonging a stop.',
+      next: 'd2'
+    },
+    'c1d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'The Alert Doesn\'t Cure It',
+      heading: 'A later K9 alert doesn\'t make an unlawful detention lawful.',
+      narrative: [
+        'Approving the report because the dog ultimately alerted reasons backward from the result. The detention was already unlawful when it was extended without reasonable suspicion; an alert obtained during an unlawful extension is fruit of that violation, not a cure for it.',
+        'The question is whether the extension was lawful when it happened — here it wasn\'t.'
+      ],
+      legal: 'Rodriguez v. United States (2015): the lawfulness of the extension is judged at the moment it occurs, not by what the prolonged stop later produces.',
+      next: 'd2'
+    },
+    'd2': {
+      type: 'decision', decisionNumber: 2,
+      situation: 'Next in the stack is a warrant affidavit Kemp wants to take to the on-call magisterial district judge. The probable cause section reads, in full: "Upon approaching the vehicle, I detected an odor of marijuana."',
+      question: 'What do you do?',
+      options: [
+        { text: 'Return it — "detected an odor of marijuana" is a conclusion and the most common suppression vulnerability; after Barr the affidavit must state where the odor was detected, its strength and character, when, and the corroborating observations.', next: 'c2a', quality: 'good', shortLabel: 'Returned the thin affidavit' },
+        { text: 'Forward it to the judge — the odor of marijuana is sufficient probable cause.', next: 'c2b', quality: 'bad', shortLabel: 'Forwarded it on odor alone' },
+        { text: 'Forward it but tell Kemp to cite Commonwealth v. Alexander by name.', next: 'c2c', quality: 'bad', shortLabel: 'Added a case cite to a factless affidavit' },
+        { text: 'Reject the warrant entirely — odor can never support a vehicle search.', next: 'c2d', quality: 'bad', shortLabel: 'Rejected odor as ever relevant' },
+      ]
+    },
+    'c2a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Returned Before the Judge Saw It',
+      heading: 'A conclusory odor line is the classic affidavit weakness — and you caught it in time.',
+      narrative: [
+        '"Detected an odor of marijuana" is a conclusion, and it is the most common suppression vulnerability in vehicle cases. After Commonwealth v. Barr, odor is only a factor, which makes the corroborating facts the probable cause — so the affidavit needs the specific location, strength and character, timing, and behavioral observations before it ever reaches the judge.',
+        'Returning a thin affidavit at the review desk is far cheaper than losing the evidence at a suppression hearing.'
+      ],
+      legal: 'Commonwealth v. Barr (2021): odor is a factor, not standalone PC; the corroborating facts are the probable cause and must be stated with specificity.',
+      next: 'd3'
+    },
+    'c2b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'You Sent It Up Thin',
+      heading: 'Forwarding a conclusory affidavit builds the suppression motion for the defense.',
+      narrative: [
+        'Sending "I detected an odor of marijuana" to the judge as the entire probable cause forwards the exact conclusory language that gets affidavits and searches challenged. After Barr, odor alone is not probable cause, and a bare odor line gives a suppression court nothing to weigh.',
+        'It needed the specific facts — location, strength, timing, corroboration — before it left your desk.'
+      ],
+      legal: 'Commonwealth v. Barr (2021): odor alone is insufficient; the affidavit must articulate the corroborating facts.',
+      next: 'd3'
+    },
+    'c2c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'A Cite Isn\'t Facts',
+      heading: 'Citing Alexander doesn\'t fix an affidavit with no facts in it.',
+      narrative: [
+        'Adding a case citation to a factless affidavit dresses up the same problem. The deficiency is not a missing legal reference — it is the absence of the specific, articulable facts that establish probable cause. A judge needs the facts, not a citation, and a suppression court will say so.',
+        'Return it for the location, strength, timing, and corroborating observations.'
+      ],
+      legal: 'Commonwealth v. Barr (2021): probable cause rests on specific articulable facts; a case citation does not substitute for them.',
+      next: 'd3'
+    },
+    'c2d': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Overcorrected',
+      heading: 'Odor still counts — it just can\'t stand alone.',
+      narrative: [
+        'Rejecting the warrant on the theory that odor is irrelevant goes too far the other way. After Barr, odor remains a legitimate factor in the totality — it simply cannot establish probable cause by itself. The fix is to require the corroborating facts that complete the totality, not to treat odor as meaningless.',
+        'Return it for specificity; don\'t throw out a usable factor.'
+      ],
+      legal: 'Commonwealth v. Barr (2021): odor is a legitimate factor in the totality; it cannot establish PC alone but is not disregarded.',
+      next: 'd3'
+    },
+    'd3': {
+      type: 'decision', decisionNumber: 3,
+      situation: 'Last, you review body-camera footage attached to a complaint. It shows Kemp ordering a bystander on the public sidewalk to stop filming a stop. Kemp\'s report characterizes the order as based on "officer safety."',
+      question: 'How do you handle it?',
+      options: [
+        { text: 'Address it directly — under Fields the First Amendment protects recording police in public, courts look to the actual motivation, and a recording objection dressed up as "officer safety" and contradicted by the footage is a constitutional and complaint exposure.', next: 'c3a', quality: 'good', shortLabel: 'Addressed the pretextual order' },
+        { text: 'Accept the officer-safety rationale at face value and approve the report.', next: 'c3b', quality: 'bad', shortLabel: 'Accepted the safety rationale' },
+        { text: 'Approve it — any recording during a stop is a legitimate safety concern.', next: 'c3c', quality: 'bad', shortLabel: 'Treated all recording as a threat' },
+      ]
+    },
+    'c3a': {
+      type: 'consequence', outcomeClass: 'outcome-good', outcomeLabel: 'Saw Through the Pretext',
+      heading: 'The footage contradicts the stated rationale — and a court will see that too.',
+      narrative: [
+        'Under Fields v. City of Philadelphia, the First Amendment protects recording police performing public duties, and courts look to the actual motivation behind an order. When the body-camera footage contradicts a stated "officer safety" basis for stopping a recording, the pretext is visible to a reviewer and to a court alike — a constitutional and complaint exposure you address directly.',
+        'You coach Kemp on the line: a genuine safety concern about someone outside a vehicle is documented and real; the camera is not the concern, and professional conduct is the answer to it.'
+      ],
+      legal: 'Fields v. City of Philadelphia (3d Cir. 2017): the First Amendment protects recording police in public; courts examine the actual motivation behind an order to stop it.',
+      next: 'debrief'
+    },
+    'c3b': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Took the Label at Face Value',
+      heading: 'Accepting "officer safety" when the footage contradicts it adopts the pretext.',
+      narrative: [
+        'Approving the report on the stated rationale, when the video shows the order was about the camera, ratifies a First Amendment violation as department practice. Fields protects the recording, and courts will weigh the actual motivation — which the footage here undercuts.',
+        'Address it directly and coach the distinction between a real safety concern and suppressing a camera.'
+      ],
+      legal: 'Fields v. City of Philadelphia (3d Cir. 2017): recording police in public is protected; a pretextual safety rationale does not survive scrutiny.',
+      next: 'debrief'
+    },
+    'c3c': {
+      type: 'consequence', outcomeClass: 'outcome-bad', outcomeLabel: 'Recording Isn\'t a Threat',
+      heading: 'Treating all bystander recording as a safety concern is the constitutional problem.',
+      narrative: [
+        'A blanket position that any recording during a stop justifies ordering it stopped is precisely what Fields forecloses. The right to record police in public is not contingent on the officer\'s comfort, and ordering a sidewalk bystander to stop is a seizure-and-speech problem, not a safety measure.',
+        'Coach Kemp that the camera is not the concern, and his conduct is the answer to it.'
+      ],
+      legal: 'Fields v. City of Philadelphia (3d Cir. 2017): the public has a First Amendment right to record police; recording is not itself a safety justification.',
+      next: 'debrief'
+    },
+    'debrief': { type: 'debrief' }
+  }
+};
