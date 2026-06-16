@@ -343,6 +343,16 @@ function dismissResume() {
   if (bannerEl) bannerEl.style.display = 'none';
 }
 
+// Save progress and return to the dashboard mid-quiz. Mirrors pauseScenario().
+// Backing out does not record an attempt — only finishQuiz() does that.
+function pauseQuiz() {
+  saveQuizState();
+  stopAllTimers();
+  showScreen('screen-officer');
+  renderOfficerDashboard();
+  checkResumeBanner();
+}
+
 /* ── Scenario Pause / Resume ───────────── */
 function PAUSE_KEY() { return currentUser ? 'mtpd_scenario_pause_' + currentUser.id : null; }
 
