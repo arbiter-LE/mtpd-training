@@ -23,6 +23,51 @@
 
   <!-- Favicon: Arbiter seal, inline so there is no extra asset/path to deploy -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230a1828'/%3E%3Ccircle cx='50' cy='50' r='34' fill='none' stroke='%23c8902a' stroke-width='3'/%3E%3Cline x1='50' y1='30' x2='50' y2='72' stroke='%23c8902a' stroke-width='3'/%3E%3Cline x1='32' y1='40' x2='68' y2='40' stroke='%23c8902a' stroke-width='3'/%3E%3Cline x1='32' y1='40' x2='26' y2='54' stroke='%23c8902a' stroke-width='2'/%3E%3Cline x1='26' y1='54' x2='38' y2='54' stroke='%23c8902a' stroke-width='2'/%3E%3Cline x1='68' y1='40' x2='62' y2='54' stroke='%23c8902a' stroke-width='2'/%3E%3Cline x1='62' y1='54' x2='74' y2='54' stroke='%23c8902a' stroke-width='2'/%3E%3Cline x1='42' y1='72' x2='58' y2='72' stroke='%23c8902a' stroke-width='3'/%3E%3C/svg%3E" />
+  <!-- FAQ structured data — lets search engines surface these answers directly -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How accurate is the policy and legal content?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your department's general orders and SOPs appear verbatim — never reworded, simplified, or paraphrased. Scenarios use your jurisdiction's real roads and conditions. Any court case referenced is verified against the actual ruling before it ever reaches an officer." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to my officers' data, and who can see it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your department runs on its own private, isolated database — your data never mixes with another agency's. Each officer sees only their own record; command staff see only their own department. Training records are never sold, shared, or used to train any outside system or AI." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my policies or data be shared with other agencies?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Every department is fully walled off. Your SOPs are used only to build your department's training, and nothing crosses between agencies. Each engagement stands entirely on its own." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know officers actually completed the training?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every module pairs decision-based scenarios with a knowledge check drawn directly from that module's material. The command dashboard tracks completions, scores, and attempts automatically — giving you a clear, defensible record of who was trained on what, and when." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this replace our own policies or training?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No — it reinforces them. Arbiter LE helps officers engage with and retain the policies you already have in place. It never replaces your department's orders or an officer's judgment, and it never invents policy." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who builds the platform?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Arbiter LE is built from inside the profession — by an active law enforcement officer who has worked the road under the same kind of policies your officers do. That perspective is built into every scenario." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does pricing work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Straightforward and transparent: a flat rate per department — no per-seat charges and no surprise add-ons — with a short initial term so you can see it work before any longer commitment. Reach out and we'll provide a clear quote." }
+      }
+    ]
+  }
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -269,6 +314,40 @@
       margin: 0;
     }
 
+    /* ── FAQ ── */
+    #faq { background: var(--bg); }
+
+    .faq-list {
+      margin-top: 36px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+      padding: 22px 26px;
+    }
+
+    .faq-item h3 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .faq-item p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .faq-item p strong { color: var(--navy-light); }
+
     /* ── PROOF STRIP ── */
     .proof-strip {
       background: var(--navy);
@@ -479,6 +558,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#why">Why It Matters</a></li>
         <li><a href="#product">The Platform</a></li>
+        <li><a href="#faq">Questions</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -577,6 +657,52 @@
           <div class="feature-num">04</div>
           <h3>No Infrastructure Required</h3>
           <p>No software to install, no scheduling headaches, no outside instructors. Accessible from any phone, anywhere — because we know an officer's time is never guaranteed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <p class="section-label">Common Questions</p>
+      <h2>What Departments Ask</h2>
+      <p>The questions chiefs and command staff raise most often before bringing Arbiter LE to their department.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How accurate is the policy and legal content?</h3>
+          <p>Your department's general orders and SOPs appear <strong>verbatim</strong> — never reworded, simplified, or paraphrased. Scenarios use your jurisdiction's real roads and conditions. Any court case referenced is verified against the actual ruling before it ever reaches an officer. The content is built to the standard the work demands.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What happens to my officers' data, and who can see it?</h3>
+          <p>Your department runs on its <strong>own private, isolated database</strong> — your data never mixes with another agency's. Each officer sees only their own record; command staff see only their own department. Training records are never sold, shared, or used to train any outside system or AI. Your policies and your data stay yours.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Will my policies or data be shared with other agencies?</h3>
+          <p>No. Every department is fully walled off. Your SOPs are used only to build your department's training, and nothing crosses between agencies. Each engagement stands entirely on its own.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I know officers actually completed the training?</h3>
+          <p>Every module pairs decision-based scenarios with a knowledge check drawn directly from that module's material. The command dashboard tracks completions, scores, and attempts automatically — giving you a clear, defensible record of who was trained on what, and when.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Does this replace our own policies or training?</h3>
+          <p>No — it <strong>reinforces</strong> them. Arbiter LE helps officers engage with and retain the policies you already have in place. It never replaces your department's orders or an officer's judgment, and it never invents policy.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Who builds the platform?</h3>
+          <p>Arbiter LE is built from inside the profession — by an active law enforcement officer who has worked the road under the same kind of policies your officers do. That perspective is built into every scenario, so the training reflects the realities of the job rather than a generic, off-the-shelf course.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How does pricing work?</h3>
+          <p>Straightforward and transparent: a flat rate per department — no per-seat charges and no surprise add-ons — with a short initial term so you can see it work before any longer commitment. Reach out and we'll put a clear quote in front of you.</p>
         </div>
       </div>
     </div>
