@@ -12,6 +12,15 @@ Internal only — listed in `.vercelignore`, never deploys.
 4. **Anything marked `OVERRULED` / `SUPERSEDED` may appear in content ONLY in explicit "this is no longer good law" framing** — never taught as current law.
 5. **Re-verification cadence:** see bottom of file. Re-verify all `GOOD LAW` entries **quarterly** and **before every new agency onboard**.
 
+### The hallucination firewall (added 2026-06-18)
+
+The #1 way AI gets a lawyer sanctioned is a **fabricated citation** — a case or statute that does not exist (see the Charlotin court-sanctions database, damiencharlotin.com/hallucinations, 1,600+ logged cases). Two tools enforce against it:
+
+- **`_legal/check-citations.sh` — the deterministic wall (offline, runs on every commit).** Every `Name v. Name` case cite and every `Act NN of YYYY` / `NN Pa.C.S./U.S.C./P.S. § NNN` statute cite in content **must appear in this registry**. A cite that appears nowhere here is a **HARD BLOCK** — a hallucinated authority literally cannot ship because it was never hand-entered. A cite that is here but not on a `GOOD LAW` line **WARNs** (allowed in already-live content, never in new content).
+- **`_legal/verify-citation.sh "Name v. Name" "123 U.S. 456"` — the existence check (on-demand, before you add a row).** Queries **CourtListener** (Free Law Project — a real legal database) to confirm the case exists and the reporter cite resolves. `FOUND` / `PARTIAL` (name exists, cite doesn't match) / `NOT FOUND`. Existence only — you still read the opinion for the holding. Statutes are not in CourtListener; verify those against legis.state.pa.us by hand.
+
+The Charlotin site itself is **not** auto-checked: it catalogs *fake* cases that got filed, so it can't confirm whether *our* (real, landmark) cites are good — and it has no API and blocks bots. It is a **manual quarterly read**, logged in the cadence section below.
+
 Verification status legend: `GOOD LAW` · `OVERRULED` · `PENDING` (catalogued, primary-source verification not yet done — do **not** ship in new content until cleared).
 
 ---
@@ -35,6 +44,7 @@ Verification status legend: `GOOD LAW` · `OVERRULED` · `PENDING` (catalogued, 
 | Vehicle general lighting requirements | **75** Pa.C.S. § 4303 | Vehicle Code: vehicles on highways must have required lamps incl. **rear lamps / tail lamps** (a missing tail light is an equipment violation). **Title 75, not Title 18.** | GOOD LAW | 2026-06-13 | legis.state.pa.us (Title 75 ch.43) | EGPD-1 |
 | Protection From Abuse Act — definitions | **23** Pa.C.S. § 6102 (et seq.) | Domestic Relations: definitions for the PFA Act ("abuse," "family or household members," etc.); a PFA is obtained through the court of common pleas. **Title 23, not Title 18.** | GOOD LAW | 2026-06-13 | legis.state.pa.us (Title 23 ch.61) | EGPD-9 |
 | § 1983 civil action | 42 U.S.C. § 1983 | Private cause of action against a person who, under color of state law, deprives another of rights secured by the Constitution/federal law. | GOOD LAW | 2026-06-13 | law.cornell.edu/uscode/text/42/1983 | EGPD modules |
+| Lautenberg Amendment / DV firearm disability | 18 U.S.C. § 922(g)(9) & (g)(8) | Unlawful for a person **convicted of a misdemeanor crime of domestic violence** (g)(9), or **subject to a qualifying DV protective order** (g)(8), to ship/transport/possess/receive a firearm or ammunition in or affecting interstate commerce. | GOOD LAW | 2026-06-18 | law.cornell.edu/uscode/text/18/922 | index.html, app.js |
 
 ## Verified — Pennsylvania case law
 
@@ -65,6 +75,8 @@ Verification status legend: `GOOD LAW` · `OVERRULED` · `PENDING` (catalogued, 
 | Chimel v. California | 395 U.S. 752 (1969) | **Search incident to arrest** is limited to the arrestee's person and the area **within his immediate control** (reaching distance for a weapon or destructible evidence). | GOOD LAW | 2026-06-13 | law.cornell.edu/supremecourt/text/395/752 | EGPD modules |
 | Garrity v. New Jersey | 385 U.S. 493 (1967) | Statements **compelled from officers under threat of job loss** (removal from office) are inadmissible against them in a subsequent criminal proceeding. | GOOD LAW | 2026-06-13 | law.cornell.edu/supremecourt/text/385/493 | EGPD modules |
 | Glik v. Cunniffe | 655 F.3d 78 (1st Cir. 2011) | First Amendment protects **filming/recording police** performing duties in public (right clearly established). **Persuasive in PA — Fields (3d Cir.) controls.** | GOOD LAW | 2026-06-13 | law.justia.com (1st Cir.); journals.law.harvard.edu (CR-CL); aclum.org | EGPD-8 |
+| Miranda v. Arizona | 384 U.S. 436 (1966) | Prosecution may not use statements from **custodial interrogation** unless procedural safeguards secured the Fifth Amendment privilege; before questioning, the person must be warned of the right to remain silent, that anything said may be used against them, and the right to counsel (**appointed if indigent**). | GOOD LAW | 2026-06-18 | law.cornell.edu/supremecourt/text/384/436 | index.html |
+| County of Sacramento v. Lewis | 523 U.S. 833 (1998) | In a **substantive-due-process** claim arising from a high-speed police **pursuit**, only a **purpose to cause harm unrelated to the legitimate object of arrest** shocks the conscience; recklessness/deliberate indifference is insufficient. | GOOD LAW | 2026-06-18 | law.cornell.edu/supremecourt/text/523/833 | index.html, app.js |
 
 ---
 
@@ -74,9 +86,11 @@ Catalogued from the codebase but **not yet re-verified against a primary source 
 
 **2026-06-13 — EGPD clearance:** every PENDING authority the EGPD modules actually cite has been verified against a primary source and promoted to `GOOD LAW` above. The items remaining below appear in **MTPD live content or nowhere yet** — they do **not** gate EGPD's June 17 launch, but MTPD's live cites should still be cleared on the next pass.
 
-**Federal cases (MTPD-only / unused — verify before next MTPD review):** Scott v. Harris (550 U.S. 372, 2007) · County of Sacramento v. Lewis (523 U.S. 833, 1998) · Miranda v. Arizona (384 U.S. 436, 1966) · Carroll v. United States (267 U.S. 132, 1925).
+**2026-06-18 — partial MTPD clearance:** Miranda v. Arizona, County of Sacramento v. Lewis, and 18 U.S.C. § 922(g)(9)/(g)(8) verified against primary text (Cornell LII) and promoted to `GOOD LAW` above.
 
-**PA statutes (firearms — not used by EGPD; verify exact section text & status before any content uses them):** 18 Pa.C.S. § 3105 · § 6105 (persons not to possess firearms) · § 6106 (carrying firearm w/o license) · § 6108 (carrying firearms on public streets in Philadelphia) · § 6113 · 18 U.S.C. § 922 (federal firearms).
+**Federal cases (MTPD-only — verify before next MTPD review):** Carroll v. United States (267 U.S. 132, 1925) · **Scott v. Harris (550 U.S. 372, 2007) — existence + exact reporter cite confirmed 2026-06-18 via CourtListener; HOLDING still PENDING** (every full-opinion mirror — Justia, FindLaw, Wikisource, CourtListener's authenticated API — bot-blocked this pass; pull the holding from an accessible primary source, e.g. govinfo.gov U.S. Reports PDF or Google Scholar, before promoting). Used in index.html, app.js.
+
+**PA statutes (firearms — not used by EGPD; verify exact section text & status before any content uses them):** 18 Pa.C.S. § 3105 · § 6105 (persons not to possess firearms) · § 6106 (carrying firearm w/o license) · § 6108 (carrying firearms on public streets in Philadelphia) · § 6113.
 
 > **Title correction (2026-06-13):** earlier drafts of this list mis-filed `§ 4303` and `§ 6102` under Title 18. The EGPD modules correctly cite **75 Pa.C.S. § 4303** (Vehicle Code — general lighting/tail lamps) and **23 Pa.C.S. § 6102** (Protection From Abuse Act — definitions). Both are now `GOOD LAW` above. There is no 18 Pa.C.S. § 4303/§ 6102 in EGPD content.
 
@@ -86,7 +100,8 @@ Catalogued from the codebase but **not yet re-verified against a primary source 
 
 - **Quarterly:** re-verify every `GOOD LAW` entry against its primary source; update the `Verified` date. Next due: **2026-09-13**.
 - **Before every new agency onboard:** full pass of this registry + clear all `PENDING` rows that the new agency's content relies on.
-- **On any legal-content change:** the author re-verifies the specific citation touched and runs `_legal/check-citations.sh`.
+- **On any legal-content change:** the author re-verifies the specific citation touched and runs `_legal/check-citations.sh`. For a brand-new case being added to this registry, also run `_legal/verify-citation.sh` to confirm it exists.
+- **Quarterly manual read:** skim the Charlotin hallucination database (damiencharlotin.com/hallucinations) for newly-flagged PA/3d-Cir. fabricated or misrepresented authorities, and confirm none match a cite we teach. Next due with the quarterly pass: **2026-09-13**.
 - **Watch items (law that moved recently — recheck for further change):** Alexander/Barr line of PA vehicle-search cases; PA marijuana statutes; MPOETC Acts 57/59 implementing regulations.
 
 _Last full review: 2026-06-13._
