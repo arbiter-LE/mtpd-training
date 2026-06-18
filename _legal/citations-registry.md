@@ -77,6 +77,7 @@ Verification status legend: `GOOD LAW` · `OVERRULED` · `PENDING` (catalogued, 
 | Glik v. Cunniffe | 655 F.3d 78 (1st Cir. 2011) | First Amendment protects **filming/recording police** performing duties in public (right clearly established). **Persuasive in PA — Fields (3d Cir.) controls.** | GOOD LAW | 2026-06-13 | law.justia.com (1st Cir.); journals.law.harvard.edu (CR-CL); aclum.org | EGPD-8 |
 | Miranda v. Arizona | 384 U.S. 436 (1966) | Prosecution may not use statements from **custodial interrogation** unless procedural safeguards secured the Fifth Amendment privilege; before questioning, the person must be warned of the right to remain silent, that anything said may be used against them, and the right to counsel (**appointed if indigent**). | GOOD LAW | 2026-06-18 | law.cornell.edu/supremecourt/text/384/436 | index.html |
 | County of Sacramento v. Lewis | 523 U.S. 833 (1998) | In a **substantive-due-process** claim arising from a high-speed police **pursuit**, only a **purpose to cause harm unrelated to the legitimate object of arrest** shocks the conscience; recklessness/deliberate indifference is insufficient. | GOOD LAW | 2026-06-18 | law.cornell.edu/supremecourt/text/523/833 | index.html, app.js |
+| Scott v. Harris | 550 U.S. 372 (2007) | A police officer's attempt to **terminate a dangerous high-speed chase** that threatens the lives of innocent bystanders does **not** violate the Fourth Amendment, even when it places the fleeing motorist at risk of serious injury/death; reasonableness judged under **Graham** balancing. | GOOD LAW | 2026-06-18 | law.cornell.edu/supct/html/05-1631.ZO.html; tile.loc.gov (USRep 550/372) | index.html, app.js |
 
 ---
 
@@ -86,9 +87,9 @@ Catalogued from the codebase but **not yet re-verified against a primary source 
 
 **2026-06-13 — EGPD clearance:** every PENDING authority the EGPD modules actually cite has been verified against a primary source and promoted to `GOOD LAW` above. The items remaining below appear in **MTPD live content or nowhere yet** — they do **not** gate EGPD's June 17 launch, but MTPD's live cites should still be cleared on the next pass.
 
-**2026-06-18 — partial MTPD clearance:** Miranda v. Arizona, County of Sacramento v. Lewis, and 18 U.S.C. § 922(g)(9)/(g)(8) verified against primary text (Cornell LII) and promoted to `GOOD LAW` above.
+**2026-06-18 — MTPD clearance:** Miranda v. Arizona, County of Sacramento v. Lewis, Scott v. Harris, and 18 U.S.C. § 922(g)(9)/(g)(8) all verified against primary text (Cornell LII opinion/statute pages) and promoted to `GOOD LAW` above. Every case cite in MTPD live content is now GOOD LAW.
 
-**Federal cases (MTPD-only — verify before next MTPD review):** Carroll v. United States (267 U.S. 132, 1925) · **Scott v. Harris (550 U.S. 372, 2007) — existence + exact reporter cite confirmed 2026-06-18 via CourtListener; HOLDING still PENDING** (every full-opinion mirror — Justia, FindLaw, Wikisource, CourtListener's authenticated API — bot-blocked this pass; pull the holding from an accessible primary source, e.g. govinfo.gov U.S. Reports PDF or Google Scholar, before promoting). Used in index.html, app.js.
+**Federal cases (catalogued, not yet used in any content — verify before first use):** Carroll v. United States (267 U.S. 132, 1925).
 
 **PA statutes (firearms — not used by EGPD; verify exact section text & status before any content uses them):** 18 Pa.C.S. § 3105 · § 6105 (persons not to possess firearms) · § 6106 (carrying firearm w/o license) · § 6108 (carrying firearms on public streets in Philadelphia) · § 6113.
 
