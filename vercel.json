@@ -12,12 +12,10 @@
   "rewrites": [
     {
       "source": "/privacy-policy",
-      "has": [{ "type": "host", "value": "arbiterle.com" }],
       "destination": "/Marketing/privacy-policy.html"
     },
     {
       "source": "/onboarding",
-      "has": [{ "type": "host", "value": "arbiterle.com" }],
       "destination": "/Marketing/onboarding"
     },
     {
