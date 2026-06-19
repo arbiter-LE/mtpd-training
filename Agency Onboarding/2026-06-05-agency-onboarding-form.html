@@ -693,7 +693,7 @@
 
     <div class="field full">
       <label class="field-label">Major Roads &amp; Intersections <span class="req">*</span></label>
-      <p class="field-hint" style="margin-bottom:10px;">Enter 3–5 roads or intersections officers patrol regularly. These appear in scenario training.</p>
+      <p class="field-hint" style="margin-bottom:10px;">Enter 3–5 roads or intersections officers patrol regularly. We verify every road against your jurisdiction before it appears in any training scenario — so list real patrol corridors, not approximations.</p>
       <div class="road-list" id="roadList">
         <div class="road-row"><div class="road-num">1</div><input type="text" class="road-input" placeholder="e.g. Main St &amp; Township Line Rd" /></div>
         <div class="road-row"><div class="road-num">2</div><input type="text" class="road-input" placeholder="e.g. West Chester Pike" /></div>
@@ -709,9 +709,9 @@
     </div>
 
     <div class="field full">
-      <label class="field-label">Full SOP / Policy Manual — Share Link <span class="req">*</span></label>
+      <label class="field-label">Full SOP / Policy Manual — Share Link</label>
       <input type="url" id="sopLink" placeholder="https://drive.google.com/... or Dropbox, SharePoint, etc." />
-      <span class="field-hint">Upload your SOP to Google Drive, Dropbox, or SharePoint and paste a shareable link here. Make sure link access is set to "Anyone with the link."</span>
+      <span class="field-hint">If you use cloud storage, paste a shareable link (access set to "Anyone with the link"). <strong>No cloud storage? Leave this blank</strong> — after you submit, email your policy documents directly to andrew@arbiterle.com. Send each as a separate attachment (don't zip them) so nothing corrupts in transit.</span>
       <span class="error-msg" id="sopError">Please provide a link to your SOP or policy manual.</span>
     </div>
 
@@ -951,9 +951,6 @@
       const roads = Array.from(document.querySelectorAll('.road-input')).map(i => i.value.trim()).filter(Boolean);
       if (roads.length < 3) {
         document.getElementById('roadsError').style.display = 'block'; ok = false;
-      }
-      if (!document.getElementById('sopLink').value.trim()) {
-        document.getElementById('sopError').style.display = 'block'; ok = false;
       }
     }
 
