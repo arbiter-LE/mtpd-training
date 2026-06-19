@@ -181,21 +181,24 @@
     }
 
     .hero h1 {
-      font-size: clamp(36px, 6vw, 64px);
+      font-size: clamp(30px, 5vw, 52px);
       font-weight: 900;
-      letter-spacing: 4px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #ffffff;
-      line-height: 1;
+      line-height: 1.08;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero h1 span {
       display: block;
-      font-size: clamp(14px, 2vw, 20px);
+      font-size: clamp(13px, 1.6vw, 16px);
       font-weight: 700;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       color: var(--accent);
-      margin-top: 6px;
+      margin-top: 14px;
     }
 
     .hero-tagline {
@@ -555,10 +558,10 @@
         </div>
       </a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#why">Why It Matters</a></li>
         <li><a href="#product">The Platform</a></li>
-        <li><a href="#faq">Questions</a></li>
+        <li><a href="#why">Why It Matters</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -580,19 +583,42 @@
       <line x1="44" y1="72" x2="56" y2="72" stroke="#c8902a" stroke-width="1.5"/>
       <text x="50" y="84" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="5" font-weight="600" letter-spacing="2" fill="#9ab8d0">PENNSYLVANIA</text>
     </svg>
-    <h1>Arbiter<span>Law Enforcement LLC</span></h1>
-    <p class="hero-tagline">Scenario-based training built on <em>your department's own policies</em> — not generic courses. For small municipal departments.</p>
+    <h1>Train Every Officer on Your Department's Own Policies<span>Scenario-Based Training for Small Municipal Departments</span></h1>
+    <p class="hero-tagline">Realistic scenarios built on your own SOPs and general orders — with the <em>documentation to prove</em> every officer completed them.</p>
     <a href="#contact" class="hero-cta">Schedule a Demo</a>
   </div>
 
-  <!-- ABOUT -->
-  <section id="about">
+  <!-- THE PLATFORM -->
+  <section id="product">
     <div class="section-inner">
-      <p class="section-label">About</p>
-      <h2>Built From the Inside</h2>
-      <p>Arbiter LE LLC was built by an active municipal law enforcement officer with over 14 years of experience — including time as a Field Training Officer responsible for preparing the next generation of officers to do the job right.</p>
-      <p>The problem was simple and frustrating: small departments want to train their people to a high standard, but scenario-based training is expensive. Outside instructors, facility time, scheduling across shifts — it adds up fast, and most small departments don't have the budget. So training becomes inconsistent. Some officers get it, some don't. Nobody can prove who was trained on what, or when.</p>
-      <p>Arbiter LE exists to close that gap — professional, scenario-driven training that small departments can actually afford, with the documentation to back it up.</p>
+      <p class="section-label">The Platform</p>
+      <h2>Scenario-Based. SOP-Driven. Always On.</h2>
+      <p>Arbiter LE is an online scenario-based training platform built specifically for law enforcement — and built around <strong>your</strong> department.</p>
+      <p>Most online training hands officers a generic, off-the-shelf course catalog. Arbiter LE does the opposite: <strong>your department's own SOPs and general orders are woven directly into every scenario.</strong> Officers don't review policy in a vacuum — they apply <em>your</em> policy, in context, to the situations they actually face on the job: use of force, search and seizure, domestic violence response, pursuits, crisis intervention, and more.</p>
+      <p>The goal is less than 15 minutes a week, designed to fit into a shift without pulling anyone off the road.</p>
+
+      <div class="feature-list">
+        <div class="feature">
+          <div class="feature-num">01</div>
+          <h3>Trained on Your Policies</h3>
+          <p>Your department's standard operating procedures and general orders are embedded directly into each scenario — so officers train on the rules they're actually held to, not someone else's.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">02</div>
+          <h3>Scenario-Based, Not Slideware</h3>
+          <p>Officers work through realistic situations and make decisions before answering — applying policy under pressure, not just clicking through it.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">03</div>
+          <h3>Command Dashboard</h3>
+          <p>Full visibility across the roster. Every completion is automatically documented — a clear, defensible record of who was trained on what, and when.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">04</div>
+          <h3>No Infrastructure Required</h3>
+          <p>No software to install, no scheduling headaches, no outside instructors. Accessible from any phone, anywhere — because we know an officer's time is never guaranteed.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -628,37 +654,14 @@
     </div>
   </section>
 
-  <!-- THE PLATFORM -->
-  <section id="product">
+  <!-- ABOUT -->
+  <section id="about">
     <div class="section-inner">
-      <p class="section-label">The Platform</p>
-      <h2>Scenario-Based. SOP-Driven. Always On.</h2>
-      <p>Arbiter LE is an online scenario-based training platform built specifically for law enforcement — and built around <strong>your</strong> department.</p>
-      <p>Most online training hands officers a generic, off-the-shelf course catalog. Arbiter LE does the opposite: <strong>your department's own SOPs and general orders are woven directly into every scenario.</strong> Officers don't review policy in a vacuum — they apply <em>your</em> policy, in context, to the situations they actually face on the job: use of force, search and seizure, domestic violence response, pursuits, crisis intervention, and more.</p>
-      <p>The goal is less than 15 minutes a week, designed to fit into a shift without pulling anyone off the road.</p>
-
-      <div class="feature-list">
-        <div class="feature">
-          <div class="feature-num">01</div>
-          <h3>Trained on Your Policies</h3>
-          <p>Your department's standard operating procedures and general orders are embedded directly into each scenario — so officers train on the rules they're actually held to, not someone else's.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">02</div>
-          <h3>Scenario-Based, Not Slideware</h3>
-          <p>Officers work through realistic situations and make decisions before answering — applying policy under pressure, not just clicking through it.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">03</div>
-          <h3>Command Dashboard</h3>
-          <p>Full visibility across the roster. Every completion is automatically documented — a clear, defensible record of who was trained on what, and when.</p>
-        </div>
-        <div class="feature">
-          <div class="feature-num">04</div>
-          <h3>No Infrastructure Required</h3>
-          <p>No software to install, no scheduling headaches, no outside instructors. Accessible from any phone, anywhere — because we know an officer's time is never guaranteed.</p>
-        </div>
-      </div>
+      <p class="section-label">About</p>
+      <h2>Built From the Inside</h2>
+      <p>Arbiter LE LLC was built by an active municipal law enforcement officer with over 14 years of experience — including time as a Field Training Officer responsible for preparing the next generation of officers to do the job right.</p>
+      <p>The problem was simple and frustrating: small departments want to train their people to a high standard, but scenario-based training is expensive. Outside instructors, facility time, scheduling across shifts — it adds up fast, and most small departments don't have the budget. So training becomes inconsistent. Some officers get it, some don't. Nobody can prove who was trained on what, or when.</p>
+      <p>Arbiter LE exists to close that gap — professional, scenario-driven training that small departments can actually afford, with the documentation to back it up.</p>
     </div>
   </section>
 
