@@ -3,12 +3,19 @@
 # on every *.arbiterle.com subdomain. When adding a new internal folder,
 # add it here first.
 CLAUDE.md
+ARBITER-LE-PLAYBOOK.md
 _archive
 _database
 _supabase
 _legal
 _dev
+_guide_build
 Agency Onboarding
 email-signature.html
 2026-06-03-rate-card-design-philosophy.md
 EGPD-Module-Review.pdf
+_legal-review
+
+# Office documents are internal by default — never deploy contracts,
+# agreements, applications, or guides as public downloads.
+*.docx

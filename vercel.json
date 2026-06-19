@@ -11,10 +11,6 @@
   ],
   "rewrites": [
     {
-      "source": "/privacy-policy",
-      "destination": "/Marketing/privacy-policy.html"
-    },
-    {
       "source": "/onboarding",
       "destination": "/Marketing/onboarding"
     },
