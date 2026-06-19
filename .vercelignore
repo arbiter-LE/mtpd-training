@@ -16,6 +16,13 @@ email-signature.html
 EGPD-Module-Review.pdf
 _legal-review
 
+# Dated working notes are internal by default — brand docs, migration plans,
+# starter prompts, meeting notes. They live loose in root but must never deploy.
+2026-*.md
+2026-06-15-arbiter-le-brand-philosophy.md
+2026-06-15-arbiter-le-starter-prompt.md
+2026-06-16-email-migration-plan.md
+
 # Office documents are internal by default — never deploy contracts,
 # agreements, applications, or guides as public downloads.
 *.docx
