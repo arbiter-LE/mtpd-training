@@ -151,6 +151,8 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 **Minimum 8 quiz questions per module.**
 
+**Every module anchors to agency policy.** Each new module references **at least one** of that agency's SOPs / general orders, quoted verbatim — this is the platform's core differentiator (training built for *your* department's policies), not a nice-to-have. **Escape valve:** if no governing policy covers the module's topic, stop and flag it to Andrew for a call — never invent, stretch, or borrow an SOP to satisfy the minimum, and never use another agency's policy as the anchor. This is a per-agency anchor: the same topic may map to different SOPs (or none) across agencies. Operationally this makes "send us your general orders" a hard onboarding dependency before authoring an agency's modules.
+
 **Quiz traceability.** Every quiz question must be answerable solely from that module's reading or policy text. No outside knowledge, no trick questions. If an answer can't be traced to the module, it doesn't ship.
 
 **Case law verification.** Any court case cited in a module (Graham v. Connor, Terry v. Ohio, etc.) must be verified for accurate holding and current status before inclusion. Never paraphrase a holding from memory.
