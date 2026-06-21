@@ -313,4 +313,4 @@ These are issues that will cause problems at scale — fix them before the secon
 | Config / schedule | `js/config.js` |
 | Vercel config | `vercel.json` |
 | Pilot agreements | `Arbiter LE - Pilot Program/` |
-| Rate cards | `2026-06-03-arbiter-rate-card-v12.pdf` |
+| Rate card (current) | `_marketing/pricing/` — superseded versions in `_archive/rate-cards/` |

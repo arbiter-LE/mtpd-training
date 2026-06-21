@@ -1,0 +1,65 @@
+<svg width="100%" viewBox="0 0 680 700" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Arbiter LE prospect one-pager — what your department gets</title>
+<desc>A branded leave-behind in Arbiter LE's navy and gold style listing four value pillars: built on your policies, your roads and scenarios, supervisor visibility, and built by a working officer.</desc>
+<defs>
+<pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#1e3448" opacity="0.55"/></pattern>
+</defs>
+<rect x="0" y="0" width="680" height="700" fill="#0a1828"/>
+<rect x="0" y="0" width="680" height="170" fill="url(#dots)"/>
+<rect x="0" y="0" width="680" height="5" fill="#c8902a"/>
+
+<path d="M42 56 L80 56 L80 78 Q80 92 61 101 Q42 92 42 78 Z" fill="none" stroke="#d4a02e" stroke-width="1.5"/>
+<line x1="49" y1="74" x2="73" y2="74" stroke="#d4a02e" stroke-width="1.2"/>
+<path d="M55 82 L61 88 L67 82" fill="none" stroke="#d4a02e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+<text x="100" y="74" font-family="Helvetica,Arial,sans-serif" font-size="29" font-weight="700" letter-spacing="3" fill="#e8f0f6">ARBITER LE</text>
+<text x="102" y="93" font-family="Helvetica,Arial,sans-serif" font-size="10.5" font-weight="600" letter-spacing="4" fill="#d4a02e">LAW ENFORCEMENT TRAINING</text>
+
+<text x="42" y="132" font-family="Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" letter-spacing="0.2" fill="#a9c2d6">Scenario-based training built for your department's specific policies and roads.</text>
+
+<line x1="42" y1="156" x2="638" y2="156" stroke="#1e3448" stroke-width="1"/>
+<text x="42" y="190" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="3.5" fill="#d4a02e">WHAT YOUR DEPARTMENT GETS</text>
+
+<g>
+<rect x="42" y="206" width="288" height="150" rx="4" fill="#152638"/>
+<rect x="42" y="206" width="3" height="150" fill="#c8902a"/>
+<text x="64" y="240" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">BUILT ON YOUR POLICIES</text>
+<text x="64" y="270" font-family="Helvetica,Arial,sans-serif" font-size="12.5" fill="#b8cdde">Every module anchors to your<tspan x="64" dy="19">general orders — quoted verbatim,</tspan><tspan x="64" dy="19">never paraphrased or summarized.</tspan></text>
+</g>
+
+<g>
+<rect x="350" y="206" width="288" height="150" rx="4" fill="#152638"/>
+<rect x="350" y="206" width="3" height="150" fill="#c8902a"/>
+<text x="372" y="240" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">YOUR ROADS, YOUR SCENARIOS</text>
+<text x="372" y="270" font-family="Helvetica,Arial,sans-serif" font-size="12.5" fill="#b8cdde">Calls run on your actual<tspan x="372" dy="19">jurisdiction and street names —</tspan><tspan x="372" dy="19">not generic stock training.</tspan></text>
+</g>
+
+<g>
+<rect x="42" y="372" width="288" height="150" rx="4" fill="#152638"/>
+<rect x="42" y="372" width="3" height="150" fill="#c8902a"/>
+<text x="64" y="406" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">SUPERVISOR VISIBILITY</text>
+<text x="64" y="436" font-family="Helvetica,Arial,sans-serif" font-size="12.5" fill="#b8cdde">Track completion across the<tspan x="64" dy="19">roster, with an optional</tspan><tspan x="64" dy="19">command-lens supervisor track.</tspan></text>
+</g>
+
+<g>
+<rect x="350" y="372" width="288" height="150" rx="4" fill="#152638"/>
+<rect x="350" y="372" width="3" height="150" fill="#c8902a"/>
+<text x="372" y="406" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">BUILT BY A WORKING OFFICER</text>
+<text x="372" y="436" font-family="Helvetica,Arial,sans-serif" font-size="12.5" fill="#b8cdde">Field-credible by design. It<tspan x="372" dy="19">reads like the job because</tspan><tspan x="372" dy="19">the person building it works it.</tspan></text>
+</g>
+
+<rect x="42" y="544" width="596" height="76" rx="4" fill="#11202f"/>
+<rect x="42" y="544" width="596" height="2" fill="#c8902a"/>
+<text x="140" y="580" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">SCENARIO-BASED</text>
+<text x="140" y="600" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10.5" letter-spacing="0.5" fill="#7f9bb2">real-call training</text>
+<text x="290" y="580" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">POLICY-ANCHORED</text>
+<text x="290" y="600" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10.5" letter-spacing="0.5" fill="#7f9bb2">your general orders</text>
+<text x="440" y="580" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">YOUR ROADS</text>
+<text x="440" y="600" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10.5" letter-spacing="0.5" fill="#7f9bb2">real jurisdiction</text>
+<text x="565" y="580" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#e8b94a">FULL TRACKING</text>
+<text x="565" y="600" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10.5" letter-spacing="0.5" fill="#7f9bb2">records in one place</text>
+
+<line x1="42" y1="652" x2="638" y2="652" stroke="#1e3448" stroke-width="1"/>
+<text x="42" y="678" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2.5" fill="#d4a02e">ARBITERLE.COM</text>
+<text x="638" y="678" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="0.5" fill="#7f9bb2">Built for your department. Owned by your department.</text>
+</svg>
