@@ -1641,7 +1641,7 @@ function nextQuestion() {
   else renderQuestion();
 }
 
-function finishQuiz() {
+async function finishQuiz() {
   stopAllTimers();
   clearQuizState();
   const pct     = Math.round((quizCorrect / quizTotal) * 100);
@@ -1664,8 +1664,8 @@ function finishQuiz() {
     correct: quizCorrect, total: quizTotal,
   };
 
-  // Persist to Supabase
-  saveCompletionToSupabase(uid, modId, completionData[uid][modId]);
+  // Persist to Supabase — await so we can warn the officer on failure
+  const { error: saveError } = await saveCompletionToSupabase(uid, modId, completionData[uid][modId]);
 
   showScreen('screen-results');
 
@@ -1709,6 +1709,16 @@ function finishQuiz() {
         <button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>
         <button class="btn-retake" onclick="retakeQuiz()">Retake — Attempt ${attempts + 1} of 3 →</button>
       </div>`;
+  }
+
+  // If the Supabase write was rejected (e.g. auth_uid not linked), warn the officer.
+  // This prevents a silent failure where the officer sees "passed" but nothing is recorded.
+  if (saveError) {
+    const warn = document.createElement('div');
+    warn.className = 'save-warning';
+    warn.innerHTML = '<p>⚠️ Your score could not be saved. Please notify your supervisor — your record will need to be updated.</p>';
+    const actionEl = document.getElementById('results-action');
+    if (actionEl) actionEl.after(warn);
   }
 }
 

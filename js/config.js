@@ -131,7 +131,7 @@ const STORAGE_KEY = 'arbiter_le_training_v1';
 async function saveCompletionToSupabase(badgeNumber, modId, record) {
   try {
     const mod = MODULES.find(m => m.id === modId);
-    await _sb.from('completions').upsert({
+    const { error } = await _sb.from('completions').upsert({
       badge_number:   badgeNumber,
       module_id:      modId,
       module_title:   mod ? mod.title : modId,
@@ -147,7 +147,12 @@ async function saveCompletionToSupabase(badgeNumber, modId, record) {
       completed_date: record.date,
       updated_at:     new Date().toISOString()
     }, { onConflict: 'badge_number,module_id' });
-  } catch(e) { console.warn('ALE: save failed —', e); }
+    if (error) console.warn('ALE: save rejected —', error.message, error.code);
+    return { error: error || null };
+  } catch(e) {
+    console.warn('ALE: save failed —', e);
+    return { error: e };
+  }
 }
 
 /* Load completions for one officer from Supabase */

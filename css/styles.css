@@ -308,6 +308,8 @@
     .attempt-dot.remaining { background: transparent; border-color: var(--border); }
     .remediation-notice { background: #fde4e8; border: 1px solid rgba(192,48,74,.3); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; }
     .remediation-notice p { font-size: 13px; color: #b02840; line-height: 1.6; margin: 0; }
+    .save-warning { background: #fff3cd; border: 1px solid rgba(200,144,42,.4); border-radius: var(--radius); padding: 16px 20px; margin-top: 20px; }
+    .save-warning p { font-size: 13px; color: #7a5200; line-height: 1.6; margin: 0; }
 
     /* ── Module Lock State ───────────────── */
     .module-card.locked-future { opacity: 0.62; background: #f2f4f6; cursor: default; pointer-events: none; }
