@@ -30,7 +30,7 @@ Before opening Claude or touching any code, get these items from the department 
 
 ### Contract / Billing
 - [ ] Service agreement signed and filed
-- [ ] Rate card tier confirmed (monthly vs. annual, officer count)
+- [ ] Rate card tier confirmed by officer count (Tier 1: 1–10 = $1,800/yr · Tier 2: 11–20 = $2,400/yr · Tier 3: 21–25 = $3,000/yr) — annual billing, paid upfront
 - [ ] Billing contact email
 - [ ] Program start date (determines `SCHEDULE_START` in config)
 
@@ -313,4 +313,4 @@ These are issues that will cause problems at scale — fix them before the secon
 | Config / schedule | `js/config.js` |
 | Vercel config | `vercel.json` |
 | Pilot agreements | `Arbiter LE - Pilot Program/` |
-| Rate card (current) | `_marketing/pricing/` — superseded versions in `_archive/rate-cards/` |
+| Rate card (current) | The chief leave-behind in `_marketing/collateral/` carries the current tiers — there's no separate rate card. Retired versions in `_archive/rate-cards/`. |
