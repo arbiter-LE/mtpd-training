@@ -2,6 +2,19 @@
    Arbiter LE — Module Definitions & Quiz Questions
 ═══════════════════════════════════════════ */
 
+/* Supervisor track: the reading served to supervisors is the officer reading
+   PLUS a command-lens overlay injected just before the scenario button. One
+   source of truth for the base law (no duplicated legal text to drift); the
+   resolver in app.js (activeContentHtml / activeQuestions) picks the supervisor
+   variants when currentUser.track === 'supervisor'. Modules without supervisor
+   variants fall back to the patrol content. */
+function withSupervisorOverlay(base, overlay) {
+  return base.replace(
+    /(<button class="btn-launch"[^>]*>Proceed to Scenario Exercise →<\/button>)/,
+    `</div>\n${overlay}\n  <div class="content-block">\n    $1`
+  );
+}
+
 const MODULES = [
   {
     id: 'search-seizure',
@@ -10,8 +23,12 @@ const MODULES = [
     description: 'Lawful search procedures, warrant requirements, and recognized exceptions under Pennsylvania law.',
     duration: '20–25 min',
     weekNumber: 1,
+    contentHtml: READING_SEARCH_SEIZURE,
+    supervisorContentHtml: withSupervisorOverlay(READING_SEARCH_SEIZURE, SUPERVISOR_SEARCH_SEIZURE),
     scenario: SCENARIO_SEARCH_SEIZURE,
+    supervisorScenario: SCENARIO_SEARCH_SEIZURE_SUP,
     questions: getSearchSeizureQuestions(),
+    supervisorQuestions: getSearchSeizureSupervisorQuestions(),
   },
   {
     id: 'use-of-force',
@@ -20,8 +37,12 @@ const MODULES = [
     description: 'Departmental policy, Graham v. Connor standards, and documentation requirements.',
     duration: '15–20 min',
     weekNumber: 2,
+    contentHtml: READING_USE_OF_FORCE,
+    supervisorContentHtml: withSupervisorOverlay(READING_USE_OF_FORCE, SUPERVISOR_USE_OF_FORCE),
     scenario: SCENARIO_USE_OF_FORCE,
+    supervisorScenario: SCENARIO_USE_OF_FORCE_SUP,
     questions: getUseOfForceQuestions(),
+    supervisorQuestions: getUseOfForceSupervisorQuestions(),
   },
   {
     id: 'report-writing',
@@ -30,8 +51,12 @@ const MODULES = [
     description: 'Accuracy, completeness, and legal defensibility of police reports.',
     duration: '10–15 min',
     weekNumber: 3,
+    contentHtml: READING_REPORT_WRITING,
+    supervisorContentHtml: withSupervisorOverlay(READING_REPORT_WRITING, SUPERVISOR_REPORT_WRITING),
     scenario: SCENARIO_REPORT_WRITING,
+    supervisorScenario: SCENARIO_REPORT_WRITING_SUP,
     questions: getReportWritingQuestions(),
+    supervisorQuestions: getReportWritingSupervisorQuestions(),
   },
   {
     id: 'crisis-intervention',
@@ -40,8 +65,12 @@ const MODULES = [
     description: 'Recognizing mental health crises, de-escalation techniques, and CIT protocols.',
     duration: '20–25 min',
     weekNumber: 4,
+    contentHtml: READING_CRISIS,
+    supervisorContentHtml: withSupervisorOverlay(READING_CRISIS, SUPERVISOR_CRISIS),
     scenario: SCENARIO_CRISIS,
+    supervisorScenario: SCENARIO_CRISIS_SUP,
     questions: getCrisisQuestions(),
+    supervisorQuestions: getCrisisSupervisorQuestions(),
   },
   {
     id: 'domestic-violence',
@@ -50,8 +79,12 @@ const MODULES = [
     description: 'Response procedures, mandatory arrest authority, PFA enforcement, victim notifications, and required documentation under MTPD ALO 4.13.',
     duration: '20–25 min',
     weekNumber: 5,
+    contentHtml: READING_DOMESTIC_VIOLENCE,
+    supervisorContentHtml: withSupervisorOverlay(READING_DOMESTIC_VIOLENCE, SUPERVISOR_DOMESTIC_VIOLENCE),
     scenario: SCENARIO_DOMESTIC_VIOLENCE,
+    supervisorScenario: SCENARIO_DOMESTIC_VIOLENCE_SUP,
     questions: getDomesticViolenceQuestions(),
+    supervisorQuestions: getDomesticViolenceSupervisorQuestions(),
   },
   {
     id: 'vehicle-pursuits',
@@ -60,8 +93,12 @@ const MODULES = [
     description: 'MTPD pursuit policy, termination criteria, prohibited tactics, stop stick deployment, and mandatory reporting under ALO 4.02.',
     duration: '15–20 min',
     weekNumber: 6,
+    contentHtml: READING_VEHICLE_PURSUITS,
+    supervisorContentHtml: withSupervisorOverlay(READING_VEHICLE_PURSUITS, SUPERVISOR_VEHICLE_PURSUITS),
     scenario: SCENARIO_VEHICLE_PURSUITS,
+    supervisorScenario: SCENARIO_VEHICLE_PURSUITS_SUP,
     questions: getVehiclePursuitQuestions(),
+    supervisorQuestions: getVehiclePursuitSupervisorQuestions(),
   },
   {
     id: 'leadership',
@@ -70,8 +107,12 @@ const MODULES = [
     description: 'Patrol-level leadership, supervisory decision-making, Terry standards, and mentoring junior officers.',
     duration: '20–25 min',
     weekNumber: 7,
+    contentHtml: READING_LEADERSHIP,
+    supervisorContentHtml: withSupervisorOverlay(READING_LEADERSHIP, SUPERVISOR_LEADERSHIP),
     scenario: SCENARIO_LEADERSHIP,
+    supervisorScenario: SCENARIO_LEADERSHIP_SUP,
     questions: getLeadershipQuestions(),
+    supervisorQuestions: getLeadershipSupervisorQuestions(),
   },
   {
     id: 'traffic-stops',
@@ -80,8 +121,12 @@ const MODULES = [
     description: 'Pennsylvania vehicle stop law, automobile exception, Mimms/Wilson authority, probable cause documentation, and Rodriguez limits.',
     duration: '20–25 min',
     weekNumber: 8,
+    contentHtml: READING_TRAFFIC_STOPS,
+    supervisorContentHtml: withSupervisorOverlay(READING_TRAFFIC_STOPS, SUPERVISOR_TRAFFIC_STOPS),
     scenario: SCENARIO_TRAFFIC_STOPS,
+    supervisorScenario: SCENARIO_TRAFFIC_STOPS_SUP,
     questions: getTrafficStopQuestions(),
+    supervisorQuestions: getTrafficStopSupervisorQuestions(),
   },
   {
     id: 'emotional-intelligence',
@@ -90,8 +135,12 @@ const MODULES = [
     description: 'Self-regulation, empathy in victim contacts, trauma-informed approach, and building cooperation with resistant subjects.',
     duration: '15–20 min',
     weekNumber: 9,
+    contentHtml: READING_EI,
+    supervisorContentHtml: withSupervisorOverlay(READING_EI, SUPERVISOR_EI),
     scenario: SCENARIO_EI,
+    supervisorScenario: SCENARIO_EI_SUP,
     questions: getEIQuestions(),
+    supervisorQuestions: getEISupervisorQuestions(),
   },
   {
     id: 'evidence-chain-of-custody',
@@ -100,8 +149,12 @@ const MODULES = [
     description: 'Proper evidence collection, packaging, documentation, and chain of custody integrity from first officer on scene through prosecution.',
     duration: '15–20 min',
     weekNumber: 10,
+    contentHtml: READING_EVIDENCE,
+    supervisorContentHtml: withSupervisorOverlay(READING_EVIDENCE, SUPERVISOR_EVIDENCE),
     scenario: SCENARIO_EVIDENCE,
+    supervisorScenario: SCENARIO_EVIDENCE_SUP,
     questions: getEvidenceQuestions(),
+    supervisorQuestions: getEvidenceSupervisorQuestions(),
   },
   {
     id: 'officer-wellness',
@@ -110,8 +163,12 @@ const MODULES = [
     description: 'Recognizing operational stress injury and secondary trauma in yourself and your partners, and how to access support before a crisis.',
     duration: '15–20 min',
     weekNumber: 11,
+    contentHtml: READING_WELLNESS,
+    supervisorContentHtml: withSupervisorOverlay(READING_WELLNESS, SUPERVISOR_WELLNESS),
     scenario: SCENARIO_WELLNESS,
+    supervisorScenario: SCENARIO_WELLNESS_SUP,
     questions: getWellnessQuestions(),
+    supervisorQuestions: getWellnessSupervisorQuestions(),
   },
   {
     id: 'de-escalation',
@@ -120,8 +177,12 @@ const MODULES = [
     description: 'Verbal de-escalation techniques, crisis communication, time-distance-cover model, and tactical decision-making for mental health contacts.',
     duration: '15–20 min',
     weekNumber: 12,
+    contentHtml: READING_DEESCALATION,
+    supervisorContentHtml: withSupervisorOverlay(READING_DEESCALATION, SUPERVISOR_DEESCALATION),
     scenario: SCENARIO_DEESCALATION,
+    supervisorScenario: SCENARIO_DEESCALATION_SUP,
     questions: getDeescalationQuestions(),
+    supervisorQuestions: getDeescalationSupervisorQuestions(),
   },
 ];
 
@@ -173,7 +234,7 @@ function getSearchSeizureQuestions() {
         'There is no legal problem — odor plus nervous behavior always establishes probable cause in Pennsylvania courts.'
       ],
       correct: 1,
-      feedback: 'Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. "Appeared nervous" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. Commonwealth v. Enimpah (2014) is controlling.'
+      feedback: 'Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. "Appeared nervous" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. Under Commonwealth v. Barr (2021), odor is only one factor in the totality of the circumstances — which makes specific, documented observations essential; a conclusory report cannot carry that analysis.'
     },
     {
       scenario: 'During a foot pursuit, a suspect tosses a bag into an open dumpster on the side of a private parking lot before you apprehend him.',

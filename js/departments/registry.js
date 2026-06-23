@@ -19,11 +19,23 @@ const DEPARTMENT_REGISTRY = [
     // only the active department's scripts load per page.
     moduleScripts: [
       'js/modules/mtpd/scenarios-mtpd.js',
-      'js/modules/mtpd/modules-mtpd.js',
+      'js/modules/mtpd/module-mtpd-1.js',    // reading consts + supervisor variants, per module
+      'js/modules/mtpd/module-mtpd-2.js',
+      'js/modules/mtpd/module-mtpd-3.js',
+      'js/modules/mtpd/module-mtpd-4.js',
+      'js/modules/mtpd/module-mtpd-5.js',
+      'js/modules/mtpd/module-mtpd-6.js',
+      'js/modules/mtpd/module-mtpd-7.js',
+      'js/modules/mtpd/module-mtpd-8.js',
+      'js/modules/mtpd/module-mtpd-9.js',
+      'js/modules/mtpd/module-mtpd-10.js',
+      'js/modules/mtpd/module-mtpd-11.js',
+      'js/modules/mtpd/module-mtpd-12.js',
+      'js/modules/mtpd/modules-mtpd.js',     // builds MODULES from the consts above
     ],
     // Per-department capability flags. Shared code branches on these, never
     // on the subdomain. Absent/false = the feature is off for this department.
-    features: {},               // MTPD: no supervisor track
+    features: { supervisorTrack: true },     // MTPD: supervisor reading + graded quiz (all 12)
   },
   // ── Add new agencies below ────────────────
   {
