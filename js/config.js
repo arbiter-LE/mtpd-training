@@ -3,47 +3,66 @@
 ═══════════════════════════════════════════ */
 
 /* ── Schedule Engine ────────────────────── */
-// Schedule start is per-department, defined in js/departments/registry.js.
-// Each module unlocks at the start of its week; due by that Sunday.
-// One week buffer before status flips to overdue.
+// Schedule start AND cadence are per-department data, defined in
+// js/departments/registry.js — never branch the engine on subdomain.
+// A module unlocks every `unlockEveryDays`; due dates run in periods of
+// `duePeriodDays`, with `modulesPerPeriod` modules sharing each due date;
+// `bufferPeriods` periods of grace before status flips to overdue.
 
-function getSundayOfWeek(weekNumber) {
-  // Returns the due date for a given 1-based week number.
-  // Modules are due twice a month — every two weeks.
-  // Weeks 1-2 share a due date, weeks 3-4 share one, etc.
-  const biweeklyPeriod = Math.ceil(weekNumber / 2);
+function deptCadence() {
+  // Safe legacy default (weekly unlock, biweekly paired due) for any
+  // department that predates the per-department cadence field.
+  return (ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.cadence) || {
+    unlockEveryDays: 7, duePeriodDays: 14, modulesPerPeriod: 2, bufferPeriods: 1,
+  };
+}
+
+function getModuleDueDate(weekNumber) {
+  // Due date for a 1-based module number, per the department's cadence.
+  const c = deptCadence();
+  const dueIndex = Math.ceil(weekNumber / c.modulesPerPeriod);
   const d = new Date(ACTIVE_DEPARTMENT.scheduleStart);
-  d.setDate(d.getDate() + (biweeklyPeriod * 14));
+  d.setDate(d.getDate() + dueIndex * c.duePeriodDays);
+  d.setHours(23, 59, 59, 0);
+  return d;
+}
+
+function getModuleBufferEnd(weekNumber) {
+  const c = deptCadence();
+  const dueIndex = Math.ceil(weekNumber / c.modulesPerPeriod);
+  const d = new Date(ACTIVE_DEPARTMENT.scheduleStart);
+  d.setDate(d.getDate() + (dueIndex + c.bufferPeriods) * c.duePeriodDays);
   d.setHours(23, 59, 59, 0);
   return d;
 }
 
 function getModuleSchedule(weekNumber) {
   const now       = new Date();
-  const dueSunday = getSundayOfWeek(weekNumber);
-  const bufferEnd = getSundayOfWeek(weekNumber + 2); // two-week buffer
+  const dueDate   = getModuleDueDate(weekNumber);
+  const bufferEnd = getModuleBufferEnd(weekNumber);
 
   const fmt = d => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   const daysUntil = d => Math.ceil((d - now) / 86400000);
 
-  if (now <= dueSunday) {
-    const days = daysUntil(dueSunday);
+  if (now <= dueDate) {
+    const days = daysUntil(dueDate);
     if (days <= 2) {
-      return { label: days === 0 ? 'Due Today' : `Due in ${days} day${days!==1?'s':''}`, class: 'overdue', status: 'due-soon', dueDate: dueSunday };
+      return { label: days === 0 ? 'Due Today' : `Due in ${days} day${days!==1?'s':''}`, class: 'overdue', status: 'due-soon', dueDate };
     }
-    return { label: `Due ${fmt(dueSunday)}`, class: 'pending', status: 'upcoming', dueDate: dueSunday };
+    return { label: `Due ${fmt(dueDate)}`, class: 'pending', status: 'upcoming', dueDate };
   } else if (now <= bufferEnd) {
     const days = daysUntil(bufferEnd);
     return { label: `Buffer — ${days}d left`, class: 'overdue', status: 'buffer', dueDate: bufferEnd };
   } else {
-    return { label: 'Overdue', class: 'overdue', status: 'overdue', dueDate: dueSunday };
+    return { label: 'Overdue', class: 'overdue', status: 'overdue', dueDate };
   }
 }
 
 function getModuleOpenDate(weekNumber) {
-  // A module unlocks at the start of its week (weekNumber - 1 weeks after scheduleStart)
+  // A module unlocks `unlockEveryDays` after the previous one.
+  const c = deptCadence();
   const d = new Date(ACTIVE_DEPARTMENT.scheduleStart);
-  d.setDate(d.getDate() + (weekNumber - 1) * 7);
+  d.setDate(d.getDate() + (weekNumber - 1) * c.unlockEveryDays);
   d.setHours(0, 0, 0, 0);
   return d;
 }

@@ -13,7 +13,10 @@ const DEPARTMENT_REGISTRY = [
     badge: 'assets/mtpd-badge.png',
     supabaseUrl: 'https://lkikznncbpfcmgnnyigj.supabase.co',
     supabaseKey: 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6',
-    scheduleStart: new Date('2026-06-01T00:00:00'), // Monday — Week 1 opens
+    scheduleStart: new Date('2026-06-24T00:00:00'), // Relaunch — Module 1 opens (voluntary lab)
+    // Twice-a-month cadence: one module unlocks every 14 days, each due 14 days
+    // after it opens, with a 14-day grace buffer before "overdue".
+    cadence: { unlockEveryDays: 14, duePeriodDays: 14, modulesPerPeriod: 1, bufferPeriods: 1 },
     // Content scripts for this department, loaded in order by index.html.
     // They define the same globals (MODULES, SCENARIO_*, get*Questions);
     // only the active department's scripts load per page.
@@ -47,6 +50,9 @@ const DEPARTMENT_REGISTRY = [
     supabaseUrl: 'https://kczrylxnrzkcwgivlqrs.supabase.co',
     supabaseKey: 'sb_publishable_W9kN8bhnwKwMCwKv5zu5GA_xhiq-vXR',
     scheduleStart: new Date('2026-06-17T00:00:00'), // Requested go-live per onboarding packet
+    // Pilot cadence (locked — live since June 17): a module unlocks weekly, but
+    // modules are due in biweekly pairs (M1+M2 share a due date, etc.).
+    cadence: { unlockEveryDays: 7, duePeriodDays: 14, modulesPerPeriod: 2, bufferPeriods: 1 },
     moduleScripts: [
       'js/modules/egpd/module-egpd-1.js',
       'js/modules/egpd/module-egpd-2.js',
