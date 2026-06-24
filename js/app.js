@@ -1396,13 +1396,14 @@ function filterCitations(type, btn) {
 const FEEDBACK_KEY = 'mtpd_feedback_v1';
 
 function openFeedbackModal() {
+  const deptShort = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.shortName) ? ACTIVE_DEPARTMENT.shortName : 'Department';
   // Re-render the form cleanly
   document.getElementById('feedback-form-body').innerHTML = `
     <div class="feedback-form-group">
       <label>Category</label>
       <select id="feedback-category">
         <option value="legal">Legal Reference / Case Law</option>
-        <option value="sop">MTPD Order / SOP</option>
+        <option value="sop">${deptShort} Order / SOP</option>
         <option value="scenario">Scenario Issue</option>
         <option value="quiz">Quiz Question</option>
         <option value="content">Content Accuracy</option>
@@ -1447,14 +1448,31 @@ async function submitFeedback() {
     feedback:     text,
     submitted_at: new Date().toISOString()
   };
-  // Save to localStorage
+  // Local backup first — a flag is never lost even if the network drops
   const stored = JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '[]');
   stored.unshift(entry);
   localStorage.setItem(FEEDBACK_KEY, JSON.stringify(stored));
-  // Try Supabase
+  // Persist to Supabase so the administrator can actually see it. Surface
+  // failures instead of swallowing them — otherwise an officer is told the
+  // flag was received when it never reached us (the original bug).
+  let saveError = null;
   try {
-    await _sb.from('feedback').insert(entry);
-  } catch(e) { /* localStorage fallback already saved */ }
+    const { error } = await _sb.from('feedback').insert(entry);
+    saveError = error;
+  } catch(e) { saveError = e; }
+  if (saveError) {
+    console.warn('ALE: feedback save failed —', saveError.message || saveError);
+    if (btn) { btn.disabled = false; btn.textContent = 'Submit →'; }
+    let err = document.getElementById('feedback-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.id = 'feedback-error';
+      err.style.cssText = 'margin:0 0 12px;padding:10px 12px;border-radius:6px;background:rgba(139,38,53,.12);color:#8b2635;font-size:13px;line-height:1.4';
+      document.getElementById('feedback-form-body').prepend(err);
+    }
+    err.textContent = '⚠ Your flag could not be submitted. Check your connection and tap Submit again. If it keeps failing, email your training administrator directly.';
+    return;
+  }
   // Show success
   document.getElementById('feedback-form-body').innerHTML = `
     <div class="feedback-success-msg">
@@ -1466,17 +1484,33 @@ async function submitFeedback() {
     </div>`;
 }
 
-function renderAdminFeedback() {
+async function renderAdminFeedback() {
   const listEl = document.getElementById('admin-feedback-list');
   if (!listEl) return;
-  const stored = JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '[]');
-  if (stored.length === 0) {
-    listEl.innerHTML = '<div class="feedback-empty">No feedback submitted yet. Officers can flag content issues while reading any module.</div>';
+  listEl.innerHTML = '<div class="feedback-empty">Loading flags…</div>';
+  // Read from Supabase so flags submitted on ANY device show up here — the
+  // old localStorage-only read meant an admin only saw flags filed on their
+  // own browser, and never an officer's or the chief's.
+  let rows = [];
+  let banner = '';
+  try {
+    const { data, error } = await _sb.from('feedback')
+      .select('*').order('submitted_at', { ascending: false });
+    if (error) throw error;
+    rows = data || [];
+  } catch(e) {
+    console.warn('ALE: feedback load failed —', e.message || e);
+    rows = JSON.parse(localStorage.getItem(FEEDBACK_KEY) || '[]');
+    banner = '<div class="feedback-empty" style="color:#8b2635;margin-bottom:12px">Couldn\'t reach the server — showing locally cached flags only. Some flags may be missing.</div>';
+  }
+  if (rows.length === 0) {
+    listEl.innerHTML = banner || '<div class="feedback-empty">No feedback submitted yet. Officers can flag content issues while reading any module.</div>';
     return;
   }
-  listEl.innerHTML = stored.map(f => {
+  listEl.innerHTML = banner + rows.map(f => {
     const dt = f.submitted_at ? new Date(f.submitted_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '—';
-    const catLabel = {legal:'Legal Reference',sop:'MTPD Order / SOP',scenario:'Scenario',quiz:'Quiz Question',content:'Content Accuracy',other:'Other'}[f.category] || f.category;
+    const deptShort = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.shortName) ? ACTIVE_DEPARTMENT.shortName : 'Department';
+    const catLabel = {legal:'Legal Reference',sop:deptShort+' Order / SOP',scenario:'Scenario',quiz:'Quiz Question',content:'Content Accuracy',other:'Other'}[f.category] || f.category;
     return `<div class="feedback-item">
       <div class="feedback-item-header">
         <div class="feedback-item-meta"><strong>${f.module_title || f.module_id}</strong> &nbsp;·&nbsp; Badge ${f.badge_number} &nbsp;·&nbsp; ${dt}</div>
