@@ -221,12 +221,12 @@ function getEIQuestions() {
       scenario: 'You arrive for a follow-up welfare check on a domestic violence victim. She answers the door with crossed arms and says she doesn\'t want to talk.',
       text: 'According to IACP research, what is the strongest predictor of victim cooperation with the criminal justice process?',
       options: [
+        'Officer demeanor in the first 60 seconds of the victim contact.',
         'The severity of the documented injuries from the original incident.',
         'Whether the victim has retained a private attorney.',
-        'Officer demeanor in the first 60 seconds of the victim contact.',
         'The number of prior DV incidents on record at the address.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. IACP research consistently identifies officer demeanor in the first 60 seconds of a victim contact as the strongest predictor of victim cooperation. Victims who experience the initial contact as controlling, dismissive, or skeptical are significantly less likely to provide statements or pursue protective orders. The officer\'s emotional approach is not separate from the investigation — it is part of it.'
     },
     {
@@ -234,23 +234,23 @@ function getEIQuestions() {
       text: 'What is the most accurate interpretation of this behavior from a trauma-informed perspective?',
       options: [
         'The victim is likely being deceptive and may be filing a false report.',
-        'This is a normal trauma response — hostility and minimization are self-protective behaviors common in DV victims.',
         'The victim\'s demeanor indicates the incident was minor and enforcement action may be unwarranted.',
-        'Hostility toward police indicates the victim may be under the control of the suspect.'
+        'Hostility toward police indicates the victim may be under the control of the suspect.',
+        'This is a normal trauma response — hostility and minimization are self-protective behaviors common in DV victims.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Hostility, minimization, and recantation are normal trauma responses in domestic violence victims — they are not indicators of deception. These behaviors stem from fear, shame, prior negative law enforcement experiences, and the complex dynamics of abusive relationships. A trauma-informed officer recognizes this pattern and adjusts their approach accordingly rather than misreading it as uncooperativeness or deception.'
     },
     {
       scenario: 'A DV victim says: "He\'s going to be out soon anyway. I know how this works." She appears fearful but resigned.',
       text: 'What is the most appropriate and professionally sound response?',
       options: [
-        'Reassure her that he will not be released anytime soon to build her confidence.',
         'Provide accurate information about the arraignment process, the victim advocate program, and the PFA option — honest and actionable.',
+        'Reassure her that he will not be released anytime soon to build her confidence.',
         'Explain that you cannot make predictions about the criminal justice process and redirect to your required documentation.',
         'Tell her that her cooperation will influence whether he stays in custody.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. DV victims with prior experience in the justice system know when they are being given false reassurance — and when it happens, it destroys the trust you were building. The professionally sound response is accurate information: what the arraignment process looks like, what a PFA order is and how to get one today, and how to reach the victim advocate. Honest and actionable beats reassuring and inaccurate every time. Providing misleading information about custody violates EGPD General Order 4.13 notification requirements.'
     },
     {
@@ -258,11 +258,11 @@ function getEIQuestions() {
       text: 'What is the correct documentation action?',
       options: [
         'Note the bruise verbally in your CAD entry and follow up at the next contact.',
-        'Document the injury in a supplemental report, including a description of the injury, its location, the victim\'s account of how it occurred, and any photographs taken.',
         'The follow-up contact is welfare only — injuries discovered during welfare checks are documented by the detective assigned to the case.',
-        'Document only if the victim signs a medical release authorizing you to include her injury in official reports.'
+        'Document only if the victim signs a medical release authorizing you to include her injury in official reports.',
+        'Document the injury in a supplemental report, including a description of the injury, its location, the victim\'s account of how it occurred, and any photographs taken.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Evidence identified during follow-up contacts is still evidence. A supplemental report must document the injury with specificity: location on the body, approximate size and coloration, the victim\'s statement about when and how it occurred (clearly attributed to her), and whether photographs were taken. Follow-up contact documentation is not secondary to the original report — in many DV cases it contains the most damaging evidence. There is no medical release requirement for documenting observable injuries.'
     },
     {
@@ -282,23 +282,23 @@ function getEIQuestions() {
       text: 'What is the most effective response in the moment?',
       options: [
         'Correct your partner\'s approach out loud — the subject needs to see you are handling it.',
-        'Step in front of your partner, calmly redirect the subject\'s attention to you, and use a quiet, steady tone to re-establish rapport. Address your partner\'s approach privately after the scene is resolved.',
         'Follow your partner\'s lead — contradicting them on scene undermines unit authority.',
+        'Step in front of your partner, calmly redirect the subject\'s attention to you, and use a quiet, steady tone to re-establish rapport. Address your partner\'s approach privately after the scene is resolved.',
         'Request a supervisor to take over — the call has been compromised.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. On-scene contradictions between partners escalate situations and undermine both officers\' authority. The effective response is to absorb the escalation by redirecting the subject\'s focus to you, using calm tone and de-escalation language to re-stabilize. Address your partner\'s approach privately and professionally after the scene is resolved. This preserves safety, partnership, and your credibility. Publicly correcting a partner is itself an escalation.'
     },
     {
       scenario: 'A subject you have arrested becomes tearful and discloses personal trauma during transport. They are not making threats, not a danger to themselves, and are cooperative.',
       text: 'What is the emotionally intelligent officer response?',
       options: [
+        'Acknowledge the disclosure with brief, genuine recognition: "That sounds really hard." Do not interrogate, do not dismiss. Remain professional and compassionate without soliciting further statements.',
         'Redirect immediately to booking logistics — personal disclosures during transport are not your role.',
         'Encourage them to keep talking — it builds rapport and may produce admissible statements.',
-        'Acknowledge the disclosure with brief, genuine recognition: "That sounds really hard." Do not interrogate, do not dismiss. Remain professional and compassionate without soliciting further statements.',
         'Inform them that anything they say can be used against them before they say anything further.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. A brief, genuine human acknowledgment — without interrogation, without dismissal — is both ethical and professionally appropriate. You are not a counselor, but you are not required to be cold either. Do not solicit further statements that could create custodial interrogation issues. Do not exploit emotional vulnerability for investigative purposes. Simply acknowledging someone\'s pain is part of the professional treatment every person in custody deserves.'
     },
     {
@@ -306,11 +306,11 @@ function getEIQuestions() {
       text: 'This pattern most likely reflects which occupational health phenomenon, and what is the recommended response?',
       options: [
         'Adaptation — officers develop appropriate emotional distance over time. No action needed.',
-        'Secondary traumatic stress or emotional numbing, which are recognized risk factors for burnout and long-term psychological impact. The recommended response is early engagement with peer support or EAP resources.',
         'Burnout — which requires immediate medical leave.',
-        'Compassion fatigue — which resolves on its own with adequate rest.'
+        'Compassion fatigue — which resolves on its own with adequate rest.',
+        'Secondary traumatic stress or emotional numbing, which are recognized risk factors for burnout and long-term psychological impact. The recommended response is early engagement with peer support or EAP resources.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Emotional numbing — feeling nothing on scenes that previously had impact — is a recognized early indicator of secondary traumatic stress and the pathway to burnout. It is not strength or adaptation; it is a signal. EAP and peer support resources exist specifically for this reason and carry confidentiality protections. The research is clear: early intervention produces significantly better outcomes than crisis-point intervention. If you recognize this in yourself, act early.'
     },
   ];
@@ -360,12 +360,12 @@ function getEISupervisorQuestions() {
       scenario: 'An officer\'s DV follow-up contact ended with the victim closing the door. The report summarizes it as "victim uncooperative, refused to provide a statement."',
       text: 'How should you handle this in review and debrief?',
       options: [
-        'Accept the summary — if the victim refused to talk, there is nothing more to examine.',
         'Examine the contact itself: did the officer lead with the evidence or acknowledge before asking? Hostility and a closed door are trauma responses, not a closed case, and the technique is coachable — especially since the follow-up often holds the most damaging DV evidence.',
+        'Accept the summary — if the victim refused to talk, there is nothing more to examine.',
         'Direct the officer to force the issue more firmly at the next contact.',
         'Close the case, since an uncooperative victim cannot be prosecuted.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. "Victim uncooperative" is often a technique problem, not a dead end. IACP research ties cooperation to the officer\'s demeanor in the first 60 seconds; hostility and minimization are trauma responses. A supervisor coaches the trauma-informed approach because the follow-up contact frequently contains the most important evidence in a DV prosecution.'
     },
     {
@@ -373,11 +373,11 @@ function getEISupervisorQuestions() {
       text: 'What is your supervisory assessment?',
       options: [
         'It was a kind and appropriate way to calm the victim.',
-        'It was a mistake to coach: a system-experienced victim recognizes false reassurance about arraignment and bail, and it collapses trust. GO 4.13.7 requires accurate information about services and rights under 23 Pa.C.S. Ch. 61 — honest and actionable beats reassuring and inaccurate.',
         'It was fine because the officer was trying to help.',
-        'It was acceptable as long as the officer also took a report.'
+        'It was acceptable as long as the officer also took a report.',
+        'It was a mistake to coach: a system-experienced victim recognizes false reassurance about arraignment and bail, and it collapses trust. GO 4.13.7 requires accurate information about services and rights under 23 Pa.C.S. Ch. 61 — honest and actionable beats reassuring and inaccurate.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. False reassurance is one of the most damaging things an officer can offer a DV victim — they know how arraignment and bail work, and the overstatement destroys trust. The standard, consistent with GO 4.13.7, is accurate information plus actionable options (PFA, victim advocate). The supervisor coaches honest and actionable.'
     },
     {
@@ -385,11 +385,11 @@ function getEISupervisorQuestions() {
       text: 'What is the right response, in the moment and afterward?',
       options: [
         'Correct the officer out loud immediately so the subject sees you are taking control.',
-        'Absorb the escalation in the moment — step in, redirect the subject\'s attention, re-stabilize with a calm tone — and address the officer\'s approach privately afterward, because public correction of an officer is itself an escalation and you model regulation for the squad.',
         'Let the officer continue so as not to undermine their authority.',
+        'Absorb the escalation in the moment — step in, redirect the subject\'s attention, re-stabilize with a calm tone — and address the officer\'s approach privately afterward, because public correction of an officer is itself an escalation and you model regulation for the squad.',
         'Pull the officer from the scene and finish the call yourself without comment.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. The effective move is to absorb and redirect, then correct privately. A public correction escalates the scene and undermines the officer. How a supervisor handles this — calm in the moment, development in private — models the self-regulation that drives use-of-force rates and complaints across the whole squad.'
     },
     {
@@ -408,12 +408,12 @@ function getEISupervisorQuestions() {
       scenario: 'An officer tells you they have stopped feeling anything on scenes that used to affect them, and frames it as a sign they are getting tougher and more professional.',
       text: 'How should you read and respond to this?',
       options: [
-        'Affirm it — emotional distance is healthy adaptation that comes with experience.',
         'Treat it as a red flag, not resilience: emotional numbing is an early indicator of secondary traumatic stress and a pathway to burnout. Name it as such and encourage early, confidential engagement with peer support or EAP.',
+        'Affirm it — emotional distance is healthy adaptation that comes with experience.',
         'Note it approvingly as evidence the officer is ready for higher-stress assignments.',
         'Take no action unless the officer\'s performance declines.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Feeling nothing on calls that used to land is an early indicator of secondary traumatic stress, not strength or adaptation. A supervisor names it rather than admiring it and points the officer toward early, confidential intervention — which produces far better outcomes than waiting for a crisis.'
     },
     {
@@ -421,11 +421,11 @@ function getEISupervisorQuestions() {
       text: 'Is that sufficient?',
       options: [
         'Yes — escalating to your supervisor and wellness discharges your responsibility.',
-        'No — flagging upward is appropriate as a follow-up but not a substitute for the direct, peer-level check-in only you, who works beside the officer, can have. Do the human step first, then involve other resources.',
         'Yes — peer-level conversations are outside a supervisor\'s role.',
-        'No — you should avoid involving wellness entirely and handle it alone.'
+        'No — you should avoid involving wellness entirely and handle it alone.',
+        'No — flagging upward is appropriate as a follow-up but not a substitute for the direct, peer-level check-in only you, who works beside the officer, can have. Do the human step first, then involve other resources.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. A sergeant or wellness referral carries a different, more evaluative weight, and kicking it upward as the only move skips the most important step. The peer connection — naming what you see, without pressure — comes first; the formal follow-up complements it rather than replacing it.'
     },
     {
@@ -433,11 +433,11 @@ function getEISupervisorQuestions() {
       text: 'Why does it matter that you know the confidentiality protections accurately?',
       options: [
         'It does not — the officer should use the resources regardless of the details.',
-        'Because an officer will not engage a resource they believe is not confidential, and accurate knowledge — that 42 Pa.C.S. § 5950 protects critical incident stress management communications, § 5952 extends it to trained peer support members, and EAP is confidential — lets you tell them the truth about the low risk, which is often what decides whether they reach out.',
         'Because you are required to record which officers use which services.',
+        'Because an officer will not engage a resource they believe is not confidential, and accurate knowledge — that 42 Pa.C.S. § 5950 protects critical incident stress management communications, § 5952 extends it to trained peer support members, and EAP is confidential — lets you tell them the truth about the low risk, which is often what decides whether they reach out.',
         'Because confidentiality protections do not apply to law enforcement.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Officers do not use resources they think are not confidential. Knowing the protections accurately — 42 Pa.C.S. § 5950 and § 5952 for peer/CISM communications, and EAP confidentiality — lets a supervisor convey the truth credibly, and that credibility is frequently the difference between an officer who calls and one who does not.'
     },
     {

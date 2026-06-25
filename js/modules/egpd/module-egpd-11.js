@@ -223,12 +223,12 @@ function getWellnessQuestions() {
       scenario: 'After six months of heavy call volume including multiple traumatic incidents, an officer tells you: "I just don\'t care anymore. Nothing bothers me. I feel like I\'m watching everything from far away."',
       text: 'This description most closely matches which recognized condition in law enforcement?',
       options: [
-        'Normal stress adaptation — a sign the officer is getting better at compartmentalization.',
         'Secondary traumatic stress or operational stress injury — characterized by emotional numbing, detachment, and depersonalization.',
+        'Normal stress adaptation — a sign the officer is getting better at compartmentalization.',
         'Burnout from shift work — resolved by taking a vacation.',
         'A personality trait unrelated to the job.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Emotional numbing, depersonalization ("watching from far away"), and loss of empathy are recognized symptoms of secondary traumatic stress (STS) and operational stress injury (OSI) — documented occupational health conditions in law enforcement. These are not personality failures or signs of weakness. They are physiological responses to sustained exposure to trauma and high-stakes stress. Identifying them early is the difference between intervention and crisis.'
     },
     {
@@ -237,10 +237,10 @@ function getWellnessQuestions() {
       options: [
         'Report him to the shift supervisor immediately without speaking to him first.',
         'Ignore the comment — dark humor is normal in law enforcement.',
-        'Speak with him directly, express concern without judgment, and inform him of the peer support program. If safety concerns persist, involve a peer support officer.',
-        'Contact his family to let them know he may need help.'
+        'Contact his family to let them know he may need help.',
+        'Speak with him directly, express concern without judgment, and inform him of the peer support program. If safety concerns persist, involve a peer support officer.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. The appropriate first step is a direct, private conversation — without judgment, without escalating immediately to administration. Peer support exists for exactly this scenario. The comment about not caring whether he comes home is a warning sign that warrants a response beyond dark humor dismissal. If after a peer conversation there are continuing safety concerns — particularly around fitness for duty — involving a peer support officer or supervisor becomes the appropriate next step.'
     },
     {
@@ -248,23 +248,23 @@ function getWellnessQuestions() {
       text: 'Under Pennsylvania law and standard peer support program design, peer support contacts are:',
       options: [
         'Fully confidential with no exceptions — nothing discussed can ever be disclosed.',
-        'Confidential but subject to mandatory disclosure if the officer reveals intent to harm themselves or others, or describes conduct that constitutes a crime.',
         'Reported to the officer\'s supervisor automatically.',
+        'Confidential but subject to mandatory disclosure if the officer reveals intent to harm themselves or others, or describes conduct that constitutes a crime.',
         'Included in the officer\'s personnel file as a wellness record.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Peer support contacts are confidential under Pennsylvania law and standard peer support program design — but confidentiality is not absolute. If an officer discloses imminent intent to harm themselves or others, or describes conduct constituting a criminal offense, disclosure may be required. This is the same standard that applies to mental health professionals. Peer support officers are trained to communicate these limits clearly at the start of any contact. The goal is to encourage use of the program, not to create false expectations about absolute confidentiality.'
     },
     {
       scenario: 'You notice that sleep disruption, irritability, and difficulty concentrating have been affecting your own performance for the past several weeks, particularly after a difficult call involving a child fatality.',
       text: 'According to first responder wellness research, what is the appropriate action for an officer experiencing these symptoms?',
       options: [
-        'Push through — these symptoms are normal and will resolve on their own.',
         'Self-refer to the peer support program or employee assistance program (EAP) — early self-referral is encouraged and does not automatically trigger a fitness-for-duty evaluation.',
+        'Push through — these symptoms are normal and will resolve on their own.',
         'Immediately disclose the symptoms to your supervisor to avoid liability.',
         'Wait until annual evaluation to discuss with the department psychologist.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Self-referral to peer support or the EAP is the appropriate early action and does not automatically trigger administrative review or fitness-for-duty evaluation. Wellness research and standard peer support program design distinguish between voluntary wellness contacts — which are confidential — and formal fitness-for-duty evaluations, which are administrative in nature and involve a different process. Early intervention is far less disruptive than waiting for symptoms to escalate to a point where administrative action becomes necessary.'
     },
     {
@@ -273,22 +273,22 @@ function getWellnessQuestions() {
       options: [
         'Continue informal peer support — he will come around in his own time.',
         'Contact his family and let them know what you observed.',
-        'Tell him directly what you observed and that you intend to contact peer support on his behalf. Give him the opportunity to self-refer first. Then follow through.',
-        'File a formal complaint with internal affairs about the performance issue.'
+        'File a formal complaint with internal affairs about the performance issue.',
+        'Tell him directly what you observed and that you intend to contact peer support on his behalf. Give him the opportunity to self-refer first. Then follow through.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. When informal support has not produced change and officer performance is creating safety concerns on active calls, the threshold for escalating support — not discipline — has been crossed. The correct approach is transparency: tell him what you observed, give him the opportunity to self-refer, and make clear you are following through regardless. This is not a betrayal — it is the highest form of partner loyalty. An officer who cannot safely perform their duties is a danger to themselves, their partners, and the public.'
     },
     {
       scenario: 'An officer in your squad has been making comments that concern you — dark humor that has shifted over the past month, coming in early and leaving late without explanation, and declining to join the group for lunch. No single behavior is alarming, but the pattern has been building.',
       text: 'What is the appropriate response from a peer?',
       options: [
+        'Engage the officer directly and privately. Name what you have noticed without accusation. Create space for them to talk if they want to. Mention peer support as an option. Follow up.',
         'Report the officer to the supervisor — the pattern suggests a performance issue.',
         'Mention it to another colleague to see if they have noticed the same thing.',
-        'Engage the officer directly and privately. Name what you have noticed without accusation. Create space for them to talk if they want to. Mention peer support as an option. Follow up.',
         'Wait and watch — officers sometimes go through phases and recover on their own.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. Behavioral pattern changes are among the most reliable early indicators of officer distress. No single behavior may trigger concern, but the accumulated pattern is the signal. Direct, private peer engagement — without accusation, without pressure — is the research-supported first response. "I\'ve noticed you seem different lately and I just wanted to check in" costs nothing and can save a career or a life. Peer support contacts are confidential.'
     },
     {
@@ -296,11 +296,11 @@ function getWellnessQuestions() {
       text: 'What does the research say about mandatory versus voluntary debriefs, and what is the appropriate peer response?',
       options: [
         'Respect their decision — mandatory mental health participation is counterproductive and violates autonomy.',
-        'The officer should be required to attend — waivers should not be permitted after OIS events.',
         'Normalize the debrief without pressure: explain it is standard practice, not an indication of weakness, and that research shows engagement with post-incident support significantly reduces long-term psychological impact. Encourage attendance without mandating it.',
+        'The officer should be required to attend — waivers should not be permitted after OIS events.',
         'Alert the supervisor so they can make attendance mandatory.'
       ],
-      correct: 2,
+      correct: 1,
       feedback: 'Correct. Critical incident debriefs serve both immediate and long-term wellness functions. The research consistently shows that early engagement with post-incident support reduces the incidence of PTSD and long-term psychological injury. Normalizing participation — "everyone goes through this, it\'s part of the protocol" — reduces stigma without coercion. Coercing participation produces defensive engagement. The peer\'s role is to normalize and encourage, not to enforce.'
     },
     {
@@ -308,11 +308,11 @@ function getWellnessQuestions() {
       text: 'What does a wellness-informed response to that question look like?',
       options: [
         '"Fine" — the sergeant is asking as a formality and the answer should be brief.',
-        'Provide an honest, calibrated update: acknowledge the weight of the past three months, note what is currently stable, and mention anything that you are monitoring in yourself — without dramatizing or minimizing.',
         'Deflect the question — wellness check-ins are a compliance exercise and detailed responses invite unwanted attention.',
-        '"I\'m handling it" — officers are expected to manage operational stress without external support.'
+        '"I\'m handling it" — officers are expected to manage operational stress without external support.',
+        'Provide an honest, calibrated update: acknowledge the weight of the past three months, note what is currently stable, and mention anything that you are monitoring in yourself — without dramatizing or minimizing.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. A wellness-informed officer knows how to give an honest calibrated answer: neither dramatizing nor minimizing. You can acknowledge that the past three months were heavy, note that you are currently stable, and mention anything you are paying attention to in yourself. This kind of honest self-awareness is not weakness — it is the professional capacity to monitor your own system the same way you monitor your patrol vehicle. Supervisors who ask are trying to lead. Let them.'
     },
   ];
@@ -363,12 +363,12 @@ function getWellnessSupervisorQuestions() {
       scenario: 'You want fewer of your officers to suffer in silence with operational stress. You are thinking about how to use the Ruderman Foundation finding that officers are more likely to die by suicide than in the line of duty, with stigma as the central barrier.',
       text: 'As a supervisor, how do you act on this?',
       options: [
-        'Treat it as an individual problem — each officer is responsible for their own mental health.',
         'Treat the stigma as a culture problem you control: make the safe path legible by stating clearly and repeatedly that wellness contacts and EAP are confidential and distinct from fitness-for-duty, and back it by how you treat officers who use them — because one officer quietly penalized for seeking help teaches the whole squad not to.',
+        'Treat it as an individual problem — each officer is responsible for their own mental health.',
         'Require every officer to attend mandatory counseling to remove the stigma.',
         'Avoid discussing mental health so officers do not feel singled out.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. For a supervisor, the stigma the Ruderman white paper identifies is a culture problem within their control. Making the confidential, non-career-threatening path legible — and proving it by how officers who seek help are treated — is the work. A single officer punished for reaching out undoes it for everyone.'
     },
     {
@@ -376,11 +376,11 @@ function getWellnessSupervisorQuestions() {
       text: 'Why must the distinction between a wellness referral and a fitness-for-duty evaluation stay clean?',
       options: [
         'They are the same thing, so the distinction does not matter.',
-        'Because a wellness referral is protective and confidential while a fitness-for-duty evaluation is a formal administrative process — confusing the two in front of your people frames support as punishment and discourages everyone from ever seeking help.',
         'Because only fitness-for-duty evaluations are confidential.',
-        'Because wellness referrals are always disciplinary and should be treated as such.'
+        'Because wellness referrals are always disciplinary and should be treated as such.',
+        'Because a wellness referral is protective and confidential while a fitness-for-duty evaluation is a formal administrative process — confusing the two in front of your people frames support as punishment and discourages everyone from ever seeking help.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. A wellness referral protects and is confidential; a fitness-for-duty evaluation is a formal administrative process. Keeping the lanes distinct — and being clear which one an officer is in — is what prevents support from being experienced as discipline, which is what keeps officers willing to engage.'
     },
     {
@@ -388,11 +388,11 @@ function getWellnessSupervisorQuestions() {
       text: 'How does GO 1.3.7 model the department\'s approach, and how should you frame it?',
       options: [
         'It treats post-incident reassignment as a suspension, so you should frame it as discipline.',
-        'It requires post-incident psychological evaluation at department expense and provides that reassignment "shall not be considered a suspension or disciplinary action" — so you frame any administrative assignment during recovery as support and space to recover, not punishment.',
         'It leaves all post-incident wellness to the officer\'s discretion with no department role.',
+        'It requires post-incident psychological evaluation at department expense and provides that reassignment "shall not be considered a suspension or disciplinary action" — so you frame any administrative assignment during recovery as support and space to recover, not punishment.',
         'It prohibits any reassignment after a critical incident.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. GO 1.3.7 reflects the support-not-punishment philosophy: mandatory post-incident psychological evaluation at department expense, with reassignment that is expressly not a suspension or disciplinary action. A supervisor uses that same framing whenever acting on wellness — protection and recovery, not a mark against the officer.'
     },
     {
@@ -411,12 +411,12 @@ function getWellnessSupervisorQuestions() {
       scenario: 'After an officer\'s breakdown, a review finds that many people on the squad had noticed the decline for weeks, but no one said anything.',
       text: 'What does this reveal, and what is the supervisor\'s responsibility?',
       options: [
-        'Nothing — what officers choose to report among themselves is not a supervisory matter.',
         'It reveals a culture failure the supervisor owns: making it safe and expected to raise concern about a colleague is the supervisor\'s job, and a squad where everyone notices but no one speaks is a condition the supervisor is responsible for changing.',
+        'Nothing — what officers choose to report among themselves is not a supervisory matter.',
         'It shows the officers were correct to stay silent and protect their colleague.',
         'It is solely the fault of the individual officers who failed to report.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. "Everyone noticed and no one said anything" is a culture failure a supervisor owns. The code of silence operating around officer wellness is something the supervisor is responsible for dismantling — by making it safe and expected to raise concern about a colleague before a crisis.'
     },
     {
@@ -436,11 +436,11 @@ function getWellnessSupervisorQuestions() {
       text: 'Why does your own behavior here matter as a supervisor?',
       options: [
         'It does not — a supervisor\'s personal wellness is separate from the squad\'s.',
-        'Because your example sets the squad\'s permission: a visibly depleted supervisor snapping and saying "fine" trains officers to do the same, while modeling calibrated honesty — acknowledging the weight, naming what is stable, saying what you are watching in yourself — shows them that "fine" is not the only acceptable answer.',
         'Because supervisors are exempt from wellness expectations and should hide any strain.',
+        'Because your example sets the squad\'s permission: a visibly depleted supervisor snapping and saying "fine" trains officers to do the same, while modeling calibrated honesty — acknowledging the weight, naming what is stable, saying what you are watching in yourself — shows them that "fine" is not the only acceptable answer.',
         'Because the impairment from sleep loss only affects line officers, not supervisors.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. A supervisor models the squad\'s wellness norms. A depleted supervisor masking it with "fine" teaches officers to mask too; modeling calibrated honesty gives them permission to answer honestly. And sleep-deprivation impairment — comparable to an unlawful BAC at three days of five-hour sleep — affects the supervisor\'s high-stakes decisions just as much.'
     },
     {

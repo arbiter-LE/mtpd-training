@@ -237,12 +237,12 @@ function getTrafficStopQuestions() {
       scenario: 'You conduct a lawful traffic stop for an equipment violation. After making contact with the driver, you determine you want him to step out of the vehicle.',
       text: 'Under Pennsylvania v. Mimms, what is required before ordering a driver to exit a lawfully stopped vehicle?',
       options: [
+        'No additional justification — Mimms authorizes ordering the driver out as a matter of course.',
         'Reasonable suspicion that the driver is armed or dangerous.',
         'Probable cause of a separate criminal offense.',
-        'No additional justification — Mimms authorizes ordering the driver out as a matter of course.',
         'The driver must be informed of the reason before exiting.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. Pennsylvania v. Mimms (1977) established that officers may order the driver of a lawfully stopped vehicle to exit as a matter of course, without articulating additional justification. The government\'s interest in officer safety during a traffic stop outweighs the minimal intrusion of requiring the driver to stand outside. Maryland v. Wilson (1997) extends this authority to all passengers.'
     },
     {
@@ -251,22 +251,22 @@ function getTrafficStopQuestions() {
       options: [
         'You may detain the vehicle briefly while waiting for a K9 unit to arrive.',
         'You may ask follow-up questions to develop reasonable suspicion before releasing.',
-        'You must return the documents and allow the driver to leave — no independent basis for extension exists.',
-        'Refusal to consent is itself reasonable suspicion, justifying continued detention.'
+        'Refusal to consent is itself reasonable suspicion, justifying continued detention.',
+        'You must return the documents and allow the driver to leave — no independent basis for extension exists.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. Rodriguez v. United States (2015) prohibits extending a stop beyond its lawful purpose without independent reasonable suspicion. Once the citation is issued and documents are ready to be returned, the stop\'s purpose is complete. Refusal to consent is not reasonable suspicion — exercising a constitutional right cannot be used as the basis for detention. Without independent articulable suspicion, you must return the documents and allow departure.'
     },
     {
       scenario: 'During a traffic stop, you detect a strong odor of marijuana emanating from the interior of the vehicle. The registration and license are clean.',
       text: 'Under Commonwealth v. Barr (2021) and Commonwealth v. Alexander (2020), what does the odor of marijuana establish, and what does a vehicle search require?',
       options: [
-        'The odor alone establishes probable cause, and probable cause alone supports an immediate warrantless search.',
         'The odor is one factor in the totality of the circumstances — it cannot establish probable cause alone — and even with probable cause, a warrantless vehicle search requires exigent circumstances. The default is to secure the vehicle and obtain a warrant.',
+        'The odor alone establishes probable cause, and probable cause alone supports an immediate warrantless search.',
         'The odor is legally meaningless in Pennsylvania and may not be considered at all.',
         'The odor establishes reasonable suspicion that obligates you to call a K9 before any further action.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Commonwealth v. Barr (2021): because medical marijuana is lawful in Pennsylvania, odor alone no longer establishes probable cause — but it remains a legitimate factor in the totality of the circumstances. Commonwealth v. Alexander (2020) overruled Commonwealth v. Gary and held that a warrantless vehicle search requires both probable cause AND exigent circumstances; obtaining a warrant is the default. Document the specific basis: where the odor was detected, its strength, and the corroborating factors that complete the totality.'
     },
     {
@@ -275,10 +275,10 @@ function getTrafficStopQuestions() {
       options: [
         'The objection requires you to stop and re-apply for a warrant that addresses it.',
         'The objection is a valid invocation of Fourth Amendment rights that suspends the search.',
-        'The objection is irrelevant — a warrant-authorized search does not depend on consent. Document the objection verbatim and proceed.',
-        'You must obtain a supervisor\'s approval to continue over an explicit objection.'
+        'You must obtain a supervisor\'s approval to continue over an explicit objection.',
+        'The objection is irrelevant — a warrant-authorized search does not depend on consent. Document the objection verbatim and proceed.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. A search warrant is judicial authorization — it does not require the subject\'s consent, and an objection does not vitiate it. Consent matters when consent is the legal basis for the search (and consent searches end when consent is withdrawn); it is irrelevant when a warrant is the basis. Document the driver\'s statement verbatim — it is relevant context — and proceed within the warrant\'s scope. If he physically interferes, that is a separate criminal matter.'
     },
     {
@@ -298,11 +298,11 @@ function getTrafficStopQuestions() {
       text: 'What is the appropriate course of action?',
       options: [
         'Issue a citation for failure to produce registration and impound the vehicle.',
-        'Verify the vehicle\'s status through your MDT, document the driver\'s explanation and the receipt, and use discretion consistent with department policy — temporary registration documentation may be verifiable.',
         'Release the driver without any documentation — a receipt is sufficient proof of ownership.',
+        'Verify the vehicle\'s status through your MDT, document the driver\'s explanation and the receipt, and use discretion consistent with department policy — temporary registration documentation may be verifiable.',
         'Arrest the driver for operating without registration until ownership can be confirmed.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. A recent vehicle purchase may explain absent registration. MDT checks can verify recent sales and registration status. Discretion — guided by department policy and the totality of the circumstances — is appropriate here. Document what you observed, what the driver provided, and what your check returned. Impoundment and arrest are disproportionate responses to a verifiable, plausible explanation. Thorough documentation protects you regardless of the disposition.'
     },
     {
@@ -311,22 +311,22 @@ function getTrafficStopQuestions() {
       options: [
         'Make the arrest anyway based on your gut — officers have broad discretion in DUI cases.',
         'Release the driver — passing field sobriety tests is a complete defense to DUI arrest.',
-        'Document your specific observations thoroughly, consider requesting a DRE evaluation if available, and make an arrest decision based on the totality of articulable, documented facts — not on intuition alone.',
-        'Administer a preliminary breath test and arrest only if it returns above .08.'
+        'Administer a preliminary breath test and arrest only if it returns above .08.',
+        'Document your specific observations thoroughly, consider requesting a DRE evaluation if available, and make an arrest decision based on the totality of articulable, documented facts — not on intuition alone.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. DUI arrests require probable cause grounded in specific articulable facts. Passing SFSTs reduces the available PC but does not automatically eliminate it — impairment can be drug-based, and not all impairment registers on breath tests. A Drug Recognition Expert (DRE) evaluation may establish additional facts. Whatever your decision, document every observation: driving pattern, physical indicators, performance on each SFST component, and any statements. Arrests made on intuition without documented PC do not survive prosecution.'
     },
     {
       scenario: 'You conduct a traffic stop on a vehicle registered to someone with a felony warrant. The driver\'s license comes back to a different person with no warrants. The driver matches the physical description of the registered owner.',
       text: 'What is your legal authority and appropriate approach?',
       options: [
+        'You have reasonable suspicion to investigate further. Ask the driver to step out, request additional identifying information, and determine through investigation whether the driver is the registered owner or another person.',
         'Arrest the driver immediately — the vehicle is registered to a felony warrant subject.',
         'The plate return is not sufficient — release the driver since the license came back clean.',
-        'You have reasonable suspicion to investigate further. Ask the driver to step out, request additional identifying information, and determine through investigation whether the driver is the registered owner or another person.',
         'Run the license only — if it comes back clean the stop must end.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. A vehicle registered to a felony warrant subject, combined with a driver who physically matches that subject, provides reasonable suspicion to investigate further even when the presented license comes back to a different name. People use false identification. Requesting additional information and extending the stop for this specific investigation purpose is lawful under Terry. Document the specific articulable facts supporting your continued investigation. An arrest requires probable cause established through the investigation — not just the plate return.'
     },
   ];
@@ -377,12 +377,12 @@ function getTrafficStopSupervisorQuestions() {
       scenario: 'A traffic-stop report shows the officer completed the citation and records check and had the documents ready to return, then held the driver and asked for consent to search. The driver refused. The officer kept the driver detained while waiting for a K9, with no other articulated basis.',
       text: 'What is the correct supervisory assessment?',
       options: [
-        'Approve it — officers may always hold a vehicle for a K9 once they suspect drugs.',
         'Flag it as a suppression problem: under Rodriguez v. United States the stop could not be extended past its completed purpose without independent reasonable suspicion, and refusal to consent is not reasonable suspicion.',
+        'Approve it — officers may always hold a vehicle for a K9 once they suspect drugs.',
         'Approve it because the driver\'s refusal to consent is itself suspicious.',
         'Approve it as long as the K9 ultimately alerted.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Rodriguez v. United States (2015) bars extending a stop beyond the time needed to complete its purpose without independent reasonable suspicion. The purpose was complete when the documents were ready to return, and a refusal to consent cannot supply reasonable suspicion. Holding the driver for a K9 on that basis is an unlawful extension you catch on review.'
     },
     {
@@ -390,11 +390,11 @@ function getTrafficStopSupervisorQuestions() {
       text: 'How should you treat that articulation?',
       options: [
         'Accept it — a refusal to consent is a reasonable factor to weigh.',
-        'Reject it: exercising a constitutional right cannot be the basis for detention, so a refusal to consent is not reasonable suspicion and cannot justify extending the stop. The extension is unlawful absent independent articulable facts.',
         'Accept it if the officer also noted the driver seemed nervous.',
-        'Accept it because the driver could have consented if he had nothing to hide.'
+        'Accept it because the driver could have consented if he had nothing to hide.',
+        'Reject it: exercising a constitutional right cannot be the basis for detention, so a refusal to consent is not reasonable suspicion and cannot justify extending the stop. The extension is unlawful absent independent articulable facts.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. A refusal to consent is the exercise of a right and cannot be used as reasonable suspicion or as a reason to prolong a stop. A report that leans on the refusal to justify an extension documents its own Fourth Amendment problem — the reviewer flags it.'
     },
     {
@@ -402,11 +402,11 @@ function getTrafficStopSupervisorQuestions() {
       text: 'How should you assess this on review?',
       options: [
         'Mark it inefficient — the officer should have searched immediately to save time.',
-        'Recognize it as exactly correct under current Pennsylvania law: Commonwealth v. Alexander requires probable cause and exigent circumstances for a warrantless vehicle search, a controlled scene is rarely exigent, and the warrant is the default — acknowledge the officer\'s judgment.',
         'Flag it because obtaining a warrant suggests the probable cause was weak.',
+        'Recognize it as exactly correct under current Pennsylvania law: Commonwealth v. Alexander requires probable cause and exigent circumstances for a warrantless vehicle search, a controlled scene is rarely exigent, and the warrant is the default — acknowledge the officer\'s judgment.',
         'Require the officer to justify why no exigency existed before approving.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Under Commonwealth v. Alexander (2020), a warrantless vehicle search needs both probable cause and exigent circumstances, and a stopped vehicle with controlled occupants rarely supplies exigency. Securing the vehicle and getting a warrant is the model behavior — and recognizing it in review reinforces the habit you want repeated.'
     },
     {
@@ -425,12 +425,12 @@ function getTrafficStopSupervisorQuestions() {
       scenario: 'A report states that the officer stopped executing a valid search warrant on a vehicle because the driver objected, saying "I don\'t consent to this search."',
       text: 'How should you handle this on review?',
       options: [
-        'Approve it — the driver\'s objection properly suspended the search.',
         'Correct it: a warrant-authorized search does not depend on consent, and an objection does not suspend it. The officer should have proceeded within the warrant\'s scope and documented the objection verbatim — stopping was an error to address.',
+        'Approve it — the driver\'s objection properly suspended the search.',
         'Approve it but require a new warrant addressing the objection.',
         'Treat the objection as withdrawal of consent that ended the search.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Consent is irrelevant when a warrant is the basis for a search; an objection is relevant context to document, not grounds to stop. The officer should have continued within the warrant\'s scope. The reviewer corrects the misunderstanding so it is not repeated.'
     },
     {
@@ -438,11 +438,11 @@ function getTrafficStopSupervisorQuestions() {
       text: 'What is the correct supervisory response?',
       options: [
         'Accept the officer-safety rationale at face value and approve the report.',
-        'Address it directly: under Fields v. City of Philadelphia the First Amendment protects recording police in public, courts look to the actual motivation, and a recording objection dressed up as "officer safety" — contradicted here by the footage — is a constitutional and complaint exposure.',
         'Approve it because any recording during a stop is a legitimate safety concern.',
-        'Take no action unless the bystander files a formal complaint.'
+        'Take no action unless the bystander files a formal complaint.',
+        'Address it directly: under Fields v. City of Philadelphia the First Amendment protects recording police in public, courts look to the actual motivation, and a recording objection dressed up as "officer safety" — contradicted here by the footage — is a constitutional and complaint exposure.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Fields v. City of Philadelphia (3d Cir. 2017) protects recording police performing public duties. Where the body-camera footage contradicts a stated "officer safety" rationale for stopping a recording, the pretext is visible to a reviewer and to a court. The supervisor addresses it directly and teaches the line between a genuine safety concern and suppressing a camera.'
     },
     {
@@ -450,11 +450,11 @@ function getTrafficStopSupervisorQuestions() {
       text: 'What does your review require?',
       options: [
         'Approve it — a vehicle registered to a warrant subject justifies arresting the driver.',
-        'Flag it: the plate return plus a matching description is reasonable suspicion to investigate under Terry, not probable cause to arrest. Any arrest must be built on the identity investigation, not the registration return alone.',
         'Approve it because the clean license is probably fraudulent.',
+        'Flag it: the plate return plus a matching description is reasonable suspicion to investigate under Terry, not probable cause to arrest. Any arrest must be built on the identity investigation, not the registration return alone.',
         'Reject the stop entirely as unsupported.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. A plate returning to a warrant subject, with a driver matching the description, supports a reasonable-suspicion investigation under Terry — stepping the driver out and resolving identity. Probable cause to arrest must come from that investigation, not from the registration return by itself.'
     },
     {

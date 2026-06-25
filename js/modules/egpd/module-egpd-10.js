@@ -221,12 +221,12 @@ function getEvidenceQuestions() {
       scenario: 'You are the first officer at a residential burglary. The homeowners are on scene and want to walk through the house to check what was taken.',
       text: 'What is the correct approach to managing the homeowners\' access to the scene?',
       options: [
-        'Allow them to do a quick walkthrough with you present so you can document missing items.',
         'Keep them out of the structure until detectives or crime scene personnel have documented and cleared the scene.',
+        'Allow them to do a quick walkthrough with you present so you can document missing items.',
         'Let them check rooms that were not directly affected by the break-in.',
         'Allow access to any area not immediately adjacent to the point of entry.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. First officers own the scene until it is formally handed off to detectives or crime scene personnel. All unauthorized persons — including victims and property owners — must be kept out of the crime scene until it has been documented. Any person who enters before documentation can contaminate fingerprints, trace evidence, and body position. This is one of the most common chain of custody vulnerabilities in burglary cases.'
     },
     {
@@ -234,35 +234,35 @@ function getEvidenceQuestions() {
       text: 'What is the correct procedure for this item before detectives arrive?',
       options: [
         'Photograph it in place and pick it up to prevent it from being accidentally kicked or moved.',
-        'Leave it exactly as found, document its location in your notes, and prevent anyone from entering the area.',
         'Place it in an evidence bag and secure it in your patrol vehicle to protect it.',
-        'Ask the homeowners if they recognize it before taking any action.'
+        'Ask the homeowners if they recognize it before taking any action.',
+        'Leave it exactly as found, document its location in your notes, and prevent anyone from entering the area.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. In-place documentation before collection is mandatory. The item must be photographed in its discovered location by the collecting officer — in this case, the detective. Your role as the first officer is to preserve the scene, document observations, and prevent unauthorized access. Moving or bagging the item before it is photographed in place breaks the chain of custody, even with good intentions.'
     },
     {
       scenario: 'Your supervisor orders you to collect two items of evidence and transport them to the station immediately so you can clear for a priority call.',
       text: 'What is the correct response?',
       options: [
+        'Advise the supervisor of the situation, including the detective ETA, and request a brief delay or a second unit to hold the scene.',
         'Follow the order — supervisor authority supersedes standard evidence protocols.',
         'Collect the items and transport them, but document the supervisor\'s name in the chain of custody.',
-        'Advise the supervisor of the situation, including the detective ETA, and request a brief delay or a second unit to hold the scene.',
         'Refuse the order and remain on scene regardless of the supervisor\'s directive.'
       ],
-      correct: 2,
-      feedback: 'Correct. Advising your supervisor of the situation — detective ETA, the evidence involved, and the chain of custody risk — is the professional response. Supervisors can make informed decisions when given accurate information. Improvised collection without proper packaging and in-place documentation creates suppression vulnerabilities that can destroy a prosecution. Option D (outright refusal) is not the answer — communication is.'
+      correct: 0,
+      feedback: 'Correct. Advising your supervisor of the situation — detective ETA, the evidence involved, and the chain of custody risk — is the professional response. Supervisors can make informed decisions when given accurate information. Improvised collection without proper packaging and in-place documentation creates suppression vulnerabilities that can destroy a prosecution. Outright refusal of the order is not the answer either — communication is.'
     },
     {
       scenario: 'You need to document a piece of evidence before a detective arrives. The scene is outdoors and the item is on the ground.',
       text: 'Which of the following best describes proper in-place documentation before collection?',
       options: [
         'Write a detailed description of the item in your notebook.',
-        'Photograph the item from multiple angles in its exact discovered position, including a scale reference if available, before anyone touches it.',
         'Sketch the scene and mark the item\'s approximate location.',
-        'Verbally describe the item to dispatch so it is recorded on the radio log.'
+        'Verbally describe the item to dispatch so it is recorded on the radio log.',
+        'Photograph the item from multiple angles in its exact discovered position, including a scale reference if available, before anyone touches it.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. In-place photography from multiple angles — including a scale reference — is the standard for documenting physical evidence before collection. Written descriptions and sketches are supplementary documentation tools, not substitutes for photography. The photograph establishes the item\'s position, condition, and location at the moment of discovery — which is critical when chain of custody is challenged in court.'
     },
     {
@@ -282,11 +282,11 @@ function getEvidenceQuestions() {
       text: 'What documentation steps are required to preserve the chain of custody for this sample?',
       options: [
         'Document that you were present — the nurse\'s records handle the rest.',
-        'Document the collection: time, location, who collected it, the kit number, how it was sealed, and how it was transported from the hospital to the property room — with your continuous control or handoff documentation at each step.',
         'The hospital\'s records constitute the chain of custody for any sample collected in a medical facility.',
+        'Document the collection: time, location, who collected it, the kit number, how it was sealed, and how it was transported from the hospital to the property room — with your continuous control or handoff documentation at each step.',
         'Chain of custody only applies to physical evidence at crime scenes, not medical samples.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Blood samples in DUI cases require a documented chain of custody from collection to analysis. Your documentation should include: the date and time of collection, the nurse\'s name and facility, the kit ID number, how the sample was sealed and labeled, your transport from the hospital, and your property room submission with time and submission number. Any gap in this chain can result in suppression or weight challenges at trial. Pennsylvania DUI prosecutions frequently hinge on chain of custody integrity.'
     },
     {
@@ -294,23 +294,23 @@ function getEvidenceQuestions() {
       text: 'What is the appropriate response?',
       options: [
         'Follow the suggestion — detectives have the authority and training to collect firearms.',
-        'Recover the firearm yourself according to department protocol: photograph it in place, note the exact location, collect it using appropriate safety procedures, and document the recovery in your report.',
         'Secure the area around the firearm and await detective arrival without touching or documenting it.',
-        'The suggestion is correct if detectives will arrive within two hours.'
+        'The suggestion is correct if detectives will arrive within two hours.',
+        'Recover the firearm yourself according to department protocol: photograph it in place, note the exact location, collect it using appropriate safety procedures, and document the recovery in your report.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Leaving evidence unattended and uncollected at an unsecured crime scene creates chain of custody problems and evidence integrity risk. If you are the officer present and the scene requires evidence collection, that is your responsibility unless department protocol specifically directs otherwise. Photograph in place, document location, collect using protocol, and complete the chain with proper property room submission. Detectives can also be involved in analysis — but initial collection and documentation is the responding officer\'s responsibility.'
     },
     {
       scenario: 'You retrieve previously submitted evidence from the property room for an upcoming court appearance. When you sign it out, you notice the evidence seal appears to have been disturbed.',
       text: 'What is your obligation?',
       options: [
-        'Sign it out and proceed to court — it may just be a storage issue.',
         'Refuse to sign it out, notify the property room supervisor immediately, document the observation, and notify the prosecutor before the court date. The integrity of the evidence is now in question.',
+        'Sign it out and proceed to court — it may just be a storage issue.',
         'Re-seal the evidence and note the re-sealing in your report.',
         'Inspect the contents to determine if anything is missing before deciding how to proceed.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. A disturbed evidence seal is a chain of custody integrity issue that must be reported before the evidence goes to court. Taking it to court with an observed integrity question — without disclosure — creates a much larger problem than addressing it before trial. Notify the property room supervisor, document your observation contemporaneously, and notify the prosecutor so they can make an informed decision about how to proceed. The prosecutor may have the ability to address it; taking it to court without disclosure does not.'
     },
   ];
@@ -360,12 +360,12 @@ function getEvidenceSupervisorQuestions() {
       scenario: 'You have a high-priority call holding across the borough and a finite number of units. One of your officers is preserving a burglary scene with two items of evidence untouched on the floor; detectives are eight minutes out.',
       text: 'What is the correct supervisory move?',
       options: [
-        'Order the officer to bag the items in whatever is in the patrol car and transport them so they can clear for the priority call.',
         'Solve the staffing problem without sacrificing the scene: hold the scene for the handoff and send another unit to the priority call — the minutes saved by shortcutting collection can cost the prosecution months later.',
+        'Order the officer to bag the items in whatever is in the patrol car and transport them so they can clear for the priority call.',
         'Tell the officer to leave the evidence unattended and respond to the priority call now.',
         'Cancel the detectives and have the patrol officer process the scene alone to save time.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. The decisive mistake in this scenario is a supervisor\'s order to shortcut a preserved scene to clear a call. The discipline is to resource the scene — hold it for proper handoff and route another unit to the priority call — because improvised collection to save eight minutes is how prosecutions collapse.'
     },
     {
@@ -373,11 +373,11 @@ function getEvidenceSupervisorQuestions() {
       text: 'What is the right response?',
       options: [
         'Override the officer — your order to clear the call stands regardless.',
-        'Support the officer: "Understood, hold the scene, I\'ll get another unit." The officer is protecting the case, and rewarding that judgment is what keeps officers willing to raise it.',
         'Reprimand the officer for questioning a direct order.',
-        'Tell the officer to collect the evidence but document that they objected.'
+        'Tell the officer to collect the evidence but document that they objected.',
+        'Support the officer: "Understood, hold the scene, I\'ll get another unit." The officer is protecting the case, and rewarding that judgment is what keeps officers willing to raise it.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. An officer who pushes back on a shortcut with sound reasoning is doing exactly what the department needs. The right response is to hold the scene and resource the other call. How a supervisor receives that pushback determines whether officers ever offer it again — punishing it trains the compliance that breaks chains of custody.'
     },
     {
@@ -385,11 +385,11 @@ function getEvidenceSupervisorQuestions() {
       text: 'What should you do?',
       options: [
         'Nothing — minor gaps are common and the defense probably will not notice.',
-        'Catch it now: the unsigned, unnamed transfer is a fixable, disclosable vulnerability. Flag it to the prosecutor before trial so it can be addressed, rather than letting the officer discover it under cross-examination.',
         'Instruct the officer to fill in a plausible name and time from memory.',
+        'Catch it now: the unsigned, unnamed transfer is a fixable, disclosable vulnerability. Flag it to the prosecutor before trial so it can be addressed, rather than letting the officer discover it under cross-examination.',
         'Remove the evidence from the case to avoid the issue.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. A reviewer who reads the chain for the break can catch the unsigned transfer while it is still fixable. Disclosing it to the prosecutor before trial is far better than discovering it on the stand — and fabricating a name to close the gap would be a far more serious problem.'
     },
     {
@@ -408,12 +408,12 @@ function getEvidenceSupervisorQuestions() {
       scenario: 'An officer signs evidence out of the property room for an upcoming court date and reports to you that the seal appears to have been disturbed.',
       text: 'What is the correct protocol?',
       options: [
-        'Tell the officer to take it to court anyway — it is probably just a storage artifact.',
         'Stop: have the officer document the observation contemporaneously, notify the property-room supervisor, and notify the prosecutor before the court date — a known integrity question is never carried into a courtroom undisclosed.',
+        'Tell the officer to take it to court anyway — it is probably just a storage artifact.',
         'Have the officer re-seal the evidence and note the re-sealing.',
         'Tell the officer to open it and confirm nothing is missing before court.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. A disturbed seal is a chain-of-custody integrity event. It is documented contemporaneously, the property-room supervisor is notified, and the prosecutor is told before the court date. Carrying a known integrity question into court undisclosed creates a far larger problem than addressing it beforehand.'
     },
     {
@@ -421,11 +421,11 @@ function getEvidenceSupervisorQuestions() {
       text: 'What is the best explanation?',
       options: [
         'It is not — chain of custody is entirely the collecting officer\'s job.',
-        'Because integrity depends on systems the supervisor owns — seals, logs, submission discipline, an auditable property room, and standardized packaging — and a weak system turns every officer\'s careful collection into a vulnerability.',
         'Because supervisors personally collect all evidence.',
-        'Because only supervisors are allowed to testify about evidence.'
+        'Because only supervisors are allowed to testify about evidence.',
+        'Because integrity depends on systems the supervisor owns — seals, logs, submission discipline, an auditable property room, and standardized packaging — and a weak system turns every officer\'s careful collection into a vulnerability.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Chain-of-custody integrity rests on systems — seals, logs, submission discipline, an auditable property room, and standardized forensic packaging — that are supervisory responsibilities. When the system is weak, even a careful collection becomes a vulnerability, which is why it is a department-level concern.'
     },
     {
@@ -433,11 +433,11 @@ function getEvidenceSupervisorQuestions() {
       text: 'How do you prepare the officer?',
       options: [
         'Tell the officer to assert confidently that the evidence was never tampered with, to project authority.',
-        'Have the officer review the documentation beforehand, identify the gap before the defense does, flag it to the prosecutor, and testify to exactly what the record shows — acknowledging the gap without speculating, since false certainty about an unremembered window risks perjury under 18 Pa. C.S. § 4902.',
         'Advise the officer to answer every chain-of-custody question with "standard procedure was followed."',
+        'Have the officer review the documentation beforehand, identify the gap before the defense does, flag it to the prosecutor, and testify to exactly what the record shows — acknowledging the gap without speculating, since false certainty about an unremembered window risks perjury under 18 Pa. C.S. § 4902.',
         'Tell the officer to avoid the subject and let the prosecutor handle it.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. The officer should review the documentation, surface the gap early, flag it to the prosecutor, and testify truthfully to the record while acknowledging the gap. Asserting false certainty about an unremembered period is speculation under oath and a § 4902 perjury risk — and courts forgive a documented gap far sooner than a witness caught overstating.'
     },
     {

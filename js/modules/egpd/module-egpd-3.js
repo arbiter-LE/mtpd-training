@@ -233,70 +233,70 @@ function getReportWritingQuestions() {
       scenario: 'After a foot pursuit and use of force incident, you write your report from memory two hours later. At the preliminary hearing, defense counsel notes your report states the subject "immediately fled" — but body camera footage shows a 4-second pause between your approach and the subject\'s exit from the vehicle.',
       text: 'What does this discrepancy most directly demonstrate?',
       options: [
-        'That body camera footage is inadmissible to challenge an officer\'s written report.',
-        'That the officer filed a false report and may face criminal charges.',
-        'That reports written from memory — without reviewing available footage or notes — risk inaccuracies that undermine an officer\'s credibility on the stand.',
-        'That the defense has no valid argument because small discrepancies are expected and admissible.'
+        'That a report written from memory — without first reviewing available footage or notes — can contain imprecise language that gives the defense an opening to attack the officer\'s credibility.',
+        'That the officer knowingly filed a false report and is subject to criminal prosecution for the inconsistency.',
+        'That body camera footage may not be used at a preliminary hearing to contradict an officer\'s sworn written narrative.',
+        'That the defense has no valid argument, because brief timing discrepancies are expected and carry no weight in court.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. Memory degrades rapidly after a high-stress incident. Even minor discrepancies between a report and body camera footage — especially ones that can be attributed to imprecise language — give defense counsel an opening to challenge the officer\'s overall credibility. Best practice: review available footage and notes before writing, document as soon as safely possible after the incident, and use precise language grounded in verified facts.'
     },
     {
       scenario: 'You arrest a subject for resisting arrest after a foot pursuit. Your report documents the use of force as: "Subject resisted arrest. Force was used and was proportionate to the resistance encountered."',
       text: 'What is the fundamental legal problem with this documentation?',
       options: [
-        'The report must include the subject\'s prior criminal history to be legally sufficient.',
-        '"Resisted arrest" and "proportionate" are legal conclusions, not factual descriptions — they tell a reader what to conclude without providing the specific facts that support the conclusion.',
-        'The report is legally sufficient — courts accept general use of force summaries from law enforcement officers.',
-        'The report should have been written by the supervising officer, not the officer who used force.'
+        'The report should have been written by the supervising officer, not the officer who used the force.',
+        'The report is legally sufficient — courts routinely accept general use-of-force summaries from trained officers.',
+        'The report fails to include the subject\'s prior criminal history, which is required for legal sufficiency.',
+        '"Resisted arrest" and "proportionate" are legal conclusions, not factual descriptions — they tell a reader what to conclude without the specific facts that support it.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. "Resisted arrest" is a legal conclusion — it tells the reader what to conclude, not what happened. A legally defensible report requires specific, sequential facts: which body part moved, in which direction, what action the officer took in response, and what happened as a result. "Subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep" is defensible. "Subject resisted" is not.'
     },
     {
       scenario: 'Your partner arrived during the takedown phase of a foot pursuit incident. They did not witness the initial stop, the foot chase, or the beginning of the resistance. You ask them to write the use of force narrative because they have stronger writing skills.',
       text: 'Why is this approach legally problematic?',
       options: [
-        'It is acceptable — partnership reports are standard practice in high-stress incidents.',
-        'Police reports are sworn accounts of personal observations. Your partner cannot document your observations, your chase, or your use of force — only what they personally witnessed upon arrival.',
-        'It is problematic only if your partner was off-duty at the time of the incident.',
-        'It is only problematic if the case goes to trial — preliminary hearings do not require the reporting officer to testify.'
+        'It is acceptable — assigning the strongest writer to the narrative is standard practice in high-stress incidents.',
+        'It is problematic only if your partner was off-duty or outside their jurisdiction at the time of the incident.',
+        'A police report is a sworn account of personal observations — your partner can document only what they witnessed on arrival, not the stop, the chase, or the use of force they did not see.',
+        'It is a concern only if the case reaches trial — preliminary hearings do not require the reporting officer to testify.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Each officer reports their own observations. Your partner can document what they personally witnessed — specifically, events from their arrival forward. They cannot document the foot pursuit, the initial contact, or your use of force, because they did not observe those events. A report written by an officer who wasn\'t present for the documented events is hearsay, creates chain of custody issues, and will be attacked in court.'
     },
     {
       scenario: 'A subject shoves you during an arrest. Your partner witnesses the incident. In your report, you need to describe the physical interaction.',
       text: 'Which description of the use of force best satisfies the legal standard for police reports in Pennsylvania?',
       options: [
-        '"Subject became combative. Force was necessary and proportionate to the resistance."',
-        '"Used approved takedown technique on resisting subject per training received at the academy."',
-        '"As I attempted to apply handcuffs, subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep, bringing subject to a controlled ground position. Subject ceased active resistance. Handcuffs applied."',
-        '"Subject resisted arrest. Physical force was used. Incident resolved without serious injury."'
+        '"As I attempted to apply handcuffs, the subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep, bringing him to a controlled ground position. The subject ceased active resistance and handcuffs were applied."',
+        '"Subject actively resisted a lawful arrest and became combative; reasonable physical force was applied and was proportionate to the level of resistance encountered until compliance was achieved."',
+        '"Used an approved takedown technique on the resisting subject, consistent with the defensive tactics training received at the academy."',
+        '"Subject resisted arrest. Physical force was used. The incident was resolved without serious injury to either party."'
       ],
-      correct: 2,
-      feedback: 'Correct. The third option provides specific, sequential, body-movement-level documentation that allows any reader to reconstruct exactly what happened. It documents the subject\'s specific action, the officer\'s specific response, and the outcome — all three elements required for a use of force narrative that survives cross-examination and supports the underlying charge.'
+      correct: 0,
+      feedback: 'Correct. This is the only option that provides specific, sequential, body-movement-level documentation — the subject\'s specific action, the officer\'s specific response, and the outcome — the three elements a use-of-force narrative needs to survive cross-examination and support the charge. The others are conclusory: "combative," "proportionate," "approved technique," and "resisted arrest" tell the reader what to conclude without the facts. Note that length is not the point — a long conclusory sentence is still conclusory; specificity is what makes a narrative defensible.'
     },
     {
       scenario: 'After a traffic stop that ends without an arrest, you observe a vehicle with out-of-state plates, a strong smell of air freshener, and a hidden compartment indicator near the center console. You note it in your memory but do not document it.',
       text: 'Why does failing to document observations from an inconclusive stop create a problem?',
       options: [
-        'It doesn\'t — documentation is only required when an arrest is made.',
-        'Undocumented observations cannot be used to support probable cause in future encounters, cannot corroborate other departments\' investigations, and are lost entirely if the officer is later called to testify.',
-        'It is a minor administrative issue that supervision can correct after the fact.',
-        'It creates a problem only if the same vehicle is stopped again by the same officer.'
+        'It does not create a problem — documentation is only required when an arrest is actually made.',
+        'It is a minor administrative oversight that a supervisor can correct after the fact.',
+        'It creates a problem only if the same vehicle is later stopped again by the same officer.',
+        'Undocumented field intelligence cannot support probable cause in a future encounter, cannot corroborate another agency\'s investigation, and is lost if the officer is later called to testify.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Every stop that generates observations — even stops that end without action — deserves documentation. Undocumented intelligence is lost intelligence. It cannot support a future probable cause determination, cannot corroborate another agency\'s investigation, and cannot be used to establish a pattern if the same subject is stopped again. Field intelligence is a law enforcement asset — if it isn\'t documented, it doesn\'t exist.'
     },
     {
       scenario: 'Your report documents that a subject "seemed nervous" during a traffic stop. Defense counsel objects that this is a conclusory opinion, not a fact.',
       text: 'How should officer observations be documented to withstand this challenge?',
       options: [
-        '"Seemed nervous" is sufficient — courts understand that officers use experiential shorthand.',
-        'Document the specific observable behaviors that led to that assessment: "Subject\'s hands were visibly trembling, voice elevated in pitch, avoided eye contact, and checked mirrors repeatedly after stopping."',
-        'Replace "seemed nervous" with "appeared agitated" — more precise legal language.',
-        'Omit the observation entirely if it cannot be precisely quantified.'
+        '"Seemed nervous" is adequate — courts recognize that officers rely on experiential shorthand.',
+        'Document the specific, observable behaviors behind that assessment: "the subject\'s hands were visibly trembling, his voice was elevated in pitch, he avoided eye contact, and he repeatedly checked his mirrors after stopping."',
+        'Replace "seemed nervous" with the more precise legal term "appeared agitated and noncompliant."',
+        'Omit the observation entirely, since a subjective impression cannot be quantified for the record.'
       ],
       correct: 1,
       feedback: 'Correct. Conclusory terms like "seemed nervous" or "appeared suspicious" are not facts — they are conclusions. Defense attorneys and courts will challenge them. The professional standard is to document the specific, observable behaviors that led to your assessment. Those specific facts speak for themselves and cannot be easily dismissed as officer opinion.'
@@ -305,24 +305,24 @@ function getReportWritingQuestions() {
       scenario: 'While completing your arrest report, you realize you forgot to document a witness statement that you took at the scene. The witness has since left the area.',
       text: 'What is the appropriate course of action?',
       options: [
-        'Omit the statement — if you cannot verify the details, it should not be in the report.',
-        'Document what you recall of the statement now, noting in the report that it was not captured in contemporaneous notes and that the account is from memory.',
-        'Insert the statement into the original report as if it had been there from the start.',
-        'Contact your supervisor before adding anything to a completed report.'
+        'Insert the statement into the original report as though it had been recorded there from the start.',
+        'Omit the statement — if it cannot be verified against your notes, it should not appear in the report.',
+        'Document what you recall of the statement now as a supplement, noting in the report that it was not captured in contemporaneous notes and is recalled from memory.',
+        'Take no action yourself — wait for your supervisor to decide whether anything may be added to a completed report.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Omitting known facts weakens the case. Altering a completed report retroactively without disclosure is misconduct. The correct approach is to document the statement as a supplement or addendum, note that it was captured from memory rather than contemporaneous notes, and be transparent about that limitation. This preserves the information while maintaining your integrity.'
     },
     {
       scenario: 'A sergeant reviewing your report notes that your probable cause section reads: "Based on my training and experience, I believed the subject was involved in criminal activity."',
       text: 'What is the primary deficiency in this probable cause statement?',
       options: [
-        'It does not cite a specific statute.',
-        'It is conclusory — it states your conclusion without documenting the specific articulable facts that led to it.',
-        'It references training and experience, which courts disallow.',
-        'Probable cause does not need to be articulated in arrest reports.'
+        'It references training and experience, which courts do not permit officers to rely on.',
+        'It fails to cite the specific statute the subject is believed to have violated.',
+        'Nothing — probable cause does not need to be articulated in an arrest report.',
+        'It is conclusory — it states the officer\'s conclusion without the specific, articulable facts that led to it.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Probable cause must be grounded in specific, articulable facts — not in an officer\'s general conclusion. "I believed" is a conclusion. The report must document: what you observed, what you heard, what was said, what you detected, and how those specific facts — viewed through your training and experience — established probable cause for the specific offense charged. The training and experience reference is valid, but only when tethered to stated facts.'
     },
   ];
@@ -373,36 +373,36 @@ function getReportWritingSupervisorQuestions() {
       scenario: 'An officer\'s arrest report is unclear and conclusory in places. You are returning it for revision.',
       text: 'Which supervisory notation best develops the officer and produces a defensible report?',
       options: [
-        '"Needs work — revise and resubmit."',
-        '"Timeline unclear — sequence the takedown movement by movement, and tie each force application to the specific resistance that prompted it. Replace \'resisted arrest\' with what the subject physically did."',
-        '"Rewrite the whole thing, it isn\'t good enough."',
-        '"Approved with reservations — I\'ll note my concerns verbally later."'
+        '"Approved with reservations — I\'ll note my concerns to you verbally at some point later."',
+        '"Rewrite the whole thing from scratch; this draft simply is not good enough to file."',
+        '"Timeline unclear — sequence the takedown movement by movement, tie each force application to the specific resistance that prompted it, and replace \'resisted arrest\' with what the subject physically did."',
+        '"Needs work — please revise the weak sections and resubmit for review."'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. A specific, actionable notation teaches the standard and tells the officer exactly what a defensible report requires. Vague notations ("needs work") teach nothing and produce another weak draft. The discipline of review mirrors the discipline of writing: be specific.'
     },
     {
       scenario: 'A report you are reviewing documents a use of force as: "Subject resisted arrest. Force was used and was proportionate to the resistance encountered."',
       text: 'What is the correct supervisory action?',
       options: [
-        'Approve it — courts accept general use-of-force summaries from officers.',
-        'Return it: "resisted arrest" and "proportionate" are conclusions, not facts. Require the body-movement-level detail — which arm, which direction, the triggering movement, the officer\'s response, and the outcome — that supports the charge and survives cross-examination.',
-        'Edit the conclusions into facts yourself and approve it.',
-        'Forward it to discipline because the wording is inadequate.'
+        'Return it — "resisted arrest" and "proportionate" are conclusions, not facts. Require the body-movement-level detail (which arm, which direction, the triggering movement, the officer\'s response, the outcome) that supports the charge and survives cross-examination.',
+        'Edit the conclusions into specific facts yourself, then approve the report so it does not bounce again.',
+        'Forward it to discipline, since wording this inadequate reflects a performance problem.',
+        'Approve it — courts accept general use-of-force summaries from officers in routine cases.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Conclusions like "resisted" and "proportionate" tell a reader what to conclude without the facts to evaluate it, and they do not survive cross-examination. The reviewer returns the report for the specific, sequential facts — not by rewriting the officer\'s observations, which only the officer can attest to.'
     },
     {
       scenario: 'A report\'s probable cause section reads, in full: "Based on my training and experience, I believed the subject was involved in criminal activity."',
       text: 'How should you handle this on review?',
       options: [
-        'Approve it — a training-and-experience reference is sufficient to establish probable cause.',
-        'Return it: under Illinois v. Gates, probable cause must rest on specific articulable facts. "I believed" is a conclusion; the report must state what was observed, heard, and detected, with the training-and-experience reference tethered to those facts.',
-        'Reject the arrest entirely because the officer cited training and experience.',
-        'Approve it but tell the officer to remove the training-and-experience language, which courts disallow.'
+        'Reject the arrest outright, since an officer who cites "training and experience" has effectively admitted the stop lacked probable cause.',
+        'Approve it, but instruct the officer to delete the training-and-experience language, which courts do not allow.',
+        'Approve it — a reference to the officer\'s training and experience is enough to establish probable cause on its own.',
+        'Return it — under Illinois v. Gates, probable cause must rest on specific articulable facts. "I believed" is a conclusion; the report must state what was observed, heard, and detected, with training and experience tethered to those facts.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Illinois v. Gates (1983) requires probable cause to be supported by specific articulable facts under the totality of the circumstances. A bare "I believed" is conclusory. The training-and-experience reference is valid only when tied to the facts actually observed — so the report goes back for those facts.'
     },
     {
@@ -410,8 +410,8 @@ function getReportWritingSupervisorQuestions() {
       text: 'How should you treat this finding?',
       options: [
         'As a routine revise-and-resubmit — return it for the officer to align the wording with the footage.',
-        'As a possible integrity matter: a report conflicting with the footage may be a false official statement under 18 Pa. C.S. § 4904 and § 4906, which is a Professional Conduct matter rather than a writing correction.',
-        'As acceptable — written reports and footage are not expected to match.',
+        'As a possible integrity matter — a report conflicting with the footage may be a false official statement under 18 Pa. C.S. § 4904 and § 4906, handled as a Professional Conduct matter rather than a writing correction.',
+        'As acceptable — a written report and body-camera footage are not expected to match in detail.',
         'As a footage error; defer to the officer\'s written account over the video.'
       ],
       correct: 1,
@@ -421,46 +421,46 @@ function getReportWritingSupervisorQuestions() {
       scenario: 'You are training a newer supervisor on how to review reports.',
       text: 'What is the essential discipline of report review that catches integrity problems?',
       options: [
-        'Reading the report quickly for clarity and grammar, then approving if it reads well.',
-        'Actually comparing the report against the available body-camera footage and field notes — not just reading the words — so that reconstructed quotes, mismatched sequences, and after-the-fact facts are caught before the report becomes the record.',
-        'Approving any report that contains a probable cause section, regardless of content.',
-        'Relying on the officer\'s certification that the report is accurate and not reviewing source material.'
+        'Comparing the report against the available body-camera footage and field notes — not just reading the words — so reconstructed quotes, mismatched sequences, and after-the-fact facts are caught before the report becomes the record.',
+        'Reading the report carefully for clarity and grammar, then approving it once it reads cleanly and professionally.',
+        'Confirming that the report contains both a probable cause section and a use-of-force section before approving it.',
+        'Relying on the officer\'s certification that the report is accurate, since the officer was the one present at the scene.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. The integrity flags — a reconstructed quote, a timeline that does not match the video, a fact that appeared only after a legal challenge — are visible only when the reviewer compares the report against the footage and notes. Reading for clarity alone misses exactly the problems that follow a case into court.'
     },
     {
       scenario: 'An officer\'s field notes are missing the exact words a victim used. You are returning the report and instructing the officer on how to close the gap.',
       text: 'What should you direct the officer to do?',
       options: [
-        'Reconstruct the victim\'s statement from memory, since the officer remembers the gist of it.',
-        'Contact the victim to clarify, document the follow-up contact (date, time, method), and distinguish clearly in the report between direct quotes, paraphrased summaries, and the officer\'s own observations.',
-        'Leave the statement out entirely rather than risk any inaccuracy.',
-        'Insert an approximate quote in quotation marks and note that it is "close enough."'
+        'Direct the officer to reconstruct the victim\'s statement from memory, since the officer recalls the gist of what was said.',
+        'Direct the officer to insert an approximate quote in quotation marks and add a note that it is "close enough."',
+        'Direct the officer to contact the victim to clarify, document the follow-up (date, time, method), and distinguish in the report between direct quotes, paraphrased summaries, and the officer\'s own observations.',
+        'Direct the officer to leave the statement out entirely rather than risk any inaccuracy in the record.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. The right way to close a gap is verification, not reconstruction. A follow-up contact documented with date, time, and method — with quotes, summaries, and observations clearly distinguished — strengthens the report. Reconstructing a quote from memory is fabrication, even when the spirit is accurate.'
     },
     {
       scenario: 'An officer resubmits a revised report. The victim-statement section now reads: "Victim provided a statement consistent with the injuries observed."',
       text: 'Is this revision acceptable?',
       options: [
-        'Yes — it avoids fabrication, so it is sufficient.',
-        'No — it is conclusory and may fail to establish probable cause. Return it for the specific content of the statement and the specific injuries, obtained and documented properly.',
-        'Yes — general summaries are preferred over specific quotes in police reports.',
-        'No — the officer should be disciplined for submitting a weak revision.'
+        'Yes — by avoiding any fabricated detail, the revision satisfies the standard.',
+        'Yes — in police reports, a general summary is preferred over specific quotes and injury descriptions.',
+        'No — and the officer should be disciplined for resubmitting such a weak revision.',
+        'No — it is conclusory and may fail to establish probable cause. Return it for the specific content of the statement and the specific injuries, obtained and documented properly.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. "Writing around the gap" with conclusory language avoids fabrication but can still fail the legal standard. Under Gates, probable cause needs specific articulable facts. Return the report for the actual content of the statement and the specific injuries — a clean-sounding conclusion is still a conclusion.'
     },
     {
       scenario: 'An officer comes to you because they realized, after filing, that they omitted a witness statement taken at the scene.',
       text: 'What is the correct supervisory guidance?',
       options: [
-        'Tell the officer to insert the statement into the original report as if it had been there from the start.',
-        'Have the officer document it as a disclosed supplement, noting that it was captured from memory rather than contemporaneous notes — never a silent insertion into the finished report.',
-        'Tell the officer to omit it, since it was not in the original.',
-        'Direct the officer to wait and add it only if the defense raises the issue.'
+        'Tell the officer to insert the statement into the original report as if it had been recorded there from the start.',
+        'Have the officer document it as a disclosed supplement, noting it was captured from memory rather than contemporaneous notes — never a silent insertion into the finished report.',
+        'Tell the officer to leave it out, since it was not part of the originally filed report.',
+        'Direct the officer to hold the statement and add it only if the defense later raises the issue.'
       ],
       correct: 1,
       feedback: 'Correct. Omitting known facts weakens the case, but silently inserting them into a finished report is misconduct. The correct path is a disclosed supplement that notes the information was captured from memory. Transparency preserves both the information and the officer\'s integrity.'

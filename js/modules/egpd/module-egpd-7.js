@@ -235,12 +235,12 @@ function getLeadershipQuestions() {
       scenario: 'You are the senior officer on a call. A junior officer suggests running all subjects present without any individualized basis.',
       text: 'Under Terry v. Ohio, what is required before conducting an investigative stop of an individual?',
       options: [
-        'The officer\'s general experience and instinct that something is wrong.',
         'Individualized reasonable articulable suspicion of criminal activity.',
+        'The officer\'s general experience and instinct that something is wrong.',
         'Probable cause that a crime has been committed.',
         'Group presence in a high-crime area is sufficient.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Terry v. Ohio (1968) requires individualized, reasonable articulable suspicion of criminal activity before an investigative stop. Group presence does not supply the basis for individual stops. A senior officer who corrects this in the field prevents a Fourth Amendment violation and trains the junior officer for future calls.'
     },
     {
@@ -248,11 +248,11 @@ function getLeadershipQuestions() {
       text: 'Under 18 Pa. C.S. § 3503, what is required before a trespass enforcement is lawful?',
       options: [
         'The property owner\'s verbal request to officers is sufficient to authorize trespass enforcement.',
-        'The property must be posted with conspicuous signage, fenced to exclude intruders, or the subject must have received prior direct communication that entry is prohibited.',
         'Any commercial property open to the public is exempt from trespass protections.',
+        'The property must be posted with conspicuous signage, fenced to exclude intruders, or the subject must have received prior direct communication that entry is prohibited.',
         'Repeated calls to police by the property owner establish the required notice.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. 18 Pa. C.S. § 3503 requires that property be posted with conspicuous signage, fenced in a manner designed to exclude intruders, or that the subject have received direct prior communication that entry is not permitted. An owner\'s call to police does not substitute for proper notice. Advise the owner on the formal trespass process rather than taking unlawful enforcement action.'
     },
     {
@@ -261,22 +261,22 @@ function getLeadershipQuestions() {
       options: [
         'Total years of service and seniority.',
         'Number of arrests and enforcement statistics.',
-        'Demonstrated judgment in ambiguous situations.',
-        'Performance on written promotional examinations.'
+        'Performance on written promotional examinations.',
+        'Demonstrated judgment in ambiguous situations.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. Police Executive Research Forum (PERF) research identifies demonstrated judgment in ambiguous situations as the top predictor of supervisory readiness — not seniority or test scores. Officers who make consistent, law-grounded decisions in unclear situations, and who correct others through those situations, demonstrate the core supervisory competency before ever holding the rank.'
     },
     {
       scenario: 'A junior officer made an error on a recent call. You want to correct the behavior.',
       text: 'What is the most effective and professionally appropriate method for correcting a junior officer\'s conduct?',
       options: [
+        'Address it privately and directly, one-on-one, without an audience.',
         'Address it on scene to reinforce the standard in real time while the situation is fresh.',
         'Document the error in writing and submit to the chain of command for formal action.',
-        'Address it privately and directly, one-on-one, without an audience.',
         'Wait for the annual evaluation period to address behavioral patterns.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. Corrections to junior officer conduct are most effective when delivered privately and directly, without an audience. Public corrections damage working relationships, create resentment, and close down the learning. A brief, private, law-grounded correction — delivered calmly — builds the officer rather than shuts them down. Departmental chain-of-command standards support addressing concerns through proper channels, not in the field in front of personnel or the public.'
     },
     {
@@ -285,10 +285,10 @@ function getLeadershipQuestions() {
       options: [
         'Documenting that the conditions you faced made any other outcome impossible.',
         'Identifying which other factors and personnel contributed to the outcome.',
-        'Owning the decision and the outcome, explaining your reasoning, and identifying what you\'d do differently.',
-        'Deferring to the supervisor\'s assessment to preserve the working relationship.'
+        'Deferring to the supervisor\'s assessment to preserve the working relationship.',
+        'Owning the decision and the outcome, explaining your reasoning, and identifying what you\'d do differently.'
       ],
-      correct: 2,
+      correct: 3,
       feedback: 'Correct. Accountability means owning the decision and the outcome — good or bad — explaining the reasoning behind it clearly, and identifying what you\'d change. This is distinct from blame (pointing outward) and from self-flagellation (collapsing under the critique). Officers who demonstrate this pattern consistently earn supervisory trust faster than any other quality. It is the leadership behavior that gets noticed without requiring a sergeant\'s badge.'
     },
     {
@@ -296,11 +296,11 @@ function getLeadershipQuestions() {
       text: 'What is the appropriate supervisory response?',
       options: [
         'Let them resolve it themselves — interpersonal disputes among officers are not supervisor business.',
-        'Take sides with the officer whose position you believe is more sound.',
         'Separate them immediately, move the conversation out of public view, hear both perspectives individually, and address the conduct and the underlying issue separately.',
+        'Take sides with the officer whose position you believe is more sound.',
         'Document the dispute and submit it up the chain without intervening.'
       ],
-      correct: 2,
+      correct: 1,
       feedback: 'Correct. Public disputes among officers damage unit cohesion and public trust. The first priority is de-escalation: separate the parties and move the conversation to a private setting. Then address the conduct (the public dispute) and the underlying issue (the disagreement about the call) as two distinct matters. Taking sides publicly undermines your credibility as a supervisor with both officers and the watching team. Document as appropriate, but intervention — not documentation — is the immediate response.'
     },
     {
@@ -319,12 +319,12 @@ function getLeadershipQuestions() {
       scenario: 'A subordinate officer comes to you frustrated about a department policy they believe is unfair. The policy is set at the command level and is not one you have authority to change.',
       text: 'What is the appropriate supervisory response?',
       options: [
+        'Acknowledge their concern, explain what the policy requires and why it exists to the extent you know, and encourage them to raise concerns through the appropriate channel (union, chain of command, formal feedback process) if they believe it warrants review.',
         'Agree with the officer and validate their frustration — it builds trust.',
         'Tell the officer policies are not up for discussion and redirect them to their duties.',
-        'Acknowledge their concern, explain what the policy requires and why it exists to the extent you know, and encourage them to raise concerns through the appropriate channel (union, chain of command, formal feedback process) if they believe it warrants review.',
         'Promise to raise the issue at the next supervisors\' meeting without follow-through.'
       ],
-      correct: 2,
+      correct: 0,
       feedback: 'Correct. Officers who feel unheard disengage. Dismissing the concern damages trust. Agreeing and venting with a subordinate about command decisions undermines your authority and theirs. The professional response: acknowledge the concern, explain the policy to the best of your knowledge, and direct them to the proper channel for formal feedback. This respects their voice while reinforcing the chain of command and your own professional standing.'
     },
   ];
@@ -377,11 +377,11 @@ function getLeadershipSupervisorQuestions() {
       text: 'What is the correct supervisory action at this stage?',
       options: [
         'Issue a formal written reprimand immediately to establish a record.',
-        'Have a direct, documented conversation now — name the pattern, state the expectation, and ask if there is something you should know — before any formal action, while still creating a record.',
         'Wait for a fourth occurrence before doing anything, since three is within normal variation.',
+        'Have a direct, documented conversation now — name the pattern, state the expectation, and ask if there is something you should know — before any formal action, while still creating a record.',
         'Mention it casually with no documentation, since the officer is a strong performer.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. A pattern requires engagement, but jumping straight to a formal reprimand skips the coaching step and breeds resentment, while waiting for a "fourth occurrence" normalizes the conduct. A direct, documented conversation now — pattern, expectation, and a chance to surface context — is the right rung of the ladder, and it protects the officer, you, and the department if escalation follows.'
     },
     {
@@ -389,23 +389,23 @@ function getLeadershipSupervisorQuestions() {
       text: 'Why does holding this line matter beyond the single call?',
       options: [
         'It does not really matter — running names is harmless and clears scenes quickly.',
-        'Because the legal floor you hold becomes the floor your officers hold when you are off shift: Terry requires individualized reasonable suspicion, and allowing a suspicionless sweep both creates Fourth Amendment exposure now and trains the next violation on a call you will not be on.',
         'Because the subjects might file complaints, which is the only real risk.',
-        'Because senior officers are required to make all stop decisions personally.'
+        'Because senior officers are required to make all stop decisions personally.',
+        'Because the legal floor you hold becomes the floor your officers hold when you are off shift: Terry requires individualized reasonable suspicion, and allowing a suspicionless sweep both creates Fourth Amendment exposure now and trains the next violation on a call you will not be on.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. A supervisor\'s example sets the squad\'s floor. Terry v. Ohio requires individualized reasonable articulable suspicion; allowing a group sweep is both a Fourth Amendment problem now and a lesson that survives to the shifts you do not work. Holding the line — and praising the officer who slows a fast situation down — is how the standard endures.'
     },
     {
       scenario: 'Two officers under your supervision begin a heated dispute about a call in the station parking lot. Several other officers are watching.',
       text: 'What is the correct supervisory response?',
       options: [
-        'Let them work it out — interpersonal disputes are not a supervisor\'s concern.',
         'Separate them immediately, move the conversation out of public view, hear each perspective individually, and then address the public conduct and the underlying disagreement as two distinct matters — without taking a public side.',
+        'Let them work it out — interpersonal disputes are not a supervisor\'s concern.',
         'Side openly with whichever officer is correct about the call to settle it fast.',
         'Document it and forward it up the chain without intervening.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. A public dispute damages cohesion and trust. The immediate response is intervention, not documentation: separate, move it private, hear both sides, then treat the conduct and the underlying issue separately. Taking a public side undermines your credibility with both officers and the watching squad.'
     },
     {
@@ -425,23 +425,23 @@ function getLeadershipSupervisorQuestions() {
       text: 'What is your obligation?',
       options: [
         'Adjust the report discreetly — protecting a developing officer\'s record is part of supporting your people.',
-        'Refuse: a report reflects what occurred, and altering it is unsworn falsification under 18 Pa. C.S. § 4904. Your rank makes that worse, not better — handle the underlying performance issue through coaching or progressive discipline, not by changing the record.',
         'Have the officer rewrite it to say whatever keeps it off his record.',
-        'Approve it as written and say nothing, since it is not your report.'
+        'Approve it as written and say nothing, since it is not your report.',
+        'Refuse: a report reflects what occurred, and altering it is unsworn falsification under 18 Pa. C.S. § 4904. Your rank makes that worse, not better — handle the underlying performance issue through coaching or progressive discipline, not by changing the record.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. "Handling it in-house" by altering a sworn report is falsification under 18 Pa. C.S. § 4904, and a supervisor doing it compounds the problem with the authority of rank. The performance issue is addressed through coaching or progressive discipline; the report itself reflects what occurred and does not change.'
     },
     {
       scenario: 'An officer on your squad comes to you privately and reports that a senior officer pressured them to alter a report, saying the department "handles things in-house."',
       text: 'How do you respond?',
       options: [
-        'Tell the officer to handle it themselves and avoid the senior officer.',
         'Document the report of pressure and act on it through the chain of command — if it is happening to this officer it is likely happening to others, and your response signals whether your people can trust the chain with the truth.',
+        'Tell the officer to handle it themselves and avoid the senior officer.',
         'Advise the officer to quietly change the report to avoid conflict.',
         'Take no action unless the officer files a formal written complaint first.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. As a supervisor you are the chain of command an officer reports to. Pressure to falsify documentation must be documented and acted on — a single instance usually signals a pattern affecting others, and how you respond determines whether officers trust the chain of command with integrity problems in the future.'
     },
     {
@@ -449,11 +449,11 @@ function getLeadershipSupervisorQuestions() {
       text: 'Which behavior best models the accountability you want your officers to learn?',
       options: [
         'Emphasize that the conditions made any other outcome impossible.',
-        'Own the decision and the outcome, explain the reasoning behind it, and identify what you would do differently — because your officers calibrate their own accountability to what they see you model.',
         'Identify which other personnel and factors contributed to the result.',
+        'Own the decision and the outcome, explain the reasoning behind it, and identify what you would do differently — because your officers calibrate their own accountability to what they see you model.',
         'Defer entirely to the superior\'s assessment to preserve the relationship.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Accountability means owning the decision and the result, explaining the reasoning, and naming what you would change — distinct from blame and from collapsing under critique. A supervisor who models this teaches it: officers calibrate their own accountability to their supervisor\'s, so what you demonstrate becomes the squad\'s standard.'
     },
     {
