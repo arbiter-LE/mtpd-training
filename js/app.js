@@ -83,6 +83,11 @@ async function mountOfficerSession(authUid) {
     await loadAllDataForAdmin();
     renderAdminDashboard();
   } else {
+    // Load this officer's saved completion history BEFORE rendering the
+    // dashboard — otherwise completionData is empty and every module shows
+    // "not started," with only modules finished in the current session
+    // appearing. (loadOfficerCompletions was defined but never called.)
+    await loadOfficerCompletions(o.badge_number);
     document.getElementById('officer-name-display').textContent  = o.name;
     document.getElementById('officer-badge-display').textContent = 'Badge #' + o.badge_number;
     document.getElementById('module-officer-name').textContent   = o.name;
