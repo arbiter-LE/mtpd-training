@@ -93,11 +93,49 @@ function checkSharedPurity() {
   });
 }
 
+// Behavior guard: a top-level function defined in a shared engine file but
+// never referenced anywhere (HTML handlers, listeners, or other JS) is dead
+// code that silently breaks a user flow. This is the failure mode behind the
+// 6/25 Altomare bug — loadOfficerCompletions was defined but never called, so
+// officers' saved progress never loaded. Structure checks can't see it; this can.
+function checkWiring() {
+  console.log('\n▸ engine wiring (no defined-but-never-called functions)');
+  // Reference corpus: index.html (inline onclick handlers) + every .js the
+  // browser loads. A name that appears only once across all of it = only its
+  // own declaration, i.e. nothing ever calls it.
+  const jsFiles = [];
+  (function walk(dir) {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('.js')) jsFiles.push(p);
+    }
+  })(path.join(ROOT, 'js'));
+  const corpus = [path.join(ROOT, 'index.html'), ...jsFiles]
+    .filter(fs.existsSync).map(f => fs.readFileSync(f, 'utf8')).join('\n')
+    // strip comments so a name mentioned only in prose can't mask dead code
+    .replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/[^\n]*/g, '$1');
+
+  let clean = true;
+  ['js/app.js', 'js/config.js'].forEach(rel => {
+    const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    const re = /^(?:async\s+)?function\s+([A-Za-z0-9_$]+)/gm; // top-level decls only (column 0)
+    let m;
+    while ((m = re.exec(src))) {
+      const name = m[1];
+      const refs = (corpus.match(new RegExp('\\b' + name.replace(/\$/g, '\\$') + '\\b', 'g')) || []).length;
+      if (refs < 2) { clean = false; fail('wiring', `${rel}: function ${name}() is defined but never called — wire it into a code path or remove it`); }
+    }
+  });
+  if (clean) console.log('  ✓ every top-level function in app.js & config.js is referenced');
+}
+
 console.log('Multi-tenant smoke test — building every registered department\n' + '─'.repeat(60));
 const registry = loadRegistry();
 console.log(`Registry: ${registry.length} department(s) — ${registry.map(d => d.subdomain).join(', ')}`);
 registry.forEach(checkDepartment);
 checkSharedPurity();
+checkWiring();
 
 console.log('\n' + '─'.repeat(60));
 if (failures === 0) { console.log('ALL DEPARTMENTS PASS ✓'); process.exit(0); }
