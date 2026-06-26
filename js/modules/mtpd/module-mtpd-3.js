@@ -108,34 +108,34 @@ function getReportWritingSupervisorQuestions() {
       scenario: 'A use of force narrative in an arrest report submitted to the bin reads: "Subject resisted arrest. Force was applied and was proportionate to the resistance encountered. Subject was taken into custody."',
       text: 'What is the correct supervisory action before approving it?',
       options: [
-        'Approve it — it states that the force was proportionate, which is the legal standard.',
         'Return it for body-movement-level specificity — which body part moved and in which direction, the officer\'s specific response, and the outcome — because "resisted" and "proportionate" are conclusions, not the articulable facts the documentation standard requires.',
-        'Rewrite it yourself so the case is not delayed.',
-        'Approve it but note that the officer should be more detailed in the future.'
+        'Approve it as written — it expressly states that the force used was proportionate, which is the governing legal standard.',
+        'Rewrite the narrative yourself at the bin, so that the case is not delayed waiting on the officer.',
+        'Approve it for now, but note for the officer that he should be more detailed in reports going forward.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. "Resisted arrest" and "proportionate" are legal conclusions. The standard requires specific, sequential facts a reader can reconstruct. Return it for the body-movement-level account before it becomes the evidentiary record.'
     },
     {
       scenario: 'A DV incident report shows the officer had probable cause for Simple Assault but did not arrest. The narrative on the no-arrest decision reads, in full: "Parties separated for the evening. No arrest made."',
       text: 'How do you handle this under MTPD Order 4.13?',
       options: [
-        'Approve it — noting that no arrest was made is sufficient.',
+        'Approve it — simply noting in the narrative that no arrest was made is sufficient for this kind of call.',
+        'Order the officer to go back and make the arrest now, regardless of the circumstances at the scene.',
         'Return it — Order 4.13 requires a detailed explanation of the specific reasons when probable cause existed but the officer elected not to arrest; "No arrest made" is not documentation.',
-        'Order the officer to make the arrest now regardless of the circumstances.',
-        'Approve it but add your own note explaining the likely reason.'
+        'Approve it, but add your own supervisory note to the file explaining the most likely reason for no arrest.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. MTPD Order 4.13 requires a detailed explanation of the specific reasons in the narrative whenever probable cause existed but the officer elected not to arrest. A bare "No arrest made" fails the standard and must be returned for the explanation.'
     },
     {
       scenario: 'Reviewing a DV report, you see the officer documented a visible bruise the victim attributes to being struck. The victim also told the officer her ribs were sore and she believed one might be cracked, but the officer could not observe that injury. The report lists only the bruise.',
       text: 'What does Order 4.13 require regarding the rib injury?',
       options: [
-        'Leave it out — only injuries the officer directly observed belong in the report.',
+        'Leave it out — only those injuries the officer personally and directly observed belong anywhere in the report.',
         'Return it to add the reported-but-unobserved injury, clearly noted as reported by the victim and not observed by the officer, because Order 4.13\'s checklist requires both observed injuries and injuries reported but not observed.',
-        'Have the victim sign a separate injury statement instead of documenting it in the narrative.',
-        'Approve it — the bruise is enough to support the charge.'
+        'Have the victim sign a separate written injury statement, instead of documenting the rib injury in the narrative.',
+        'Approve it as written — the documented bruise by itself is already enough to support the charge.'
       ],
       correct: 1,
       feedback: 'Correct. The Order 4.13 narrative checklist requires both injuries observed by the officer and injuries reported by the victim but not observed — noted clearly as not observed. Capturing both protects the officer from a concealment claim and accurately bounds their observations.'
@@ -144,58 +144,58 @@ function getReportWritingSupervisorQuestions() {
       scenario: 'At end of tour, an officer submits a strong incident report. Stapled to the back as the final page is the Use of Force Report from the same arrest, and the packet is in the bin ready for you to approve and forward.',
       text: 'What is the supervisory action?',
       options: [
-        'Approve the packet as a complete, well-organized record.',
-        'Separate the Use of Force Report from the incident report before approving — Order 1.3 keeps the Use of Force Report as an internal management document that shall not be attached to the incident or supplemental report.',
-        'Forward the entire packet, including the Use of Force Report, to the District Attorney.',
-        'Reject the whole submission and make the officer start over.'
+        'Approve the packet as submitted — it is a complete and unusually well-organized record of the arrest.',
+        'Forward the entire packet, the Use of Force Report included, directly to the District Attorney for the case file.',
+        'Reject the whole submission outright and make the officer start the entire arrest report over again.',
+        'Separate the Use of Force Report from the incident report before approving — Order 1.3 keeps the Use of Force Report as an internal management document that shall not be attached to the incident or supplemental report.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. MTPD Order 1.3 requires the Use of Force Report to stay separate from the incident/supplemental report and bars release outside the department without the Chief\'s authorization. Separate the documents at the bin; do not forward the force report with the case file.'
     },
     {
       scenario: 'An officer\'s arrest report narrative references "the knife recovered from the subject and secured as evidence," but there is no Property Record Form in the submission and the officer says he will "log it into evidence tomorrow."',
       text: 'How do you handle this under MTPD Order 3.05/3.06 and 3.04?',
       options: [
-        'Approve the report — the Property Record Form can follow whenever the officer gets to it.',
+        'Approve the report now — the Property Record Form can simply follow later, whenever the officer gets around to it.',
+        'Approve the report and then create and file the missing Property Record Form for the knife yourself.',
         'Treat the submission as incomplete — Order 3.05/3.06 requires a Property Record Form completed before end of shift whenever evidence is received, and Order 3.04 requires reports completed before end of tour; require the form and chain documentation before approval.',
-        'Approve it and create the Property Record Form yourself.',
-        'Disregard the knife since it is mentioned only in passing.'
+        'Disregard the knife reference entirely, since it is mentioned only in passing within the narrative.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. MTPD Order 3.05/3.06 requires a Property Record Form completed before end of shift each time evidence is received, and Order 3.04 requires reports completed before end of tour. A narrative referencing seized evidence with no Property Record Form is an incomplete submission to be corrected before approval.'
     },
     {
       scenario: 'It is the end of shift. An officer with a completed arrest still pending tells you he is exhausted and wants to submit the report at the start of his next tour rather than tonight.',
       text: 'What does MTPD Order 3.04 require?',
       options: [
-        'The officer may submit whenever convenient — report timing is at the officer\'s discretion.',
         'Reports are completed before end of tour and submitted to the shift bin; holding a report past end of shift requires your authorization as supervisor — it is not the officer\'s discretion — so you make the timing decision, not the officer.',
-        'You must complete the report for the officer before he leaves.',
-        'The report can be skipped entirely if the officer is too tired.'
+        'The officer may submit the report whenever it is convenient for him — report timing is left to the officer\'s discretion.',
+        'You must sit down and complete the entire report on the officer\'s behalf before he leaves for the night.',
+        'The report can be skipped entirely on this occasion, given that the officer is simply too tired to write it.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. MTPD Order 3.04 requires reports completed before end of tour and submitted to the shift bin for supervisory approval, unless otherwise authorized by the shift supervisor. Carrying a report to the next tour requires the supervisor\'s authorization — the timing decision belongs to you, not the officer.'
     },
     {
       scenario: 'An officer\'s report states the subject "seemed nervous and was acting suspicious" as part of the basis for a vehicle search. Defense counsel will challenge this as conclusory.',
       text: 'What do you direct on review?',
       options: [
-        'Nothing — "nervous" and "suspicious" are acceptable shorthand officers commonly use.',
-        'Return it for the specific observable behaviors behind the assessment — trembling hands, elevated voice, repeated mirror checks, avoidance of eye contact — because conclusory descriptors will be challenged while specific facts speak for themselves.',
-        'Replace "nervous" with "agitated" — a more precise legal term.',
-        'Tell the officer to remove the observation entirely.'
+        'Nothing needs to change — "nervous" and "suspicious" are acceptable shorthand that officers commonly use in reports.',
+        'Replace the word "nervous" with "agitated," which is the more precise and defensible legal term to use.',
+        'Tell the officer to simply remove the nervousness-and-suspicion observation from the report entirely.',
+        'Return it for the specific observable behaviors behind the assessment — trembling hands, elevated voice, repeated mirror checks, avoidance of eye contact — because conclusory descriptors will be challenged while specific facts speak for themselves.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. "Nervous" and "suspicious" are conclusions a court and defense counsel will challenge. The standard is to document the specific, observable behaviors that led to the assessment so the facts stand on their own — the same factual-not-conclusory standard the module teaches.'
     },
     {
       scenario: 'Over several weeks, the same officer repeatedly submits arrest reports with conclusory use-of-force language and DV narratives missing required checklist items. You have returned and coached on these before.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep returning each report individually without any broader action.',
+        'Keep returning each deficient report individually, without taking any broader corrective or training action.',
         'Move to documented corrective action and targeted training on the documentation standard and the Order 4.13 checklist, because a repeated pattern after coaching is a supervisory and training issue, and escalate as the pattern warrants.',
-        'Stop reviewing that officer\'s reports as closely, since correcting them takes too long.',
-        'Approve the reports to avoid delaying cases and address the writing only at the annual review.'
+        'Stop reviewing that particular officer\'s reports as closely, since correcting them each time takes too long.',
+        'Approve the reports as-is to avoid delaying cases, and address the writing problems only at the annual review.'
       ],
       correct: 1,
       feedback: 'Correct. One weak report is a coaching moment; a documented pattern after coaching is a supervisory and training issue requiring documented corrective action and escalation. Lowering the review standard or approving deficient reports to save time defeats the purpose of supervisory review.'

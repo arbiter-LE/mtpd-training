@@ -75,10 +75,10 @@ function getEISupervisorQuestions() {
       scenario: 'An officer reports that a DV victim "wouldn\'t cooperate" and gave no statement. Reviewing his body camera, you see his first contact was clipped, skeptical, and focused on getting the call cleared. The victim shut down within the first minute.',
       text: 'What does the IACP research point you to address?',
       options: [
-        'Nothing — some victims simply refuse to cooperate and demeanor is irrelevant.',
+        'Nothing needs addressing — some victims simply refuse to cooperate, and the officer\'s demeanor is irrelevant to that.',
         'Coach the demeanor problem — IACP research finds officer demeanor in the first 60 seconds of a victim contact is the strongest predictor of cooperation, so a skeptical, dismissive opening likely suppressed the statement, and the emotional approach is part of the investigation.',
-        'Discipline the victim for failing to cooperate with the investigation.',
-        'Reassign the case to detectives without addressing the contact.'
+        'Discipline the victim herself for failing to cooperate with the officer\'s investigation of the incident.',
+        'Reassign the case to detectives for follow-up without ever addressing the officer\'s initial contact.'
       ],
       correct: 1,
       feedback: 'Correct. IACP research identifies officer demeanor in the first 60 seconds as the strongest predictor of victim cooperation. A clipped, skeptical opening that shut the victim down is a demeanor problem to coach — the officer\'s emotional approach is part of the investigation, not separate from it.'
@@ -87,58 +87,58 @@ function getEISupervisorQuestions() {
       scenario: 'On a follow-up welfare check at a DV victim\'s home, an officer completes the contact in two minutes, documents "victim fine, no new issues," and does not provide victim advocate or PFA information because "she already knows the drill."',
       text: 'How do you handle this under MTPD ALO 4.13?',
       options: [
-        'Approve it — a quick check that confirms the victim is fine is efficient.',
         'Return it and coach the standard — ALO 4.13 requires follow-up contacts to prioritize safety assessment and victim engagement over documentation efficiency and to provide victim advocate and PFA information at every contact, not just the first.',
-        'Tell the officer to stop doing follow-up checks since they take too long.',
-        'Approve it but mail the victim a pamphlet instead.'
+        'Approve it — a quick welfare check that confirms the victim is doing fine is efficient use of the officer\'s time.',
+        'Tell the officer to stop doing these follow-up checks altogether, since they take up too much time.',
+        'Approve it as written, but have the department mail the victim an informational pamphlet instead.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. MTPD ALO 4.13 requires follow-up DV contacts to prioritize safety assessment and engagement over documentation efficiency and to provide victim advocate and PFA information at every contact. "She already knows" does not meet the standard; the contact exists to inform and engage, not just to clear.'
     },
     {
       scenario: 'A newer officer treats a DV victim who recanted her earlier statement as a liar who "wasted everyone\'s time," and says he is done taking her seriously.',
       text: 'What is the supervisory coaching point?',
       options: [
-        'Agree — recantation proves the victim was never credible.',
+        'Agree with him — the victim\'s recantation simply proves that she was never really credible in the first place.',
+        'Direct the officer to go ahead and charge the victim herself with filing a false police report.',
         'Coach the trauma-informed view — recantation, minimization, and hostility are normal trauma responses, not indicators of deception; the approach should adjust pace and language and give the victim space, not write her off.',
-        'Direct the officer to charge the victim with filing a false report.',
-        'Tell the officer to avoid all contact with that victim going forward.'
+        'Tell the officer to simply avoid all further contact with that particular victim going forward.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Recantation, minimization, hostility, and refusal to engage are recognized trauma responses, not proof of deception. The coaching point is the trauma-informed approach: adjust pace and language, give space, and engage on the victim\'s terms rather than writing her off.'
     },
     {
       scenario: 'On a chaotic, emotionally charged scene, an officer begins matching a hostile subject\'s volume and aggression, and the encounter is escalating. The rest of the squad is taking their cue from the rising tension.',
       text: 'What does emotionally intelligent supervision call for here?',
       options: [
-        'Match the subject\'s intensity yourself to overwhelm the resistance.',
-        'Model and direct self-regulation — lower your own energy and tone to reset the scene, because the officer\'s nervous system sets the ceiling for the encounter and the squad calibrates to your composure.',
-        'Order maximum force immediately to end the standoff.',
-        'Step back and let the escalation run its course.'
+        'Match the subject\'s intensity and volume yourself, in order to overwhelm his resistance on the scene.',
+        'Order the use of maximum force immediately, in order to bring the standoff to a quick end.',
+        'Step back from the encounter entirely and simply let the escalation run its natural course.',
+        'Model and direct self-regulation — lower your own energy and tone to reset the scene, because the officer\'s nervous system sets the ceiling for the encounter and the squad calibrates to your composure.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Matching hostility escalates a containable call; absorbing it without matching changes the trajectory. Self-regulation is an active choice, and on scene the supervisor\'s composure sets the ceiling — modeling and directing a lower energy resets the encounter and the squad.'
     },
     {
       scenario: 'An officer is frustrated that a victim presenting as hostile and guarded "won\'t just answer the questions" so he can finish the report.',
       text: 'How do you reframe this for the officer using the empathy principle?',
       options: [
-        'Tell him to demand answers more forcefully to get the report done.',
         'Reframe the hostility as likely self-protection from a system that has failed her before — empathy means accurately perceiving her emotional state and adjusting the approach, which produces better information and outcomes than pushing for speed.',
-        'Tell him to skip the statement and close the case.',
-        'Agree that an uncooperative victim is not worth the time.'
+        'Tell him to demand answers from the victim more forcefully, in order to get the report finished.',
+        'Tell him to just skip taking the victim\'s statement entirely and go ahead and close the case out.',
+        'Agree with him that an uncooperative victim like this one is simply not worth the officer\'s time.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Empathy is accurate perception of another\'s emotional state, not agreement. A hostile, guarded victim is often protecting herself, and reading the actual situation rather than the surface presentation leads to better information and outcomes — the opposite of pushing for speed.'
     },
     {
       scenario: 'You are about to walk onto a tense scene with several officers already keyed up. You know your demeanor will shape what happens next.',
       text: 'What is the emotionally intelligent supervisory move on arrival?',
       options: [
-        'Arrive loud and forceful to assert immediate control.',
+        'Arrive loud and forceful on the scene, in order to assert your immediate control over the situation.',
         'Arrive composed and deliberate, lowering the emotional temperature, because self-regulation is an active choice and the supervisor\'s tone sets the ceiling the rest of the scene calibrates to.',
-        'Stay in the car until the officers resolve it themselves.',
-        'Mirror the officers\' energy so they feel supported.'
+        'Stay in your patrol car until the officers manage to resolve the situation themselves on their own.',
+        'Mirror the keyed-up energy of the officers already there, so that they feel fully supported by you.'
       ],
       correct: 1,
       feedback: 'Correct. Self-regulation is an active, real-time choice, and on a tense scene the supervisor\'s composure sets the ceiling for everyone. Arriving composed and deliberate lowers the temperature; arriving loud or mirroring the keyed-up energy raises it.'
@@ -147,24 +147,24 @@ function getEISupervisorQuestions() {
       scenario: 'An officer\'s instinct is good investigative work, but his blunt, skeptical style consistently produces less cooperative victims and more escalated subjects than his peers handling similar calls.',
       text: 'What is the supervisory approach?',
       options: [
-        'Leave it alone — demeanor is personality and cannot be developed.',
-        'Treat emotional intelligence as a trainable tactical skill and coach the specific behaviors — the first-60-second approach, self-regulation, and reading the situation — because demeanor drives cooperation and de-escalation outcomes, not just rapport.',
-        'Limit the officer to calls with no victims or subjects.',
-        'Rate his performance on reports alone and ignore the contacts.'
+        'Leave it alone — an officer\'s demeanor is just personality and it cannot really be developed or trained.',
+        'Limit the officer going forward to handling only calls that involve no victims and no subjects at all.',
+        'Rate his overall performance on the quality of his reports alone, and simply ignore his field contacts.',
+        'Treat emotional intelligence as a trainable tactical skill and coach the specific behaviors — the first-60-second approach, self-regulation, and reading the situation — because demeanor drives cooperation and de-escalation outcomes, not just rapport.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Emotional intelligence is a trainable tactical skill, not fixed personality. The supervisor coaches the specific behaviors — the first-60-second approach, self-regulation, and accurate reading of the situation — because they measurably drive victim cooperation and de-escalation outcomes.'
     },
     {
       scenario: 'Over time, one officer repeatedly draws complaints of a dismissive demeanor, produces uncooperative victims, and skips the advocate and PFA information on follow-up DV contacts. You have coached him on demeanor and ALO 4.13 before.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep coaching informally — these are interpersonal issues that resolve on their own.',
+        'Keep coaching the officer informally — these are really just interpersonal issues that resolve on their own over time.',
+        'Quietly reassign him away from any and all victim contact, without documenting the underlying concerns.',
         'Move to documented corrective action and targeted training on the demeanor/first-60-second standard and the ALO 4.13 follow-up requirements, because a repeated pattern after coaching is a supervisory and training issue affecting victim cooperation and safety; escalate as warranted.',
-        'Reassign him away from any victim contact without documentation.',
-        'Take no action — demeanor complaints are subjective and not actionable.'
+        'Take no action at all — demeanor complaints of this kind are subjective and ultimately not actionable.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — dismissive demeanor, suppressed cooperation, and skipped ALO 4.13 follow-up requirements — is a supervisory and training issue requiring documented corrective action and escalation, with real consequences for victim cooperation and safety.'
     },
   ];

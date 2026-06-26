@@ -90,22 +90,22 @@ function getWellnessSupervisorQuestions() {
       scenario: 'One of your most reliable officers has, over six weeks, called in three times, snapped at dispatch twice, withdrawn from the squad, and told you "the job just doesn\'t bother me anymore." Your instinct is to start documenting attendance and attitude problems.',
       text: 'What is the supervisory move most consistent with this module?',
       options: [
-        'Open a performance file and discipline the absences and the attitude.',
+        'Open a formal performance file on him and discipline both the absences and the attitude problems.',
+        'Ignore the whole pattern entirely, at least unless and until his actual work product formally fails.',
         'Recognize the pattern as possible secondary traumatic stress and lead with a direct, private wellness conversation and a referral to resources — emotional numbing and behavioral changes are warning signs, and leading with discipline drives a wellness problem underground.',
-        'Ignore it unless his work product formally fails.',
-        'Reassign him to a quieter beat without talking to him.'
+        'Quietly reassign him to a quieter beat or shift, without ever talking to him about any of it.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. "The job doesn\'t bother me anymore" is emotional numbing — a recognized STS indicator — and the absences and irritability are behavioral warning signs. The supervisor leads with a direct wellness conversation and resources, not a discipline file, because performance management on a wellness pattern pushes the officer away from help.'
     },
     {
       scenario: 'An officer carrying visible stress is not in acute crisis but is clearly struggling. He asks you, quietly, where he could turn that "won\'t end up in my file or cost me my badge."',
       text: 'What do you tell him about peer support?',
       options: [
-        'Tell him any help he seeks will be reported up the chain.',
+        'Tell him that any kind of help he seeks out will ultimately be reported up the chain of command.',
         'Point him to the MTPD peer support program — it is confidential within policy limits, is not a disciplinary matter, does not affect fitness-for-duty status, and is the correct first step for stress short of acute crisis.',
-        'Tell him to just tough it out so nothing goes on his record.',
-        'Tell him he must request a formal fitness-for-duty evaluation first.'
+        'Tell him to just tough it out on his own, so that nothing at all ends up going on his record.',
+        'Tell him that he must request and complete a formal fitness-for-duty evaluation first, before anything else.'
       ],
       correct: 1,
       feedback: 'Correct. The MTPD peer support program is confidential within policy limits, non-disciplinary, and does not affect fitness-for-duty status — the correct first step for an officer experiencing stress who is not in acute crisis. That is exactly the reassurance this officer needs to reach out.'
@@ -114,34 +114,34 @@ function getWellnessSupervisorQuestions() {
       scenario: 'You refer an officer to the EAP. A week later you expect a report confirming he attended and what was discussed so you can "keep tabs on his progress."',
       text: 'What does the EAP policy actually provide?',
       options: [
-        'The EAP reports attendance and session content to the referring supervisor.',
-        'EAP services are provided by an independent contractor outside the chain of command and participation is not reported to supervisors; you can point an officer to EAP, but you will not receive a report that he went or what was discussed.',
-        'The supervisor must sit in on EAP sessions to verify attendance.',
-        'EAP is only available after a disciplinary referral.'
+        'The EAP reports both the officer\'s attendance and the session content back to the referring supervisor.',
+        'The supervisor is required to sit in on the EAP sessions himself in order to verify attendance.',
+        'The EAP is only ever available to an officer after a formal disciplinary referral has been made.',
+        'EAP services are provided by an independent contractor outside the chain of command and participation is not reported to supervisors; you can point an officer to EAP, but you will not receive a report that he went or what was discussed.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. The EAP is provided by an independent contractor outside the department\'s chain of command, and participation is not reported to supervisors. You can refer an officer, but you should not expect — or seek — a report of attendance or content; the confidentiality is the point.'
     },
     {
       scenario: 'During a candid conversation, an officer makes a statement suggesting he does not see a future and has "been getting his affairs in order lately." He then shrugs it off as "just talk."',
       text: 'What does this module require you to do?',
       options: [
-        'Accept that it was just talk and move on so you don\'t overreact.',
         'Treat it as a statement requiring immediate action — do not rationalize it; ask directly, stay with him, and engage peer support or EAP without delay, because imminent risk of harm is the defined limit where confidentiality yields to safety.',
-        'Wait a few days to see if his mood improves before doing anything.',
-        'Document it for his performance file and address it at his next review.'
+        'Accept his explanation that it was just talk and move on, so that you do not overreact to the comment.',
+        'Wait a few days to see whether his overall mood improves on its own before you do anything about it.',
+        'Document the comment for his performance file and then address it with him at his next review.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. A statement suggesting the officer does not see a future or is making final arrangements requires immediate action — don\'t rationalize it, ask directly, stay with him, and engage resources without delay. Imminent risk of harm is the defined limit where confidentiality yields to safety.'
     },
     {
       scenario: 'An officer asks you, before opening up, exactly what peer support and EAP can and cannot keep confidential.',
       text: 'How do you describe the confidentiality limits accurately?',
       options: [
-        'Tell him everything he says is protected with no exceptions whatsoever.',
+        'Tell him that absolutely everything he says is fully protected, with no exceptions to it whatsoever.',
         'Explain that peer support and EAP are confidential but with defined limits — mandatory disclosure applies when there is an imminent risk of harm to himself or others, disclosure of a serious criminal offense, or a court order requiring disclosure.',
-        'Tell him nothing he says is confidential at all.',
-        'Tell him you personally decide what stays confidential.'
+        'Tell him that nothing he says in those conversations is actually confidential in any way at all.',
+        'Tell him that you, as his supervisor, personally decide what does and does not stay confidential.'
       ],
       correct: 1,
       feedback: 'Correct. Both peer support and EAP are confidential within defined limits: mandatory disclosure applies for imminent risk of harm to self or others, disclosure of a serious criminal offense, or a court order. Describing those limits accurately lets the officer make informed decisions about what to disclose and to whom.'
@@ -150,36 +150,36 @@ function getWellnessSupervisorQuestions() {
       scenario: 'Another supervisor remarks that an officer who reached out to peer support "clearly can\'t handle the job" and suggests it should weigh against him for a specialized assignment.',
       text: 'How do you respond, consistent with the program and the module\'s message?',
       options: [
-        'Agree — seeking support shows the officer is unfit for demanding assignments.',
+        'Agree with him — seeking out support clearly shows that the officer is unfit for demanding assignments.',
+        'Stay neutral on it — how individual officers view help-seeking is really just a personal opinion.',
         'Push back — contacting peer support is not a disciplinary matter and does not affect fitness-for-duty status; treating it as a mark against the officer is exactly the culture of silence the module says kills officers.',
-        'Stay neutral — how officers view help-seeking is a personal opinion.',
-        'Suggest the officer be quietly passed over to avoid controversy.'
+        'Suggest that the officer simply be passed over quietly for the assignment, to avoid any controversy.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Contacting peer support is not a disciplinary matter and does not affect fitness-for-duty status. Treating help-seeking as a mark against an officer reinforces the culture of silence the module identifies as a lethal threat — the supervisor pushes back on that framing.'
     },
     {
       scenario: 'You notice an officer\'s alcohol use has clearly increased and is being used to cope, alongside growing irritability and withdrawal — but he is not in acute crisis and has made no statements of hopelessness.',
       text: 'What is the supervisory approach?',
       options: [
-        'Do nothing until his work formally fails or he says something alarming.',
         'Address it as an early warning sign — increased substance use is the most common self-medication pattern and the most reliable predictor of accelerating decline if not addressed early — with a direct private conversation and a peer support referral now.',
-        'Order an immediate fitness-for-duty termination process.',
-        'Mention it jokingly so it doesn\'t feel like a big deal.'
+        'Do nothing about it for now, at least until his work formally fails or he says something genuinely alarming.',
+        'Order an immediate fitness-for-duty evaluation and begin the termination process against him.',
+        'Mention the drinking to him jokingly, so that the whole thing does not feel like such a big deal.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. Increased substance use as a coping mechanism is the most common self-medication pattern in law enforcement and the most reliable predictor of accelerating decline if not addressed early. The move is early, direct, private engagement and a peer support referral — not waiting for a crisis or jumping to termination.'
     },
     {
       scenario: 'You want to reduce the stigma on your squad so officers actually use peer support and EAP before they reach crisis.',
       text: 'What supervisory approach best reflects this module\'s message?',
       options: [
-        'Tell the squad that needing help is a weakness they should hide.',
-        'Build a culture where reaching for peer support or EAP is normal rather than a confession — because silence is the actual threat — and model recognition by noticing, speaking directly, and pointing toward resources.',
-        'Require officers to disclose any counseling to you personally.',
-        'Avoid the topic entirely so no one feels singled out.'
+        'Tell the squad plainly that needing any kind of help is a weakness that they should always hide.',
+        'Require all officers to disclose any counseling or peer support they seek to you personally.',
+        'Avoid the entire topic of wellness completely, so that no one on the squad ever feels singled out.',
+        'Build a culture where reaching for peer support or EAP is normal rather than a confession — because silence is the actual threat — and model recognition by noticing, speaking directly, and pointing toward resources.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. The module is explicit that the culture of silence kills officers and that recognition — not silence — is the value. The supervisor normalizes help-seeking, protects its confidentiality, and models noticing, speaking directly, and pointing toward resources.'
     },
   ];

@@ -120,45 +120,45 @@ function getDomesticViolenceSupervisorQuestions() {
       text: 'What is the correct supervisory action under MTPD ALO 4.13?',
       options: [
         'Approve it — the victim is the protected party and her preference controls the arrest decision.',
+        'Approve it but require the officer to call the victim back to obtain her permission to arrest.',
         'Correct it — under ALO 4.13, when probable cause exists, arrest of the primary aggressor is mandatory and victim consent is not a required element; a documented injury plus a consistent account is probable cause, so the non-arrest is a policy failure to address.',
-        'Approve it but require the officer to call the victim back for permission to arrest.',
-        'Refer the matter to detectives for a follow-up arrest weeks later.'
+        'Refer the matter to detectives for a possible follow-up arrest some weeks later on.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. MTPD ALO 4.13 makes arrest of the primary aggressor mandatory when probable cause exists, and victim consent is not a required element. A visible injury plus a consistent victim account establishes probable cause. Declining arrest because the victim did not want to press charges is a policy failure to correct.'
     },
     {
       scenario: 'An officer arrested a subject for Simple Assault against his wife. The report notes a final PFA order prohibiting the subject from possessing firearms and that the wife told the officer there are two rifles and a handgun in the bedroom closet. The narrative says the firearms were "left secured in the residence since the subject was already in custody."',
       text: 'What should your review require under MTPD ALO 4.13?',
       options: [
-        'Nothing — the subject is in custody and no longer has access, so the firearms can stay.',
         'Require the firearms to be seized — a DV arrest combined with a court order prohibiting possession triggers mandatory seizure under ALO 4.13, with each firearm documented on a Property Record Form before end of shift; leaving them in the residence is the defect.',
-        'Advise the wife to secure the firearms herself and note it in the report.',
-        'Require a separate search warrant before any firearm can be seized.'
+        'Nothing needs to change — the subject is in custody and no longer has access, so the firearms can stay.',
+        'Advise the wife to secure all three of the firearms herself and simply note that advisory in the report.',
+        'Require the officer to obtain a separate search warrant before any of the firearms can be seized.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. MTPD ALO 4.13 makes firearms seizure mandatory when a person is arrested for a DV offense and is subject to a court order prohibiting possession. Both conditions are present. "Already in custody" does not excuse the seizure, and each firearm must be documented on a Property Record Form per ALO 3.05/3.06.'
     },
     {
       scenario: 'A DV report shows both parties with visible injuries, each claiming the other started it. The officer arrested both, with the narrative stating only "both parties had injuries, dual arrest made."',
       text: 'How do you handle this on review?',
       options: [
-        'Approve it — dual injuries require dual arrests.',
-        'Return it — ALO 4.13 and PA DV law require identification of the primary aggressor through documented analysis (comparative injury severity, history, defensive-injury patterns, self-defense); dual arrests are disfavored and the report must show that reasoning.',
-        'Release both parties because the accounts conflict.',
-        'Approve it but arrest only the party who called 911.'
+        'Approve it — dual injuries on both parties categorically require that a dual arrest be made.',
+        'Release both of the parties, on the basis that their accounts of the incident directly conflict.',
+        'Approve it, but direct the officer to arrest only the party who actually called 911 that night.',
+        'Return it — ALO 4.13 and PA DV law require identification of the primary aggressor through documented analysis (comparative injury severity, history, defensive-injury patterns, self-defense); dual arrests are disfavored and the report must show that reasoning.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. ALO 4.13 requires identification of the primary aggressor when both claim victimhood. Dual arrests are disfavored and should be rare. The report must document the analysis — comparative injury severity, history, evidence of defensive injuries, and self-defense — not simply note that both were injured.'
     },
     {
       scenario: 'A DV arrest report is otherwise solid, but the narrative contains nothing about what the victim was told after the arrest — no mention of the resource card, arraignment timeline, bail conditions, shelter services, or her right to pursue a PFA.',
       text: 'What does ALO 4.13 require before you approve it?',
       options: [
-        'Approve it — victim notification is a courtesy, not a documented requirement.',
+        'Approve it — victim notification of this kind is a courtesy to the victim, not a documented requirement.',
         'Return it — ALO 4.13 requires officers to provide the resource card and advise the victim of the arraignment timeline, any bail conditions, shelter availability, and the right to pursue a PFA, with completion documented in the narrative.',
-        'Approve it and have dispatch call the victim with the information.',
-        'Approve it because the arrest itself is what matters most.'
+        'Approve it for now and simply have dispatch call the victim back later with all of the information.',
+        'Approve it on the basis that the arrest itself is really what matters most in a case like this.'
       ],
       correct: 1,
       feedback: 'Correct. MTPD ALO 4.13 requires victim notification following a DV arrest — the resource card and advisement on arraignment timeline, bail conditions, shelter services, and the right to a PFA — with completion documented in the narrative. A report missing that record is incomplete.'
@@ -167,34 +167,34 @@ function getDomesticViolenceSupervisorQuestions() {
       scenario: 'A report shows a subject was arrested for a DV offense, but instead of transporting him to the district judge for arraignment, the officer released him at the scene "at the victim\'s request and to save time, since he was cooperative."',
       text: 'How do you handle this under MTPD ALO 4.13?',
       options: [
-        'Approve it — releasing a cooperative subject at the victim\'s request is reasonable discretion.',
+        'Approve it — releasing a cooperative subject at the victim\'s own request is reasonable officer discretion.',
+        'Approve it, as long as the officer clearly documents the victim\'s request to release him in the report.',
         'Treat it as a serious violation — ALO 4.13 prohibits releasing an arrested defendant instead of taking them to the issuing authority, regardless of officer workload, victim request, or subject cooperation; an arrested DV subject goes to arraignment.',
-        'Approve it as long as the officer documents the victim\'s request.',
-        'Approve it but require a follow-up arrest the next day.'
+        'Approve it for now, but require the officer to make a follow-up arrest of the subject the next day.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. MTPD ALO 4.13 states officers shall never release the defendant instead of taking them to the issuing authority — the prohibition applies regardless of workload, victim request, or cooperation. Releasing an arrested DV subject in lieu of arraignment is a serious violation to address.'
     },
     {
       scenario: 'On a DV call, the officer learned a final PFA was in effect and the subject was present at the protected party\'s home. The subject said "she invited me over." The report treats the PFA as "a civil matter between them" and takes no enforcement action on the order.',
       text: 'What is the supervisory review point?',
       options: [
-        'The report is correct — a PFA is a civil matter and the invitation cures any violation.',
-        'A PFA violation is a criminal offense, independently chargeable; the protected party cannot waive the order\'s protections on the subject\'s behalf, so "she invited me" is not a defense, and the officer should have addressed the violation rather than treating it as civil.',
-        'No action is needed unless new physical violence occurred.',
-        'The officer should have arrested the protected party for inviting the subject.'
+        'The report is correct — a PFA is a civil matter and the victim\'s invitation cures any violation of it.',
+        'No enforcement action is needed here at all unless some new act of physical violence actually occurred.',
+        'The officer should instead have arrested the protected party herself for inviting the subject over.',
+        'A PFA violation is a criminal offense, independently chargeable; the protected party cannot waive the order\'s protections on the subject\'s behalf, so "she invited me" is not a defense, and the officer should have addressed the violation rather than treating it as civil.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Under Pennsylvania\'s PFA framework a violation is a criminal offense, independently chargeable regardless of new violence, and the protected party cannot waive the order on the subject\'s behalf. "She invited me" is not a defense, and treating the violation as civil is the review point to correct.'
     },
     {
       scenario: 'A DV incident report addresses the assault and arrest well but leaves the checklist items on children present and prior incidents blank, even though the officer\'s own narrative mentions a child was home and references "another call here last month."',
       text: 'What do you require under the ALO 4.13 narrative checklist?',
       options: [
-        'Approve it — the arrest is documented, which is what matters.',
+        'Approve it — the arrest itself is documented in the report, which is ultimately what matters here.',
         'Return it to complete the applicable checklist items — including names and ages of children present and their relocation, and prior incidents known or reported — because ALO 4.13 requires the narrative to address each applicable item.',
-        'Approve it and add the missing items yourself from memory of the area.',
-        'Approve it but note the gaps for the officer\'s annual review.'
+        'Approve it and then add the missing checklist items yourself, from your own memory of the area.',
+        'Approve it as submitted, but note the checklist gaps for discussion at the officer\'s annual review.'
       ],
       correct: 1,
       feedback: 'Correct. The ALO 4.13 narrative checklist requires the report to address each applicable item, including children present (with names, ages, and relocation) and previous incidents. The officer\'s own narrative flags both, so the report must be returned to complete them.'
@@ -203,12 +203,12 @@ function getDomesticViolenceSupervisorQuestions() {
       scenario: 'Reviewing recent DV calls, you find one officer has twice declined arrest where probable cause existed citing victim reluctance, and once left firearms in a residence after a DV arrest with an active PFA. You coached the officer on the mandatory-arrest standard after the first incident.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep coaching informally — DV calls are emotionally complicated and the officer is trying.',
         'Move to documented corrective action and targeted training on the ALO 4.13 mandatory-arrest and firearms-seizure requirements, because a repeated pattern after coaching is a supervisory and training issue with real victim-safety stakes; escalate as warranted.',
-        'Reassign the officer away from DV calls without documentation.',
-        'Take no action — each call involved a different victim and different facts.'
+        'Keep coaching the officer informally — DV calls are emotionally complicated and the officer is clearly trying.',
+        'Quietly reassign the officer away from all DV calls, without documenting any of the underlying concerns.',
+        'Take no action at this time, since each of the calls involved a different victim and a different set of facts.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — declined mandatory arrests and a skipped firearms seizure — is a supervisory and training issue requiring documented corrective action and escalation, with direct victim-safety stakes under ALO 4.13.'
     },
   ];

@@ -92,46 +92,46 @@ function getEvidenceSupervisorQuestions() {
       scenario: 'An officer\'s burglary report references "a crowbar recovered from the scene and held as evidence." There is no Property Record Form in the submission, the item is in the officer\'s patrol car, and he plans to "log it in at the start of tomorrow\'s shift."',
       text: 'How do you handle this under MTPD Order 3.05/3.06?',
       options: [
-        'Approve it — the Property Record Form can be completed whenever the officer next works.',
+        'Approve it — the Property Record Form can simply be completed whenever the officer next works a shift.',
+        'Approve it now and just complete the missing Property Record Form for the crowbar yourself.',
         'Treat it as an incomplete submission — Order 3.05/3.06 requires a Property Record Form completed before end of shift and the item secured in authorized storage; evidence does not sit in a patrol car, and the deferral creates a gap in custody.',
-        'Approve it and complete the Property Record Form yourself.',
-        'Disregard the crowbar since it is mentioned only briefly.'
+        'Disregard the crowbar entirely, since it is mentioned only briefly within the burglary report.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. MTPD Order 3.05/3.06 requires a Property Record Form completed before end of shift whenever evidence is received, and evidence must be in authorized storage — a temporary locker, not a patrol car. Carrying it to the next shift unlogged is precisely the gap in custody that breaks the chain.'
     },
     {
       scenario: 'A submission includes a bloodstained shirt collected as biological evidence, sealed inside a plastic zip bag.',
       text: 'What does your review require under MTPD Order 3.05/3.06?',
       options: [
-        'Approve it — a sealed plastic bag protects the evidence well.',
-        'Return it for repackaging in paper — biological evidence requires the breathability paper provides; plastic allows decomposition and creates a DNA-integrity challenge, and Order 3.05/3.06 requires physical evidence packaged in paper.',
-        'Direct that the shirt be frozen in the plastic bag instead.',
-        'Approve it but note the packaging issue for the officer\'s file only.'
+        'Approve it — a tightly sealed plastic bag protects the bloodstained shirt evidence well enough.',
+        'Direct that the shirt simply be frozen while still sealed inside the plastic zip bag instead.',
+        'Approve it for now, but note the packaging issue in the officer\'s personnel file only.',
+        'Return it for repackaging in paper — biological evidence requires the breathability paper provides; plastic allows decomposition and creates a DNA-integrity challenge, and Order 3.05/3.06 requires physical evidence packaged in paper.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Biological evidence must be packaged in paper for breathability; plastic allows decomposition and invites a defense challenge to DNA integrity. MTPD Order 3.05/3.06 requires paper packaging for physical evidence — return it for repackaging.'
     },
     {
       scenario: 'An officer\'s report shows he picked up a knife from the floor, moved it to the kitchen counter for better lighting, and then photographed it there. There is no photograph of the knife in its original position.',
       text: 'What is the supervisory catch?',
       options: [
-        'Nothing — a clear photo is a clear photo regardless of where it was taken.',
         'In-place documentation failure — a photograph taken after the item was moved cannot establish its original position; the chain requires documenting evidence in place before first touch, and this gap should be noted and the lesson reinforced.',
-        'Direct the officer to move the knife back and re-photograph it.',
-        'Suppress the knife entirely since it was moved.'
+        'Nothing needs flagging — a clear photograph is a clear photograph, regardless of where it was actually taken.',
+        'Direct the officer to move the knife back to the floor and then re-photograph it in that position.',
+        'Suppress the knife as evidence entirely, on the basis that the officer moved it before photographing.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. In-place documentation before first touch is non-negotiable — a photo of an item after it was moved cannot establish its original position or spatial relationships. The supervisor flags the failure and reinforces the standard; moving it back to re-stage the photo would misrepresent the scene.'
     },
     {
       scenario: 'A submitted evidence package shows signs it was opened and re-taped, but the report says nothing about who opened it, when, why, or the condition of the seal before opening.',
       text: 'How do you handle the seal integrity issue?',
       options: [
-        'Approve it — the package is sealed now, which is what matters.',
+        'Approve it — the evidence package is sealed shut now, which is really what matters most here.',
         'Return it for documentation of the opening — who was present, the condition of the seal before opening, and the reason — because unsealed or re-sealed packaging without documentation creates a tampering argument the chain must answer.',
-        'Direct the officer to apply fresh tape and say nothing about it.',
-        'Discard the item and re-collect it from the scene.'
+        'Direct the officer to apply fresh evidence tape to the package and then say nothing further about it.',
+        'Discard the item altogether and have the officer re-collect it again from the original scene.'
       ],
       correct: 1,
       feedback: 'Correct. Unsealed or re-sealed packaging is a tampering argument. When a package is opened for testing, the chain requires documenting every person present, the seal condition before opening, and the reason. A re-taped package with no such record must be returned for that documentation — and re-taping silently would compound the problem.'
@@ -140,34 +140,34 @@ function getEvidenceSupervisorQuestions() {
       scenario: 'During review you find an evidence item that was collected at 14:00 but, by the documentation, cannot be accounted for between collection and its 19:30 entry into the property room. The officer says he "had it the whole time."',
       text: 'What does the chain-of-custody standard require here?',
       options: [
-        'Accept the officer\'s statement that he had it the whole time.',
-        'Treat the unaccounted period as a gap in custody — Pennsylvania courts ask whether there is a reasonable probability the evidence was not altered or substituted, and it is documentation, not memory, that answers that; require the custody to be documented and securing in a locker not to be deferred again.',
-        'Approve it because the officer is credible.',
-        'Suppress the item without further inquiry.'
+        'Accept the officer\'s verbal statement that he personally had the item in his control the whole time.',
+        'Approve the submission simply because the officer himself is generally credible and reliable.',
+        'Suppress the item from evidence without conducting any further inquiry into the custody gap.',
+        'Treat the unaccounted period as a gap in custody — Pennsylvania courts ask whether there is a reasonable probability the evidence was not altered or substituted, and it is documentation, not memory, that answers that; require the custody to be documented and securing in a locker not to be deferred again.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. A period the evidence cannot be accounted for is a gap in custody, and the chain-of-custody challenge standard turns on documentation, not the officer\'s memory. The fix is documented continuous custody and immediate securing in a designated locker — "I had it the whole time" is exactly what the documentation must replace.'
     },
     {
       scenario: 'An officer asks why the Property Record Form matters so much when he clearly remembers exactly how he handled each item and can testify to it.',
       text: 'How do you explain the standard under Rule 648 and the challenge standard?',
       options: [
-        'Tell him his memory is sufficient and the form is just bureaucracy.',
+        'Tell him that his own memory of handling each item is sufficient and the form is really just bureaucracy.',
+        'Tell him that the Property Record Form only truly matters in serious homicide cases, not routine ones.',
         'Explain that under Rule 648 physical evidence must be authenticated and chain-of-custody documentation is the foundation of that authentication; courts ask whether there is a reasonable probability the evidence was not altered, and documentation — not memory — answers that challenge at trial.',
-        'Tell him the form only matters in homicide cases.',
-        'Tell him to keep a personal notebook instead of the form.'
+        'Tell him to just keep a personal notebook of how he handled each item instead of filling out the form.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Under Pennsylvania Rules of Criminal Procedure Rule 648, physical evidence must be authenticated, and chain-of-custody documentation is the foundation. Courts ask whether there is a reasonable probability the evidence was not altered or substituted, and the documentation — not the officer\'s memory — is what answers that at trial.'
     },
     {
       scenario: 'An officer submits several items from one scene with one Property Record Form that lumps them together, omitting individual item numbers, where each was collected, and how each was packaged.',
       text: 'What do you require before approving?',
       options: [
-        'Approve it — one form for the whole scene is simpler and sufficient.',
+        'Approve it — using one single form for the entire scene is simpler and sufficient for the submission.',
         'Return it for complete per-item documentation — Order 3.05/3.06 requires the form to document each item\'s collection, packaging, and custody, with item numbers and labeling, because the form is the chain for every item, not a single summary.',
-        'Approve it but tell the officer to itemize next time.',
-        'Combine the items into a single sealed package to match the form.'
+        'Approve it for now, but tell the officer that he should itemize each piece separately next time.',
+        'Combine all of the items into one single sealed package, so that they match the lumped form.'
       ],
       correct: 1,
       feedback: 'Correct. MTPD Order 3.05/3.06 makes the Property Record Form the chain for each item — documenting collection, packaging, and custody, labeled with the RMS incident number, item number, and any hazard. A lumped form that omits per-item detail is incomplete and must be returned.'
@@ -176,12 +176,12 @@ function getEvidenceSupervisorQuestions() {
       scenario: 'Over several incidents, one officer has repeatedly carried evidence across shifts before completing the Property Record Form, packaged a biological item in plastic once, and skipped in-place documentation. You coached him on the chain after the first incident.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep fixing each submission individually and coaching informally.',
         'Move to documented corrective action and targeted training on the Order 3.05/3.06 chain-of-custody requirements, because a repeated pattern after coaching is a supervisory and training issue, and each gap is a future suppression motion; escalate as warranted.',
-        'Stop assigning the officer to calls that might generate evidence.',
-        'Approve the submissions to keep cases moving and address it at the annual review.'
+        'Keep fixing each evidence submission individually as it comes in and continue coaching the officer only informally.',
+        'Quietly stop assigning the officer to any calls that might generate physical evidence going forward.',
+        'Approve the submissions as-is to keep the cases moving, and address the whole issue at his annual review.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. One lapse is a coaching moment; a documented pattern after coaching — over-shift carries, plastic-packaged biologicals, missing in-place documentation — is a supervisory and training issue requiring documented corrective action and escalation, because each chain gap is a future suppression exposure.'
     },
   ];

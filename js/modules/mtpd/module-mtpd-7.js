@@ -76,22 +76,22 @@ function getLeadershipSupervisorQuestions() {
       scenario: 'On a call with several officers and members of the public present, a junior officer questions your directive loudly and starts arguing the point in front of everyone.',
       text: 'What does MTPD ALO 1.01 indicate is the correct handling, both in the moment and after?',
       options: [
-        'Argue the point back in front of everyone so your authority is clearly established.',
-        'Hold the chain of command in the moment — the directive stands and is followed — and take the officer\'s substantive concern through proper channels privately afterward, because ALO 1.01 requires concerns to be raised through channels, not in the field in front of personnel or the public.',
-        'Drop your directive immediately so the officer does not feel challenged.',
-        'Order the officer off the call and write him up on the spot in front of the group.'
+        'Argue the point back at the officer in front of everyone present, so that your authority is clearly established.',
+        'Drop your directive immediately and entirely, so that the junior officer does not feel challenged by you.',
+        'Order the officer off the call and write him up on the spot, in front of the whole group on scene.',
+        'Hold the chain of command in the moment — the directive stands and is followed — and take the officer\'s substantive concern through proper channels privately afterward, because ALO 1.01 requires concerns to be raised through channels, not in the field in front of personnel or the public.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. MTPD ALO 1.01 requires officers to operate within the chain of command and raise concerns through proper channels rather than in the field in front of personnel or the public. The directive holds in the moment; the concern is addressed privately through channels afterward.'
     },
     {
       scenario: 'You need to correct an officer who mishandled a contact. Other officers and a complainant are still on scene.',
       text: 'What is the leadership-consistent way to deliver the correction?',
       options: [
-        'Correct the officer immediately and publicly so everyone learns from it at once.',
+        'Correct the officer immediately and publicly on scene, so that everyone present learns from the mistake at once.',
         'Deliver the correction privately, directly, and without condescension once you can do so away from the public and the rest of the squad, because public corrections damage the relationship and shut down the learning.',
-        'Say nothing at all to avoid any appearance of conflict.',
-        'Have another officer relay the correction so you are not involved.'
+        'Say nothing at all to the officer about it, in order to avoid any appearance of conflict on scene.',
+        'Have another officer on the squad relay the correction to him, so that you are not personally involved.'
       ],
       correct: 1,
       feedback: 'Correct. The module\'s standard — reinforced by the chain-of-command expectation in ALO 1.01 — is that private, direct, one-on-one feedback builds while public correction breaks. Correct privately and without condescension; the manner of correction is itself the lesson the squad absorbs.'
@@ -100,34 +100,34 @@ function getLeadershipSupervisorQuestions() {
       scenario: 'Responding to a "group loitering" complaint, a newer officer on your squad starts to detain everyone present to "sort them out," with nothing individualized about any one person.',
       text: 'What is your supervisory move under Terry v. Ohio?',
       options: [
-        'Let him detain the group — presence at the scene of a complaint is enough to stop everyone.',
+        'Let him detain the entire group — presence at the scene of the complaint is enough to stop everyone there.',
+        'Direct the officer to detain only the people in the group who happen to look nervous to him.',
         'Stop the group detention and coach the standard — Terry requires individualized reasonable articulable suspicion for each person, and presence in a location, even in a group, does not supply it; have the officer articulate individualized suspicion or not make the stop.',
-        'Direct the officer to detain only the people who look nervous.',
-        'Tell the officer to clear the call as fast as possible however he sees fit.'
+        'Tell the officer to just clear the call as fast as he possibly can, however he himself sees fit.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Terry v. Ohio requires individualized reasonable articulable suspicion; presence in a location, even in a group, is not a basis for individual stops. The supervisory move is to teach the standard and require individualized suspicion — bypassing it to clear a call fast trains officers wrong and exposes the department to liability.'
     },
     {
       scenario: 'A business owner wants several people removed and charged with trespass for standing in a parking lot. There is no posted signage, no exclusionary fencing, and no one has been told to leave. A squad officer asks whether he should start charging them.',
       text: 'How do you guide him under 18 Pa. C.S. § 3503?',
       options: [
-        'Charge them — a property owner\'s request to remove people is sufficient for trespass enforcement.',
         'Hold off on enforcement until the statute\'s elements are met — § 3503 requires conspicuous posting, exclusionary fencing, or direct communication that entry is not permitted; without one of those, give lawful notice first rather than charging on the owner\'s say-so.',
-        'Detain everyone present under Terry while you investigate the trespass.',
-        'Tell the owner there is nothing police can ever do about people in a parking lot.'
+        'Charge them — a property owner\'s request to have people removed is by itself sufficient for trespass enforcement.',
+        'Detain everyone present in the lot under Terry while you investigate the possible trespass further.',
+        'Tell the owner that there is simply nothing the police can ever do about people standing in a parking lot.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. 18 Pa. C.S. § 3503 requires conspicuous posting, exclusionary fencing, or direct communication that entry is not permitted before a trespass warning supports enforcement. The supervisor guides the officer to confirm the elements — typically by giving lawful notice first — rather than charging on the owner\'s request alone.'
     },
     {
       scenario: 'After a call on your shift goes sideways, an officer immediately blames dispatch, the complainant, and his partner, and accepts no part of the outcome himself. The rest of the squad is watching how you respond.',
       text: 'What does modeling accountability require of you here?',
       options: [
-        'Endorse the deflection so the officer feels supported in front of the squad.',
+        'Endorse the officer\'s deflection openly, so that he feels fully supported by you in front of the rest of the squad.',
         'Reinforce accountability — privately address the deflection, have the officer account for his own decisions, and own your share of the shift\'s outcome openly, because the squad copies whether their supervisor accounts for outcomes or points outward.',
-        'Blame the officer publicly to make an example of him.',
-        'Ignore it entirely — how officers handle blame is not a supervisory concern.'
+        'Blame the officer publicly in front of the squad, in order to make a clear example out of him for the others.',
+        'Ignore the deflection entirely — how individual officers choose to handle blame is not a supervisory concern.'
       ],
       correct: 1,
       feedback: 'Correct. Accountability is owning decisions; blame is pointing outward, and the squad adopts whichever the supervisor models. The move is to address the deflection privately, require the officer to account for his own decisions, and own your share openly — modeling the trait that most earns supervisory trust.'
@@ -136,36 +136,36 @@ function getLeadershipSupervisorQuestions() {
       scenario: 'An officer comes to you and, unprompted, admits he made a poor decision on a call earlier that created a problem, and asks how to make it right.',
       text: 'What is the supervisory response most consistent with building the squad\'s standard?',
       options: [
-        'Punish the admission harshly to deter future mistakes.',
+        'Punish the admission harshly and visibly, in order to deter the officer and others from future mistakes.',
+        'Tell him to simply never mention the decision again, and then move on from it without any further discussion.',
         'Recognize the unprompted accountability, address the underlying decision constructively, and work the corrective path with him, because owning a mistake without being cornered is the trait that most earns supervisory trust and you do not want to train officers to hide it.',
-        'Tell him to never mention it again and move on.',
-        'Bring it up in front of the whole squad as a cautionary tale.'
+        'Bring the officer\'s mistake up in front of the whole squad later, using it as a cautionary tale for everyone.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. Officers who demonstrate accountability without being prompted are showing the single trait that most earns supervisory trust. Punishing the honesty trains officers to hide mistakes. Recognize the accountability, address the decision constructively, and work the correction.'
     },
     {
       scenario: 'A high-stress call is unfolding and a junior officer freezes, looking to you for what "fast" looks like. You want to model the supervisory decision-making the module describes.',
       text: 'What is the leader\'s decision filter you should demonstrate and teach?',
       options: [
-        'Act as fast as physically possible — speed is the mark of a supervisor.',
         'Apply the clarity filter — what is the right outcome here, and what is the fastest responsible path to it — because the hallmark of a supervisory mindset is clarity, not raw speed, and demonstrated judgment in ambiguous situations is the top predictor of promotion.',
-        'Wait for someone of higher rank to arrive before doing anything.',
-        'Default to the most forceful option to look decisive.'
+        'Act as fast as is physically possible in the moment — sheer speed is the real mark of a supervisor.',
+        'Wait for someone of a higher rank to arrive on scene before you do anything at all about the call.',
+        'Default immediately to the most forceful option available, in order to look decisive in front of the officer.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. The module identifies clarity, not speed, as the supervisory hallmark, and the leader\'s filter is "what is the right outcome here, and what is the fastest responsible path to it?" PERF research identifies demonstrated judgment in ambiguous situations as the top predictor of promotion — model and teach that filter.'
     },
     {
       scenario: 'One officer on your squad has repeatedly made group stops on "loitering" calls without individualized suspicion and has twice undercut your directives in front of the public. You have coached him on both points before.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep coaching informally and hope it sticks eventually.',
-        'Move to documented coaching and, if it persists, a supervisory issue addressed through channels and training on the Terry standard and ALO 1.01, because a repeated pattern after coaching is no longer a one-off and carries liability and chain-of-command consequences.',
-        'Stop giving that officer any directives to avoid being undercut.',
-        'Take no action — stops and field disagreements are just personality differences.'
+        'Keep coaching the officer informally each time and simply hope that the lesson eventually sticks with him.',
+        'Stop giving that particular officer any directives at all on calls, in order to avoid being undercut by him.',
+        'Take no action — the suspicionless stops and field disagreements are really just personality differences.',
+        'Move to documented coaching and, if it persists, a supervisory issue addressed through channels and training on the Terry standard and ALO 1.01, because a repeated pattern after coaching is no longer a one-off and carries liability and chain-of-command consequences.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — suspicionless group stops and field insubordination — is a supervisory issue to address through proper channels with documented coaching and training on Terry and ALO 1.01, consistent with the chain-of-command standard you are charged with modeling.'
     },
   ];

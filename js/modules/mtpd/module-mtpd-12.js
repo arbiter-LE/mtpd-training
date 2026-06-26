@@ -91,34 +91,34 @@ function getDeescalationSupervisorQuestions() {
       scenario: 'You review a use-of-force report from a disorderly-person call. A single agitated man was pacing and yelling but had no weapon and made no specific threat. The report shows the officer closed distance immediately, gave one command, and took the man to the ground. There is nothing about distance, time, verbal techniques, or resources.',
       text: 'What is the correct supervisory assessment under MTPD ALO 5.4?',
       options: [
-        'Approve it — once a subject is agitated, immediate physical control is always justified.',
         'Address the policy gap — ALO 5.4 required the officer to consider and employ de-escalation where it was safe and feasible, and with a single unarmed subject, distance, and no immediate threat, the report shows none was attempted; that is a policy and Graham-dimension problem, not a judgment to rubber-stamp.',
-        'Return it only for a more detailed description of the takedown.',
-        'Approve it because the subject was non-compliant.'
+        'Approve it — once a subject becomes agitated like this, immediate physical control is always justified.',
+        'Return it to the officer only for a more detailed written description of how the takedown was performed.',
+        'Approve it on the basis that the subject was being non-compliant with the officer at the time.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. MTPD ALO 5.4 requires officers to consider and employ de-escalation where safe and feasible before physical force. A single unarmed subject with distance available and no immediate threat is exactly where de-escalation was feasible. Going straight to force is a policy gap, and under the Graham de-escalation dimension a liability gap.'
     },
     {
       scenario: 'A report\'s only reference to de-escalation reads: "Attempted to de-escalate the subject but it was unsuccessful, so force was used." Nothing describes what was tried or how the subject responded.',
       text: 'What does ALO 5.4 require before you approve it?',
       options: [
-        'Approve it — stating that de-escalation was attempted is sufficient.',
-        'Return it for the specifics ALO 5.4 requires — the specific techniques used, the subject\'s response, and the reason de-escalation was or was not continued — because a bare "attempted to de-escalate" does not meet the documentation standard and is also the officer\'s best protection under Graham.',
-        'Reject the use of force because de-escalation failed.',
-        'Approve it and add the de-escalation details yourself.'
+        'Approve it — simply stating in the report that de-escalation was attempted is sufficient for the standard.',
+        'Reject the use of force outright, on the basis that the attempted de-escalation ultimately failed.',
+        'Approve it now and just add the missing de-escalation details to the narrative yourself.',
+        'Return it for the specifics ALO 5.4 requires — the specific techniques used, the subject\'s response, and the reason de-escalation was or was not continued — because a bare "attempted to de-escalate" does not meet the documentation standard and is also the officer\'s best protection under Graham.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. MTPD ALO 5.4 requires documentation of the specific techniques used, the subject\'s response, and why de-escalation was or was not continued. "Attempted to de-escalate" is a conclusion. Return it for specifics — this is a documentation fix that also protects the officer under the Graham de-escalation dimension.'
     },
     {
       scenario: 'A use-of-force report states the officer "determined de-escalation was not safe or feasible." The narrative shows the officer reached that conclusion only after he had already decided to go hands-on, and the scene had a single subject at a distance with no weapon.',
       text: 'How do you handle the "not safe or feasible" determination?',
       options: [
-        'Accept it — the officer on scene has sole discretion to declare de-escalation infeasible.',
+        'Accept it as written — the officer on scene has sole and total discretion to declare de-escalation infeasible.',
         'Challenge it — ALO 5.4 requires the safety-and-feasibility determination to be a genuine assessment, not a conclusion reached after the decision to use force was already made; on these facts de-escalation appears to have been feasible, so the report and the decision need to be addressed.',
-        'Approve it because the officer used the right policy language.',
-        'Return it only to fix the wording of the determination.'
+        'Approve it on the basis that the officer used exactly the right policy language in the determination.',
+        'Return it to the officer only to fix and clean up the wording of the feasibility determination.'
       ],
       correct: 1,
       feedback: 'Correct. MTPD ALO 5.4 makes the safety-and-feasibility determination a genuine on-scene assessment, not a post-hoc conclusion reached after force was already chosen. A single unarmed subject at a distance suggests de-escalation was feasible, so the determination — and the decision behind it — must be addressed, not rubber-stamped by policy language.'
@@ -127,58 +127,58 @@ function getDeescalationSupervisorQuestions() {
       scenario: 'An officer took time, created distance, used a calm tone, requested a CIT-trained unit, and gave the subject choices. The subject still escalated to an imminent threat and force became necessary. The report documents all of it.',
       text: 'What is the correct supervisory review outcome?',
       options: [
-        'Flag the officer for using force despite de-escalating.',
+        'Flag the officer for using force on the subject despite having de-escalated the encounter first.',
+        'Return it on the basis that proper de-escalation should have prevented the need for any force at all.',
         'Affirm that the officer met the ALO 5.4 standard — the authorized techniques were used and documented, and de-escalation does not mean force is never justified; the documented effort is exactly what protects the officer under the Graham de-escalation dimension.',
-        'Return it because de-escalation should have prevented any force.',
-        'Approve it but note that requesting CIT was unnecessary.'
+        'Approve it, but note for the officer that requesting a CIT-trained unit was ultimately unnecessary.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. The officer used and documented the ALO 5.4 authorized techniques — time, distance, calm tone, choices, CIT request — and force became necessary only when the subject created an imminent threat. De-escalation is not a guarantee against force; the documented effort is the officer\'s protection under the Graham de-escalation dimension, and the review should affirm it.'
     },
     {
       scenario: 'A contact involved a person in apparent psychiatric distress, force was used, and a 302 was initiated. The report documents the force but says nothing about whether de-escalation was attempted first or the specific § 7302 basis for the 302.',
       text: 'What does your review require?',
       options: [
-        'Approve it — the force and the 302 are separate from de-escalation.',
-        'Return it to document both the de-escalation approach and the specific § 7302 basis — because under § 7302 the officer\'s approach, particularly whether de-escalation was employed first, is part of the record when a 302 is initiated, and ALO 5.4 requires the de-escalation effort to be documented.',
-        'Approve the force but void the 302.',
-        'Approve it because a 302 does not require any narrative.'
+        'Approve it — the use of force and the 302 are entirely separate matters from de-escalation here.',
+        'Approve the use of force as documented, but go ahead and void the 302 the officer initiated.',
+        'Approve it on the basis that a 302 involuntary commitment does not actually require any narrative.',
+        'Return it to document both the de-escalation approach and the specific § 7302 basis — because under § 7302 the officer\'s approach, particularly whether de-escalation was employed first, is part of the record when a 302 is initiated, and ALO 5.4 requires the de-escalation effort to be documented.'
       ],
-      correct: 1,
+      correct: 3,
       feedback: 'Correct. Under 50 P.S. § 7302 the officer\'s approach — particularly whether de-escalation was employed first — is part of the record when a 302 is initiated, and ALO 5.4 requires documenting the de-escalation effort. The report must capture both the de-escalation approach and the specific § 7302 basis.'
     },
     {
       scenario: 'A newer officer asks you whether de-escalation means he is supposed to "just stand there and take it" from an aggressive subject.',
       text: 'How do you frame it for him?',
       options: [
-        'Tell him yes — de-escalation means avoiding force no matter what.',
         'Explain that de-escalation is not passivity but deploying the most effective tools first — time, distance, tone, positioning, resources — which are often more effective than force and build the record that protects him; force remains available when safety requires it.',
-        'Tell him de-escalation is just paperwork and to ignore it tactically.',
-        'Tell him to use force first so he stays safe and de-escalate later.'
+        'Tell him yes — de-escalation ultimately means avoiding the use of force no matter what happens.',
+        'Tell him that de-escalation is really just paperwork and that he should ignore it tactically on calls.',
+        'Tell him to use force first so that he stays safe, and then go back and de-escalate afterward.'
       ],
-      correct: 1,
+      correct: 0,
       feedback: 'Correct. De-escalation is not passivity or "taking it" — it is deploying the most effective tools first (time, distance, tone, positioning, resources), which are often more effective than force and build the documented record that protects the officer. Force remains available when safety requires it.'
     },
     {
       scenario: 'You want to confirm an officer\'s report reflects the ALO 5.4 authorized techniques on a successful de-escalation.',
       text: 'Which set of actions reflects the techniques ALO 5.4 names?',
       options: [
-        'Closing distance quickly, raising volume, and issuing rapid commands to establish control.',
+        'Closing distance quickly, raising your volume, and issuing rapid commands in order to establish control.',
+        'Surrounding the subject with as many officers as possible and then shouting commands at him together.',
         'Creating distance and slowing the pace, calm non-threatening communication, giving the subject space to make voluntary choices, reducing officers present when safe, using a designated primary contact officer, and requesting CIT or mental-health resources when appropriate.',
-        'Surrounding the subject with as many officers as possible and shouting commands together.',
-        'Immediately deploying a control technique to prevent any escalation.'
+        'Immediately deploying a hands-on control technique in order to prevent any possible escalation.'
       ],
-      correct: 1,
+      correct: 2,
       feedback: 'Correct. MTPD ALO 5.4 names creating distance and slowing the pace, calm non-threatening verbal communication, giving the subject space for voluntary choices, reducing the number of officers present when safe, using a designated primary contact officer with others supporting, and requesting CIT or mental-health resources. Those are the techniques to recognize on review.'
     },
     {
       scenario: 'Over several incidents, one officer\'s force reports repeatedly show no consideration of de-escalation on contacts where time and space were available, and twice declared it "not feasible" only after deciding to use force. You coached him on ALO 5.4 after the first report.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep coaching informally — he is decisive and means well.',
+        'Keep coaching the officer informally on it — he is decisive on calls and he clearly means well.',
         'Move to documented corrective action and targeted training on the ALO 5.4 de-escalation requirement and the Graham de-escalation dimension, because a repeated pattern after coaching is a supervisory and training issue with direct liability exposure; escalate as warranted.',
-        'Stop reviewing his force reports as closely to save time.',
-        'Take no action — each use of force was a separate situation.'
+        'Stop reviewing his use-of-force reports as closely going forward, in order to save yourself some time.',
+        'Take no action at all — each one of the uses of force was genuinely a separate situation.'
       ],
       correct: 1,
       feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — force without considering available de-escalation and post-hoc "not feasible" determinations — is a supervisory and training issue requiring documented corrective action and escalation, with direct liability exposure under ALO 5.4 and the Graham de-escalation dimension.'
