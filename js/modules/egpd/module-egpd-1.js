@@ -1,6 +1,16 @@
 /* ══════════════════════════════════════════
    READING — Search & Seizure (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_SEARCH_SEIZURE = `
+  <h3>Key Legal Principles — Search &amp; Seizure</h3>
+  <p><strong>Warrantless searches are presumptively unreasonable.</strong> The Fourth Amendment and — providing greater protection — Article I, Section 8 of the Pennsylvania Constitution both presume a warrantless search invalid. At a suppression hearing the burden is on the Commonwealth (Commonwealth v. Enimpah, 2014), and that burden is carried or lost on the specificity of your report.</p>
+  <p><strong>Pennsylvania vehicle searches require BOTH probable cause and exigent circumstances.</strong> Commonwealth v. Alexander (2020) overruled Commonwealth v. Gary — probable cause alone no longer gets you into a vehicle in this Commonwealth. A warrant is the default; absent true exigency, secure the vehicle and get the warrant. Exigency cannot be manufactured by officer conduct.</p>
+  <p><strong>The odor of marijuana is a factor, not standalone probable cause.</strong> Because medical marijuana is lawful in Pennsylvania, Commonwealth v. Barr (2021) holds that odor alone cannot establish probable cause — though odor plus documented corroboration can. A search resting solely on odor is unlawful no matter how well it is written up.</p>
+  <p><strong>Consent is limited by its objective scope.</strong> Consent must be voluntary (Schneckloth v. Bustamonte, 1973), and its scope is measured by what a reasonable person would have understood (Florida v. Jimeno, 1991). General consent to search a vehicle does not automatically reach a locked container. When scope is ambiguous, clarify before you proceed — and document the exact words of the request and response.</p>
+  <p><strong>Know the other exceptions and their limits.</strong> Plain view requires lawful presence and an immediately apparent incriminating character (Horton v. California, 1990). A Terry frisk requires reasonable suspicion the person is armed and dangerous, and refusing consent neither creates nor defeats that authority. A K9 open-air sniff may contribute to probable cause but, under Rodriguez v. United States (2015), cannot extend a stop beyond its original purpose without independent reasonable suspicion.</p>
+  <p><strong>Documentation decides the suppression hearing.</strong> Courts evaluate the specific facts you documented, not your instinct. "Appeared nervous" and "detected an odor" are conclusions; observable specifics — and, for consent, voluntariness — are what survive a motion to suppress. Every stop that generates observations deserves complete documentation, even one that ends in a warning.</p>
+`;
+
 const READING_SEARCH_SEIZURE = `
   <div class="content-block">
     <h4>Scenario</h4>

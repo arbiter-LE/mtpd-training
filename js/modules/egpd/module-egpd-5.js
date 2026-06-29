@@ -1,6 +1,16 @@
 /* ══════════════════════════════════════════
    READING — Domestic Violence (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_DOMESTIC_VIOLENCE = `
+  <h3>Key Legal Principles — Domestic Violence Response</h3>
+  <p><strong>DV is investigated and managed as any other crime — EGPD General Order 4.13.</strong> The directive implements 23 Pa.C.S. (the Domestic Relations title), including Section 6105's law-enforcement responsibilities. All active domestic incidents are treated as high risk: avoid sirens and lights near the scene, approach from flanking positions, and make an external assessment before any committed approach.</p>
+  <p><strong>Mandatory arrest on probable cause — GO 4.13.5(A).</strong> When recent physical injury or other corroborative evidence is observed, the officer shall arrest without a warrant when probable cause exists for the enumerated offenses (Simple Assault, Aggravated Assault, REAP, Terroristic Threats, Stalking, and others). Victim consent and supervisor authorization are absent from that provision — a fresh injury plus a consistent account establishes PC, and the arrest is then required. The defendant cannot be released instead of being taken before an issuing authority.</p>
+  <p><strong>Victim preference does not control; charging belongs to the Commonwealth.</strong> A request for no arrest is a common, expected trauma response and does not change the obligation. Once the mandatory arrest is made, the charging decision is the Commonwealth's — the officer's duty is the lawful arrest and thorough documentation.</p>
+  <p><strong>Mandatory weapon seizure — GO 4.13.6.</strong> The arresting officer shall seize all weapons used by the defendant in the commission of the offense — a weapon is defined by how it was used, not what it is or who owns it (a cell phone used to strike a victim qualifies). Seizure is mandatory, not a consent request, and the weapon is processed with a proper chain of custody and held until the court's disposition.</p>
+  <p><strong>Victim-rights notification — GO 4.13.7.</strong> Every DV response requires oral and written notice (English and Spanish) of safe shelter, DV services, the hotline, and the right to petition for a Protection From Abuse order under 23 Pa.C.S. Ch. 61. The victim acknowledges receipt by signature, attached to the incident report. The obligation does not depend on whether the victim appears cooperative.</p>
+  <p><strong>PFA enforcement — GO 4.13.9 / 4.13.10.</strong> An officer may arrest for a protection-order violation on probable cause whether or not it occurred in the officer's presence; for a final order, arrest is required, with Indirect Criminal Contempt charged in addition to any other charges. Notification efforts to the protected party are documented as a Supplemental Incident Report — and a violation disclosed during a follow-up contact triggers these obligations the moment it is disclosed.</p>
+`;
+
 const READING_DOMESTIC_VIOLENCE = `
   <div class="content-block">
     <h4>Scenario</h4>

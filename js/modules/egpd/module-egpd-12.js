@@ -1,5 +1,14 @@
 
 /* ── Reading: De-escalation ─────────────── */
+const DEBRIEF_DEESCALATION = `
+  <h3>Key Legal Principles — De-escalation</h3>
+  <p><strong>Reasonableness is judged on the totality — Graham v. Connor (1989).</strong> Force is evaluated by objective reasonableness from the perspective of a reasonable officer on scene: severity of the crime, immediacy of the threat, and active resistance or evasion. A subject in mental-health crisis whose threat is self-directed, who is not advancing, and who is engaging verbally does not present the threat picture that justifies a drawn firearm at initial contact; prior-violence history informs positioning, not the force applied to current behavior. Tennessee v. Garner (1985) sets the boundary for deadly force against fleeing subjects.</p>
+  <p><strong>The department's own floor — EGPD General Order 1.3.</strong> All persons shall be treated with humanity, courtesy, and dignity to the extent the subject's resistance allows; officers shall not be argumentative or act in ways that might incite aggression; and emphasis shall always be on obtaining control over the resistance situation rather than forcing submission. Verbal Control is Use of Force Level 1 — the foundation of the continuum.</p>
+  <p><strong>The 302 is a tool with a threshold, not a shortcut — 50 P.S. § 7302.</strong> An involuntary emergency examination requires a clear and present danger evidenced by the officer's observations, and it is a civil process — transport for evaluation, not arrest. That distinction shapes what you say to the subject and family and how you write the report. The 302 exists for situations that require it, not as a shortcut around de-escalation that is working.</p>
+  <p><strong>Time and distance are tactical assets.</strong> PERF's ICAT model and CIT protocols frame de-escalation as a decision-making discipline that measurably reduces force in mental-health contacts: position at distance with cover and a holstered weapon, make calm contact at normal volume, and hold backup when tactical movement makes a subject tighten his grip — request CIT or a mobile crisis team rather than forcing closure. A subject who is talking is not acting; the goal at first contact is contact, not compliance.</p>
+  <p><strong>Professionalism continues after the scene.</strong> Provide your name and badge number on request without hesitation — it is required and hesitation reads as concealment — acknowledge the concern, and explain the complaint process; do not litigate the incident on the sidewalk, where it invites argument and risks inconsistencies with your report. Citizens have the right to file complaints, and your body camera, radio traffic, and documentation are where your conduct is recorded.</p>
+`;
+
 const READING_DEESCALATION = `
   <div class="content-block">
     <h4>Scenario</h4>

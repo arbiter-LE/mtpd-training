@@ -1,5 +1,14 @@
 
 /* ── Reading: Officer Wellness ──────────── */
+const DEBRIEF_WELLNESS = `
+  <h3>Key Legal Principles — Officer Wellness</h3>
+  <p><strong>Emotional numbing is a symptom, not adaptation.</strong> Secondary traumatic stress and operational stress injury are documented occupational-health conditions — physiological responses to sustained trauma exposure, not character failures. Numbing, depersonalization, detachment, and loss of empathy are recognized symptoms and the pathway to burnout.</p>
+  <p><strong>Read the accumulating pattern.</strong> Behavioral change visible to peers — increased callouts, short temper, withdrawal, shifts in dark humor — is often the earliest indicator, visible before self-report or supervisory review. No single behavior alarms; the accumulating pattern is the signal. The Ruderman Foundation found officers more likely to die by suicide than in the line of duty, with stigma the central barrier to early help.</p>
+  <p><strong>Peers go first.</strong> Officers in distress rarely ask first, so waiting for a colleague to come to you usually means waiting for a crisis. The research-supported first response is direct, private engagement: name what you've noticed without accusation, create space, mention peer support or EAP, and follow up. When performance begins creating safety risk, the threshold for escalating support (not discipline) has been crossed — abandoning a colleague to avoid that is not loyalty.</p>
+  <p><strong>The protections are real, and so are their limits — 42 Pa.C.S. § 5950 / § 5952.</strong> Communications to a CISM team member are confidential and cannot be disclosed in legal proceedings without the officer's consent; § 5952 extends protection to trained peer-support members; EAP is confidential. The limits — a clear and present danger, and disclosures of criminal conduct — mirror those for mental-health professionals, and peer-support officers state them up front. A voluntary wellness contact is distinct from a fitness-for-duty evaluation.</p>
+  <p><strong>EGPD General Order 1.3.7 reflects the same philosophy.</strong> After the most serious incidents, post-shooting psychological evaluation is mandatory and at department expense, and the accompanying reassignment shall not be considered a suspension or disciplinary action. Early, voluntary engagement is consistently associated with better outcomes — and the standard you owe yourself is calibrated honesty, not "fine."</p>
+`;
+
 const READING_WELLNESS = `
   <div class="content-block">
     <h4>Scenario</h4>

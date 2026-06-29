@@ -1,6 +1,15 @@
 /* ══════════════════════════════════════════
    READING — Traffic Stops & Vehicle Contacts (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_TRAFFIC_STOPS = `
+  <h3>Key Legal Principles — Traffic Stops &amp; Vehicle Contacts</h3>
+  <p><strong>Occupant control is settled — Mimms (1977) / Maryland v. Wilson (1997).</strong> Officers may order the driver, and passengers, out of a lawfully stopped vehicle as a matter of course, with no additional justification. The order must serve a genuine safety purpose — not the suppression of protected activity such as recording.</p>
+  <p><strong>Stop duration is strictly limited — Rodriguez v. United States (2015).</strong> A stop may not be extended beyond the time needed to complete its purpose without independent reasonable suspicion. Refusal to consent to a search is not reasonable suspicion — exercising a constitutional right cannot justify continued detention. Once the purpose is complete and no independent basis exists, return the documents and let the driver leave.</p>
+  <p><strong>Pennsylvania vehicle searches require PC AND exigency — Commonwealth v. Alexander (2020).</strong> Alexander overruled Gary: under Article I, Section 8, a warrantless vehicle search needs both probable cause and exigent circumstances, and the warrant is the default. A stopped vehicle with controlled occupants is rarely an exigency.</p>
+  <p><strong>Odor is a factor, not standalone probable cause — Commonwealth v. Barr (2021).</strong> With medical marijuana lawful, odor alone no longer establishes probable cause; odor plus corroborating observations can. After Barr the corroborating facts are not garnish — they are the probable cause, and the documentation standard ("upon approaching the open driver's window," strength, character, timing, behavior) is what carries the suppression hearing.</p>
+  <p><strong>Warrant vs. consent, and the right to record.</strong> A warrant-authorized search does not depend on consent — an objection does not suspend it; document the objection verbatim and proceed within the warrant's scope. When consent is the legal basis, its withdrawal ends the search. And under Fields v. City of Philadelphia (3d Cir. 2017), the First Amendment protects recording police in public — do not order recording stopped or recast it as an "officer safety" order.</p>
+`;
+
 const READING_TRAFFIC_STOPS = `
   <div class="content-block">
     <h4>Scenario</h4>

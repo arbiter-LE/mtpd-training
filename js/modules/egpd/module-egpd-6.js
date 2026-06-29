@@ -1,6 +1,15 @@
 /* ══════════════════════════════════════════
    READING — Motor Vehicle Pursuits (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_VEHICLE_PURSUITS = `
+  <h3>Key Legal Principles — Motor Vehicle Pursuits</h3>
+  <p><strong>Public safety is the governing priority — Motor Vehicle Pursuits Directive.</strong> While officers make reasonable efforts to apprehend fleeing vehicles, the safety of the public and persons involved in the pursuit is the most important priority. Participation in a pursuit does not relieve an officer of the statutory duty to drive with due regard for the safety of all persons.</p>
+  <p><strong>The offense threshold is narrow.</strong> Pursuit is reserved for the commission or attempted commission of a forcible felony against a person, or an offender escaping who possesses a deadly weapon or otherwise indicates they will endanger life or inflict serious bodily injury unless arrested without delay. Fleeing a lawful stop does not, by itself, elevate the offense — an equipment violation plus flight remains a summary-level matter.</p>
+  <p><strong>The Pursuit Decision-Making Matrix is categorical for lower offenses.</strong> For property felonies, misdemeanors, and infractions the matrix directs "do not pursue, or terminate" — there is no "continue briefly to assess" category. If new information later establishes a forcible felony or deadly-weapon indicator, that is a new pursuit decision made then, on its own facts. The directive's criteria (road/weather, location, time, distance, likelihood of later ID) are weighed continuously.</p>
+  <p><strong>Unit structure — Regulation 11.</strong> Unless a supervisor approves otherwise, the pursuit consists of the primary and secondary unit only; other units position to monitor and channel — not block — escape routes. Offense severity does not create an exception; only supervisor approval does. The secondary unit shall not pass the primary unless directed.</p>
+  <p><strong>Termination is protected and force interventions are restricted.</strong> Any officer terminates when the hazard outweighs the need to apprehend, and no discipline follows a decision to terminate (Regulation 5). Firing from a moving vehicle is prohibited except as the ultimate measure of self-defense or defense of another against deadly force; ramming, PIT, and roadblocks are deadly force, governed by 18 Pa.C.S. § 508 and GO 1.3.1/1.3.2, and strictly prohibited unless deadly force is authorized.</p>
+`;
+
 const READING_VEHICLE_PURSUITS = `
   <div class="content-block">
     <h4>Scenario</h4>

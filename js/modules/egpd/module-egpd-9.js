@@ -1,6 +1,15 @@
 /* ══════════════════════════════════════════
    READING — Emotional Intelligence (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_EI = `
+  <h3>Key Legal Principles — Emotional Intelligence</h3>
+  <p><strong>Hostility from a victim is a trauma response — not deception, and not a closed case.</strong> IACP victim-engagement research identifies officer demeanor in the opening moments as the strongest predictor of cooperation. Hostility, minimization, and recantation are normal, self-protective responses in DV victims; they are not evidence the incident was minor. Acknowledge the person's position before asking for anything.</p>
+  <p><strong>Accurate information is a policy obligation — EGPD General Order 4.13.7.</strong> Officers shall provide DV victims oral and written notice of available services and their rights under 23 Pa.C.S. Ch. 61. Never offer false reassurance about arraignment or bail — it is recognized instantly and collapses trust. The professional response is honest and actionable: the real process, what a PFA is and how to get one, and how to reach the victim advocate.</p>
+  <p><strong>New evidence in a follow-up is still evidence.</strong> An injury identified during a welfare contact is documented in a supplemental report with specificity — location, approximate size and coloration, the victim's clearly-attributed account, and photographs. In many DV prosecutions the follow-up contact contains the most probative evidence.</p>
+  <p><strong>Self-regulation is a tactical skill.</strong> Managing your own state under provocation — absorbing hostility rather than returning it — directly affects use-of-force rates and call outcomes. It applies between officers too: when a partner's approach escalates a scene, step in and redirect, then address it privately; public correction of a partner is itself an escalation.</p>
+  <p><strong>Wellness protections are confidential — 42 Pa.C.S. § 5950 / § 5952.</strong> Communications with critical incident stress management team members are confidential under § 5950, and § 5952 extends protection to trained peer support members; EAP services are confidential. Emotional numbness on calls that used to affect you is an early sign of secondary traumatic stress — a signal, not adaptation — and a direct, private check-in with a struggling colleague is the research-supported intervention.</p>
+`;
+
 const READING_EI = `
   <div class="content-block">
     <h4>Scenario</h4>

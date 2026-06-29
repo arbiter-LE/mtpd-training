@@ -1,6 +1,15 @@
 /* ══════════════════════════════════════════
    READING — Use of Force (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_USE_OF_FORCE = `
+  <h3>Key Legal Principles — Use of Force</h3>
+  <p><strong>Graham v. Connor (1989) controls every use of force.</strong> Force is judged by objective reasonableness on the totality of the circumstances, from the perspective of a reasonable officer on scene based on facts known at the time — not in hindsight. Courts weigh the severity of the crime, the immediacy of the threat, and whether the subject is actively resisting or evading.</p>
+  <p><strong>EGPD General Order 1.3 sets the standard and the articulation requirement.</strong> Officers shall never use a greater degree of force than is lawful, reasonable, and necessary, and the use of physical force ends immediately when resistance ceases or the arrest is accomplished. Officers must be able to articulate the need and justification for the force used; justification is limited to the facts known or perceived at the time.</p>
+  <p><strong>The Use of Force Continuum — GO 1.3.1.</strong> The eight-level continuum (GO 1.3.1(B)) begins with Verbal Control at Level 1. Under GO 1.3.1(C)(2) a level may be skipped given the circumstances, but each level applied must be justified. Carotid restraints and other choke holds or neck restraints are specifically and strictly prohibited.</p>
+  <p><strong>Deadly force has one lane — GO 1.3.2(A).</strong> Deadly force is justified only in defense of human life, or in the narrow arrest circumstance the order defines for a forcible felony / deadly-weapon threat. Warning shots are prohibited (GO 1.3.3). Overstating a threat to justify a force decision is worse than honestly acknowledging an imperfect one.</p>
+  <p><strong>Reporting integrity is part of the use of force.</strong> A false or misleading report is criminal exposure under 18 Pa. C.S. § 4906. Garrity v. New Jersey (1967) protects an officer's compelled statements from criminal use — it does not license a false report. Thorough, accurate, contemporaneous documentation protects the officer and the case.</p>
+`;
+
 const READING_USE_OF_FORCE = `
   <div class="content-block">
     <h4>Scenario</h4>

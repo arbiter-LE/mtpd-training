@@ -1,6 +1,15 @@
 /* ══════════════════════════════════════════
    READING — Leadership & Supervision (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_LEADERSHIP = `
+  <h3>Key Legal Principles — Leadership &amp; Supervision</h3>
+  <p><strong>A field leader holds the legal floor — Terry v. Ohio (1968).</strong> An investigative stop requires individualized reasonable articulable suspicion; group presence — even in response to a complaint — does not supply a basis to stop any individual. A senior officer who allows suspicionless "run everyone" stops trains the next Fourth Amendment violation and the civil exposure that follows.</p>
+  <p><strong>Trespass enforcement requires notice — 18 Pa. C.S. § 3503.</strong> Lawful enforcement against a defiant trespasser requires conspicuous posted signage, a fence designed to exclude, or direct prior communication that entry is not permitted. A property owner's call — even repeated calls — does not substitute for notice. Without it, document the request, disperse voluntarily where possible, and advise the owner on the formal process.</p>
+  <p><strong>What you model gets repeated.</strong> Correct privately, directly, and briefly, grounded in law and policy; public correction creates resentment and closes down learning. PERF leadership research identifies demonstrated judgment in ambiguous situations — not seniority or arrest counts — as the strongest predictor of supervisory readiness, and brief one-on-one corrections are among the highest-value patrol-level supervisory actions.</p>
+  <p><strong>Handle the recurring supervisory tests deliberately.</strong> Separate publicly disputing officers and address the conduct and the underlying issue as distinct matters; address a forming pattern with a direct, documented conversation before formal discipline; and route a subordinate's policy frustration to the proper channel rather than venting alongside them or dismissing them.</p>
+  <p><strong>Report integrity under pressure — 18 Pa. C.S. § 4904.</strong> A police report is a sworn document; "we handle things in-house" is not authority over your documentation. Altering a report under social pressure is unsworn falsification. Acknowledge the concern without validating it, state that the report reflects what occurred and will not change, and report the conversation to a supervisor — contemporaneous reporting creates a protected record, while silence can later read as acquiescence.</p>
+`;
+
 const READING_LEADERSHIP = `
   <div class="content-block">
     <h4>Scenario</h4>

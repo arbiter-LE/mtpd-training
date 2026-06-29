@@ -1,6 +1,15 @@
 /* ══════════════════════════════════════════
    READING — Crisis Intervention (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_CRISIS = `
+  <h3>Key Legal Principles — Crisis Intervention</h3>
+  <p><strong>The 302 has a specific threshold — Mental Health Procedures Act, 50 P.S. § 7302.</strong> An involuntary emergency examination requires a clear and present danger to self or others based on a recent overt act, attempt, or threat, and the officer must document the specific factual basis. Agitation, psychiatric history, or psychosis alone does not satisfy the standard. It is a civil process — evaluation, not arrest.</p>
+  <p><strong>Voluntary means voluntary, at every moment.</strong> A person may withdraw consent to transport at any time; proceeding without 302 criteria currently met is unlawful detention. Coercion vitiates consent — "transport is already waiting" implies consequences that do not exist, creates civil liability, and undermines the evaluation. Family pressure and your belief that the person needs help do not create legal authority.</p>
+  <p><strong>Warrantless entry needs more than worry.</strong> A statement about access to a means of self-harm, without more, may not meet the exigent-circumstances threshold for entering a residence; courts ask whether the threat was immediate and specific. Work toward consent — it is always cleaner.</p>
+  <p><strong>The approach is the intervention — CIT principles and GO 1.3.</strong> A person in acute crisis does not process authority like a compliant subject; commands frequently trigger fight-or-flight. Slow, low, and level contact, riding out self-limiting escalation spikes, and a single primary voice with defined safety roles align with the department's emphasis (GO 1.3) on obtaining control rather than forcing submission.</p>
+  <p><strong>Manage the scene without over-militarizing it.</strong> Knowing a weapon is in the home changes positioning, not posture — a distressed person is not a tactical operation. Address disclosures with a calm clarifying question, work around (don't confirm or challenge) psychotic content, and request CIT/mobile crisis resources early. De-escalation that is working is never a delay, and time on scene never substitutes for the § 7302 standard.</p>
+`;
+
 const READING_CRISIS = `
   <div class="content-block">
     <h4>Scenario</h4>

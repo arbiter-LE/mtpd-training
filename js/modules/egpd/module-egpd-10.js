@@ -1,5 +1,14 @@
 
 /* ── Reading: Evidence & Chain of Custody (EGPD) ─ */
+const DEBRIEF_EVIDENCE = `
+  <h3>Key Legal Principles — Evidence &amp; Chain of Custody</h3>
+  <p><strong>The first officer owns the scene until handoff.</strong> No unauthorized access — including victims and property owners — until detectives or crime scene personnel have documented and cleared it. Scene contamination is the most common chain-of-custody vulnerability in burglary prosecutions; collect names, contacts, and a preliminary missing-items list from outside the perimeter.</p>
+  <p><strong>Document before you touch.</strong> Photograph each item from multiple angles in its exact discovered position, with a scale reference where available, before anyone moves it. Even "protective" moving or bagging before in-place photography breaks the chain — good intentions included. Written descriptions and sketches supplement photographs; they do not replace them.</p>
+  <p><strong>Package by evidence type.</strong> Biological material goes in paper — never airtight plastic, which traps moisture and degrades DNA; hard items go in plastic, sealed and labeled. Improvised packaging from a patrol trunk is how location data on a phone becomes inadmissible.</p>
+  <p><strong>Every handler is documented.</strong> Name, time, and reason for each transfer, from collection through property-room submission to lab intake. For a hospital blood draw in a DUI case: collection date/time, nurse and facility, kit ID, how it was sealed, transport, and submission — Pennsylvania DUI prosecutions frequently hinge on exactly that record. Surface supervisor pressure to shortcut with communication, not silent compliance or flat refusal.</p>
+  <p><strong>Testify to what you documented — 18 Pa. C.S. § 4902.</strong> Testify to exactly what your records show and acknowledge gaps without speculating; asserting confidence about a period you don't remember is speculation under oath, and perjury is where overstated certainty lands. Courts forgive minor documentation gaps where procedure is established and integrity is corroborated — they do not forgive a witness caught overstating. If a seal looks disturbed, stop, notify the property-room supervisor, document it contemporaneously, and tell the prosecutor before the court date.</p>
+`;
+
 const READING_EVIDENCE = `
   <div class="content-block">
     <h4>Scenario</h4>

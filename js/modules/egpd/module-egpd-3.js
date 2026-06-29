@@ -1,6 +1,16 @@
 /* ══════════════════════════════════════════
    READING — Report Writing (EGPD)
 ══════════════════════════════════════════ */
+const DEBRIEF_REPORT_WRITING = `
+  <h3>Key Legal Principles — Report Writing</h3>
+  <p><strong>Write soon, from verified sources, in your own voice.</strong> Reports should be written as soon as safely possible while observations are accurate, and reviewed against body camera footage and field notes before writing. A police report is a sworn account of the officer's <em>personal</em> observations — you document what you witnessed, not what a partner did out of your view.</p>
+  <p><strong>Facts, not conclusions.</strong> "Resisted arrest," "became combative," "based on training and experience" tell a reader what to conclude without the facts to evaluate it — they do not survive cross-examination. The standard is specific, sequential, body-movement-level documentation a judge can use to reconstruct the encounter.</p>
+  <p><strong>Probable cause rests on articulable facts — Illinois v. Gates (1983).</strong> Probable cause is evaluated on the totality of the circumstances and must be supported by specific articulable facts, not conclusory statements. "Training and experience" is valid only when tethered to the specific facts you observed for the specific offense charged.</p>
+  <p><strong>The use-of-force narrative — EGPD General Order 1.3.</strong> Officers must articulate the need and justification for the force and why that level was selected, thoroughly documented. Every narrative should capture the subject's specific action, the specific force applied, the sequence and timeline, and what followed — compliance, injury, medical response.</p>
+  <p><strong>Report integrity is non-negotiable.</strong> What appears in quotation marks must be what was actually said. Reconstructing a quote, or silently inserting facts into a finished report, is a false official statement under 18 Pa. C.S. § 4904 (unsworn falsification) and § 4906 (false reports). Use a documented supplement instead; distinguish direct quotes, paraphrase, and observation.</p>
+  <p><strong>Document the stop that ends without an arrest.</strong> A decision not to arrest or search can be legally sound; failing to record what you observed is not. Undocumented observations cannot support future probable cause, cannot corroborate another investigation, and are lost if you are called to testify.</p>
+`;
+
 const READING_REPORT_WRITING = `
   <div class="content-block">
     <h4>Scenario</h4>
