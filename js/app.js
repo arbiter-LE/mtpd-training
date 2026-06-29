@@ -969,8 +969,10 @@ function startQuiz(moduleId) {
 function renderQuestion() {
   const q = activeQuestions(currentModule)[currentQuizIdx];
   quizAnswered = false;
-  document.getElementById('btn-next-q').disabled    = true;
-  document.getElementById('btn-next-q').textContent = currentQuizIdx === quizTotal-1 ? 'Submit Assessment →' : 'Next Question →';
+  quizSelectedIdx = null;
+  const primaryBtn = document.getElementById('btn-next-q');
+  primaryBtn.disabled    = true;              // enabled once an option is selected
+  primaryBtn.textContent = 'Submit Answer';   // becomes Next/Submit Assessment after commit
   document.getElementById('quiz-progress-bar').style.width = Math.round((currentQuizIdx/quizTotal)*100)+'%';
   document.getElementById('quiz-q-counter').textContent    = `Question ${currentQuizIdx+1} of ${quizTotal}`;
   document.getElementById('quiz-score-running').textContent = `Score: ${quizCorrect} / ${currentQuizIdx}`;
@@ -987,24 +989,52 @@ function renderQuestion() {
     <div id="answer-feedback"></div>`;
 }
 
+// Clicking an option only SELECTS it — nothing is revealed or scored yet, and
+// the officer can change the selection as many times as they like before
+// committing. (Officer feedback: locking on first click was frustrating.)
 function selectAnswer(idx) {
-  if (quizAnswered) return;
+  if (quizAnswered) return; // already committed — options are locked
+  quizSelectedIdx = idx;
+  const q = activeQuestions(currentModule)[currentQuizIdx];
+  for (let i=0; i<q.options.length; i++) {
+    const el = document.getElementById('opt-'+i);
+    if (el) el.classList.toggle('selected', i === idx);
+  }
+  document.getElementById('btn-next-q').disabled = false; // Submit now available
+}
+
+// Commit the selected answer: lock the options, reveal correct/incorrect, show
+// feedback, and score. Scoring happens here and only here, so changing your
+// pick before Submit can never inflate the grade.
+function submitAnswer() {
+  if (quizAnswered || quizSelectedIdx === null) return;
   quizAnswered = true;
+  const idx = quizSelectedIdx;
   const q = activeQuestions(currentModule)[currentQuizIdx];
   const isCorrect = (idx === q.correct);
   if (isCorrect) quizCorrect++;
   for (let i=0; i<q.options.length; i++) {
     const el = document.getElementById('opt-'+i);
     el.disabled = true;
+    el.classList.remove('selected');
     if (i===idx) el.classList.add(isCorrect ? 'correct' : 'incorrect');
     else if (i===q.correct && !isCorrect) el.classList.add('reveal-correct');
   }
   const fb = document.getElementById('answer-feedback');
   fb.className = 'answer-feedback ' + (isCorrect ? 'correct-fb' : 'incorrect-fb');
   fb.textContent = (isCorrect ? '✓ ' : '✗ ') + q.feedback;
-  document.getElementById('btn-next-q').disabled = false;
+  const btn = document.getElementById('btn-next-q');
+  btn.textContent = currentQuizIdx === quizTotal-1 ? 'Submit Assessment →' : 'Next Question →';
+  btn.disabled = false;
   document.getElementById('quiz-score-running').textContent = `Score: ${quizCorrect} / ${currentQuizIdx+1}`;
   saveQuizState();
+}
+
+// The primary quiz button is two-stage: it submits the chosen answer, then
+// (once committed) advances to the next question or finishes the assessment.
+function quizPrimaryAction() {
+  if (!quizAnswered) submitAnswer();
+  else nextQuestion();
 }
 
 function nextQuestion() {
