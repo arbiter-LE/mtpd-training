@@ -100,17 +100,25 @@ In the new project: **Authentication → URL Configuration**
 
 The platform's reset flow sends officers to `/?reset=1`, where the in-app "Set New Password" screen takes over. No other URLs should be on the list.
 
-### 1F. Configure Custom SMTP (Resend)
+### 1F. Configure Custom SMTP (Google Workspace — NOT Resend)
 
-Without custom SMTP, Supabase's built-in mailer limits the project to ~2 auth emails per hour and deliverability is poor — unusable for a real roster. Mirror MTPD's settings:
+Without custom SMTP, Supabase's built-in mailer limits the project to ~2 auth emails per hour and deliverability is poor — unusable for a real roster.
+
+> **Do not use Resend.** `arbiterle.com` on Resend's shared IPs is junked by reflex at Microsoft/Office 365 mail filters — which is what most agencies (`*.org` borough/township domains) run. This caused the EGPD launch-day login failure (welcome + reset emails landed in Junk) and an MTPD reset failure. The Google Workspace path (`andrew@arbiterle.com`) is proven to inbox at O365 filters. Route **all** auth email through Google.
 
 In the new project: **Authentication → Emails → SMTP Settings**
 
-1. Enable **Custom SMTP**
-2. Host: `smtp.resend.com` · Port: `465` · Username: `resend`
-3. Password: the Resend API key (password manager — never commit it)
-4. Sender: `noreply@arbiterle.com` · Sender name: `Arbiter LE Training`
-5. Send a test password-reset email and confirm it arrives from `noreply@arbiterle.com` and the link lands on the department subdomain — not localhost.
+1. Generate a fresh Google App Password: myaccount.google.com → Security → 2-Step Verification → **App passwords** → name it `Supabase <SUBDOMAIN>` (a distinct name per project lets you revoke one without touching the others). Copy the 16-char code.
+2. Enable **Custom SMTP** and set:
+   - Host: `smtp.gmail.com` · Port: `587`
+   - Username: `andrew@arbiterle.com`
+   - Password: the 16-char app password (password manager — never commit it)
+   - Sender email: `andrew@arbiterle.com` · Sender name: `Arbiter LE`
+   *(Sender is `andrew@`, not `noreply@`, on purpose — it's recognizable to officers and replies reach a human.)*
+3. **Authentication → Email** — set the recovery/confirmation link expiry to **24h** (`86400` seconds). Supabase has defaulted new projects to 90 days, which is a security liability for a password-reset link.
+4. Send a test password-reset email to an O365 mailbox and confirm it lands in the **inbox** (not Junk), arrives from `andrew@arbiterle.com`, and the link lands on the department subdomain — not localhost.
+
+> Capacity: `smtp.gmail.com` ≈ 2,000 messages/day — far beyond any single agency's roster needs. Backstop if SMTP ever fails: `_supabase/scripts/set-passwords.ts` sets a temp password directly (email-free).
 
 ---
 
@@ -118,16 +126,31 @@ In the new project: **Authentication → Emails → SMTP Settings**
 
 ### 2A. Add the Department to the Registry
 
-Open [`js/departments/registry.js`](js/departments/registry.js) and add a new entry to `DEPARTMENT_REGISTRY`:
+Open [`js/departments/registry.js`](js/departments/registry.js) and add a new entry to `DEPARTMENT_REGISTRY`. **All of these fields are required** — a missing `moduleScripts` loads no content and drops the subdomain to the "Department not recognized" screen:
 
 ```js
 {
   subdomain: '[subdomain]',          // e.g., 'lansdale'
   name: '[Full Department Name]',
   shortName: '[SHORT]',
+  displayName: '[Display Name]',     // shown on login + nav
   badge: 'assets/[subdomain]-badge.png',
   supabaseUrl: '[paste from 1A]',
   supabaseKey: '[paste from 1A]',
+  scheduleStart: new Date('[YYYY-MM-DDT00:00:00]'), // first module opens
+  // Standard paying-agency cadence is TWO modules/month (biweekly).
+  cadence: { unlockEveryDays: 14, duePeriodDays: 14, modulesPerPeriod: 1, bufferPeriods: 1 },
+  // Content files for THIS department, loaded in order by index.html.
+  // Namespace every module id (e.g. 'lansdale-use-of-force') — ids must be
+  // unique across departments (the smoke test enforces this).
+  moduleScripts: [
+    'js/modules/[subdomain]/module-[subdomain]-1.js',
+    // … one per module …
+    'js/modules/[subdomain]/modules-[subdomain].js', // builds MODULES from the above
+  ],
+  // Capability flags. Shared code branches on these, never on the subdomain.
+  // Omit supervisorTrack unless this agency bought the supervisor track.
+  features: {},
 },
 ```
 

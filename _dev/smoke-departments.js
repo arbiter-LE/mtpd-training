@@ -18,6 +18,11 @@ const ROOT = path.resolve(__dirname, '..');
 let failures = 0;
 const fail = (dept, msg) => { failures++; console.log(`  ✗ [${dept}] ${msg}`); };
 
+// Every module id seen, mapped to the department(s) that define it. Used to
+// guarantee no two departments share an id (which would let a shared-engine
+// fallback keyed by id serve one agency's content to another).
+const idOwners = {};
+
 function loadRegistry() {
   // registry.js defines DEPARTMENT_REGISTRY at top level; its functions use
   // window/document but are not invoked at load. Stub just enough to eval.
@@ -64,6 +69,7 @@ function checkDepartment(dept) {
   let supCount = 0;
   M.forEach(m => {
     if (!m.id || !m.title || typeof m.weekNumber !== 'number') fail(tag, `module missing id/title/weekNumber: ${m.id || '?'}`);
+    if (m.id) (idOwners[m.id] = idOwners[m.id] || []).push(tag);
     if (!Array.isArray(m.questions) || m.questions.length < 8) fail(tag, `${m.id}: patrol quiz < 8 questions`);
     if (m.supervisorContentHtml || m.supervisorQuestions) supCount++;
 
@@ -83,14 +89,40 @@ function checkDepartment(dept) {
 }
 
 // Shared engine must never hardcode a department. Branch on registry data.
+// The earlier guard only caught quoted literals ('mtpd'), so it missed the
+// report-header branding ("MTPD Training Compliance Report") and the 'mtpd_'
+// localStorage prefixes. This one strips comments and any explicitly
+// allow-listed region, then flags ANY remaining bare department token in
+// live code.
 function checkSharedPurity() {
-  console.log('\n▸ shared-engine purity (no hardcoded subdomains)');
+  console.log('\n▸ shared-engine purity (no hardcoded department names)');
   ['js/app.js', 'js/config.js'].forEach(rel => {
-    const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
-    const hits = src.match(/['"](?:egpd|mtpd)['"]/gi);
-    if (hits) fail('shared', `${rel} references a department by name (${[...new Set(hits)].join(', ')}) — branch on ACTIVE_DEPARTMENT.features instead`);
-    else console.log(`  ✓ ${rel} has no hardcoded department names`);
+    let src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    // Drop allow-listed regions FIRST (documented tech debt, fenced by
+    // /* SMOKE-ALLOW-DEPT-NAMES:start */ … /* SMOKE-ALLOW-DEPT-NAMES:end */),
+    // then strip comments — a department name in prose is fine; in live code it isn't.
+    src = src.replace(/\/\*\s*SMOKE-ALLOW-DEPT-NAMES:start[\s\S]*?SMOKE-ALLOW-DEPT-NAMES:end\s*\*\//g, '');
+    src = src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/[^\n]*/g, '$1');
+    const hits = src.match(/\b(?:egpd|mtpd)\b/gi);
+    if (hits) fail('shared', `${rel} hardcodes a department name (${[...new Set(hits.map(h => h.toLowerCase()))].join(', ')}) in live code — derive it from ACTIVE_DEPARTMENT / registry data instead`);
+    else console.log(`  ✓ ${rel} has no hardcoded department names in live code`);
   });
+}
+
+// No two departments may share a module id. Shared-engine fallbacks keyed by id
+// (e.g. getDebriefLegalSummary's per-topic summaries) would otherwise serve one
+// agency's content to another — a cross-agency confidentiality break.
+function checkIdCollisions() {
+  console.log('\n▸ cross-department module-id uniqueness');
+  let clean = true;
+  Object.entries(idOwners).forEach(([id, depts]) => {
+    const uniq = [...new Set(depts)];
+    if (uniq.length > 1) {
+      clean = false;
+      fail('ids', `module id '${id}' is defined by more than one department (${uniq.join(', ')}) — namespace ids per department so shared-engine fallbacks can't leak content across agencies`);
+    }
+  });
+  if (clean) console.log('  ✓ every module id belongs to exactly one department');
 }
 
 // Behavior guard: a top-level function defined in a shared engine file but
@@ -134,6 +166,7 @@ console.log('Multi-tenant smoke test — building every registered department\n'
 const registry = loadRegistry();
 console.log(`Registry: ${registry.length} department(s) — ${registry.map(d => d.subdomain).join(', ')}`);
 registry.forEach(checkDepartment);
+checkIdCollisions();
 checkSharedPurity();
 checkWiring();
 

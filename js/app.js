@@ -269,14 +269,14 @@ function renderProgressTable() {
 }
 
 /* ── Quiz Resume ────────────────────────── */
-function RESUME_KEY() { return currentUser ? 'mtpd_quiz_resume_' + currentUser.id : null; }
+function RESUME_KEY() { return currentUser ? deptKey('quiz_resume_' + currentUser.id) : null; }
 
 function saveQuizState() {
   const key = RESUME_KEY();
   if (!key || !currentModule) return;
   localStorage.setItem(key, JSON.stringify({
     moduleId: currentModule.id,
-    moduleTitile: currentModule.title,
+    moduleTitle: currentModule.title,
     questionIndex: currentQuizIdx,
     correctCount: quizCorrect,
     quizTotal: quizTotal,
@@ -359,7 +359,7 @@ function pauseQuiz() {
 }
 
 /* ── Scenario Pause / Resume ───────────── */
-function PAUSE_KEY() { return currentUser ? 'mtpd_scenario_pause_' + currentUser.id : null; }
+function PAUSE_KEY() { return currentUser ? deptKey('scenario_pause_' + currentUser.id) : null; }
 
 function pauseScenario() {
   const key = PAUSE_KEY();
@@ -728,6 +728,17 @@ function getDebriefLegalSummary() {
   // Data-driven path — modules that carry their own debrief summary (e.g. EGPD).
   if (currentModule && currentModule.debriefHtml) return currentModule.debriefHtml;
   const id = currentModule ? currentModule.id : 'search-seizure';
+  /* SMOKE-ALLOW-DEPT-NAMES:start
+     KNOWN TECH DEBT: these per-topic summaries are MTPD's verbatim policy text,
+     still inline in the shared engine pending migration into MTPD module data
+     (debriefHtml), the way EGPD already does it. They are keyed by MTPD's BARE
+     module ids (e.g. 'use-of-force'); EGPD namespaces its ids ('egpd-use-of-force')
+     so this content can never serve another agency. ANY NEW DEPARTMENT MUST
+     namespace its module ids or provide its own debriefHtml — the cross-department
+     id-collision guard in _dev/smoke-departments.js enforces that no two
+     departments share a module id, which keeps this block MTPD-only.
+     Migrating this into module data (under live-module-lock sign-off) removes
+     the allowlist entirely. */
   if (id === 'search-seizure') return `
     <h3>Key Legal Principles — Search & Seizure</h3>
     <p><strong>Pennsylvania vehicle searches (MTPD ALO 1.2):</strong> Probable cause alone does not justify a warrantless vehicle search in Pennsylvania. You need both probable cause AND exigent circumstances. This is stricter than the federal standard and applies to every stop in this jurisdiction.</p>
@@ -815,6 +826,7 @@ function getDebriefLegalSummary() {
     <p><strong>MTPD ALO 5.4 — Documentation requirement:</strong> When de-escalation is employed, officers shall document the specific techniques used, the subject\'s response, and the reason de-escalation was or was not continued. "De-escalation was attempted" is not documentation. "Officer created distance, used calm verbal contact by name for approximately four minutes, subject began to lower voice and make eye contact" — that is documentation.</p>
     <p><strong>PA Mental Health Procedures Act — 50 P.S. § 7302:</strong> When a contact involves a person in possible acute psychiatric distress, de-escalation is both tactically and legally the correct first approach. A 302 involuntary examination requires a recent overt act, attempt, or threat establishing clear and present danger. Document the specific factual basis — and document de-escalation efforts that preceded any 302 initiation.</p>
     <p><strong>De-escalation does not eliminate force authority.</strong> The authority to use objectively reasonable force is not suspended during de-escalation. When a subject creates an imminent threat — regardless of prior de-escalation attempts — force options are live. Document the specific change in circumstances that required the transition. The record of your de-escalation effort protects you when force eventually becomes necessary.`;
+  /* SMOKE-ALLOW-DEPT-NAMES:end */
   return '<h3>Key Legal Principles</h3><p>Review the legal references presented during the scenario before proceeding to the assessment.</p>';
 }
 
@@ -1027,6 +1039,9 @@ async function finishQuiz() {
 
   // Persist to Supabase — await so we can warn the officer on failure
   const { error: saveError } = await saveCompletionToSupabase(uid, modId, completionData[uid][modId]);
+  // On failure, stash the record locally so it isn't lost — it'll be retried
+  // on the next load (flushPendingCompletions) rather than forcing a retake.
+  if (saveError) queuePendingCompletion(uid, modId, completionData[uid][modId]);
 
   showScreen('screen-results');
 
@@ -1077,7 +1092,7 @@ async function finishQuiz() {
   if (saveError) {
     const warn = document.createElement('div');
     warn.className = 'save-warning';
-    warn.innerHTML = '<p>⚠️ Your score could not be saved. Please notify your supervisor — your record will need to be updated.</p>';
+    warn.innerHTML = '<p>⚠️ Your score could not reach the server, but it has been saved on this device and will sync automatically the next time you sign in here. If it still shows as incomplete after your next sign-in, notify your supervisor.</p>';
     const actionEl = document.getElementById('results-action');
     if (actionEl) actionEl.after(warn);
   }
@@ -1118,6 +1133,19 @@ function rosterBadges() {
 }
 
 function renderAdminStats() {
+  const statsEl = document.getElementById('admin-stats-row');
+  // If the data load failed, say so plainly. An empty/0% dashboard is
+  // indistinguishable from "nobody trained" — the worst thing a chief can see.
+  if (adminDataError) {
+    if (statsEl) statsEl.innerHTML =
+      '<div class="stat-card" style="flex:1;border-top-color:#8b2635">' +
+        '<div class="stat-label" style="color:#8b2635">Records Unavailable</div>' +
+        '<div style="font-size:13px;color:var(--text-muted);margin-top:6px;line-height:1.5">' +
+          'Could not load officer records from the server. Check your connection and refresh the page. ' +
+          'If this continues, contact support@arbiterle.com.</div>' +
+      '</div>';
+    return;
+  }
   const officers = rosterBadges();
   let compliant=0, overdueCount=0, totalComps=0, totalScores=[];
   officers.forEach(uid => {
@@ -1135,7 +1163,8 @@ function renderAdminStats() {
     Object.values(done).forEach(r => totalScores.push(r.score));
   });
   const avgScore = totalScores.length ? Math.round(totalScores.reduce((a,b)=>a+b,0)/totalScores.length) : 0;
-  const compRate = Math.round((totalComps/(officers.length*MODULES.length))*100);
+  const compDenom = officers.length * MODULES.length;
+  const compRate = compDenom ? Math.round((totalComps/compDenom)*100) : 0;
   document.getElementById('admin-stats-row').innerHTML = `
     <div class="stat-card"><div class="stat-label">Total Officers</div><div class="stat-value">${officers.length}</div></div>
     <div class="stat-card"><div class="stat-label">Fully Compliant</div><div class="stat-value success">${compliant}</div></div>
@@ -1190,7 +1219,7 @@ function renderAdminModules() {
     const completions = officers.filter(uid => completionData[uid]?.[m.id]);
     const scores = completions.map(uid => completionData[uid][m.id].score);
     const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : null;
-    const compRate = Math.round((completions.length/officers.length)*100);
+    const compRate = officers.length ? Math.round((completions.length/officers.length)*100) : 0;
     const scoreClass = avgScore ? (avgScore>=90?'high':avgScore>=70?'mid':'low') : '';
     return `<tr>
       <td><strong>${m.title}</strong></td>
@@ -1252,17 +1281,26 @@ function printComplianceReport() {
     return MODULES.every(m => done[m.id] && done[m.id].passed);
   }).length;
   const totalComps = officers.reduce((sum, uid) => sum + Object.keys(completionData[uid] || {}).length, 0);
-  const compRate = Math.round((totalComps / (totalOfficers * MODULES.length)) * 100);
+  const _compDenom = totalOfficers * MODULES.length;
+  const compRate = _compDenom ? Math.round((totalComps / _compDenom) * 100) : 0;
   const allScores = officers.flatMap(uid => Object.values(completionData[uid] || {}).map(r => r.score));
   const avgScore = allScores.length ? Math.round(allScores.reduce((a,b)=>a+b,0)/allScores.length) : 0;
 
   const moduleHeaders = MODULES.map(m => `<th style="padding:8px 6px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#3c6478;white-space:nowrap;max-width:70px;overflow:hidden;text-overflow:ellipsis">Wk${m.weekNumber}</th>`).join('');
 
+  // Brand the report from the active department — never hardcode an agency.
+  // A printed compliance report is a client-facing artifact the chief keeps.
+  const _dept = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT) ? ACTIVE_DEPARTMENT : null;
+  const deptName = _dept ? (_dept.displayName || _dept.shortName || _dept.name) : 'Department';
+  const programStart = _dept && _dept.scheduleStart
+    ? new Date(_dept.scheduleStart).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })
+    : '—';
+
   const win = window.open('', '_blank', 'width=1100,height=800');
   win.document.write(`<!DOCTYPE html>
 <html>
 <head>
-  <title>MTPD Training Compliance Report — ${dateStr}</title>
+  <title>${deptName} Training Compliance Report — ${dateStr}</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: #1a2a3a; background: #fff; padding: 32px 40px; }
@@ -1294,14 +1332,14 @@ function printComplianceReport() {
 <body>
   <div class="report-header">
     <div class="dept-info">
-      <h1>Law Enforcement Training Platform</h1>
+      <h1>${deptName}</h1>
       <h2>Officer Training Compliance Report</h2>
     </div>
     <div class="report-meta">
       <strong>Generated:</strong> ${dateStr}<br/>
       <strong>Time:</strong> ${timeStr}<br/>
-      <strong>Generated by:</strong> MTPD Training Platform<br/>
-      <strong>Program Start:</strong> June 1, 2026
+      <strong>Generated by:</strong> ${deptName} Training Platform<br/>
+      <strong>Program Start:</strong> ${programStart}
     </div>
   </div>
 
@@ -1360,7 +1398,7 @@ function printComplianceReport() {
 
   <div class="report-footer">
     <span>Law Enforcement Training Platform — Confidential Training Record</span>
-    <span>MTPD Training Platform — ${dateStr}</span>
+    <span>${deptName} Training Platform — ${dateStr}</span>
   </div>
 
   <script>window.onload = function() { window.print(); }<\/script>
@@ -1398,7 +1436,7 @@ function filterCitations(type, btn) {
 
 
 /* ── Feedback ───────────────────────────── */
-const FEEDBACK_KEY = 'mtpd_feedback_v1';
+const FEEDBACK_KEY = deptKey('feedback_v1');
 
 function openFeedbackModal() {
   const deptShort = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.shortName) ? ACTIVE_DEPARTMENT.shortName : 'Department';

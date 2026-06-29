@@ -105,6 +105,19 @@ const USERS = {};
 
 const completionData = {};
 
+// Set true when the admin data load fails, so the dashboard can show a clear
+// error instead of rendering an empty/0%/NaN view that looks like "no training."
+let adminDataError = false;
+
+// localStorage keys must be scoped to the active department — the shared engine
+// serves every agency, so a bare 'mtpd_' prefix mislabels every other agency's
+// browser state. Derive the prefix from the resolved subdomain.
+function deptKey(suffix) {
+  const sub = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.subdomain)
+    ? ACTIVE_DEPARTMENT.subdomain : 'dept';
+  return sub + '_' + suffix;
+}
+
 /* ══════════════════════════════════════════
    DATABASE CONFIGURATION
    ── Supabase (permanent records):
@@ -174,8 +187,40 @@ async function saveCompletionToSupabase(badgeNumber, modId, record) {
   }
 }
 
+/* ── Offline-safe completion queue ───────────
+   A passed module must never vanish on a network blip. completionData is
+   in-memory only and re-read from Supabase on next load, so a failed save
+   would be lost. queuePendingCompletion() stashes a failed save locally;
+   flushPendingCompletions() retries the queue on the next load. */
+function queuePendingCompletion(badgeNumber, modId, record) {
+  try {
+    const key = deptKey('pending_completions');
+    const q = JSON.parse(localStorage.getItem(key) || '[]');
+    // De-dupe on badge+module — the latest record for a module wins.
+    const next = q.filter(e => !(e.badge === badgeNumber && e.modId === modId));
+    next.push({ badge: badgeNumber, modId, record, queuedAt: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(next));
+  } catch(e) { console.warn('ALE: could not queue completion —', e); }
+}
+
+async function flushPendingCompletions() {
+  const key = deptKey('pending_completions');
+  let q;
+  try { q = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) { return; }
+  if (!Array.isArray(q) || !q.length) return;
+  const remaining = [];
+  for (const e of q) {
+    const { error } = await saveCompletionToSupabase(e.badge, e.modId, e.record);
+    if (error) remaining.push(e); // still failing (e.g. offline, or RLS) — keep it
+  }
+  try { localStorage.setItem(key, JSON.stringify(remaining)); } catch(_) {}
+}
+
 /* Load completions for one officer from Supabase */
 async function loadOfficerCompletions(badgeNumber) {
+  // Push any saves that failed earlier before reading fresh server state, so a
+  // previously-lost pass shows up the moment connectivity returns.
+  await flushPendingCompletions();
   try {
     const { data, error } = await _sb.from('completions')
       .select('*').eq('badge_number', badgeNumber);
@@ -198,10 +243,14 @@ async function loadOfficerCompletions(badgeNumber) {
   } catch(e) { console.warn('ALE: load failed —', e); }
 }
 
-/* Load ALL officers + completions for admin dashboard */
+/* Load ALL officers + completions for admin dashboard.
+   Returns false (and sets adminDataError) on failure so the caller can show a
+   clear error — never let a failed load render as an empty, all-zero roster. */
 async function loadAllDataForAdmin() {
+  adminDataError = false;
   try {
-    const { data: officerRows } = await _sb.from('officers').select('*');
+    const { data: officerRows, error: offErr } = await _sb.from('officers').select('*');
+    if (offErr) throw offErr;
     if (officerRows) {
       officerRows.forEach(o => {
         USERS[o.badge_number] = {
@@ -215,7 +264,8 @@ async function loadAllDataForAdmin() {
         if (!completionData[o.badge_number]) completionData[o.badge_number] = {};
       });
     }
-    const { data: compRows } = await _sb.from('completions').select('*');
+    const { data: compRows, error: compErr } = await _sb.from('completions').select('*');
+    if (compErr) throw compErr;
     if (compRows) {
       compRows.forEach(row => {
         if (!completionData[row.badge_number]) completionData[row.badge_number] = {};
@@ -233,6 +283,11 @@ async function loadAllDataForAdmin() {
         };
       });
     }
-  } catch(e) { console.warn('ALE: admin load failed —', e); }
+    return true;
+  } catch(e) {
+    console.warn('ALE: admin load failed —', e);
+    adminDataError = true;
+    return false;
+  }
 }
 
