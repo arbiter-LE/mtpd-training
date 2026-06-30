@@ -75,7 +75,7 @@ async function mountOfficerSession(authUid) {
     return;
   }
   const o = rows[0];
-  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, track: o.track || 'patrol', badge: o.badge_number, email: o.email };
+  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, track: o.track || 'patrol', badge: o.badge_number, email: o.email, canPreview: o.can_preview === true };
   USERS[o.badge_number] = { ...currentUser };
 
   if (o.role === 'admin') {
@@ -588,11 +588,13 @@ function startModule(moduleId) {
   document.getElementById('module-category-label').textContent = currentModule.category;
   document.getElementById('module-title-label').textContent    = currentModule.title;
 
-  // Admin preview banner — show when admin opens a module not yet open to officers
+  // Preview banner — shown only to a preview-flagged account opening a module
+  // that is not yet open to officers. Agency admins can't reach this (the gate
+  // blocks them from opening a locked module), so this keys on canPreview.
   const banner = document.getElementById('admin-preview-banner');
   const isLockedForOfficers = new Date() < getModuleOpenDate(currentModule.weekNumber);
   if (banner) {
-    if (isLockedForOfficers && currentUser && currentUser.role === 'admin') {
+    if (isLockedForOfficers && currentUser && currentUser.canPreview) {
       const openFmt = getModuleOpenDate(currentModule.weekNumber)
         .toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
       banner.textContent = `🔒 Admin Preview — This module opens for officers on ${openFmt}`;

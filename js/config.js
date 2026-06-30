@@ -68,9 +68,14 @@ function getModuleOpenDate(weekNumber) {
 }
 
 function isModuleAvailable(module) {
-  // Admins can always preview any module
-  if (currentUser && currentUser.role === 'admin') return true;
-  // Officers: available once the open date has passed
+  // Only a flagged preview account (the platform owner) may open a module
+  // before its date. Agency admins — chiefs and supervisors — keep the command
+  // dashboard but are gated to the unlock schedule exactly like officers; they
+  // cannot open or complete a module ahead of time. The flag is per-officer
+  // data (officers.can_preview), never the admin role, so granting dashboard
+  // access never grants the ability to skip ahead. Defaults safe: absent = off.
+  if (currentUser && currentUser.canPreview) return true;
+  // Everyone else: available once the open date has passed.
   return new Date() >= getModuleOpenDate(module.weekNumber);
 }
 
