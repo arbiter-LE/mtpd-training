@@ -96,12 +96,14 @@
       <div class="progress-bar-wrap"><div class="progress-bar-fill" id="overall-progress" style="width:0%"></div></div>
       <div class="officer-tabs">
         <button class="officer-tab active" onclick="officerTab('modules', event)">Training Modules</button>
+        <button class="officer-tab" onclick="officerTab('library', event)">Library</button>
         <button class="officer-tab" onclick="officerTab('progress', event)">My Progress</button>
       </div>
       <div id="officer-tab-modules">
         <div id="track-toggle-dash" class="track-toggle" style="display:none"></div>
         <div class="modules-grid" id="modules-grid"></div>
       </div>
+      <div id="officer-tab-library" class="hidden"></div>
       <div id="officer-tab-progress" class="hidden">
         <div class="progress-table-wrap">
           <table class="progress-table">

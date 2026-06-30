@@ -141,6 +141,14 @@
     .btn-module.completed-btn:hover { background: #246644; }
     .btn-module:disabled { opacity: .4; cursor: not-allowed; }
 
+    /* ── Library ─────────────────────────── */
+    .library-section { margin-bottom: 32px; }
+    .library-section:last-child { margin-bottom: 0; }
+    .library-section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .library-section-head h3 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); }
+    .library-count { font-size: 11px; font-weight: 700; color: var(--text-muted); background: var(--navy-light); border: 1px solid var(--border); border-radius: 999px; min-width: 22px; height: 22px; padding: 0 7px; display: inline-flex; align-items: center; justify-content: center; }
+    .library-empty { font-size: 13px; color: var(--text-muted); padding: 8px 0 2px; }
+
     /* ── Module Header Bar ───────────────── */
     .module-header-bar { background: var(--navy-mid); border-bottom: 1px solid rgba(255,255,255,.08); padding: 14px 28px; display: flex; align-items: center; gap: 16px; }
     .btn-back { background: transparent; border: 1px solid rgba(200,220,240,.3); color: var(--chrome-mut); border-radius: var(--radius); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; cursor: pointer; transition: border-color .2s, color .2s; font-family: var(--font); }

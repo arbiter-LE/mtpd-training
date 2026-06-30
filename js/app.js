@@ -236,7 +236,9 @@ function officerTab(tab, e) {
   e.target.classList.add('active');
   document.getElementById('officer-tab-modules').classList.toggle('hidden', tab !== 'modules');
   document.getElementById('officer-tab-progress').classList.toggle('hidden', tab !== 'progress');
+  document.getElementById('officer-tab-library').classList.toggle('hidden', tab !== 'library');
   if (tab === 'progress') renderProgressTable();
+  if (tab === 'library')  renderLibrary();
 }
 
 function renderProgressTable() {
@@ -459,69 +461,109 @@ function renderOfficerDashboard() {
   const scores = Object.values(done).filter(r => r.passed).map(d => d.bestScore || d.score);
   document.getElementById('stat-score').textContent = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+'%' : '—';
   document.getElementById('overall-progress').style.width = Math.round((completed/total)*100)+'%';
-  document.getElementById('modules-grid').innerHTML = MODULES.map(m => {
-    const rec    = done[m.id];
-    const isPassed = rec && rec.passed;
-    const isFailed = rec && !rec.passed;
-    const isRemediation = rec && rec.remediation;
+  document.getElementById('modules-grid').innerHTML = MODULES.map(m => moduleCardHtml(m, done)).join('');
+}
 
-    let statusLabel, statusClass, btnLabel, btnClass, scoreStr, disabled, onclick;
+/* Build one module card. Shared by the dashboard grid and the Library tab so
+   the two views can never drift in how a module is labelled or gated. */
+function moduleCardHtml(m, done) {
+  const rec    = done[m.id];
+  const isPassed = rec && rec.passed;
+  const isFailed = rec && !rec.passed;
+  const isRemediation = rec && rec.remediation;
 
-    if (isPassed) {
-      statusLabel = 'Complete';  statusClass = 'complete';
-      btnLabel = '✓ Review Module'; btnClass = 'btn-module completed-btn';
-      scoreStr = `Score: ${rec.bestScore}%`;
-      disabled = ''; onclick = `onclick="startModule('${m.id}')"`;
-    } else if (isRemediation) {
-      statusLabel = 'Remediation'; statusClass = 'remediation';
-      btnLabel = 'Supervisor Review Required'; btnClass = 'btn-module';
-      scoreStr = `Best: ${rec.bestScore}% — 3/3 attempts used`;
-      disabled = 'disabled'; onclick = '';
-    } else if (isFailed) {
-      const remaining = 3 - rec.attempts;
-      statusLabel = `${rec.attempts}/3 Attempts`; statusClass = 'failed';
-      btnLabel = `Retake — Attempt ${rec.attempts + 1} of 3 →`; btnClass = 'btn-module';
-      scoreStr = `Best: ${rec.bestScore}% — ${remaining} attempt${remaining!==1?'s':''} left`;
-      disabled = ''; onclick = `onclick="startModule('${m.id}')"`;
+  let statusLabel, statusClass, btnLabel, btnClass, scoreStr, disabled;
+
+  if (isPassed) {
+    statusLabel = 'Complete';  statusClass = 'complete';
+    btnLabel = '✓ Review Module'; btnClass = 'btn-module completed-btn';
+    scoreStr = `Score: ${rec.bestScore}%`;
+    disabled = '';
+  } else if (isRemediation) {
+    statusLabel = 'Remediation'; statusClass = 'remediation';
+    btnLabel = 'Supervisor Review Required'; btnClass = 'btn-module';
+    scoreStr = `Best: ${rec.bestScore}% — 3/3 attempts used`;
+    disabled = 'disabled';
+  } else if (isFailed) {
+    const remaining = 3 - rec.attempts;
+    statusLabel = `${rec.attempts}/3 Attempts`; statusClass = 'failed';
+    btnLabel = `Retake — Attempt ${rec.attempts + 1} of 3 →`; btnClass = 'btn-module';
+    scoreStr = `Best: ${rec.bestScore}% — ${remaining} attempt${remaining!==1?'s':''} left`;
+    disabled = '';
+  } else {
+    const available = isModuleAvailable(m);
+    if (!available) {
+      const openDate = getModuleOpenDate(m.weekNumber);
+      const openFmt  = openDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      statusLabel = `Opens ${openFmt}`; statusClass = 'locked-status';
+      btnLabel = '🔒 Not Yet Available'; btnClass = 'btn-module locked-btn';
+      scoreStr = `Est. ${m.duration}`;
+      disabled = 'disabled';
     } else {
-      const available = isModuleAvailable(m);
-      if (!available) {
-        const openDate = getModuleOpenDate(m.weekNumber);
-        const openFmt  = openDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        statusLabel = `Opens ${openFmt}`; statusClass = 'locked-status';
-        btnLabel = '🔒 Not Yet Available'; btnClass = 'btn-module locked-btn';
-        scoreStr = `Est. ${m.duration}`;
-        disabled = 'disabled'; onclick = '';
-      } else {
-        const sched = getModuleSchedule(m.weekNumber);
-        statusLabel = sched.label; statusClass = sched.class;
-        btnLabel = 'Start Module →'; btnClass = 'btn-module';
-        scoreStr = `Est. ${m.duration}`;
-        disabled = ''; onclick = `onclick="startModule('${m.id}')"`;
-      }
+      const sched = getModuleSchedule(m.weekNumber);
+      statusLabel = sched.label; statusClass = sched.class;
+      btnLabel = 'Start Module →'; btnClass = 'btn-module';
+      scoreStr = `Est. ${m.duration}`;
+      disabled = '';
     }
+  }
 
-    const isAvail    = isModuleAvailable(m);
-    const canStart   = isAvail && !isRemediation;
-    const cardClick  = canStart ? `onclick="startModule('${m.id}')"` : '';
-    const cardClass  = canStart ? 'module-card' : (isAvail ? 'module-card locked' : 'module-card locked locked-future');
-    const btnOnclick = canStart ? `onclick="event.stopPropagation();startModule('${m.id}')"` : '';
+  const isAvail    = isModuleAvailable(m);
+  const canStart   = isAvail && !isRemediation;
+  const cardClick  = canStart ? `onclick="startModule('${m.id}')"` : '';
+  const cardClass  = canStart ? 'module-card' : (isAvail ? 'module-card locked' : 'module-card locked locked-future');
+  const btnOnclick = canStart ? `onclick="event.stopPropagation();startModule('${m.id}')"` : '';
+  return `
+    <div class="${cardClass}" ${cardClick}>
+      <div class="module-card-top">
+        <div class="module-category">${m.category}</div>
+        <h3>${m.title}</h3>
+        <p>${m.description}</p>
+      </div>
+      <div class="module-card-bottom">
+        <div class="module-meta">
+          <span class="badge-status ${statusClass}">${statusLabel}</span>
+          <small style="margin-top:6px;display:block;color:var(--text-muted)">${scoreStr}</small>
+        </div>
+        <button class="${btnClass}" ${disabled} ${btnOnclick}>${btnLabel}</button>
+      </div>
+    </div>`;
+}
+
+/* ── Library ────────────────────────────────
+   Browse the full curriculum at a glance, grouped by status: completed work
+   to revisit, modules open now, and what's still ahead. Reuses moduleCardHtml
+   so labels/gating match the dashboard exactly. */
+function renderLibrary() {
+  if (!currentUser) return;
+  const done = completionData[currentUser.id] || {};
+
+  const completed = [], availableNow = [], upcoming = [];
+  MODULES.forEach(m => {
+    const rec = done[m.id];
+    if (rec && rec.passed)          completed.push(m);
+    else if (!isModuleAvailable(m)) upcoming.push(m);
+    else                            availableNow.push(m);
+  });
+
+  const section = (title, blurb, list) => {
+    const grid = list.length
+      ? `<div class="modules-grid">${list.map(m => moduleCardHtml(m, done)).join('')}</div>`
+      : `<p class="library-empty">${blurb}</p>`;
     return `
-      <div class="${cardClass}" ${cardClick}>
-        <div class="module-card-top">
-          <div class="module-category">${m.category}</div>
-          <h3>${m.title}</h3>
-          <p>${m.description}</p>
+      <div class="library-section">
+        <div class="library-section-head">
+          <h3>${title}</h3>
+          <span class="library-count">${list.length}</span>
         </div>
-        <div class="module-card-bottom">
-          <div class="module-meta">
-            <span class="badge-status ${statusClass}">${statusLabel}</span>
-            <small style="margin-top:6px;display:block;color:var(--text-muted)">${scoreStr}</small>
-          </div>
-          <button class="${btnClass}" ${disabled} ${btnOnclick}>${btnLabel}</button>
-        </div>
+        ${grid}
       </div>`;
-  }).join('');
+  };
+
+  document.getElementById('officer-tab-library').innerHTML =
+    section('Completed', 'No modules completed yet — finished modules will collect here for review.', completed) +
+    section('Available Now', 'Nothing open at the moment. Check back when your next module unlocks.', availableNow) +
+    section('Upcoming', 'You\'re all caught up — no further modules are scheduled yet.', upcoming);
 }
 
 /* ── Module Reading ─────────────────────── */
