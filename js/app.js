@@ -273,13 +273,17 @@ function renderProgressTable() {
 /* ── Quiz Resume ────────────────────────── */
 function RESUME_KEY() { return currentUser ? deptKey('quiz_resume_' + currentUser.id) : null; }
 
-function saveQuizState() {
+function saveQuizState(nextIndex) {
   const key = RESUME_KEY();
   if (!key || !currentModule) return;
   localStorage.setItem(key, JSON.stringify({
     moduleId: currentModule.id,
     moduleTitle: currentModule.title,
-    questionIndex: currentQuizIdx,
+    // Once an answer is committed its score is final — the caller passes the
+    // NEXT index so resuming can never re-present (and re-score) a question
+    // that already counted. questionIndex === quizTotal means every answer
+    // was committed and only the final scoring step remains.
+    questionIndex: nextIndex !== undefined ? nextIndex : currentQuizIdx,
     correctCount: quizCorrect,
     quizTotal: quizTotal,
     secondsElapsed: quizSeconds
@@ -292,11 +296,13 @@ function clearQuizState() {
 }
 
 function checkResumeBanner() {
-  const key = RESUME_KEY();
-  if (!key) return;
-  const saved = localStorage.getItem(key);
   const bannerEl = document.getElementById('officer-resume-banner');
-  if (!bannerEl) return;
+  // Hide by default — a banner from an earlier pause must not linger after
+  // the quiz/scenario it advertised has been finished or cleared.
+  if (bannerEl) bannerEl.style.display = 'none';
+  const key = RESUME_KEY();
+  if (!key || !bannerEl) return;
+  const saved = localStorage.getItem(key);
   // Quiz resume takes priority; if no quiz, check scenario pause
   if (!saved) {
     checkScenarioPauseBanner();
@@ -304,8 +310,8 @@ function checkResumeBanner() {
   }
   const state = JSON.parse(saved);
   const mod = MODULES.find(m => m.id === state.moduleId);
-  if (!mod) { bannerEl.style.display = 'none'; checkScenarioPauseBanner(); return; }
-  const qNum = state.questionIndex + 1;
+  if (!mod) { checkScenarioPauseBanner(); return; }
+  const qNum = Math.min(state.questionIndex + 1, state.quizTotal);
   bannerEl.style.display = 'block';
   bannerEl.innerHTML = `
     <div class="resume-banner">
@@ -325,16 +331,27 @@ function resumeQuiz() {
   const state = JSON.parse(saved);
   const mod = MODULES.find(m => m.id === state.moduleId);
   if (!mod) return;
+  // The saved run must match the question set being served now — if the
+  // content or the officer's track changed since the pause, restart cleanly
+  // rather than resume into the wrong set at a stale index.
+  const questions = activeQuestions(mod);
+  if (state.quizTotal !== questions.length || state.questionIndex > questions.length) {
+    clearQuizState();
+    startQuiz(mod.id);
+    return;
+  }
   currentModule  = mod;
   currentQuizIdx = state.questionIndex;
   quizCorrect    = state.correctCount;
   quizTotal      = state.quizTotal;
   quizSeconds    = state.secondsElapsed || 0;
-  const questions = activeQuestions(currentModule);
+  // Every answer was already committed before the officer left — go straight
+  // to scoring instead of re-presenting a question that already counted.
+  if (currentQuizIdx >= quizTotal) { finishQuiz(); return; }
   showScreen('screen-quiz');
   window.scrollTo(0, 0);
   document.getElementById('quiz-module-label').textContent = currentModule.category;
-  document.getElementById('quiz-title-label').textContent  = currentModule.title + ' — Knowledge Check';
+  document.getElementById('quiz-title-label').textContent  = currentModule.title + ' — Assessment';
   document.getElementById('quiz-officer-name').textContent = currentUser.name;
   stopAllTimers();
   quizTimer = setInterval(() => {
@@ -450,10 +467,13 @@ function renderOfficerDashboard() {
   const done = completionData[uid] || {};
   const completed = Object.values(done).filter(r => r.passed).length;
   const total     = MODULES.length;
+  // Overdue = past the due date (buffer or beyond). "Due soon" is not overdue —
+  // counting it here showed officers a red Overdue stat days before anything
+  // was actually late, and disagreed with the admin dashboard's count.
   const overdue   = MODULES.filter(m => {
     if (done[m.id] && done[m.id].passed) return false;
     const sched = getModuleSchedule(m.weekNumber);
-    return sched.status === 'overdue' || sched.status === 'buffer' || sched.status === 'due-soon';
+    return sched.status === 'overdue' || sched.status === 'buffer';
   }).length;
   document.getElementById('stat-assigned').textContent  = total;
   document.getElementById('stat-completed').textContent = completed;
@@ -879,13 +899,6 @@ function showDebrief() {
   showScreen('screen-debrief');
   window.scrollTo(0, 0);
 
-  // Attach consequence quality from the nodes we traversed
-  // The path was built during selectDecision — but we need outcome from the consequence nodes
-  // Re-walk to get consequence info
-  const scen = currentModule._activeScenario || currentModule.scenario;
-  const nodes = scen.nodes;
-  const legalNotes = [];
-
   const steps = scenarioPath.map((step, i) => {
     const qualityClass = step.quality === 'good' ? 'step-good' : step.quality === 'bad' || step.quality === 'risky' ? 'step-bad' : 'step-neutral';
     const qualityLabel = step.quality === 'good' ? 'Sound Decision' : step.quality === 'bad' ? 'Error Identified' : step.quality === 'risky' ? 'High Risk' : 'Noted';
@@ -900,11 +913,6 @@ function showDebrief() {
         </div>
       </div>`;
   }).join('');
-
-  // Collect all legal notes from traversed consequence nodes
-  Object.values(nodes).forEach(n => {
-    if (n.type === 'consequence' && n.legal) legalNotes.push(n.legal);
-  });
 
   const goodDecisions = scenarioPath.filter(s => s.quality === 'good').length;
   const totalDecisions = scenarioPath.length;
@@ -1071,7 +1079,7 @@ function submitAnswer() {
   btn.textContent = currentQuizIdx === quizTotal-1 ? 'Submit Assessment →' : 'Next Question →';
   btn.disabled = false;
   document.getElementById('quiz-score-running').textContent = `Score: ${quizCorrect} / ${currentQuizIdx+1}`;
-  saveQuizState();
+  saveQuizState(currentQuizIdx + 1); // this question is scored — resume must start at the next one
 }
 
 // The primary quiz button is two-stage: it submits the chosen answer, then
@@ -1099,6 +1107,26 @@ async function finishQuiz() {
 
   if (!completionData[uid]) completionData[uid] = {};
   const prev     = completionData[uid][modId] || { attempts: 0, passed: false, bestScore: 0, scores: [] };
+
+  // A passed module stays passed. "Review Module" leads back through the
+  // scenario to this quiz — that practice run must never revoke the recorded
+  // pass, burn attempts, or trigger remediation. Show the score, change nothing.
+  if (prev.passed) {
+    showScreen('screen-results');
+    document.getElementById('attempt-dots').innerHTML        = '';
+    document.getElementById('results-pct').textContent       = pct + '%';
+    document.getElementById('results-pass-label').textContent = passed ? 'PASS' : 'REVIEW';
+    document.getElementById('results-ring').className        = 'results-score-ring ' + (passed ? 'pass' : 'fail');
+    document.getElementById('res-correct').textContent       = quizCorrect;
+    document.getElementById('res-total').textContent         = quizTotal;
+    document.getElementById('res-time').textContent          = timeStr;
+    document.getElementById('results-icon').textContent      = '📖';
+    document.getElementById('results-heading').textContent   = 'Practice Review Complete';
+    document.getElementById('results-sub').textContent       = `This module is already complete — your recorded score of ${prev.bestScore}% is unchanged.`;
+    document.getElementById('results-action').innerHTML      = `<button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>`;
+    return;
+  }
+
   const attempts = prev.attempts + 1;
   const bestScore = Math.max(prev.bestScore || 0, pct);
   const scores    = [...(prev.scores || []), pct];
@@ -1272,7 +1300,7 @@ function renderAdminTable() {
       .filter(([,r]) => r.attempts > 1)
       .map(([id,r]) => {
         const mod = MODULES.find(m => m.id === id);
-        return `${mod ? mod.title.split(' ')[0] + ' ' + mod.title.split(' ')[1] : id}: ${r.attempts}/3 attempts`;
+        return `${mod ? mod.title.split(' ').slice(0, 2).join(' ') : id}: ${r.attempts}/3 attempts`;
       }).join(', ');
     return `<tr ${hasRemediation ? 'style="background:rgba(139,38,53,.08)"' : ''}>
       <td><strong>${user.name}</strong><br/><small style="color:var(--text-muted)">${user.rank}</small></td>
@@ -1627,13 +1655,15 @@ async function renderAdminFeedback() {
   listEl.innerHTML = banner + rows.map(f => {
     const dt = f.submitted_at ? new Date(f.submitted_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '—';
     const deptShort = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.shortName) ? ACTIVE_DEPARTMENT.shortName : 'Department';
-    const catLabel = {legal:'Legal Reference',sop:deptShort+' Order / SOP',scenario:'Scenario',quiz:'Quiz Question',content:'Content Accuracy',other:'Other'}[f.category] || f.category;
+    const catLabel = {legal:'Legal Reference',sop:deptShort+' Order / SOP',scenario:'Scenario',quiz:'Quiz Question',content:'Content Accuracy',other:'Other'}[f.category] || escapeHtml(f.category);
+    // Every field here originated as officer-typed or officer-influenced input
+    // stored in the DB — escape it all before it renders in the admin's DOM.
     return `<div class="feedback-item">
       <div class="feedback-item-header">
-        <div class="feedback-item-meta"><strong>${f.module_title || f.module_id}</strong> &nbsp;·&nbsp; Badge ${f.badge_number} &nbsp;·&nbsp; ${dt}</div>
+        <div class="feedback-item-meta"><strong>${escapeHtml(f.module_title || f.module_id)}</strong> &nbsp;·&nbsp; Badge ${escapeHtml(f.badge_number)} &nbsp;·&nbsp; ${dt}</div>
         <span class="feedback-cat-badge">${catLabel}</span>
       </div>
-      <div class="feedback-item-body">${f.feedback}</div>
+      <div class="feedback-item-body">${escapeHtml(f.feedback)}</div>
     </div>`;
   }).join('');
 }
@@ -1671,6 +1701,16 @@ function filterGlossary(query) {
 }
 
 /* ── Utilities ──────────────────────────── */
+// Escape untrusted text before it goes into innerHTML. Officer-typed input
+// (feedback flags) renders in the ADMIN's browser — without this, a crafted
+// flag is stored XSS against the chief's session.
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
 function formatTime(secs) {
   return `${Math.floor(secs/60).toString().padStart(2,'0')}:${(secs%60).toString().padStart(2,'0')}`;
 }
