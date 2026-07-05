@@ -20,28 +20,39 @@ the public site. Never paste real officer data into anything here.
 Brand palette (also in `css/styles.css`): navy `#0a1828`, gold `#c8902a`,
 steel `#3c6478`. EGPD theme is the charcoal-green/gold variant.
 
-### `pricing/` — the rate card (single source of truth)
+### Pricing — the leave-behind *is* the rate card
+
+The standalone rate-card PDF was **retired 2026-06-23**. The chief leave-behind
+in `collateral/` is now the single source of truth for pricing — it carries the
+current tiers, so there's no separate rate card to keep in sync. Retired rate
+cards (v2–v19) live in `_archive/rate-cards/`.
+
+**Current tiers (effective 2026-06-23, FOR AGENCY USE — not on the public site):**
+Tier 1: 1–10 officers = **$1,800/yr** · Tier 2: 11–20 = **$2,400/yr** ·
+Tier 3: 21–25 = **$3,000/yr**. Three flat tiers by size, hard-capped at 25,
+annual billing paid upfront, no free trial. To change pricing, edit
+`_guide_build/leave-behind.html` and re-run `print-leave-behind.mjs`.
+
+### `prospects/` — the lead pipeline
 | File | What it is |
 |------|-----------|
-| `2026-06-03-arbiter-rate-card-v19.pdf` | **Current** rate card. This is the one you send. |
+| `2026-06-22-arbiter-le-lead-tracker.xlsx` | **The live lead tracker.** This is the one you work from. |
 
-One current rate card lives here. Every superseded version (v2–v18) is in
-`_archive/rate-cards/`. Never stack old versions back in here.
-Note: the final per-agency number is set after the EGPD pilot.
+One tracker, three tabs: **Dashboard** (funnel counts + overdue / due-this-week
+flags), **Pipeline** (one department per row — stage & priority dropdowns,
+follow-up dates auto-highlight red when overdue / gold when due ≤7 days), and
+**How to Use**. The EGPD row is the live anchor; its real next action is the
+pilot-to-paid conversion (tracked for 2026-09-17). Drop prospect names straight
+into the Pipeline tab. Regenerate from `_dev/build-lead-tracker.py`.
 
-### `prospects/` — pipeline lists & tracking
-| File | What it is |
-|------|-----------|
-| `2026-06-03-PA-small-dept-prospect-list.xlsx` | PA small-department prospect list |
-| `2026-06-03-lansdale-1hr-prospect-list.xlsx` | Lansdale-area (1hr radius) prospect list |
-
-The live sales tracker `2026-06-20-arbiter-le-tracker.xlsx` currently lives in
-the repo root (it was open when this folder was built). Move it here when free.
+Superseded by the above (were empty placeholder shells, removed 6/22): the
+`2026-06-03` PA-small-dept / Lansdale-1hr lists and the empty root
+`2026-06-20-arbiter-le-tracker.xlsx`.
 
 ### `collateral/` — finished pieces to hand a chief/prospect
 | File | What it is |
 |------|-----------|
-| `2026-06-20-arbiter-le-chief-leave-behind.pdf` | The chief leave-behind (one-page sell) |
+| `2026-06-23-arbiter-le-chief-leave-behind.pdf` | The chief leave-behind (one-page sell) — **also the rate card**; carries the current pricing tiers. This is the one you send. |
 | `2026-06-21-arbiter-prospect-one-pager.svg` | "What your department gets" — 4 pillars (design-feature build) |
 | `2026-06-21-arbiter-how-it-works.svg` | "How Arbiter LE works" — 5-step flow (design-feature build) |
 

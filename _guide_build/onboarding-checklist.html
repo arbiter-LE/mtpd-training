@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Arbiter LE — Agency Onboarding Checklist</title>
+<style>
+  :root{
+    --navy:#0a1828; --navy-mid:#152638; --navy-light:#1e3448; --steel:#3c6478;
+    --gold:#c8902a; --gold-hi:#e0a830;
+    --ink:#182535; --muted:#5a7a92; --line:#c4d6e4; --paper:#ffffff; --soft:#eef3f7;
+    --andrew:#1e3448; --claude:#3c6478; --console:#7a4e10; --gate:#b83030;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--ink); font-size:11px; line-height:1.5; }
+
+  .page-break{ break-before:page; }
+  .phase{ break-inside:avoid; }
+
+  /* ── cover ── */
+  .cover{ height:9.4in; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+          background:linear-gradient(160deg,#0a1828 0%,#152638 60%,#1e3448 100%); color:#fff; padding:0 60px; }
+  .cover .seal{ width:170px; height:170px; margin-bottom:24px; display:flex; align-items:center; justify-content:center;
+                border-radius:50%; background:radial-gradient(circle, rgba(224,181,76,.16) 0%, rgba(224,181,76,.05) 45%, rgba(224,181,76,0) 70%); }
+  .cover .seal img{ width:150px; height:150px; object-fit:contain; filter:drop-shadow(0 3px 10px rgba(0,0,0,.4)); }
+  .cover h1{ font-size:30px; letter-spacing:1px; font-weight:800; line-height:1.2; }
+  .cover .sub{ color:var(--gold-hi); font-size:14px; letter-spacing:3px; text-transform:uppercase; margin-top:14px; font-weight:700; }
+  .cover .tagline{ font-size:14px; margin-top:28px; font-weight:500; color:#cfe0ec; max-width:460px; line-height:1.55; }
+  .cover .meta{ color:#8fb0c4; font-size:12px; margin-top:26px; letter-spacing:.5px; }
+  .cover .rule{ width:80px; height:3px; background:var(--gold); margin:24px auto; border-radius:2px; }
+  .cover .internal{ margin-top:30px; border:1px solid rgba(224,168,48,.5); color:var(--gold-hi); font-size:10px; letter-spacing:2px; text-transform:uppercase; padding:7px 16px; border-radius:4px; }
+
+  /* ── how to use ── */
+  .content{ padding:0 4px; }
+  .intro{ background:var(--soft); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:0 10px 10px 0; padding:14px 18px; margin:0 0 18px; }
+  .intro h3{ color:var(--navy); font-size:13px; margin-bottom:6px; }
+  .intro p{ font-size:11px; color:var(--ink); margin:3px 0; }
+
+  .legend{ display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; }
+  .chip{ font-size:9px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:3px 8px; border-radius:4px; color:#fff; }
+  .chip.andrew{ background:var(--andrew); }
+  .chip.claude{ background:var(--claude); }
+  .chip.console{ background:var(--console); }
+  .chip.gate{ background:var(--gate); }
+  .chip-note{ font-size:10px; color:var(--muted); margin-left:4px; }
+
+  /* ── phase head ── */
+  .part-head{ background:var(--navy); color:#fff; border-radius:9px; padding:13px 18px; margin:18px 0 10px; display:flex; align-items:baseline; gap:12px; break-after:avoid; }
+  .part-head .tag{ color:var(--gold-hi); font-size:10px; letter-spacing:2.5px; text-transform:uppercase; font-weight:700; white-space:nowrap; }
+  .part-head h2{ font-size:16px; font-weight:800; letter-spacing:.3px; }
+  .phase-note{ color:var(--muted); font-size:10.5px; font-style:italic; margin:0 2px 8px; }
+
+  /* ── step rows ── */
+  .step{ display:flex; gap:10px; align-items:flex-start; padding:7px 4px; border-bottom:1px solid #e3ecf3; break-inside:avoid; }
+  .step:last-child{ border-bottom:none; }
+  .box{ width:14px; height:14px; border:1.5px solid var(--steel); border-radius:3px; flex-shrink:0; margin-top:1px; }
+  .num{ font-weight:800; color:var(--gold); font-size:11px; min-width:20px; flex-shrink:0; margin-top:1px; }
+  .step .body{ flex:1; }
+  .step .body .t{ font-weight:700; color:var(--navy); }
+  .step .body .d{ color:var(--ink); font-size:10.5px; margin-top:1px; }
+  .step .body .d code{ background:var(--soft); border:1px solid var(--line); border-radius:3px; padding:0 4px; font-size:9.5px; color:var(--navy-light); }
+  .owner{ flex-shrink:0; font-size:8.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; padding:2px 7px; border-radius:4px; color:#fff; margin-top:1px; white-space:nowrap; }
+  .owner.andrew{ background:var(--andrew); }
+  .owner.claude{ background:var(--claude); }
+  .owner.console{ background:var(--console); }
+  .owner.gate{ background:var(--gate); }
+
+  .stopgate{ background:#fdecec; border:1px solid #f3c0c0; border-left:3px solid var(--gate); border-radius:0 8px 8px 0; padding:9px 14px; margin:8px 0; font-size:10.5px; color:#7a1f1f; }
+  .stopgate b{ color:var(--gate); }
+
+  footer.doc{ margin-top:22px; color:var(--muted); font-size:10px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+  <div class="seal"><img src="arbiter-seal-gold.png" alt="Arbiter LE" /></div>
+  <h1>Agency Onboarding<br/>Checklist</h1>
+  <div class="sub">Arbiter LE</div>
+  <div class="rule"></div>
+  <div class="tagline">Signed agreement to live platform — every step, in order, with who owns it.</div>
+  <div class="internal">Internal Operator Document — Not for Distribution</div>
+</div>
+
+<!-- ═══════════ HOW TO USE ═══════════ -->
+<div class="content page-break">
+  <div class="intro">
+    <h3>How to use this</h3>
+    <p>Work top to bottom. Check each box as it's done. A <b>STOP gate</b> means do not proceed past it until the condition is met. Hand the <span style="color:var(--claude);font-weight:700;">CLAUDE</span> steps to Claude in the company project; the rest are yours.</p>
+    <p>This is a living checklist — add or remove steps as the platform changes. Source: <code>_guide_build/onboarding-checklist.html</code> · regenerate with <code>node _guide_build/print-onboarding-checklist.mjs</code>.</p>
+    <div class="legend">
+      <span class="chip andrew">Andrew</span><span class="chip-note">you do it</span>
+      <span class="chip claude">Claude</span><span class="chip-note">paste to Claude</span>
+      <span class="chip console">Console</span><span class="chip-note">Supabase / Vercel / Cloudflare</span>
+      <span class="chip gate">Gate</span><span class="chip-note">stop &amp; confirm</span>
+    </div>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 0</span><h2>At Signing — Day 0</h2></div>
+    <div class="stopgate"><b>STOP — do not start without all three:</b> (1) service agreement signed (you confirm, not a doc), (2) the agency's own Supabase project provisioned, (3) legal citation registry re-verified — every <code>PENDING</code> cite the agency's content will rely on promoted to GOOD LAW first.</div>
+
+    <div class="step"><span class="box"></span><span class="num">1</span><div class="body"><div class="t">Confirm the service agreement is signed and file it</div><div class="d">Save under <code>Agency Onboarding/&lt;DEPT&gt;/</code> (already in <code>.vercelignore</code>).</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">2</span><div class="body"><div class="t">Create the agency's dedicated Cowork project</div><div class="d">Siloed — holds only this agency's policy text, drafts, comms, Supabase context. Never mix two agencies. Never copy the shared codebase in.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">3</span><div class="body"><div class="t">Email the chief the onboarding form URL</div><div class="d">Send <code>arbiterle.com/onboarding</code> + the roster template. Ask for the badge/patch PNG and policy docs (UOF, pursuits, DV). No cloud storage on their end? Have them email policy PDFs as separate, unzipped attachments.</div></div><span class="owner andrew">Andrew</span></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 1</span><h2>Collect Intake — Before Any Code</h2></div>
+    <p class="phase-note">Confirm every item with the agency. Don't invent any of these.</p>
+
+    <div class="step"><span class="box"></span><span class="num">4</span><div class="body"><div class="t">Identity</div><div class="d">Full legal name · short name (e.g. <code>LBPD</code>) · subdomain · jurisdiction type (borough/township/city) · state.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">5</span><div class="body"><div class="t">Officer roster</div><div class="d">Name, badge #, rank for each officer; mark which badge #(s) are admin / command staff.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">6</span><div class="body"><div class="t">Badge / patch image</div><div class="d">PNG, transparent background, ~200×200. Convert if they only have a JPG or white-background image.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">7</span><div class="body"><div class="t">Policy documents — verbatim source</div><div class="d">Use of force, pursuits, domestic violence, plus section numbers. These appear word-for-word in content or not at all.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">8</span><div class="body"><div class="t">Confirm the approved road list</div><div class="d">You confirm each road is in-jurisdiction. No road ships in a scenario unless it's on this agency's approved list. Never borrow another agency's roads.</div></div><span class="owner gate">Gate</span></div>
+    <div class="step"><span class="box"></span><span class="num">9</span><div class="body"><div class="t">Program start date + go-live date</div><div class="d">Start date becomes <code>scheduleStart</code> in the registry (per-department, not a global value).</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">10</span><div class="body"><div class="t">Decide capability flags</div><div class="d">Supervisor track (<code>features.supervisorTrack</code>)? Any other flag? Default is none.</div></div><span class="owner andrew">Andrew</span></div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 2</span><h2>Supabase — Stand Up the Database</h2></div>
+    <p class="phase-note">You run everything in the Supabase console; Claude generates the exact SQL. No DROP/DELETE/TRUNCATE without naming the project.</p>
+
+    <div class="step"><span class="box"></span><span class="num">11</span><div class="body"><div class="t">Create the Supabase project</div><div class="d">Name <code>arbiterle-&lt;short&gt;</code>, region US East. Save the DB password in your manager.</div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">12</span><div class="body"><div class="t">Copy the API credentials</div><div class="d">Settings → API: <code>Project URL</code> and <code>anon public</code> key. You paste these into the registry later — Claude never invents or overwrites them.</div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">13</span><div class="body"><div class="t">Run the schema SQL</div><div class="d">Model on the EGPD init (<code>_database/egpd/...init-schema.sql</code>). File the new agency's copy under <code>_database/&lt;subdomain&gt;/</code>.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">14</span><div class="body"><div class="t">Run RLS hardening</div><div class="d">Own-record + <code>is_admin()</code> model, anon access closed. Mirror the EGPD/MTPD RLS files. <b>Verify anon cannot read</b> <code>officers</code>/<code>completions</code>.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">15</span><div class="body"><div class="t">Add officers to Supabase (seed the roster)</div><div class="d">Claude generates an <code>INSERT … ON CONFLICT (badge_number) DO NOTHING</code> block — <code>admin</code> for command staff, <code>officer</code> otherwise. You run it, then confirm the row count in the dashboard.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">16</span><div class="body"><div class="t">Link officers to auth users</div><div class="d">Confirm each seeded officer row is auth-linked (<code>auth_uid</code>) so logins map to records.</div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">17</span><div class="body"><div class="t">Configure Auth URLs (REQUIRED)</div><div class="d">Authentication → URL Configuration. Site URL <code>https://&lt;sub&gt;.arbiterle.com</code>; redirect allow-list = that URL and <code>…/?reset=1</code>, nothing else. <b>Skipping this dead-ends every password reset at localhost.</b></div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">18</span><div class="body"><div class="t">Configure custom SMTP (Resend)</div><div class="d"><code>smtp.resend.com</code> : 465, user <code>resend</code>, sender <code>noreply@arbiterle.com</code> / "Arbiter LE Training". Send a test reset — confirm it lands on the subdomain, not localhost.</div></div><span class="owner console">Console</span></div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 3</span><h2>Platform Config — Registry, Badge, Theme</h2></div>
+    <p class="phase-note">All in the company project. Never fork shared code (app.js / config.js / index.html / styles.css) per agency.</p>
+
+    <div class="step"><span class="box"></span><span class="num">19</span><div class="body"><div class="t">Add the registry entry</div><div class="d"><code>js/departments/registry.js</code> — one block: subdomain, names, badge path, <code>supabaseUrl</code>/<code>supabaseKey</code> (pasted exactly from step 12), <code>scheduleStart</code>, <code>moduleScripts</code>, <code>features</code>. <b>Triple-check the keys</b> — mixing them corrupts officer data.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">20</span><div class="body"><div class="t">Add the badge image</div><div class="d"><code>assets/&lt;subdomain&gt;-badge.png</code> — exact case (Vercel/Linux is case-sensitive).</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">21</span><div class="body"><div class="t">Add the theme block</div><div class="d"><code>html[data-theme="&lt;sub&gt;"]</code> token-override block in <code>css/styles.css</code>, using the agency's brand colors. EGPD (charcoal-green/gold) is the reference.</div></div><span class="owner claude">Claude</span></div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 4</span><h2>Module Content</h2></div>
+    <p class="phase-note">Author in <code>js/modules/&lt;subdomain&gt;/</code>. Never edit or borrow from another agency's modules.</p>
+
+    <div class="step"><span class="box"></span><span class="num">22</span><div class="body"><div class="t">Author the modules</div><div class="d">Verbatim policy · approved roads only · no real names · ≥ 8 quiz questions per module, each answerable solely from that module · only GOOD-LAW citations (no holding from memory).</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">23</span><div class="body"><div class="t">Supervisor-track variants</div><div class="d">If <code>features.supervisorTrack</code> is on, author the command-lens reading overlay + graded questions per module.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">24</span><div class="body"><div class="t">Validate scenario structure</div><div class="d"><code>node _dev/validate-scenarios.js</code> — clean before moving on.</div></div><span class="owner claude">Claude</span></div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 5</span><h2>Pre-Deploy Gate — Shared-File Safety</h2></div>
+    <p class="phase-note">A registry change touches every agency at once. Don't skip.</p>
+
+    <div class="step"><span class="box"></span><span class="num">25</span><div class="body"><div class="t">Smoke test every department</div><div class="d"><code>node _dev/smoke-departments.js</code> — builds each registered department, validates modules, blocks hardcoded subdomains. Must pass.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">26</span><div class="body"><div class="t">Citation check on new content</div><div class="d"><code>_legal/check-citations.sh</code> over the new module files — resolve every flag.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">27</span><div class="body"><div class="t">Confirm internal files are ignored</div><div class="d"><code>_database/&lt;sub&gt;/</code> and <code>Agency Onboarding/&lt;DEPT&gt;/</code> in <code>.vercelignore</code> <b>before</b> commit. Roster SQL and agreements must never deploy publicly.</div></div><span class="owner gate">Gate</span></div>
+  </div>
+
+  <!-- PHASE 6 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 6</span><h2>Deploy &amp; Confirm Live</h2></div>
+    <div class="stopgate"><b>Main is production.</b> Review the diff and give explicit OK before any commit. Do not call it done from the diff — verify on the live URL.</div>
+
+    <div class="step"><span class="box"></span><span class="num">28</span><div class="body"><div class="t">Add the subdomain in Vercel</div><div class="d">Settings → Domains → <code>&lt;subdomain&gt;.arbiterle.com</code>. Live within minutes.</div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">29</span><div class="body"><div class="t">Add the Cloudflare CNAME</div><div class="d">Proxy <b>OFF</b> (DNS-only).</div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">30</span><div class="body"><div class="t">Review the diff, then commit &amp; push</div><div class="d">Registry + badge + CSS + module files. Short imperative subject. Push to main on your OK.</div></div><span class="owner gate">Gate</span></div>
+    <div class="step"><span class="box"></span><span class="num">31</span><div class="body"><div class="t">Verify the new subdomain live</div><div class="d">Loads, correct badge + theme; an unknown subdomain still hits "Department not recognized."</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">32</span><div class="body"><div class="t">Verify the other live subdomains still work</div><div class="d">One registry change touches every agency — check MTPD and EGPD (and any others) still load.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">33</span><div class="body"><div class="t">Prove internal files are protected</div><div class="d"><code>curl</code> the new <code>_database</code>/agreement files on the live host — confirm <b>404</b>. Don't just assert it.</div></div><span class="owner andrew">Andrew</span></div>
+  </div>
+
+  <!-- PHASE 7 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 7</span><h2>Handoff to the Department</h2></div>
+
+    <div class="step"><span class="box"></span><span class="num">34</span><div class="body"><div class="t">Draft the admin onboarding email</div><div class="d">Claude drafts (login instructions, cadence, support contact); you review and send. Initial password format <code>&lt;DEPTPREFIX&gt;&lt;badge#&gt;</code>; "change password after first login."</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">35</span><div class="body"><div class="t">Draft the officer credential sheet</div><div class="d">Name · badge # · initial password · role. For your review only — no client-facing send without it.</div></div><span class="owner claude">Claude</span></div>
+    <div class="step"><span class="box"></span><span class="num">36</span><div class="body"><div class="t">Arm welcome emails — only on your explicit OK</div><div class="d">The auth invite flow auto-sends. Never trigger officer welcome/invite emails without your go-ahead.</div></div><span class="owner gate">Gate</span></div>
+  </div>
+
+  <!-- PHASE 8 -->
+  <div class="phase">
+    <div class="part-head"><span class="tag">Phase 8</span><h2>Post-Go-Live — 48–72 Hours</h2></div>
+
+    <div class="step"><span class="box"></span><span class="num">37</span><div class="body"><div class="t">Confirm a login landed</div><div class="d">At least one row in the <code>completions</code> table.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">38</span><div class="body"><div class="t">No errors in Vercel logs</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">39</span><div class="body"><div class="t">Admin can see the roster</div><div class="d">Confirm command staff reach the dashboard and see only their department.</div></div><span class="owner andrew">Andrew</span></div>
+    <div class="step"><span class="box"></span><span class="num">40</span><div class="body"><div class="t">Health check covers the new URL</div><div class="d">Add the subdomain to Checkly.</div></div><span class="owner console">Console</span></div>
+    <div class="step"><span class="box"></span><span class="num">41</span><div class="body"><div class="t">Agreement filed &amp; agency in internal tracking</div><div class="d"><code>Agency Onboarding/&lt;DEPT&gt;/</code> (ignored); record tier, billing date, contact.</div></div><span class="owner andrew">Andrew</span></div>
+  </div>
+
+  <footer class="doc">Arbiter LE · Agency Onboarding Checklist · Internal operator document · Regenerate from <code>_guide_build/onboarding-checklist.html</code></footer>
+</div>
+
+</body>
+</html>

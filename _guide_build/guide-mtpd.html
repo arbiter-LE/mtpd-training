@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Arbiter LE Training Platform — User Guide (MTPD)</title>
+<style>
+  :root{
+    --navy:#0a1828; --navy-mid:#152638; --navy-hi:#1e3448;
+    --gold:#c8902a; --gold-hi:#e0a830;
+    --ink:#182535; --muted:#5a7a92; --line:#d3deea; --paper:#ffffff; --soft:#f1f5fa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--ink); font-size:11.5px; line-height:1.6; }
+
+  /* ── page flow ── */
+  .page-break{ break-before:page; }
+  h3,h4{ break-after:avoid; }
+  .figure{ break-inside:avoid; margin:14px 0 6px; text-align:center; }
+  .figure img{ width:72%; border:1px solid var(--line); border-radius:8px; box-shadow:0 2px 10px rgba(10,24,40,.12); display:block; margin:0 auto; }
+  .cap{ font-size:9.5px; color:var(--muted); margin:6px auto 0; letter-spacing:.3px; max-width:72%; text-align:center; }
+  .cap b{ color:var(--navy-hi); }
+
+  /* ── cover ── */
+  .cover{ height:9.4in; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+          background:linear-gradient(160deg,#060f18 0%,#0f2236 55%,#1a3450 100%); color:#fff; border-radius:0; padding:0 60px; }
+  .cover img.badge{ width:128px; height:auto; filter:drop-shadow(0 6px 18px rgba(0,0,0,.45)); margin-bottom:26px; }
+  .cover h1{ font-size:30px; letter-spacing:1px; font-weight:800; line-height:1.2; }
+  .cover .sub{ color:var(--gold-hi); font-size:15px; letter-spacing:3px; text-transform:uppercase; margin-top:14px; font-weight:700; }
+  .cover .dept{ font-size:18px; margin-top:30px; font-weight:600; }
+  .cover .meta{ color:#8aabcc; font-size:12px; margin-top:8px; letter-spacing:.5px; }
+  .cover .rule{ width:80px; height:3px; background:var(--gold); margin:26px auto; border-radius:2px; }
+  .cover .powered{ position:relative; margin-top:44px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#6f8aa6; }
+  .cover .powered b{ color:#fff; }
+
+  /* ── section chrome ── */
+  .part-head{ background:var(--navy); color:#fff; border-radius:10px; padding:18px 22px; margin:0 0 6px; display:flex; align-items:baseline; gap:14px; }
+  .part-head .tag{ color:var(--gold-hi); font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:700; }
+  .part-head h2{ font-size:19px; font-weight:800; letter-spacing:.5px; }
+  h3{ color:var(--navy); font-size:15px; font-weight:800; margin:20px 0 4px; padding-bottom:5px; border-bottom:2px solid var(--gold); display:inline-block; }
+  h4{ color:var(--navy-hi); font-size:12.5px; font-weight:800; margin:14px 0 4px; letter-spacing:.3px; }
+  p{ margin:6px 0; }
+  .lead{ color:var(--muted); font-size:12px; }
+  ul,ol{ margin:6px 0 8px 20px; }
+  li{ margin:3px 0; }
+  .step{ counter-reset:none; }
+  b.btn, .btnref{ display:inline-block; background:var(--navy-mid); color:#fff; border-radius:5px; padding:1px 8px; font-size:10px; letter-spacing:.5px; font-weight:700; white-space:nowrap; }
+  .btngold{ background:var(--gold); color:#1a1407; }
+  .callout{ background:var(--soft); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:10px 14px; margin:12px 0; font-size:11px; }
+  .callout b{ color:var(--navy); }
+  .note{ font-size:10.5px; color:var(--muted); font-style:italic; }
+
+  .content{ padding:0 4px; }
+  .toc{ background:var(--soft); border:1px solid var(--line); border-radius:10px; padding:18px 24px; }
+  .toc h3{ margin-top:0; }
+  .toc ol{ margin-left:18px; }
+  .toc li{ margin:4px 0; font-size:11.5px; }
+  .toc .p2{ margin-top:10px; }
+
+  .kvs{ width:100%; border-collapse:collapse; margin:8px 0; font-size:11px; }
+  .kvs td{ border-bottom:1px solid var(--line); padding:6px 8px; vertical-align:top; }
+  .kvs td:first-child{ width:34%; font-weight:700; color:var(--navy); }
+
+  footer.doc{ margin-top:30px; border-top:1px solid var(--line); padding-top:10px; color:var(--muted); font-size:10px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+  <img class="badge" src="../assets/mtpd-badge.png" alt="Marlborough Township PD" />
+  <h1>Training Platform<br/>User Guide</h1>
+  <div class="sub">Arbiter LE</div>
+  <div class="rule"></div>
+  <div class="dept">Marlborough Township Police Department</div>
+  <div class="meta">For Officers &amp; Command Staff &nbsp;·&nbsp; mtpd.arbiterle.com</div>
+  <div class="powered">Powered by <b>Arbiter LE</b></div>
+</div>
+
+<!-- ═══════════ WELCOME + TOC ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">Start Here</span><h2>Welcome to Your Training Platform</h2></div>
+  <p class="lead">This guide walks through every part of the Arbiter LE platform — screen by screen, button by button. Part 1 covers the officer experience. Part 2 covers the tools available to command staff and supervisors.</p>
+
+  <h3>The essentials</h3>
+  <table class="kvs">
+    <tr><td>Where to sign in</td><td><b>mtpd.arbiterle.com</b> — works on any phone, tablet, or computer with a web browser. Nothing to install.</td></tr>
+    <tr><td>Your login</td><td>Your Marlborough Township PD email address. You'll set your password the first time using the link in your welcome email.</td></tr>
+    <tr><td>How training is paced</td><td>Modules open on a set schedule and carry due dates. Your dashboard always shows what's available, what's due, and what's complete.</td></tr>
+    <tr><td>To pass a module</td><td>Score <b>70% or higher</b> on its knowledge check. You get up to <b>three attempts</b>.</td></tr>
+    <tr><td>If you need help</td><td>For access or roster questions, contact your department training coordinator. For platform issues, email <b>andrew@arbiterle.com</b>.</td></tr>
+  </table>
+
+  <div class="toc">
+    <h3>What's inside</h3>
+    <ol>
+      <li><b>Part 1 — For Officers</b></li>
+    </ol>
+    <ol style="margin-top:2px">
+      <li>Signing in</li>
+      <li>Resetting your password</li>
+      <li>Your training dashboard</li>
+      <li>Tracking your progress</li>
+      <li>Working through a module — reading</li>
+      <li>The scenario exercise</li>
+      <li>Making decisions (and pausing)</li>
+      <li>The debrief</li>
+      <li>The knowledge check</li>
+      <li>Your results</li>
+      <li>The reference library</li>
+      <li>Flagging a content issue</li>
+      <li>Platform use &amp; disclaimer</li>
+    </ol>
+    <ol class="p2"><li><b>Part 2 — For Administrators &amp; Supervisors</b></li></ol>
+    <ol style="margin-top:2px">
+      <li>The administration dashboard</li>
+      <li>Reading the roster</li>
+      <li>Module summary</li>
+      <li>Printing a compliance report</li>
+      <li>Previewing modules</li>
+      <li>The supervisor track</li>
+      <li>Legal citations &amp; officer feedback</li>
+    </ol>
+  </div>
+
+  <div class="callout"><b>About the screenshots in this guide.</b> The images show Marlborough Township PD's platform with <b>sample names and scores</b> for illustration. Your real dashboard will show your own department's officers and records.</div>
+</div>
+
+<!-- ═══════════ PART 1 ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">Part 1</span><h2>For Officers</h2></div>
+
+  <section>
+    <h3>1 · Signing In</h3>
+    <p>Open a web browser and go to <b>mtpd.arbiterle.com</b>. You'll see your department's secure sign-in screen.</p>
+    <ol>
+      <li>Enter your <b>Department Email</b> — the Marlborough Township PD address on file for you.</li>
+      <li>Enter your <b>Password</b> (set when you first activated your account — see Section 2 if you haven't yet).</li>
+      <li>Press <b class="btn btngold">SIGN IN</b>.</li>
+    </ol>
+    <div class="callout">The platform remembers your session on your own device, so you usually won't have to type your password every time. On a <b>shared computer</b>, always use <b class="btn">SIGN OUT</b> when you're done so the next person doesn't land in your account.</div>
+    <div class="figure"><img src="screens-mtpd/01-login.png" /><div class="cap"><b>The sign-in screen.</b> Department email, password, and the <b>Sign In</b> button. The <b>Forgot password?</b> link is just below.</div></div>
+  </section>
+
+  <section>
+    <h3>2 · Resetting Your Password</h3>
+    <p>Use this the first time you log in, or any time you forget your password.</p>
+    <ol>
+      <li>On the sign-in screen, type your department email into the <b>Department Email</b> field.</li>
+      <li>Click <b>Forgot password?</b>. You'll see the message <b>"Reset link sent — check your email."</b></li>
+      <li>Open the email from Arbiter LE and click the reset link. It opens the <b>Set New Password</b> screen.</li>
+      <li>Enter a new password twice (at least 8 characters), then press <b class="btn btngold">UPDATE PASSWORD</b>. You'll go straight to your dashboard.</li>
+    </ol>
+    <div class="figure"><img src="screens-mtpd/02-forgot-password.png" /><div class="cap"><b>Requesting a reset.</b> Enter your email, click Forgot password?, and the confirmation appears beneath the Sign In button.</div></div>
+    <div class="figure"><img src="screens-mtpd/03-reset-password.png" /><div class="cap"><b>Setting a new password.</b> Enter it twice and press Update Password. <b>Back to sign in</b> returns you to the login screen.</div></div>
+  </section>
+
+  <section>
+    <h3>3 · Your Training Dashboard</h3>
+    <p>This is your home screen. Everything you need to do is here.</p>
+    <h4>The four summary cards</h4>
+    <ul>
+      <li><b>Assigned</b> — total modules assigned to you.</li>
+      <li><b>Completed</b> — modules you've passed.</li>
+      <li><b>Overdue</b> — anything past its due date that still needs attention.</li>
+      <li><b>Avg. Score</b> — your average across passed modules.</li>
+    </ul>
+    <h4>The two tabs</h4>
+    <p><b class="btn">TRAINING MODULES</b> shows every module as a card. <b class="btn">MY PROGRESS</b> shows your completed record in a table (Section 4).</p>
+    <h4>Reading a module card</h4>
+    <p>Each card shows the topic category, title, and a short description. The colored badge and button tell you its status:</p>
+    <table class="kvs">
+      <tr><td>Complete</td><td>Passed. The button reads <b>✓ Review Module</b> — you can revisit it any time.</td></tr>
+      <tr><td>Available</td><td><b>Start Module →</b> — open and begin.</td></tr>
+      <tr><td>Due / Buffer</td><td>Open now, with a due date approaching. Don't let these slip to overdue.</td></tr>
+      <tr><td>Opens [date]</td><td>Locked until its scheduled open date — it unlocks automatically.</td></tr>
+      <tr><td>Remediation</td><td>Three attempts used without passing. Your supervisor must review and authorize a retake.</td></tr>
+    </table>
+    <div class="figure"><img src="screens-mtpd/04-officer-dashboard.png" /><div class="cap"><b>The dashboard.</b> Summary cards across the top, progress bar, the two tabs, and module cards in each status.</div></div>
+  </section>
+
+  <section>
+    <h3>4 · Tracking Your Progress</h3>
+    <p>Click the <b class="btn">MY PROGRESS</b> tab for a clean record of everything you've completed: each module's best score, attempts used, time spent, and the date you finished.</p>
+    <div class="figure"><img src="screens-mtpd/05-progress-tab.png" /><div class="cap"><b>My Progress.</b> Your completed modules with best score, attempts, time, and completion date.</div></div>
+  </section>
+
+  <section>
+    <h3>5 · Working Through a Module — Reading</h3>
+    <p>Tap <b>Start Module</b> on any available card. Every module opens with its reading content — the law, your department's policy, and the principles the scenario will test.</p>
+    <ul>
+      <li><b>Case-law and policy boxes</b> highlight the controlling authority. Read these carefully — the quiz draws only from this material.</li>
+      <li>The <b>Reading Time</b> clock in the corner tracks your time; it's informational.</li>
+      <li>In the top bar: <b class="btn">📖 REFERENCE</b> opens the reference library, <b class="btn">FLAG ISSUE</b> reports a content problem (Section 12), and <b>← Dashboard</b> returns home.</li>
+      <li>Scroll to the bottom and press <b>Proceed to Scenario →</b> when you're ready.</li>
+    </ul>
+    <div class="figure"><img src="screens-mtpd/06-module-reading.png" /><div class="cap"><b>Module reading.</b> Scenario framing, core principles, and verified case-law boxes. Controls sit in the top bar.</div></div>
+  </section>
+
+  <section>
+    <h3>6 · The Scenario Exercise</h3>
+    <p>The scenario drops you into a realistic call. It opens with a <b>scene card</b> — time, conditions, your assignment, and location — followed by the situation as it unfolds. Press <b>Proceed to Situation →</b> to continue.</p>
+    <div class="figure"><img src="screens-mtpd/07-scenario-scene.png" /><div class="cap"><b>The opening scene.</b> Context for the call before any decisions are required.</div></div>
+  </section>
+
+  <section>
+    <h3>7 · Making Decisions (and Pausing)</h3>
+    <p>At each <b>decision point</b>, you'll read the situation and choose from the numbered options. Pick the response you'd make on the street — the platform shows you the consequence of that choice and the legal reasoning behind it before moving on.</p>
+    <ul>
+      <li>Click the option you'd choose. The scenario responds, then continues to the next decision.</li>
+      <li><b class="btn">⏸ PAUSE</b> (top right) saves your place and returns you to the dashboard. When you come back, a banner offers to pick up right where you left off — handy if a call comes in mid-training.</li>
+      <li><b class="btn">📖 REFERENCE</b> opens the reference library without losing your place.</li>
+    </ul>
+    <div class="figure"><img src="screens-mtpd/08-scenario-decision.png" /><div class="cap"><b>A decision point.</b> The situation, the numbered options, and the <b>Pause</b> / <b>Reference</b> controls in the top bar.</div></div>
+  </section>
+
+  <section>
+    <h3>8 · The Debrief</h3>
+    <p>After the final decision, the <b>debrief</b> reviews the path you took. Each decision is marked — <b>Sound Decision</b>, <b>Error Identified</b>, or noted — with the key legal principles summarized. From here you can <b>← Review Module</b> or <b>Proceed to Knowledge Assessment →</b>.</p>
+    <div class="figure"><img src="screens-mtpd/09-debrief.png" /><div class="cap"><b>The debrief.</b> Your decision record with outcome badges, plus a legal-principles recap before the quiz.</div></div>
+  </section>
+
+  <section>
+    <h3>9 · The Knowledge Check</h3>
+    <p>The assessment confirms what you took from the module. Every question is answerable from the reading you just completed.</p>
+    <ul>
+      <li>Read the scenario and question, then select an answer (A–D).</li>
+      <li>The platform tells you immediately whether you were <b>right or wrong</b> and explains why, revealing the correct answer.</li>
+      <li>Press <b>Next Question →</b> to continue; on the last question it reads <b>Submit Assessment →</b>.</li>
+      <li><b class="btn">⏸ PAUSE</b> saves your progress and returns you to the dashboard — your place is held for when you come back.</li>
+      <li>The running <b>Score</b> and progress bar track how you're doing. You need <b>70%</b> to pass.</li>
+    </ul>
+    <div class="figure"><img src="screens-mtpd/10-quiz-question.png" /><div class="cap"><b>A quiz question.</b> Question counter, running score, answer choices, and the <b>Pause</b> / <b>Reference</b> controls.</div></div>
+    <div class="figure"><img src="screens-mtpd/11-quiz-feedback.png" /><div class="cap"><b>Immediate feedback.</b> Your answer is marked, the correct choice is highlighted, and the reasoning is explained.</div></div>
+  </section>
+
+  <section>
+    <h3>10 · Your Results</h3>
+    <p>When you submit, you'll see your score, whether you passed, and a breakdown of correct answers and time spent.</p>
+    <table class="kvs">
+      <tr><td>Passed (70%+)</td><td>Your score is recorded and the module shows <b>Complete</b> on your dashboard.</td></tr>
+      <tr><td>Did not pass</td><td>You can retake it — the dots show how many of your three attempts you've used.</td></tr>
+      <tr><td>Three attempts used</td><td>The module flags for <b>remediation</b>. Your supervisor reviews your record and authorizes a retake before you continue.</td></tr>
+    </table>
+    <div class="figure"><img src="screens-mtpd/12-results-pass.png" /><div class="cap"><b>Results.</b> Score ring, attempt indicators, and your correct/total/time summary. <b>Return to Dashboard</b> takes you home.</div></div>
+  </section>
+
+  <section>
+    <h3>11 · The Reference Library</h3>
+    <p>The <b class="btn">📖 REFERENCE</b> button — available throughout the platform — opens a searchable library of the cases, statutes, terms, and policy references used in training. Use the search box or filter by <b>Case Law</b>, <b>Terms</b>, or <b>SOPs</b>.</p>
+    <div class="figure"><img src="screens-mtpd/13-reference-glossary.png" /><div class="cap"><b>Reference &amp; glossary.</b> Search and filter verified legal citations and key terms any time.</div></div>
+  </section>
+
+  <section>
+    <h3>12 · Flagging a Content Issue</h3>
+    <p>If you spot something that looks wrong — a citation, a date, a policy reference — use <b class="btn">FLAG ISSUE</b> in the top bar. Choose a category, describe the problem (include the module name and what specifically needs correction), and press <b class="btn btngold">Submit</b>. Flags go straight to the platform administrators for review.</p>
+    <div class="figure"><img src="screens-mtpd/15-feedback-modal.png" /><div class="cap"><b>Flag a content issue.</b> Category plus a short description is all it takes. This keeps the training accurate for everyone.</div></div>
+  </section>
+
+  <section>
+    <h3>13 · Platform Use &amp; Disclaimer</h3>
+    <p>The <b>Platform Use &amp; Disclaimer</b> link at the bottom of every screen explains what the platform is — and isn't. In short: it's a <b>training and professional-development tool</b>, not legal advice and not a substitute for your department's policies or your chain of command. On a real incident, your supervisor, your department's official policy, and the District Attorney's Office have final say.</p>
+    <div class="figure"><img src="screens-mtpd/14-policy-modal.png" /><div class="cap"><b>Platform Use &amp; Disclaimer.</b> Always one click away in the footer.</div></div>
+  </section>
+</div>
+
+<!-- ═══════════ PART 2 ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">Part 2</span><h2>For Administrators &amp; Supervisors</h2></div>
+  <p class="lead">Command staff accounts open to the Administration dashboard instead of the officer view. From here you can monitor compliance across the department, review records, and generate reports.</p>
+
+  <section>
+    <h3>14 · The Administration Dashboard</h3>
+    <p>The top of the dashboard summarizes the whole department at a glance:</p>
+    <ul>
+      <li><b>Total Officers</b>, <b>Fully Compliant</b> (passed everything assigned), <b>Overdue</b>, <b>Completion Rate</b>, and <b>Avg Score</b>.</li>
+      <li>Four tabs organize the detail: <b>Compliance Overview</b>, <b>Module Summary</b>, <b>Legal Citations</b>, and <b>Officer Feedback</b>.</li>
+      <li><b class="btn">BROWSE MODULES</b> (top right) lets you preview the training as officers see it (Section 18).</li>
+    </ul>
+    <div class="figure"><img src="screens-mtpd/16-admin-dashboard.png" /><div class="cap"><b>Administration dashboard.</b> Department-wide stats, the four tabs, the status filter, and the roster table.</div></div>
+  </section>
+
+  <section>
+    <h3>15 · Reading the Roster</h3>
+    <p>The <b>Compliance Overview</b> table lists every officer with badge number, modules assigned and completed (with attempt notes), average score, last activity, and a status badge — <b>Complete</b>, <b>In Progress</b>, <b>Overdue</b>, or <b>Remediation</b>. Officers in <b>remediation</b> are highlighted so they're easy to spot. Use the <b>Filter</b> dropdown to narrow the list by status.</p>
+  </section>
+
+  <section>
+    <h3>16 · Module Summary</h3>
+    <p>The <b>Module Summary</b> tab flips the view from officers to modules: for each module you see how many officers are assigned, the completion rate, the average score, and its due-date status. This is the fastest way to see which topics the department is keeping up with — and which need a nudge.</p>
+    <div class="figure"><img src="screens-mtpd/17-admin-modules.png" /><div class="cap"><b>Module Summary.</b> Completion rate and average score per module, with due-date status at a glance.</div></div>
+  </section>
+
+  <section>
+    <h3>17 · Printing a Compliance Report</h3>
+    <p>Press <b class="btn">PRINT COMPLIANCE REPORT</b> on the Compliance Overview tab. The platform opens a clean, date-stamped report in a new tab — the full roster, per-module scores in a grid, and department summary statistics. Use your browser's print dialog to print it or <b>save it as a PDF</b> for your records, accreditation files, or a chief's briefing.</p>
+    <div class="callout"><b>Tip.</b> Generated on demand, the report always reflects the current state of training — a reliable snapshot for any given date.</div>
+  </section>
+
+  <section>
+    <h3>18 · Previewing Modules</h3>
+    <p><b class="btn">BROWSE MODULES</b> switches you into the officer view so you can read any module exactly as your officers will — including modules that haven't opened yet, which carry an <b>Admin Preview</b> banner. A <b>← Back to Admin</b> button returns you to the dashboard. This is how you review content before a module goes live.</p>
+  </section>
+
+  <section>
+    <h3>19 · The Supervisor Track</h3>
+    <p>Supervisors receive an expanded version of each module: an additional command-lens reading section and a separate set of graded supervisor questions, on top of the standard patrol content. Admin accounts can preview either version using the <b>Viewing as</b> toggle (<b class="btn">Patrol</b> / <b class="btn">Supervisor</b>) that appears on the dashboard and module screens — useful for reviewing both tracks before assigning them.</p>
+  </section>
+
+  <section>
+    <h3>20 · Legal Citations &amp; Officer Feedback</h3>
+    <p>The <b>Legal Citations</b> tab lists every case and statute used across the platform with its verification status, so command staff can confirm the legal basis of any module at a glance. The <b>Officer Feedback</b> tab collects the content issues officers flag (Section 12), so corrections can be reviewed and actioned.</p>
+  </section>
+</div>
+
+<div class="content page-break">
+  <footer class="doc">
+    <p><b>Arbiter LE Training Platform</b> &nbsp;·&nbsp; Prepared for the Marlborough Township Police Department</p>
+    <p>Platform support: andrew@arbiterle.com &nbsp;·&nbsp; mtpd.arbiterle.com</p>
+    <p style="margin-top:8px">This platform is a training and professional-development tool. It does not constitute legal advice and does not replace department policy, supervisory direction, or the guidance of the District Attorney's Office. Screenshots use sample data for illustration.</p>
+  </footer>
+</div>
+
+</body>
+</html>

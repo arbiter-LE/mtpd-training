@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Arbiter LE — Chief Q&A Field Guide (Internal)</title>
+<style>
+  :root{
+    /* Arbiter LE brand palette — navy / gold / steel (matches Marketing/index.html) */
+    --green:#0a1828; --green-mid:#152638; --green-hi:#1e3448; --steel:#3c6478;
+    --gold:#c8902a; --gold-hi:#e0a830;
+    --ink:#182535; --muted:#5a7a92; --line:#c4d6e4; --paper:#ffffff; --soft:#eef3f7;
+    --strong:#2f7d4f; --strong-bg:#eaf4ee;
+    --careful:#b98f2e; --careful-bg:#faf4e4;
+    --fix:#b4502a; --fix-bg:#f8ece6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--ink); font-size:11.5px; line-height:1.6; }
+
+  .page-break{ break-before:page; }
+  h3,h4{ break-after:avoid; }
+
+  /* ── cover ── */
+  .cover{ height:9.4in; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+          background:linear-gradient(160deg,#0a1828 0%,#152638 60%,#1e3448 100%); color:#fff; padding:0 60px; }
+  .cover .seal{ width:170px; height:170px; margin-bottom:24px; display:flex; align-items:center; justify-content:center;
+                border-radius:50%; background:radial-gradient(circle, rgba(224,181,76,.16) 0%, rgba(224,181,76,.05) 45%, rgba(224,181,76,0) 70%); }
+  .cover .seal img{ width:150px; height:150px; object-fit:contain; filter:drop-shadow(0 3px 10px rgba(0,0,0,.4)); }
+  .cover h1{ font-size:30px; letter-spacing:1px; font-weight:800; line-height:1.2; }
+  .cover .sub{ color:var(--gold-hi); font-size:14px; letter-spacing:3px; text-transform:uppercase; margin-top:14px; font-weight:700; }
+  .cover .dept{ font-size:16px; margin-top:30px; font-weight:600; }
+  .cover .meta{ color:#8fb0c4; font-size:12px; margin-top:8px; letter-spacing:.5px; }
+  .cover .rule{ width:80px; height:3px; background:var(--gold); margin:26px auto; border-radius:2px; }
+  .cover .stamp{ margin-top:40px; border:1px solid #4f7790; color:#bcd2e0; font-size:10px; letter-spacing:3px; text-transform:uppercase; padding:7px 16px; border-radius:4px; }
+
+  /* ── section chrome ── */
+  .content{ padding:0 4px; }
+  .part-head{ background:var(--green); color:#fff; border-radius:10px; padding:18px 22px; margin:0 0 14px; display:flex; align-items:baseline; gap:14px; }
+  .part-head .tag{ color:var(--gold-hi); font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:700; }
+  .part-head h2{ font-size:19px; font-weight:800; letter-spacing:.5px; }
+  h3{ color:var(--green); font-size:15px; font-weight:800; margin:20px 0 6px; padding-bottom:5px; border-bottom:2px solid var(--gold); display:inline-block; }
+  p{ margin:6px 0; }
+  .lead{ color:var(--muted); font-size:12px; }
+
+  /* ── legend ── */
+  .legend{ display:flex; gap:10px; margin:14px 0 4px; }
+  .legend .item{ flex:1; border-radius:8px; padding:10px 12px; font-size:10.5px; }
+  .legend .item b{ display:block; font-size:11px; letter-spacing:.5px; margin-bottom:2px; text-transform:uppercase; }
+  .lg-strong{ background:var(--strong-bg); border-left:3px solid var(--strong); } .lg-strong b{ color:var(--strong); }
+  .lg-careful{ background:var(--careful-bg); border-left:3px solid var(--careful); } .lg-careful b{ color:#8a6a18; }
+  .lg-fix{ background:var(--fix-bg); border-left:3px solid var(--fix); } .lg-fix b{ color:var(--fix); }
+
+  .callout{ background:var(--soft); border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:11px 15px; margin:14px 0; font-size:11px; }
+  .callout b{ color:var(--green); }
+
+  /* ── Q card ── */
+  .qcard{ border:1px solid var(--line); border-radius:10px; padding:0; margin:0 0 14px; break-inside:avoid; overflow:hidden; }
+  .qhead{ display:flex; align-items:center; gap:12px; background:var(--soft); padding:11px 16px; border-bottom:1px solid var(--line); }
+  .qnum{ flex:none; width:26px; height:26px; border-radius:50%; background:var(--green); color:#fff; font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; }
+  .qtext{ font-weight:800; color:var(--green); font-size:13px; flex:1; line-height:1.35; }
+  .badge{ flex:none; font-size:9px; font-weight:800; letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:20px; white-space:nowrap; }
+  .b-strong{ background:var(--strong); color:#fff; }
+  .b-careful{ background:var(--careful); color:#231a06; }
+  .b-fix{ background:var(--fix); color:#fff; }
+  .qbody{ padding:12px 16px; }
+  .saythis{ background:#fbfdfb; border:1px solid var(--line); border-left:3px solid var(--strong); border-radius:0 6px 6px 0; padding:9px 13px; margin:2px 0 8px; font-size:11.5px; }
+  .saythis .lbl{ display:block; font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--strong); margin-bottom:3px; }
+  .saythis em{ font-style:italic; color:var(--ink); }
+  .know{ font-size:10.5px; color:var(--muted); }
+  .know .lbl{ font-weight:800; color:var(--fix); letter-spacing:.5px; text-transform:uppercase; font-size:9px; }
+  .know.careful .lbl{ color:#8a6a18; }
+  .why{ font-size:10.5px; color:var(--muted); margin-top:4px; }
+  .why .lbl{ font-weight:800; color:var(--green-hi); letter-spacing:.5px; text-transform:uppercase; font-size:9px; }
+
+  footer.doc{ margin-top:24px; border-top:1px solid var(--line); padding-top:10px; color:var(--muted); font-size:10px; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="cover">
+  <div class="seal"><img src="arbiter-seal-gold.png" alt="Arbiter LE" /></div>
+  <h1>The Chief's Questions<br/>Field Guide</h1>
+  <div class="sub">Arbiter LE</div>
+  <div class="rule"></div>
+  <div class="dept">Ten Questions a Chief Will Ask — and How to Answer Them</div>
+  <div class="meta">Objection handling &amp; talking points</div>
+  <div class="stamp">Internal · Not for Distribution</div>
+</div>
+
+<!-- ═══════════ HOW TO USE ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">Start Here</span><h2>How to Use This Guide</h2></div>
+  <p class="lead">These are the ten questions a chief is most likely to put to you — the easy ones and the ones meant to test whether you flinch. Each card gives you the line to say out loud, and where it matters, the truth to keep in your own head.</p>
+
+  <h3>The one rule</h3>
+  <p><b>Lead with where the content comes from (Question 1).</b> It is the strongest thing about Arbiter LE and the one thing no national vendor can match: training built on <i>their</i> department's own orders, verbatim, with law verified against the actual rulings. Steer every conversation back to this. It earns you the room.</p>
+
+  <h3>How each card is marked</h3>
+  <div class="legend">
+    <div class="item lg-strong"><b>Strong</b>Say it with full confidence. This is a win — put it in front of any chief.</div>
+    <div class="item lg-careful"><b>Say Carefully</b>True and useful, but easy to oversell. Hold the line on the exact wording.</div>
+    <div class="item lg-fix"><b>Fix / Soft Spot</b>We're genuinely thin here. Know the honest answer cold so you're never caught scrambling.</div>
+  </div>
+
+  <div class="callout"><b>Discipline that protects the brand.</b> Never claim state certification you don't have. Never promise legal protection or indemnification. Never let a paying agency learn another agency got it free. A chief who catches an oversell walks — and the honest answer is always strong enough.</div>
+
+  <div class="callout"><b>This document is internal.</b> It names our weak spots on purpose so you can study them. It is not the version a chief ever sees. The client-facing FAQ keeps only the strong proof points, reframed as benefits.</div>
+</div>
+
+<!-- ═══════════ THE TEN — PAGE 1 ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">The Ten</span><h2>Questions 1–5</h2></div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">1</div><div class="qtext">Where does the training content come from, and who says it's right?</div><div class="badge b-strong">Strong</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"It's built on your department's own general orders and SOPs — word for word, never reworded — plus court cases checked against the actual rulings, not memory."</em></div>
+      <p class="why"><span class="lbl">Why it lands</span> This is your moat. National vendors sell the same canned content to everyone; you build on their reality. It's also the answer to "can I trust this in court."</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">2</div><div class="qtext">What happens to my officers' data? Who can see it?</div><div class="badge b-strong">Strong</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"Your department gets its own private database. Your data never mixes with another agency's. Each officer sees only his own record; you see only your department."</em></div>
+      <p class="why"><span class="lbl">Why it lands</span> True today — each agency runs on an isolated system with record-level access control. Privacy is a real concern for a chief, and we have a real answer.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">3</div><div class="qtext">Does this count for state training credit (MPOETC)?</div><div class="badge b-careful">Say Carefully</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"Today it's department-directed training that sharpens decision-making and documents completion. It's not state-certified credit hours yet — that's on the roadmap."</em></div>
+      <p class="know careful"><span class="lbl">Know this</span> Do not imply certification we don't have. A chief funding this from a training budget may want mandate offset — be honest that we're supplemental for now. Pursuing accreditation is the long-term fix.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">4</div><div class="qtext">It's just you. What happens if something happens to you?</div><div class="badge b-fix">Soft Spot</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"The platform runs on its own — scheduling, tracking, and delivery are automated. Your data is backed up and yours to export anytime. You're never locked in or stranded."</em></div>
+      <p class="know"><span class="lbl">Know this</span> This is your softest personal question. Reassure with continuity — automated operation plus portable data — not bravado. Don't pretend to be a big company. Internal only; never in marketing.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">5</div><div class="qtext">Why trust a working cop over an established vendor?</div><div class="badge b-strong">Strong</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"Because I've driven your kind of roads and worked under the same kind of policies. Big vendors sell the same canned content to everyone. I build yours on your orders, your roads, your reality."</em></div>
+      <p class="why"><span class="lbl">Why it lands</span> Turn the doubt into the pitch. Peer credibility through competence is the brand — the doubt becomes the differentiator.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ THE TEN — PAGE 2 ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">The Ten</span><h2>Questions 6–10</h2></div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">6</div><div class="qtext">What does it cost, and is there a trial?</div><div class="badge b-fix">Fix</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"It's a paid platform — one flat annual rate based on your department's size. Up to 10 officers is $1,800 a year, 11 to 20 is $2,400, and 21 to 25 is $3,000. No setup fees, no free trial, billed annually. You're getting a proven product, not an experiment."</em></div>
+      <p class="why"><span class="lbl">If they ask why East Greenville's was free</span> <em>"East Greenville was our founding pilot — they took the risk when there was no track record. That's why their proof of concept is what lets me offer you a finished, proven platform instead of an experiment."</em></p>
+      <p class="know"><span class="lbl">Know this</span> Three flat tiers, no per-officer math to explain — $1,800 / $2,400 / $3,000 by band, all well under Vector Solutions ($5,000–$15,000/yr). Lead with the size match, not the discount. Never let a paying chief learn an agency got it free — it makes your price look negotiable.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">7</div><div class="qtext">If an officer messes up on the street, does this come back on me?</div><div class="badge b-careful">Say Carefully</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"This reinforces your existing policy and verified law — it never replaces your judgment or invents rules. It documents that your officers engaged with your own orders."</em></div>
+      <p class="know careful"><span class="lbl">Know this</span> "Documents engagement with your policy" is safe and even helps a failure-to-train story. "Protects you in court" is NOT ours to say. Never promise indemnification or make a legal guarantee.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">8</div><div class="qtext">How do I know they actually did the training and didn't just click through?</div><div class="badge b-strong">Strong</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"Real completion tracking, decision-based scenarios instead of click-through, and at least eight quiz questions per module — every one answerable straight from the material. You get a record, not a checkbox."</em></div>
+      <p class="why"><span class="lbl">Why it lands</span> Scenario decisions plus traceable quizzes are a genuine accountability story most "watch-the-video" vendors can't match.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">9</div><div class="qtext">What if it breaks during my pilot? Who do I call?</div><div class="badge b-strong">Strong</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"You call me, and it gets fixed fast — usually same day. That's the advantage of working with the person who built it instead of a ticket queue."</em></div>
+      <p class="why"><span class="lbl">Why it lands</span> This is where small beats big — but only if you live up to it. Same-day response is a real differentiator you can own.</p>
+    </div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">10</div><div class="qtext">Will my policy or data train your other clients — or some AI?</div><div class="badge b-strong">Strong</div></div>
+    <div class="qbody">
+      <div class="saythis"><span class="lbl">Say this</span><em>"No. Every agency is completely walled off. Your policy is used only for your training. Nothing crosses between departments, period."</em></div>
+      <p class="why"><span class="lbl">Why it lands</span> Sharp chiefs ask this now. Siloed-by-design is true today — keep it true.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ THE THREE TO REHEARSE ═══════════ -->
+<div class="content page-break">
+  <div class="part-head"><span class="tag">Before the Meeting</span><h2>The Three to Rehearse</h2></div>
+  <p class="lead">Everything else you can answer with confidence today. These three are where we're genuinely thin — don't get ambushed on them. Have a one-line honest answer for each <i>before</i> you walk in.</p>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">3</div><div class="qtext">State training credit (MPOETC)</div><div class="badge b-careful">Say Carefully</div></div>
+    <div class="qbody"><p class="know careful"><span class="lbl">Hold this line</span> Supplemental and decision-sharpening today; not certified hours yet; accreditation is the roadmap. Never imply otherwise.</p></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">4</div><div class="qtext">Single-founder risk</div><div class="badge b-fix">Soft Spot</div></div>
+    <div class="qbody"><p class="know"><span class="lbl">Hold this line</span> Continuity, not bravado: it runs automated, the data is theirs and exportable, they're never stranded. Honesty reads as confidence here.</p></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qhead"><div class="qnum">6</div><div class="qtext">Post-pilot pricing</div><div class="badge b-fix">Fix</div></div>
+    <div class="qbody"><p class="know"><span class="lbl">Hold this line</span> Paid platform, three flat annual tiers by size — $1,800 (1–10), $2,400 (11–20), $3,000 (21–25), billed annually, no free trial. The free pilot was East Greenville's founding risk — that's what makes everyone after a proven buy.</p></div>
+  </div>
+
+  <div class="callout"><b>The real lesson.</b> The fastest confidence-killer isn't a hard question — it's a chief watching you scramble on one you should have seen coming. Know these cold and there's no question in the room that can knock you off your footing.</div>
+
+  <footer class="doc">Arbiter LE · Chief's Questions Field Guide · Internal — Not for Distribution</footer>
+</div>
+
+</body>
+</html>

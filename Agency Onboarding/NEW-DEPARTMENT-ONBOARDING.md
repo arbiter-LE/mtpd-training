@@ -40,6 +40,23 @@ Before opening Claude or touching any code, get these items from the department 
 
 ---
 
+## ⛔ GATE — Before any PAYING agency goes live (Agency #3 onward)
+
+**Server-side quiz grading must be in place before the first paying agency launches.** Today, every quiz answer key ships as a plain `correct: N` field inside the public module JS (e.g. `js/modules/<dept>/module-<dept>-N.js`) — it's a static deploy, so anyone can read the full answer key via view-source or by fetching the file directly, and grading happens client-side where it can be bypassed.
+
+This was an **accepted risk for the EGPD pilot only** (free, no score, no compliance stakes). It is **not** acceptable once an agency is paying and may treat a completion record as a compliance/training-credit artifact — a chief's IT contact finding the answers in view-source is a credibility and liability problem.
+
+Scope of the fix (do it in isolation, not mid-pilot on a live agency):
+- Move questions + answer keys into Supabase (out of the client JS).
+- Send only question text + options to the browser; never the correct index.
+- Grade server-side (edge function / RPC); client never sees the key.
+- Rework the quiz UI to call the grading endpoint.
+- Run `node _dev/smoke-departments.js` + verify completions still save on **every** live subdomain before cutover (shared-engine change — touches all agencies at once).
+
+Tracked on the internal work board as the top post-pilot Business-Infrastructure item. **Do not onboard a paying agency until this is closed.**
+
+---
+
 ## Phase 1 — Supabase Setup
 
 ### 1A. Create a New Supabase Project

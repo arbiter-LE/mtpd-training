@@ -106,6 +106,8 @@ MTPD and EGPD are both active in the registry. EGPD agreement signed (Chief Halt
 
 **Check `git log --oneline -10` at the start of any session** involving routing, deployment, or anything structural. The revert history matters.
 
+**Weekly Claude Skills review.** Once a week, scan the available Claude Skills (the Skill tool list and any new plugins/skills Anthropic has released) and flag any that are applicable to Arbiter LE — content authoring, onboarding, legal/compliance, deployment safety, marketing, business ops, scheduling. Surface what's new or newly relevant, recommend whether to adopt it, and note anything that should replace a current manual workflow. This is a standing scan, not a one-time setup — the skill ecosystem changes, and staying current is an edge.
+
 **Never compare one department's SOPs/general orders to another's.** When drafting or reviewing content for an agency, use only that agency's provided policy text as the source of truth. Don't cite, reference, or borrow framing from another agency's policy — each agency's content stands on its own.
 
 **Never alter the verbiage of any agency operating procedure, general order, or policy — ever.** When an agency provides policy language, it must appear verbatim in all modules, scenarios, debriefs, and quiz questions. Do not paraphrase, simplify, reorder, or "clean up" the wording for any reason. These are legal documents and the agency owns the language. If the provided text is unclear or seems incorrect, stop and ask Andrew — do not edit it unilaterally.
@@ -127,6 +129,7 @@ MTPD and EGPD are both active in the registry. EGPD agreement signed (Chief Halt
 | Magazine Road | |
 | Main Street | Generic; use sparingly |
 | Green Lane (area) | Reference only — "Green Lane reservoir area", "Red Trail parking area at Green Lane" |
+| Geryville Pike | Confirmed by Andrew 2026-06-25 |
 
 ### Approved Roads — EGPD (East Greenville Borough)
 

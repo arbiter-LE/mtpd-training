@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Arbiter LE — Chief Leave-Behind</title>
+<style>
+  :root{
+    /* Arbiter LE brand palette — navy / gold / steel */
+    --navy:#0a1828; --navy-mid:#152638; --navy-light:#1e3448; --steel:#3c6478;
+    --gold:#c8902a; --gold-hi:#e0a830;
+    --ink:#182535; --muted:#5a7a92; --line:#c4d6e4; --paper:#ffffff; --soft:#eef3f7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:"Helvetica Neue",Arial,sans-serif; color:var(--ink); font-size:11px; line-height:1.55; }
+
+  .sheet{ padding:0 4px; }
+  .sheet + .sheet{ break-before:page; }
+  h3,h4{ break-after:avoid; }
+
+  /* ── per-page header band ── */
+  .phead{ display:flex; align-items:center; justify-content:space-between;
+          background:var(--navy); color:#fff; border-radius:10px; padding:14px 20px; }
+  .phead .brand{ display:flex; align-items:center; gap:13px; }
+  .phead .seal{ width:46px; height:46px; object-fit:contain; }
+  .phead .bname{ font-size:19px; font-weight:800; letter-spacing:1.5px; }
+  .phead .bsub{ font-size:8.5px; letter-spacing:2px; text-transform:uppercase; color:#9fbdd0; margin-top:2px; }
+  .phead .plabel{ text-align:right; }
+  .phead .plabel .pl{ font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold-hi); font-weight:700; }
+  .phead .plabel .pn{ font-size:8.5px; letter-spacing:1.5px; color:#9fbdd0; margin-top:3px; }
+  .gold-rule{ height:3px; background:var(--gold); border-radius:2px; margin:8px 0 14px; }
+
+  /* ── hero ── */
+  .hero h1{ font-size:25px; line-height:1.18; font-weight:800; letter-spacing:.3px; color:var(--navy); }
+  .hero h1 .g{ color:var(--gold); }
+  .hero .intro{ color:var(--muted); font-size:11.5px; margin-top:10px; max-width:6.6in; }
+
+  /* ── section heading ── */
+  .sec{ font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--steel); font-weight:700;
+        border-bottom:1px solid var(--line); padding-bottom:5px; margin:15px 0 9px; }
+
+  /* ── 3-up cards ── */
+  .cols3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .card{ background:var(--soft); border:1px solid var(--line); border-left:3px solid var(--gold);
+         border-radius:0 8px 8px 0; padding:12px 14px; break-inside:avoid; }
+  .card .ct{ font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:800; color:var(--navy); }
+  .card .cb{ font-size:10px; color:var(--ink); margin-top:6px; line-height:1.5; }
+
+  /* ── capabilities 2-up ── */
+  .cols2{ display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; }
+  .cap{ break-inside:avoid; }
+  .cap .ct{ font-size:10.5px; letter-spacing:.8px; text-transform:uppercase; font-weight:800; color:var(--navy-light); }
+  .cap .cb{ font-size:10px; color:var(--muted); margin-top:3px; }
+
+  /* ── how it works ── */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .step{ break-inside:avoid; }
+  .step .n{ width:22px; height:22px; border-radius:50%; background:var(--navy); color:var(--gold-hi);
+            font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:7px; }
+  .step .t{ font-size:10px; color:var(--ink); line-height:1.5; }
+
+  /* ── CTA strip ── */
+  .cta{ background:linear-gradient(160deg,#0a1828 0%,#152638 100%); color:#fff;
+        border-radius:10px; padding:16px 20px; margin-top:24px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  .cta .h{ color:var(--gold-hi); font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; }
+  .cta .p{ color:#cfe0ec; font-size:10.5px; margin-top:4px; }
+  .cta .url{ color:var(--gold-hi); font-size:12px; font-weight:700; white-space:nowrap; }
+
+  /* ── Q&A ── */
+  .faq{ border-bottom:1px solid var(--line); padding:8px 2px; break-inside:avoid; }
+  .faq:last-child{ border-bottom:none; }
+  .faq .q{ font-size:11.5px; font-weight:800; color:var(--navy); margin-bottom:4px; display:flex; gap:8px; align-items:baseline; }
+  .faq .q .mark{ color:var(--gold); font-weight:800; }
+  .faq .a{ font-size:10.5px; color:var(--ink); }
+  .faq .a b{ color:var(--navy-light); }
+
+  /* ── pricing ── */
+  .price-lead{ color:var(--ink); font-size:11px; margin:5px 0 10px; max-width:6.8in; }
+  .price-lead b{ color:var(--navy); }
+  .tiers{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .tier{ border:1px solid var(--line); border-radius:8px; overflow:hidden; break-inside:avoid; }
+  .tier .th{ background:var(--gold); color:var(--navy); text-align:center; font-size:11px; font-weight:800;
+             letter-spacing:2px; text-transform:uppercase; padding:6px; }
+  .tier .tb{ background:var(--navy); color:#fff; text-align:center; padding:11px 10px; }
+  .tier .range{ font-size:9.5px; letter-spacing:1px; text-transform:uppercase; color:#9fbdd0; }
+  .tier .amt{ font-size:30px; font-weight:800; margin:4px 0 0; line-height:1; }
+  .tier .per{ font-size:9px; color:var(--gold-hi); letter-spacing:.5px; }
+  .tier .note{ font-size:9px; color:#bcd2e0; margin-top:9px; line-height:1.4; }
+
+  .ex-label{ font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--steel); font-weight:700; margin:12px 0 6px; }
+  .ex-block{ break-inside:avoid; }
+  table.ex{ width:100%; border-collapse:collapse; font-size:10.5px; }
+  table.ex tr{ border-bottom:1px solid var(--line); }
+  table.ex tr:last-child{ border-bottom:none; }
+  table.ex td{ padding:5px 4px; }
+  table.ex td.dept{ color:var(--ink); }
+  table.ex td.cost{ text-align:center; font-weight:700; color:var(--navy); }
+  table.ex td.unit{ text-align:right; color:var(--muted); }
+  .fine{ font-size:9px; color:var(--muted); margin-top:8px; }
+
+  /* ── curriculum ── */
+  .cur-lead{ color:var(--muted); font-size:11px; margin-top:4px; }
+  .cats{ display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 4px; }
+  .cat{ font-size:8.5px; letter-spacing:.5px; padding:3px 9px; border-radius:11px; background:var(--soft);
+        border:1px solid var(--line); color:var(--steel); font-weight:600; }
+  .catalog{ display:grid; grid-template-columns:1fr 1fr; gap:7px 18px; margin-top:4px; }
+  .mod{ display:flex; gap:10px; align-items:flex-start; break-inside:avoid; padding:5px 0; border-bottom:1px solid #e6eef4; }
+  .mod .mn{ width:21px; height:21px; flex:0 0 21px; border-radius:5px; background:var(--navy); color:var(--gold-hi);
+            font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+  .mod .mt{ font-size:10.5px; font-weight:700; color:var(--navy); line-height:1.25; }
+  .mod .mc{ font-size:8.5px; color:var(--steel); margin-top:2px; }
+  .cur-note{ font-size:9px; color:var(--muted); margin-top:14px; line-height:1.5; border-top:1px solid var(--line); padding-top:10px; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════ PAGE 1 — PLATFORM OVERVIEW ════════════════ -->
+<div class="sheet">
+  <div class="phead">
+    <div class="brand">
+      <img class="seal" src="arbiter-seal-gold.png" alt="Arbiter LE" />
+      <div><div class="bname">ARBITER LE</div><div class="bsub">Law Enforcement Training Platform</div></div>
+    </div>
+    <div class="plabel"><div class="pl">Platform Overview</div><div class="pn">Page 1 of 3</div></div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <div class="hero">
+    <h1>Scenario-Based Training Built For<br/><span class="g">Your Department's</span> Policies And Roads.</h1>
+    <p class="intro">Arbiter LE delivers a full year of MPOETC-aligned training modules built around your department's specific general orders, case law, and patrol roads — not generic content from a national vendor who has never worked your jurisdiction.</p>
+  </div>
+
+  <div class="sec">What Makes It Different</div>
+  <div class="cols3">
+    <div class="card">
+      <div class="ct">Department-Specific Content</div>
+      <div class="cb">Built from your own general orders and SOPs, word for word. Officers train on the rules they're actually held to.</div>
+    </div>
+    <div class="card">
+      <div class="ct">Localized Scenarios</div>
+      <div class="cb">Scenarios take place on roads your officers patrol every shift — detail that generic training cannot replicate.</div>
+    </div>
+    <div class="card">
+      <div class="ct">MPOETC-Aligned Curriculum</div>
+      <div class="cb">A full year of modules covering every required category: use of force, search &amp; seizure, domestic violence, mental health, and more.</div>
+    </div>
+  </div>
+
+  <div class="sec">Platform Capabilities</div>
+  <div class="cols2">
+    <div class="cap"><div class="ct">Officer Dashboard</div><div class="cb">Personal progress, module access, and quiz completion from any device — phone, tablet, or computer.</div></div>
+    <div class="cap"><div class="ct">Admin Dashboard</div><div class="cb">Real-time roster compliance, per-officer scores, and department averages visible at a glance.</div></div>
+    <div class="cap"><div class="ct">Compliance Reports</div><div class="cb">Print-ready compliance documentation for command review or external records, generated on demand.</div></div>
+    <div class="cap"><div class="ct">Supervisor Track</div><div class="cb">Dedicated leadership modules for sergeants and command staff — included at every tier.</div></div>
+    <div class="cap"><div class="ct">Automated Scheduling</div><div class="cb">Modules unlock on your department's cadence. Officers are notified automatically.</div></div>
+    <div class="cap"><div class="ct">Isolated Data</div><div class="cb">Your department's database is fully private. No cross-agency data sharing — ever.</div></div>
+  </div>
+
+  <div class="sec">How It Works</div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="t">We intake your general orders and patrol roads.</div></div>
+    <div class="step"><div class="n">2</div><div class="t">We build your module library — localized, policy-accurate, legally verified.</div></div>
+    <div class="step"><div class="n">3</div><div class="t">Officers train on any device. Supervisors track compliance in real time.</div></div>
+    <div class="step"><div class="n">4</div><div class="t">New modules release on schedule. Your department stays current.</div></div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <div class="h">Ready to see it for your department?</div>
+      <div class="p">We'll walk you through the platform and show you exactly how a module is built on your own policies.</div>
+    </div>
+    <div class="url">arbiterle.com</div>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE 2 — QUESTIONS & PRICING ════════════════ -->
+<div class="sheet">
+  <div class="phead">
+    <div class="brand">
+      <img class="seal" src="arbiter-seal-gold.png" alt="Arbiter LE" />
+      <div><div class="bname">ARBITER LE</div><div class="bsub">Law Enforcement Training Platform</div></div>
+    </div>
+    <div class="plabel"><div class="pl">Questions &amp; Pricing</div><div class="pn">Page 2 of 3</div></div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <div class="sec">What Chiefs Ask Us</div>
+
+  <div class="faq">
+    <div class="q"><span class="mark">Q.</span><span>Is the content actually relevant to my department?</span></div>
+    <div class="a">Yes — that's the core of how Arbiter LE works. Your modules are built around <b>your own general orders and SOPs</b>, used word for word, never reworded or generalized. Scenarios use your jurisdiction's real roads. Any court case referenced is verified against the actual ruling. Your officers train on your policies and your reality.</div>
+  </div>
+  <div class="faq">
+    <div class="q"><span class="mark">Q.</span><span>What happens to my officers' data — and who can see it?</span></div>
+    <div class="a">Your department gets its <b>own private, isolated database</b>. Your data never mixes with another agency's. Each officer sees only their own record; command staff sees only their department. Officer training records are never exported, shared, or used outside your agency.</div>
+  </div>
+  <div class="faq">
+    <div class="q"><span class="mark">Q.</span><span>How do I know my officers actually completed the training?</span></div>
+    <div class="a">Every module pairs <b>decision-based scenarios</b> — not passive click-through — with a knowledge check of at least eight questions, each answerable directly from that module's material. The platform tracks completion, scores, and attempts. You get a documented record of engagement with your own policies.</div>
+  </div>
+  <div class="faq">
+    <div class="q"><span class="mark">Q.</span><span>What if something goes wrong on the platform?</span></div>
+    <div class="a">You contact us directly and it gets resolved quickly — typically the same day. Support comes straight from the person who built it. No ticket queues, no call-center runaround.</div>
+  </div>
+  <div class="faq">
+    <div class="q"><span class="mark">Q.</span><span>Who built this?</span></div>
+    <div class="a">Arbiter LE was built by a working law enforcement officer with more than a decade on the job — someone who has driven the roads, worked under the policies, and sat through the same training your officers do. You work directly with the person who builds and stands behind the product.</div>
+  </div>
+
+  <div class="sec">Pricing</div>
+  <p class="price-lead">Simple and transparent. <b>A flat annual rate based on your department's size</b> — three tiers, billed annually. No setup fees, no free trials, no surprises.</p>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="th">Tier 1</div>
+      <div class="tb">
+        <div class="range">1–10 Officers</div>
+        <div class="amt">$1,800</div><div class="per">/year</div>
+        <div class="note">≈ $150/month · flat rate for the whole department</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="th">Tier 2</div>
+      <div class="tb">
+        <div class="range">11–20 Officers</div>
+        <div class="amt">$2,400</div><div class="per">/year</div>
+        <div class="note">≈ $200/month · flat rate for the whole department</div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="th">Tier 3</div>
+      <div class="tb">
+        <div class="range">21–25 Officers</div>
+        <div class="amt">$3,000</div><div class="per">/year</div>
+        <div class="note">≈ $250/month · flat rate for the whole department</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ex-block">
+    <div class="ex-label">Find Your Tier</div>
+    <table class="ex">
+      <tr><td class="dept">6-officer borough</td><td class="unit">Tier 1 (1–10)</td><td class="cost">$1,800 / year</td></tr>
+      <tr><td class="dept">14-officer township</td><td class="unit">Tier 2 (11–20)</td><td class="cost">$2,400 / year</td></tr>
+      <tr><td class="dept">23-officer department</td><td class="unit">Tier 3 (21–25)</td><td class="cost">$3,000 / year</td></tr>
+    </table>
+    <p class="fine">Annual billing, paid upfront. Pricing subject to change. Contact us for a quote specific to your agency.</p>
+  </div>
+</div>
+
+<!-- ════════════════ PAGE 3 — TRAINING CURRICULUM ════════════════ -->
+<div class="sheet">
+  <div class="phead">
+    <div class="brand">
+      <img class="seal" src="arbiter-seal-gold.png" alt="Arbiter LE" />
+      <div><div class="bname">ARBITER LE</div><div class="bsub">Law Enforcement Training Platform</div></div>
+    </div>
+    <div class="plabel"><div class="pl">Training Curriculum</div><div class="pn">Page 3 of 3</div></div>
+  </div>
+  <div class="gold-rule"></div>
+
+  <div class="sec" style="margin-top:4px;">Training Curriculum</div>
+  <p class="cur-lead">26 modules covering every MPOETC-required training category — built for a full year of biweekly training.</p>
+
+  <div class="cats">
+    <span class="cat">Search &amp; Seizure</span><span class="cat">Use of Force</span><span class="cat">Investigations</span>
+    <span class="cat">Crisis Response</span><span class="cat">Special Victims</span><span class="cat">Officer Safety</span>
+    <span class="cat">Leadership</span><span class="cat">Wellness</span><span class="cat">Community Relations</span>
+    <span class="cat">Documentation</span><span class="cat">Administration</span><span class="cat">Critical Incident</span>
+  </div>
+
+  <div class="sec">Complete Module Catalog</div>
+  <div class="catalog">
+    <div class="mod"><div class="mn">01</div><div><div class="mt">Search &amp; Seizure</div><div class="mc">Search &amp; Seizure</div></div></div>
+    <div class="mod"><div class="mn">14</div><div><div class="mt">Bias-Free Policing &amp; Civil Rights</div><div class="mc">Community Relations</div></div></div>
+    <div class="mod"><div class="mn">02</div><div><div class="mt">Use of Force</div><div class="mc">Use of Force</div></div></div>
+    <div class="mod"><div class="mn">15</div><div><div class="mt">Drug Recognition &amp; Controlled Substances</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">03</div><div><div class="mt">Report Writing</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">16</div><div><div class="mt">Body-Worn Camera &amp; Digital Evidence</div><div class="mc">Documentation</div></div></div>
+    <div class="mod"><div class="mn">04</div><div><div class="mt">Crisis Intervention</div><div class="mc">Crisis Response</div></div></div>
+    <div class="mod"><div class="mn">17</div><div><div class="mt">Child Abuse Recognition &amp; Reporting</div><div class="mc">Special Victims</div></div></div>
+    <div class="mod"><div class="mn">05</div><div><div class="mt">Domestic Violence Response</div><div class="mc">Special Victims</div></div></div>
+    <div class="mod"><div class="mn">18</div><div><div class="mt">Sexual Assault Response</div><div class="mc">Special Victims</div></div></div>
+    <div class="mod"><div class="mn">06</div><div><div class="mt">Motor Vehicle Pursuits</div><div class="mc">Officer Safety</div></div></div>
+    <div class="mod"><div class="mn">19</div><div><div class="mt">Interview &amp; Interrogation Techniques</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">07</div><div><div class="mt">Leadership &amp; Supervision</div><div class="mc">Leadership</div></div></div>
+    <div class="mod"><div class="mn">20</div><div><div class="mt">Property Crimes Investigation</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">08</div><div><div class="mt">Traffic Stops &amp; Vehicle Contacts</div><div class="mc">Officer Safety</div></div></div>
+    <div class="mod"><div class="mn">21</div><div><div class="mt">Accident Investigation &amp; Traffic Crash</div><div class="mc">Officer Safety</div></div></div>
+    <div class="mod"><div class="mn">09</div><div><div class="mt">Emotional Intelligence</div><div class="mc">Wellness</div></div></div>
+    <div class="mod"><div class="mn">22</div><div><div class="mt">Procedural Justice &amp; Community Trust</div><div class="mc">Community Relations</div></div></div>
+    <div class="mod"><div class="mn">10</div><div><div class="mt">Evidence &amp; Chain of Custody</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">23</div><div><div class="mt">Hate Crimes Recognition &amp; Response</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">11</div><div><div class="mt">Officer Wellness</div><div class="mc">Wellness</div></div></div>
+    <div class="mod"><div class="mn">24</div><div><div class="mt">Records Management &amp; Right to Know Law</div><div class="mc">Administration</div></div></div>
+    <div class="mod"><div class="mn">12</div><div><div class="mt">De-escalation: Legal Framework &amp; CIT</div><div class="mc">Use of Force</div></div></div>
+    <div class="mod"><div class="mn">25</div><div><div class="mt">Social Media Policy &amp; Officer Conduct</div><div class="mc">Administration</div></div></div>
+    <div class="mod"><div class="mn">13</div><div><div class="mt">Juvenile Law &amp; Interactions</div><div class="mc">Investigations</div></div></div>
+    <div class="mod"><div class="mn">26</div><div><div class="mt">Active Threat Response — Legal Framework</div><div class="mc">Critical Incident</div></div></div>
+  </div>
+
+  <p class="cur-note">All content built from your agency's verified general orders and current Pennsylvania law. Legal citations verified against primary sources before any module ships. Module catalog expands beyond 26 on a rolling basis based on MPOETC requirements and agency requests.</p>
+</div>
+
+</body>
+</html>
