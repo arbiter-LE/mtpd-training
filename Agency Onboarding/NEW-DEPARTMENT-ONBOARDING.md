@@ -42,18 +42,15 @@ Before opening Claude or touching any code, get these items from the department 
 
 ## ⛔ GATE — Before any PAYING agency goes live (Agency #3 onward)
 
-**Server-side quiz grading must be in place before the first paying agency launches.** Today, every quiz answer key ships as a plain `correct: N` field inside the public module JS (e.g. `js/modules/<dept>/module-<dept>-N.js`) — it's a static deploy, so anyone can read the full answer key via view-source or by fetching the file directly, and grading happens client-side where it can be bypassed.
+**Server-side quiz grading: ✅ CLOSED 2026-07-05 (commit `0b440eb`).** Quiz payloads in `js/modules/` now carry questions and options only; answer keys + feedback live in `_dev/answer-keys/<dept>.json` (never deployed) and compile into the serverless grader `api/grade.js`, which resolves the department from the request host and verifies the officer's Supabase JWT against that department's own project before grading. The smoke test hard-fails if a key ever reappears client-side.
 
-This was an **accepted risk for the EGPD pilot only** (free, no score, no compliance stakes). It is **not** acceptable once an agency is paying and may treat a completion record as a compliance/training-credit artifact — a chief's IT contact finding the answers in view-source is a credibility and liability problem.
+**Onboarding step this adds:** after authoring a new agency's modules, run `node _dev/build-answer-keys.js` — it extracts the new agency's keys, strips them from the client files, and regenerates the grader. A new agency's quizzes will not grade until this has been run.
 
-Scope of the fix (do it in isolation, not mid-pilot on a live agency):
-- Move questions + answer keys into Supabase (out of the client JS).
-- Send only question text + options to the browser; never the correct index.
-- Grade server-side (edge function / RPC); client never sees the key.
-- Rework the quiz UI to call the grading endpoint.
-- Run `node _dev/smoke-departments.js` + verify completions still save on **every** live subdomain before cutover (shared-engine change — touches all agencies at once).
+**Remaining before the first paying agency** (smaller, but still gated):
+- The final completion write (score/pass) still originates client-side under the officer's own RLS-scoped session — a determined officer could forge their own completion record. Move that write server-side (edge function / RPC validates and writes).
+- Module reading content is still publicly fetchable from the static deploy (content exposure only — no keys, no PII). Decide whether to gate it behind auth for paying agencies.
 
-Tracked on the internal work board as the top post-pilot Business-Infrastructure item. **Do not onboard a paying agency until this is closed.**
+**Do not onboard a paying agency until the completion write is server-side.**
 
 ---
 
