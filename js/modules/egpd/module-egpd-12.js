@@ -246,8 +246,6 @@ function getDeescalationQuestions() {
         'Wait for backup to arrive before making any contact.',
         'Attempt to disarm the subject immediately before the situation escalates.'
       ],
-      correct: 0,
-      feedback: 'Correct. The subject poses no immediate threat to bystanders, and the threat is currently self-directed. Establishing distance and cover — without drawing — and initiating calm verbal contact is both tactically sound and consistent with PERF\'s ICAT model and CIT research on encounters with subjects in mental health crisis. Drawing a firearm on a person in psychological crisis whose threat is not directed at officers typically escalates the encounter. De-escalation techniques should be used when tactically feasible, which they are here.'
     },
     {
       scenario: 'Graham v. Connor (1989) established the legal standard for evaluating officer use of force. What is that standard?',
@@ -258,8 +256,6 @@ function getDeescalationQuestions() {
         'Whether the subject sustained injury as a result of the force.',
         'Whether the force used was objectively reasonable from the perspective of a reasonable officer on the scene, given the totality of circumstances.'
       ],
-      correct: 3,
-      feedback: 'Correct. Graham v. Connor established the objective reasonableness standard — the constitutionality of force is evaluated from the perspective of a reasonable officer on the scene, given the totality of circumstances known at that moment. Key factors include: the severity of the crime, whether the subject poses an immediate threat, and whether the subject is resisting or evading. The standard is not perfection — it is objective reasonableness under the specific circumstances. Mental health status is one of those circumstances.'
     },
     {
       scenario: 'You have established verbal contact with a subject in mental health crisis who is holding a knife. Backup arrives and one officer moves to a flanking position. The subject notices and grips the knife more tightly.',
@@ -270,8 +266,6 @@ function getDeescalationQuestions() {
         'Signal backup to hold and maintain their current position. Continue verbal contact. Request crisis intervention resources.',
         'Step back and cede contact to the arriving officers who may have more experience.'
       ],
-      correct: 2,
-      feedback: 'Correct. When a subject in crisis reacts to tactical movement by increasing their defensive posture, tactical movement has become a negative variable. Hold position and maintain what is working: verbal contact. Closing in tactically on an agitated, armed, psychologically fragile subject without exhausting verbal de-escalation increases the probability of a use-of-force incident significantly. Requesting crisis intervention resources — a CIT officer or mobile crisis team — is the appropriate escalation, not tactical closure.'
     },
     {
       scenario: 'The Pennsylvania Mental Health Procedures Act (50 P.S. § 7302) authorizes police to initiate an involuntary emergency examination (302). What standard must be met?',
@@ -282,8 +276,6 @@ function getDeescalationQuestions() {
         'Has been voluntarily diagnosed with a mental health condition.',
         'Has refused to follow officer commands on a previous call.'
       ],
-      correct: 1,
-      feedback: 'Correct. A 302 petition requires that the person be severely mentally disabled and in need of immediate treatment — typically evidenced by a clear and present danger to themselves or others based on the officer\'s observations. This is a civil mental health process, not an arrest. The subject is transported to a psychiatric facility for evaluation, not to a criminal detention facility. Understanding this distinction matters for how you communicate the process to the subject and their family, and it affects how you write your report.'
     },
     {
       scenario: 'During a verbal de-escalation attempt, you are approached by a bystander who says "just tase him and get it over with." The subject is not advancing, is still engaging verbally, and has not cut himself.',
@@ -294,8 +286,6 @@ function getDeescalationQuestions() {
         'Ask the bystander to leave and then reassess whether the taser is appropriate.',
         'Maintain focus on the subject and direct a partner or bystander management unit to move the crowd back. Do not let bystander pressure influence tactical decision-making.'
       ],
-      correct: 3,
-      feedback: 'Correct. Tactical decisions are made based on the circumstances of the encounter, department policy, and law — not bystander pressure or expectations for speed. A subject who is not advancing, is engaging verbally, and has not harmed himself does not meet the force threshold that would justify CEW deployment. Crowd management is a legitimate tactical concern, but managing the crowd is the responsibility of a secondary officer — not an excuse to abandon de-escalation that is working.'
     },
     {
       scenario: 'A subject is barricaded inside a residence and has been making statements about not wanting to live. No weapons have been confirmed. They are communicating with officers through a door.',
@@ -306,8 +296,6 @@ function getDeescalationQuestions() {
         'Attempt to enter the residence to remove the immediate threat of self-harm.',
         'Advise dispatch that the situation requires SWAT — barricaded subjects are outside patrol scope.'
       ],
-      correct: 0,
-      feedback: 'Correct. In barricade and crisis scenarios, time and distance are tactical assets. A subject who is talking is a subject who is not acting. Pressure, ultimatums, and forced entry significantly increase the risk of a fatal outcome. Keeping the subject engaged, in a calm and low-pressure way, preserves options. Request specialized resources (crisis negotiators, CIT, mobile mental health) while maintaining contact. Barricaded subjects without confirmed weapons are within patrol scope to manage until specialized resources arrive.'
     },
     {
       scenario: 'You are on a call with a subject who is agitated and pacing. A colleague tells you the subject has a history of violence. The subject\'s behavior has not yet crossed into immediate threat territory.',
@@ -318,8 +306,6 @@ function getDeescalationQuestions() {
         'Prior history informs your situational awareness and tactical positioning without determining the force level applied to current behavior. De-escalate based on current conduct; maintain awareness based on background.',
         'Inform the subject that you are aware of their history so they understand your level of preparation.'
       ],
-      correct: 2,
-      feedback: 'Correct. Prior history is relevant context for officer positioning, backup, and awareness — it is not a substitute for evaluating current behavior. A subject with a violence history who is currently agitated but not threatening does not receive a higher force level based on history alone. Courts apply Graham v. Connor to the specific facts of the specific encounter. De-escalate based on what is happening now; position yourself based on what you know from background. These are not mutually exclusive.'
     },
     {
       scenario: 'After a successful de-escalation in which a § 302 involuntary commitment was avoided, you return to the station to complete your paperwork. A colleague asks: "Why did you spend 45 minutes on that call? You could have 302\'d them in 10 minutes and been done."',
@@ -330,8 +316,6 @@ function getDeescalationQuestions() {
         '"Some calls just take longer — it\'s not always about speed."',
         '"The de-escalation worked. He left the scene calm and connected to follow-up services. That outcome is better for him and for the community, and it avoids an involuntary commitment that may not have been legally warranted."'
       ],
-      correct: 3,
-      feedback: 'Correct. The professional response articulates the value of the outcome — not just the time spent. A subject who leaves a scene calm, with services connected, and without unnecessary trauma from involuntary commitment is a better outcome for public trust, community health, and department resources. § 302 authority exists for situations that require it — not as a shortcut when de-escalation is working. Defending the professional use of de-escalation, by name and with reasoning, contributes to a culture that values it.'
     },
   ];
 }
@@ -385,8 +369,6 @@ function getDeescalationSupervisorQuestions() {
         'Stay neutral — it is not a supervisor\'s place to weigh in on how long a call took.',
         'Counsel the officer to be faster next time to keep the unit available.'
       ],
-      correct: 0,
-      feedback: 'Correct. Officers learn what the department actually rewards. A no-force outcome with the subject connected to services is the win, and the 302 is for situations that require it — not a shortcut around a working de-escalation. A supervisor who names that outcome as excellent police work is how a de-escalation culture gets built.'
     },
     {
       scenario: 'A report shows an officer drew a firearm at initial contact on a subject who was holding a knife against his own forearm, not advancing, and engaging verbally with officers.',
@@ -397,8 +379,6 @@ function getDeescalationSupervisorQuestions() {
         'Examine it under Graham v. Connor: a self-directed threat, a subject who is not advancing and is engaging verbally, does not present the threat picture that justifies a drawn firearm at initial contact, and de-escalation is required where tactically feasible.',
         'Refer it straight to discipline without review.'
       ],
-      correct: 2,
-      feedback: 'Correct. Graham v. Connor judges force by objective reasonableness on the totality, including the subject\'s mental state and whether the threat is self-directed. A non-advancing, verbally engaging subject with a self-directed knife does not justify a drawn firearm at initial contact, and the reviewer examines that decision against the actual threat picture.'
     },
     {
       scenario: 'A use-of-force report on a subject in crisis justifies the force primarily by citing the subject\'s prior history of violence, although the subject\'s behavior at the time had not crossed into an immediate threat.',
@@ -409,8 +389,6 @@ function getDeescalationSupervisorQuestions() {
         'Approve it because any history of violence makes force reasonable.',
         'Flag the reasoning: prior history informs positioning and awareness, not the force applied to current behavior. Graham evaluates the threat as it existed at the moment force was used, so importing history to justify present force is a review concern.'
       ],
-      correct: 3,
-      feedback: 'Correct. Prior history is legitimate context for positioning, backup, and awareness — not a substitute for evaluating current behavior. Graham v. Connor applies to the specific facts of the specific encounter, so a report that leans on history to justify force against a non-threatening present behavior is one the reviewer flags.'
     },
     {
       scenario: 'You are supervising a crisis scene where an officer has built rapport with an armed subject. A flanking officer\'s movement causes the subject to tighten his grip on the knife.',
@@ -421,8 +399,6 @@ function getDeescalationSupervisorQuestions() {
         'Have all officers draw weapons to establish overwhelming presence.',
         'Pull the contact officer back and restart the approach with fresh personnel.'
       ],
-      correct: 0,
-      feedback: 'Correct. When tactical movement makes a subject in crisis tighten up, the movement has become a negative variable. The supervisor holds it, protects the working conversation, and requests the right escalation — CIT or mobile crisis — rather than tactical closure on an armed, decompensating subject.'
     },
     {
       scenario: 'At a crisis scene, bystanders are loudly urging officers to "just tase him." The subject is self-directed with a knife, not advancing, and is still talking to officers.',
@@ -433,8 +409,6 @@ function getDeescalationSupervisorQuestions() {
         'Deploy the CEW to satisfy the crowd and resolve the scene quickly.',
         'Clear the scene of officers until the crowd disperses.'
       ],
-      correct: 1,
-      feedback: 'Correct. Tactical decisions rest on the circumstances, policy, and law — not bystander pressure or demands for speed. Crowd management is a secondary officer\'s responsibility, and a non-advancing, verbally engaging subject whose threat is self-directed does not meet the force threshold that would justify a CEW.'
     },
     {
       scenario: 'A report documents that an officer initiated a 302 involuntary commitment to resolve a crisis call quickly, even though the subject was calm, engaging verbally, and de-escalating.',
@@ -445,8 +419,6 @@ function getDeescalationSupervisorQuestions() {
         'Approve it because the call was resolved without a use of force.',
         'Confirm the 302 rests on a clear-and-present-danger observation under 50 P.S. § 7302: it is a civil tool for situations that require it, not a shortcut around a de-escalation that is working, and a 302 used for convenience is a review concern.'
       ],
-      correct: 3,
-      feedback: 'Correct. A 302 under 50 P.S. § 7302 requires a clear and present danger to self or others based on the officer\'s observations. It exists for situations that require it — not as a ten-minute shortcut around a working de-escalation. The reviewer confirms the documented observations actually support the involuntary commitment.'
     },
     {
       scenario: 'After a crisis call, an upset family member loudly demands an officer\'s badge number and announces an intent to file a complaint, in front of a gathered crowd.',
@@ -457,8 +429,6 @@ function getDeescalationSupervisorQuestions() {
         'Provide name and badge number without hesitation, acknowledge the concern without defensiveness, explain the complaint process, and offer a supervisor — without litigating the incident on the sidewalk, since the body camera and documentation are where conduct is recorded.',
         'Tell the family member that complaints are not accepted at the scene.'
       ],
-      correct: 2,
-      feedback: 'Correct. The post-incident interaction is the last de-escalation of the call. Providing identifying information without hesitation, acknowledging the concern, explaining the complaint process, and offering a supervisor is the standard — and litigating the incident on the sidewalk looks defensive and can create inconsistencies with the report. When the supervisor offered is you, model exactly that.'
     },
     {
       scenario: 'Your shift metrics count arrests and cleared calls but do not capture the standoff that ended with a subject voluntarily surrendering a weapon and getting treatment.',
@@ -469,8 +439,6 @@ function getDeescalationSupervisorQuestions() {
         'Adjust the metrics to penalize calls that take longer than average.',
         'Leave recognition to formal awards and stay out of it day to day.'
       ],
-      correct: 1,
-      feedback: 'Correct. The metrics will not count the no-force standoff that ended well, so the supervisor closes that gap by defending de-escalation by name and with reasoning. That recognition is what makes officers reach for de-escalation, which CIT research shows measurably reduces use of force in mental health encounters.'
     },
   ];
 }

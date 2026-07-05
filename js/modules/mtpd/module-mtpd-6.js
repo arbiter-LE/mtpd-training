@@ -115,8 +115,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Order termination — the criteria are met: a summary-level offense, the suspect\'s identity is known and a later arrest is feasible, and the danger (residential area, wet roads, rising speed) outweighs the need for immediate apprehension.',
         'Authorize a third unit to join the pursuit and help box the fleeing vehicle in.'
       ],
-      correct: 2,
-      feedback: 'Correct. MTPD ALO 4.02 termination criteria are squarely met: the offense is minor, the suspect is identified and can be arrested later, and the danger outweighs the need for immediate apprehension. Officers and supervisors shall terminate in these conditions, and a documented decision to terminate is the defensible one.'
     },
     {
       scenario: 'During an authorized pursuit with two units already engaged, a third officer radios that he is close and asks to join to help box the suspect in.',
@@ -127,8 +125,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Approve it, but only on the condition that the third unit stays at least a half-mile back from the pursuit.',
         'Approve a fourth unit to join as well, so that the units can fully surround the fleeing vehicle.'
       ],
-      correct: 1,
-      feedback: 'Correct. MTPD ALO 4.02 sets a hard two-unit maximum that is expressly not subject to supervisor override. The third unit shall not join. It can position to contain, and stop sticks — deployed by a unit not in the pursuit, with your authorization — are the authorized interdiction tactic.'
     },
     {
       scenario: 'An officer in a pursuit radios that he has a clean angle and intends to execute a PIT maneuver to end it, and asks for your go-ahead.',
@@ -139,8 +135,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Authorize the PIT maneuver, but only if the pursuit speeds are below 45 mph at the time it is executed.',
         'Tell the officer to simply use his own judgment about whether to carry out the PIT maneuver.'
       ],
-      correct: 0,
-      feedback: 'Correct. MTPD ALO 4.02 prohibits PIT maneuvers absolutely — no circumstance, supervisor authorization, or offense severity authorizes one. Stop sticks, deployed by a unit not actively in the pursuit with supervisor authorization, are the authorized alternative.'
     },
     {
       scenario: 'Interdiction is warranted in an ongoing pursuit. You are weighing stop stick deployment.',
@@ -151,8 +145,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Stop sticks may only ever be deployed after an attempted PIT maneuver has already failed to stop the vehicle.',
         'Stop sticks may be deployed only with supervisor authorization, only by a unit not actively participating in the pursuit, and the deploying unit must provide the pursuing unit with precise deployment location.'
       ],
-      correct: 3,
-      feedback: 'Correct. MTPD ALO 4.02 authorizes stop sticks only with supervisor authorization and only by a unit not actively in the pursuit, and requires the deploying unit to give the pursuing unit precise deployment location. It is the authorized alternative to additional pursuit units and to PIT maneuvers.'
     },
     {
       scenario: 'A pursuit you supervised was terminated by your order when it became too dangerous. The next day you realize no Pursuit Review Form has been completed, and an officer suggests skipping it "since the pursuit was called off and nobody was caught."',
@@ -163,8 +155,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Have the fleeing driver complete a written statement instead of filling out a Pursuit Review Form.',
         'Document the terminated pursuit only in the event that a civil complaint is later filed over it.'
       ],
-      correct: 1,
-      feedback: 'Correct. MTPD ALO 4.02 requires the on-duty supervisor to complete a Pursuit Review Form within 24 hours of any pursuit, regardless of outcome. Termination is as important to document as initiation; skipping the form because no one was caught is a documentation failure and a liability exposure.'
     },
     {
       scenario: 'Reviewing an officer\'s pursuit report, you find it documents the chase well but says nothing about the basis or time of termination or the suspect\'s last known location and direction. The officer notes only that he "broke off when it got too hairy."',
@@ -175,8 +165,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Approve it as written — the specific termination details are optional once a pursuit has ended.',
         'Replace the officer\'s account entirely with your own supervisory summary of the pursuit and its end.'
       ],
-      correct: 0,
-      feedback: 'Correct. MTPD ALO 4.02 requires documentation of the basis and time of termination, the notifications made, and the last known location and direction of travel. "Broke off when it got too hairy" is a conclusion, not the specific basis the order requires.'
     },
     {
       scenario: 'At the very start of a pursuit, before any supervisor involvement, the initiating officer has not yet advised dispatch of the offense, direction, speed, or vehicle description — he is just driving.',
@@ -187,8 +175,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'The officer may broadcast nothing at all until the pursuit ends, in order to avoid radio congestion.',
         'Notification is mandatory immediately upon initiating the pursuit — unit, offense, direction, speed, and vehicle description — and supervisor notification and authorization are required, so you should be brought in from the outset, not after the fact.'
       ],
-      correct: 3,
-      feedback: 'Correct. MTPD ALO 4.02 requires immediate notification upon initiating a pursuit — unit, nature of the offense, direction, approximate speed, and vehicle description — and requires supervisor notification and authorization. The communication is mandatory from the moment the vehicle fails to stop, which is what brings the supervisor into the decision early.'
     },
     {
       scenario: 'Over a few months, one officer has initiated several pursuits for minor offenses and continued them past the point where identity was known and the danger had risen, requiring you to order termination each time. You have discussed the termination criteria with him before.',
@@ -199,8 +185,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Move to documented corrective action and targeted training on the ALO 4.02 termination criteria and continuous-evaluation factors, because a repeated pattern after coaching is a supervisory and training issue with significant liability exposure; escalate as warranted.',
         'Take no action at this point, since each of the pursuits was genuinely a separate situation.'
       ],
-      correct: 2,
-      feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — pursuits continued past the termination criteria — is a supervisory and training issue requiring documented corrective action and escalation, tied to the ALO 4.02 criteria and the real civil-liability exposure pursuits carry.'
     },
   ];
 }

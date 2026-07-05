@@ -393,8 +393,6 @@ function getUseOfForceQuestions() {
         'The continuum has no defined starting point — officers may begin at whatever level they assess as necessary.',
         'The continuum begins with Escort and Control and Compliance combined as Level 1.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3.1(B)(1) establishes Verbal Control as Use of Force Level 1 — advice, persuasion, admonitions, or orders, where the manner, volume, and tone of an officer\'s commands can be an effective means of exerting control without having to progress to a higher level of force.'
     },
     {
       scenario: 'After a CEW deployment during a domestic disturbance call, your supervisor instructs you to complete the appropriate paperwork. Your body camera captured the full incident.',
@@ -405,8 +403,6 @@ function getUseOfForceQuestions() {
         'Only when the District Attorney\'s office requests it.',
         'Only for incidents involving a firearm discharge.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3.6(A) lists the triggers for a Use of Force Report broadly: firearm discharge (with the animal-disposal exception, which uses an incident report instead), any action resulting in or alleged to result in injury or death, use or alleged use of physical force, application of force through lethal or less-lethal weapons, and Level 3 (OC) force or anything greater than Level 4.'
     },
     {
       scenario: 'A use of force report states: "Subject was aggressive and I feared for my safety. I used verbal commands to gain compliance." A reviewer questions whether this satisfies General Order 1.3.',
@@ -417,8 +413,6 @@ function getUseOfForceQuestions() {
         'It does not state whether a supervisor was present.',
         'It is sufficient — stating that the officer feared for their safety satisfies the policy.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3, Policy section, states: "Officers using force must be able to articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected. Full disclosure of the circumstances requiring the use of force, and the type and extent of force, shall be thoroughly documented." A conclusory statement of fear does not meet this standard — the report must describe what was observed.'
     },
     {
       scenario: 'You draw your firearm in response to a subject advancing with a raised aluminum flashlight from 25 feet. No shots are fired. The subject complies. Three weeks later your department receives a civil rights complaint.',
@@ -429,8 +423,6 @@ function getUseOfForceQuestions() {
         'Whenever a supervisor authorizes it over the radio, regardless of the circumstances.',
         'Whenever the subject fails to comply with a verbal command within a reasonable time.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3.2(A) limits deadly force to situations where it is in defense of human life or a person in imminent danger of serious physical injury, or where the subject has committed or attempted a forcible felony or is attempting to escape while possessing a deadly weapon or otherwise indicating they will endanger life or inflict serious bodily injury unless arrested without delay. An aluminum flashlight at 25 feet, without more, does not establish these conditions.'
     },
     {
       scenario: 'During a use of force debrief, your sergeant asks why you advanced toward a subject holding an impact weapon rather than creating distance and issuing verbal commands.',
@@ -441,8 +433,6 @@ function getUseOfForceQuestions() {
         'Higher levels of force are mandatory once a subject is non-compliant for any reason.',
         'The continuum applies only to arrests, not to officer-safety encounters like this one.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3.1(B) frames the continuum as escalating "only when each lower level of force has been examined or discarded as impractical in the current circumstance, or which has been tried and has failed." 1.3.1(C)(2) clarifies that any given level can be skipped in escalation, or reduced, depending on the presenting circumstances — but that flexibility does not excuse failing to consider Level 1 (distance, cover, verbal commands) as the starting point absent a reason to skip it.'
     },
     {
       scenario: 'An officer applies a control hold to a handcuffed, compliant subject who is seated in the patrol vehicle. The subject has not resisted since being cuffed. The hold causes injury.',
@@ -453,8 +443,6 @@ function getUseOfForceQuestions() {
         'The hold is justified if the officer subjectively perceived any risk, regardless of the subject\'s compliance.',
         'General Order 1.3 does not address force against subjects who are already in custody.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3, Policy, states that "the use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished." A handcuffed, compliant subject who is not resisting falls squarely within this requirement — continued force in this situation is inconsistent with the policy.'
     },
     {
       scenario: 'During a struggle, an officer uses a takedown that causes a subject to strike their head on the pavement. The officer states they followed department training exactly.',
@@ -465,8 +453,6 @@ function getUseOfForceQuestions() {
         'Yes — General Order 1.3.6(D) states that training compliance ends the review process automatically.',
         'No — General Order 1.3 prohibits all takedowns regardless of circumstances.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3, Policy, requires that force never exceed what is "lawful, reasonable, and necessary for the specific situation," and 1.3.1(A)(1) states that the Pennsylvania Crimes Code, Title 18, Chapter 5, and related case law (including federal case law binding through the 14th Amendment) "establish the only legally binding restrictions regarding the use of force." Following department training is relevant but does not, by itself, satisfy this independent legal standard.'
     },
     {
       scenario: 'A subject who has been placed in handcuffs suddenly begins banging their head against the inside of the patrol vehicle door.',
@@ -477,8 +463,6 @@ function getUseOfForceQuestions() {
         'Attempt verbal intervention (Level 1) first, then apply only the minimum level of force necessary to prevent injury, escalating further only if that level proves ineffective — consistent with 1.3.1(B)\'s level-by-level approach.',
         'Remove the subject from the vehicle immediately regardless of the force required, since any force is justified by self-harm.'
       ],
-      correct: 2,
-      feedback: 'Correct. General Order 1.3.1(B) establishes a continuum that escalates only when a lower level has been tried and failed or is impractical. A handcuffed subject engaging in self-harm presents a specific, limited situation: verbal intervention (Level 1) is the starting point, with physical intervention limited to the minimum necessary to prevent injury, escalating only if that proves insufficient.'
     },
   ];
 }
@@ -532,8 +516,6 @@ function getUseOfForceSupervisorQuestions() {
         'To forward the report to the District Attorney without review, since use of force is a legal matter.',
         'To file the report as written; supervisory review of use-of-force reports is optional under the policy.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3.6(D) provides that all Use of Force Reports are reviewed by the Chief of Police or designee for compliance. The reviewing supervisor tests the report against GO 1.3 and, under 1.3.6(F), the finding can lead to remedial training, a Professional Conduct investigation, or discipline.'
     },
     {
       scenario: 'A Use of Force Report you are reviewing states, in its entirety on justification: "The subject was aggressive and I feared for my safety, so I used force to gain compliance."',
@@ -544,8 +526,6 @@ function getUseOfForceSupervisorQuestions() {
         'Forward it to discipline immediately without giving the officer a chance to document the facts.',
         'Approve it but add your own narrative of what you believe happened.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3, Policy, requires officers to "articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected." A conclusory statement of fear does not meet that standard. The report goes back for the specific facts before it becomes the record.'
     },
     {
       scenario: 'A report\'s timeline shows the subject was handcuffed, seated, and no longer resisting when the officer applied a control hold that caused an injury.',
@@ -556,8 +536,6 @@ function getUseOfForceSupervisorQuestions() {
         'It is acceptable as long as the officer subjectively perceived some risk.',
         'It cannot be evaluated because General Order 1.3 does not address force after handcuffing.'
       ],
-      correct: 1,
-      feedback: 'Correct. GO 1.3, Policy, requires force to end when resistance ceases or the arrest is accomplished. Force against a handcuffed, compliant, non-resisting subject falls outside the policy on its face — a finding that points to a Professional Conduct investigation under 1.3.6(F), not a return for better wording.'
     },
     {
       scenario: 'A Use of Force Report documents three separate CEW discharge cycles during one encounter. The narrative justifies the first cycle but says nothing about the second and third.',
@@ -568,8 +546,6 @@ function getUseOfForceSupervisorQuestions() {
         'The report should be rejected outright because more than one CEW cycle is always excessive.',
         'Only the total number of cycles matters; individual justification is not required.'
       ],
-      correct: 1,
-      feedback: 'Correct. GO 1.3.4 states that "each separate discharge cycle of the CEW is a separate use of force that must be justified." A report justifying only the first cycle is incomplete; on review you require justification for every cycle, plus the 1.3.4(D) factors and the verbal-warning question.'
     },
     {
       scenario: 'An officer\'s report characterizes an aluminum flashlight the subject was holding as "a deadly weapon" to support the decision to present a firearm under General Order 1.3.2.',
@@ -580,8 +556,6 @@ function getUseOfForceSupervisorQuestions() {
         'Accept it because the subject was advancing, which automatically justifies deadly-force options.',
         'Reject the entire report and impose discipline solely because a firearm was drawn.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 1.3.2 limits deadly force to a narrow set of circumstances. An aluminum flashlight, without more, does not make the encounter a 1.3.2 situation. Threat overstatement to justify a force decision is a review flag; honest acknowledgment of an imperfect-but-reasonable decision is more defensible.'
     },
     {
       scenario: 'A report describes the officer using a neck restraint to bring a resisting subject under control. The technique worked and the subject was cuffed without further incident.',
@@ -592,8 +566,6 @@ function getUseOfForceSupervisorQuestions() {
         'Return it for a rewrite so the officer can describe the neck restraint more favorably.',
         'Approve it but recommend the officer attend a refresher on neck-restraint technique.'
       ],
-      correct: 1,
-      feedback: 'Correct. GO 1.3 (Level 4) states that carotid restraints and other "choke holds" or neck restraints are "specifically and strictly prohibited." Effectiveness does not cure a prohibited act. This is a conduct matter for investigation under 1.3.6(F), not a documentation problem.'
     },
     {
       scenario: 'Body-camera footage shows no verbal warning was given before a CEW deployment. The officer\'s report states that a warning was given. The CEW deployment itself appears to have been within policy.',
@@ -604,8 +576,6 @@ function getUseOfForceSupervisorQuestions() {
         'Edit the report yourself to match the footage and approve it.',
         'Disregard the footage in favor of the officer\'s written account.'
       ],
-      correct: 1,
-      feedback: 'Correct. A report that conflicts with the footage is the most serious finding a reviewer can make. Under 18 Pa. C.S. § 4906 a false report is a crime, separate from the justification analysis. GO 1.3.6(D)-(F) review exists precisely to catch this — the justified force does not rescue the false statement.'
     },
     {
       scenario: 'After reviewing a report, you find a genuine tactical gap — the officer skipped a lower level of force without fully explaining why — but the account is honest, specific, self-aware about the error, and no one was injured.',
@@ -616,8 +586,6 @@ function getUseOfForceSupervisorQuestions() {
         'No action of any kind — tactical gaps are never a supervisory concern.',
         'Forward the matter to the District Attorney for criminal review.'
       ],
-      correct: 1,
-      feedback: 'Correct. GO 1.3.6(F) provides graduated outcomes. A tactical or policy gap with an honest, self-aware account is the classic remedial-training case under 1.3.6(F)(a). Matching the outcome to the finding — training for gaps, investigation/discipline for patterns, prohibited acts, or false reports — is the core supervisory judgment.'
     },
   ];
 }

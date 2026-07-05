@@ -95,8 +95,6 @@ function getWellnessSupervisorQuestions() {
         'Recognize the pattern as possible secondary traumatic stress and lead with a direct, private wellness conversation and a referral to resources — emotional numbing and behavioral changes are warning signs, and leading with discipline drives a wellness problem underground.',
         'Quietly reassign him to a quieter beat or shift, without ever talking to him about any of it.'
       ],
-      correct: 2,
-      feedback: 'Correct. "The job doesn\'t bother me anymore" is emotional numbing — a recognized STS indicator — and the absences and irritability are behavioral warning signs. The supervisor leads with a direct wellness conversation and resources, not a discipline file, because performance management on a wellness pattern pushes the officer away from help.'
     },
     {
       scenario: 'An officer carrying visible stress is not in acute crisis but is clearly struggling. He asks you, quietly, where he could turn that "won\'t end up in my file or cost me my badge."',
@@ -107,8 +105,6 @@ function getWellnessSupervisorQuestions() {
         'Tell him to just tough it out on his own, so that nothing at all ends up going on his record.',
         'Tell him that he must request and complete a formal fitness-for-duty evaluation first, before anything else.'
       ],
-      correct: 1,
-      feedback: 'Correct. The MTPD peer support program is confidential within policy limits, non-disciplinary, and does not affect fitness-for-duty status — the correct first step for an officer experiencing stress who is not in acute crisis. That is exactly the reassurance this officer needs to reach out.'
     },
     {
       scenario: 'You refer an officer to the EAP. A week later you expect a report confirming he attended and what was discussed so you can "keep tabs on his progress."',
@@ -119,8 +115,6 @@ function getWellnessSupervisorQuestions() {
         'The EAP is only ever available to an officer after a formal disciplinary referral has been made.',
         'EAP services are provided by an independent contractor outside the chain of command and participation is not reported to supervisors; you can point an officer to EAP, but you will not receive a report that he went or what was discussed.'
       ],
-      correct: 3,
-      feedback: 'Correct. The EAP is provided by an independent contractor outside the department\'s chain of command, and participation is not reported to supervisors. You can refer an officer, but you should not expect — or seek — a report of attendance or content; the confidentiality is the point.'
     },
     {
       scenario: 'During a candid conversation, an officer makes a statement suggesting he does not see a future and has "been getting his affairs in order lately." He then shrugs it off as "just talk."',
@@ -131,8 +125,6 @@ function getWellnessSupervisorQuestions() {
         'Wait a few days to see whether his overall mood improves on its own before you do anything about it.',
         'Document the comment for his performance file and then address it with him at his next review.'
       ],
-      correct: 0,
-      feedback: 'Correct. A statement suggesting the officer does not see a future or is making final arrangements requires immediate action — don\'t rationalize it, ask directly, stay with him, and engage resources without delay. Imminent risk of harm is the defined limit where confidentiality yields to safety.'
     },
     {
       scenario: 'An officer asks you, before opening up, exactly what peer support and EAP can and cannot keep confidential.',
@@ -143,8 +135,6 @@ function getWellnessSupervisorQuestions() {
         'Tell him that nothing he says in those conversations is actually confidential in any way at all.',
         'Tell him that you, as his supervisor, personally decide what does and does not stay confidential.'
       ],
-      correct: 1,
-      feedback: 'Correct. Both peer support and EAP are confidential within defined limits: mandatory disclosure applies for imminent risk of harm to self or others, disclosure of a serious criminal offense, or a court order. Describing those limits accurately lets the officer make informed decisions about what to disclose and to whom.'
     },
     {
       scenario: 'Another supervisor remarks that an officer who reached out to peer support "clearly can\'t handle the job" and suggests it should weigh against him for a specialized assignment.',
@@ -155,8 +145,6 @@ function getWellnessSupervisorQuestions() {
         'Push back — contacting peer support is not a disciplinary matter and does not affect fitness-for-duty status; treating it as a mark against the officer is exactly the culture of silence the module says kills officers.',
         'Suggest that the officer simply be passed over quietly for the assignment, to avoid any controversy.'
       ],
-      correct: 2,
-      feedback: 'Correct. Contacting peer support is not a disciplinary matter and does not affect fitness-for-duty status. Treating help-seeking as a mark against an officer reinforces the culture of silence the module identifies as a lethal threat — the supervisor pushes back on that framing.'
     },
     {
       scenario: 'You notice an officer\'s alcohol use has clearly increased and is being used to cope, alongside growing irritability and withdrawal — but he is not in acute crisis and has made no statements of hopelessness.',
@@ -167,8 +155,6 @@ function getWellnessSupervisorQuestions() {
         'Order an immediate fitness-for-duty evaluation and begin the termination process against him.',
         'Mention the drinking to him jokingly, so that the whole thing does not feel like such a big deal.'
       ],
-      correct: 0,
-      feedback: 'Correct. Increased substance use as a coping mechanism is the most common self-medication pattern in law enforcement and the most reliable predictor of accelerating decline if not addressed early. The move is early, direct, private engagement and a peer support referral — not waiting for a crisis or jumping to termination.'
     },
     {
       scenario: 'You want to reduce the stigma on your squad so officers actually use peer support and EAP before they reach crisis.',
@@ -179,8 +165,6 @@ function getWellnessSupervisorQuestions() {
         'Avoid the entire topic of wellness completely, so that no one on the squad ever feels singled out.',
         'Build a culture where reaching for peer support or EAP is normal rather than a confession — because silence is the actual threat — and model recognition by noticing, speaking directly, and pointing toward resources.'
       ],
-      correct: 3,
-      feedback: 'Correct. The module is explicit that the culture of silence kills officers and that recognition — not silence — is the value. The supervisor normalizes help-seeking, protects its confidentiality, and models noticing, speaking directly, and pointing toward resources.'
     },
   ];
 }

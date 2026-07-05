@@ -101,8 +101,6 @@ function getCrisisSupervisorQuestions() {
         'Approve it — once family expresses concern, the officer has no discretion but to initiate a 302.',
         'Reject the entire welfare-check contact as improper, on the basis that a 302 was considered at all.'
       ],
-      correct: 1,
-      feedback: 'Correct. 50 P.S. § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger. Past psychiatric history is context, not the standard. A 302 grounded only in history is the kind courts scrutinize, and the record must show the specific recent facts.'
     },
     {
       scenario: 'An officer on a welfare check reports by radio that the subject is steadily calming down, the de-escalation approach is working, and he expects a voluntary resolution if given more time. From the station, command is suggesting it is time to "wrap it up and clear the call."',
@@ -113,8 +111,6 @@ function getCrisisSupervisorQuestions() {
         'Tell the officer to simply leave the scene, so that the subject is forced to make a decision on his own.',
         'Support continued de-escalation for a defined additional window based on the officer\'s status update, because an abrupt change in tactics after rapport was built can re-escalate the situation, and ALO 5.4 favors de-escalation where safe and feasible.'
       ],
-      correct: 3,
-      feedback: 'Correct. When the officer reports de-escalation is working, an abrupt tactical change can re-escalate the encounter. ALO 5.4 favors de-escalation where safe and feasible. The supervisor supports a defined additional time window rather than forcing a fast physical resolution. Time spent on a call does not, by itself, create § 7302 criteria.'
     },
     {
       scenario: 'A use-of-force report from a mental health call documents the force in detail but says nothing about whether de-escalation was attempted, what techniques were used, or how the subject responded before force was applied.',
@@ -125,8 +121,6 @@ function getCrisisSupervisorQuestions() {
         'Approve it as written — the detailed force documentation alone is sufficient for a report of this kind.',
         'Remove the use of force from the report entirely, since de-escalation was never mentioned in the narrative.'
       ],
-      correct: 0,
-      feedback: 'Correct. MTPD ALO 5.4 requires officers to document the specific de-escalation techniques used, the subject\'s response, and why de-escalation was or was not continued. On a force-involved mental health call, that record is part of the file and must be present before approval.'
     },
     {
       scenario: 'A subject taken into custody following a mental health crisis is placed in the temporary holding area. The officer field-searched him at the scene and tells you a second search before entry "would be redundant."',
@@ -137,8 +131,6 @@ function getCrisisSupervisorQuestions() {
         'Require a thorough search before entry to the temporary holding area regardless of any prior field search, because Order 3.02 mandates it — along with securing firearms in lock boxes and not leaving the detainee unsupervised more than 10 minutes.',
         'Leave the subject unsupervised in the holding area while the officer steps away to complete his paperwork.'
       ],
-      correct: 2,
-      feedback: 'Correct. MTPD Order 3.02 requires every detainee to be thoroughly searched before entry to the temporary holding area regardless of any prior field search, firearms secured in lock boxes, and no detainee left unsupervised for more than 10 minutes. A crisis subject in custody is exactly who these continuous-supervision rules protect.'
     },
     {
       scenario: 'A 16-year-old in apparent crisis is taken into secure detention pending transfer. An officer places the juvenile in a holding cell adjacent to an adult arrestee, within sight and sound, to keep both under one officer\'s watch.',
@@ -149,8 +141,6 @@ function getCrisisSupervisorQuestions() {
         'Allow it to stand, as long as the juvenile is ultimately released from detention within 24 hours.',
         'Move the adult arrestee instead, and leave the juvenile unsupervised in the adjacent holding cell.'
       ],
-      correct: 0,
-      feedback: 'Correct. MTPD Order 4.07 bars holding a juvenile in a cell that houses adults and requires sight-and-sound separation under continuous visual supervision of a sworn officer. Secure detention is limited to identification, investigation, processing, and transfer and may not exceed six hours.'
     },
     {
       scenario: 'An officer\'s initial approach on a mental health call was loud and command-driven, the subject escalated, and force followed. The report frames the escalation as solely the subject\'s unpredictability and does not address the approach.',
@@ -161,8 +151,6 @@ function getCrisisSupervisorQuestions() {
         'Discipline the subject\'s family members for having called the police about him in the first place.',
         'Approve it without any comment, on the basis that the use of force itself was thoroughly documented.'
       ],
-      correct: 1,
-      feedback: 'Correct. CIT principles recognize that authoritative commands often trigger fight-or-flight in someone in crisis, and ALO 5.4 calls for de-escalation where safe and feasible. The review point is an honest assessment of the approach and the de-escalation opportunity — not attributing the escalation solely to the subject.'
     },
     {
       scenario: 'An officer wants to initiate a 302 on a calm, cooperative subject solely because the subject experiences a diagnosed condition, with no recent overt act, attempt, or threat described.',
@@ -173,8 +161,6 @@ function getCrisisSupervisorQuestions() {
         'Do not initiate on these facts — § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger; a diagnosis without such conduct does not meet the standard, and the record should reflect that the criteria were not met.',
         'Direct the officer to detain the subject under the temporary-detention order instead of pursuing a 302.'
       ],
-      correct: 2,
-      feedback: 'Correct. 50 P.S. § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger. A diagnosis alone, with a calm and cooperative subject and no qualifying conduct, does not meet the standard. The supervisor guides documenting that the criteria were not met rather than overreaching the 302.'
     },
     {
       scenario: 'Reviewing recent calls, you find one officer\'s mental health reports consistently omit any de-escalation documentation and twice initiated 302s supported only by psychiatric history. You discussed the 302 standard with this officer once before.',
@@ -185,8 +171,6 @@ function getCrisisSupervisorQuestions() {
         'Quietly stop assigning the officer to mental health calls, without documenting any of the underlying concerns.',
         'Move to documented corrective action and targeted training on the § 7302 standard and ALO 5.4 documentation, because a repeated pattern after coaching is a supervisory and training issue; escalate as the pattern warrants.'
       ],
-      correct: 3,
-      feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — 302s on history alone and missing de-escalation records — is a supervisory and training issue requiring documented corrective action and escalation tied to the § 7302 standard and ALO 5.4.'
     },
   ];
 }

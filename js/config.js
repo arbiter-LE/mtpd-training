@@ -94,6 +94,7 @@ let quizSeconds     = 0;
 let currentQuizIdx  = 0;
 let quizAnswered    = false;   // true once the answer is committed (Submit pressed)
 let quizSelectedIdx = null;    // the option chosen but not yet committed — changeable
+let quizGrading     = false;   // true while an answer is out being graded server-side
 let quizCorrect     = 0;
 let quizTotal       = 0;
 

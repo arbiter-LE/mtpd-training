@@ -249,8 +249,6 @@ function getLeadershipQuestions() {
         'Probable cause that a crime has been committed.',
         'Group presence in a high-crime area is sufficient.'
       ],
-      correct: 0,
-      feedback: 'Correct. Terry v. Ohio (1968) requires individualized, reasonable articulable suspicion of criminal activity before an investigative stop. Group presence does not supply the basis for individual stops. A senior officer who corrects this in the field prevents a Fourth Amendment violation and trains the junior officer for future calls.'
     },
     {
       scenario: 'A hotel manager has called twice about teenagers loitering in their parking lot. There is no posted trespass signage and no prior warning given to the subjects.',
@@ -261,8 +259,6 @@ function getLeadershipQuestions() {
         'The property must be posted with conspicuous signage, fenced to exclude intruders, or the subject must have received prior direct communication that entry is prohibited.',
         'Repeated calls to police by the property owner establish the required notice.'
       ],
-      correct: 2,
-      feedback: 'Correct. 18 Pa. C.S. § 3503 requires that property be posted with conspicuous signage, fenced in a manner designed to exclude intruders, or that the subject have received direct prior communication that entry is not permitted. An owner\'s call to police does not substitute for proper notice. Advise the owner on the formal trespass process rather than taking unlawful enforcement action.'
     },
     {
       scenario: 'After a call, a junior officer expresses frustration with your approach, saying it took longer than necessary.',
@@ -273,8 +269,6 @@ function getLeadershipQuestions() {
         'Performance on written promotional examinations.',
         'Demonstrated judgment in ambiguous situations.'
       ],
-      correct: 3,
-      feedback: 'Correct. Police Executive Research Forum (PERF) research identifies demonstrated judgment in ambiguous situations as the top predictor of supervisory readiness — not seniority or test scores. Officers who make consistent, law-grounded decisions in unclear situations, and who correct others through those situations, demonstrate the core supervisory competency before ever holding the rank.'
     },
     {
       scenario: 'A junior officer made an error on a recent call. You want to correct the behavior.',
@@ -285,8 +279,6 @@ function getLeadershipQuestions() {
         'Document the error in writing and submit to the chain of command for formal action.',
         'Wait for the annual evaluation period to address behavioral patterns.'
       ],
-      correct: 0,
-      feedback: 'Correct. Corrections to junior officer conduct are most effective when delivered privately and directly, without an audience. Public corrections damage working relationships, create resentment, and close down the learning. A brief, private, law-grounded correction — delivered calmly — builds the officer rather than shuts them down. Departmental chain-of-command standards support addressing concerns through proper channels, not in the field in front of personnel or the public.'
     },
     {
       scenario: 'You make a call on a difficult scene that a supervisor later questions. The outcome was not ideal but your reasoning was sound.',
@@ -297,8 +289,6 @@ function getLeadershipQuestions() {
         'Deferring to the supervisor\'s assessment to preserve the working relationship.',
         'Owning the decision and the outcome, explaining your reasoning, and identifying what you\'d do differently.'
       ],
-      correct: 3,
-      feedback: 'Correct. Accountability means owning the decision and the outcome — good or bad — explaining the reasoning behind it clearly, and identifying what you\'d change. This is distinct from blame (pointing outward) and from self-flagellation (collapsing under the critique). Officers who demonstrate this pattern consistently earn supervisory trust faster than any other quality. It is the leadership behavior that gets noticed without requiring a sergeant\'s badge.'
     },
     {
       scenario: 'You are acting as a field supervisor when two officers under your supervision begin a verbal dispute in the station parking lot over a call handling decision. Other officers are watching.',
@@ -309,8 +299,6 @@ function getLeadershipQuestions() {
         'Take sides with the officer whose position you believe is more sound.',
         'Document the dispute and submit it up the chain without intervening.'
       ],
-      correct: 1,
-      feedback: 'Correct. Public disputes among officers damage unit cohesion and public trust. The first priority is de-escalation: separate the parties and move the conversation to a private setting. Then address the conduct (the public dispute) and the underlying issue (the disagreement about the call) as two distinct matters. Taking sides publicly undermines your credibility as a supervisor with both officers and the watching team. Document as appropriate, but intervention — not documentation — is the immediate response.'
     },
     {
       scenario: 'An officer under your supervision has been late to shift three times in two weeks. You have not formally addressed it yet. The officer is otherwise a strong performer.',
@@ -321,8 +309,6 @@ function getLeadershipQuestions() {
         'Have a direct, documented conversation now: name the pattern, state the expectation clearly, and ask if there is something you should know. Give the officer the opportunity to respond before any formal action.',
         'Mention it casually to the officer — a formal conversation would be disproportionate for a performance issue.'
       ],
-      correct: 2,
-      feedback: 'Correct. Three occurrences in two weeks is a pattern that requires direct supervisor engagement. Waiting creates a pattern of unchallenged conduct. A formal written reprimand without a prior conversation skips the coaching step. The correct approach is a direct, documented conversation: state what you observed, set the expectation, listen for context (there may be a wellness or personal issue), and document the conversation. This protects the officer, you, and the department if escalation becomes necessary.'
     },
     {
       scenario: 'A subordinate officer comes to you frustrated about a department policy they believe is unfair. The policy is set at the command level and is not one you have authority to change.',
@@ -333,8 +319,6 @@ function getLeadershipQuestions() {
         'Tell the officer policies are not up for discussion and redirect them to their duties.',
         'Promise to raise the issue at the next supervisors\' meeting without follow-through.'
       ],
-      correct: 0,
-      feedback: 'Correct. Officers who feel unheard disengage. Dismissing the concern damages trust. Agreeing and venting with a subordinate about command decisions undermines your authority and theirs. The professional response: acknowledge the concern, explain the policy to the best of your knowledge, and direct them to the proper channel for formal feedback. This respects their voice while reinforcing the chain of command and your own professional standing.'
     },
   ];
 }
@@ -390,8 +374,6 @@ function getLeadershipSupervisorQuestions() {
         'Have a direct, documented conversation now — name the pattern, state the expectation, and ask if there is something you should know — before any formal action, while still creating a record.',
         'Mention it casually with no documentation, since the officer is a strong performer.'
       ],
-      correct: 2,
-      feedback: 'Correct. A pattern requires engagement, but jumping straight to a formal reprimand skips the coaching step and breeds resentment, while waiting for a "fourth occurrence" normalizes the conduct. A direct, documented conversation now — pattern, expectation, and a chance to surface context — is the right rung of the ladder, and it protects the officer, you, and the department if escalation follows.'
     },
     {
       scenario: 'A junior officer on your squad wants to run a group of subjects with no individualized basis "to see what pops." You correct it. A peer supervisor asks why you make a big deal of small field calls.',
@@ -402,8 +384,6 @@ function getLeadershipSupervisorQuestions() {
         'Because senior officers are required to make all stop decisions personally.',
         'Because the legal floor you hold becomes the floor your officers hold when you are off shift: Terry requires individualized reasonable suspicion, and allowing a suspicionless sweep both creates Fourth Amendment exposure now and trains the next violation on a call you will not be on.'
       ],
-      correct: 3,
-      feedback: 'Correct. A supervisor\'s example sets the squad\'s floor. Terry v. Ohio requires individualized reasonable articulable suspicion; allowing a group sweep is both a Fourth Amendment problem now and a lesson that survives to the shifts you do not work. Holding the line — and praising the officer who slows a fast situation down — is how the standard endures.'
     },
     {
       scenario: 'Two officers under your supervision begin a heated dispute about a call in the station parking lot. Several other officers are watching.',
@@ -414,8 +394,6 @@ function getLeadershipSupervisorQuestions() {
         'Side openly with whichever officer is correct about the call to settle it fast.',
         'Document it and forward it up the chain without intervening.'
       ],
-      correct: 0,
-      feedback: 'Correct. A public dispute damages cohesion and trust. The immediate response is intervention, not documentation: separate, move it private, hear both sides, then treat the conduct and the underlying issue separately. Taking a public side undermines your credibility with both officers and the watching squad.'
     },
     {
       scenario: 'An officer on your squad is frustrated with a command-level policy they believe is unfair. You do not have authority to change it.',
@@ -426,8 +404,6 @@ function getLeadershipSupervisorQuestions() {
         'Tell the officer that policy is not open for discussion and send them back to work.',
         'Promise to raise it at the next supervisors\' meeting without intending to follow through.'
       ],
-      correct: 1,
-      feedback: 'Correct. Dismissing the concern ends engagement; venting alongside the officer undermines your own authority and the chain of command. Acknowledging, explaining, and directing the officer to the proper feedback channel respects their voice while reinforcing the structure — and your standing within it.'
     },
     {
       scenario: 'A struggling officer wrote a report with a problem in it. Another supervisor quietly suggests you "fix it in-house" to keep it off the officer\'s record and protect his career.',
@@ -438,8 +414,6 @@ function getLeadershipSupervisorQuestions() {
         'Approve it as written and say nothing, since it is not your report.',
         'Refuse: a report reflects what occurred, and altering it is unsworn falsification under 18 Pa. C.S. § 4904. Your rank makes that worse, not better — handle the underlying performance issue through coaching or progressive discipline, not by changing the record.'
       ],
-      correct: 3,
-      feedback: 'Correct. "Handling it in-house" by altering a sworn report is falsification under 18 Pa. C.S. § 4904, and a supervisor doing it compounds the problem with the authority of rank. The performance issue is addressed through coaching or progressive discipline; the report itself reflects what occurred and does not change.'
     },
     {
       scenario: 'An officer on your squad comes to you privately and reports that a senior officer pressured them to alter a report, saying the department "handles things in-house."',
@@ -450,8 +424,6 @@ function getLeadershipSupervisorQuestions() {
         'Advise the officer to quietly change the report to avoid conflict.',
         'Take no action unless the officer files a formal written complaint first.'
       ],
-      correct: 0,
-      feedback: 'Correct. As a supervisor you are the chain of command an officer reports to. Pressure to falsify documentation must be documented and acted on — a single instance usually signals a pattern affecting others, and how you respond determines whether officers trust the chain of command with integrity problems in the future.'
     },
     {
       scenario: 'A call you supervised ended with a less-than-ideal outcome, though your decision-making was sound given what you knew. A superior questions the result.',
@@ -462,8 +434,6 @@ function getLeadershipSupervisorQuestions() {
         'Own the decision and the outcome, explain the reasoning behind it, and identify what you would do differently — because your officers calibrate their own accountability to what they see you model.',
         'Defer entirely to the superior\'s assessment to preserve the relationship.'
       ],
-      correct: 2,
-      feedback: 'Correct. Accountability means owning the decision and the result, explaining the reasoning, and naming what you would change — distinct from blame and from collapsing under critique. A supervisor who models this teaches it: officers calibrate their own accountability to their supervisor\'s, so what you demonstrate becomes the squad\'s standard.'
     },
     {
       scenario: 'You want to build the judgment of the officers on your squad over time, not just correct mistakes as they happen.',
@@ -474,8 +444,6 @@ function getLeadershipSupervisorQuestions() {
         'Deliberate development means sending officers to more outside training and otherwise leaving them alone.',
         'Deliberate development is the responsibility of the training division, not the field supervisor.'
       ],
-      correct: 1,
-      feedback: 'Correct. PERF research ties supervisory readiness to demonstrated judgment in ambiguous situations, so a supervisor develops people by creating those situations deliberately — debriefing successes, assigning ambiguous calls, and naming and praising the judgment they want to see. That is what builds officers who hold the standard when the supervisor is not present.'
     },
   ];
 }

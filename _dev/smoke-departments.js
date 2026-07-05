@@ -49,8 +49,11 @@ function buildModules(dept) {
 }
 
 function qOk(q) {
+  // Client questions carry the prompt and options ONLY. Grading data lives
+  // server-side (api/grade.js, built from _dev/answer-keys/) — a `correct`
+  // or `feedback` field here means an answer key is shipping to the browser.
   return q && q.scenario && q.text && Array.isArray(q.options) && q.options.length === 4 &&
-         typeof q.correct === 'number' && q.correct >= 0 && q.correct <= 3 && q.feedback;
+         !('correct' in q) && !('feedback' in q);
 }
 
 function checkDepartment(dept) {
@@ -162,6 +165,62 @@ function checkWiring() {
   if (clean) console.log('  ✓ every top-level function in app.js & config.js is referenced');
 }
 
+// Server-side grading integrity: no answer key may ship in client JS, every
+// question must have a grading entry in _dev/answer-keys/<dept>.json, and the
+// generated block in api/grade.js must be in sync with those JSONs (a stale
+// grade.js silently mis-grades — run `node _dev/build-answer-keys.js`).
+function checkAnswerKeys(registry) {
+  console.log('\n▸ server-side grading (no answer keys in client JS)');
+
+  // 1. Raw-source guard — catches a reintroduced key even in dead code.
+  const offenders = [];
+  (function walk(dir) {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('.js')) {
+        const src = fs.readFileSync(p, 'utf8');
+        if (/^\s*(correct|feedback):/m.test(src)) offenders.push(path.relative(ROOT, p));
+      }
+    }
+  })(path.join(ROOT, 'js/modules'));
+  if (offenders.length) fail('keys', `answer-key fields found in client JS: ${offenders.join(', ')} — run node _dev/build-answer-keys.js`);
+  else console.log('  ✓ no correct/feedback fields anywhere under js/modules/');
+
+  // 2. Every question has a server-side key of the right shape.
+  let gradeData = null;
+  try {
+    const gradeSrc = fs.readFileSync(path.join(ROOT, 'api/grade.js'), 'utf8');
+    gradeData = JSON.parse(/const GRADE_DATA = (.*);/.exec(gradeSrc)[1]);
+  } catch (e) { return fail('keys', `could not parse GRADE_DATA from api/grade.js: ${e.message}`); }
+
+  registry.forEach(dept => {
+    const tag = dept.subdomain;
+    const jsonPath = path.join(__dirname, 'answer-keys', `${tag}.json`);
+    if (!fs.existsSync(jsonPath)) return fail(tag, `missing _dev/answer-keys/${tag}.json`);
+    const keys = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+    if (JSON.stringify(gradeData[tag]) !== JSON.stringify(keys))
+      return fail(tag, 'api/grade.js grading block is out of sync with the answer-key JSON — run node _dev/build-answer-keys.js');
+    const M = buildModules(dept);
+    if (!M) return;
+    let checked = 0;
+    M.forEach(m => {
+      for (const [setName, trackName] of [['questions', 'patrol'], ['supervisorQuestions', 'supervisor']]) {
+        if (!Array.isArray(m[setName])) continue;
+        const k = keys[m.id] && keys[m.id][trackName];
+        if (!k || k.length !== m[setName].length)
+          return fail(tag, `${m.id} ${trackName}: ${m[setName].length} questions but ${k ? k.length : 0} server-side keys`);
+        k.forEach((e, i) => {
+          if (!e || typeof e.c !== 'number' || e.c < 0 || e.c > 3 || typeof e.f !== 'string' || !e.f)
+            fail(tag, `${m.id} ${trackName} Q${i + 1}: malformed server-side key`);
+        });
+        checked += k.length;
+      }
+    });
+    console.log(`  ✓ ${tag}: ${checked} questions all keyed server-side, grade.js in sync`);
+  });
+}
+
 console.log('Multi-tenant smoke test — building every registered department\n' + '─'.repeat(60));
 const registry = loadRegistry();
 console.log(`Registry: ${registry.length} department(s) — ${registry.map(d => d.subdomain).join(', ')}`);
@@ -169,6 +228,7 @@ registry.forEach(checkDepartment);
 checkIdCollisions();
 checkSharedPurity();
 checkWiring();
+checkAnswerKeys(registry);
 
 console.log('\n' + '─'.repeat(60));
 if (failures === 0) { console.log('ALL DEPARTMENTS PASS ✓'); process.exit(0); }

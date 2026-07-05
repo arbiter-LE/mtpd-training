@@ -118,8 +118,6 @@ function getUseOfForceSupervisorQuestions() {
         'Reject the use of force outright and order corrective action, because a force narrative this short can only mean the force itself was excessive.',
         'Approve it for now but tell the officer, informally, to add more supporting detail to reports like this one next time.'
       ],
-      correct: 1,
-      feedback: 'Correct. Graham v. Connor is judged from the perspective of a reasonable officer based on facts, not the officer\'s subjective feelings. "Aggressive" and "feared for my safety" are conclusions. The report must state the three Graham factors as specific facts before it becomes the record. This is a documentation defect to return for a rewrite — distinct from a force defect.'
     },
     {
       scenario: 'A Use of Force Report shows the officer applied a control hold and takedown to overcome active resistance, then continued applying downward pressure and additional strikes for a sustained period after the subject was handcuffed and had stopped moving.',
@@ -130,8 +128,6 @@ function getUseOfForceSupervisorQuestions() {
         'Approve it as documented — the subject\'s earlier active resistance is what justifies all of the force that followed.',
         'Order 1.3 requires that force end immediately when resistance ceases, is overcome, or the arrest is accomplished; force continued after the subject was handcuffed and compliant is the defect, and no rewrite cures force applied past the stop point.'
       ],
-      correct: 3,
-      feedback: 'Correct. MTPD Order 1.3 states force will end immediately when resistance ceases, is overcome, or the arrest is accomplished. Force continued against a handcuffed, compliant subject is the most common excessive-force finding and is a force problem, not a documentation problem — it calls for corrective action, not editing.'
     },
     {
       scenario: 'An officer completed a thorough incident report for a domestic assault arrest and physically attached the Use of Force Report to it as the final page before submitting the packet to the shift bin.',
@@ -142,8 +138,6 @@ function getUseOfForceSupervisorQuestions() {
         'Release the combined packet, the incident report and the Use of Force Report together, to the District Attorney as one complete record.',
         'Reject the entire arrest report and send it back to the officer, because of the filing error created by the attachment.'
       ],
-      correct: 0,
-      feedback: 'Correct. MTPD Order 1.3 keeps the Use of Force Report strictly separate from the incident/supplemental report and bars release outside the department without the Chief\'s authorization. Attaching them creates evidentiary and policy problems. The supervisory fix is to separate them, not to release the combined packet.'
     },
     {
       scenario: 'At the end of shift, an officer who used reportable force tells you they are tired and will "knock out the Use of Force Report at the start of tomorrow\'s shift."',
@@ -154,8 +148,6 @@ function getUseOfForceSupervisorQuestions() {
         'Require the Use of Force Report to be completed before the officer concludes the shift in which the force occurred; carrying it to the next tour is an Order 1.3 timing violation, not a scheduling matter (if injury prevents the officer from reporting, the supervisor submits a written report before end of shift).',
         'Waive the report requirement in this instance, because the force the officer used was relatively minor.'
       ],
-      correct: 2,
-      feedback: 'Correct. MTPD Order 1.3 requires the Use of Force Report to be completed prior to the officer concluding the shift during which the force occurred. Only if the officer is injured and unable to report does the supervisor submit a written report before end of shift — the requirement is not satisfied by deferring to the next tour.'
     },
     {
       scenario: 'A Use of Force Report documents a justified takedown. The subject complained of wrist pain at the scene but was not visibly injured, and the report does not mention any medical evaluation. The officer notes "subject refused to admit any real injury."',
@@ -166,8 +158,6 @@ function getUseOfForceSupervisorQuestions() {
         'Approve it as written — the subject declined to confirm any injury, and that refusal ends the department\'s medical obligation.',
         'Order 1.3 requires EMS examination and transport to be arranged whenever injury is known, suspected, or alleged, regardless of whether the subject claims injury; the report must show medical attention was offered or provided, so the missing evaluation is the flag.'
       ],
-      correct: 3,
-      feedback: 'Correct. MTPD Order 1.3 requires arranging EMS examination and transport when injury is known, suspected, or alleged — explicitly regardless of whether the subject claims injury. A complaint of wrist pain triggers the obligation. The report must reflect that medical attention was offered or provided.'
     },
     {
       scenario: 'A Use of Force Report states the officer applied a neck restraint to bring a resisting but unarmed subject under control during a non-life-threatening struggle. The narrative does not describe any imminent threat of death or serious bodily injury.',
@@ -178,8 +168,6 @@ function getUseOfForceSupervisorQuestions() {
         'Return it only for a more detailed written description of exactly how the restraint was applied.',
         'Approve it on the basis that the subject was actively resisting the officer throughout the struggle.'
       ],
-      correct: 1,
-      feedback: 'Correct. MTPD Order 1.3 specifically and strictly prohibits carotid restraints and all choke/neck restraints except where an officer or another person is in imminent fear of death or serious bodily injury and no other alternative is available. A non-life-threatening struggle with an unarmed subject does not meet that narrow exception, and the exception must be established on the facts.'
     },
     {
       scenario: 'A report documents a use of force at a high level on the continuum. The narrative establishes the threat well but never explains why lower-level options were not used or would have been ineffective.',
@@ -190,8 +178,6 @@ function getUseOfForceSupervisorQuestions() {
         'No — Order 1.3 does not require sequential progression, but it requires every level applied to be documented and justified; the report must explain why the level used was necessary and why lower levels were ineffective or inappropriate.',
         'No — under Order 1.3 the officer must always apply each lower level of force first, regardless of the circumstances presented.'
       ],
-      correct: 2,
-      feedback: 'Correct. MTPD Order 1.3 allows levels to be skipped given the circumstances but requires every level applied to be documented and justified. The report must articulate why the chosen level was necessary and why lower levels were ineffective or inappropriate — not merely establish the threat.'
     },
     {
       scenario: 'Over two months, the same officer has submitted four Use of Force Reports that each establish the threat but consistently omit the Graham factor of whether the subject was actively resisting, and twice show force continuing briefly after handcuffing. You coached the officer after the first report.',
@@ -202,8 +188,6 @@ function getUseOfForceSupervisorQuestions() {
         'Take no formal action, because each of the four reports is a separate event that should be judged on its own.',
         'Suspend the officer immediately, without documenting the pattern of deficiencies that led to the decision.'
       ],
-      correct: 0,
-      feedback: 'Correct. One deficient report is a coaching moment; a documented pattern after coaching is a supervisory and training issue requiring documented corrective action and escalation. The Order 1.3 stop-point rule and the Graham factors are the standard the reports keep missing, and Act 57\'s statewide database makes the stakes durable.'
     },
   ];
 }

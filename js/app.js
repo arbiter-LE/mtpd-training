@@ -1045,7 +1045,7 @@ function renderQuestion() {
 // the officer can change the selection as many times as they like before
 // committing. (Officer feedback: locking on first click was frustrating.)
 function selectAnswer(idx) {
-  if (quizAnswered) return; // already committed — options are locked
+  if (quizAnswered || quizGrading) return; // committed or being graded — options are locked
   quizSelectedIdx = idx;
   const q = activeQuestions(currentModule)[currentQuizIdx];
   for (let i=0; i<q.options.length; i++) {
@@ -1055,27 +1055,59 @@ function selectAnswer(idx) {
   document.getElementById('btn-next-q').disabled = false; // Submit now available
 }
 
-// Commit the selected answer: lock the options, reveal correct/incorrect, show
-// feedback, and score. Scoring happens here and only here, so changing your
-// pick before Submit can never inflate the grade.
-function submitAnswer() {
-  if (quizAnswered || quizSelectedIdx === null) return;
-  quizAnswered = true;
+// Commit the selected answer: the answer is graded SERVER-SIDE (/api/grade) —
+// answer keys and feedback never ship to the browser. On success, lock the
+// options, reveal correct/incorrect, show feedback, and score. On a network
+// or server failure nothing is committed: the officer keeps their selection
+// and simply presses Submit again.
+async function submitAnswer() {
+  if (quizAnswered || quizGrading || quizSelectedIdx === null) return;
   const idx = quizSelectedIdx;
   const q = activeQuestions(currentModule)[currentQuizIdx];
-  const isCorrect = (idx === q.correct);
+  const btn = document.getElementById('btn-next-q');
+  const fb = document.getElementById('answer-feedback');
+  quizGrading = true;
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+  let result = null;
+  try {
+    const { data: { session } } = await _sb.auth.getSession();
+    const resp = await fetch('/api/grade', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + (session ? session.access_token : '')
+      },
+      body: JSON.stringify({
+        moduleId: currentModule.id,
+        // Mirror activeQuestions() exactly — grade against the set being shown.
+        track: (effectiveTrack() === 'supervisor' && currentModule.supervisorQuestions) ? 'supervisor' : 'patrol',
+        questionIndex: currentQuizIdx,
+        answerIndex: idx
+      })
+    });
+    if (resp.ok) result = await resp.json();
+  } catch (e) { /* falls through to the retry path below */ }
+  quizGrading = false;
+  if (!result || typeof result.correctIndex !== 'number') {
+    btn.disabled = false;
+    btn.textContent = 'Submit Answer';
+    fb.className = 'answer-feedback incorrect-fb';
+    fb.textContent = '⚠ Your answer could not be checked — check your connection and press Submit Answer again. Your selection is unchanged and nothing has been counted.';
+    return;
+  }
+  quizAnswered = true;
+  const isCorrect = result.correct === true;
   if (isCorrect) quizCorrect++;
   for (let i=0; i<q.options.length; i++) {
     const el = document.getElementById('opt-'+i);
     el.disabled = true;
     el.classList.remove('selected');
     if (i===idx) el.classList.add(isCorrect ? 'correct' : 'incorrect');
-    else if (i===q.correct && !isCorrect) el.classList.add('reveal-correct');
+    else if (i===result.correctIndex && !isCorrect) el.classList.add('reveal-correct');
   }
-  const fb = document.getElementById('answer-feedback');
   fb.className = 'answer-feedback ' + (isCorrect ? 'correct-fb' : 'incorrect-fb');
-  fb.textContent = (isCorrect ? '✓ ' : '✗ ') + q.feedback;
-  const btn = document.getElementById('btn-next-q');
+  fb.textContent = (isCorrect ? '✓ ' : '✗ ') + result.feedback;
   btn.textContent = currentQuizIdx === quizTotal-1 ? 'Submit Assessment →' : 'Next Question →';
   btn.disabled = false;
   document.getElementById('quiz-score-running').textContent = `Score: ${quizCorrect} / ${currentQuizIdx+1}`;

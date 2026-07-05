@@ -292,8 +292,6 @@ function getVehiclePursuitQuestions() {
         'The directive does not specify an offense threshold — it is left to officer discretion.',
         'The offense must constitute, or be an attempt to commit, a forcible felony against a person, or the offender must be attempting to escape while possessing a deadly weapon or otherwise indicating they will endanger life or inflict serious bodily injury unless arrested without delay.'
       ],
-      correct: 3,
-      feedback: 'Correct. The directive states that the offense for which a vehicle is pursued must constitute the commission of, or attempt to commit, a forcible felony against a person, or the offender must be attempting to escape while possessing a deadly weapon or otherwise indicating he/she will endanger human life or inflict serious bodily injury unless arrested without delay. A broken taillight and flight alone do not meet this threshold.'
     },
     {
       scenario: 'You initiate a pursuit that meets the directive\'s criteria.',
@@ -304,8 +302,6 @@ function getVehiclePursuitQuestions() {
         'Only the vehicle description and license plate, once available.',
         'Nothing — the secondary unit is responsible for all dispatcher communication.'
       ],
-      correct: 0,
-      feedback: 'Correct. The Initiating Police Officer (Primary Unit) shall provide the dispatcher with: location and direction of travel; a description of the fleeing vehicle and occupant(s) if possible; the reason for the pursuit including the seriousness of the offenses involved; information that would aid in apprehension; and any information useful in evaluating the risks or potential risks of the pursuit. The primary unit is also responsible for updating dispatch on the pursuit\'s progress and requesting additional units.'
     },
     {
       scenario: 'A pursuit is in progress. You are the primary unit. A secondary unit has fallen in behind you. A third marked unit, on its own initiative, begins to follow as well.',
@@ -316,8 +312,6 @@ function getVehiclePursuitQuestions() {
         'The pursuit shall consist of the primary and secondary unit only, unless otherwise approved by a supervisor — other units should position to monitor escape routes and channel, not block, the pursuit.',
         'Unit count is unrestricted as long as each unit notifies dispatch before joining.'
       ],
-      correct: 2,
-      feedback: 'Correct. Vehicle Pursuit Regulation 11 states: "Unless otherwise approved by a supervisor the pursuit shall consist of the primary and secondary unit only. Other police units should be responding and positioning themselves as to monitor escape routes, and channel (not block) the pursuit to assist in limiting the area covered." A third unit joining the active pursuit without supervisor approval violates this regulation.'
     },
     {
       scenario: 'During a pursuit, you identify an opportunity to perform a PIT maneuver or use your vehicle to block the suspect vehicle\'s path.',
@@ -328,8 +322,6 @@ function getVehiclePursuitQuestions() {
         'They are permitted at speeds below 25 mph regardless of the offense.',
         'They involve the use or potential use of deadly force under 18 PA C.S.A. § 508 and General Orders 1.3.1/1.3.2, and are strictly prohibited unless and only if deadly force is authorized.'
       ],
-      correct: 3,
-      feedback: 'Correct. Regulation 9 identifies ramming or other vehicular-contact intervention, and roadblocks or other roadway obstacles, as actions involving the use or potential use of deadly force, regulated by 18 PA C.S.A. § 508 (Use of Force in Law Enforcement) and General Department Orders 1.3.1 and 1.3.2. These actions "are strictly prohibited, unless and only if deadly force is authorized" — they are not a routine pursuit-ending option.'
     },
     {
       scenario: 'During a pursuit, an occupant of the fleeing vehicle displays a firearm but has not fired it.',
@@ -340,8 +332,6 @@ function getVehiclePursuitQuestions() {
         'Only with prior verbal authorization from a supervisor over the radio.',
         'At the discretion of the secondary unit, to support the primary unit.'
       ],
-      correct: 1,
-      feedback: 'Correct. Regulation 8 states: "The discharge of firearms from a moving vehicle during a motor vehicle pursuit is strictly prohibited, EXCEPT as the ultimate measure of self-defense or defense of another, when the suspect is employing deadly force." A weapon merely being visible or displayed does not, by itself, meet this standard.'
     },
     {
       scenario: 'A pursuit is initiated for a vehicle with a suspended-registration plate after the driver fails to stop. No other offense is known. Road conditions are dry and traffic is light.',
@@ -352,8 +342,6 @@ function getVehiclePursuitQuestions() {
         'Pursue only during daylight hours; terminate automatically after dark.',
         'The matrix does not address misdemeanors or infractions — officer discretion controls.'
       ],
-      correct: 0,
-      feedback: 'Correct. The Pursuit Decision-Making Matrix lists "Do not pursue, or terminate" for Misdemeanors at Low and Moderate risk, and "Do not pursue, or terminate" for Misdemeanors at High risk; the same result applies across all risk levels for Infractions (Summary). Favorable road conditions do not change this — the matrix ties the outcome to the seriousness of the offense, not just the risk level.'
     },
     {
       scenario: 'A vehicle pursuit that began in a neighboring jurisdiction crosses into East Greenville Borough.',
@@ -364,8 +352,6 @@ function getVehiclePursuitQuestions() {
         'Pursuits originating outside East Greenville and entering East Greenville shall not be joined or continued by East Greenville Police Officers; the supervisor/OIC shall request information about the pursuit and determine what assistance, if any, is to be provided.',
         'No action is required or permitted — East Greenville officers must remain uninvolved entirely, including declining requests for information.'
       ],
-      correct: 2,
-      feedback: 'Correct. Regulation 17 states that pursuits originating outside East Greenville and entering East Greenville shall not be joined or continued by East Greenville Police Officers. The supervisor/OIC shall request information relating to the nature of the pursuit and shall determine what assistance is requested and direct what assistance is to be provided — meaning some coordinated assistance is possible, but East Greenville officers do not join or continue the pursuit itself.'
     },
     {
       scenario: 'A pursuit is terminated by order of the Police Field Supervisor.',
@@ -376,8 +362,6 @@ function getVehiclePursuitQuestions() {
         'Termination is communicated only if the suspect vehicle is later apprehended by another agency.',
         'The order or decision to terminate shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System.'
       ],
-      correct: 3,
-      feedback: 'Correct. Regulation 7 requires that when a pursuit is terminated, the order or decision to terminate "shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System." This ensures all units and the Communications Center are aware the pursuit has ended without delay.'
     },
   ];
 }
@@ -432,8 +416,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'To take over as the primary unit so the most senior officer is leading the chase.',
         'To stay off the radio so the primary unit\'s transmissions are not interrupted.'
       ],
-      correct: 0,
-      feedback: 'Correct. The directive makes the field supervisor a real-time participant: monitoring by radio, ensuring compliance with the directive and the matrix, and ordering termination when continuation would not be reasonable or prudent. The officer in the car has tunnel vision; the supervisor has the whole board and the authority to end the pursuit.'
     },
     {
       scenario: 'You are monitoring a pursuit by radio. The primary unit reports the only known offenses are an expired registration and fleeing the stop. The vehicle is running through residential streets at high speed.',
@@ -444,8 +426,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Authorize additional units to help end the pursuit faster.',
         'Order termination: under the matrix, misdemeanors and infractions are "do not pursue, or terminate" at every risk level, and fleeing a lawful stop does not elevate a summary offense.'
       ],
-      correct: 3,
-      feedback: 'Correct. The matrix directs "do not pursue, or terminate" for misdemeanors and infractions at all risk levels. An expired registration plus flight is a summary matter, and flight does not raise the offense level. The supervisor terminates it; if a forcible felony later emerges, that is a separate decision on its own facts.'
     },
     {
       scenario: 'An officer on her own initiative terminated a pursuit when the hazard began to outweigh the need to apprehend, and the suspect got away. Another supervisor wants her counseled for "letting him go."',
@@ -456,8 +436,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Support the officer: Regulation 5 states that disciplinary action will not be taken against personnel for deciding to terminate a pursuit, and the directive makes public and officer safety the highest priority. Her decision should be reinforced, not punished.',
         'Discipline the primary unit\'s partner instead for not taking over.'
       ],
-      correct: 2,
-      feedback: 'Correct. Regulation 5 explicitly protects the decision to terminate from discipline, and Regulation 1 makes termination the right call when the hazard outweighs the need to apprehend. Punishing a sound termination undermines exactly the judgment the directive is built to encourage.'
     },
     {
       scenario: 'A justified pursuit for an armed robbery is underway with a primary and a secondary unit. A third unit joins on its own initiative, citing the seriousness of the offense.',
@@ -468,8 +446,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Order all three units to box in the suspect vehicle immediately.',
         'Remove the secondary unit so the third can take its place.'
       ],
-      correct: 1,
-      feedback: 'Correct. Regulation 11 limits the pursuit to the primary and secondary unit unless a supervisor approves otherwise, with other units positioning to monitor escape routes and channel the pursuit. The seriousness of the underlying crime is not an exception — only supervisor approval is.'
     },
     {
       scenario: 'During a pursuit, the primary unit radios you asking for permission to perform a PIT maneuver to end it. The suspect displayed a handgun a moment ago but has not fired.',
@@ -480,8 +456,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Tell the primary it is their call to make in the moment.',
         'Authorize the secondary unit to discharge a firearm at the tires instead.'
       ],
-      correct: 0,
-      feedback: 'Correct. Regulation 9 treats PIT, ramming, and roadblocks as deadly force, prohibited unless deadly force is authorized under § 508 and GO 1.3. A weapon displayed but not fired has not reached the threshold of the suspect employing deadly force. An officer cannot use a PIT as a substitute for that determination, and the supervisor should not authorize one here.'
     },
     {
       scenario: 'A pursuit that began in a neighboring jurisdiction crosses into East Greenville. One of your officers asks whether to join and take it over.',
@@ -492,8 +466,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Tell the officer to stay completely uninvolved, including refusing to gather any information.',
         'Direct that East Greenville officers shall not join or continue the pursuit; as supervisor/OIC you request information about the nature of the pursuit and determine what assistance, if any, is to be provided.'
       ],
-      correct: 3,
-      feedback: 'Correct. Regulation 17 provides that pursuits originating outside East Greenville and entering it shall not be joined or continued by East Greenville officers. The supervisor/OIC requests information and determines what assistance is provided — coordinated support is possible, but joining the pursuit is not, and that decision is the supervisor\'s.'
     },
     {
       scenario: 'You have decided that an ongoing pursuit must end and you order termination.',
@@ -504,8 +476,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'The decision to terminate shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System — and you should confirm it was acknowledged, not just transmitted.',
         'It takes effect only once the suspect vehicle is out of sight.'
       ],
-      correct: 2,
-      feedback: 'Correct. Regulation 7 requires that a termination be immediately and clearly communicated to dispatch via the Montgomery County radio system so all units and the Communications Center know the pursuit has ended. A supervisor should verify the termination was acknowledged across the involved units.'
     },
     {
       scenario: 'In a post-pursuit debrief, one officer terminated a marginal pursuit per the matrix and the suspect escaped, while another made a risky high-speed apprehension on a separate call that barely stayed within policy.',
@@ -516,8 +486,6 @@ function getVehiclePursuitSupervisorQuestions() {
         'Criticize the officer who terminated for not finding a way to make the arrest.',
         'Avoid comment on either decision to prevent second-guessing.'
       ],
-      correct: 1,
-      feedback: 'Correct. The directive makes safety the highest priority and Regulation 5 protects termination decisions from discipline. A supervisor who praises disciplined termination — not just successful apprehension — shapes the judgment officers will bring to the next pursuit. Rewarding only results trains the wrong instinct.'
     },
   ];
 }

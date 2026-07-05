@@ -84,8 +84,6 @@ function getTrafficStopSupervisorQuestions() {
         'Approve it on the basis that the K-9 sniff ultimately found contraband inside the vehicle.',
         'Flag the extension as a seizure problem — Rodriguez holds that prolonging a stop beyond the time needed to complete its mission, even briefly, violates the Fourth Amendment absent independent reasonable suspicion, and the report shows none arose before the mission was complete.'
       ],
-      correct: 3,
-      feedback: 'Correct. Rodriguez v. United States holds that prolonging a stop beyond its mission, even de minimis, violates the Fourth Amendment without independent reasonable suspicion. With the mission complete and no new articulable suspicion shown, the extension is a legal defect — and a later find does not cure an unlawful seizure.'
     },
     {
       scenario: 'An officer\'s report establishes solid probable cause to search a vehicle stopped on Sumneytown Pike, but the narrative shows the vehicle was stopped, the driver detained, and a second unit present. The officer searched at the roadside without a warrant and the report never addresses exigency.',
@@ -96,8 +94,6 @@ function getTrafficStopSupervisorQuestions() {
         'The missing exigency — under Commonwealth v. Alexander and MTPD Order 1.2, a warrantless vehicle search requires both probable cause and exigent circumstances; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.',
         'The only issue is that the officer should have ordered the occupants out of the vehicle first.'
       ],
-      correct: 2,
-      feedback: 'Correct. Pennsylvania does not follow the broad federal automobile exception. Under Commonwealth v. Alexander, and consistent with MTPD Order 1.2, a warrantless vehicle search requires probable cause AND exigent circumstances. A controlled scene undercuts exigency — secure the vehicle and seek a warrant.'
     },
     {
       scenario: 'An officer searched a vehicle based solely on the odor of marijuana, with nothing else in the totality documented. The vehicle was stopped and the occupants controlled.',
@@ -108,8 +104,6 @@ function getTrafficStopSupervisorQuestions() {
         'Return it only for a more vivid and detailed written description of the marijuana odor the officer detected.',
         'Approve it on the basis that odor-of-marijuana cases are essentially never suppressed in Pennsylvania.'
       ],
-      correct: 1,
-      feedback: 'Correct. Commonwealth v. Barr holds that odor of marijuana alone no longer establishes probable cause; it is a factor in the totality. A search resting solely on odor is a legal defect a better description cannot cure — and under Alexander a warrantless vehicle search would also require exigency.'
     },
     {
       scenario: 'A new officer\'s report spends a paragraph justifying why he ordered the driver and passengers out of a lawfully stopped vehicle, stating he "developed enough suspicion to remove them." He seems to believe occupant removal requires individualized suspicion.',
@@ -120,8 +114,6 @@ function getTrafficStopSupervisorQuestions() {
         'Flag the removal of the driver and passengers as an unlawful seizure of the occupants of the vehicle.',
         'Suppress the entire stop on the basis that the officer over-explained his actions in the report.'
       ],
-      correct: 0,
-      feedback: 'Correct. Pennsylvania v. Mimms and Maryland v. Wilson allow officers to order the driver and passengers out of a lawfully stopped vehicle without individualized justification. The officer\'s belief that he needed suspicion is a knowledge gap to coach — the authority attaches to the lawful stop, not to separate suspicion.'
     },
     {
       scenario: 'A traffic-stop search was lawful — the officer documented probable cause from multiple factors and articulated exigency. But the probable-cause section reads only: "Detected an odor of marijuana and the driver seemed nervous."',
@@ -132,8 +124,6 @@ function getTrafficStopSupervisorQuestions() {
         'Return it for specificity — the probable-cause documentation standard requires facts, not conclusions: where the odor was detected, its strength and character, the moment of detection, and the specific behaviors behind "nervous" — because a lawful search still has to be proven in the report.',
         'Rewrite the probable-cause section of the report yourself, in order to save the officer some time.'
       ],
-      correct: 2,
-      feedback: 'Correct. Even a lawful search must be documented to the probable-cause standard: specific, articulable facts rather than conclusions like "odor of marijuana" and "seemed nervous." This is a documentation defect to return for specificity — distinct from a search that lacked a lawful basis.'
     },
     {
       scenario: 'During a lawful stop and before its mission was complete, an officer developed genuine, articulable new suspicion (open container in plain view, inconsistent travel story, visible contraband) and acted on it, extending the encounter.',
@@ -144,8 +134,6 @@ function getTrafficStopSupervisorQuestions() {
         'No — but only because contraband was ultimately found during the extended encounter.',
         'No — Rodriguez does not restrict action on suspicion or probable cause that genuinely develops during the lawful stop; confirm the report documents the specific new facts that arose before the mission was complete.'
       ],
-      correct: 3,
-      feedback: 'Correct. Rodriguez bars prolonging a stop without independent suspicion, but it does not restrict action on suspicion or probable cause that genuinely develops during the lawful stop. The review point is to confirm the report documents the specific new, articulable facts that arose before the stop\'s mission was complete.'
     },
     {
       scenario: 'A report relies on Commonwealth v. Gary — no longer good law — as if probable cause alone still authorizes a warrantless vehicle search in Pennsylvania.',
@@ -156,8 +144,6 @@ function getTrafficStopSupervisorQuestions() {
         'Approve it as written, but ask the officer to also add a citation to Commonwealth v. Alexander.',
         'Suppress the search solely on the basis that an outdated case was cited in the report.'
       ],
-      correct: 0,
-      feedback: 'Correct. Commonwealth v. Gary was overruled by Commonwealth v. Alexander (2020). Probable cause alone no longer authorizes a warrantless vehicle search in Pennsylvania — both probable cause and exigency are required. Relying on Gary as current law is a legal error to correct.'
     },
     {
       scenario: 'Over several weeks, one officer\'s traffic-stop arrests repeatedly show the stop extended for K-9 sniffs after the mission was complete with no documented new suspicion, and warrantless searches that never address exigency. You coached him on Rodriguez and Alexander after the first instance.',
@@ -168,8 +154,6 @@ function getTrafficStopSupervisorQuestions() {
         'Quietly stop assigning the officer to any traffic enforcement, without documenting the underlying concerns.',
         'Approve the reports as-is to keep the cases moving, and revisit the whole issue at the officer\'s annual review.'
       ],
-      correct: 1,
-      feedback: 'Correct. One instance is a coaching moment; a documented pattern after coaching — stops extended without suspicion and searches without exigency — is a supervisory and training issue requiring documented corrective action and escalation, tied to Rodriguez and the Alexander/Order 1.2 standard.'
     },
   ];
 }

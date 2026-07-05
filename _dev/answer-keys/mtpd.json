@@ -1,0 +1,846 @@
+{
+ "search-seizure": {
+  "patrol": [
+   {
+    "c": 1,
+    "f": "Correct. Florida v. Jimeno (1991) established that the scope of consent is determined by objective reasonableness — what a reasonable person would have understood by the exchange. A general consent to search a vehicle does not automatically include a locked container. Clarify the scope or obtain specific consent."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Chimel v. California (1969) established that a search incident to arrest extends to the person and the area within their immediate control at the time of arrest. A backpack being worn qualifies. Note: Arizona v. Gant (2009) significantly limits vehicle searches incident to arrest — know the distinction."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Under the plain view doctrine (Horton v. California, 1990), you may seize evidence without a warrant when you are lawfully present, the item is in plain view, and its incriminating character is immediately apparent. A scale with white powder residue in a residence meets this standard."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. \"Appeared nervous\" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. Under Commonwealth v. Barr (2021), odor is only one factor in the totality of the circumstances — which makes specific, documented observations essential; a conclusory report cannot carry that analysis."
+   },
+   {
+    "c": 1,
+    "f": "Correct. When a person voluntarily abandons property, they forfeit their Fourth Amendment expectation of privacy in it. This is the abandonment doctrine. The location on private property is less determinative than the voluntary act of abandonment — courts look at whether the person intended to relinquish control over the item."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Consent is limited to the scope described or reasonably implied. Consent to search a living room does not automatically extend to an attached garage. If the consent was ambiguous about scope, you should have clarified before entering additional areas."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Terry v. Ohio (1968) established that a protective pat-down for weapons requires only reasonable suspicion that the person is armed and dangerous — it does not require consent. Consent is a separate authority. A refusal of consent does not eliminate Terry authority, nor does it extend your detention authority beyond what reasonable suspicion independently supports."
+   },
+   {
+    "c": 1,
+    "f": "Correct. The plain view doctrine (Horton v. California) permits seizure of items not named in the warrant when: (1) the officer is lawfully present, (2) the item is in plain view, and (3) the incriminating nature is immediately apparent. The white powder meets all three criteria. Locked safes, documents, and unlisted electronics do not independently satisfy the immediately apparent incriminating nature requirement without more."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 1,
+    "f": "Correct. MTPD Order 1.2 states that probable cause without accompanying exigent circumstances does not justify a warrantless vehicle search, consistent with Commonwealth v. Alexander (2020). A stopped, controlled scene undercuts exigency — the lawful path was to secure the vehicle and seek a warrant. This is the most common post-Alexander review catch in Pennsylvania."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Under MTPD Order 1.2 / Commonwealth v. Alexander a warrantless vehicle search needs probable cause AND exigency. When the report already establishes PC, the defect is the absent exigency on a controlled scene — a legal defect, not a documentation defect. Specificity cures a conclusory report; it cannot cure a missing exigency."
+   },
+   {
+    "c": 2,
+    "f": "Correct. The core supervisory skill is distinguishing a documentation problem from a legal defect. Report A is fixable with articulable facts; Report B cannot be saved by any amount of specificity because the search itself was unlawful. Always assess the legality of the search before the quality of the writing."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD Order 1.2 sets a specific consent-documentation standard: the Consent Form (Attachment D) or a mobile-vehicle-camera recording, or — absent both — a detailed written explanation of the circumstances of consent. A bare \"driver consented\" does not meet the order and gives a suppression court nothing to weigh. Return it before it becomes the record."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Florida v. Jimeno (1991) measures consent scope by what a reasonable person would have understood. A general vehicle consent does not automatically include a locked container. Absent clarification or an independent legal basis (plain view, probable cause with exigency), opening it is a suppression risk you should flag before filing."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD Order 1.2 permits inventory searches but prohibits using one as a pretext to find evidence, and specifically requires that if evidence is discovered the officer stop the inventory and secure a search warrant before continuing. Continuing to search for more evidence after the discovery is the defect to flag."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD Order 2.1 makes MDVARS recording mandatory for vehicle stops, pedestrian stops, and vehicle searches. The recording is your best corroboration of how consent was obtained and how the search was conducted, so a missing recording is an open question, not a closed file. If the system was not activated, that is a separate policy matter to address on its own terms. Erasing or altering a recording is strictly prohibited."
+   },
+   {
+    "c": 2,
+    "f": "Correct. One instance is a coaching moment; a repeated pattern after coaching is a supervisory and training issue that must be documented and escalated. An unaddressed pattern of vehicle searches that omit the exigency Order 1.2 requires becomes the department's liability, not just the officer's. Review, document, coach, and escalate when the pattern warrants it."
+   },
+   {
+    "c": 2,
+    "f": "Correct. A legally sound decision not to search still demands complete documentation of what was observed. A stop logged only as \"warning issued\" preserves nothing for the next investigation. Supervisors should hold inconclusive stops to the same documentation standard as arrests — the legal decision and the documentation are judged separately."
+   }
+  ]
+ },
+ "use-of-force": {
+  "patrol": [
+   {
+    "c": 0,
+    "f": "Correct. Graham v. Connor (1989) established the objective reasonableness standard and requires courts to evaluate: (1) the severity of the crime at issue, (2) whether the subject poses an immediate threat to officers or others, and (3) whether the subject is actively resisting arrest or attempting to evade by flight. These three factors are the foundation of every use of force analysis in American law enforcement."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Pennsylvania's use-of-force reporting requirements and department policy define reportable use of force broadly to include any intentional act used to compel compliance — including display of a weapon and verbal commands in circumstances where non-compliance would result in physical force. When in doubt, document. A report filed and not needed is far less damaging than a report that should have been filed and wasn't."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Graham v. Connor is evaluated from the perspective of a reasonable officer based on facts — not the officer's subjective feelings. \"Feared for my safety\" is a conclusion. A legally defensible report documents the specific facts: distance, the subject's actions, the weapon or threat, the speed of advance, and how each Graham factor applies. Courts and juries evaluate facts, not feelings."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Graham evaluates whether the force was objectively reasonable given the totality of circumstances at the moment force was applied. A flashlight is a serious impact weapon — but at 25 feet, without first attempting verbal commands or less-lethal options, drawing a firearm as an opening response will face significant scrutiny. Proportionality and progression of force are central to the analysis."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Distance management is a fundamental officer safety and use of force principle. Closing on a subject with a raised impact weapon eliminates the reactionary gap — the time and space needed to assess and respond to an attack. The Tueller Drill (21-foot rule) illustrates how quickly this gap collapses. Verbal commands at distance give the subject an opportunity to comply and the officer a range of options. Advancing removes both."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Graham v. Connor requires courts to evaluate whether force was objectively reasonable given the totality of the circumstances at the moment it was applied. A handcuffed, compliant subject who has not resisted presents minimal threat. Force applied in this context is likely to be found unreasonable. The threat assessment must reflect the current situation, not a prior state of resistance."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Department training and policy compliance is evidence of reasonableness but does not automatically satisfy the constitutional standard. Graham v. Connor establishes an independent objective reasonableness test. An officer who follows policy but applies force in a way that is constitutionally unreasonable under the totality of circumstances may still face § 1983 civil liability."
+   },
+   {
+    "c": 1,
+    "f": "Correct. The use-of-force continuum requires force proportionate to the threat. A handcuffed subject engaging in self-harm presents a specific, limited threat. Verbal de-escalation is the starting point. If physical intervention becomes necessary, it should be the minimum needed to prevent injury — escalating only if that minimum proves insufficient. Removing the subject from the vehicle may be appropriate but should not require excessive force."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 1,
+    "f": "Correct. Graham v. Connor is judged from the perspective of a reasonable officer based on facts, not the officer's subjective feelings. \"Aggressive\" and \"feared for my safety\" are conclusions. The report must state the three Graham factors as specific facts before it becomes the record. This is a documentation defect to return for a rewrite — distinct from a force defect."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD Order 1.3 states force will end immediately when resistance ceases, is overcome, or the arrest is accomplished. Force continued against a handcuffed, compliant subject is the most common excessive-force finding and is a force problem, not a documentation problem — it calls for corrective action, not editing."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD Order 1.3 keeps the Use of Force Report strictly separate from the incident/supplemental report and bars release outside the department without the Chief's authorization. Attaching them creates evidentiary and policy problems. The supervisory fix is to separate them, not to release the combined packet."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD Order 1.3 requires the Use of Force Report to be completed prior to the officer concluding the shift during which the force occurred. Only if the officer is injured and unable to report does the supervisor submit a written report before end of shift — the requirement is not satisfied by deferring to the next tour."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD Order 1.3 requires arranging EMS examination and transport when injury is known, suspected, or alleged — explicitly regardless of whether the subject claims injury. A complaint of wrist pain triggers the obligation. The report must reflect that medical attention was offered or provided."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD Order 1.3 specifically and strictly prohibits carotid restraints and all choke/neck restraints except where an officer or another person is in imminent fear of death or serious bodily injury and no other alternative is available. A non-life-threatening struggle with an unarmed subject does not meet that narrow exception, and the exception must be established on the facts."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD Order 1.3 allows levels to be skipped given the circumstances but requires every level applied to be documented and justified. The report must articulate why the chosen level was necessary and why lower levels were ineffective or inappropriate — not merely establish the threat."
+   },
+   {
+    "c": 0,
+    "f": "Correct. One deficient report is a coaching moment; a documented pattern after coaching is a supervisory and training issue requiring documented corrective action and escalation. The Order 1.3 stop-point rule and the Graham factors are the standard the reports keep missing, and Act 57's statewide database makes the stakes durable."
+   }
+  ]
+ },
+ "report-writing": {
+  "patrol": [
+   {
+    "c": 1,
+    "f": "Correct. Memory degrades rapidly after a high-stress incident. Even minor discrepancies between a report and body camera footage — especially ones that can be attributed to imprecise language — give defense counsel an opening to challenge the officer's overall credibility. Best practice: review available footage and notes before writing, document as soon as safely possible after the incident, and use precise language grounded in verified facts."
+   },
+   {
+    "c": 3,
+    "f": "Correct. \"Resisted arrest\" is a legal conclusion — it tells the reader what to conclude, not what happened. A legally defensible report requires specific, sequential facts: which body part moved, in which direction, what action the officer took in response, and what happened as a result. \"Subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep\" is defensible. \"Subject resisted\" is not."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Each officer reports their own observations. Your partner can document what they personally witnessed — specifically, events from their arrival forward. They cannot document the foot pursuit, the initial contact, or your use of force, because they did not observe those events. A report written by an officer who wasn't present for the documented events is hearsay, creates chain of custody issues, and will be attacked in court."
+   },
+   {
+    "c": 2,
+    "f": "Correct. The third option provides specific, sequential, body-movement-level documentation that allows any reader to reconstruct exactly what happened. It documents the subject's specific action, the officer's specific response, and the outcome — all three elements required for a use of force narrative that survives cross-examination and supports the underlying charge."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Every stop that generates observations — even stops that end without action — deserves documentation. Undocumented intelligence is lost intelligence. It cannot support a future probable cause determination, cannot corroborate another agency's investigation, and cannot be used to establish a pattern if the same subject is stopped again. Field intelligence is a law enforcement asset — if it isn't documented, it doesn't exist."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Conclusory terms like \"seemed nervous\" or \"appeared suspicious\" are not facts — they are conclusions. Defense attorneys and courts will challenge them. The professional standard is to document the specific, observable behaviors that led to your assessment. Those specific facts speak for themselves and cannot be easily dismissed as officer opinion."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Omitting known facts weakens the case. Altering a completed report retroactively without disclosure is misconduct. The correct approach is to document the statement as a supplement or addendum, note that it was captured from memory rather than contemporaneous notes, and be transparent about that limitation. This preserves the information while maintaining your integrity."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Probable cause must be grounded in specific, articulable facts — not in an officer's general conclusion. \"I believed\" is a conclusion. The report must document: what you observed, what you heard, what was said, what you detected, and how those specific facts — viewed through your training and experience — established probable cause for the specific offense charged. The training and experience reference is valid, but only when tethered to stated facts."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 0,
+    "f": "Correct. \"Resisted arrest\" and \"proportionate\" are legal conclusions. The standard requires specific, sequential facts a reader can reconstruct. Return it for the body-movement-level account before it becomes the evidentiary record."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD Order 4.13 requires a detailed explanation of the specific reasons in the narrative whenever probable cause existed but the officer elected not to arrest. A bare \"No arrest made\" fails the standard and must be returned for the explanation."
+   },
+   {
+    "c": 1,
+    "f": "Correct. The Order 4.13 narrative checklist requires both injuries observed by the officer and injuries reported by the victim but not observed — noted clearly as not observed. Capturing both protects the officer from a concealment claim and accurately bounds their observations."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD Order 1.3 requires the Use of Force Report to stay separate from the incident/supplemental report and bars release outside the department without the Chief's authorization. Separate the documents at the bin; do not forward the force report with the case file."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD Order 3.05/3.06 requires a Property Record Form completed before end of shift each time evidence is received, and Order 3.04 requires reports completed before end of tour. A narrative referencing seized evidence with no Property Record Form is an incomplete submission to be corrected before approval."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD Order 3.04 requires reports completed before end of tour and submitted to the shift bin for supervisory approval, unless otherwise authorized by the shift supervisor. Carrying a report to the next tour requires the supervisor's authorization — the timing decision belongs to you, not the officer."
+   },
+   {
+    "c": 3,
+    "f": "Correct. \"Nervous\" and \"suspicious\" are conclusions a court and defense counsel will challenge. The standard is to document the specific, observable behaviors that led to the assessment so the facts stand on their own — the same factual-not-conclusory standard the module teaches."
+   },
+   {
+    "c": 1,
+    "f": "Correct. One weak report is a coaching moment; a documented pattern after coaching is a supervisory and training issue requiring documented corrective action and escalation. Lowering the review standard or approving deficient reports to save time defeats the purpose of supervisory review."
+   }
+  ]
+ },
+ "crisis-intervention": {
+  "patrol": [
+   {
+    "c": 3,
+    "f": "Correct. PA MHPA Section 302 authorizes involuntary examination when a person poses a clear and present danger based on a recent overt act, attempt, or threat to themselves or others. Officers must document the specific factual basis — a general mental health crisis or past history alone does not satisfy the standard. A statement like \"not wanting to be here anymore,\" combined with medication non-compliance and a 2-day crisis, begins to establish criteria — but the officer must assess and document carefully."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Crisis Intervention Training (CIT) research consistently shows that individuals in mental health crisis respond to authoritative commands differently than non-crisis individuals. Commands that trigger compliance in normal encounters frequently trigger fight-or-flight responses in someone in acute distress. A calm, low-key approach — slow movement, quiet voice, non-threatening positioning — significantly reduces escalation risk. PA Act 59 of 2020 requires officers to consider de-escalation whenever it is safe and feasible."
+   },
+   {
+    "c": 1,
+    "f": "Correct. When a person in mental health crisis reaches an escalation spike — elevated voice, physical agitation, non-responsive behavior — the most effective de-escalation technique is to reduce your own energy, not match it. Back off, lower your voice, and wait. Escalation spikes are self-limiting when they aren't fed. Matching volume, issuing commands, or closing distance during a spike almost always prolongs or worsens it. Give the spike time to pass, then re-engage with calm contact."
+   },
+   {
+    "c": 0,
+    "f": "Correct. A disclosure of potential access to a means of self-harm cannot be ignored, but it also doesn't require breaking the therapeutic contact you've established. A calm, direct clarifying question — asked in the same quiet tone — allows you to assess the actual threat level without triggering defensiveness. If he confirms a firearm, you can work toward voluntary surrender through the rapport you've built. Ignoring the disclosure or over-reacting both carry significant risk."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Knowledge of a potential weapon changes your tactical awareness — where you position, where your partner stands, what you're watching for — but it does not change the fundamental approach principle for a mental health welfare check. The subject is a person in crisis, not a tactical threat. A calm, respectful approach remains the correct first contact. Your partner's positioning can account for the safety concern without that concern becoming visible in your demeanor or approach."
+   },
+   {
+    "c": 0,
+    "f": "Correct. CIT protocol prioritizes a calm environment, single-officer verbal contact, and preservation of time and distance. Perimeter control reduces stimulation and prevents additional escalation. Requesting specialized resources early ensures they are available if needed. Immediate forced intervention in a high-ledge scenario carries extreme safety risk for both subject and officer. Waiting entirely for a clinician is not feasible — officers must initiate contact while resources respond."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Challenging hallucinations can intensify distress and agitation. Confirming them may reinforce delusional thinking. CIT training teaches officers to work around the psychotic content by focusing on the emotional experience: \"I can see this is really distressing for you.\" Offering limited choices (\"Would you like to sit over here or stay where you are?\") restores a sense of agency. Psychosis alone does not automatically meet § 302 criteria — it requires clear and present danger behavior."
+   },
+   {
+    "c": 1,
+    "f": "Correct. De-escalation takes time — that is not a failure. Communicate progress honestly to your supervisor: the subject is calmer, the tactic is working, and an abrupt change in approach after 35 minutes of relationship-building can re-escalate the situation significantly. Propose a defined additional time window. Good supervisors support patient de-escalation when they receive clear status communication. § 302 requires evidence of clear and present danger — time spent on a call does not create that legal standard."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 1,
+    "f": "Correct. 50 P.S. § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger. Past psychiatric history is context, not the standard. A 302 grounded only in history is the kind courts scrutinize, and the record must show the specific recent facts."
+   },
+   {
+    "c": 3,
+    "f": "Correct. When the officer reports de-escalation is working, an abrupt tactical change can re-escalate the encounter. ALO 5.4 favors de-escalation where safe and feasible. The supervisor supports a defined additional time window rather than forcing a fast physical resolution. Time spent on a call does not, by itself, create § 7302 criteria."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 5.4 requires officers to document the specific de-escalation techniques used, the subject's response, and why de-escalation was or was not continued. On a force-involved mental health call, that record is part of the file and must be present before approval."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD Order 3.02 requires every detainee to be thoroughly searched before entry to the temporary holding area regardless of any prior field search, firearms secured in lock boxes, and no detainee left unsupervised for more than 10 minutes. A crisis subject in custody is exactly who these continuous-supervision rules protect."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD Order 4.07 bars holding a juvenile in a cell that houses adults and requires sight-and-sound separation under continuous visual supervision of a sworn officer. Secure detention is limited to identification, investigation, processing, and transfer and may not exceed six hours."
+   },
+   {
+    "c": 1,
+    "f": "Correct. CIT principles recognize that authoritative commands often trigger fight-or-flight in someone in crisis, and ALO 5.4 calls for de-escalation where safe and feasible. The review point is an honest assessment of the approach and the de-escalation opportunity — not attributing the escalation solely to the subject."
+   },
+   {
+    "c": 2,
+    "f": "Correct. 50 P.S. § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger. A diagnosis alone, with a calm and cooperative subject and no qualifying conduct, does not meet the standard. The supervisor guides documenting that the criteria were not met rather than overreaching the 302."
+   },
+   {
+    "c": 3,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — 302s on history alone and missing de-escalation records — is a supervisory and training issue requiring documented corrective action and escalation tied to the § 7302 standard and ALO 5.4."
+   }
+  ]
+ },
+ "domestic-violence": {
+  "patrol": [
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.13 requires arrest of the primary aggressor in domestic violence incidents when probable cause exists — based on officer observations, victim statements, or witness statements. Victim preference does not control the arrest decision and is not a required element. A visible injury plus a consistent victim account establishes probable cause. The officer does not need the victim's consent or supervisor authorization to make the arrest."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 4.13 requires officers to seize firearms when a person is arrested for a domestic violence offense and is subject to a court order prohibiting firearm possession. Both conditions are present: a DV arrest and a confirmed final PFA order. The firearms are in the residence. The seizure is mandatory — not discretionary. Each seized firearm must be documented on a Property Record Form before end of shift per ALO 3.05/3.06."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 4.13 requires a detailed explanation in the narrative when an officer has probable cause but elects not to arrest. \"Parties separated for the evening. No arrest made.\" does not satisfy this requirement. The narrative must address specifically: whether probable cause existed, and if it did, the specific documented reasons for not arresting. This protects the department, documents the officer's decision-making, and creates a record for future incidents at the same address."
+   },
+   {
+    "c": 2,
+    "f": "Correct. The MTPD ALO 4.13 DV narrative checklist specifically requires documentation of both: injuries observed by the officer AND injuries reported by the victim but not observed — noted clearly as not observed. This distinction protects the officer from a later claim that an injury was concealed, while accurately representing the limits of the officer's personal observations. Both types of injury information belong in the narrative with clear attribution."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 4.13 requires officers to approach domestic disturbance calls without lights or sirens within one block of the reported location. This approach protects officers by allowing for tactical assessment before making contact — and prevents alerting subjects inside the residence that police are arriving, which could trigger escalation, flight, or violence against the victim. Response to DV calls presents unique officer safety risks, and the approach protocol is a specific safety measure, not a suggestion."
+   },
+   {
+    "c": 3,
+    "f": "Correct. ALO 4.13 and Pennsylvania DV law require identification of the primary aggressor when both parties claim victimhood. Dual arrests are disfavored and should be rare. Relevant factors: comparative severity of injuries, any history at the address, statements made, evidence of defensive injury patterns, and whether one party acted in self-defense. Document your reasoning thoroughly — primary aggressor determinations are scrutinized in court."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Under 23 Pa. C.S. § 6113, violation of a final PFA order is a criminal offense — indirect criminal contempt — and is not a civil matter. Officers who observe a violation have authority and obligation to arrest. Victim preference does not control the enforcement decision on a PFA violation any more than it does on the underlying assault. Document the violation, the PFA status, and your enforcement action."
+   },
+   {
+    "c": 2,
+    "f": "Correct. ALO 4.13 requires victim notification at the scene. This includes: explaining the charges filed, the likelihood of bail processing (which may mean release), how to obtain an emergency PFA if one is not in place, victim services contact information, and safety planning resources. Telling her you \"cannot predict\" the outcome without providing this framework abandons the notification requirement. Never make guarantees about detention — bail is a court function — but you must give her the information she needs to protect herself."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 2,
+    "f": "Correct. MTPD ALO 4.13 makes arrest of the primary aggressor mandatory when probable cause exists, and victim consent is not a required element. A visible injury plus a consistent victim account establishes probable cause. Declining arrest because the victim did not want to press charges is a policy failure to correct."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.13 makes firearms seizure mandatory when a person is arrested for a DV offense and is subject to a court order prohibiting possession. Both conditions are present. \"Already in custody\" does not excuse the seizure, and each firearm must be documented on a Property Record Form per ALO 3.05/3.06."
+   },
+   {
+    "c": 3,
+    "f": "Correct. ALO 4.13 requires identification of the primary aggressor when both claim victimhood. Dual arrests are disfavored and should be rare. The report must document the analysis — comparative injury severity, history, evidence of defensive injuries, and self-defense — not simply note that both were injured."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 4.13 requires victim notification following a DV arrest — the resource card and advisement on arraignment timeline, bail conditions, shelter services, and the right to a PFA — with completion documented in the narrative. A report missing that record is incomplete."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD ALO 4.13 states officers shall never release the defendant instead of taking them to the issuing authority — the prohibition applies regardless of workload, victim request, or cooperation. Releasing an arrested DV subject in lieu of arraignment is a serious violation to address."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Under Pennsylvania's PFA framework a violation is a criminal offense, independently chargeable regardless of new violence, and the protected party cannot waive the order on the subject's behalf. \"She invited me\" is not a defense, and treating the violation as civil is the review point to correct."
+   },
+   {
+    "c": 1,
+    "f": "Correct. The ALO 4.13 narrative checklist requires the report to address each applicable item, including children present (with names, ages, and relocation) and previous incidents. The officer's own narrative flags both, so the report must be returned to complete them."
+   },
+   {
+    "c": 0,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — declined mandatory arrests and a skipped firearms seizure — is a supervisory and training issue requiring documented corrective action and escalation, with direct victim-safety stakes under ALO 4.13."
+   }
+  ]
+ },
+ "vehicle-pursuits": {
+  "patrol": [
+   {
+    "c": 2,
+    "f": "Correct. MTPD ALO 4.02 requires immediate notification to communications upon initiating a pursuit, including your unit, nature of the offense, direction of travel, approximate speed, and vehicle description. Supervisor notification and authorization are required. This communication obligation is not optional and is not contingent on how long the pursuit lasts — it applies from the moment a vehicle fails to stop."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 4.02 sets a hard limit of two patrol units in any vehicle pursuit. A third unit may not join the pursuit regardless of operational rationale. If road interdiction is needed, stop sticks are the authorized tactical option — deployed by a unit not actively in pursuit, with supervisor authorization. \"Additional units improve safety\" is not an exception to the two-unit maximum."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.02 lists specific termination factors including: the suspect's identity is known and arrest can be accomplished by other means, and when the danger to officers or the public outweighs the need for immediate apprehension. Both are present here: identity confirmed, misdemeanor warrant level offense, wet roads, residential neighborhood, 50 mph. Officers must continuously evaluate these factors and may recommend termination — supervisors may also order it. The subject does not need to be a flight risk from justice to have the pursuit terminated."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 4.02 specifically prohibits PIT (Precision Immobilization Technique) maneuvers. This is not a conditional prohibition — it is an absolute prohibition. Regardless of circumstances, supervisor authorization, or the nature of the offense, PIT maneuvers are not authorized under MTPD policy. The authorized alternative for vehicle interdiction is stop stick deployment, which requires supervisor authorization and is deployed by a unit not in active pursuit."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 4.02 requires documentation of every pursuit — whether it results in apprehension or termination. The supervisor is required to complete a Pursuit Review Form within 24 hours. The officer documents: basis for initiation, notifications made, time and basis of termination, last known location, and suspect identity if known. All pursuit reports are reviewed at the command level. Documentation of a terminated pursuit is not optional — termination is a tactical decision that must be as thoroughly documented as any other use of police authority."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.02 caps pursuit units at two and requires supervisor control over pursuit decisions, including unit count. A third officer joining on their own initiative violates policy regardless of the suspect's behavior or the primary unit's silence. The supervisor may authorize a second unit — but that authorization must exist. Document any unauthorized joining and notify the supervisor immediately."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD ALO 4.02 lists specific mandatory termination factors — circumstances under which the pursuit must end regardless of the suspect's offense. An active school zone during school hours is among the highest-risk environments and triggers mandatory termination. Notify dispatch and your supervisor immediately, document the termination reason, and shift to investigative follow-up. The risk to children and civilians outweighs the apprehension interest in virtually all circumstances."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Pursuit termination ends the vehicle pursuit. Your immediate obligations are: stop your vehicle safely, document the suspect's last known description, position, and direction of flight, and broadcast to dispatch. The supervisor then directs next steps — which may include perimeter establishment, K9, or area canvass. Initiating a unilateral foot pursuit into a residential area following a vehicle pursuit termination raises independent safety and policy concerns that require supervisor direction."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 2,
+    "f": "Correct. MTPD ALO 4.02 termination criteria are squarely met: the offense is minor, the suspect is identified and can be arrested later, and the danger outweighs the need for immediate apprehension. Officers and supervisors shall terminate in these conditions, and a documented decision to terminate is the defensible one."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 4.02 sets a hard two-unit maximum that is expressly not subject to supervisor override. The third unit shall not join. It can position to contain, and stop sticks — deployed by a unit not in the pursuit, with your authorization — are the authorized interdiction tactic."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.02 prohibits PIT maneuvers absolutely — no circumstance, supervisor authorization, or offense severity authorizes one. Stop sticks, deployed by a unit not actively in the pursuit with supervisor authorization, are the authorized alternative."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 4.02 authorizes stop sticks only with supervisor authorization and only by a unit not actively in the pursuit, and requires the deploying unit to give the pursuing unit precise deployment location. It is the authorized alternative to additional pursuit units and to PIT maneuvers."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 4.02 requires the on-duty supervisor to complete a Pursuit Review Form within 24 hours of any pursuit, regardless of outcome. Termination is as important to document as initiation; skipping the form because no one was caught is a documentation failure and a liability exposure."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.02 requires documentation of the basis and time of termination, the notifications made, and the last known location and direction of travel. \"Broke off when it got too hairy\" is a conclusion, not the specific basis the order requires."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 4.02 requires immediate notification upon initiating a pursuit — unit, nature of the offense, direction, approximate speed, and vehicle description — and requires supervisor notification and authorization. The communication is mandatory from the moment the vehicle fails to stop, which is what brings the supervisor into the decision early."
+   },
+   {
+    "c": 2,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — pursuits continued past the termination criteria — is a supervisory and training issue requiring documented corrective action and escalation, tied to the ALO 4.02 criteria and the real civil-liability exposure pursuits carry."
+   }
+  ]
+ },
+ "leadership": {
+  "patrol": [
+   {
+    "c": 3,
+    "f": "Correct. Terry v. Ohio (1968) requires individualized, reasonable articulable suspicion of criminal activity before an investigative stop. Group presence does not supply the basis for individual stops. A senior officer who corrects this in the field prevents a Fourth Amendment violation and trains the junior officer for future calls."
+   },
+   {
+    "c": 0,
+    "f": "Correct. 18 Pa. C.S. § 3503 requires that property be posted with conspicuous signage, fenced in a manner designed to exclude intruders, or that the subject have received direct prior communication that entry is not permitted. An owner's call to police does not substitute for proper notice. Advise the owner on the formal trespass process rather than taking unlawful enforcement action."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Police Executive Research Forum (PERF) research identifies demonstrated judgment in ambiguous situations as the top predictor of supervisory readiness — not seniority or test scores. Officers who make consistent, law-grounded decisions in unclear situations, and who correct others through those situations, demonstrate the core supervisory competency before ever holding the rank."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Corrections to junior officer conduct are most effective when delivered privately and directly, without an audience. Public corrections damage working relationships, create resentment, and close down the learning. A brief, private, law-grounded correction — delivered calmly — builds the officer rather than shuts them down. MTPD ALO 1.01 supports addressing concerns through proper channels, not in the field in front of personnel or the public."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Accountability means owning the decision and the outcome — good or bad — explaining the reasoning behind it clearly, and identifying what you'd change. This is distinct from blame (pointing outward) and from self-flagellation (collapsing under the critique). Officers who demonstrate this pattern consistently earn supervisory trust faster than any other quality. It is the leadership behavior that gets noticed without requiring a sergeant's badge."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Public disputes among officers damage unit cohesion and public trust. The first priority is de-escalation: separate the parties and move the conversation to a private setting. Then address the conduct (the public dispute) and the underlying issue (the disagreement about the call) as two distinct matters. Taking sides publicly undermines your credibility as a supervisor with both officers and the watching team. Document as appropriate, but intervention — not documentation — is the immediate response."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Three occurrences in two weeks is a pattern that requires direct supervisor engagement. Waiting creates a pattern of unchallenged conduct. A formal written reprimand without a prior conversation skips the coaching step. The correct approach is a direct, documented conversation: state what you observed, set the expectation, listen for context (there may be a wellness or personal issue), and document the conversation. This protects the officer, you, and the department if escalation becomes necessary."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Officers who feel unheard disengage. Dismissing the concern damages trust. Agreeing and venting with a subordinate about command decisions undermines your authority and theirs. The professional response: acknowledge the concern, explain the policy to the best of your knowledge, and direct them to the proper channel for formal feedback. This respects their voice while reinforcing the chain of command and your own professional standing."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 1.01 requires officers to operate within the chain of command and raise concerns through proper channels rather than in the field in front of personnel or the public. The directive holds in the moment; the concern is addressed privately through channels afterward."
+   },
+   {
+    "c": 1,
+    "f": "Correct. The module's standard — reinforced by the chain-of-command expectation in ALO 1.01 — is that private, direct, one-on-one feedback builds while public correction breaks. Correct privately and without condescension; the manner of correction is itself the lesson the squad absorbs."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Terry v. Ohio requires individualized reasonable articulable suspicion; presence in a location, even in a group, is not a basis for individual stops. The supervisory move is to teach the standard and require individualized suspicion — bypassing it to clear a call fast trains officers wrong and exposes the department to liability."
+   },
+   {
+    "c": 0,
+    "f": "Correct. 18 Pa. C.S. § 3503 requires conspicuous posting, exclusionary fencing, or direct communication that entry is not permitted before a trespass warning supports enforcement. The supervisor guides the officer to confirm the elements — typically by giving lawful notice first — rather than charging on the owner's request alone."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Accountability is owning decisions; blame is pointing outward, and the squad adopts whichever the supervisor models. The move is to address the deflection privately, require the officer to account for his own decisions, and own your share openly — modeling the trait that most earns supervisory trust."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Officers who demonstrate accountability without being prompted are showing the single trait that most earns supervisory trust. Punishing the honesty trains officers to hide mistakes. Recognize the accountability, address the decision constructively, and work the correction."
+   },
+   {
+    "c": 0,
+    "f": "Correct. The module identifies clarity, not speed, as the supervisory hallmark, and the leader's filter is \"what is the right outcome here, and what is the fastest responsible path to it?\" PERF research identifies demonstrated judgment in ambiguous situations as the top predictor of promotion — model and teach that filter."
+   },
+   {
+    "c": 3,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — suspicionless group stops and field insubordination — is a supervisory issue to address through proper channels with documented coaching and training on Terry and ALO 1.01, consistent with the chain-of-command standard you are charged with modeling."
+   }
+  ]
+ },
+ "traffic-stops": {
+  "patrol": [
+   {
+    "c": 1,
+    "f": "Correct. Pennsylvania v. Mimms (1977) established that officers may order the driver of a lawfully stopped vehicle to exit as a matter of course, without articulating additional justification. The government's interest in officer safety during a traffic stop outweighs the minimal intrusion of requiring the driver to stand outside. Maryland v. Wilson (1997) extends this authority to all passengers."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Rodriguez v. United States (2015) prohibits extending a stop beyond its lawful purpose without independent reasonable suspicion. Once the citation is issued and documents are ready to be returned, the stop's purpose is complete. Refusal to consent is not reasonable suspicion — exercising a constitutional right cannot be used as the basis for detention. Without independent articulable suspicion, you must return the documents and allow departure."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Commonwealth v. Barr (2021): because medical marijuana is lawful in Pennsylvania, the odor of marijuana alone no longer establishes probable cause — but it remains a legitimate factor in the totality of the circumstances. And Commonwealth v. Alexander (2020) overruled Commonwealth v. Gary (2014): a warrantless vehicle search now requires both probable cause AND exigent circumstances, with a warrant as the default. Document the specific basis — where the odor was detected, its strength, and the corroborating factors that, together, build probable cause."
+   },
+   {
+    "c": 2,
+    "f": "Correct. A search warrant is judicial authorization; it does not depend on the subject's consent, and an objection — however emphatic — does not suspend it. Document the driver's statement verbatim in your report as relevant context, but it does not alter the lawfulness of a warrant-authorized search. (Under Commonwealth v. Alexander (2020), a warrantless vehicle search in Pennsylvania requires both probable cause and exigent circumstances, so a warrant is the default path.) If he physically interferes with the search, that is a separate criminal matter."
+   },
+   {
+    "c": 0,
+    "f": "Correct. \"Detected an odor of marijuana\" is a conclusion, not documentation of probable cause. At a suppression hearing, the Commonwealth must establish the factual basis for probable cause with specificity. Proper documentation includes: the precise location where the odor was detected (e.g., \"upon approaching the driver's open window\"), the strength and character of the odor, when it was detected relative to the contact, and any corroborating behavioral observations. Vague probable cause language is the most common suppression vulnerability in vehicle search cases in Pennsylvania."
+   },
+   {
+    "c": 1,
+    "f": "Correct. A recent vehicle purchase may explain absent registration. MDT checks can verify recent sales and registration status. Discretion — guided by department policy and the totality of the circumstances — is appropriate here. Document what you observed, what the driver provided, and what your check returned. Impoundment and arrest are disproportionate responses to a verifiable, plausible explanation. Thorough documentation protects you regardless of the disposition."
+   },
+   {
+    "c": 2,
+    "f": "Correct. DUI arrests require probable cause grounded in specific articulable facts. Passing SFSTs reduces the available PC but does not automatically eliminate it — impairment can be drug-based, and not all impairment registers on breath tests. A Drug Recognition Expert (DRE) evaluation may establish additional facts. Whatever your decision, document every observation: driving pattern, physical indicators, performance on each SFST component, and any statements. Arrests made on intuition without documented PC do not survive prosecution."
+   },
+   {
+    "c": 3,
+    "f": "Correct. A vehicle registered to a felony warrant subject, combined with a driver who physically matches that subject, provides reasonable suspicion to investigate further even when the presented license comes back to a different name. People use false identification. Requesting additional information and extending the stop for this specific investigation purpose is lawful under Terry. Document the specific articulable facts supporting your continued investigation. An arrest requires probable cause established through the investigation — not just the plate return."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 3,
+    "f": "Correct. Rodriguez v. United States holds that prolonging a stop beyond its mission, even de minimis, violates the Fourth Amendment without independent reasonable suspicion. With the mission complete and no new articulable suspicion shown, the extension is a legal defect — and a later find does not cure an unlawful seizure."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Pennsylvania does not follow the broad federal automobile exception. Under Commonwealth v. Alexander, and consistent with MTPD Order 1.2, a warrantless vehicle search requires probable cause AND exigent circumstances. A controlled scene undercuts exigency — secure the vehicle and seek a warrant."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Commonwealth v. Barr holds that odor of marijuana alone no longer establishes probable cause; it is a factor in the totality. A search resting solely on odor is a legal defect a better description cannot cure — and under Alexander a warrantless vehicle search would also require exigency."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Pennsylvania v. Mimms and Maryland v. Wilson allow officers to order the driver and passengers out of a lawfully stopped vehicle without individualized justification. The officer's belief that he needed suspicion is a knowledge gap to coach — the authority attaches to the lawful stop, not to separate suspicion."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Even a lawful search must be documented to the probable-cause standard: specific, articulable facts rather than conclusions like \"odor of marijuana\" and \"seemed nervous.\" This is a documentation defect to return for specificity — distinct from a search that lacked a lawful basis."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Rodriguez bars prolonging a stop without independent suspicion, but it does not restrict action on suspicion or probable cause that genuinely develops during the lawful stop. The review point is to confirm the report documents the specific new, articulable facts that arose before the stop's mission was complete."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Commonwealth v. Gary was overruled by Commonwealth v. Alexander (2020). Probable cause alone no longer authorizes a warrantless vehicle search in Pennsylvania — both probable cause and exigency are required. Relying on Gary as current law is a legal error to correct."
+   },
+   {
+    "c": 1,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — stops extended without suspicion and searches without exigency — is a supervisory and training issue requiring documented corrective action and escalation, tied to Rodriguez and the Alexander/Order 1.2 standard."
+   }
+  ]
+ },
+ "emotional-intelligence": {
+  "patrol": [
+   {
+    "c": 2,
+    "f": "Correct. IACP research consistently identifies officer demeanor in the first 60 seconds of a victim contact as the strongest predictor of victim cooperation. Victims who experience the initial contact as controlling, dismissive, or skeptical are significantly less likely to provide statements or pursue protective orders. The officer's emotional approach is not separate from the investigation — it is part of it."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Hostility, minimization, and recantation are normal trauma responses in domestic violence victims — they are not indicators of deception. These behaviors stem from fear, shame, prior negative law enforcement experiences, and the complex dynamics of abusive relationships. A trauma-informed officer recognizes this pattern and adjusts their approach accordingly rather than misreading it as uncooperativeness or deception."
+   },
+   {
+    "c": 1,
+    "f": "Correct. DV victims with prior experience in the justice system know when they are being given false reassurance — and when it happens, it destroys the trust you were building. The professionally sound response is accurate information: what the arraignment process looks like, what a PFA order is and how to get one today, and how to reach the victim advocate. Honest and actionable beats reassuring and inaccurate every time. Providing misleading information about custody violates MTPD ALO 4.13 notification requirements."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Evidence identified during follow-up contacts is still evidence. A supplemental report must document the injury with specificity: location on the body, approximate size and coloration, the victim's statement about when and how it occurred (clearly attributed to her), and whether photographs were taken. Follow-up contact documentation is not secondary to the original report — in many DV cases it contains the most damaging evidence. There is no medical release requirement for documenting observable injuries."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Self-regulation in emotional intelligence is the ability to manage your own emotional state — specifically under provocation. A hostile, irrational, or disrespectful subject is typically responding to fear, pain, or trauma, not personally targeting the officer. Officers who match hostility with hostility escalate situations that could have been contained. Self-regulation is not passivity — it is an active choice to respond from training and judgment rather than from reaction. It is a tactical skill that directly affects call outcomes, use of force rates, and community relationships."
+   },
+   {
+    "c": 2,
+    "f": "Correct. On-scene contradictions between partners escalate situations and undermine both officers' authority. The effective response is to absorb the escalation by redirecting the subject's focus to you, using calm tone and de-escalation language to re-stabilize. Address your partner's approach privately and professionally after the scene is resolved. This preserves safety, partnership, and your credibility. Publicly correcting a partner is itself an escalation."
+   },
+   {
+    "c": 0,
+    "f": "Correct. A brief, genuine human acknowledgment — without interrogation, without dismissal — is both ethical and professionally appropriate. You are not a counselor, but you are not required to be cold either. Do not solicit further statements that could create custodial interrogation issues. Do not exploit emotional vulnerability for investigative purposes. Simply acknowledging someone's pain is part of the professional treatment every person in custody deserves."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Emotional numbing — feeling nothing on scenes that previously had impact — is a recognized early indicator of secondary traumatic stress and the pathway to burnout. It is not strength or adaptation; it is a signal. EAP and peer support resources exist specifically for this reason and carry confidentiality protections. The research is clear: early intervention produces significantly better outcomes than crisis-point intervention. If you recognize this in yourself, act early."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 1,
+    "f": "Correct. IACP research identifies officer demeanor in the first 60 seconds as the strongest predictor of victim cooperation. A clipped, skeptical opening that shut the victim down is a demeanor problem to coach — the officer's emotional approach is part of the investigation, not separate from it."
+   },
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 4.13 requires follow-up DV contacts to prioritize safety assessment and engagement over documentation efficiency and to provide victim advocate and PFA information at every contact. \"She already knows\" does not meet the standard; the contact exists to inform and engage, not just to clear."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Recantation, minimization, hostility, and refusal to engage are recognized trauma responses, not proof of deception. The coaching point is the trauma-informed approach: adjust pace and language, give space, and engage on the victim's terms rather than writing her off."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Matching hostility escalates a containable call; absorbing it without matching changes the trajectory. Self-regulation is an active choice, and on scene the supervisor's composure sets the ceiling — modeling and directing a lower energy resets the encounter and the squad."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Empathy is accurate perception of another's emotional state, not agreement. A hostile, guarded victim is often protecting herself, and reading the actual situation rather than the surface presentation leads to better information and outcomes — the opposite of pushing for speed."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Self-regulation is an active, real-time choice, and on a tense scene the supervisor's composure sets the ceiling for everyone. Arriving composed and deliberate lowers the temperature; arriving loud or mirroring the keyed-up energy raises it."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Emotional intelligence is a trainable tactical skill, not fixed personality. The supervisor coaches the specific behaviors — the first-60-second approach, self-regulation, and accurate reading of the situation — because they measurably drive victim cooperation and de-escalation outcomes."
+   },
+   {
+    "c": 2,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — dismissive demeanor, suppressed cooperation, and skipped ALO 4.13 follow-up requirements — is a supervisory and training issue requiring documented corrective action and escalation, with real consequences for victim cooperation and safety."
+   }
+  ]
+ },
+ "evidence-chain-of-custody": {
+  "patrol": [
+   {
+    "c": 0,
+    "f": "Correct. First officers own the scene until it is formally handed off to detectives or crime scene personnel. All unauthorized persons — including victims and property owners — must be kept out of the crime scene until it has been documented. Any person who enters before documentation can contaminate fingerprints, trace evidence, and body position. This is one of the most common chain of custody vulnerabilities in burglary cases."
+   },
+   {
+    "c": 1,
+    "f": "Correct. In-place documentation before collection is mandatory. The item must be photographed in its discovered location by the collecting officer — in this case, the detective. Your role as the first officer is to preserve the scene, document observations, and prevent unauthorized access. Moving or bagging the item before it is photographed in place breaks the chain of custody, even with good intentions."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Advising your supervisor of the situation — detective ETA, the evidence involved, and the chain of custody risk — is the professional response. Supervisors can make informed decisions when given accurate information. Improvised collection without proper packaging and in-place documentation creates suppression vulnerabilities that can destroy a prosecution. Option D (outright refusal) is not the answer — communication is."
+   },
+   {
+    "c": 3,
+    "f": "Correct. In-place photography from multiple angles — including a scale reference — is the standard for documenting physical evidence before collection. Written descriptions and sketches are supplementary documentation tools, not substitutes for photography. The photograph establishes the item's position, condition, and location at the moment of discovery — which is critical when chain of custody is challenged in court."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Biological evidence — blood, saliva, tissue — must be packaged in paper, not plastic. Airtight plastic traps moisture and accelerates bacterial growth, which degrades DNA and can render biological evidence useless. Proper forensic packaging for biological items is paper bags or paper envelopes, air-dried before sealing. Hard evidence like tools or electronics goes in plastic. Knowing which packaging applies to which evidence type is a basic chain of custody requirement."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Blood samples in DUI cases require a documented chain of custody from collection to analysis. Your documentation should include: the date and time of collection, the nurse's name and facility, the kit ID number, how the sample was sealed and labeled, your transport from the hospital, and your property room submission with time and submission number. Any gap in this chain can result in suppression or weight challenges at trial. Pennsylvania DUI prosecutions frequently hinge on chain of custody integrity."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Leaving evidence unattended and uncollected at an unsecured crime scene creates chain of custody problems and evidence integrity risk. If you are the officer present and the scene requires evidence collection, that is your responsibility unless department protocol specifically directs otherwise. Photograph in place, document location, collect using protocol, and complete the chain with proper property room submission. Detectives can also be involved in analysis — but initial collection and documentation is the responding officer's responsibility."
+   },
+   {
+    "c": 2,
+    "f": "Correct. A disturbed evidence seal is a chain of custody integrity issue that must be reported before the evidence goes to court. Taking it to court with an observed integrity question — without disclosure — creates a much larger problem than addressing it before trial. Notify the property room supervisor, document your observation contemporaneously, and notify the prosecutor so they can make an informed decision about how to proceed. The prosecutor may have the ability to address it; taking it to court without disclosure does not."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 2,
+    "f": "Correct. MTPD Order 3.05/3.06 requires a Property Record Form completed before end of shift whenever evidence is received, and evidence must be in authorized storage — a temporary locker, not a patrol car. Carrying it to the next shift unlogged is precisely the gap in custody that breaks the chain."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Biological evidence must be packaged in paper for breathability; plastic allows decomposition and invites a defense challenge to DNA integrity. MTPD Order 3.05/3.06 requires paper packaging for physical evidence — return it for repackaging."
+   },
+   {
+    "c": 0,
+    "f": "Correct. In-place documentation before first touch is non-negotiable — a photo of an item after it was moved cannot establish its original position or spatial relationships. The supervisor flags the failure and reinforces the standard; moving it back to re-stage the photo would misrepresent the scene."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Unsealed or re-sealed packaging is a tampering argument. When a package is opened for testing, the chain requires documenting every person present, the seal condition before opening, and the reason. A re-taped package with no such record must be returned for that documentation — and re-taping silently would compound the problem."
+   },
+   {
+    "c": 3,
+    "f": "Correct. A period the evidence cannot be accounted for is a gap in custody, and the chain-of-custody challenge standard turns on documentation, not the officer's memory. The fix is documented continuous custody and immediate securing in a designated locker — \"I had it the whole time\" is exactly what the documentation must replace."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Under Pennsylvania Rules of Criminal Procedure Rule 648, physical evidence must be authenticated, and chain-of-custody documentation is the foundation. Courts ask whether there is a reasonable probability the evidence was not altered or substituted, and the documentation — not the officer's memory — is what answers that at trial."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD Order 3.05/3.06 makes the Property Record Form the chain for each item — documenting collection, packaging, and custody, labeled with the RMS incident number, item number, and any hazard. A lumped form that omits per-item detail is incomplete and must be returned."
+   },
+   {
+    "c": 0,
+    "f": "Correct. One lapse is a coaching moment; a documented pattern after coaching — over-shift carries, plastic-packaged biologicals, missing in-place documentation — is a supervisory and training issue requiring documented corrective action and escalation, because each chain gap is a future suppression exposure."
+   }
+  ]
+ },
+ "officer-wellness": {
+  "patrol": [
+   {
+    "c": 3,
+    "f": "Correct. Emotional numbing, depersonalization (\"watching from far away\"), and loss of empathy are recognized symptoms of secondary traumatic stress (STS) and operational stress injury (OSI) — documented occupational health conditions in law enforcement. These are not personality failures or signs of weakness. They are physiological responses to sustained exposure to trauma and high-stakes stress. Identifying them early is the difference between intervention and crisis."
+   },
+   {
+    "c": 0,
+    "f": "Correct. The appropriate first step is a direct, private conversation — without judgment, without escalating immediately to administration. Peer support exists for exactly this scenario. The comment about not caring whether he comes home is a warning sign that warrants a response beyond dark humor dismissal. If after a peer conversation there are continuing safety concerns — particularly around fitness for duty — involving a peer support officer or supervisor becomes the appropriate next step."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Peer support contacts are confidential under MTPD policy and Pennsylvania law — but confidentiality is not absolute. If an officer discloses imminent intent to harm themselves or others, or describes conduct constituting a criminal offense, disclosure may be required. This is the same standard that applies to mental health professionals. Peer support officers are trained to communicate these limits clearly at the start of any contact. The goal is to encourage use of the program, not to create false expectations about absolute confidentiality."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Self-referral to peer support or the EAP is the appropriate early action and does not automatically trigger administrative review or fitness-for-duty evaluation. MTPD wellness policy distinguishes between voluntary wellness contacts — which are confidential — and formal fitness-for-duty evaluations, which are administrative in nature and involve a different process. Early intervention is far less disruptive than waiting for symptoms to escalate to a point where administrative action becomes necessary."
+   },
+   {
+    "c": 0,
+    "f": "Correct. When informal support has not produced change and officer performance is creating safety concerns on active calls, the threshold for escalating support — not discipline — has been crossed. The correct approach is transparency: tell him what you observed, give him the opportunity to self-refer, and make clear you are following through regardless. This is not a betrayal — it is the highest form of partner loyalty. An officer who cannot safely perform their duties is a danger to themselves, their partners, and the public."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Behavioral pattern changes are among the most reliable early indicators of officer distress. No single behavior may trigger concern, but the accumulated pattern is the signal. Direct, private peer engagement — without accusation, without pressure — is the research-supported first response. \"I've noticed you seem different lately and I just wanted to check in\" costs nothing and can save a career or a life. Peer support contacts under MTPD policy are confidential."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Critical incident debriefs serve both immediate and long-term wellness functions. The research consistently shows that early engagement with post-incident support reduces the incidence of PTSD and long-term psychological injury. Normalizing participation — \"everyone goes through this, it's part of the protocol\" — reduces stigma without coercion. Coercing participation produces defensive engagement. The peer's role is to normalize and encourage, not to enforce."
+   },
+   {
+    "c": 2,
+    "f": "Correct. A wellness-informed officer knows how to give an honest calibrated answer: neither dramatizing nor minimizing. You can acknowledge that the past three months were heavy, note that you are currently stable, and mention anything you are paying attention to in yourself. This kind of honest self-awareness is not weakness — it is the professional capacity to monitor your own system the same way you monitor your patrol vehicle. Supervisors who ask are trying to lead. Let them."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 2,
+    "f": "Correct. \"The job doesn't bother me anymore\" is emotional numbing — a recognized STS indicator — and the absences and irritability are behavioral warning signs. The supervisor leads with a direct wellness conversation and resources, not a discipline file, because performance management on a wellness pattern pushes the officer away from help."
+   },
+   {
+    "c": 1,
+    "f": "Correct. The MTPD peer support program is confidential within policy limits, non-disciplinary, and does not affect fitness-for-duty status — the correct first step for an officer experiencing stress who is not in acute crisis. That is exactly the reassurance this officer needs to reach out."
+   },
+   {
+    "c": 3,
+    "f": "Correct. The EAP is provided by an independent contractor outside the department's chain of command, and participation is not reported to supervisors. You can refer an officer, but you should not expect — or seek — a report of attendance or content; the confidentiality is the point."
+   },
+   {
+    "c": 0,
+    "f": "Correct. A statement suggesting the officer does not see a future or is making final arrangements requires immediate action — don't rationalize it, ask directly, stay with him, and engage resources without delay. Imminent risk of harm is the defined limit where confidentiality yields to safety."
+   },
+   {
+    "c": 1,
+    "f": "Correct. Both peer support and EAP are confidential within defined limits: mandatory disclosure applies for imminent risk of harm to self or others, disclosure of a serious criminal offense, or a court order. Describing those limits accurately lets the officer make informed decisions about what to disclose and to whom."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Contacting peer support is not a disciplinary matter and does not affect fitness-for-duty status. Treating help-seeking as a mark against an officer reinforces the culture of silence the module identifies as a lethal threat — the supervisor pushes back on that framing."
+   },
+   {
+    "c": 0,
+    "f": "Correct. Increased substance use as a coping mechanism is the most common self-medication pattern in law enforcement and the most reliable predictor of accelerating decline if not addressed early. The move is early, direct, private engagement and a peer support referral — not waiting for a crisis or jumping to termination."
+   },
+   {
+    "c": 3,
+    "f": "Correct. The module is explicit that the culture of silence kills officers and that recognition — not silence — is the value. The supervisor normalizes help-seeking, protects its confidentiality, and models noticing, speaking directly, and pointing toward resources."
+   }
+  ]
+ },
+ "de-escalation": {
+  "patrol": [
+   {
+    "c": 1,
+    "f": "Correct. The subject poses no immediate threat to bystanders, and the threat is currently self-directed. Establishing distance and cover — without drawing — and initiating calm verbal contact is both tactically sound and policy-compliant. Drawing a firearm on a person in psychological crisis whose threat is not directed at officers typically escalates the encounter. MTPD ALO 5.4 requires de-escalation techniques when tactically feasible, which they are here."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Graham v. Connor established the objective reasonableness standard — the constitutionality of force is evaluated from the perspective of a reasonable officer on the scene, given the totality of circumstances known at that moment. Key factors include: the severity of the crime, whether the subject poses an immediate threat, and whether the subject is resisting or evading. The standard is not perfection — it is objective reasonableness under the specific circumstances. Mental health status is one of those circumstances."
+   },
+   {
+    "c": 0,
+    "f": "Correct. When a subject in crisis reacts to tactical movement by increasing their defensive posture, tactical movement has become a negative variable. Hold position and maintain what is working: verbal contact. Closing in tactically on an agitated, armed, psychologically fragile subject without exhausting verbal de-escalation increases the probability of a use-of-force incident significantly. Requesting crisis intervention resources — a CIT officer or mobile crisis team — is the appropriate escalation, not tactical closure."
+   },
+   {
+    "c": 3,
+    "f": "Correct. A 302 petition requires that the person be severely mentally disabled and in need of immediate treatment — typically evidenced by a clear and present danger to themselves or others based on the officer's observations. This is a civil mental health process, not an arrest. The subject is transported to a psychiatric facility for evaluation, not to a criminal detention facility. Understanding this distinction matters for how you communicate the process to the subject and their family, and it affects how you write your report."
+   },
+   {
+    "c": 2,
+    "f": "Correct. Tactical decisions are made based on the circumstances of the encounter, department policy, and law — not bystander pressure or expectations for speed. A subject who is not advancing, is engaging verbally, and has not harmed himself does not meet the force threshold that would justify CEW deployment. Crowd management is a legitimate tactical concern, but managing the crowd is the responsibility of a secondary officer — not an excuse to abandon de-escalation that is working."
+   },
+   {
+    "c": 1,
+    "f": "Correct. In barricade and crisis scenarios, time and distance are tactical assets. A subject who is talking is a subject who is not acting. Pressure, ultimatums, and forced entry significantly increase the risk of a fatal outcome. Keeping the subject engaged, in a calm and low-pressure way, preserves options. Request specialized resources (crisis negotiators, CIT, mobile mental health) while maintaining contact. Barricaded subjects without confirmed weapons are within patrol scope to manage until specialized resources arrive."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Prior history is relevant context for officer positioning, backup, and awareness — it is not a substitute for evaluating current behavior. A subject with a violence history who is currently agitated but not threatening does not receive a higher force level based on history alone. Courts apply Graham v. Connor to the specific facts of the specific encounter. De-escalate based on what is happening now; position yourself based on what you know from background. These are not mutually exclusive."
+   },
+   {
+    "c": 0,
+    "f": "Correct. The professional response articulates the value of the outcome — not just the time spent. A subject who leaves a scene calm, with services connected, and without unnecessary trauma from involuntary commitment is a better outcome for public trust, community health, and department resources. § 302 authority exists for situations that require it — not as a shortcut when de-escalation is working. Defending the professional use of de-escalation, by name and with reasoning, contributes to a culture that values it."
+   }
+  ],
+  "supervisor": [
+   {
+    "c": 0,
+    "f": "Correct. MTPD ALO 5.4 requires officers to consider and employ de-escalation where safe and feasible before physical force. A single unarmed subject with distance available and no immediate threat is exactly where de-escalation was feasible. Going straight to force is a policy gap, and under the Graham de-escalation dimension a liability gap."
+   },
+   {
+    "c": 3,
+    "f": "Correct. MTPD ALO 5.4 requires documentation of the specific techniques used, the subject's response, and why de-escalation was or was not continued. \"Attempted to de-escalate\" is a conclusion. Return it for specifics — this is a documentation fix that also protects the officer under the Graham de-escalation dimension."
+   },
+   {
+    "c": 1,
+    "f": "Correct. MTPD ALO 5.4 makes the safety-and-feasibility determination a genuine on-scene assessment, not a post-hoc conclusion reached after force was already chosen. A single unarmed subject at a distance suggests de-escalation was feasible, so the determination — and the decision behind it — must be addressed, not rubber-stamped by policy language."
+   },
+   {
+    "c": 2,
+    "f": "Correct. The officer used and documented the ALO 5.4 authorized techniques — time, distance, calm tone, choices, CIT request — and force became necessary only when the subject created an imminent threat. De-escalation is not a guarantee against force; the documented effort is the officer's protection under the Graham de-escalation dimension, and the review should affirm it."
+   },
+   {
+    "c": 3,
+    "f": "Correct. Under 50 P.S. § 7302 the officer's approach — particularly whether de-escalation was employed first — is part of the record when a 302 is initiated, and ALO 5.4 requires documenting the de-escalation effort. The report must capture both the de-escalation approach and the specific § 7302 basis."
+   },
+   {
+    "c": 0,
+    "f": "Correct. De-escalation is not passivity or \"taking it\" — it is deploying the most effective tools first (time, distance, tone, positioning, resources), which are often more effective than force and build the documented record that protects the officer. Force remains available when safety requires it."
+   },
+   {
+    "c": 2,
+    "f": "Correct. MTPD ALO 5.4 names creating distance and slowing the pace, calm non-threatening verbal communication, giving the subject space for voluntary choices, reducing the number of officers present when safe, using a designated primary contact officer with others supporting, and requesting CIT or mental-health resources. Those are the techniques to recognize on review."
+   },
+   {
+    "c": 1,
+    "f": "Correct. One instance is a coaching moment; a documented pattern after coaching — force without considering available de-escalation and post-hoc \"not feasible\" determinations — is a supervisory and training issue requiring documented corrective action and escalation, with direct liability exposure under ALO 5.4 and the Graham de-escalation dimension."
+   }
+  ]
+ }
+}

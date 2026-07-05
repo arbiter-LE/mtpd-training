@@ -381,8 +381,6 @@ function getCrisisQuestions() {
         'Two officers must independently agree that the subject meets the criteria for involuntary examination.',
         'The person must pose a clear and present danger to self or others based on a recent overt act, attempt, or threat, and the officer must document the specific factual basis for that determination.'
       ],
-      correct: 3,
-      feedback: 'Correct. PA MHPA Section 302 authorizes involuntary examination when a person poses a clear and present danger based on a recent overt act, attempt, or threat to themselves or others. Officers must document the specific factual basis — a general mental health crisis or past history alone does not satisfy the standard. A statement like "not wanting to be here anymore," combined with medication non-compliance and a 2-day crisis, begins to establish criteria — but the officer must assess and document carefully.'
     },
     {
       scenario: 'You make initial contact with a subject in a mental health crisis. Your authoritative tone and direct approach cause him to snap upright, begin yelling, and retreat toward his front door.',
@@ -393,8 +391,6 @@ function getCrisisQuestions() {
         'Authoritative commands are always appropriate during mental health calls, because officers must establish control immediately.',
         'The officer should never have made contact without a mental health co-responder physically present.'
       ],
-      correct: 0,
-      feedback: 'Correct. Crisis Intervention Training (CIT) research consistently shows that individuals in mental health crisis respond to authoritative commands differently than non-crisis individuals. Commands that trigger compliance in normal encounters frequently trigger fight-or-flight responses in someone in acute distress. A calm, low-key approach — slow movement, quiet voice, non-threatening positioning — significantly reduces escalation risk. National best practice — PERF\'s ICAT model and CIT protocols — directs officers to use de-escalation whenever it is safe and feasible.'
     },
     {
       scenario: 'A subject in a mental health crisis has been escalating. He is now pacing and yelling, but has no visible weapon and has not made a specific threat. Your partner has just arrived.',
@@ -405,8 +401,6 @@ function getCrisisQuestions() {
         'Close the distance to project confidence and prevent him from moving toward the residence.',
         'Reduce your own volume and energy, create space, and let the escalation spike pass before you re-engage.'
       ],
-      correct: 3,
-      feedback: 'Correct. When a person in mental health crisis reaches an escalation spike — elevated voice, physical agitation, non-responsive behavior — the most effective de-escalation technique is to reduce your own energy, not match it. Back off, lower your voice, and wait. Escalation spikes are self-limiting when they aren\'t fed. Matching volume, issuing commands, or closing distance during a spike almost always prolongs or worsens it. Give the spike time to pass, then re-engage with calm contact.'
     },
     {
       scenario: 'While talking with a subject on a welfare check, he discloses that there is "something inside he could use" if things got bad enough. He is still calm and making eye contact with you.',
@@ -417,8 +411,6 @@ function getCrisisQuestions() {
         'Immediately back away from the porch and call for tactical support before saying anything more.',
         'Tell him you need to go inside and secure whatever it is before the conversation continues.'
       ],
-      correct: 1,
-      feedback: 'Correct. A disclosure of potential access to a means of self-harm cannot be ignored, but it also doesn\'t require breaking the therapeutic contact you\'ve established. A calm, direct clarifying question — asked in the same quiet tone — allows you to assess the actual threat level without triggering defensiveness. If he confirms a firearm, you can work toward voluntary surrender through the rapport you\'ve built. Ignoring the disclosure or over-reacting both carry significant risk.'
     },
     {
       scenario: 'You know from the subject\'s mother that he owns a shotgun stored in his hall closet. Your partner is arriving. The subject is seated on his porch and unaware you spoke to his mother.',
@@ -429,8 +421,6 @@ function getCrisisQuestions() {
         'It should trigger a full tactical response, since the presence of a firearm makes this a SWAT-level incident.',
         'It should prompt an immediate 302 — access to a firearm combined with suicidal ideation satisfies the legal threshold.'
       ],
-      correct: 0,
-      feedback: 'Correct. Knowledge of a potential weapon changes your tactical awareness — where you position, where your partner stands, what you\'re watching for — but it does not change the fundamental approach principle for a mental health welfare check. The subject is a person in crisis, not a tactical threat. A calm, respectful approach remains the correct first contact. Your partner\'s positioning can account for the safety concern without that concern becoming visible in your demeanor or approach.'
     },
     {
       scenario: 'You arrive at a call and observe a subject sitting on a rooftop ledge, legs dangling, not responding to initial verbal contact. Witnesses say the subject has been there for 20 minutes.',
@@ -441,8 +431,6 @@ function getCrisisQuestions() {
         'Wait for a mental health professional to arrive before attempting any engagement at all.',
         'Establish a safe perimeter, reduce stimulation, request CIT and the mobile crisis team, and begin calm, non-threatening verbal contact through one primary voice.'
       ],
-      correct: 3,
-      feedback: 'Correct. CIT protocol prioritizes a calm environment, single-officer verbal contact, and preservation of time and distance. Perimeter control reduces stimulation and prevents additional escalation. Requesting specialized resources early ensures they are available if needed. Immediate forced intervention in a high-ledge scenario carries extreme safety risk for both subject and officer. Waiting entirely for a clinician is not feasible — officers must initiate contact while resources respond.'
     },
     {
       scenario: 'During a mental health call, a subject begins making statements suggesting they may be experiencing command hallucinations. They are becoming increasingly agitated.',
@@ -453,8 +441,6 @@ function getCrisisQuestions() {
         'Avoid confirming or challenging the hallucinations; focus on the person\'s emotional state and safety, use a calm low tone, and offer limited choices to restore a sense of control.',
         'Match the subject\'s emotional intensity for a few minutes to build rapport before redirecting.'
       ],
-      correct: 2,
-      feedback: 'Correct. Challenging hallucinations can intensify distress and agitation. Confirming them may reinforce delusional thinking. CIT training teaches officers to work around the psychotic content by focusing on the emotional experience: "I can see this is really distressing for you." Offering limited choices ("Would you like to sit over here or stay where you are?") restores a sense of agency. Psychosis alone does not automatically meet § 302 criteria — it requires clear and present danger behavior.'
     },
     {
       scenario: 'You have been working a mental health call for 35 minutes using verbal de-escalation. The subject is calmer but still refusing all assistance. Your sergeant is asking for a status update and suggesting it may be time to "wrap it up."',
@@ -465,8 +451,6 @@ function getCrisisQuestions() {
         'Tell the subject you have to leave, which will force a decision from them.',
         'Immediately initiate a § 302 hold — the time already spent justifies an involuntary commitment.'
       ],
-      correct: 0,
-      feedback: 'Correct. De-escalation takes time — that is not a failure. Communicate progress honestly to your supervisor: the subject is calmer, the tactic is working, and an abrupt change in approach after 35 minutes of relationship-building can re-escalate the situation significantly. Propose a defined additional time window. Good supervisors support patient de-escalation when they receive clear status communication. § 302 requires evidence of clear and present danger — time spent on a call does not create that legal standard.'
     },
   ];
 }
@@ -522,8 +506,6 @@ function getCrisisSupervisorQuestions() {
         'Support a defined additional window: a subject who is de-escalating reflects the approach succeeding, and an abrupt tactical change after relationship-building risks re-escalation. Time on the call is a tactic when it is working.',
         'Pull the officer off and replace them with a fresh unit to restart the contact.'
       ],
-      correct: 2,
-      feedback: 'Correct. De-escalation that is producing calm is the approach working, not failing. When the contact officer gives an honest progress report, supporting a defined additional window is the supervisory decision that protects everyone. Time spent never creates the 302 legal standard, but it should not be cut short when it is working.'
     },
     {
       scenario: 'A subject in a mental health crisis legally owns a firearm kept inside his home. He is seated on his porch, distressed but not threatening anyone, and engaging with your contact officer. You are making the resourcing decision.',
@@ -534,8 +516,6 @@ function getCrisisSupervisorQuestions() {
         'Clear all units and disengage entirely, since a firearm is present in the home.',
         'Calibrate to the threat actually presented: establish a perimeter, reduce stimulation, and request CIT and mobile-crisis resources while the contact officer maintains a calm approach. A distressed person on his porch is not a SWAT call.'
       ],
-      correct: 3,
-      feedback: 'Correct. Knowledge of a legally owned firearm informs positioning and awareness — it does not convert a welfare check into a tactical operation. Escalating the response to match a weapon you merely know about, rather than a threat actually presented, manufactures the crisis and exposes the department. Perimeter, reduced stimulation, and CIT/mobile-crisis resources are the right calls.'
     },
     {
       scenario: 'A 302 from one of your officers documents that the subject was agitated, had a psychiatric history, and had stopped taking medication. It does not describe any recent overt act, attempt, or threat to self or others.',
@@ -546,8 +526,6 @@ function getCrisisSupervisorQuestions() {
         'Approve it, since the officer was clearly acting out of concern for the subject\'s welfare.',
         'Forward it to the magistrate without review, since 302 determinations are medical, not supervisory.'
       ],
-      correct: 0,
-      feedback: 'Correct. 50 P.S. § 7302 requires clear and present danger based on a recent overt act, attempt, or threat. Agitation, history, and medication non-compliance do not by themselves satisfy that standard. A 302 lacking the specific dangerous conduct is a civil-liberty and liability problem the reviewer must catch.'
     },
     {
       scenario: 'A report shows the subject initially agreed to voluntary transport for evaluation, then changed his mind in the parking lot and said he was not going. He was calm and coherent and not under any commitment order. The officer placed him in the vehicle and transported him anyway, without assessing 302 criteria.',
@@ -558,8 +536,6 @@ function getCrisisSupervisorQuestions() {
         'This is unlawful detention: voluntary consent can be withdrawn at any time before transport, the prior agreement is void once withdrawn, and absent current 302 criteria there was no authority to transport.',
         'The transport was lawful because a family member urged the officer to take him.'
       ],
-      correct: 2,
-      feedback: 'Correct. Voluntary means voluntary at every moment. Once consent is withdrawn the prior agreement is void, and transporting without current 50 P.S. § 7302 criteria is unlawful detention. Neither the officer\'s belief nor family pressure creates legal authority.'
     },
     {
       scenario: 'On review, a report\'s basis for transport reads: "Advised subject that transport was already en route and that he had to come with us." The subject then complied.',
@@ -570,8 +546,6 @@ function getCrisisSupervisorQuestions() {
         'Accept it because logistics had already been arranged.',
         'Treat it as a 302, since the subject was transported.'
       ],
-      correct: 1,
-      feedback: 'Correct. Coercion vitiates consent. "Transport is already waiting / you have to come" implies consequences that do not exist. Transport obtained through pressure or deception is not voluntary and exposes the department — a flag the reviewer raises before the report closes.'
     },
     {
       scenario: 'A report documents that the officer entered the subject\'s residence based solely on the subject\'s earlier statement that there was "something inside he could use." There is no documented consent and no description of an immediate, specific threat at the time of entry.',
@@ -582,8 +556,6 @@ function getCrisisSupervisorQuestions() {
         'Entry into a residence never requires separate justification during a mental health call.',
         'The entry is questionable: a statement about access to a means of self-harm, without more, may not meet the exigency threshold for a warrantless entry. The report needs an immediate, specific threat or documented consent — flag the gap.'
       ],
-      correct: 3,
-      feedback: 'Correct. PA courts evaluate whether the threat was immediate and specific. A general statement about a means of self-harm, without more, may not satisfy exigent circumstances for a warrantless entry. The reviewer flags the entry where the report does not establish immediacy or consent.'
     },
     {
       scenario: 'An officer\'s welfare-check report ends with no transport: the subject did not meet 302 criteria, but the report documents the de-escalation approach used, the time taken, crisis resources provided, and coordination with the family for follow-up.',
@@ -594,8 +566,6 @@ function getCrisisSupervisorQuestions() {
         'Require the officer to file a 302 retroactively to justify the time spent on scene.',
         'Take no notice — outcomes without arrests do not warrant supervisory attention.'
       ],
-      correct: 0,
-      feedback: 'Correct. A documented welfare contact that ends without a transport, with resources provided and family coordinated, is a professional outcome. Documented de-escalation protects the officer and the department, and recognizing it in review reinforces the behavior you want your officers to repeat.'
     },
     {
       scenario: 'One of your officers has just handled a difficult call involving a suicidal subject. The report is complete and accurate.',
@@ -606,8 +576,6 @@ function getCrisisSupervisorQuestions() {
         'Order the officer back into service immediately to demonstrate resilience.',
         'Document that the officer showed no visible distress and move on.'
       ],
-      correct: 1,
-      feedback: 'Correct. Crisis calls, especially suicidal-subject contacts, take a toll. A supervisor\'s job includes flagging the incident for peer support and a genuine check-in — a conversation, not just a form. That follow-through is part of keeping officers healthy over the long run, even though it appears nowhere in the statute.'
     },
   ];
 }

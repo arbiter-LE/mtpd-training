@@ -301,8 +301,6 @@ function getDomesticViolenceQuestions() {
         'If you observe recent physical injury and probable cause exists to believe Simple Assault was committed against a household member, arrest without a warrant is required — victim consent is not a required element.',
         'Make a report and refer the case to detectives for a follow-up arrest.'
       ],
-      correct: 2,
-      feedback: 'Correct. General Order 4.13.5(A) requires officers to arrest without a warrant, as in a felony, when recent physical injury to a victim is observed and probable cause exists to believe Simple Assault (18 Pa.C.S. 2701) was committed against a household member. Departmental policy treats domestic violence "as any other crime, regardless of the relationship of the victim and offender." Victim preference does not control the arrest decision and supervisor authorization is not a precondition.'
     },
     {
       scenario: 'You arrest a subject for Simple Assault of his wife. During the arrest, you confirm he struck her with his cell phone, which is sitting on the kitchen counter. The wife asks you to leave it — "it\'s his phone, he\'ll need it back."',
@@ -313,8 +311,6 @@ function getDomesticViolenceQuestions() {
         'Leave the phone — the subject is already in custody and no longer has access to it.',
         'Request a warrant before seizing personal property belonging to the arrested subject.'
       ],
-      correct: 0,
-      feedback: 'Correct. General Order 4.13.6(A) requires the arresting officer to seize all weapons used by the defendant in the commission of an alleged offense. The phone, used to strike the victim, falls under this requirement regardless of ownership. Subsections B-D require it be secured, processed with proper chain of custody, and held until a court issues a disposition order.'
     },
     {
       scenario: 'You complete a DV arrest. The officer who investigated the prior incident at this address eight months ago elected not to arrest, despite probable cause being present, and wrote in the report only: "Parties separated for the evening. No arrest made."',
@@ -325,8 +321,6 @@ function getDomesticViolenceQuestions() {
         'The officer must obtain supervisor sign-off in the report acknowledging the decision not to arrest.',
         'If the officer did not arrest even though probable cause existed and an arrest was authorized, a detailed explanation of the reason(s) for the decision not to arrest must be included in the narrative — "No arrest made" is not sufficient.'
       ],
-      correct: 3,
-      feedback: 'Correct. General Order 4.13.11(A)(3)(b) requires that if an officer did not arrest or seek an arrest warrant despite probable cause and an authorized arrest, a detailed explanation of the reason for that decision must be included in the narrative. "Parties separated for the evening. No arrest made." does not satisfy this requirement.'
     },
     {
       scenario: 'You are completing your DV incident report. The victim tells you about injuries you cannot see — she says her ribs are sore and she believes one may be cracked, though there is no visible bruising or marks.',
@@ -337,8 +331,6 @@ function getDomesticViolenceQuestions() {
         'Include a description of any injuries observed by the officer, AND a description of any injuries described by the victim but not observed, with an indication that the injury was not observed.',
         'Have the victim sign a separate statement about the injury and attach it to your report.'
       ],
-      correct: 2,
-      feedback: 'Correct. General Order 4.13.11(A)(3)(a)(5)-(6) requires the narrative to include both a description of injuries observed by the officer and a description of injuries described by the victim but not observed — with a clear indication that the injury was not observed by the officer. Both belong in the report with clear attribution.'
     },
     {
       scenario: 'You are responding to a domestic disturbance call on Cherry Street. Dispatch advises possible DV in progress.',
@@ -349,8 +341,6 @@ function getDomesticViolenceQuestions() {
         'Stage one block away and wait for backup before making any approach at all.',
         'Approach code 3 to within a quarter mile, then switch to code 1 for the final approach.'
       ],
-      correct: 0,
-      feedback: 'Correct. General Order 4.13.2(C) directs responding officers to avoid sirens and emergency lights in the vicinity of the scene, and to avoid parking directly in front of the residence — instead approaching from flanking positions that yield the most advantageous tactical considerations. All active domestic incidents are considered high risk and approached using standard precautionary measures.'
     },
     {
       scenario: 'A victim in a domestic violence case discloses, during a follow-up call, that the offender — who is subject to a final PFA order against her — appeared at her workplace last week, which she never reported.',
@@ -361,8 +351,6 @@ function getDomesticViolenceQuestions() {
         'Advise her to file a private criminal complaint with the District Attorney\'s office.',
         'Document the violation. A police officer shall arrest a defendant for violating a final PFA order issued under 23 Pa.C.S. Chapter 61, with a charge of Indirect Criminal Contempt prepared in addition to any other charges.'
       ],
-      correct: 3,
-      feedback: 'Correct. General Order 4.13.9(A) authorizes arrest for a PFA violation upon probable cause "whether or not the violation of the Order occurred in the presence of the officer." 4.13.9(B) makes arrest mandatory for violations of a Chapter 61 order, and 4.13.9(C)(2) requires a charge of Indirect Criminal Contempt in addition to any other charges. The disclosure must be documented and acted on under 4.13.10(E) as a Supplemental Incident Report.'
     },
     {
       scenario: 'You respond to a domestic violence incident and confirm abuse occurred.',
@@ -373,8 +361,6 @@ function getDomesticViolenceQuestions() {
         'A copy of the arrest report only, once charges are filed.',
         'Notice is only required if the victim explicitly requests information about her legal options.'
       ],
-      correct: 1,
-      feedback: 'Correct. General Order 4.13.7(A) requires the officer to provide oral and written notice of the availability of safe shelter and domestic violence services, including the hotline number, and of the victim\'s right to seek a Protection from Abuse order under 23 Pa.C.S. Ch. 61. 4.13.7(B) requires the victim to sign a receipt acknowledging the notice, which is attached to the incident report required under 4.13.10.'
     },
     {
       scenario: 'You arrest a defendant for violating a final Protection From Abuse order. The defendant is processed and arraigned.',
@@ -385,8 +371,6 @@ function getDomesticViolenceQuestions() {
         'Notify the protected party only if they specifically request to be informed.',
         'Notification is the responsibility of the District Attorney\'s office, not the arresting officer.'
       ],
-      correct: 0,
-      feedback: 'Correct. General Order 4.13.10(A) requires the arresting officer to make reasonable efforts to notify any adult protected by a Chapter 61 order of the defendant\'s arrest as soon as possible following the arrest, and to notify them of the disposition following arraignment within 24 hours. 4.13.10(E) requires all notices and attempted notices to be documented as a Supplemental Incident Report attached to the original case report.'
     },
   ];
 }
@@ -441,8 +425,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'Approve it, because arrest is discretionary when the parties separate voluntarily.',
         'Reject it: GO 4.13.11(A)(3)(b) requires a detailed explanation when probable cause existed but no arrest was made — and where observed injury plus PC for a 4.13.5 offense were present, the deeper question is why a mandatory arrest was not made at all.'
       ],
-      correct: 3,
-      feedback: 'Correct. The non-arrest is the most consequential thing you review in a DV report. "No arrest made" does not satisfy GO 4.13.11(A)(3)(b)\'s detailed-explanation requirement, and where observed injury and PC for a 4.13.5 offense existed, the failure to arrest is itself a policy violation — not just a documentation gap.'
     },
     {
       scenario: 'An officer on a DV scene radios you for authorization to arrest. He has observed a fresh injury and has probable cause for Simple Assault, but the victim is objecting to an arrest, and the suspect is still on scene.',
@@ -453,8 +435,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'Advise that no authorization is needed: under GO 4.13.5 the arrest is mandatory once probable cause exists, victim consent is not an element, and the officer should act now and brief you after — waiting risks the suspect leaving.',
         'Direct the officer to take a report and refer the matter to detectives for a warrant.'
       ],
-      correct: 2,
-      feedback: 'Correct. GO 4.13.5 makes the arrest mandatory on probable cause and does not require supervisor authorization. Victim consent is not an element, and a request for no arrest is an expected trauma response that does not change the obligation. Officers act on the PC they have and brief afterward.'
     },
     {
       scenario: 'A DV report documents that the officer seized the phone the defendant used to strike the victim, but records it as a "consent seizure" — the victim gave permission to take it.',
@@ -465,8 +445,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'Reject the seizure entirely, because the victim should not be asked about the defendant\'s property.',
         'Require a warrant before the phone can be held as evidence.'
       ],
-      correct: 0,
-      feedback: 'Correct. GO 4.13.6 makes seizure of a weapon used in the commission of an offense mandatory and independent of consent. The result here is right but the authority is wrong — documenting it as a consent seizure invites a challenge. It should be recorded as evidence of the offense.'
     },
     {
       scenario: 'You are reviewing a completed DV incident report. It documents the arrest, the injuries, and the weapon seizure, but there is no signed victim-rights receipt attached.',
@@ -477,8 +455,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'No — but only the hotline number is required, not a signed receipt.',
         'No — GO 4.13.7 requires oral and written notice of shelter, services, the hotline, and PFA rights, with the victim\'s signed receipt attached to the report. Missing the signed receipt makes the report incomplete; return it.'
       ],
-      correct: 3,
-      feedback: 'Correct. GO 4.13.7 requires both oral and written notice of services and PFA rights under 23 Pa.C.S. Ch. 61, and a victim-signed receipt attached to the incident report. A DV report without the signed receipt is incomplete and goes back for it.'
     },
     {
       scenario: 'A DV report notes, in a single passing line, that the victim disclosed the defendant — who is subject to a final PFA order — had shown up at her workplace the prior week, which she never reported. The officer took no action on that disclosure.',
@@ -489,8 +465,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'Refer the victim to civil court to handle the PFA violation herself.',
         'Note it for intelligence only; a past violation cannot be charged.'
       ],
-      correct: 1,
-      feedback: 'Correct. GO 4.13.9 authorizes and requires arrest for a final-PFA violation whether or not it occurred in the officer\'s presence, with a charge of Indirect Criminal Contempt and documentation as a Supplemental Incident Report under 4.13.10. A disclosed violation that was only "noted" has not been handled — your review catches it.'
     },
     {
       scenario: 'A victim from an active DV case calls the station wanting to "drop the charges." The handling officer proposes inviting her in for an informal sit-down to discuss the charges and the seized phone.',
@@ -501,8 +475,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'Tell the officer to grant the request and release the phone, since the victim no longer wants to proceed.',
         'Have the officer avoid all contact with the victim until the case is closed.'
       ],
-      correct: 0,
-      feedback: 'Correct. Recantation and intervention are well-documented DV responses, but under GO 4.13 the charging decision is the Commonwealth\'s once a mandatory arrest is made. An informal sit-down about dropping charges is a case-integrity risk; the right approach is a professional explanation of the process and documented post-arrest contact.'
     },
     {
       scenario: 'Reviewing reports across your squad, you notice the same residential address has generated several domestic calls over the past year, several ending in under-documented non-arrests, with escalating injuries described each time.',
@@ -513,8 +485,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'Treat the pattern as a high-priority signal: track the repeat location, flag the escalation, correct the non-arrest documentation going forward, and ensure the history informs the response — DV patterns across reports precede the worst outcomes and only the supervisor sees them.',
         'Wait until a serious injury occurs before treating the address differently.'
       ],
-      correct: 2,
-      feedback: 'Correct. A repeat address with escalating injuries and under-documented non-arrests is exactly the cross-report pattern a supervisor is positioned to catch. Tracking it, flagging escalation, and correcting the documentation is core supervisory responsibility — in DV, the unaddressed pattern is often the warning that was missed.'
     },
     {
       scenario: 'Your units are dispatched to an active domestic disturbance. You are coordinating the response.',
@@ -525,8 +495,6 @@ function getDomesticViolenceSupervisorQuestions() {
         'A single officer making rapid entry to separate the parties before backup arrives.',
         'Staging a block away indefinitely until the parties exit on their own.'
       ],
-      correct: 1,
-      feedback: 'Correct. GO 4.13.2 treats every active domestic as high risk: avoid sirens and lights near the scene, approach from flanking positions, make an external assessment first, and on a hostage or barricade indication, contain and call a supervisor rather than entering. The supervisor owns the tactical posture as much as the legal one.'
     },
   ];
 }

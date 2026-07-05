@@ -507,8 +507,6 @@ function getSearchSeizureQuestions() {
         'A locked container automatically establishes probable cause to search further without additional consent.',
         'You may force the lock open only if you have reasonable suspicion that it contains contraband.'
       ],
-      correct: 1,
-      feedback: 'Correct. Florida v. Jimeno (1991) established that the scope of consent is determined by objective reasonableness — what a reasonable person would have understood by the exchange. A general consent to search a vehicle does not automatically include a locked container. Clarify the scope or obtain specific consent.'
     },
     {
       scenario: 'You arrest a subject for disorderly conduct in a public parking lot. He is wearing a backpack at the time of the arrest.',
@@ -519,8 +517,6 @@ function getSearchSeizureQuestions() {
         'You must secure the backpack and apply for a warrant before opening it.',
         'You may search the backpack only if you observe a weapon-shaped object through the fabric.'
       ],
-      correct: 0,
-      feedback: 'Correct. Chimel v. California (1969) established that a search incident to arrest extends to the person and the area within their immediate control at the time of arrest. A backpack being worn qualifies. Note: Arizona v. Gant (2009) significantly limits vehicle searches incident to arrest — know the distinction.'
     },
     {
       scenario: 'While on a consent search of an apartment, you observe a digital scale with white powder residue sitting openly on the kitchen counter.',
@@ -531,8 +527,6 @@ function getSearchSeizureQuestions() {
         'You cannot seize it without a separate warrant because your consent only covered what the occupant authorized.',
         'Exigent circumstances — the powder residue may be destroyed before a warrant can be obtained.'
       ],
-      correct: 1,
-      feedback: 'Correct. Under the plain view doctrine (Horton v. California, 1990), you may seize evidence without a warrant when you are lawfully present, the item is in plain view, and its incriminating character is immediately apparent. A scale with white powder residue in a residence meets this standard.'
     },
     {
       scenario: 'You stop a vehicle and develop probable cause to search based on the odor of marijuana combined with other observations. Your report later states only that the driver "appeared nervous" and you "detected an odor of marijuana."',
@@ -543,8 +537,6 @@ function getSearchSeizureQuestions() {
         'Reports may only describe observations made after the search began, not before.',
         'There is no legal problem — odor plus nervous behavior always establishes probable cause in Pennsylvania courts.'
       ],
-      correct: 1,
-      feedback: 'Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. "Appeared nervous" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. This matters doubly after Commonwealth v. Barr (2021), where odor is only a factor in the totality — and at the suppression hearing the Commonwealth bears the burden of proving the search lawful (Commonwealth v. Enimpah, 2014), which a conclusory report cannot carry.'
     },
     {
       scenario: 'During a foot pursuit, a suspect tosses a bag into an open dumpster on the side of a private parking lot before you apprehend him.',
@@ -555,8 +547,6 @@ function getSearchSeizureQuestions() {
         'No — the hot pursuit exception permits you to retrieve any evidence connected to the pursuit.',
         'Yes — abandonment only applies to property left in public locations, not private property.'
       ],
-      correct: 1,
-      feedback: 'Correct. When a person voluntarily abandons property, they forfeit their Fourth Amendment expectation of privacy in it. This is the abandonment doctrine. The location on private property is less determinative than the voluntary act of abandonment — courts look at whether the person intended to relinquish control over the item.'
     },
     {
       scenario: 'You respond to a call and the homeowner gives you permission to search the living room for a missing item. While searching, you enter the attached garage without being told you could.',
@@ -567,8 +557,6 @@ function getSearchSeizureQuestions() {
         'Yes — garages are not protected under the Fourth Amendment because they are not living spaces.',
         'No — you needed a separate warrant to enter any room not explicitly named.'
       ],
-      correct: 1,
-      feedback: 'Correct. Consent is limited to the scope described or reasonably implied. Consent to search a living room does not automatically extend to an attached garage. If the consent was ambiguous about scope, you should have clarified before entering additional areas.'
     },
     {
       scenario: 'You stop a pedestrian and develop reasonable suspicion during the encounter. Before conducting a pat-down, the person states: "I do not consent to any search."',
@@ -579,8 +567,6 @@ function getSearchSeizureQuestions() {
         'Refusing consent is itself a basis to detain the person further for investigation.',
         'You may search only outer clothing because the person is already detained.'
       ],
-      correct: 1,
-      feedback: 'Correct. Terry v. Ohio (1968) established that a protective pat-down for weapons requires only reasonable suspicion that the person is armed and dangerous — it does not require consent. Consent is a separate authority. A refusal of consent does not eliminate Terry authority, nor does it extend your detention authority beyond what reasonable suspicion independently supports.'
     },
     {
       scenario: 'You are executing a search warrant for a residential address. The warrant specifically authorizes a search for stolen electronics.',
@@ -591,8 +577,6 @@ function getSearchSeizureQuestions() {
         'A cell phone, because electronics are specifically listed in the warrant.',
         'Documents on a desk that might identify co-conspirators.'
       ],
-      correct: 1,
-      feedback: 'Correct. The plain view doctrine (Horton v. California) permits seizure of items not named in the warrant when: (1) the officer is lawfully present, (2) the item is in plain view, and (3) the incriminating nature is immediately apparent. The white powder meets all three criteria. Locked safes, documents, and unlisted electronics do not independently satisfy the immediately apparent incriminating nature requirement without more.'
     },
   ];
 }
@@ -647,8 +631,6 @@ function getSearchSeizureSupervisorQuestions() {
         'Approve it — the odor of marijuana is probable cause to search a vehicle in Pennsylvania.',
         'Approve it but add a note that exigent circumstances were present because the vehicle could be driven away.'
       ],
-      correct: 1,
-      feedback: 'Correct. Commonwealth v. Barr (2021) holds that the odor of marijuana cannot establish probable cause by itself. A search resting solely on odor is unlawful regardless of how specifically it is documented — this is a search problem, not a writing problem, and the appropriate response is corrective action and training, not a rewrite.'
     },
     {
       scenario: 'An officer\'s report establishes solid probable cause to search a vehicle. The narrative shows the vehicle was stopped in a parking lot, the driver was detained, and a second unit was on scene. The officer then searched the vehicle on the roadside without a warrant.',
@@ -659,8 +641,6 @@ function getSearchSeizureSupervisorQuestions() {
         'The report should be approved because the probable cause is strong enough to make exigency unnecessary.',
         'The only problem is that the officer did not get written consent before searching.'
       ],
-      correct: 1,
-      feedback: 'Correct. Commonwealth v. Alexander (2020) requires both probable cause and exigent circumstances for a warrantless vehicle search in Pennsylvania. A controlled scene undercuts exigency — the lawful path was to secure the vehicle and seek a warrant. This is the most common post-Alexander review catch.'
     },
     {
       scenario: 'Two arrest reports cross your desk the same shift. Both contain the phrase "the driver appeared nervous." In Report A, the underlying stop and search were lawful and well-supported; the officer simply wrote conclusions. In Report B, the search had no lawful basis to begin with.',
@@ -671,8 +651,6 @@ function getSearchSeizureSupervisorQuestions() {
         'Return Report A for a rewrite to the specificity standard; flag Report B as an unlawful search that better writing cannot cure. Assess legality first, then documentation.',
         'Return Report B for a rewrite and approve Report A as written.'
       ],
-      correct: 2,
-      feedback: 'Correct. The core supervisory skill is distinguishing a documentation problem from a legal defect. Report A is fixable with articulable facts; Report B cannot be saved by any amount of specificity because the search itself was unlawful. Always assess the legality of the search before the quality of the writing.'
     },
     {
       scenario: 'An officer\'s report documents a consent search of a vehicle. The only entry regarding consent reads: "Driver consented to the search."',
@@ -683,8 +661,6 @@ function getSearchSeizureSupervisorQuestions() {
         'Approve it but instruct the officer to obtain written consent forms going forward.',
         'Reject the arrest entirely — a verbal consent search can never be documented sufficiently.'
       ],
-      correct: 1,
-      feedback: 'Correct. Under Schneckloth v. Bustamonte (1973) voluntariness is judged on the totality of the circumstances. A bare "driver consented" gives a suppression court nothing to weigh. The report should be returned to capture the voluntariness factors before it becomes the record.'
     },
     {
       scenario: 'During your review you find that an officer obtained a general verbal consent to "search the vehicle," then opened a locked container in the trunk and found contraband. The report does not show that the officer clarified whether the consent reached the locked container.',
@@ -695,8 +671,6 @@ function getSearchSeizureSupervisorQuestions() {
         'The locked container itself created probable cause, so consent scope is irrelevant.',
         'The search is fine as long as the officer believed the consent covered the container.'
       ],
-      correct: 1,
-      feedback: 'Correct. Florida v. Jimeno (1991) measures consent scope by what a reasonable person would have understood. A general vehicle consent does not automatically include a locked container. Absent clarification or an independent legal basis (plain view, probable cause), opening it is a suppression risk you should flag before filing.'
     },
     {
       scenario: 'An officer arrested both occupants of a shared vehicle after locating contraband behind the driver\'s seat. One occupant spontaneously claimed sole ownership. The report bases both arrests on the fact that both people were in the car.',
@@ -707,8 +681,6 @@ function getSearchSeizureSupervisorQuestions() {
         'Yes — the spontaneous ownership claim can be sorted out by the district attorney later.',
         'No — release both occupants, because a disputed ownership claim defeats probable cause entirely.'
       ],
-      correct: 1,
-      feedback: 'Correct. Commonwealth v. Macolino (1983) requires more than proximity for constructive possession. Approving a dual arrest built on proximity alone is approving exposure. The investigation — separation, independent interviews, location and packaging — must support each arrest, and that should be visible in the report before you sign it.'
     },
     {
       scenario: 'Over a two-month span, the same officer has now conducted three separate vehicle searches whose only documented basis was the odor of marijuana. You have already coached the officer once after the first instance.',
@@ -719,8 +691,6 @@ function getSearchSeizureSupervisorQuestions() {
         'Move beyond a single coaching moment: documented corrective action and targeted training, because an unaddressed pattern is now a department exposure, not just an individual officer\'s error, and should be escalated as the pattern warrants.',
         'Reassign the officer away from traffic enforcement permanently without documentation.'
       ],
-      correct: 2,
-      feedback: 'Correct. One instance is a coaching moment; a repeated pattern after coaching is a supervisory and training issue that must be documented and escalated. An unaddressed pattern of unlawful searches becomes the department\'s liability. Review, document, coach, and escalate when the pattern warrants it.'
     },
     {
       scenario: 'An officer lawfully decided not to search a vehicle after a stop on Blaker Dr because probable cause was lacking. The CAD entry for the stop reads, in full: "Traffic stop — equipment violation — written warning issued — released."',
@@ -731,8 +701,6 @@ function getSearchSeizureSupervisorQuestions() {
         'No — the decision not to search can be legally correct while the documentation is still deficient. Hold the same standard as an arrest report: the officer\'s observations should be documented completely, because field intelligence that is not recorded does not exist.',
         'No — the officer should have searched the vehicle to be thorough.'
       ],
-      correct: 2,
-      feedback: 'Correct. A legally sound decision not to search still demands complete documentation of what was observed. A stop logged only as "warning issued" preserves nothing for the next investigation. Supervisors should hold inconclusive stops to the same documentation standard as arrests — the legal decision and the documentation are judged separately.'
     },
   ];
 }
