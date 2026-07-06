@@ -2129,7 +2129,7 @@ const SCENARIO_EI = {
         '"Okay. Thanks." She closed the door.',
         'False reassurance is one of the most damaging things an officer can offer a DV victim. It is not kindness — it is a failure to respect her intelligence and her reality. She will be less likely to call for help the next time because she knows she cannot rely on accurate information from law enforcement.'
       ],
-      legal: 'MTPD ALO 4.13 — Officers shall provide DV victims with accurate information about the criminal justice process, including arraignment, bail, and protective order procedures. Victim notification requirements under Pennsylvania law (23 Pa. C.S. § 6106) include providing information about available legal remedies and victim services.',
+      legal: 'MTPD ALO 4.13 — Officers shall provide DV victims with accurate information about the criminal justice process, including arraignment, bail, and protective order procedures. Victim notification requirements under Pennsylvania law (23 Pa. C.S. § 6105(b)) include providing oral and written notice of the availability of safe shelter and domestic violence services, and of the legal remedies available under the Protection From Abuse Act.',
       next: 'd3'
     },
     'c2-good': {
