@@ -14,9 +14,11 @@ const DEPARTMENT_REGISTRY = [
     supabaseUrl: 'https://lkikznncbpfcmgnnyigj.supabase.co',
     supabaseKey: 'sb_publishable_fGl4ckmfmd-j2n6O8TkWLA_1tjOdJe6',
     scheduleStart: new Date('2026-06-24T00:00:00'), // Relaunch — Module 1 opens (voluntary lab)
-    // Twice-a-month cadence: one module unlocks every 14 days, each due 14 days
-    // after it opens, with a 14-day grace buffer before "overdue".
-    cadence: { unlockEveryDays: 14, duePeriodDays: 14, modulesPerPeriod: 1, bufferPeriods: 1 },
+    // Biweekly unlock, monthly due (new standard 2026-07): a module unlocks
+    // every 14 days; each month's pair shares a month-end due date, with one
+    // 30-day grace period before "overdue". EGPD's live pilot cadence is
+    // locked and unaffected.
+    cadence: { unlockEveryDays: 14, duePeriodDays: 30, modulesPerPeriod: 2, bufferPeriods: 1 },
     // Content scripts for this department, loaded in order by index.html.
     // They define the same globals (MODULES, SCENARIO_*, get*Questions);
     // only the active department's scripts load per page.

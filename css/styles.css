@@ -527,3 +527,28 @@
 .debrief-actions .btn-proceed-quiz { flex: 1; min-width: 200px; }
 .btn-review-module { background: transparent; border: 1px solid rgba(200,220,240,.3); color: var(--chrome-mut); border-radius: var(--radius); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 14px 20px; cursor: pointer; font-family: var(--font); transition: border-color .2s, color .2s; white-space: nowrap; }
 .btn-review-module:hover { border-color: var(--chrome-mut); color: var(--chrome-ink); }
+
+/* ── Mobile (≤640px) ────────────────────────────────────── */
+/* Additive only — desktop layout is untouched above this line. */
+@media (max-width: 640px) {
+  /* Nav and header bars wrap instead of forcing the page wider than the
+     phone screen (which pushed Pause / Reference / Sign Out off-screen). */
+  .top-nav { height: auto; min-height: 62px; flex-wrap: wrap; padding: 10px 14px; gap: 8px 12px; }
+  .top-nav .nav-right { flex-wrap: wrap; justify-content: flex-end; gap: 8px 10px; }
+  .module-header-bar, .scenario-header-bar { flex-wrap: wrap; padding: 12px 14px; gap: 10px 14px; }
+
+  /* Tighter side padding buys the content column ~24px on a 375px screen. */
+  .main-content { padding: 24px 16px; }
+  .module-body, .debrief-body { padding: 24px 16px; }
+  .scenario-body { padding: 24px 16px; }
+  .quiz-body { padding: 24px 16px; }
+  .content-block { padding: 20px 18px; }
+  .officer-tab { padding: 10px 12px; }
+  .admin-nav-tabs { flex-wrap: wrap; }
+  .admin-tab { padding: 10px 12px; }
+
+  /* Wide tables scroll horizontally instead of clipping columns —
+     overflow:hidden (kept on desktop for the rounded corners) was hiding
+     Avg Score / Last Activity / Status on the compliance and progress tables. */
+  .progress-table-wrap, .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
