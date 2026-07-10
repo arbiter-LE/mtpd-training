@@ -25,7 +25,7 @@ current one here.
 | `corporate/2026-06-04-arbiter-le-certificate-of-organization-filing-approval.pdf` | PA Dept. of State filing-approval record (Entity ID 0015534221, filed 6/3/26) | **Saved 6/22**; pull stamped cert from file.dos.pa.gov before ~8/2/26 |
 | `corporate/2026-06-04-arbiter-le-operating-agreement.docx` | Single-member LLC operating agreement (PA) | Existing |
 | `corporate/2026-05-20-arbiter-le-ip-documentation.docx` | Authorship/ownership record | **Rebranded 6/22**; still unnotarized |
-| `agreements/2026-06-05-pilot-nda.docx` | Pilot NDA template | Existing |
+| `agreements/2026-06-05-pilot-nda.docx` | Pilot NDA template | **Updated 7/6** — added mutual confidentiality for agency-provided policy materials (§4) |
 | `agreements/2026-06-22-arbiter-le-user-agreement.docx` | Platform User Agreement / Terms of Use | **NEW 6/22 — draft for counsel** |
 | `policies/2026-06-06-arbiter-le-privacy-policy-dpa.docx` | Privacy Policy (Part I) + DPA (Part II) | Existing |
 | `policies/2026-06-22-arbiter-le-platform-use-disclaimer.docx` | Standalone Platform Use & Disclaimer | **NEW 6/22 — verbatim from in-app modal** |
