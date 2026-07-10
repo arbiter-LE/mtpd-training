@@ -8,7 +8,7 @@ import { setTimeout as sleep } from 'node:timers/promises';
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const HTML = pathToFileURL(fileURLToPath(new URL('./leave-behind.html', import.meta.url))).href;
-const OUT = fileURLToPath(new URL('../2026-06-23-arbiter-le-chief-leave-behind.pdf', import.meta.url));
+const OUT = fileURLToPath(new URL('../2026-07-10-arbiter-le-chief-leave-behind.pdf', import.meta.url));
 const PORT = 9351;
 
 let msgId = 0; const pending = new Map();

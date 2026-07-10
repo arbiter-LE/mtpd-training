@@ -52,12 +52,16 @@ Superseded by the above (were empty placeholder shells, removed 6/22): the
 ### `collateral/` — finished pieces to hand a chief/prospect
 | File | What it is |
 |------|-----------|
-| `2026-06-23-arbiter-le-chief-leave-behind.pdf` | The chief leave-behind (one-page sell) — **also the rate card**; carries the current pricing tiers. This is the one you send. |
+| `2026-07-10-arbiter-le-chief-leave-behind.pdf` | The chief leave-behind (one-page sell) — **also the rate card**; carries the current pricing tiers. This is the one you send. |
 | `2026-06-21-arbiter-prospect-one-pager.svg` | "What your department gets" — 4 pillars (design-feature build) |
 | `2026-06-21-arbiter-how-it-works.svg` | "How Arbiter LE works" — 5-step flow (design-feature build) |
 
-**No module counts or cadence** in any prospect-facing piece until the numbers
-are locked post-pilot (Andrew, 6/21). Keep value language cadence-neutral.
+**The selling number is locked (Andrew, 2026-07-10): 24 modules a year — two
+each month.** Use exactly that phrasing in every prospect-facing piece. The
+26-module list on the leave-behind is the *catalog* we build from (footnoted as
+expanding) — a menu, not a delivery quota; don't conflate the two. Never use
+"biweekly" in sales language — it implies 26/yr and contradicts the delivery
+standard.
 
 ---
 
