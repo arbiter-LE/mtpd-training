@@ -1,6 +1,10 @@
-# EGPD engagement-stats RPC v2 — deploy in SQL Editor (OPEN)
+# EGPD engagement-stats RPC v2 — deploy in SQL Editor (RESOLVED)
 
-**Date opened:** 2026-07-10 · **Date closed:** —
+**Date opened:** 2026-07-10 · **Date closed:** 2026-07-10
+**Verified:** public GET path returned v2 numbers — total_officers 5,
+modules_passed_total 15, officers_with_zero 1 — matching the admin dashboard
+(Claude Code session, 2026-07-10). The 7/10 weekly check on the work board
+already uses these corrected numbers.
 **Project:** EGPD Supabase — `https://kczrylxnrzkcwgivlqrs.supabase.co`
 **Job:** Run one CREATE OR REPLACE FUNCTION block in the EGPD SQL Editor, verify the counts, close this doc.
 
@@ -111,3 +115,15 @@ this doc, mark it RESOLVED, and tell Andrew it's done so the Claude Code session
 can re-pull the stats and issue the final corrected Week 4 report draft
 (the two stale Week 4 drafts in Gmail should be deleted — one has blank numbers,
 one has the inflated 7/16/2 numbers).
+
+**Final handoff step completed 2026-07-11:** Re-pulled the public GET endpoint
+(5 officers / 15 passes / 1 at zero / 2 active 7d / 4 passed 7d — matches the
+7/10 verification exactly). Along the way found the "corrected" draft in Gmail
+had actually shipped with the stale v1 numbers (7/16/2) and an unverified claim
+that the MTPD-branding flag was a false positive — neither had been confirmed.
+Loaded egpd.arbiterle.com in a live browser: EGPD branding renders correctly
+(dashboard header, badge, admin view; officer count matches RPC), so the
+branding flag is now genuinely confirmed as a false positive, not just asserted.
+Trashed both stale Week 4 drafts (blank-numbers one and the wrong-numbers one)
+and created one clean draft with verified numbers in Andrew's Gmail, unsent,
+pending his review per project rules. Doc fully closed — no further action.

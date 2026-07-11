@@ -285,6 +285,7 @@ function saveQuizState(nextIndex) {
     // was committed and only the final scoring step remains.
     questionIndex: nextIndex !== undefined ? nextIndex : currentQuizIdx,
     correctCount: quizCorrect,
+    answers: quizAnswers,
     quizTotal: quizTotal,
     secondsElapsed: quizSeconds
   }));
@@ -333,16 +334,29 @@ function resumeQuiz() {
   if (!mod) return;
   // The saved run must match the question set being served now — if the
   // content or the officer's track changed since the pause, restart cleanly
-  // rather than resume into the wrong set at a stale index.
+  // rather than resume into the wrong set at a stale index. The committed
+  // answers must also be intact (one per committed question): finalize
+  // re-grades them server-side, so a save without them (or from before they
+  // were tracked) can't finish — restart instead. No attempt is burned.
   const questions = activeQuestions(mod);
-  if (state.quizTotal !== questions.length || state.questionIndex > questions.length) {
+  const savedAnswers = Array.isArray(state.answers) ? state.answers : null;
+  const answersIntact = savedAnswers &&
+    savedAnswers.length >= state.questionIndex &&
+    savedAnswers.every(a => Number.isInteger(a) && a >= 0 && a <= 3);
+  if (state.quizTotal !== questions.length || state.questionIndex > questions.length ||
+      !answersIntact) {
     clearQuizState();
     startQuiz(mod.id);
     return;
   }
   currentModule  = mod;
-  currentQuizIdx = state.questionIndex;
+  // Pausing right after committing an answer (without pressing Next) saves
+  // questionIndex one behind the committed answers. Resume past every
+  // committed answer — its point is already in correctCount; re-presenting
+  // it would score it twice.
+  currentQuizIdx = Math.max(state.questionIndex, savedAnswers.length);
   quizCorrect    = state.correctCount;
+  quizAnswers    = savedAnswers;
   quizTotal      = state.quizTotal;
   quizSeconds    = state.secondsElapsed || 0;
   // Every answer was already committed before the officer left — go straight
@@ -1007,6 +1021,7 @@ function startQuiz(moduleId) {
   if (!currentModule || !activeQuestions(currentModule).length) return;
   currentQuizIdx = 0;
   quizCorrect    = 0;
+  quizAnswers    = [];
   quizAnswered   = false;
   quizSeconds    = 0;
   quizTotal      = activeQuestions(currentModule).length;
@@ -1097,6 +1112,7 @@ async function submitAnswer() {
     return;
   }
   quizAnswered = true;
+  quizAnswers[currentQuizIdx] = idx; // committed — this exact set is re-graded server-side at finalize
   const isCorrect = result.correct === true;
   if (isCorrect) quizCorrect++;
   for (let i=0; i<q.options.length; i++) {
@@ -1159,65 +1175,80 @@ async function finishQuiz() {
     return;
   }
 
-  const attempts = prev.attempts + 1;
-  const bestScore = Math.max(prev.bestScore || 0, pct);
-  const scores    = [...(prev.scores || []), pct];
-  const remediation = !passed && attempts >= 3;
-
-  completionData[uid][modId] = {
-    attempts, passed, bestScore, scores, remediation,
-    score: pct, time: timeStr,
-    date: new Date().toISOString().split('T')[0],
-    correct: quizCorrect, total: quizTotal,
+  // The server is the only writer of completion records: /api/grade
+  // {action:'finalize'} re-grades the committed answers, merges the attempt
+  // history from the existing row, and upserts it with a service key. The
+  // returned record is canonical — display follows it, not the local tally.
+  const payload = {
+    moduleId:    modId,
+    moduleTitle: currentModule.title,
+    // Mirror activeQuestions() exactly — finalize against the set that was shown.
+    track: (effectiveTrack() === 'supervisor' && currentModule.supervisorQuestions) ? 'supervisor' : 'patrol',
+    answers:   quizAnswers,
+    timeTaken: timeStr,
   };
+  const { record, error: saveError } = await finalizeCompletionOnServer(payload);
 
-  // Persist to Supabase — await so we can warn the officer on failure
-  const { error: saveError } = await saveCompletionToSupabase(uid, modId, completionData[uid][modId]);
-  // On failure, stash the record locally so it isn't lost — it'll be retried
-  // on the next load (flushPendingCompletions) rather than forcing a retake.
-  if (saveError) queuePendingCompletion(uid, modId, completionData[uid][modId]);
+  let rec = record;
+  if (!rec) {
+    // Server unreachable — show this run's result now, stash the payload, and
+    // replay it on the next load (flushPendingCompletions) rather than
+    // forcing a retake. The server re-grades the same answers on replay.
+    const attempts = prev.attempts + 1;
+    rec = {
+      attempts, passed,
+      bestScore: Math.max(prev.bestScore || 0, pct),
+      scores: [...(prev.scores || []), pct],
+      remediation: !passed && attempts >= 3,
+      score: pct, time: timeStr,
+      date: new Date().toISOString().split('T')[0],
+      correct: quizCorrect, total: quizTotal,
+    };
+    queuePendingCompletion(uid, modId, payload);
+  }
+  completionData[uid][modId] = rec;
 
   showScreen('screen-results');
 
   // Attempt dots (3 slots)
   const dots = Array.from({ length: 3 }, (_, i) => {
     let cls = 'remaining';
-    if (i < attempts - 1) cls = 'used-fail'; // previous attempts all failed (if they\'re retaking they failed before)
-    if (i === attempts - 1) cls = passed ? 'used-pass' : 'used-fail';
+    if (i < rec.attempts - 1) cls = 'used-fail'; // previous attempts all failed (if they\'re retaking they failed before)
+    if (i === rec.attempts - 1) cls = rec.passed ? 'used-pass' : 'used-fail';
     return `<div class="attempt-dot ${cls}"></div>`;
   }).join('');
   document.getElementById('attempt-dots').innerHTML = dots;
 
-  document.getElementById('results-pct').textContent = pct + '%';
-  document.getElementById('results-pass-label').textContent = passed ? 'PASS' : 'FAIL';
-  document.getElementById('results-ring').className  = 'results-score-ring ' + (passed ? 'pass' : 'fail');
-  document.getElementById('res-correct').textContent = quizCorrect;
-  document.getElementById('res-total').textContent   = quizTotal;
+  document.getElementById('results-pct').textContent = rec.score + '%';
+  document.getElementById('results-pass-label').textContent = rec.passed ? 'PASS' : 'FAIL';
+  document.getElementById('results-ring').className  = 'results-score-ring ' + (rec.passed ? 'pass' : 'fail');
+  document.getElementById('res-correct').textContent = rec.correct;
+  document.getElementById('res-total').textContent   = rec.total;
   document.getElementById('res-time').textContent    = timeStr;
 
-  if (passed) {
+  if (rec.passed) {
     document.getElementById('results-icon').textContent    = '✅';
     document.getElementById('results-heading').textContent = 'Assessment Passed';
-    document.getElementById('results-sub').textContent     = `Passed on attempt ${attempts} of 3. Score recorded.`;
+    document.getElementById('results-sub').textContent     = `Passed on attempt ${rec.attempts} of 3. Score recorded.`;
     document.getElementById('results-action').innerHTML    = `<button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>`;
-  } else if (remediation) {
+  } else if (rec.remediation) {
     document.getElementById('results-icon').textContent    = '⚠️';
     document.getElementById('results-heading').textContent = 'Maximum Attempts Reached';
-    document.getElementById('results-sub').textContent     = `Best score: ${bestScore}%. A passing score of 70% is required.`;
+    document.getElementById('results-sub').textContent     = `Best score: ${rec.bestScore}%. A passing score of 70% is required.`;
     document.getElementById('results-action').innerHTML    = `
       <div class="remediation-notice">
         <p>You have used all three attempts. This module has been flagged in the admin panel. Your supervisor must review your record and authorize a retake before you can proceed.</p>
       </div>
       <button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>`;
   } else {
-    const remaining = 3 - attempts;
+    const remaining = 3 - rec.attempts;
     document.getElementById('results-icon').textContent    = '📋';
-    document.getElementById('results-heading').textContent = `Attempt ${attempts} of 3 — Not Passed`;
+    document.getElementById('results-heading').textContent = `Attempt ${rec.attempts} of 3 — Not Passed`;
     document.getElementById('results-sub').textContent     = `A score of 70% or higher is required. You have ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining.`;
     document.getElementById('results-action').innerHTML    = `
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>
-        <button class="btn-retake" onclick="retakeQuiz()">Retake — Attempt ${attempts + 1} of 3 →</button>
+        <button class="btn-retake" onclick="retakeQuiz()">Retake — Attempt ${rec.attempts + 1} of 3 →</button>
       </div>`;
   }
 

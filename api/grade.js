@@ -12,6 +12,11 @@
 //    isolated project). No token, no grade.
 //  - Response reveals the correct index + feedback only per answered
 //    question, mirroring what the quiz UI shows after a committed answer.
+//  - Completion records are written HERE too (action: 'finalize'), never by
+//    the browser: the officer is derived from the JWT, the score is
+//    re-graded from the answer key, and the row is upserted with the
+//    department's service-role key from Vercel env
+//    (SUPABASE_SERVICE_KEY_MTPD / _EGPD — set in Vercel, never in source).
 //
 // No secrets here: the per-department anon keys below are the same public
 // anon keys already shipped in js/departments/registry.js.
@@ -41,18 +46,32 @@ export default async function handler(req, res) {
   const authHeader = String(req.headers.authorization || '');
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
   if (!token) return res.status(401).json({ error: 'Sign in required' });
+  let authUser = null;
   try {
     const authResp = await fetch(DEPT_AUTH[dept].url + '/auth/v1/user', {
       headers: { apikey: DEPT_AUTH[dept].anonKey, authorization: 'Bearer ' + token },
       signal: AbortSignal.timeout(8000),
     });
     if (!authResp.ok) return res.status(401).json({ error: 'Sign in required' });
+    authUser = await authResp.json();
   } catch (e) {
     console.error('grade: auth verification failed —', e && e.message);
     return res.status(502).json({ error: 'Could not verify session' });
   }
 
-  const { moduleId, track, questionIndex, answerIndex } = req.body || {};
+  const body = req.body || {};
+
+  // Finalize: re-grade the officer's full committed answer set and write the
+  // completion row server-side. The browser never writes to the completions
+  // table — identity comes from the verified JWT, the score is recomputed
+  // here from the answer key, and the upsert uses the department's
+  // service-role key (Vercel env var SUPABASE_SERVICE_KEY_<DEPT>, never in
+  // source). A module already recorded as passed is never modified.
+  if (body.action === 'finalize') {
+    return finalizeCompletion(res, dept, authUser, body);
+  }
+
+  const { moduleId, track, questionIndex, answerIndex } = body;
   const mod = GRADE_DATA[dept][moduleId];
   if (!mod) return res.status(400).json({ error: 'Unknown module' });
   const set = mod[track === 'supervisor' ? 'supervisor' : 'patrol'];
@@ -72,4 +91,114 @@ export default async function handler(req, res) {
     correctIndex: key.c,
     feedback: key.f,
   });
+}
+
+// Re-grade a finished quiz and upsert the completions row with the
+// department's service-role key. Everything that matters is server-derived:
+// the officer (JWT → officers.auth_uid), the score (answer key), and the
+// attempt history (merged from the existing row). The client supplies only
+// its committed answers plus display metadata (module title, elapsed time).
+async function finalizeCompletion(res, dept, authUser, body) {
+  const svcKey = process.env['SUPABASE_SERVICE_KEY_' + dept.toUpperCase().replace(/-/g, '_')];
+  if (!svcKey) {
+    console.error('finalize: no service key configured for', dept);
+    return res.status(503).json({ error: 'Completion recording is not configured' });
+  }
+  const base = DEPT_AUTH[dept].url;
+  const svc = { apikey: svcKey, authorization: 'Bearer ' + svcKey };
+
+  const authUid = authUser && authUser.id;
+  if (!authUid) return res.status(401).json({ error: 'Sign in required' });
+
+  const { moduleId, track } = body;
+  const mod = GRADE_DATA[dept][moduleId];
+  if (!mod) return res.status(400).json({ error: 'Unknown module' });
+  const set = mod[track === 'supervisor' ? 'supervisor' : 'patrol'];
+  if (!Array.isArray(set)) return res.status(400).json({ error: 'Unknown track' });
+
+  const answers = Array.isArray(body.answers) ? body.answers : null;
+  if (!answers || answers.length !== set.length) {
+    return res.status(400).json({ error: 'Answer set does not match the quiz' });
+  }
+  let correct = 0;
+  for (let i = 0; i < set.length; i++) {
+    const ai = Number(answers[i]);
+    if (!Number.isInteger(ai) || ai < 0 || ai > 3) {
+      return res.status(400).json({ error: 'Bad answer index' });
+    }
+    if (ai === set[i].c) correct++;
+  }
+  const total  = set.length;
+  const pct    = Math.round((correct / total) * 100);
+  const passed = pct >= 70;
+
+  try {
+    const offResp = await fetch(
+      base + '/rest/v1/officers?auth_uid=eq.' + encodeURIComponent(authUid) + '&select=badge_number',
+      { headers: svc, signal: AbortSignal.timeout(8000) });
+    if (!offResp.ok) throw new Error('officer lookup HTTP ' + offResp.status);
+    const offRows = await offResp.json();
+    const badge = offRows.length === 1 && offRows[0].badge_number;
+    if (!badge) return res.status(403).json({ error: 'No officer record for this account' });
+
+    const prevResp = await fetch(
+      base + '/rest/v1/completions?badge_number=eq.' + encodeURIComponent(badge) +
+      '&module_id=eq.' + encodeURIComponent(moduleId) + '&select=*',
+      { headers: svc, signal: AbortSignal.timeout(8000) });
+    if (!prevResp.ok) throw new Error('completion lookup HTTP ' + prevResp.status);
+    const prev = (await prevResp.json())[0] || null;
+
+    // A passed module stays passed — a practice re-run never revokes the
+    // recorded pass, burns attempts, or triggers remediation.
+    if (prev && prev.passed === true) {
+      return res.status(200).json({ record: rowToRecord(prev), alreadyPassed: true });
+    }
+
+    const attempts = (prev ? prev.attempts || 0 : 0) + 1;
+    const row = {
+      badge_number:   badge,
+      module_id:      moduleId,
+      module_title:   String(body.moduleTitle || moduleId).slice(0, 200),
+      attempts:       attempts,
+      passed:         passed,
+      best_score:     Math.max(prev ? prev.best_score || 0 : 0, pct),
+      last_score:     pct,
+      scores:         [...(prev && Array.isArray(prev.scores) ? prev.scores : []), pct],
+      correct:        correct,
+      total:          total,
+      time_taken:     String(body.timeTaken || '').slice(0, 20),
+      remediation:    !passed && attempts >= 3,
+      completed_date: new Date().toISOString().split('T')[0],
+      updated_at:     new Date().toISOString(),
+    };
+    const upResp = await fetch(base + '/rest/v1/completions?on_conflict=badge_number,module_id', {
+      method: 'POST',
+      headers: { ...svc, 'content-type': 'application/json',
+                 prefer: 'resolution=merge-duplicates,return=representation' },
+      body: JSON.stringify(row),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!upResp.ok) throw new Error('completion upsert HTTP ' + upResp.status);
+    const saved = (await upResp.json())[0] || row;
+    return res.status(200).json({ record: rowToRecord(saved) });
+  } catch (e) {
+    console.error('finalize failed —', e && e.message);
+    return res.status(502).json({ error: 'Completion could not be recorded' });
+  }
+}
+
+// DB row → the client-side record shape (mirrors loadOfficerCompletions).
+function rowToRecord(row) {
+  return {
+    attempts:    row.attempts,
+    passed:      row.passed,
+    bestScore:   row.best_score,
+    score:       row.last_score,
+    scores:      row.scores || [],
+    correct:     row.correct,
+    total:       row.total,
+    time:        row.time_taken,
+    date:        row.completed_date,
+    remediation: row.remediation,
+  };
 }

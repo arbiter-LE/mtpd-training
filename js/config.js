@@ -97,6 +97,7 @@ let quizSelectedIdx = null;    // the option chosen but not yet committed — ch
 let quizGrading     = false;   // true while an answer is out being graded server-side
 let quizCorrect     = 0;
 let quizTotal       = 0;
+let quizAnswers     = [];      // committed answer index per question — the server re-grades these at finalize
 
 // Scenario state
 let scenarioPath    = [];   // [{question, choiceText, outcomeLabel, quality, legal}]
@@ -166,7 +167,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const STORAGE_KEY = 'arbiter_le_training_v1';
 
-/* Save one officer\'s module completion to Supabase */
+/* Finalize a finished quiz on the server. /api/grade {action:'finalize'}
+   re-grades the officer's full committed answer set against the server-side
+   key, derives the officer from their JWT, and upserts the completions row
+   itself with a service-role key — the browser never writes to the
+   completions table. Returns { record, error }: record is the canonical
+   completion in client shape, straight from the database. */
+async function finalizeCompletionOnServer(payload) {
+  try {
+    const { data: { session } } = await _sb.auth.getSession();
+    const resp = await fetch('/api/grade', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + (session ? session.access_token : '')
+      },
+      body: JSON.stringify({ action: 'finalize', ...payload })
+    });
+    const data = resp.ok ? await resp.json() : null;
+    if (!data || !data.record) {
+      console.warn('ALE: finalize rejected — HTTP', resp.status);
+      return { record: null, error: new Error('finalize failed (' + resp.status + ')') };
+    }
+    return { record: data.record, error: null };
+  } catch (e) {
+    console.warn('ALE: finalize failed —', e);
+    return { record: null, error: e };
+  }
+}
+
+/* LEGACY direct upsert — kept ONLY so pre-finalize entries already sitting in
+   an officer's pending_completions queue can still drain. New completions go
+   through finalizeCompletionOnServer(); once officer write access to the
+   completions table is revoked (see _database/<dept>/
+   2026-07-10-*-completions-server-write-only.sql) this call is rejected by
+   RLS and the flush drops the entry. Do not add new callers. */
 async function saveCompletionToSupabase(badgeNumber, modId, record) {
   try {
     const mod = MODULES.find(m => m.id === modId);
@@ -196,16 +231,18 @@ async function saveCompletionToSupabase(badgeNumber, modId, record) {
 
 /* ── Offline-safe completion queue ───────────
    A passed module must never vanish on a network blip. completionData is
-   in-memory only and re-read from Supabase on next load, so a failed save
-   would be lost. queuePendingCompletion() stashes a failed save locally;
-   flushPendingCompletions() retries the queue on the next load. */
-function queuePendingCompletion(badgeNumber, modId, record) {
+   in-memory only and re-read from Supabase on next load, so a failed
+   finalize would be lost. queuePendingCompletion() stashes the finalize
+   payload locally; flushPendingCompletions() replays it on the next load —
+   the server re-grades the same committed answers, so a replay records
+   exactly the run the officer actually made. */
+function queuePendingCompletion(badgeNumber, modId, payload) {
   try {
     const key = deptKey('pending_completions');
     const q = JSON.parse(localStorage.getItem(key) || '[]');
-    // De-dupe on badge+module — the latest record for a module wins.
+    // De-dupe on badge+module — the latest run for a module wins.
     const next = q.filter(e => !(e.badge === badgeNumber && e.modId === modId));
-    next.push({ badge: badgeNumber, modId, record, queuedAt: new Date().toISOString() });
+    next.push({ badge: badgeNumber, modId, payload, queuedAt: new Date().toISOString() });
     localStorage.setItem(key, JSON.stringify(next));
   } catch(e) { console.warn('ALE: could not queue completion —', e); }
 }
@@ -217,10 +254,27 @@ async function flushPendingCompletions() {
   if (!Array.isArray(q) || !q.length) return;
   const remaining = [];
   for (const e of q) {
-    const { error } = await saveCompletionToSupabase(e.badge, e.modId, e.record);
-    if (error) remaining.push(e); // still failing (e.g. offline, or RLS) — keep it
+    if (e.payload) {
+      const { error } = await finalizeCompletionOnServer(e.payload);
+      if (error) remaining.push(e); // still failing (e.g. offline) — keep it
+    } else if (e.record) {
+      // Legacy pre-finalize entry (direct-upsert shape). Retry as-is; once
+      // officer writes to completions are revoked, RLS rejects it forever —
+      // drop it then and warn, so the queue can't jam on an unsaveable row.
+      const { error } = await saveCompletionToSupabase(e.badge, e.modId, e.record);
+      if (error && isRlsDenied(error)) {
+        console.warn('ALE: dropping legacy queued completion (write access revoked) —', e.modId);
+      } else if (error) {
+        remaining.push(e);
+      }
+    }
   }
   try { localStorage.setItem(key, JSON.stringify(remaining)); } catch(_) {}
+}
+
+function isRlsDenied(error) {
+  return !!error && (error.code === '42501' ||
+    /row-level security|permission denied/i.test(error.message || ''));
 }
 
 /* Load completions for one officer from Supabase */
