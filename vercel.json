@@ -12,6 +12,7 @@
   "rewrites": [
     {
       "source": "/onboarding",
+      "has": [{ "type": "host", "value": "arbiterle.com" }],
       "destination": "/Marketing/onboarding"
     },
     {

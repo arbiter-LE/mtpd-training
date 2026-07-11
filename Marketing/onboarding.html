@@ -818,7 +818,7 @@
   <div class="success-screen">
     <div class="success-icon">✓</div>
     <h2>Application Submitted</h2>
-    <p>Your submission file has been downloaded automatically. Review and return the documents below, then email everything to <strong>andrew@arbiterle.com</strong>. We'll be in touch within <strong>1–2 business days</strong>.</p>
+    <p id="step5Lead">Your submission file has been downloaded automatically. Review and return the documents below, then email everything to <strong>andrew@arbiterle.com</strong>. We'll be in touch within <strong>1–2 business days</strong>.</p>
 
     <div class="summary-box" id="summaryBox"></div>
 
@@ -1128,6 +1128,26 @@
 
     lastSubmissionLines = lines;
     triggerDownload(lines.join('\n'), `arbiterle-onboarding-${subdomain || 'submission'}.txt`, 'text/plain');
+
+    // Also transmit the form data to Arbiter LE directly, so a submission is
+    // never lost if the chief stops at the download. Step 5 shows immediately;
+    // on a confirmed send the copy upgrades, and if the send fails the manual
+    // "email everything to andrew@" instructions remain the path.
+    fetch('/api/onboard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        agencyName, agencyShort, subdomain, state, jurisdiction,
+        goLive, billingName, billingEmail,
+        rosterFileName: rosterFile ? rosterFile.name : '',
+        sopLink, policyUOF, policyPursuits: policyPur, policyDV, notes,
+        roads, adminBadges,
+      }),
+    }).then(r => {
+      if (!r.ok) return;
+      const lead = document.getElementById('step5Lead');
+      if (lead) lead.innerHTML = 'Your application has been <strong>sent to Arbiter LE</strong>, and a copy was downloaded for your records. Next: review and sign the documents below, then email them with your roster spreadsheet and badge image to <strong>andrew@arbiterle.com</strong>. We\'ll be in touch within <strong>1–2 business days</strong>.';
+    }).catch(() => { /* manual email instructions remain the fallback path */ });
 
     showStep(5);
   }
