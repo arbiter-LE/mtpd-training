@@ -12,6 +12,10 @@
 //    isolated project). No token, no grade.
 //  - Response reveals the correct index + feedback only per answered
 //    question, mirroring what the quiz UI shows after a committed answer.
+//  - The supervisor question set is track-gated server-side (mirrors
+//    effectiveTrack()): only a supervisor-track officer or an admin can be
+//    graded against it, so a patrol officer cannot pull the supervisor
+//    answer key through this API.
 //  - Completion records are written HERE too (action: 'finalize'), never by
 //    the browser: the officer is derived from the JWT, the score is
 //    re-graded from the answer key, and the row is upserted with the
@@ -76,6 +80,16 @@ export default async function handler(req, res) {
   if (!mod) return res.status(400).json({ error: 'Unknown module' });
   const set = mod[track === 'supervisor' ? 'supervisor' : 'patrol'];
   if (!Array.isArray(set)) return res.status(400).json({ error: 'Unknown track' });
+
+  // The track is asserted by the client, so gate it server-side, mirroring
+  // effectiveTrack(): supervisor grading only for an officer whose record is
+  // supervisor-track, or an admin (the "Viewing as" preview). Without this,
+  // any signed-in officer could pull the supervisor answer key via the API.
+  if (track === 'supervisor') {
+    const allowed = await supervisorAllowed(dept, token, authUser && authUser.id);
+    if (allowed === null) return res.status(502).json({ error: 'Could not verify track access' });
+    if (!allowed) return res.status(403).json({ error: 'Supervisor track is not enabled for this account' });
+  }
   const qi = Number(questionIndex);
   const ai = Number(answerIndex);
   if (!Number.isInteger(qi) || qi < 0 || qi >= set.length) {
@@ -134,12 +148,20 @@ async function finalizeCompletion(res, dept, authUser, body) {
 
   try {
     const offResp = await fetch(
-      base + '/rest/v1/officers?auth_uid=eq.' + encodeURIComponent(authUid) + '&select=badge_number',
+      base + '/rest/v1/officers?auth_uid=eq.' + encodeURIComponent(authUid) + '&select=badge_number,track,role',
       { headers: svc, signal: AbortSignal.timeout(8000) });
     if (!offResp.ok) throw new Error('officer lookup HTTP ' + offResp.status);
     const offRows = await offResp.json();
-    const badge = offRows.length === 1 && offRows[0].badge_number;
+    const officer = offRows.length === 1 ? offRows[0] : null;
+    const badge = officer && officer.badge_number;
     if (!badge) return res.status(403).json({ error: 'No officer record for this account' });
+
+    // Same track gate as per-question grading: a completion may only be
+    // finalized against the supervisor set by a supervisor-track officer or
+    // an admin. (Uses the officer row already fetched — no extra request.)
+    if (track === 'supervisor' && !(officer.track === 'supervisor' || officer.role === 'admin')) {
+      return res.status(403).json({ error: 'Supervisor track is not enabled for this account' });
+    }
 
     const prevResp = await fetch(
       base + '/rest/v1/completions?badge_number=eq.' + encodeURIComponent(badge) +
@@ -184,6 +206,28 @@ async function finalizeCompletion(res, dept, authUser, body) {
   } catch (e) {
     console.error('finalize failed —', e && e.message);
     return res.status(502).json({ error: 'Completion could not be recorded' });
+  }
+}
+
+// May this signed-in user be graded against the supervisor question set?
+// Reads the caller's OWN officers row with their JWT under RLS (own-record
+// select — the same read the app does at login), so no service key is needed
+// on the per-question path. true/false = definitive; null = could not verify
+// (treat as an outage, not a denial).
+async function supervisorAllowed(dept, token, authUid) {
+  if (!authUid) return false;
+  try {
+    const resp = await fetch(
+      DEPT_AUTH[dept].url + '/rest/v1/officers?auth_uid=eq.' + encodeURIComponent(authUid) + '&select=track,role',
+      { headers: { apikey: DEPT_AUTH[dept].anonKey, authorization: 'Bearer ' + token },
+        signal: AbortSignal.timeout(8000) });
+    if (!resp.ok) return null;
+    const rows = await resp.json();
+    const o = rows && rows[0];
+    return !!(o && (o.track === 'supervisor' || o.role === 'admin'));
+  } catch (e) {
+    console.error('grade: track verification failed —', e && e.message);
+    return null;
   }
 }
 

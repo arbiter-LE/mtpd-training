@@ -63,6 +63,12 @@ function checkDepartment(dept) {
     return fail(tag, 'registry entry has no moduleScripts array');
   if (typeof dept.features !== 'object' || dept.features === null)
     fail(tag, 'registry entry has no features object');
+  if (!dept.badge || !fs.existsSync(path.join(ROOT, dept.badge)))
+    fail(tag, `badge asset missing on disk: ${dept.badge || '(none declared)'} — Vercel/Linux is case-sensitive, match the path exactly`);
+  // Duck-typed: the registry evaluates in a vm context, so its Date is a
+  // different realm's constructor and instanceof would always be false here.
+  if (!dept.scheduleStart || typeof dept.scheduleStart.getTime !== 'function' || isNaN(dept.scheduleStart.getTime()))
+    fail(tag, 'scheduleStart is missing or not a valid Date — the schedule engine cannot compute unlock/due dates');
 
   const M = buildModules(dept);
   if (!M) return;
@@ -188,11 +194,21 @@ function checkAnswerKeys(registry) {
   else console.log('  ✓ no correct/feedback fields anywhere under js/modules/');
 
   // 2. Every question has a server-side key of the right shape.
-  let gradeData = null;
+  let gradeData = null, deptAuth = null;
   try {
     const gradeSrc = fs.readFileSync(path.join(ROOT, 'api/grade.js'), 'utf8');
     gradeData = JSON.parse(/const GRADE_DATA = (.*);/.exec(gradeSrc)[1]);
-  } catch (e) { return fail('keys', `could not parse GRADE_DATA from api/grade.js: ${e.message}`); }
+    deptAuth  = JSON.parse(/const DEPT_AUTH = (.*);/.exec(gradeSrc)[1]);
+  } catch (e) { return fail('keys', `could not parse GRADE_DATA/DEPT_AUTH from api/grade.js: ${e.message}`); }
+
+  // 3. DEPT_AUTH must mirror the registry exactly. A registry URL/key edit
+  // without re-running the builder would leave the grader verifying officer
+  // JWTs against the WRONG Supabase project — every grade would 401.
+  registry.forEach(dept => {
+    const a = deptAuth[dept.subdomain];
+    if (!a || a.url !== dept.supabaseUrl || a.anonKey !== dept.supabaseKey)
+      fail(dept.subdomain, 'api/grade.js DEPT_AUTH is out of sync with registry.js (supabaseUrl/supabaseKey) — run node _dev/build-answer-keys.js');
+  });
 
   registry.forEach(dept => {
     const tag = dept.subdomain;
