@@ -85,6 +85,14 @@ or stores the key values.
 
 **Done when:** a quiz pass on each subdomain records cleanly post-deploy.
 
+> **Status 2026-07-11:** Deployed (commit `1adb53a`) and machine-verified live:
+> new client on both subdomains, finalize endpoint fails closed (401 without a
+> session), both sites render correct branding, internal docs 404, unknown
+> subdomains NXDOMAIN. **Remaining for Step 2:** Andrew's live quiz pass as the
+> preview account on each subdomain (2.2 above) — Claude has no login
+> credentials, so this check is his. Step 3's ~3-day clock starts once that
+> passes.
+
 ## Step 3 — Revoke the browser write path (Cowork/browser; ≥3 days after Step 2)
 
 Preconditions — all three must be true:
