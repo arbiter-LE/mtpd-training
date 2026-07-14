@@ -194,12 +194,13 @@ function checkAnswerKeys(registry) {
   else console.log('  ✓ no correct/feedback fields anywhere under js/modules/');
 
   // 2. Every question has a server-side key of the right shape.
-  let gradeData = null, deptAuth = null;
+  let gradeData = null, deptAuth = null, deptSched = null;
   try {
     const gradeSrc = fs.readFileSync(path.join(ROOT, 'api/grade.js'), 'utf8');
     gradeData = JSON.parse(/const GRADE_DATA = (.*);/.exec(gradeSrc)[1]);
     deptAuth  = JSON.parse(/const DEPT_AUTH = (.*);/.exec(gradeSrc)[1]);
-  } catch (e) { return fail('keys', `could not parse GRADE_DATA/DEPT_AUTH from api/grade.js: ${e.message}`); }
+    deptSched = JSON.parse(/const DEPT_SCHEDULE = (.*);/.exec(gradeSrc)[1]);
+  } catch (e) { return fail('keys', `could not parse GRADE_DATA/DEPT_AUTH/DEPT_SCHEDULE from api/grade.js: ${e.message}`); }
 
   // 3. DEPT_AUTH must mirror the registry exactly. A registry URL/key edit
   // without re-running the builder would leave the grader verifying officer
@@ -219,6 +220,22 @@ function checkAnswerKeys(registry) {
       return fail(tag, 'api/grade.js grading block is out of sync with the answer-key JSON — run node _dev/build-answer-keys.js');
     const M = buildModules(dept);
     if (!M) return;
+
+    // 4. DEPT_SCHEDULE must mirror the registry + this department's MODULES.
+    // The grader enforces unlock dates from it — stale schedule data would
+    // either let officers grade locked modules early or lock out open ones.
+    const s = deptSched && deptSched[tag];
+    if (!s) fail(tag, 'api/grade.js DEPT_SCHEDULE is missing this department — run node _dev/build-answer-keys.js');
+    else {
+      const wantUnlock = (dept.cadence && dept.cadence.unlockEveryDays) || 7;
+      if (s.start !== dept.scheduleStart.toISOString() || s.unlockEveryDays !== wantUnlock)
+        fail(tag, 'api/grade.js DEPT_SCHEDULE start/cadence is out of sync with registry.js — run node _dev/build-answer-keys.js');
+      const wantWeeks = {};
+      M.forEach(m => { wantWeeks[m.id] = m.weekNumber; });
+      if (JSON.stringify(s.weeks) !== JSON.stringify(wantWeeks))
+        fail(tag, 'api/grade.js DEPT_SCHEDULE week map is out of sync with MODULES — run node _dev/build-answer-keys.js');
+    }
+
     let checked = 0;
     M.forEach(m => {
       for (const [setName, trackName] of [['questions', 'patrol'], ['supervisorQuestions', 'supervisor']]) {
@@ -233,7 +250,7 @@ function checkAnswerKeys(registry) {
         checked += k.length;
       }
     });
-    console.log(`  ✓ ${tag}: ${checked} questions all keyed server-side, grade.js in sync`);
+    console.log(`  ✓ ${tag}: ${checked} questions all keyed server-side, grade.js keys + unlock schedule in sync`);
   });
 }
 
