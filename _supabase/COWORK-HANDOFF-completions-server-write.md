@@ -1,6 +1,6 @@
-# Completions go server-write-only — 3-step deploy (OPEN)
+# Completions go server-write-only — 3-step deploy (RESOLVED 2026-07-14)
 
-**Date opened:** 2026-07-10 · **Date closed:** —
+**Date opened:** 2026-07-10 · **Date closed:** **2026-07-14**
 **Projects:** MTPD Supabase — `https://lkikznncbpfcmgnnyigj.supabase.co` · EGPD Supabase — `https://kczrylxnrzkcwgivlqrs.supabase.co` · Vercel (arbiter-le project)
 **Job:** Three steps, strictly in order, spread over ~a week. Step 1 is browser work (Cowork). Step 2 is a Claude Code deploy (NOT Cowork). Step 3 is SQL Editor work (Cowork), only after Step 2 is verified and a few days have passed.
 
@@ -105,11 +105,13 @@ Preconditions — all three must be true:
 - [x] Andrew gives the go — this is the point of no return for client writes
       (given 2026-07-14, named per project)
 
-> **Status 2026-07-14:** Step 3 SQL executed in BOTH projects with before/after
-> `pg_policies` confirmation — the officer write policy is gone; only the two
-> SELECT policies remain in each. **Remaining before this doc closes:** the
-> two live end-to-end checks below on both subdomains (needs the PREVIEW
-> login — Andrew's step). Details in `COWORK-HANDOFF-completions-revoke.md`.
+> **Status 2026-07-14 — CLOSED:** Step 3 SQL executed in BOTH projects with
+> before/after `pg_policies` confirmation — the officer write policy is gone;
+> only the two SELECT policies remain in each. Live verification complete the
+> same day: anon-role forgery upsert rejected on both live sites (42501,
+> machine-verified), and Andrew confirmed the signed-in checks on both
+> subdomains (forgery upsert errors, real quiz pass records cleanly). All
+> three steps done. Details in `COWORK-HANDOFF-completions-revoke.md`.
 
 Run in **each** project's SQL Editor. ⚠️ Check the project ref in the URL
 before running — MTPD is `lkikznncbpfcmgnnyigj`, EGPD is

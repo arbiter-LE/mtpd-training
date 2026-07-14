@@ -1,17 +1,24 @@
-# Completions write-path revoke — Step 3 standalone (SQL EXECUTED — live verify pending)
+# Completions write-path revoke — Step 3 standalone (RESOLVED 2026-07-14)
 
-**Date opened:** 2026-07-12 · **Date closed:** —
+**Date opened:** 2026-07-12 · **Date closed:** **2026-07-14**
 
-> **Status 2026-07-14:** SQL executed in BOTH projects (Cowork session, Andrew's
-> explicit per-project confirmation for each). Before/after confirmed via
-> `pg_policies` in each: `"Officers can write own completions"` dropped; exactly
-> two SELECT policies remain (`Admins can read all completions`, `Officers can
-> read own completions`). **Partial live receipt (same day):** the *anon-role*
-> upsert was run against both live sites via each page's own `_sb` client —
-> both rejected with `42501 new row violates row-level security policy`
-> (HTTP 401). **Remaining before RESOLVED:** the two *signed-in* checks below
-> on both subdomains — Claude has no PREVIEW login credentials, so this is
-> Andrew's step (or he supplies the password and watches it run).
+> **RESOLVED 2026-07-14.** SQL executed in BOTH projects (Cowork session,
+> Andrew's explicit per-project confirmation for each). Before/after confirmed
+> via `pg_policies` in each: `"Officers can write own completions"` dropped;
+> exactly two SELECT policies remain (`Admins can read all completions`,
+> `Officers can read own completions`). Live verification complete:
+> - *Anon-role* forgery upsert rejected on both live sites via each page's
+>   own `_sb` client — `42501 new row violates row-level security policy`
+>   (HTTP 401), machine-verified.
+> - *Signed-in* checks confirmed by Andrew on both subdomains 2026-07-14:
+>   forgery upsert as the preview account returns the RLS error, and a real
+>   quiz pass records normally with no server warning.
+>
+> The browser write path to `completions` is closed everywhere; the only
+> write path is `/api/grade {action:'finalize'}` with the per-department
+> service key. Same day, unlock dates also went server-side in that endpoint
+> (commit `8f0997f`) — a locked module can't be graded or finalized except
+> by the `can_preview` account.
 **Projects:** MTPD Supabase — `https://lkikznncbpfcmgnnyigj.supabase.co` · EGPD Supabase — `https://kczrylxnrzkcwgivlqrs.supabase.co`
 **Job:** SQL Editor work in BOTH projects (Cowork). Drop the one RLS policy that
 still lets an officer's browser write its own completion rows. This is Step 3 of
