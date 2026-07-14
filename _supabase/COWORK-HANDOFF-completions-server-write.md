@@ -92,13 +92,24 @@ or stores the key values.
 > preview account on each subdomain (2.2 above) — Claude has no login
 > credentials, so this check is his. Step 3's ~3-day clock starts once that
 > passes.
+>
+> **Step 2 verified 2026-07-11** — Andrew confirmed the live quiz-pass check
+> on both subdomains. 3-day clock started 2026-07-11 → earliest Step 3 run is
+> **2026-07-14**.
 
 ## Step 3 — Revoke the browser write path (Cowork/browser; ≥3 days after Step 2)
 
 Preconditions — all three must be true:
-- [ ] Step 2 verified on both subdomains
-- [ ] At least ~3 days have passed since the deploy (offline queues drained)
-- [ ] Andrew gives the go — this is the point of no return for client writes
+- [x] Step 2 verified on both subdomains (2026-07-11)
+- [x] At least ~3 days have passed since the deploy (offline queues drained)
+- [x] Andrew gives the go — this is the point of no return for client writes
+      (given 2026-07-14, named per project)
+
+> **Status 2026-07-14:** Step 3 SQL executed in BOTH projects with before/after
+> `pg_policies` confirmation — the officer write policy is gone; only the two
+> SELECT policies remain in each. **Remaining before this doc closes:** the
+> two live end-to-end checks below on both subdomains (needs the PREVIEW
+> login — Andrew's step). Details in `COWORK-HANDOFF-completions-revoke.md`.
 
 Run in **each** project's SQL Editor. ⚠️ Check the project ref in the URL
 before running — MTPD is `lkikznncbpfcmgnnyigj`, EGPD is
