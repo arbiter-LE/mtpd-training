@@ -550,7 +550,7 @@ function maybeRenderRefresher() {
   if (_refresherState !== null) return;          // already handled this session
   _refresherState = 'done';                        // default: nothing to show
   if (!(ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.features && ACTIVE_DEPARTMENT.features.refresher)) return;
-  if (!currentUser || currentUser.role === 'admin') return;   // officers only
+  if (!currentUser) return;   // everyone, admins included — shown on the officer dashboard (admins reach it via Browse Modules)
   if (!refresherDue()) return;
   const pick = pickRefresherQuestion();
   if (!pick) return;                               // no completed modules yet
