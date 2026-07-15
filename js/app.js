@@ -222,6 +222,7 @@ async function doLogout() {
   stopAllTimers();
   currentUser = null;
   previewTrackOverride = null;
+  _refresherState = null;   // re-evaluate the refresher for the next login
   if (_sb) await _sb.auth.signOut();
   document.getElementById('login-user').value = '';
   document.getElementById('login-pass').value = '';
@@ -497,6 +498,139 @@ function renderOfficerDashboard() {
   document.getElementById('stat-score').textContent = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+'%' : '—';
   document.getElementById('overall-progress').style.width = Math.round((completed/total)*100)+'%';
   document.getElementById('modules-grid').innerHTML = MODULES.map(m => moduleCardHtml(m, done)).join('');
+  maybeRenderRefresher();
+}
+
+/* ── Knowledge Refresher (ungraded retention nudge) ──────────────────────────
+   Surfaces ONE question from a module the officer has already passed, on a flat
+   weekly clock, on login. Ungraded: nothing is written to completionData or the
+   completions table — reveal reuses the side-effect-free per-question /api/grade
+   path (no attempts recorded). The only persisted state is a per-user
+   localStorage timestamp, so it reappears at most once every 7 days.
+   Registry-gated on ACTIVE_DEPARTMENT.features.refresher (absent = off), so
+   departments without the flag (e.g. EGPD's live pilot) never see it. */
+const REFRESHER_INTERVAL_DAYS = 7;
+// null = not yet evaluated this session; once evaluated it holds either the
+// active pick {…, answered} or the string 'done'. Re-renders (track toggle,
+// completions reload) then leave the slot untouched instead of re-rolling it.
+let _refresherState = null;
+
+function refresherKey() { return currentUser ? 'arbiter_refresher_' + currentUser.id : null; }
+
+function refresherDue() {
+  const key = refresherKey();
+  if (!key) return false;
+  try {
+    const last = parseInt(localStorage.getItem(key) || '0', 10) || 0;
+    return (Date.now() - last) / 86400000 >= REFRESHER_INTERVAL_DAYS;
+  } catch (e) { return false; } // private mode / storage blocked — just skip
+}
+
+function markRefresherShown() {
+  const key = refresherKey();
+  if (!key) return;
+  try { localStorage.setItem(key, String(Date.now())); } catch (e) {}
+}
+
+function pickRefresherQuestion() {
+  const done = completionData[currentUser.id] || {};
+  const passedIds = Object.keys(done).filter(id => done[id] && done[id].passed);
+  const candidates = MODULES.filter(m => passedIds.includes(m.id) && activeQuestions(m).length > 0);
+  if (!candidates.length) return null;
+  const m  = candidates[Math.floor(Math.random() * candidates.length)];
+  const qs = activeQuestions(m);
+  const qi = Math.floor(Math.random() * qs.length);
+  const track = (effectiveTrack() === 'supervisor' && m.supervisorQuestions) ? 'supervisor' : 'patrol';
+  return { moduleId: m.id, moduleTitle: m.title, track, questionIndex: qi, question: qs[qi] };
+}
+
+function maybeRenderRefresher() {
+  const slot = document.getElementById('refresher-slot');
+  if (!slot) return;
+  if (_refresherState !== null) return;          // already handled this session
+  _refresherState = 'done';                        // default: nothing to show
+  if (!(ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.features && ACTIVE_DEPARTMENT.features.refresher)) return;
+  if (!currentUser || currentUser.role === 'admin') return;   // officers only
+  if (!refresherDue()) return;
+  const pick = pickRefresherQuestion();
+  if (!pick) return;                               // no completed modules yet
+  markRefresherShown();                            // flat weekly clock — at most once per interval
+  _refresherState = Object.assign({ answered: false }, pick);
+  renderRefresherCard(_refresherState);
+}
+
+function renderRefresherCard(pick) {
+  const slot = document.getElementById('refresher-slot');
+  const q = pick.question;
+  const opts = q.options.map((o, i) => `
+    <button class="answer-option" id="refresher-opt-${i}" onclick="answerRefresher(${i})">
+      <span class="opt-letter">${String.fromCharCode(65 + i)}</span>
+      <span class="opt-text">${o}</span>
+    </button>`).join('');
+  slot.innerHTML = `
+    <div class="refresher-card" role="region" aria-label="Knowledge refresher">
+      <div class="refresher-head">
+        <span class="refresher-tag">Knowledge Refresher</span>
+        <button class="refresher-skip" onclick="dismissRefresher()" aria-label="Dismiss refresher">Skip for now</button>
+      </div>
+      <p class="refresher-sub">A quick check from <strong>${pick.moduleTitle}</strong> — not graded, just to keep it sharp.</p>
+      ${q.scenario ? `<div class="refresher-scenario">${q.scenario}</div>` : ''}
+      <p class="refresher-q">${q.text}</p>
+      <div class="answer-options">${opts}</div>
+      <div class="answer-feedback refresher-fb" id="refresher-fb" hidden></div>
+    </div>`;
+}
+
+function dismissRefresher() {
+  _refresherState = 'done';
+  const slot = document.getElementById('refresher-slot');
+  if (slot) slot.innerHTML = '';
+}
+
+// Reveal the answer for the refresher question. Ungraded: this reuses the
+// per-question /api/grade path, which returns correct/feedback WITHOUT writing
+// any attempt or completion. On a network/server failure nothing is revealed
+// and the officer can try again.
+async function answerRefresher(idx) {
+  if (!_refresherState || typeof _refresherState !== 'object' || _refresherState.answered) return;
+  const fb = document.getElementById('refresher-fb');
+  const optButtons = () => document.querySelectorAll('.refresher-card .answer-option');
+  optButtons().forEach(b => b.disabled = true);
+  fb.hidden = false;
+  fb.className = 'answer-feedback refresher-fb';
+  fb.textContent = 'Checking…';
+  let result = null;
+  try {
+    const { data: { session } } = await _sb.auth.getSession();
+    const resp = await fetch('/api/grade', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + (session ? session.access_token : '')
+      },
+      body: JSON.stringify({
+        moduleId: _refresherState.moduleId,
+        track: _refresherState.track,
+        questionIndex: _refresherState.questionIndex,
+        answerIndex: idx
+      })
+    });
+    if (resp.ok) result = await resp.json();
+  } catch (e) { /* falls through to the retry path */ }
+  if (!result || typeof result.correctIndex !== 'number') {
+    optButtons().forEach(b => b.disabled = false);
+    fb.className = 'answer-feedback refresher-fb incorrect-fb';
+    fb.textContent = '⚠ Could not check that — connection issue. This is only practice; nothing is counted. Try again.';
+    return;
+  }
+  _refresherState.answered = true;
+  const isCorrect = result.correct === true;
+  optButtons().forEach((b, i) => {
+    if (i === idx) b.classList.add(isCorrect ? 'correct' : 'incorrect');
+    else if (i === result.correctIndex && !isCorrect) b.classList.add('reveal-correct');
+  });
+  fb.className = 'answer-feedback refresher-fb ' + (isCorrect ? 'correct-fb' : 'incorrect-fb');
+  fb.textContent = (isCorrect ? '✓ ' : '✗ ') + result.feedback;
 }
 
 /* Build one module card. Shared by the dashboard grid and the Library tab so

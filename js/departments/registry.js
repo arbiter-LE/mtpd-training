@@ -40,7 +40,9 @@ const DEPARTMENT_REGISTRY = [
     ],
     // Per-department capability flags. Shared code branches on these, never
     // on the subdomain. Absent/false = the feature is off for this department.
-    features: { supervisorTrack: true },     // MTPD: supervisor reading + graded quiz (all 12)
+    // refresher: ungraded weekly retention nudge on login, drawn from completed
+    // modules. Registry-gated so EGPD's live pilot is unaffected until enabled.
+    features: { supervisorTrack: true, refresher: true },  // MTPD: supervisor track + knowledge refresher
   },
   // ── Add new agencies below ────────────────
   {
