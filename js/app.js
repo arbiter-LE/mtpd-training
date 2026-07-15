@@ -498,7 +498,63 @@ function renderOfficerDashboard() {
   document.getElementById('stat-score').textContent = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+'%' : '—';
   document.getElementById('overall-progress').style.width = Math.round((completed/total)*100)+'%';
   document.getElementById('modules-grid').innerHTML = MODULES.map(m => moduleCardHtml(m, done)).join('');
+  maybeRenderReminders();
   maybeRenderRefresher();
+}
+
+/* ── Due-date reminders ──────────────────────────────────────────────────────
+   A salient login nudge when the officer has training that's overdue or coming
+   due. Reads the SAME schedule engine (getModuleSchedule) as the Overdue stat
+   card, so the two can never disagree. Persistent (no weekly clock): it stays
+   until the work is done. Registry-gated on features.dueDateReminders.
+   Officers only — admins aren't assigned training deadlines, so a "you're
+   overdue" nag would be both meaningless and noisy for them. */
+function maybeRenderReminders() {
+  const slot = document.getElementById('reminder-slot');
+  if (!slot) return;
+  slot.innerHTML = '';
+  if (!(ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.features && ACTIVE_DEPARTMENT.features.dueDateReminders)) return;
+  if (!currentUser || currentUser.role === 'admin') return;
+  const done = completionData[currentUser.id] || {};
+  const notPassed = MODULES.filter(m => !(done[m.id] && done[m.id].passed));
+  const overdue = notPassed.filter(m => {
+    const s = getModuleSchedule(m.weekNumber).status;
+    return s === 'overdue' || s === 'buffer';
+  });
+  const dueSoon = notPassed.filter(m => getModuleSchedule(m.weekNumber).status === 'due-soon');
+  if (!overdue.length && !dueSoon.length) return;
+  renderReminderCard(overdue, dueSoon);
+}
+
+function renderReminderCard(overdue, dueSoon) {
+  const slot = document.getElementById('reminder-slot');
+  const byDue = (a, b) => getModuleSchedule(a.weekNumber).dueDate - getModuleSchedule(b.weekNumber).dueDate;
+  let cls, heading, sub, target;
+  if (overdue.length) {
+    const n = overdue.length;
+    cls = 'reminder-overdue';
+    heading = `${n} module${n > 1 ? 's' : ''} overdue`;
+    sub = 'Complete overdue training as soon as possible to stay compliant.';
+    target = overdue.slice().sort(byDue)[0];
+  } else {
+    const n = dueSoon.length;
+    const nearest = getModuleSchedule(dueSoon.slice().sort(byDue)[0].weekNumber);
+    cls = 'reminder-due';
+    heading = `${n} module${n > 1 ? 's' : ''} due soon`;
+    sub = `Soonest: ${nearest.label}.`;
+    target = dueSoon.slice().sort(byDue)[0];
+  }
+  slot.innerHTML = `
+    <div class="reminder-card ${cls}" role="region" aria-label="Training deadline reminder">
+      <div class="reminder-body">
+        <span class="reminder-icon" aria-hidden="true">⏰</span>
+        <div>
+          <p class="reminder-heading">${heading}</p>
+          <p class="reminder-sub">${sub}</p>
+        </div>
+      </div>
+      <button class="reminder-cta" onclick="startModule('${target.id}')">Start now →</button>
+    </div>`;
 }
 
 /* ── Knowledge Refresher (ungraded retention nudge) ──────────────────────────

@@ -42,7 +42,7 @@ const DEPARTMENT_REGISTRY = [
     // on the subdomain. Absent/false = the feature is off for this department.
     // refresher: ungraded weekly retention nudge on login, drawn from completed
     // modules. Registry-gated so EGPD's live pilot is unaffected until enabled.
-    features: { supervisorTrack: true, refresher: true },  // MTPD: supervisor track + knowledge refresher
+    features: { supervisorTrack: true, refresher: true, dueDateReminders: true },  // MTPD: supervisor track + knowledge refresher + due-date reminders
   },
   // ── Add new agencies below ────────────────
   {
@@ -72,7 +72,7 @@ const DEPARTMENT_REGISTRY = [
       'js/modules/egpd/module-egpd-12.js',
       'js/modules/egpd/modules-egpd.js',   // builds MODULES from the above
     ],
-    features: { supervisorTrack: true },   // EGPD: supervisor reading + graded quiz
+    features: { supervisorTrack: true, refresher: true, dueDateReminders: true },   // EGPD: supervisor track + knowledge refresher + due-date reminders (engagement, enabled 2026-07-15)
   },
 ];
 
