@@ -232,8 +232,9 @@ async function doLogout() {
 
 /* ── Officer Tabs ───────────────────────── */
 function officerTab(tab, e) {
-  document.querySelectorAll('.officer-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.officer-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
   e.target.classList.add('active');
+  e.target.setAttribute('aria-selected', 'true');
   document.getElementById('officer-tab-modules').classList.toggle('hidden', tab !== 'modules');
   document.getElementById('officer-tab-progress').classList.toggle('hidden', tab !== 'progress');
   document.getElementById('officer-tab-library').classList.toggle('hidden', tab !== 'library');
@@ -1573,8 +1574,9 @@ function printComplianceReport() {
 }
 
 function adminTab(tab, e) {
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
   e.target.classList.add('active');
+  e.target.setAttribute('aria-selected', 'true');
   document.getElementById('admin-tab-compliance').classList.toggle('hidden', tab!=='compliance');
   document.getElementById('admin-tab-modules').classList.toggle('hidden', tab!=='modules');
   document.getElementById('admin-tab-citations').classList.toggle('hidden', tab!=='citations');
@@ -1583,8 +1585,9 @@ function adminTab(tab, e) {
 }
 
 function filterCitations(type, btn) {
-  document.querySelectorAll('.cite-filter').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cite-filter').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
   btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
   document.querySelectorAll('.cite-table tbody tr').forEach(row => {
     if (type === 'all' || row.dataset.type === type) {
       row.classList.remove('cite-hidden');
@@ -1747,8 +1750,9 @@ function closeGlossary() {
 
 function glossaryTab(tab, btn) {
   _glossaryActiveTab = tab;
-  document.querySelectorAll('.glossary-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.glossary-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
   btn.classList.add('active');
+  btn.setAttribute('aria-pressed', 'true');
   filterGlossary(document.getElementById('glossary-search-input').value || '');
 }
 

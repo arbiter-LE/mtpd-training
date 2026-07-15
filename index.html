@@ -21,11 +21,11 @@
   <div class="login-card">
     <h2>Secure Access</h2>
     <div class="form-group">
-      <label>Department Email</label>
+      <label for="login-user">Department Email</label>
       <input type="text" id="login-user" placeholder="your@department.email" autocomplete="email" />
     </div>
     <div class="form-group">
-      <label>Password</label>
+      <label for="login-pass">Password</label>
       <input type="password" id="login-pass" placeholder="••••••••" />
     </div>
     <button class="btn-primary" id="btn-login" onclick="doLogin()">Sign In</button>
@@ -46,11 +46,11 @@
   <div class="login-card">
     <h2>Set New Password</h2>
     <div class="form-group">
-      <label>New Password</label>
+      <label for="reset-pass-1">New Password</label>
       <input type="password" id="reset-pass-1" placeholder="••••••••" autocomplete="new-password" />
     </div>
     <div class="form-group">
-      <label>Confirm New Password</label>
+      <label for="reset-pass-2">Confirm New Password</label>
       <input type="password" id="reset-pass-2" placeholder="••••••••" autocomplete="new-password" />
     </div>
     <button class="btn-primary" id="btn-reset" onclick="doSetNewPassword()">Update Password</button>
@@ -94,10 +94,10 @@
         <div class="stat-card"><div class="stat-label">Avg. Score</div><div class="stat-value" id="stat-score">—</div></div>
       </div>
       <div class="progress-bar-wrap"><div class="progress-bar-fill" id="overall-progress" style="width:0%"></div></div>
-      <div class="officer-tabs">
-        <button class="officer-tab active" onclick="officerTab('modules', event)">Training Modules</button>
-        <button class="officer-tab" onclick="officerTab('library', event)">Library</button>
-        <button class="officer-tab" onclick="officerTab('progress', event)">My Progress</button>
+      <div class="officer-tabs" role="tablist" aria-label="Training sections">
+        <button class="officer-tab active" role="tab" aria-selected="true" aria-controls="officer-tab-modules" onclick="officerTab('modules', event)">Training Modules</button>
+        <button class="officer-tab" role="tab" aria-selected="false" aria-controls="officer-tab-library" onclick="officerTab('library', event)">Library</button>
+        <button class="officer-tab" role="tab" aria-selected="false" aria-controls="officer-tab-progress" onclick="officerTab('progress', event)">My Progress</button>
       </div>
       <div id="officer-tab-modules">
         <div id="track-toggle-dash" class="track-toggle" style="display:none"></div>
@@ -272,16 +272,16 @@
         <p>Officer compliance, module completion, and assessment records — Law Enforcement Training Platform.</p>
       </div>
       <div class="admin-stats-row" id="admin-stats-row"></div>
-      <div class="admin-nav-tabs">
-        <button class="admin-tab active" onclick="adminTab('compliance', event)">Compliance Overview</button>
-        <button class="admin-tab" onclick="adminTab('modules', event)">Module Summary</button>
-        <button class="admin-tab" onclick="adminTab('citations', event)">Legal Citations</button>
-        <button class="admin-tab" onclick="adminTab('feedback', event)">Officer Feedback</button>
+      <div class="admin-nav-tabs" role="tablist" aria-label="Administration sections">
+        <button class="admin-tab active" role="tab" aria-selected="true" aria-controls="admin-tab-compliance" onclick="adminTab('compliance', event)">Compliance Overview</button>
+        <button class="admin-tab" role="tab" aria-selected="false" aria-controls="admin-tab-modules" onclick="adminTab('modules', event)">Module Summary</button>
+        <button class="admin-tab" role="tab" aria-selected="false" aria-controls="admin-tab-citations" onclick="adminTab('citations', event)">Legal Citations</button>
+        <button class="admin-tab" role="tab" aria-selected="false" aria-controls="admin-tab-feedback" onclick="adminTab('feedback', event)">Officer Feedback</button>
       </div>
       <div id="admin-tab-compliance">
         <div class="filter-bar">
           <label>Filter:</label>
-          <select id="filter-status" onchange="renderAdminTable()">
+          <select id="filter-status" onchange="renderAdminTable()" aria-label="Filter officers by status">
             <option value="all">All Officers</option>
             <option value="complete">Complete</option>
             <option value="overdue">Overdue</option>
@@ -310,13 +310,13 @@
       </div>
 
       <div id="admin-tab-citations" class="hidden">
-        <div class="cite-filter-bar">
+        <div class="cite-filter-bar" role="group" aria-label="Filter citations by type">
           <span>Filter:</span>
-          <button class="cite-filter active" onclick="filterCitations('all',this)">All</button>
-          <button class="cite-filter" onclick="filterCitations('caselaw',this)">Case Law</button>
-          <button class="cite-filter" onclick="filterCitations('statute',this)">Statutes</button>
-          <button class="cite-filter" id="cite-filter-go" onclick="filterCitations('go',this)">MTPD Orders</button>
-          <button class="cite-filter" onclick="filterCitations('research',this)">Research</button>
+          <button class="cite-filter active" aria-pressed="true" onclick="filterCitations('all',this)">All</button>
+          <button class="cite-filter" aria-pressed="false" onclick="filterCitations('caselaw',this)">Case Law</button>
+          <button class="cite-filter" aria-pressed="false" onclick="filterCitations('statute',this)">Statutes</button>
+          <button class="cite-filter" id="cite-filter-go" aria-pressed="false" onclick="filterCitations('go',this)">MTPD Orders</button>
+          <button class="cite-filter" aria-pressed="false" onclick="filterCitations('research',this)">Research</button>
         </div>
 
         <!-- MODULE 1 -->
@@ -682,10 +682,10 @@
 
 <!-- ═══════════════ FEEDBACK MODAL ═══════════════ -->
 <div id="feedback-modal-overlay" class="modal-overlay">
-  <div class="modal-card">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
     <div class="modal-header">
-      <h3>Flag a Content Issue</h3>
-      <button class="modal-close" onclick="closeFeedbackModal()">✕</button>
+      <h3 id="feedback-modal-title">Flag a Content Issue</h3>
+      <button class="modal-close" onclick="closeFeedbackModal()" aria-label="Close">✕</button>
     </div>
     <div id="feedback-form-body" class="modal-body"></div>
   </div>
@@ -693,18 +693,18 @@
 
 <!-- ═══════════════ GLOSSARY / REFERENCE MODAL ═══════════════ -->
 <div id="glossary-overlay" class="modal-overlay">
-  <div class="modal-card modal-card-wide">
+  <div class="modal-card modal-card-wide" role="dialog" aria-modal="true" aria-labelledby="glossary-modal-title">
     <div class="modal-header">
-      <h3>📖 Legal Reference & Glossary</h3>
-      <button class="modal-close" onclick="closeGlossary()">✕</button>
+      <h3 id="glossary-modal-title">📖 Legal Reference & Glossary</h3>
+      <button class="modal-close" onclick="closeGlossary()" aria-label="Close">✕</button>
     </div>
     <div class="modal-body">
-      <input type="text" id="glossary-search-input" class="glossary-search" placeholder="Search terms, cases, statutes…" oninput="filterGlossary(this.value)" />
-      <div class="glossary-tabs">
-        <button class="glossary-tab active" onclick="glossaryTab('all', this)">All</button>
-        <button class="glossary-tab" onclick="glossaryTab('legal', this)">Case Law</button>
-        <button class="glossary-tab" onclick="glossaryTab('term', this)">Terms</button>
-        <button class="glossary-tab" onclick="glossaryTab('sop', this)">SOPs</button>
+      <input type="text" id="glossary-search-input" class="glossary-search" placeholder="Search terms, cases, statutes…" oninput="filterGlossary(this.value)" aria-label="Search legal reference and glossary" />
+      <div class="glossary-tabs" role="group" aria-label="Filter reference by category">
+        <button class="glossary-tab active" aria-pressed="true" onclick="glossaryTab('all', this)">All</button>
+        <button class="glossary-tab" aria-pressed="false" onclick="glossaryTab('legal', this)">Case Law</button>
+        <button class="glossary-tab" aria-pressed="false" onclick="glossaryTab('term', this)">Terms</button>
+        <button class="glossary-tab" aria-pressed="false" onclick="glossaryTab('sop', this)">SOPs</button>
       </div>
       <div class="glossary-list">
 
@@ -842,15 +842,15 @@
 <!-- ═══════════════ PLATFORM POLICY FOOTER ═══════════════ -->
 <footer class="platform-footer">
   &copy; 2026 <span class="footer-brand">Arbiter LE LLC</span> &middot;
-  <a onclick="openPolicyModal()">Platform Use &amp; Disclaimer</a>
+  <a onclick="openPolicyModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPolicyModal();}">Platform Use &amp; Disclaimer</a>
 </footer>
 
 <!-- ═══════════════ PLATFORM POLICY MODAL ═══════════════ -->
 <div id="policy-modal-overlay" class="modal-overlay">
-  <div class="modal-card modal-card-wide">
+  <div class="modal-card modal-card-wide" role="dialog" aria-modal="true" aria-labelledby="policy-modal-title">
     <div class="modal-header">
-      <h3>Platform Use &amp; Disclaimer</h3>
-      <button class="modal-close" onclick="closePolicyModal()">✕</button>
+      <h3 id="policy-modal-title">Platform Use &amp; Disclaimer</h3>
+      <button class="modal-close" onclick="closePolicyModal()" aria-label="Close">✕</button>
     </div>
     <div class="modal-body policy-content">
       <h4>Training Tool, Not Operational Authority</h4>
