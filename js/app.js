@@ -75,7 +75,14 @@ async function mountOfficerSession(authUid) {
     return;
   }
   const o = rows[0];
-  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, track: o.track || 'patrol', badge: o.badge_number, email: o.email, canPreview: o.can_preview === true };
+  // `can_preview` is the platform-owner flag — set to exactly Andrew's
+  // account on every department's Supabase project. It gates two owner-only
+  // capabilities that must NEVER ride on the agency admin role: opening
+  // modules ahead of schedule (canPreview) and viewing Officer Feedback
+  // content flags (isOwner). Agency command staff (chiefs, sergeants) are
+  // role='admin' but not owners, so both default safe to false.
+  const _isOwner = o.can_preview === true;
+  currentUser = { id: o.badge_number, name: o.name, rank: o.rank, role: o.role, track: o.track || 'patrol', badge: o.badge_number, email: o.email, canPreview: _isOwner, isOwner: _isOwner };
   USERS[o.badge_number] = { ...currentUser };
 
   if (o.role === 'admin') {
@@ -1470,6 +1477,11 @@ function renderAdminDashboard() {
     if (nameEl) nameEl.textContent = currentUser.name || 'Administrator';
     if (rankEl) rankEl.textContent = currentUser.rank || 'Command Staff';
   }
+  // Officer Feedback (content flags) is a platform-owner view, not an agency
+  // command-staff view — only the owner sees the tab. Stays hidden for every
+  // agency admin (chiefs, sergeants). Defaults safe: hidden unless isOwner.
+  const fbTabBtn = document.getElementById('admin-tab-feedback-btn');
+  if (fbTabBtn) fbTabBtn.hidden = !(currentUser && currentUser.isOwner);
   renderAdminStats(); renderAdminTable(); renderAdminModules();
 }
 
@@ -1764,6 +1776,9 @@ function printComplianceReport() {
 }
 
 function adminTab(tab, e) {
+  // Officer Feedback is owner-only. Guard here too so the view can't be
+  // reached by a non-owner even if the hidden tab is triggered via console.
+  if (tab === 'feedback' && !(currentUser && currentUser.isOwner)) return;
   document.querySelectorAll('.admin-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
   e.target.classList.add('active');
   e.target.setAttribute('aria-selected', 'true');
@@ -1886,6 +1901,9 @@ async function submitFeedback() {
 }
 
 async function renderAdminFeedback() {
+  // Owner-only view. Belt-and-suspenders with adminTab()'s guard and the RLS
+  // read policy — a non-owner should never reach a query for this data.
+  if (!(currentUser && currentUser.isOwner)) return;
   const listEl = document.getElementById('admin-feedback-list');
   if (!listEl) return;
   listEl.innerHTML = '<div class="feedback-empty">Loading flags…</div>';
