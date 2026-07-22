@@ -78,7 +78,7 @@ function getLeadershipSupervisorQuestions() {
       options: [
         'Argue the point back at the officer in front of everyone present, so that your authority is clearly established.',
         'Drop your directive immediately and entirely, so that the junior officer does not feel challenged by you.',
-        'Order the officer off the call and write him up on the spot, in front of the whole group on scene.',
+        'Order the officer off the call and write him up on the spot, in front of the whole group of personnel and civilians on scene, so that everyone present sees immediately that the directive was not optional and that openly questioning it in the field carries a real and visible consequence right then and there.',
         'Hold the chain of command in the moment — the directive stands and is followed — and take the officer\'s substantive concern through proper channels privately afterward, because ALO 1.01 requires concerns to be raised through channels, not in the field in front of personnel or the public.'
       ],
     },
@@ -97,7 +97,7 @@ function getLeadershipSupervisorQuestions() {
       text: 'What is your supervisory move under Terry v. Ohio?',
       options: [
         'Let him detain the entire group — presence at the scene of the complaint is enough to stop everyone there.',
-        'Direct the officer to detain only the people in the group who happen to look nervous to him.',
+        'Direct the officer to detain only the people within the group who happen to look nervous or evasive to him, treating an individual\'s nervous demeanor in the moment as a sufficient substitute for the individualized reasonable suspicion that each separate detention actually requires.',
         'Stop the group detention and coach the standard — Terry requires individualized reasonable articulable suspicion for each person, and presence in a location, even in a group, does not supply it; have the officer articulate individualized suspicion or not make the stop.',
         'Tell the officer to just clear the call as fast as he possibly can, however he himself sees fit.'
       ],
@@ -108,7 +108,7 @@ function getLeadershipSupervisorQuestions() {
       options: [
         'Hold off on enforcement until the statute\'s elements are met — § 3503 requires conspicuous posting, exclusionary fencing, or direct communication that entry is not permitted; without one of those, give lawful notice first rather than charging on the owner\'s say-so.',
         'Charge them — a property owner\'s request to have people removed is by itself sufficient for trespass enforcement.',
-        'Detain everyone present in the lot under Terry while you investigate the possible trespass further.',
+        'Detain everyone present in the lot under Terry while you investigate the possible trespass further, on the theory that holding the whole group briefly is a reasonable way to sort out who belongs there before deciding whether the posting and notice elements are actually met.',
         'Tell the owner that there is simply nothing the police can ever do about people standing in a parking lot.'
       ],
     },
@@ -126,7 +126,7 @@ function getLeadershipSupervisorQuestions() {
       scenario: 'An officer comes to you and, unprompted, admits he made a poor decision on a call earlier that created a problem, and asks how to make it right.',
       text: 'What is the supervisory response most consistent with building the squad\'s standard?',
       options: [
-        'Punish the admission harshly and visibly, in order to deter the officer and others from future mistakes.',
+        'Punish the admission harshly and visibly in front of the entire squad, in order to deter both this officer and everyone else from making similar mistakes in the future, treating a hard and public response to a self-reported error as by far the strongest deterrent available to you as their supervisor.',
         'Tell him to simply never mention the decision again, and then move on from it without any further discussion.',
         'Recognize the unprompted accountability, address the underlying decision constructively, and work the corrective path with him, because owning a mistake without being cornered is the trait that most earns supervisory trust and you do not want to train officers to hide it.',
         'Bring the officer\'s mistake up in front of the whole squad later, using it as a cautionary tale for everyone.'
@@ -138,7 +138,7 @@ function getLeadershipSupervisorQuestions() {
       options: [
         'Apply the clarity filter — what is the right outcome here, and what is the fastest responsible path to it — because the hallmark of a supervisory mindset is clarity, not raw speed, and demonstrated judgment in ambiguous situations is the top predictor of promotion.',
         'Act as fast as is physically possible in the moment — sheer speed is the real mark of a supervisor.',
-        'Wait for someone of a higher rank to arrive on scene before you do anything at all about the call.',
+        'Wait for someone of a higher rank to arrive on scene and take charge before you do anything at all about the ambiguous call, on the reasoning that deferring the decision upward is always safer than exercising your own judgment in a situation that lacks a clear answer.',
         'Default immediately to the most forceful option available, in order to look decisive in front of the officer.'
       ],
     },
@@ -148,7 +148,7 @@ function getLeadershipSupervisorQuestions() {
       options: [
         'Keep coaching the officer informally each time and simply hope that the lesson eventually sticks with him.',
         'Stop giving that particular officer any directives at all on calls, in order to avoid being undercut by him.',
-        'Take no action — the suspicionless stops and field disagreements are really just personality differences.',
+        'Take no action at all — the suspicionless stops and the repeated field disagreements are really just ordinary personality differences and a matter of an independent-minded officer\'s individual style, not anything that rises to the level of a genuine supervisory or training concern you need to act on.',
         'Move to documented coaching and, if it persists, a supervisory issue addressed through channels and training on the Terry standard and ALO 1.01, because a repeated pattern after coaching is no longer a one-off and carries liability and chain-of-command consequences.'
       ],
     },

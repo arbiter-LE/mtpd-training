@@ -94,7 +94,7 @@ function getDeescalationSupervisorQuestions() {
         'Address the policy gap — ALO 5.4 required the officer to consider and employ de-escalation where it was safe and feasible, and with a single unarmed subject, distance, and no immediate threat, the report shows none was attempted; that is a policy and Graham-dimension problem, not a judgment to rubber-stamp.',
         'Approve it — once a subject becomes agitated like this, immediate physical control is always justified.',
         'Return it to the officer only for a more detailed written description of how the takedown was performed.',
-        'Approve it on the basis that the subject was being non-compliant with the officer at the time.'
+        'Approve it on the basis that the subject was being actively non-compliant with the officer\'s commands at the time, treating the subject\'s refusal to comply as sufficient justification for the force used and as a reason not to scrutinize whether de-escalation was attempted first before force was applied on the scene.'
       ],
     },
     {
@@ -103,7 +103,7 @@ function getDeescalationSupervisorQuestions() {
       options: [
         'Approve it — simply stating in the report that de-escalation was attempted is sufficient for the standard.',
         'Reject the use of force outright, on the basis that the attempted de-escalation ultimately failed.',
-        'Approve it now and just add the missing de-escalation details to the narrative yourself.',
+        'Approve the report now to keep it moving and just add the missing de-escalation details to the narrative yourself, filling in the techniques and the subject\'s response as you understand them so the officer does not have to redo the report at all before it is filed and forwarded to the District Attorney for charging.',
         'Return it for the specifics ALO 5.4 requires — the specific techniques used, the subject\'s response, and the reason de-escalation was or was not continued — because a bare "attempted to de-escalate" does not meet the documentation standard and is also the officer\'s best protection under Graham.'
       ],
     },
@@ -114,7 +114,7 @@ function getDeescalationSupervisorQuestions() {
         'Accept it as written — the officer on scene has sole and total discretion to declare de-escalation infeasible.',
         'Challenge it — ALO 5.4 requires the safety-and-feasibility determination to be a genuine assessment, not a conclusion reached after the decision to use force was already made; on these facts de-escalation appears to have been feasible, so the report and the decision need to be addressed.',
         'Approve it on the basis that the officer used exactly the right policy language in the determination.',
-        'Return it to the officer only to fix and clean up the wording of the feasibility determination.'
+        'Return it to the officer only to fix and clean up the wording of the safety-and-feasibility determination, treating the problem as a matter of phrasing the conclusion more carefully rather than as a real question about whether de-escalation was genuinely assessed at all before force was used.'
       ],
     },
     {
@@ -132,7 +132,7 @@ function getDeescalationSupervisorQuestions() {
       text: 'What does your review require?',
       options: [
         'Approve it — the use of force and the 302 are entirely separate matters from de-escalation here.',
-        'Approve the use of force as documented, but go ahead and void the 302 the officer initiated.',
+        'Approve the use of force exactly as documented, but go ahead and void the 302 that the officer initiated, treating the two decisions as entirely unrelated and the involuntary commitment as the only part of the incident that needs a second look from you as the reviewing supervisor before the file is closed out.',
         'Approve it on the basis that a 302 involuntary commitment does not actually require any narrative.',
         'Return it to document both the de-escalation approach and the specific § 7302 basis — because under § 7302 the officer\'s approach, particularly whether de-escalation was employed first, is part of the record when a 302 is initiated, and ALO 5.4 requires the de-escalation effort to be documented.'
       ],
@@ -154,7 +154,7 @@ function getDeescalationSupervisorQuestions() {
         'Closing distance quickly, raising your volume, and issuing rapid commands in order to establish control.',
         'Surrounding the subject with as many officers as possible and then shouting commands at him together.',
         'Creating distance and slowing the pace, calm non-threatening communication, giving the subject space to make voluntary choices, reducing officers present when safe, using a designated primary contact officer, and requesting CIT or mental-health resources when appropriate.',
-        'Immediately deploying a hands-on control technique in order to prevent any possible escalation.'
+        'Immediately deploying a hands-on physical control technique at the very first sign of tension in order to prevent any possible escalation before it can even begin, treating early physical control as itself a form of de-escalation that keeps the encounter from getting worse.'
       ],
     },
     {
@@ -164,7 +164,7 @@ function getDeescalationSupervisorQuestions() {
         'Keep coaching the officer informally on it — he is decisive on calls and he clearly means well.',
         'Move to documented corrective action and targeted training on the ALO 5.4 de-escalation requirement and the Graham de-escalation dimension, because a repeated pattern after coaching is a supervisory and training issue with direct liability exposure; escalate as warranted.',
         'Stop reviewing his use-of-force reports as closely going forward, in order to save yourself some time.',
-        'Take no action at all — each one of the uses of force was genuinely a separate situation.'
+        'Take no action at all — each one of the repeated uses of force was genuinely its own separate situation with its own particular facts, so there is no real pattern here to address and no basis for documented corrective action or targeted training on the de-escalation requirement in these cases.'
       ],
     },
   ];

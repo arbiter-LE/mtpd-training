@@ -278,7 +278,7 @@ function getUseOfForceQuestions() {
       text: 'Under Graham v. Connor, which three factors are courts required to consider when evaluating the reasonableness of a use of force?',
       options: [
         'The severity of the crime at issue, whether the subject poses an immediate threat, and whether the subject is actively resisting or evading.',
-        'The officer\'s intent, the subject\'s criminal history, and whether the subject sustained any injury.',
+        'The officer\'s subjective intent at the moment force was applied, the subject\'s prior criminal history and any outstanding warrants known at the time, and whether the subject ultimately sustained a visible physical injury during the encounter.',
         'Whether verbal commands were given, whether a supervisor was notified, and whether the officer followed training.',
         'The number of officers present, the subject\'s mental state, and whether force was used only as a last resort.'
       ],
@@ -288,7 +288,7 @@ function getUseOfForceQuestions() {
       text: 'Under Pennsylvania law and department policy, which of the following is a reportable use of force?',
       options: [
         'Only deployments of CEW (Taser), OC spray, or physical control techniques that result in visible injury to the subject.',
-        'Any use of force that results in a formal complaint by the subject or by a civilian witness to the encounter.',
+        'Any use of force that later results in a formal written complaint filed by the subject, or an equivalent complaint raised by a civilian witness to the encounter, whether at the scene or afterward at the station.',
         'Any intentional use of force against a person, including display of a weapon and verbal commands used to compel compliance in a threatening encounter.',
         'Only incidents that result in injury to the subject or the officer and are documented by a second responding officer.'
       ],
@@ -308,7 +308,7 @@ function getUseOfForceQuestions() {
       text: 'Which principle best describes why drawing a firearm as a first response — without verbal commands or less-lethal options — creates legal exposure in this situation?',
       options: [
         'Drawing a firearm is per se unlawful as a first response unless a supervisor has authorized lethal force in advance.',
-        'A civil rights complaint automatically succeeds whenever an officer draws a firearm but does not discharge it.',
+        'A civil rights complaint automatically succeeds whenever an officer draws and points a firearm but does not ultimately discharge it, because any display of a firearm is treated by the courts as deadly force per se, regardless of the surrounding circumstances.',
         'Pennsylvania law categorically prohibits drawing a firearm on any subject who has not first produced a firearm of their own.',
         'Graham v. Connor requires that the force used be proportionate to the threat as it actually existed, not the threat feared — a flashlight at 25 feet without prior commands may not justify a firearm as an initial response.'
       ],
@@ -320,7 +320,7 @@ function getUseOfForceQuestions() {
         'Officers are required to close distance in order to minimize public exposure during use of force incidents.',
         'Advancing toward the subject demonstrates control of the situation and is the tactic most likely to reduce overall civilian risk.',
         'Distance is a tactical asset — closing on a subject with an impact weapon eliminates reaction time and removes force options. Verbal commands at distance are almost always the correct first response.',
-        'The decision to close distance is always at the officer\'s discretion and is not reviewable under Graham.'
+        'The decision to close distance on a subject is always left entirely to the individual officer\'s discretion in the moment and is not something a court will second-guess or review under Graham, since tactical positioning falls outside the reasonableness analysis.'
       ],
     },
     {
@@ -328,7 +328,7 @@ function getUseOfForceQuestions() {
       text: 'How would courts most likely evaluate this under Graham v. Connor?',
       options: [
         'Courts would likely find the force unreasonable because a handcuffed, compliant subject presents no ongoing threat justifying continued force.',
-        'The hold is likely justified, because the subject remained under arrest and in custody at the time.',
+        'The hold is likely to be found justified, because the subject remained under lawful arrest and in police custody at the time, and any level of control force is considered reasonable for as long as a person is in custody.',
         'The hold is justified if the officer perceived any risk at all, regardless of the subject\'s compliance.',
         'Courts evaluate only whether the officer followed department policy — not the objective circumstances.'
       ],
@@ -350,7 +350,7 @@ function getUseOfForceQuestions() {
         'No intervention is appropriate here, because the subject is only harming themselves and poses no threat to others.',
         'Attempt verbal intervention first, then apply the minimum force necessary to prevent the subject from injuring themselves, consistent with the threat level presented.',
         'Escalate immediately to the highest available force option in order to stop the behavior as quickly as possible.',
-        'Remove the subject from the vehicle immediately, regardless of the amount of force that requires.'
+        'Remove the subject from the patrol vehicle immediately and by whatever means become necessary, regardless of the amount of force that requires, in order to stop the behavior as quickly as possible.'
       ],
     },
   ];
@@ -372,7 +372,7 @@ function getReportWritingQuestions() {
       scenario: 'You arrest a subject for resisting arrest after a foot pursuit. Your report documents the use of force as: "Subject resisted arrest. Force was used and was proportionate to the resistance encountered."',
       text: 'What is the fundamental legal problem with this documentation?',
       options: [
-        'The report must include the subject\'s prior criminal history before it can be considered legally sufficient.',
+        'The report must include a full account of the subject\'s prior criminal history and any past encounters with the department before it can be considered legally sufficient, because that background is what establishes the reasonableness of the arrest for a reviewing court.',
         'The report is legally sufficient — courts routinely accept general use-of-force summaries from sworn law enforcement officers.',
         'The report should have been written by the supervising officer on scene, not by the officer who actually used force.',
         '"Resisted arrest" and "proportionate" are legal conclusions, not factual descriptions — they tell a reader what to conclude without providing the specific facts that support the conclusion.'
@@ -384,7 +384,7 @@ function getReportWritingQuestions() {
       options: [
         'Police reports are sworn accounts of personal observations. Your partner cannot document your observations, your chase, or your use of force — only what they personally witnessed upon arrival.',
         'It is acceptable — joint partnership reports of this kind are standard practice during high-stress incidents.',
-        'It is problematic only in the event that your partner happened to be off-duty at the time of the incident.',
+        'It is problematic only in the narrow event that your partner happened to be off-duty at the time of the incident; if both officers were on duty and working the same call, either one may write up the other\'s observations interchangeably in a single shared report.',
         'It is only problematic if the case actually goes to trial — preliminary hearings do not require the reporting officer to testify.'
       ],
     },
@@ -392,7 +392,7 @@ function getReportWritingQuestions() {
       scenario: 'A subject shoves you during an arrest. Your partner witnesses the incident. In your report, you need to describe the physical interaction.',
       text: 'Which description of the use of force best satisfies the legal standard for police reports in Pennsylvania?',
       options: [
-        '"Subject became combative. Force was necessary and proportionate to the resistance."',
+        '"Subject became combative and resistant. The force used in response was reasonable, necessary, and proportionate to the level of resistance encountered, and was fully consistent with department policy and the officer\'s training under the totality of the circumstances presented."',
         '"Used approved takedown technique on resisting subject per training received at the academy."',
         '"As I attempted to apply handcuffs, subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep, bringing subject to a controlled ground position. Subject ceased active resistance. Handcuffs applied."',
         '"Subject resisted arrest. Physical force was used. Incident resolved without serious injury."'
@@ -403,7 +403,7 @@ function getReportWritingQuestions() {
       text: 'Why does failing to document observations from an inconclusive stop create a problem?',
       options: [
         'It doesn\'t create a problem — documentation of a stop is only required in cases where an arrest is actually made.',
-        'It is a minor administrative issue that a supervisor can readily correct at some point after the fact.',
+        'It is a minor administrative issue that a supervisor can readily correct at some later point after the fact, simply by adding a supplemental note to the file, so an incomplete set of observations in the original report carries no real consequence for the case.',
         'It creates a problem only in the event that the same vehicle is later stopped again by the same officer.',
         'Undocumented observations cannot be used to support probable cause in future encounters, cannot corroborate other departments\' investigations, and are lost entirely if the officer is later called to testify.'
       ],
@@ -415,7 +415,7 @@ function getReportWritingQuestions() {
         '"Seemed nervous" is sufficient on its own — courts understand that officers routinely use this kind of experiential shorthand.',
         'Document the specific observable behaviors that led to that assessment: "Subject\'s hands were visibly trembling, voice elevated in pitch, avoided eye contact, and checked mirrors repeatedly after stopping."',
         'Replace "seemed nervous" with "appeared agitated," which is the more precise and defensible legal language.',
-        'Omit the observation about nervousness entirely if it cannot be precisely quantified in the report.'
+        'Omit the observation about the subject\'s nervousness entirely from the report if it cannot be precisely measured or quantified, on the theory that an impression which cannot be reduced to a hard number has no evidentiary value and is safer left out of the narrative altogether.'
       ],
     },
     {
@@ -425,7 +425,7 @@ function getReportWritingQuestions() {
         'Omit the statement — if you can no longer verify the specific details, it simply should not appear in the report.',
         'Insert the statement into the body of the original report as though it had been there from the very start.',
         'Document what you recall of the statement now, noting in the report that it was not captured in contemporaneous notes and that the account is from memory.',
-        'Contact your supervisor first, before adding anything at all to a report you have already completed.'
+        'Contact your supervisor first, before adding anything at all to a report you have already completed and submitted, and add the remembered statement only if the supervisor specifically authorizes reopening the finished report for the change.'
       ],
     },
     {
@@ -447,7 +447,7 @@ function getCrisisQuestions() {
       scenario: 'You respond to a welfare check. A neighbor reports a 31-year-old male has been in a mental health crisis for two days, has not taken his medication, and said "he didn\'t want to be here anymore." He is seated on his front porch when you arrive.',
       text: 'Under Pennsylvania\'s Mental Health Procedures Act (50 P.S. § 7302), what is required before an officer may initiate an involuntary examination (302)?',
       options: [
-        'The subject must have a prior psychiatric history that is documented in law enforcement databases.',
+        'The subject must have a prior psychiatric history that is already documented in accessible law enforcement or hospital databases before any emergency evaluation can be initiated, since without a confirmed record of past mental illness there is no lawful basis for the officer to act.',
         'A licensed mental health professional must be physically on scene to make the determination first.',
         'Two separate officers must independently agree that the subject meets the criteria for involuntary examination.',
         'The person must pose a clear and present danger to themselves or others based on a recent overt act, attempt, or threat — the officer must document the specific basis for the determination.'
@@ -457,7 +457,7 @@ function getCrisisQuestions() {
       scenario: 'You make initial contact with a subject in a mental health crisis. Your authoritative tone and direct approach cause him to snap upright, begin yelling, and retreat toward his front door.',
       text: 'What does this outcome illustrate about initial contact during mental health calls?',
       options: [
-        'Mental health subjects are inherently unpredictable and the outcome cannot be attributed to the officer\'s approach.',
+        'Mental health subjects are inherently unpredictable, so the outcome of the encounter cannot fairly be attributed to the officer\'s approach one way or the other — whether the person escalated or calmed is a function of their condition, not of anything the officer chose to do.',
         'Authoritative commands are always appropriate during mental health calls because officers must establish control immediately.',
         'For individuals in mental health crisis, authoritative commands and direct approaches frequently trigger escalation rather than compliance — a calm, low-key approach reduces the risk of escalation.',
         'The officer should have waited for a trained mental health co-responder to arrive before making any contact at all.'
@@ -498,7 +498,7 @@ function getCrisisQuestions() {
       text: 'What is the priority sequence for this CIT response?',
       options: [
         'Establish a safe perimeter, reduce stimulation, request CIT resources and mental health crisis team, and initiate calm, non-threatening verbal contact — one primary voice.',
-        'Physical containment of the subject first, then verbal contact once the subject is safely in custody.',
+        'Physical containment and control of the subject first, using whatever hands-on force is needed to secure him quickly, and then attempting calm verbal contact only afterward, once the subject is safely in custody and fully restrained.',
         'Immediate forced intervention to pull him from the ledge — time on the ledge only creates increasing danger.',
         'Wait for a trained mental health professional to arrive on scene before attempting any engagement at all.'
       ],
@@ -509,7 +509,7 @@ function getCrisisQuestions() {
       options: [
         'Challenge the hallucinations directly — work to help them distinguish reality from the experience they are having.',
         'Request immediate psychiatric hold authority, since active psychosis automatically meets the § 302 criteria.',
-        'Match the subject\'s emotional intensity and volume in order to build rapport with him quickly.',
+        'Match the subject\'s emotional intensity and rising volume yourself in order to meet him where he is and build rapport quickly, showing him that you take his distress as seriously as he does by mirroring the energy he brings to the encounter.',
         'Avoid confirming or challenging the hallucinations; focus on the person\'s emotional state and safety; use a calm, low tone; offer limited choices to restore a sense of control.'
       ],
     },
@@ -520,7 +520,7 @@ function getCrisisQuestions() {
         'Follow the supervisor\'s direction without pushback and move the encounter toward a physical resolution now.',
         'Provide an honest status update: the subject is de-escalating, the approach is working, and an abrupt change in tactics at this point may re-escalate. Recommend continuing for a defined additional period.',
         'Tell the subject you have to leave shortly, which will prompt some kind of decision from them.',
-        'Immediately initiate a § 302 hold — the time spent justifies the involuntary commitment.'
+        'Immediately initiate a § 302 involuntary commitment hold and end the encounter — the amount of time already invested in this scene is by itself enough to justify taking the subject in for an evaluation, regardless of whether the statutory criteria are independently satisfied.'
       ],
     },
   ];
@@ -536,7 +536,7 @@ function getDomesticViolenceQuestions() {
         'If you have probable cause based on your observations or victim/witness statements, arrest of the primary aggressor is mandatory — victim consent is not a required element.',
         'Honor the victim\'s preference — she is the protected party and her consent controls the arrest decision.',
         'Consult with your supervisor before making an arrest. Mandatory arrest requires supervisor authorization when the victim objects.',
-        'Make a report and refer the case to detectives for a follow-up arrest at a later date.'
+        'Make a report and refer the case to detectives for a possible follow-up arrest at some later date, rather than acting now, on the reasoning that a considered charging decision by an investigator is generally preferable to an on-scene arrest in domestic cases.'
       ],
     },
     {
@@ -553,7 +553,7 @@ function getDomesticViolenceQuestions() {
       scenario: 'You complete a DV arrest. The officer who investigated the prior incident at this address eight months ago elected not to arrest and wrote in the report only: "Parties separated for the evening. No arrest made."',
       text: 'Under MTPD ALO 4.13, what documentation standard applies when an officer has probable cause but elects not to arrest?',
       options: [
-        'No additional documentation is required beyond noting in the report that no arrest was made.',
+        'No additional documentation is required beyond simply noting in the report that no arrest was made on the call, because the absence of an arrest is self-explanatory on its face and does not call for any further written justification from the responding officer.',
         'The officer must document the victim\'s refusal to cooperate with the investigation and prosecution.',
         'The officer must obtain supervisor sign-off in the report acknowledging the decision not to arrest.',
         'The narrative must contain a detailed explanation of the specific reasons probable cause was not found or the specific reasons the officer elected not to arrest — "No arrest made" is not sufficient.'
@@ -576,14 +576,14 @@ function getDomesticViolenceQuestions() {
         'Respond with full lights and sirens to establish rapid scene presence and deter ongoing violence.',
         'Approach the scene without lights or sirens within one block of the reported location to avoid alerting subjects and allow for tactical assessment before contact.',
         'Stage one full block away from the residence and wait for backup to arrive before making any approach.',
-        'Approach code 3 to within a quarter mile, then switch to code 1 for the final approach.'
+        'Approach code 3 with lights and siren to within a quarter mile of the reported location, then switch to code 1 for the final approach, so that you reach the scene as quickly as possible while still arriving quietly for the last stretch.'
       ],
     },
     {
       scenario: 'You respond to a domestic disturbance and both parties have visible injuries. Each claims the other was the primary aggressor.',
       text: 'Under MTPD ALO 4.13, how do you determine who to arrest?',
       options: [
-        'Arrest both parties — dual injuries on both people categorically require a dual arrest here.',
+        'Arrest both parties at the scene — the presence of visible injuries on both people categorically requires a dual arrest in this situation, because when each person is injured there is no principled way for the officer to choose a single primary aggressor.',
         'Arrest neither party — the contradictory accounts simply create too much uncertainty to act.',
         'Arrest the party who first initiated the 911 call, since that person is more likely to be the victim.',
         'Evaluate the evidence to identify the primary aggressor: consider relative injury severity, prior history, threat of future harm, and whether one party acted in self-defense.'
@@ -596,7 +596,7 @@ function getDomesticViolenceQuestions() {
         'Arrest the offender for criminal contempt of the PFA. A PFA violation is a criminal offense in Pennsylvania — it is not a civil enforcement matter for officers.',
         'The PFA violation is a civil matter — refer the victim to court to report the violation herself.',
         'Document the violation and advise the victim on how to file a contempt petition with the court.',
-        'Take no action at all on the PFA unless the victim specifically requests that you enforce it.'
+        'Take no enforcement action at all on the PFA unless the protected victim specifically asks you to enforce it, since a protection-from-abuse order belongs to the party who obtained it and remains entirely hers to invoke or to waive as she sees fit.'
       ],
     },
     {
@@ -606,7 +606,7 @@ function getDomesticViolenceQuestions() {
         'Tell her you are not able to predict what the court will ultimately do — that is the district attorney\'s job.',
         'Refer all of her questions to the district attorney\'s office, since officers should not discuss court proceedings.',
         'Provide the required victim notifications: explain the arrest process, bail considerations, available emergency PFA options, victim services contact, and the steps for requesting a court order if she does not have one.',
-        'Assure her that the offender will be held in custody overnight, as a matter of standard department policy.'
+        'Assure her that the offender will certainly be held in custody overnight and through any weekend, as a matter of standard department policy, so that she can feel safe returning home right away without needing to take any further protective steps of her own.'
       ],
     },
   ];
@@ -618,7 +618,7 @@ function getVehiclePursuitQuestions() {
       scenario: 'You initiate a traffic stop for a broken taillight. The driver accelerates away. Within the first 30 seconds of pursuit, what is your required immediate action under MTPD ALO 4.02?',
       text: 'What must you do immediately upon initiating a vehicle pursuit?',
       options: [
-        'Notify your backup unit and pursue until they arrive to establish a two-unit formation.',
+        'Notify your backup unit directly and continue pursuing on your own until they arrive to establish a two-unit formation, prioritizing keeping the fleeing vehicle in sight over making the required communications broadcast and supervisor authorization request first.',
         'Pursue until the vehicle is positively identified, then reassess the situation based on the offense.',
         'Immediately notify communications of: your unit, the nature of the offense, direction and approximate speed, and vehicle description — and request supervisor authorization.',
         'Contact dispatch only in the event that the pursuit extends beyond your assigned patrol sector.'
@@ -640,7 +640,7 @@ function getVehiclePursuitQuestions() {
       options: [
         'Terminate — when the suspect\'s identity is known and arrest can be accomplished by other means, combined with dangerous road conditions, the factors support termination.',
         'Continue — a bench warrant confirms the subject has failed to comply with the courts, justifying pursuit.',
-        'Continue — the suspect\'s identity is not yet 100% confirmed from visual ID, only from the plate.',
+        'Continue the pursuit — the suspect\'s identity is not yet one hundred percent confirmed from a visual identification, only from the registration plate, and until you can positively match the driver to the registered owner the termination factors should not apply.',
         'Termination requires a supervisor order — an officer cannot unilaterally recommend that a pursuit be terminated.'
       ],
     },
@@ -671,14 +671,14 @@ function getVehiclePursuitQuestions() {
         'The supervisor controls the number of units in a pursuit. Additional units require supervisor authorization, and the two-unit maximum applies regardless of officer initiative.',
         'Any officer who observes a pursuit may join it — it is a tactical decision made by each officer in the field.',
         'A second unit may join the pursuit automatically, since ALO 4.02 permits a total of two units.',
-        'Additional units beyond two are allowed whenever the fleeing suspect is believed to be armed.'
+        'Additional units beyond the two-unit maximum are allowed to join whenever the fleeing suspect is believed to be armed, because officer-safety concerns in an armed-suspect pursuit override the standard numeric limit on the number of participating units.'
       ],
     },
     {
       scenario: 'You are the primary pursuit unit. The suspect enters a school zone during active school hours.',
       text: 'Under ALO 4.02, what does this circumstance require?',
       options: [
-        'Continue the pursuit but reduce your speed to match the posted school zone speed limit.',
+        'Continue the pursuit through the area but simply reduce your speed to match the posted school-zone speed limit while you pass through, treating a slower pace as an adequate substitute for terminating the pursuit outright in an active school zone.',
         'Continue the pursuit at normal speed — active school hours do not affect your pursuit authority.',
         'Immediately notify dispatch and the supervisor. The school zone during active hours is a mandatory termination factor — the pursuit must be discontinued.',
         'Terminate the pursuit only in the event that school children are actually visible in the area.'
@@ -691,7 +691,7 @@ function getVehiclePursuitQuestions() {
         'Continue following the suspect on foot — the termination order applied only to the vehicle pursuit itself.',
         'Stop your vehicle, document the suspect\'s last known location, description, and direction of travel, broadcast to dispatch, and await further direction from the supervisor.',
         'The case is effectively closed once the pursuit is terminated — simply document the termination and clear.',
-        'Begin a foot pursuit independently, since supervisor authority does not extend to foot pursuit decisions.'
+        'Begin a foot pursuit on your own independently after the vehicle stops, on the reasoning that a supervisor\'s authority over the vehicle pursuit does not extend to foot-pursuit decisions, which remain entirely within the individual officer\'s discretion.'
       ],
     },
   ];
@@ -715,7 +715,7 @@ function getLeadershipQuestions() {
       options: [
         'The property must be posted with conspicuous signage, fenced to exclude intruders, or the subject must have received prior direct communication that entry is prohibited.',
         'The property owner\'s verbal request to the officers on scene is sufficient to authorize trespass enforcement.',
-        'Any commercial property that is open to the general public is exempt from the trespass protections.',
+        'Any commercial property that is generally open to members of the public during business hours is entirely exempt from the trespass protections, so the posting, fencing, and prior-notice requirements simply do not apply to a business that already invites customers inside.',
         'Repeated calls to the police by the property owner are enough to establish the required legal notice.'
       ],
     },
@@ -763,7 +763,7 @@ function getLeadershipQuestions() {
       scenario: 'An officer under your supervision has been late to shift three times in two weeks. You have not formally addressed it yet. The officer is otherwise a strong performer.',
       text: 'What is the supervisory best practice at this stage?',
       options: [
-        'Wait for a fourth occurrence before taking any action — three lateness instances is within normal variation.',
+        'Wait for a fourth occurrence before taking any action at all — three separate lateness instances is still within the range of normal variation for most officers, and acting on a pattern this small risks looking heavy-handed over something genuinely minor.',
         'Have a direct, documented conversation now: name the pattern, state the expectation clearly, and ask if there is something you should know. Give the officer the opportunity to respond before any formal action.',
         'Issue a formal written reprimand to the officer immediately, in order to establish a record of the lateness.',
         'Mention it casually to the officer — a formal conversation would be disproportionate for a performance issue.'
@@ -774,7 +774,7 @@ function getLeadershipQuestions() {
       text: 'What is the appropriate supervisory response?',
       options: [
         'Agree with the officer openly and validate their frustration about the policy — it builds trust with the squad.',
-        'Tell the officer that department policies are not up for discussion and redirect them back to their duties.',
+        'Tell the officer flatly that department policies are simply not up for discussion at their level and redirect them straight back to their assigned duties, making clear that questioning the reasoning behind a policy is not part of their role and that compliance is what is expected.',
         'Promise to raise the issue at the next supervisors\' meeting, and then do not actually follow through on it.',
         'Acknowledge their concern, explain what the policy requires and why it exists to the extent you know, and encourage them to raise concerns through the appropriate channel (union, chain of command, formal feedback process) if they believe it warrants review.'
       ],
@@ -830,7 +830,7 @@ function getTrafficStopQuestions() {
       options: [
         'It is a conclusion without the specific, articulable facts that support it — insufficient for a suppression hearing.',
         'It does not include the driver\'s verbal response to the request to search the vehicle.',
-        'It does not specify which one of the officers on scene actually detected the odor.',
+        'It does not specify which one of the several officers on scene actually detected the odor first, and without pinning the observation to one particular officer the statement cannot be tied cleanly to sworn testimony later on.',
         'It relies on the odor of marijuana, which can no longer be mentioned at all in a warrant affidavit.'
       ],
     },
@@ -841,7 +841,7 @@ function getTrafficStopQuestions() {
         'Issue a citation for the failure to produce a registration and have the vehicle impounded from the scene.',
         'Verify the vehicle\'s status through your MDT, document the driver\'s explanation and the receipt, and use discretion consistent with department policy — temporary registration documentation may be verifiable.',
         'Release the driver without taking any documentation — the purchase receipt is sufficient proof of ownership.',
-        'Arrest the driver for operating a vehicle without registration until ownership can be fully confirmed.'
+        'Arrest the driver for operating a vehicle without valid registration and hold him until ownership and the registration status can be fully confirmed back at the station, on the view that a paper receipt is not something an officer can safely rely on at the roadside.'
       ],
     },
     {
@@ -851,7 +851,7 @@ function getTrafficStopQuestions() {
         'Make the arrest anyway based on your gut feeling — officers have broad discretion in DUI cases like this.',
         'Release the driver now — passing the field sobriety tests is a complete and total defense to a DUI arrest.',
         'Document your specific observations thoroughly, consider requesting a DRE evaluation if available, and make an arrest decision based on the totality of articulable, documented facts — not on intuition alone.',
-        'Administer a preliminary breath test at the scene and arrest only if it returns a result above .08.'
+        'Administer a preliminary breath test at the scene and base the arrest decision solely on that reading, taking the driver in only if the portable device returns a result above .08 and releasing him otherwise, regardless of the officer\'s other observations.'
       ],
     },
     {
@@ -860,7 +860,7 @@ function getTrafficStopQuestions() {
       options: [
         'Arrest the driver immediately — the vehicle is registered to a subject with an active felony warrant.',
         'The plate return is not sufficient — release the driver, since the presented license came back clean.',
-        'Run the presented license only — if that license comes back clean, then the traffic stop must end.',
+        'Run only the license the driver physically presented to you — if that particular license comes back clean and valid, then the traffic stop must end at that point, and you have no lawful basis to investigate whether the driver might actually be someone else.',
         'You have reasonable suspicion to investigate further. Ask the driver to step out, request additional identifying information, and determine through investigation whether the driver is the registered owner or another person.'
       ],
     },
@@ -904,7 +904,7 @@ function getEIQuestions() {
       text: 'What is the correct documentation action?',
       options: [
         'Document the injury in a supplemental report, including a description of the injury, its location, the victim\'s account of how it occurred, and any photographs taken.',
-        'Note the bruise verbally in your CAD entry for the call and follow up on it at the next victim contact.',
+        'Note the bruise verbally in your CAD entry for the call and plan to follow up on it at the next victim contact, treating a brief radio-log mention as sufficient documentation for now rather than generating a supplemental report with a description and photographs.',
         'The follow-up contact is welfare only — injuries discovered during welfare checks are documented by the detective assigned to the case.',
         'Document it only if the victim signs a medical release authorizing you to include her injury in official reports.'
       ],
@@ -914,7 +914,7 @@ function getEIQuestions() {
       text: 'In a law enforcement context, what does self-regulation most accurately describe?',
       options: [
         'Completing all required reports and documentation within the established department timeframes.',
-        'Regulating the use of force down to the minimum amount required by the circumstances.',
+        'Regulating the use of force down to the minimum amount required by the circumstances of the encounter, so that the emotional dimension of policing is really just another way of describing keeping physical force proportionate to the threat.',
         'Managing officer wellness through regular exercise, adequate sleep, and mental health practices.',
         'The ability to manage your emotional response under pressure — absorbing provocation and responding from training rather than reaction.'
       ],
@@ -926,7 +926,7 @@ function getEIQuestions() {
         'Correct your partner\'s approach out loud on scene — the subject needs to see that you are the one handling it.',
         'Follow your partner\'s lead instead — contradicting them on scene undermines the unit\'s authority.',
         'Step in front of your partner, calmly redirect the subject\'s attention to you, and use a quiet, steady tone to re-establish rapport. Address your partner\'s approach privately after the scene is resolved.',
-        'Request a supervisor to come and take over the call entirely, since it has now been compromised.'
+        'Request a supervisor to respond and take over the call entirely, on the reasoning that once your partner\'s approach has compromised the contact the situation is no longer yours to salvage and should be handed off to someone of higher rank.'
       ],
     },
     {
@@ -936,7 +936,7 @@ function getEIQuestions() {
         'Acknowledge the disclosure with brief, genuine recognition: "That sounds really hard." Do not interrogate, do not dismiss. Remain professional and compassionate without soliciting further statements.',
         'Redirect the conversation immediately to booking logistics — personal disclosures during transport are not your role.',
         'Encourage them to keep talking through it — it builds rapport and may even produce admissible statements.',
-        'Inform them that anything they say can and will be used against them, before they say anything further.'
+        'Inform them immediately that anything they say can and will be used against them, before they say anything further, treating the emotional disclosure as the trigger for a formal Miranda warning rather than a moment for professional compassion.'
       ],
     },
     {
@@ -945,7 +945,7 @@ function getEIQuestions() {
       options: [
         'Adaptation — officers naturally develop an appropriate emotional distance over time, so no action is needed.',
         'Secondary traumatic stress or emotional numbing, which are recognized risk factors for burnout and long-term psychological impact. The recommended response is early engagement with peer support or EAP resources.',
-        'Burnout — a condition which requires the officer to take an immediate period of medical leave.',
+        'Burnout — a condition which, once it is recognized in an officer, requires the department to place that officer on an immediate mandatory period of medical leave until they have fully recovered and been formally cleared to return to duty.',
         'Compassion fatigue — a condition which typically resolves on its own with an adequate amount of rest.'
       ],
     },
@@ -981,14 +981,14 @@ function getEvidenceQuestions() {
         'Follow the order — supervisor authority supersedes standard evidence protocols.',
         'Collect the items and transport them, but document the supervisor\'s name in the chain of custody.',
         'Advise the supervisor of the situation, including the detective ETA, and request a brief delay or a second unit to hold the scene.',
-        'Refuse the order and remain on scene regardless of the supervisor\'s directive.'
+        'Refuse the supervisor\'s order outright and remain on the scene regardless of the directive to clear, on the view that protecting the chain of custody yourself justifies overriding a supervisor who has told you to leave.'
       ],
     },
     {
       scenario: 'You need to document a piece of evidence before a detective arrives. The scene is outdoors and the item is on the ground.',
       text: 'Which of the following best describes proper in-place documentation before collection?',
       options: [
-        'Write out a detailed written description of the item in your field notebook.',
+        'Write out a detailed written description of the item in your field notebook, capturing its appearance and location in words, and rely on that written account rather than photographing the item in its exact discovered position first.',
         'Sketch the overall scene and mark the item\'s approximate location on the sketch.',
         'Verbally describe the item to dispatch so that it is recorded on the radio log.',
         'Photograph the item from multiple angles in its exact discovered position, including a scale reference if available, before anyone touches it.'
@@ -998,7 +998,7 @@ function getEvidenceQuestions() {
       scenario: 'You collect a biological swab from a crime scene. What is the correct packaging for this item?',
       text: 'Biological evidence must be packaged in:',
       options: [
-        'A tightly sealed plastic bag with an evidence sticker applied to it.',
+        'A tightly sealed, airtight plastic bag with an evidence sticker applied across the seal, chosen specifically to lock the item in and keep any outside air or moisture from ever reaching it.',
         'A paper bag or paper envelope — never airtight plastic — to allow moisture to escape and prevent degradation.',
         'Any available container at all, as long as it is sealed shut and clearly labeled.',
         'An aluminum foil wrap with a chain of custody tag securely attached to it.'
@@ -1011,7 +1011,7 @@ function getEvidenceQuestions() {
         'Document the collection: time, location, who collected it, the kit number, how it was sealed, and how it was transported from the hospital to the property room — with your continuous control or handoff documentation at each step.',
         'Document only that you were present for the collection — the nurse\'s medical records will handle all the rest.',
         'The hospital\'s own records constitute the chain of custody for any sample collected in a medical facility.',
-        'Chain of custody only applies to physical evidence at crime scenes, not to medical samples like this one.'
+        'Chain of custody only really applies to physical evidence recovered at crime scenes, not to medical samples like this one collected at a hospital, so the usual documentation and continuous-control requirements do not attach to a kit handled by medical staff.'
       ],
     },
     {
@@ -1020,7 +1020,7 @@ function getEvidenceQuestions() {
       options: [
         'Follow the other officer\'s suggestion — detectives have the authority and training to collect firearms.',
         'Secure the area around the firearm and await the detectives\' arrival without touching or documenting it.',
-        'The other officer\'s suggestion is correct, as long as the detectives will arrive within two hours.',
+        'The other officer\'s suggestion is correct here, as long as the detectives are expected to arrive within about two hours, since a short wait for investigators makes it reasonable to leave the firearm where it is rather than recovering it yourself.',
         'Recover the firearm yourself according to department protocol: photograph it in place, note the exact location, collect it using appropriate safety procedures, and document the recovery in your report.'
       ],
     },
@@ -1029,7 +1029,7 @@ function getEvidenceQuestions() {
       text: 'What is your obligation?',
       options: [
         'Sign it out and proceed on to court with it — the disturbed seal may just be an innocent storage issue.',
-        'Re-seal the evidence package yourself and simply note the re-sealing in your report afterward.',
+        'Re-seal the compromised evidence package yourself right there on the spot and simply note the re-sealing in your report afterward, treating a fresh seal and a line in the narrative as enough to cure the fact that the package was found already opened.',
         'Refuse to sign it out, notify the property room supervisor immediately, document the observation, and notify the prosecutor before the court date. The integrity of the evidence is now in question.',
         'Inspect the contents yourself to determine if anything is missing before deciding how to proceed.'
       ],
@@ -1056,7 +1056,7 @@ function getWellnessQuestions() {
         'Speak with him directly, express concern without judgment, and inform him of the peer support program. If safety concerns persist, involve a peer support officer.',
         'Report him to the shift supervisor immediately, without first speaking to him about it yourself.',
         'Ignore the dark comment entirely — this kind of dark humor is normal in law enforcement work.',
-        'Contact his family members directly to let them know that he may be in need of some help.'
+        'Contact the officer\'s family members directly, on your own initiative, to let them know that he may be in need of some help, treating a call to his relatives as the appropriate first step rather than speaking with him and pointing him toward peer support.'
       ],
     },
     {
@@ -1066,7 +1066,7 @@ function getWellnessQuestions() {
         'Fully confidential with no exceptions at all — nothing discussed in them can ever be disclosed.',
         'Automatically reported, in summary, to the officer\'s direct supervisor after the contact.',
         'Confidential but subject to mandatory disclosure if the officer reveals intent to harm themselves or others, or describes conduct that constitutes a crime.',
-        'Included in the officer\'s permanent personnel file as a documented wellness record.'
+        'Included automatically in the officer\'s permanent personnel file as a documented wellness record that supervisors and command staff can review later, so that any use of the program becomes part of his official employment history.'
       ],
     },
     {
@@ -1076,7 +1076,7 @@ function getWellnessQuestions() {
         'Push through them — these symptoms are perfectly normal and will resolve entirely on their own in time.',
         'Self-refer to the peer support program or employee assistance program (EAP) — early self-referral is encouraged and does not automatically trigger a fitness-for-duty evaluation.',
         'Immediately disclose all of the symptoms to your supervisor, in order to avoid any personal liability.',
-        'Wait until your annual evaluation to discuss the symptoms with the department psychologist then.'
+        'Wait until your regularly scheduled annual evaluation to raise the symptoms with the department psychologist at that time, rather than self-referring now, on the reasoning that the yearly review is the proper venue for wellness concerns of this kind.'
       ],
     },
     {
@@ -1094,7 +1094,7 @@ function getWellnessQuestions() {
       text: 'What is the appropriate response from a peer?',
       options: [
         'Report the officer to the shift supervisor — the building pattern suggests a real performance issue.',
-        'Mention it quietly to another colleague first, to see if they have noticed the same thing in him.',
+        'Mention it quietly to another colleague on the squad first, to see whether they have noticed the same changes in him, before deciding whether the situation is really worth raising with the officer directly or with anyone else.',
         'Wait and watch for now — officers sometimes go through difficult phases and recover on their own.',
         'Engage the officer directly and privately. Name what you have noticed without accusation. Create space for them to talk if they want to. Mention peer support as an option. Follow up.'
       ],
@@ -1105,7 +1105,7 @@ function getWellnessQuestions() {
       options: [
         'Respect their decision — mandatory mental health participation is counterproductive and violates autonomy.',
         'Normalize the debrief without pressure: explain it is standard practice, not an indication of weakness, and that research shows engagement with post-incident support significantly reduces long-term psychological impact. Encourage attendance without mandating it.',
-        'The officer should be required to attend — waivers should not be permitted after OIS events.',
+        'The officer should be formally required to attend the debrief — attendance must be mandatory and no waivers should be permitted at all following officer-involved-shooting events, because the department simply cannot leave post-incident support to individual choice.',
         'Alert the shift supervisor about it so that they can go ahead and make his attendance mandatory.'
       ],
     },
@@ -1113,7 +1113,7 @@ function getWellnessQuestions() {
       scenario: 'You have been through a difficult three months: a line-of-duty death in your department, two major felony arrests, and a contested use-of-force review. You are sleeping well and your home life is stable. At your quarterly check-in, the sergeant asks how you are doing.',
       text: 'What does a wellness-informed response to that question look like?',
       options: [
-        '"Fine" — the sergeant is only asking as a formality, so the answer to give should be brief.',
+        '"Fine" — the sergeant is really only asking as a matter of routine formality, so the right answer to give is a brief and reassuring one that keeps the conversation short and lets everyone get back to work without a real discussion.',
         'Deflect the question — wellness check-ins are a compliance exercise and detailed responses invite unwanted attention.',
         'Provide an honest, calibrated update: acknowledge the weight of the past three months, note what is currently stable, and mention anything that you are monitoring in yourself — without dramatizing or minimizing.',
         '"I\'m handling it" — officers are expected to manage their operational stress without any external support.'
@@ -1138,7 +1138,7 @@ function getDeescalationQuestions() {
       scenario: 'Graham v. Connor (1989) established the legal standard for evaluating officer use of force. What is that standard?',
       text: 'Under Graham v. Connor, use of force is evaluated by:',
       options: [
-        'The subjective good faith of the officer at the time of the use-of-force incident.',
+        'The subjective good faith and honest intentions of the officer at the time of the use-of-force incident, since what matters most under the standard is whether the officer personally believed they were doing the right thing in the moment.',
         'Whether the officer followed all of the relevant department policy to the very letter.',
         'Whether the force used was objectively reasonable from the perspective of a reasonable officer on the scene, given the totality of circumstances.',
         'Whether the subject ultimately sustained any injury as a direct result of the force.'
@@ -1159,7 +1159,7 @@ function getDeescalationQuestions() {
       text: 'A 302 involuntary examination requires that the person:',
       options: [
         'Has committed some crime and also appears to have an underlying mental health condition.',
-        'Has at some point been voluntarily diagnosed with a recognized mental health condition.',
+        'Has at some point in the past been voluntarily diagnosed with a recognized mental health condition by a treating professional, whether or not any current danger to self or others is actually present at the time of the encounter.',
         'Has refused to follow the lawful commands of an officer on some previous call for service.',
         'Is severely mentally disabled and in need of immediate treatment — presenting a clear and present danger to themselves or others.'
       ],
@@ -1171,7 +1171,7 @@ function getDeescalationQuestions() {
         'Consider the bystander\'s suggestion — bystander observations can sometimes provide useful tactical intelligence.',
         'Use the taser on the subject immediately — public expectation for a fast resolution creates accountability.',
         'Maintain focus on the subject and direct a partner or bystander management unit to move the crowd back. Do not let bystander pressure influence tactical decision-making.',
-        'Ask the bystander to leave the area and then reassess whether using the taser is now appropriate.'
+        'Ask the interfering bystander to leave the immediate area and then reassess whether deploying the taser on the subject is now appropriate, treating the removal of the onlooker as the thing that clears the way for the force decision.'
       ],
     },
     {
@@ -1181,7 +1181,7 @@ function getDeescalationQuestions() {
         'Establish authority immediately — the subject needs to understand they have no option but to comply.',
         'Prioritize time, distance, and communication. Maintain a calm, unhurried tone. Keep the subject talking. Avoid ultimatums. Allow time for their emotional state to stabilize.',
         'Attempt to enter the residence through the door to remove the immediate threat of self-harm to him.',
-        'Advise dispatch that the situation requires SWAT — barricaded subjects are outside patrol scope.'
+        'Advise dispatch that the situation now requires a full SWAT callout, on the reasoning that any barricaded subject is automatically outside the scope of what patrol officers should be handling and belongs to a tactical team from the very outset.'
       ],
     },
     {
@@ -1189,7 +1189,7 @@ function getDeescalationQuestions() {
       text: 'How should the prior history factor into your de-escalation approach?',
       options: [
         'Prior violence history automatically justifies a higher level of force readiness that overrides de-escalation.',
-        'Disregard the prior history entirely — each contact must be evaluated strictly on its own without any bias.',
+        'Disregard the subject\'s prior history entirely — each contact must be evaluated strictly on its own facts without any influence from what came before, so the officer should set aside everything already known about past encounters when deciding how to proceed.',
         'Inform the subject directly that you are aware of his history, so that he understands your level of preparation.',
         'Prior history informs your situational awareness and tactical positioning without determining the force level applied to current behavior. De-escalate based on current conduct; maintain awareness based on background.'
       ],
@@ -1199,7 +1199,7 @@ function getDeescalationQuestions() {
       text: 'Which response best reflects the professional value of de-escalation?',
       options: [
         '"The de-escalation worked. He left the scene calm and connected to follow-up services. That outcome is better for him and for the community, and it avoids an involuntary commitment that may not have been legally warranted."',
-        '"You\'re right — I probably should have just moved faster and wrapped it up sooner."',
+        '"You\'re right — I probably should have just moved things along faster, skipped some of the back-and-forth, and wrapped up the whole encounter much sooner than I actually did instead of drawing it out the slow way I did on that call."',
         '"It felt like the right call at the time, but I\'m not sure I can always do it that way."',
         '"Some calls just take a lot longer than others — it is not always about the speed."'
       ],

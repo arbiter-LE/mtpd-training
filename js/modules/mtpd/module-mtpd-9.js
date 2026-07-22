@@ -78,7 +78,7 @@ function getEISupervisorQuestions() {
         'Nothing needs addressing — some victims simply refuse to cooperate, and the officer\'s demeanor is irrelevant to that.',
         'Coach the demeanor problem — IACP research finds officer demeanor in the first 60 seconds of a victim contact is the strongest predictor of cooperation, so a skeptical, dismissive opening likely suppressed the statement, and the emotional approach is part of the investigation.',
         'Discipline the victim herself for failing to cooperate with the officer\'s investigation of the incident.',
-        'Reassign the case to detectives for follow-up without ever addressing the officer\'s initial contact.'
+        'Reassign the case to detectives for follow-up investigation without ever addressing the officer\'s dismissive initial contact, on the view that a fresh investigator picking up the file resolves the problem more efficiently than coaching the responding officer on his demeanor and his approach to victims.'
       ],
     },
     {
@@ -88,7 +88,7 @@ function getEISupervisorQuestions() {
         'Return it and coach the standard — ALO 4.13 requires follow-up contacts to prioritize safety assessment and victim engagement over documentation efficiency and to provide victim advocate and PFA information at every contact, not just the first.',
         'Approve it — a quick welfare check that confirms the victim is doing fine is efficient use of the officer\'s time.',
         'Tell the officer to stop doing these follow-up checks altogether, since they take up too much time.',
-        'Approve it as written, but have the department mail the victim an informational pamphlet instead.'
+        'Approve the follow-up report as written, but have the department simply mail the victim an informational pamphlet instead, treating a mailed handout as an adequate substitute for the in-person safety assessment and advocate information the contact was supposed to provide.'
       ],
     },
     {
@@ -96,7 +96,7 @@ function getEISupervisorQuestions() {
       text: 'What is the supervisory coaching point?',
       options: [
         'Agree with him — the victim\'s recantation simply proves that she was never really credible in the first place.',
-        'Direct the officer to go ahead and charge the victim herself with filing a false police report.',
+        'Direct the officer to go ahead and charge the victim herself with filing a false police report, treating her recantation and shifting account as evidence that the original complaint was fabricated rather than as a recognized and normal trauma response.',
         'Coach the trauma-informed view — recantation, minimization, and hostility are normal trauma responses, not indicators of deception; the approach should adjust pace and language and give the victim space, not write her off.',
         'Tell the officer to simply avoid all further contact with that particular victim going forward.'
       ],
@@ -116,7 +116,7 @@ function getEISupervisorQuestions() {
       text: 'How do you reframe this for the officer using the empathy principle?',
       options: [
         'Reframe the hostility as likely self-protection from a system that has failed her before — empathy means accurately perceiving her emotional state and adjusting the approach, which produces better information and outcomes than pushing for speed.',
-        'Tell him to demand answers from the victim more forcefully, in order to get the report finished.',
+        'Tell him to demand answers from the victim more forcefully and directly, in order to cut through the hostility and get the report finished before the end of shift, treating her resistance as an obstacle to push past rather than a state to work with during the interview.',
         'Tell him to just skip taking the victim\'s statement entirely and go ahead and close the case out.',
         'Agree with him that an uncooperative victim like this one is simply not worth the officer\'s time.'
       ],
@@ -136,7 +136,7 @@ function getEISupervisorQuestions() {
       text: 'What is the supervisory approach?',
       options: [
         'Leave it alone — an officer\'s demeanor is just personality and it cannot really be developed or trained.',
-        'Limit the officer going forward to handling only calls that involve no victims and no subjects at all.',
+        'Limit the officer going forward to handling only calls that involve no victims and no subjects at all, on the assumption that keeping him away from interpersonal contact entirely is more practical than trying to train a skill like emotional intelligence.',
         'Rate his overall performance on the quality of his reports alone, and simply ignore his field contacts.',
         'Treat emotional intelligence as a trainable tactical skill and coach the specific behaviors — the first-60-second approach, self-regulation, and reading the situation — because demeanor drives cooperation and de-escalation outcomes, not just rapport.'
       ],
@@ -148,7 +148,7 @@ function getEISupervisorQuestions() {
         'Keep coaching the officer informally — these are really just interpersonal issues that resolve on their own over time.',
         'Quietly reassign him away from any and all victim contact, without documenting the underlying concerns.',
         'Move to documented corrective action and targeted training on the demeanor/first-60-second standard and the ALO 4.13 follow-up requirements, because a repeated pattern after coaching is a supervisory and training issue affecting victim cooperation and safety; escalate as warranted.',
-        'Take no action at all — demeanor complaints of this kind are subjective and ultimately not actionable.'
+        'Take no action at all — demeanor complaints of this kind are inherently subjective, hard to prove, and ultimately not actionable, so there is no sound basis for documented corrective action or targeted training over the way an officer comes across to victims and subjects on his calls.'
       ],
     },
   ];

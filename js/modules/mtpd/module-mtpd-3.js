@@ -110,7 +110,7 @@ function getReportWritingSupervisorQuestions() {
       options: [
         'Return it for body-movement-level specificity — which body part moved and in which direction, the officer\'s specific response, and the outcome — because "resisted" and "proportionate" are conclusions, not the articulable facts the documentation standard requires.',
         'Approve it as written — it expressly states that the force used was proportionate, which is the governing legal standard.',
-        'Rewrite the narrative yourself at the bin, so that the case is not delayed waiting on the officer.',
+        'Rewrite the use-of-force narrative yourself right there at the report bin, filling in the specific facts as you understand them, so that the case is not delayed waiting on the officer to redo it — treating the fastest path to a filed report as the priority over who actually authors the account.',
         'Approve it for now, but note for the officer that he should be more detailed in reports going forward.'
       ],
     },
@@ -131,7 +131,7 @@ function getReportWritingSupervisorQuestions() {
         'Leave it out — only those injuries the officer personally and directly observed belong anywhere in the report.',
         'Return it to add the reported-but-unobserved injury, clearly noted as reported by the victim and not observed by the officer, because Order 4.13\'s checklist requires both observed injuries and injuries reported but not observed.',
         'Have the victim sign a separate written injury statement, instead of documenting the rib injury in the narrative.',
-        'Approve it as written — the documented bruise by itself is already enough to support the charge.'
+        'Approve it as written — the single documented and photographed bruise is by itself already more than enough to support the charge, so there is no need to send the report back merely to add an injury that the victim reported but the officer never actually observed.'
       ],
     },
     {
@@ -151,7 +151,7 @@ function getReportWritingSupervisorQuestions() {
         'Approve the report now — the Property Record Form can simply follow later, whenever the officer gets around to it.',
         'Approve the report and then create and file the missing Property Record Form for the knife yourself.',
         'Treat the submission as incomplete — Order 3.05/3.06 requires a Property Record Form completed before end of shift whenever evidence is received, and Order 3.04 requires reports completed before end of tour; require the form and chain documentation before approval.',
-        'Disregard the knife reference entirely, since it is mentioned only in passing within the narrative.'
+        'Disregard the passing knife reference entirely, since it is mentioned only briefly and in passing within the body of the narrative and no property form was ever generated for it, so treating it as recovered evidence now would only create paperwork the case does not really need.'
       ],
     },
     {
@@ -160,7 +160,7 @@ function getReportWritingSupervisorQuestions() {
       options: [
         'Reports are completed before end of tour and submitted to the shift bin; holding a report past end of shift requires your authorization as supervisor — it is not the officer\'s discretion — so you make the timing decision, not the officer.',
         'The officer may submit the report whenever it is convenient for him — report timing is left to the officer\'s discretion.',
-        'You must sit down and complete the entire report on the officer\'s behalf before he leaves for the night.',
+        'You must personally sit down and complete the entire report on the officer\'s behalf before he leaves for the night, because as the approving supervisor the responsibility for getting a complete report into the bin by end of shift ultimately falls to you rather than to the officer.',
         'The report can be skipped entirely on this occasion, given that the officer is simply too tired to write it.'
       ],
     },
@@ -170,7 +170,7 @@ function getReportWritingSupervisorQuestions() {
       options: [
         'Nothing needs to change — "nervous" and "suspicious" are acceptable shorthand that officers commonly use in reports.',
         'Replace the word "nervous" with "agitated," which is the more precise and defensible legal term to use.',
-        'Tell the officer to simply remove the nervousness-and-suspicion observation from the report entirely.',
+        'Tell the officer to simply remove the nervousness-and-suspicion observation from the report entirely, on the theory that an assessment a defense attorney might later challenge is better left out of the narrative altogether than written up with the specific facts behind it.',
         'Return it for the specific observable behaviors behind the assessment — trembling hands, elevated voice, repeated mirror checks, avoidance of eye contact — because conclusory descriptors will be challenged while specific facts speak for themselves.'
       ],
     },
@@ -178,7 +178,7 @@ function getReportWritingSupervisorQuestions() {
       scenario: 'Over several weeks, the same officer repeatedly submits arrest reports with conclusory use-of-force language and DV narratives missing required checklist items. You have returned and coached on these before.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep returning each deficient report individually, without taking any broader corrective or training action.',
+        'Keep returning each deficient report to the officer individually as it comes across your desk, correcting them one at a time, without ever taking any broader corrective-action or targeted-training step to address the underlying pattern behind the repeated deficiencies.',
         'Move to documented corrective action and targeted training on the documentation standard and the Order 4.13 checklist, because a repeated pattern after coaching is a supervisory and training issue, and escalate as the pattern warrants.',
         'Stop reviewing that particular officer\'s reports as closely, since correcting them each time takes too long.',
         'Approve the reports as-is to avoid delaying cases, and address the writing problems only at the annual review.'

@@ -116,7 +116,7 @@ function getUseOfForceSupervisorQuestions() {
         'Approve it as written — the officer stated they feared for their safety and that the subject was combative, which is enough to satisfy Graham v. Connor.',
         'Return it for the specific facts the Graham standard requires — severity of the crime, the subject\'s specific threatening actions and distance, the level of force applied and why, and the subject\'s response — because conclusions like "aggressive" and "feared for my safety" are not documentation a court can weigh.',
         'Reject the use of force outright and order corrective action, because a force narrative this short can only mean the force itself was excessive.',
-        'Approve it for now but tell the officer, informally, to add more supporting detail to reports like this one next time.'
+        'Approve it for now to keep the paperwork moving, but tell the officer informally that on reports like this one going forward he should try to add more supporting detail and a fuller narrative, so the file reads better the next time a similar use of force comes across your desk, and leave it there for the current report.'
       ],
     },
     {
@@ -136,7 +136,7 @@ function getUseOfForceSupervisorQuestions() {
         'Separate them before filing — under Order 1.3 the Use of Force Report is an internal management document that shall not be attached to the regular incident or supplemental report and is not released outside the department without the Chief\'s specific permission.',
         'Approve it as submitted — keeping the two documents physically together is more efficient for anyone later working the case file.',
         'Release the combined packet, the incident report and the Use of Force Report together, to the District Attorney as one complete record.',
-        'Reject the entire arrest report and send it back to the officer, because of the filing error created by the attachment.'
+        'Reject the entire arrest report and send the whole package back to the officer to be rewritten from scratch, purely because of the filing error created by attaching the Use of Force Report, treating the misfiling as a defect that voids the underlying incident report along with it.'
       ],
     },
     {
@@ -146,7 +146,7 @@ function getUseOfForceSupervisorQuestions() {
         'Allow it — as long as the Use of Force Report is completed within 24 hours of the incident, the timing of the report is fine.',
         'Complete the Use of Force Report yourself, working from the officer\'s verbal account given to you at the end of the shift.',
         'Require the Use of Force Report to be completed before the officer concludes the shift in which the force occurred; carrying it to the next tour is an Order 1.3 timing violation, not a scheduling matter (if injury prevents the officer from reporting, the supervisor submits a written report before end of shift).',
-        'Waive the report requirement in this instance, because the force the officer used was relatively minor.'
+        'Waive the Use of Force Report requirement entirely in this particular instance, on the reasoning that the level of force the officer actually used was relatively minor and produced no visible injury, so completing the full report would be an unnecessary administrative burden for a low-level control application.'
       ],
     },
     {
@@ -154,7 +154,7 @@ function getUseOfForceSupervisorQuestions() {
       text: 'What is the supervisory catch under MTPD Order 1.3?',
       options: [
         'Nothing needs flagging — if the subject showed no visible injury at the scene, no medical attention was required of the officer.',
-        'The officer should have charged the subject with making a false report for raising an injury claim he would not confirm.',
+        'The officer should have charged the subject with making a false report to law enforcement for raising an injury claim that he then would not confirm or describe, and that potential charge — not any medical follow-up — is the issue your review should be flagging on these facts.',
         'Approve it as written — the subject declined to confirm any injury, and that refusal ends the department\'s medical obligation.',
         'Order 1.3 requires EMS examination and transport to be arranged whenever injury is known, suspected, or alleged, regardless of whether the subject claims injury; the report must show medical attention was offered or provided, so the missing evaluation is the flag.'
       ],
@@ -165,7 +165,7 @@ function getUseOfForceSupervisorQuestions() {
       options: [
         'Approve it as documented — neck restraints of this kind are an authorized Level 4 control technique on the continuum.',
         'Flag it as a prohibited technique — Order 1.3 strictly prohibits carotid restraints and all choke or neck restraints except when there is imminent fear of death or serious bodily injury and no alternative; that narrow exception is not established on these facts and cannot be assumed.',
-        'Return it only for a more detailed written description of exactly how the restraint was applied.',
+        'Return it only for a more detailed written description of exactly how the neck restraint was applied and for how long, treating the problem as purely a documentation-specificity gap that a fuller narrative will cure, rather than as anything touching the lawfulness of the technique itself.',
         'Approve it on the basis that the subject was actively resisting the officer throughout the struggle.'
       ],
     },
@@ -186,7 +186,7 @@ function getUseOfForceSupervisorQuestions() {
         'Move to documented corrective action and targeted training on the Graham factors and the Order 1.3 stop-point rule, because a repeated pattern after coaching is a supervisory and training issue — and under Act 57 sustained findings can follow the officer for a career; escalate as the pattern warrants.',
         'Continue with informal coaching — the reports are mostly fine and the officer is clearly well-intentioned about the work.',
         'Take no formal action, because each of the four reports is a separate event that should be judged on its own.',
-        'Suspend the officer immediately, without documenting the pattern of deficiencies that led to the decision.'
+        'Suspend the officer immediately and without pay, effective the same shift, without first documenting the pattern of deficiencies and prior coaching that led to the decision, on the view that an immediate hard sanction will correct the behavior faster than a documented corrective-action and training process would.'
       ],
     },
   ];

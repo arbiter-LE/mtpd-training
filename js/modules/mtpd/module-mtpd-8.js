@@ -81,7 +81,7 @@ function getTrafficStopSupervisorQuestions() {
       options: [
         'Approve it — a short extension of a stop for a dog sniff is always permissible during any traffic stop.',
         'Return it only for a more detailed written description of how the K-9 sniff itself was conducted.',
-        'Approve it on the basis that the K-9 sniff ultimately found contraband inside the vehicle.',
+        'Approve it on the basis that the K-9 sniff ultimately did find contraband inside the vehicle, treating the productive result of the search as after-the-fact confirmation that extending the stop to run the dog was justified, since the outcome proved the officer\'s instinct correct.',
         'Flag the extension as a seizure problem — Rodriguez holds that prolonging a stop beyond the time needed to complete its mission, even briefly, violates the Fourth Amendment absent independent reasonable suspicion, and the report shows none arose before the mission was complete.'
       ],
     },
@@ -89,7 +89,7 @@ function getTrafficStopSupervisorQuestions() {
       scenario: 'An officer\'s report establishes solid probable cause to search a vehicle stopped on Sumneytown Pike, but the narrative shows the vehicle was stopped, the driver detained, and a second unit present. The officer searched at the roadside without a warrant and the report never addresses exigency.',
       text: 'What should your review flag?',
       options: [
-        'Nothing — probable cause alone authorizes a warrantless vehicle search.',
+        'Nothing needs to be flagged here — probable cause standing alone fully authorizes a warrantless vehicle search, so once the report establishes probable cause the roadside search is supported and the file can be approved as written and sent forward for charging.',
         'Approve it because the probable cause here is strong enough on its own to make exigency unnecessary.',
         'The missing exigency — under Commonwealth v. Alexander and MTPD Order 1.2, a warrantless vehicle search requires both probable cause and exigent circumstances; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.',
         'The only issue is that the officer should have ordered the occupants out of the vehicle first.'
@@ -102,7 +102,7 @@ function getTrafficStopSupervisorQuestions() {
         'Approve it — the odor of marijuana, by itself, establishes probable cause to search the entire vehicle.',
         'Flag it — under Commonwealth v. Barr the odor of marijuana alone no longer establishes probable cause; it is one factor in the totality, so a search resting on odor alone is a legal defect, and exigency would still be required as well.',
         'Return it only for a more vivid and detailed written description of the marijuana odor the officer detected.',
-        'Approve it on the basis that odor-of-marijuana cases are essentially never suppressed in Pennsylvania.'
+        'Approve it on the basis that odor-of-marijuana cases are essentially never suppressed in Pennsylvania in practice, so the officer\'s reliance on the smell alone to justify the search is a safe bet that will hold up in court regardless of what the current case law technically says.'
       ],
     },
     {
@@ -120,7 +120,7 @@ function getTrafficStopSupervisorQuestions() {
       text: 'What does your review require?',
       options: [
         'Approve it — the search itself was lawful, so the wording of the probable-cause section does not really matter.',
-        'Suppress the search outright simply because the word "nervous" appears in the officer\'s report.',
+        'Suppress the search outright yourself at the review stage simply because the conclusory word "nervous" appears in the officer\'s report, treating the presence of that single unsupported descriptor as fatal to the entire stop rather than as something to be cured by a more specific rewrite before filing.',
         'Return it for specificity — the probable-cause documentation standard requires facts, not conclusions: where the odor was detected, its strength and character, the moment of detection, and the specific behaviors behind "nervous" — because a lawful search still has to be proven in the report.',
         'Rewrite the probable-cause section of the report yourself, in order to save the officer some time.'
       ],
@@ -131,7 +131,7 @@ function getTrafficStopSupervisorQuestions() {
       options: [
         'Yes — any extension at all of a traffic stop\'s duration violates the rule in Rodriguez.',
         'Yes — the officer needed to obtain a warrant first, before extending the stop at all.',
-        'No — but only because contraband was ultimately found during the extended encounter.',
+        'No — but only because contraband was ultimately found during the extended portion of the encounter, so in your review\'s assessment it is the discovery itself that retroactively validates continuing the stop beyond its original traffic mission.',
         'No — Rodriguez does not restrict action on suspicion or probable cause that genuinely develops during the lawful stop; confirm the report documents the specific new facts that arose before the mission was complete.'
       ],
     },
@@ -149,7 +149,7 @@ function getTrafficStopSupervisorQuestions() {
       scenario: 'Over several weeks, one officer\'s traffic-stop arrests repeatedly show the stop extended for K-9 sniffs after the mission was complete with no documented new suspicion, and warrantless searches that never address exigency. You coached him on Rodriguez and Alexander after the first instance.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Keep returning each report to the officer individually and continue coaching him only informally on it.',
+        'Keep returning each deficient report to the officer individually as it comes in and continue coaching him only informally on each one, without ever escalating to documented corrective action or targeted training on the underlying Rodriguez and Alexander problems behind the pattern.',
         'Move to documented corrective action and targeted training on Rodriguez and the Alexander/Order 1.2 standard, because a repeated pattern after coaching is a supervisory and training issue with significant suppression and liability exposure; escalate as warranted.',
         'Quietly stop assigning the officer to any traffic enforcement, without documenting the underlying concerns.',
         'Approve the reports as-is to keep the cases moving, and revisit the whole issue at the officer\'s annual review.'

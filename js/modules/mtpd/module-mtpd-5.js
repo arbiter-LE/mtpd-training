@@ -122,7 +122,7 @@ function getDomesticViolenceSupervisorQuestions() {
         'Approve it — the victim is the protected party and her preference controls the arrest decision.',
         'Approve it but require the officer to call the victim back to obtain her permission to arrest.',
         'Correct it — under ALO 4.13, when probable cause exists, arrest of the primary aggressor is mandatory and victim consent is not a required element; a documented injury plus a consistent account is probable cause, so the non-arrest is a policy failure to address.',
-        'Refer the matter to detectives for a possible follow-up arrest some weeks later on.'
+        'Refer the matter to detectives for a possible follow-up arrest some weeks later on, treating the responding officer\'s decision not to arrest at the scene as a reasonable exercise of discretion that an investigator can revisit at leisure once the file has been fully reviewed.'
       ],
     },
     {
@@ -132,14 +132,14 @@ function getDomesticViolenceSupervisorQuestions() {
         'Require the firearms to be seized — a DV arrest combined with a court order prohibiting possession triggers mandatory seizure under ALO 4.13, with each firearm documented on a Property Record Form before end of shift; leaving them in the residence is the defect.',
         'Nothing needs to change — the subject is in custody and no longer has access, so the firearms can stay.',
         'Advise the wife to secure all three of the firearms herself and simply note that advisory in the report.',
-        'Require the officer to obtain a separate search warrant before any of the firearms can be seized.'
+        'Require the officer to go back and obtain a separate search warrant before any of the firearms in the residence can be lawfully seized, on the view that weapons sitting inside a private home are protected by the warrant requirement regardless of the domestic-violence arrest and the court order.'
       ],
     },
     {
       scenario: 'A DV report shows both parties with visible injuries, each claiming the other started it. The officer arrested both, with the narrative stating only "both parties had injuries, dual arrest made."',
       text: 'How do you handle this on review?',
       options: [
-        'Approve it — dual injuries on both parties categorically require that a dual arrest be made.',
+        'Approve it — the presence of dual injuries on both parties categorically requires that a dual arrest be made, so the officer\'s decision to arrest both people was the correct and mandatory outcome and the report needs no primary-aggressor analysis at all before it is filed.',
         'Release both of the parties, on the basis that their accounts of the incident directly conflict.',
         'Approve it, but direct the officer to arrest only the party who actually called 911 that night.',
         'Return it — ALO 4.13 and PA DV law require identification of the primary aggressor through documented analysis (comparative injury severity, history, defensive-injury patterns, self-defense); dual arrests are disfavored and the report must show that reasoning.'
@@ -162,7 +162,7 @@ function getDomesticViolenceSupervisorQuestions() {
         'Approve it — releasing a cooperative subject at the victim\'s own request is reasonable officer discretion.',
         'Approve it, as long as the officer clearly documents the victim\'s request to release him in the report.',
         'Treat it as a serious violation — ALO 4.13 prohibits releasing an arrested defendant instead of taking them to the issuing authority, regardless of officer workload, victim request, or subject cooperation; an arrested DV subject goes to arraignment.',
-        'Approve it for now, but require the officer to make a follow-up arrest of the subject the next day.'
+        'Approve it for now to keep the shift moving, but require the officer to go back and make a follow-up arrest of the released subject the next day, treating the roadside release of an already-arrested domestic defendant as a timing choice that can simply be corrected after the fact.'
       ],
     },
     {
@@ -171,7 +171,7 @@ function getDomesticViolenceSupervisorQuestions() {
       options: [
         'The report is correct — a PFA is a civil matter and the victim\'s invitation cures any violation of it.',
         'No enforcement action is needed here at all unless some new act of physical violence actually occurred.',
-        'The officer should instead have arrested the protected party herself for inviting the subject over.',
+        'The officer should instead have arrested the protected party herself for inviting the subject over in violation of the order, on the theory that by welcoming him into the home she became a participant in the violation and the more appropriate target of enforcement on the call.',
         'A PFA violation is a criminal offense, independently chargeable; the protected party cannot waive the order\'s protections on the subject\'s behalf, so "she invited me" is not a defense, and the officer should have addressed the violation rather than treating it as civil.'
       ],
     },
@@ -191,7 +191,7 @@ function getDomesticViolenceSupervisorQuestions() {
       options: [
         'Move to documented corrective action and targeted training on the ALO 4.13 mandatory-arrest and firearms-seizure requirements, because a repeated pattern after coaching is a supervisory and training issue with real victim-safety stakes; escalate as warranted.',
         'Keep coaching the officer informally — DV calls are emotionally complicated and the officer is clearly trying.',
-        'Quietly reassign the officer away from all DV calls, without documenting any of the underlying concerns.',
+        'Quietly reassign the officer away from all domestic-violence calls going forward, without documenting any of the underlying mandatory-arrest and firearms-seizure concerns, on the assumption that simply keeping him off those calls resolves the problem more cleanly than a formal record ever would.',
         'Take no action at this time, since each of the calls involved a different victim and a different set of facts.'
       ],
     },

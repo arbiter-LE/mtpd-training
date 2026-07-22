@@ -113,7 +113,7 @@ function getVehiclePursuitSupervisorQuestions() {
         'Authorize continuation — the driver\'s flight justifies pursuing regardless of the original offense.',
         'Tell the officer that it is entirely his own decision whether or not to continue the pursuit.',
         'Order termination — the criteria are met: a summary-level offense, the suspect\'s identity is known and a later arrest is feasible, and the danger (residential area, wet roads, rising speed) outweighs the need for immediate apprehension.',
-        'Authorize a third unit to join the pursuit and help box the fleeing vehicle in.'
+        'Authorize a third unit to join the active pursuit and help box the fleeing vehicle in, on the view that putting more units on the pursuit gives you better control of the outcome and a faster, safer stop than continuing with only the two-unit maximum in place.'
       ],
     },
     {
@@ -133,14 +133,14 @@ function getVehiclePursuitSupervisorQuestions() {
         'Prohibit it — PIT maneuvers are strictly and absolutely prohibited under ALO 4.02 with no circumstance, authorization level, or offense severity creating an exception; direct stop sticks by a non-pursuing unit instead if interdiction is warranted.',
         'Authorize the PIT maneuver, since you are the on-duty supervisor and the pursuit speeds have become dangerous.',
         'Authorize the PIT maneuver, but only if the pursuit speeds are below 45 mph at the time it is executed.',
-        'Tell the officer to simply use his own judgment about whether to carry out the PIT maneuver.'
+        'Tell the officer to simply use his own on-scene judgment about whether to carry out the PIT maneuver, treating it as a discretionary tactical option that a capable officer can be trusted to deploy responsibly whenever the situation seems to call for it.'
       ],
     },
     {
       scenario: 'Interdiction is warranted in an ongoing pursuit. You are weighing stop stick deployment.',
       text: 'What does MTPD ALO 4.02 require for a lawful stop stick deployment?',
       options: [
-        'Any unit, including a unit actively pursuing, may deploy stop sticks at will to end the pursuit faster.',
+        'Any unit, including a unit that is itself actively pursuing the fleeing vehicle, may deploy stop sticks at will and without any prior authorization in order to bring the pursuit to an end faster, since the overriding priority is stopping the vehicle as quickly as possible.',
         'Stop sticks require no supervisor authorization at all, since they are considered a less-lethal option.',
         'Stop sticks may only ever be deployed after an attempted PIT maneuver has already failed to stop the vehicle.',
         'Stop sticks may be deployed only with supervisor authorization, only by a unit not actively participating in the pursuit, and the deploying unit must provide the pursuing unit with precise deployment location.'
@@ -162,7 +162,7 @@ function getVehiclePursuitSupervisorQuestions() {
       options: [
         'Return it for the specific termination basis and time, the notifications made, and the last known location and direction of travel, because ALO 4.02 requires a terminated pursuit to be documented with the specific basis for the decision.',
         'Nothing needs to change — "broke off when it got too hairy" adequately explains the basis for termination.',
-        'Approve it as written — the specific termination details are optional once a pursuit has ended.',
+        'Approve it as written — the specific termination details such as the basis for the decision, the time, and the last known location are essentially optional once a pursuit has already ended, because the incident is over and the paperwork will not change the outcome now.',
         'Replace the officer\'s account entirely with your own supervisory summary of the pursuit and its end.'
       ],
     },
@@ -172,7 +172,7 @@ function getVehiclePursuitSupervisorQuestions() {
       options: [
         'Notification can wait until the pursuit is well established and a supervisor has been looped in on it.',
         'Only the fleeing vehicle\'s description actually must be broadcast; the rest of the information is optional.',
-        'The officer may broadcast nothing at all until the pursuit ends, in order to avoid radio congestion.',
+        'The officer may broadcast nothing at all over the air until the pursuit has fully ended, in order to avoid tying up the channel and creating radio congestion, and can then give communications and the supervisor one complete summary after the fact once things have calmed.',
         'Notification is mandatory immediately upon initiating the pursuit — unit, offense, direction, speed, and vehicle description — and supervisor notification and authorization are required, so you should be brought in from the outset, not after the fact.'
       ],
     },
@@ -181,7 +181,7 @@ function getVehiclePursuitSupervisorQuestions() {
       text: 'What is the appropriate supervisory response now?',
       options: [
         'Keep ordering termination each time it happens and simply leave it at that, without anything further.',
-        'Stop authorizing the officer to make traffic stops of any kind entirely, going forward.',
+        'Stop authorizing the officer to make traffic stops of any kind entirely from this point forward, treating a blanket removal of his enforcement authority as the appropriate response to the repeated pursuit-termination failures rather than documented corrective action and training.',
         'Move to documented corrective action and targeted training on the ALO 4.02 termination criteria and continuous-evaluation factors, because a repeated pattern after coaching is a supervisory and training issue with significant liability exposure; escalate as warranted.',
         'Take no action at this point, since each of the pursuits was genuinely a separate situation.'
       ],

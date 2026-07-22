@@ -93,7 +93,7 @@ function getEvidenceSupervisorQuestions() {
       text: 'How do you handle this under MTPD Order 3.05/3.06?',
       options: [
         'Approve it — the Property Record Form can simply be completed whenever the officer next works a shift.',
-        'Approve it now and just complete the missing Property Record Form for the crowbar yourself.',
+        'Approve it now to keep things moving and just complete the missing Property Record Form for the crowbar yourself at your desk, treating the paperwork gap as a clerical task you can quietly close out rather than a custody problem the officer must fix.',
         'Treat it as an incomplete submission — Order 3.05/3.06 requires a Property Record Form completed before end of shift and the item secured in authorized storage; evidence does not sit in a patrol car, and the deferral creates a gap in custody.',
         'Disregard the crowbar entirely, since it is mentioned only briefly within the burglary report.'
       ],
@@ -104,7 +104,7 @@ function getEvidenceSupervisorQuestions() {
       options: [
         'Approve it — a tightly sealed plastic bag protects the bloodstained shirt evidence well enough.',
         'Direct that the shirt simply be frozen while still sealed inside the plastic zip bag instead.',
-        'Approve it for now, but note the packaging issue in the officer\'s personnel file only.',
+        'Approve it for now, but note the plastic-packaging issue only in the officer\'s personnel file for later reference, treating the biological-evidence packaging error as a performance matter to track rather than a defect that has to be corrected before the item is stored.',
         'Return it for repackaging in paper — biological evidence requires the breathability paper provides; plastic allows decomposition and creates a DNA-integrity challenge, and Order 3.05/3.06 requires physical evidence packaged in paper.'
       ],
     },
@@ -134,7 +134,7 @@ function getEvidenceSupervisorQuestions() {
       options: [
         'Accept the officer\'s verbal statement that he personally had the item in his control the whole time.',
         'Approve the submission simply because the officer himself is generally credible and reliable.',
-        'Suppress the item from evidence without conducting any further inquiry into the custody gap.',
+        'Suppress the item from evidence yourself at the review stage without conducting any further inquiry into the unaccounted custody period, treating the gap as automatically fatal to the evidence rather than something to be resolved by documenting the handling and securing the item properly from this point forward.',
         'Treat the unaccounted period as a gap in custody — Pennsylvania courts ask whether there is a reasonable probability the evidence was not altered or substituted, and it is documentation, not memory, that answers that; require the custody to be documented and securing in a locker not to be deferred again.'
       ],
     },
@@ -143,7 +143,7 @@ function getEvidenceSupervisorQuestions() {
       text: 'How do you explain the standard under Rule 648 and the challenge standard?',
       options: [
         'Tell him that his own memory of handling each item is sufficient and the form is really just bureaucracy.',
-        'Tell him that the Property Record Form only truly matters in serious homicide cases, not routine ones.',
+        'Tell him that the Property Record Form and chain-of-custody documentation only truly matter in serious homicide and major-felony cases, not in routine ones, so cutting corners on the paperwork for an ordinary offense is not really something worth worrying about at trial or in any pretrial motion the defense might file.',
         'Explain that under Rule 648 physical evidence must be authenticated and chain-of-custody documentation is the foundation of that authentication; courts ask whether there is a reasonable probability the evidence was not altered, and documentation — not memory — answers that challenge at trial.',
         'Tell him to just keep a personal notebook of how he handled each item instead of filling out the form.'
       ],
@@ -155,7 +155,7 @@ function getEvidenceSupervisorQuestions() {
         'Approve it — using one single form for the entire scene is simpler and sufficient for the submission.',
         'Return it for complete per-item documentation — Order 3.05/3.06 requires the form to document each item\'s collection, packaging, and custody, with item numbers and labeling, because the form is the chain for every item, not a single summary.',
         'Approve it for now, but tell the officer that he should itemize each piece separately next time.',
-        'Combine all of the items into one single sealed package, so that they match the lumped form.'
+        'Combine all of the recovered items into one single sealed package so that the physical evidence matches the lumped-together summary form, treating a single consolidated entry as an acceptable way to reconcile the paperwork with what was actually collected.'
       ],
     },
     {
@@ -164,7 +164,7 @@ function getEvidenceSupervisorQuestions() {
       options: [
         'Move to documented corrective action and targeted training on the Order 3.05/3.06 chain-of-custody requirements, because a repeated pattern after coaching is a supervisory and training issue, and each gap is a future suppression motion; escalate as warranted.',
         'Keep fixing each evidence submission individually as it comes in and continue coaching the officer only informally.',
-        'Quietly stop assigning the officer to any calls that might generate physical evidence going forward.',
+        'Quietly stop assigning the officer to any calls that might generate physical evidence going forward, on the assumption that simply keeping him away from evidence-handling situations is a cleaner fix than documented corrective action and targeted training on the chain-of-custody requirements.',
         'Approve the submissions as-is to keep the cases moving, and address the whole issue at his annual review.'
       ],
     },

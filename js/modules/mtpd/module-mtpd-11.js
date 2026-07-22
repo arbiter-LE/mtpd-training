@@ -93,7 +93,7 @@ function getWellnessSupervisorQuestions() {
         'Open a formal performance file on him and discipline both the absences and the attitude problems.',
         'Ignore the whole pattern entirely, at least unless and until his actual work product formally fails.',
         'Recognize the pattern as possible secondary traumatic stress and lead with a direct, private wellness conversation and a referral to resources — emotional numbing and behavioral changes are warning signs, and leading with discipline drives a wellness problem underground.',
-        'Quietly reassign him to a quieter beat or shift, without ever talking to him about any of it.'
+        'Quietly reassign him to a quieter beat or a different shift, without ever talking to him directly about any of what you have noticed, on the assumption that changing his environment will address the warning signs more gently than a direct wellness conversation with him ever would.'
       ],
     },
     {
@@ -111,7 +111,7 @@ function getWellnessSupervisorQuestions() {
       text: 'What does the EAP policy actually provide?',
       options: [
         'The EAP reports both the officer\'s attendance and the session content back to the referring supervisor.',
-        'The supervisor is required to sit in on the EAP sessions himself in order to verify attendance.',
+        'The supervisor is required to sit in on the officer\'s EAP sessions himself in order to verify attendance and confirm that the officer is genuinely engaging with the process, so that participation is documented and reported up the chain of command for the file.',
         'The EAP is only ever available to an officer after a formal disciplinary referral has been made.',
         'EAP services are provided by an independent contractor outside the chain of command and participation is not reported to supervisors; you can point an officer to EAP, but you will not receive a report that he went or what was discussed.'
       ],
@@ -123,7 +123,7 @@ function getWellnessSupervisorQuestions() {
         'Treat it as a statement requiring immediate action — do not rationalize it; ask directly, stay with him, and engage peer support or EAP without delay, because imminent risk of harm is the defined limit where confidentiality yields to safety.',
         'Accept his explanation that it was just talk and move on, so that you do not overreact to the comment.',
         'Wait a few days to see whether his overall mood improves on its own before you do anything about it.',
-        'Document the comment for his performance file and then address it with him at his next review.'
+        'Document the officer\'s comment for his performance file and then plan to address it with him at his next regularly scheduled review, treating a statement about not wanting to wake up as a performance-tracking matter rather than an immediate-risk situation to act on now.'
       ],
     },
     {
@@ -132,7 +132,7 @@ function getWellnessSupervisorQuestions() {
       options: [
         'Tell him that absolutely everything he says is fully protected, with no exceptions to it whatsoever.',
         'Explain that peer support and EAP are confidential but with defined limits — mandatory disclosure applies when there is an imminent risk of harm to himself or others, disclosure of a serious criminal offense, or a court order requiring disclosure.',
-        'Tell him that nothing he says in those conversations is actually confidential in any way at all.',
+        'Tell him plainly that nothing he says in those peer-support or EAP conversations is actually confidential in any way at all and that it can all come back to the department, so he should be very careful about what he chooses to disclose to anyone in those sessions.',
         'Tell him that you, as his supervisor, personally decide what does and does not stay confidential.'
       ],
     },
@@ -152,7 +152,7 @@ function getWellnessSupervisorQuestions() {
       options: [
         'Address it as an early warning sign — increased substance use is the most common self-medication pattern and the most reliable predictor of accelerating decline if not addressed early — with a direct private conversation and a peer support referral now.',
         'Do nothing about it for now, at least until his work formally fails or he says something genuinely alarming.',
-        'Order an immediate fitness-for-duty evaluation and begin the termination process against him.',
+        'Order an immediate mandatory fitness-for-duty evaluation and simultaneously begin the termination process against him, treating the increased drinking as grounds for removing the officer from the job rather than as an early warning sign to address with support and a referral.',
         'Mention the drinking to him jokingly, so that the whole thing does not feel like such a big deal.'
       ],
     },
@@ -161,7 +161,7 @@ function getWellnessSupervisorQuestions() {
       text: 'What supervisory approach best reflects this module\'s message?',
       options: [
         'Tell the squad plainly that needing any kind of help is a weakness that they should always hide.',
-        'Require all officers to disclose any counseling or peer support they seek to you personally.',
+        'Require all officers under your command to disclose any counseling or peer support they seek directly to you personally, so that you can keep track of who is struggling, on the theory that visibility into their help-seeking makes you a more effective supervisor.',
         'Avoid the entire topic of wellness completely, so that no one on the squad ever feels singled out.',
         'Build a culture where reaching for peer support or EAP is normal rather than a confession — because silence is the actual threat — and model recognition by noticing, speaking directly, and pointing toward resources.'
       ],

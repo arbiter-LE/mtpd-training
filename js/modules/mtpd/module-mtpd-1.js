@@ -134,7 +134,7 @@ function getSearchSeizureSupervisorQuestions() {
       scenario: 'You are reviewing an arrest report before it is filed. The officer establishes solid probable cause to search a vehicle stopped on Route 29 — but the narrative shows the vehicle was stopped, the driver was detained, and a second unit was on scene. The officer then searched the vehicle at the roadside without a warrant. The report says nothing about exigent circumstances.',
       text: 'What should your review flag under MTPD Order 1.2?',
       options: [
-        'Nothing — probable cause by itself authorizes a warrantless vehicle search in Pennsylvania, so the report is complete as written and needs no exigency.',
+        'Nothing — probable cause by itself fully authorizes a warrantless vehicle search in Pennsylvania, the same way it does under the federal automobile exception, so the report is complete as written, needs no separate showing of exigency, and can be approved and forwarded to the District Attorney as it stands.',
         'Approve it — the probable cause here is strong enough that establishing separate exigent circumstances is unnecessary and the search will hold up on that strength alone.',
         'The only problem is that the officer did not photograph the vehicle before searching it; once that documentation is added the warrantless search is fully supported.',
         'The report is missing exigent circumstances. Order 1.2 and Commonwealth v. Alexander require probable cause AND exigency for a warrantless vehicle search; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.'
@@ -165,7 +165,7 @@ function getSearchSeizureSupervisorQuestions() {
       text: 'What is the appropriate supervisory action before this report is filed?',
       options: [
         'Approve it — the officer stated in the narrative that the driver consented to the search, and that statement is all that department policy requires for a consent search.',
-        'Approve it as written, but verbally tell the officer to do a better and more thorough job of documenting consent the next time a situation like this comes up.',
+        'Approve it as written for this report to avoid holding up the filing, but verbally tell the officer, as an informal aside, to do a better and more thorough job of documenting how consent was obtained the next time a situation like this one comes up, treating the bare entry as good enough for now and a habit to polish later.',
         'Return it before filing — Order 1.2 requires the Search and Seizure Consent Form (Attachment D) or a mobile-vehicle-camera recording; absent either, the officer must provide a detailed written explanation of how consent was given, the officer\'s demeanor, whether weapons were drawn, and the subject\'s apparent condition.',
         'Reject the arrest entirely — a consent search supported only by a verbal exchange can never be documented sufficiently to survive a challenge, so the whole case fails.'
       ],
@@ -177,7 +177,7 @@ function getSearchSeizureSupervisorQuestions() {
         'Under Florida v. Jimeno, consent scope is measured by objective reasonableness; a general consent does not automatically reach a locked container. Flag it as a suppression exposure and require the independent legal basis for opening it to be documented if one exists.',
         'General consent to search a vehicle automatically includes every locked container found inside it, so the officer\'s search of the locked container was clean and needs no further review.',
         'The locked container itself created independent probable cause the moment the officer saw it, so the scope of the driver\'s consent is irrelevant to whether the search was lawful.',
-        'The search is fine as long as the officer genuinely believed the general consent covered the locked container, since an officer\'s good-faith belief controls the scope question.'
+        'The search is fine as long as the officer genuinely and honestly believed that the general consent to search the vehicle also reached the locked container in the trunk, because in a consent search it is the officer\'s subjective good-faith belief about the scope — not any objective standard — that ultimately controls the question.'
       ],
     },
     {
@@ -186,7 +186,7 @@ function getSearchSeizureSupervisorQuestions() {
       options: [
         'Nothing is wrong here — an inventory search authorizes a complete search of the vehicle and everything inside it, so the officer was entitled to keep going after finding the narcotics.',
         'The officer should have first arrested the registered owner of the vehicle before continuing the inventory search of the remaining compartments and containers.',
-        'The only issue is a paperwork one — the inventory was not logged on the Vehicle Inventory Report form, and once that is corrected the search itself is fine.',
+        'The only issue here is a paperwork one — the inventory was simply not logged on the Vehicle Inventory Report form, and once that missing form is completed and attached to the file the search itself is perfectly fine and needs no further scrutiny from you at review.',
         'Order 1.2 requires that once evidence is discovered during an inventory the officer stop the inventory and secure a search warrant before continuing; an inventory whose evident purpose becomes finding evidence is a pretext that circumvents the warrant requirement.'
       ],
     },
@@ -197,14 +197,14 @@ function getSearchSeizureSupervisorQuestions() {
         'Approve it — MDVARS recordings are optional under department policy, and the written report stands on its own without any accompanying video of the stop.',
         'Order 2.1 makes MDVARS recording mandatory for vehicle stops and searches; treat the missing recording as an open question — require the officer to locate and document the recording, and if the system was not activated, address that as a separate policy issue rather than letting it ride.',
         'Suppress the search yourself at the review stage, because the missing MDVARS recording alone renders the entire vehicle search legally invalid.',
-        'Approve it, but quietly delete the report from the system so that the recording gap can never be discovered by the defense later on.'
+        'Approve it, but quietly delete the report from the records system so that the missing-recording gap can never surface in discovery and be used by the defense later on, keeping the case clean on paper by making sure the absence of the MDVARS video is never documented anywhere it could be found.'
       ],
     },
     {
       scenario: 'Over a one-month span, the same officer has now submitted three vehicle-search reports that establish probable cause but never articulate the exigent circumstances Order 1.2 requires. You coached the officer verbally after the first one.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Give him one more verbal reminder — he is a good officer, he means well, and he will almost certainly come around on his own after another informal conversation.',
+        'Give him just one more verbal reminder — he is a genuinely good officer, he clearly means well, and he will almost certainly come around on his own after one more informal conversation about the exigency requirement, the same way most officers correct a small documentation habit without any need for a formal file.',
         'Nothing further is needed here; each of the three stops is a separate event, the officer means well, and there is no real pattern that requires a formal response.',
         'Reassign the officer away from all traffic enforcement duties permanently and effective immediately, without creating any documentation of the reason for the move.',
         'Move beyond a single coaching moment: documented corrective action and targeted training now, because a repeated pattern after coaching is a supervisory and training issue and an unaddressed pattern becomes the department\'s exposure — escalate as the pattern warrants.'
@@ -215,7 +215,7 @@ function getSearchSeizureSupervisorQuestions() {
       text: 'Is this documentation acceptable on supervisory review?',
       options: [
         'Yes — the officer made the correct legal decision not to search the vehicle, so a minimal CAD entry is entirely sufficient and nothing more needs to be recorded.',
-        'Yes — because no arrest was made and no evidence was seized during this stop, no further documentation beyond the brief CAD entry is required of the officer.',
+        'Yes — because no arrest was ultimately made and no evidence was seized during the course of this particular stop, no further documentation beyond the brief CAD entry is required of the officer, and holding him to an arrest-level reporting standard for a stop that produced nothing would be unnecessary.',
         'No — the decision not to search can be legally correct while the documentation is still deficient. Hold the same standard as an arrest report: the officer\'s observations should be documented completely, because field intelligence that is not recorded does not exist.',
         'No — the officer should have gone ahead and searched the vehicle anyway in order to be thorough, and the documentation problem flows from that failure to search.'
       ],

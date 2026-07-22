@@ -1,0 +1,37 @@
+[
+  { "old": "The officer's intent, the subject's criminal history, and whether the subject sustained any injury.",
+    "new": "The officer's subjective intent at the moment force was applied, the subject's prior criminal history and any outstanding warrants known at the time, and whether the subject ultimately sustained a visible physical injury during the encounter." },
+
+  { "old": "Any use of force that results in a formal complaint by the subject or by a civilian witness to the encounter.",
+    "new": "Any use of force that later results in a formal written complaint filed by the subject, or an equivalent complaint raised by a civilian witness to the encounter, whether at the scene or afterward at the station." },
+
+  { "old": "A civil rights complaint automatically succeeds whenever an officer draws a firearm but does not discharge it.",
+    "new": "A civil rights complaint automatically succeeds whenever an officer draws and points a firearm but does not ultimately discharge it, because any display of a firearm is treated by the courts as deadly force per se, regardless of the surrounding circumstances." },
+
+  { "old": "The decision to close distance is always at the officer's discretion and is not reviewable under Graham.",
+    "new": "The decision to close distance on a subject is always left entirely to the individual officer's discretion in the moment and is not something a court will second-guess or review under Graham, since tactical positioning falls outside the reasonableness analysis." },
+
+  { "old": "The hold is likely justified, because the subject remained under arrest and in custody at the time.",
+    "new": "The hold is likely to be found justified, because the subject remained under lawful arrest and in police custody at the time, and any level of control force is considered reasonable for as long as a person is in custody." },
+
+  { "old": "Remove the subject from the vehicle immediately, regardless of the amount of force that requires.",
+    "new": "Remove the subject from the patrol vehicle immediately and by whatever means become necessary, regardless of the amount of force that requires, in order to stop the behavior as quickly as possible." },
+
+  { "old": "Approve it for now but tell the officer, informally, to add more supporting detail to reports like this one next time.",
+    "new": "Approve it for now to keep the paperwork moving, but tell the officer informally that on reports like this one going forward he should try to add more supporting detail and a fuller narrative, so the file reads better the next time a similar use of force comes across your desk, and leave it there for the current report." },
+
+  { "old": "Reject the entire arrest report and send it back to the officer, because of the filing error created by the attachment.",
+    "new": "Reject the entire arrest report and send the whole package back to the officer to be rewritten from scratch, purely because of the filing error created by attaching the Use of Force Report, treating the misfiling as a defect that voids the underlying incident report along with it." },
+
+  { "old": "Waive the report requirement in this instance, because the force the officer used was relatively minor.",
+    "new": "Waive the Use of Force Report requirement entirely in this particular instance, on the reasoning that the level of force the officer actually used was relatively minor and produced no visible injury, so completing the full report would be an unnecessary administrative burden for a low-level control application." },
+
+  { "old": "The officer should have charged the subject with making a false report for raising an injury claim he would not confirm.",
+    "new": "The officer should have charged the subject with making a false report to law enforcement for raising an injury claim that he then would not confirm or describe, and that potential charge — not any medical follow-up — is the issue your review should be flagging on these facts." },
+
+  { "old": "Return it only for a more detailed written description of exactly how the restraint was applied.",
+    "new": "Return it only for a more detailed written description of exactly how the neck restraint was applied and for how long, treating the problem as purely a documentation-specificity gap that a fuller narrative will cure, rather than as anything touching the lawfulness of the technique itself." },
+
+  { "old": "Suspend the officer immediately, without documenting the pattern of deficiencies that led to the decision.",
+    "new": "Suspend the officer immediately and without pay, effective the same shift, without first documenting the pattern of deficiencies and prior coaching that led to the decision, on the view that an immediate hard sanction will correct the behavior faster than a documented corrective-action and training process would." }
+]

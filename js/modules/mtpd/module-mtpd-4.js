@@ -98,7 +98,7 @@ function getCrisisSupervisorQuestions() {
       options: [
         'Approve it — a well-documented prior psychiatric history is by itself sufficient to support a 302.',
         'Flag it — § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger; prior history alone does not satisfy the standard, so the record must establish the specific recent facts or the 302 overreaches.',
-        'Approve it — once family expresses concern, the officer has no discretion but to initiate a 302.',
+        'Approve it — once family members express genuine concern about a relative\'s mental state, the responding officer effectively has no discretion left and is obligated to initiate a 302, so the recent-overt-act question does not really need to be established on the face of the record.',
         'Reject the entire welfare-check contact as improper, on the basis that a 302 was considered at all.'
       ],
     },
@@ -107,7 +107,7 @@ function getCrisisSupervisorQuestions() {
       text: 'What is the appropriate supervisory action?',
       options: [
         'Direct the officer to move to a physical resolution now, in order to clear the call as quickly as possible.',
-        'Order an immediate 302 to bring the call to an end, regardless of whether the § 7302 criteria are met.',
+        'Order an immediate 302 to bring the call to a close and clear the scene, regardless of whether the § 7302 criteria for a recent overt act are actually met, on the reasoning that resolving a lengthy crisis call quickly is worth more than a strict reading of the commitment standard.',
         'Tell the officer to simply leave the scene, so that the subject is forced to make a decision on his own.',
         'Support continued de-escalation for a defined additional window based on the officer\'s status update, because an abrupt change in tactics after rapport was built can re-escalate the situation, and ALO 5.4 favors de-escalation where safe and feasible.'
       ],
@@ -129,7 +129,7 @@ function getCrisisSupervisorQuestions() {
         'Skip the second search on entry — the officer\'s prior field search at the scene already satisfies the requirement.',
         'Place the subject in any cell that happens to be available, since he is not a criminal arrestee in custody.',
         'Require a thorough search before entry to the temporary holding area regardless of any prior field search, because Order 3.02 mandates it — along with securing firearms in lock boxes and not leaving the detainee unsupervised more than 10 minutes.',
-        'Leave the subject unsupervised in the holding area while the officer steps away to complete his paperwork.'
+        'Leave the subject unsupervised in the temporary holding area for a short while so the officer can step away to complete his paperwork, on the assumption that a brief unmonitored period is acceptable as long as the detainee was searched at some earlier point out in the field.'
       ],
     },
     {
@@ -138,7 +138,7 @@ function getCrisisSupervisorQuestions() {
       options: [
         'Correct it immediately — Order 4.07 prohibits detaining a juvenile in a cell that houses adults and requires separation from adults by sight and sound under continuous visual supervision of a sworn officer, with secure detention limited to identification, investigation, processing, and transfer.',
         'Approve it as arranged — keeping both the juvenile and the adult under one officer is the most efficient supervision.',
-        'Allow it to stand, as long as the juvenile is ultimately released from detention within 24 hours.',
+        'Allow the arrangement to stand for now, as long as the juvenile is ultimately released from detention within 24 hours, treating the sight-and-sound separation requirement as satisfied by the eventual release timeline rather than by keeping the juvenile physically apart from the adult detainees the entire time.',
         'Move the adult arrestee instead, and leave the juvenile unsupervised in the adjacent holding cell.'
       ],
     },
@@ -148,7 +148,7 @@ function getCrisisSupervisorQuestions() {
       options: [
         'Accept the framing — mental health subjects are inherently unpredictable and the approach is irrelevant.',
         'Note that an authoritative, command-driven approach frequently triggers escalation in crisis, and ALO 5.4 calls for de-escalation where safe and feasible; the report should honestly assess the approach and the de-escalation opportunity, not attribute the outcome solely to the subject.',
-        'Discipline the subject\'s family members for having called the police about him in the first place.',
+        'Discipline or formally warn the subject\'s family members at the scene for having called the police about him in the first place, framing the report around the idea that the family\'s decision to involve law enforcement was itself the problem that escalated an otherwise manageable situation.',
         'Approve it without any comment, on the basis that the use of force itself was thoroughly documented.'
       ],
     },
@@ -156,7 +156,7 @@ function getCrisisSupervisorQuestions() {
       scenario: 'An officer wants to initiate a 302 on a calm, cooperative subject solely because the subject experiences a diagnosed condition, with no recent overt act, attempt, or threat described.',
       text: 'What is your guidance?',
       options: [
-        'Approve the 302 — the subject\'s diagnosed condition is by itself enough to meet the § 7302 standard.',
+        'Approve the 302 — the subject\'s formally diagnosed mental health condition is by itself already enough to meet the § 7302 standard, so there is no need for the record to establish any separate recent overt act, attempt, or threat before the hold can lawfully proceed.',
         'Initiate the 302 anyway just to be cautious, since the subject\'s liberty interests are secondary to safety.',
         'Do not initiate on these facts — § 7302 requires a recent overt act, attempt, or threat establishing clear and present danger; a diagnosis without such conduct does not meet the standard, and the record should reflect that the criteria were not met.',
         'Direct the officer to detain the subject under the temporary-detention order instead of pursuing a 302.'
