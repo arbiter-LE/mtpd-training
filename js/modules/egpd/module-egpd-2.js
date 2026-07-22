@@ -389,8 +389,8 @@ function getUseOfForceQuestions() {
       text: 'Under General Order 1.3, what is the foundation of the Use of Force Continuum and where does it start?',
       options: [
         'The continuum starts with Escort (Level 2), since Verbal Control is not considered a use of force.',
-        'The continuum begins with Verbal Control (Level 1) — advice, persuasion, admonitions, or orders, where tone and volume can establish control without progressing to a higher level of force.',
         'The continuum has no defined starting point — officers may begin at whatever level they assess as necessary.',
+        'The continuum begins with Verbal Control (Level 1) — advice, persuasion, admonitions, or orders, where tone and volume can establish control without progressing to a higher level of force.',
         'The continuum begins with Escort and Control and Compliance combined as Level 1.'
       ],
     },
@@ -398,8 +398,8 @@ function getUseOfForceQuestions() {
       scenario: 'After a CEW deployment during a domestic disturbance call, your supervisor instructs you to complete the appropriate paperwork. Your body camera captured the full incident.',
       text: 'Under General Order 1.3.6, when must a "Use of Force Report" be completed?',
       options: [
-        'Only in the event that the subject is actually injured during the encounter or afterward specifically claims to have been injured, since force that leaves no mark and draws no complaint does not rise to the level of a reportable use of force under the department\'s policy at all.',
         'Whenever an officer discharges a firearm (other than training/recreational/animal disposal), takes action resulting in or alleged to result in injury or death, uses or is alleged to use physical force, applies lethal or less-lethal weapons, or applies Level 3 force or greater.',
+        'Only in the event that the subject is actually injured during the encounter or afterward specifically claims to have been injured, since force that leaves no mark and draws no complaint does not rise to the level of a reportable use of force under the department\'s policy at all.',
         'Only when the District Attorney\'s office requests it.',
         'Only for incidents involving a firearm discharge.'
       ],
@@ -409,9 +409,9 @@ function getUseOfForceQuestions() {
       text: 'Why is this documentation insufficient under General Order 1.3?',
       options: [
         'It fails to note the subject\'s prior criminal history and any past encounters with the department, which is the background a reviewer would need in order to judge whether the level of force the officer chose was reasonable under the circumstances.',
-        'General Order 1.3, Policy, requires officers to articulate the need and justification for the force used and the reason the level selected was appropriate — "feared for my safety" is a conclusion, not the supporting facts.',
         'It does not state whether a supervisor was present.',
-        'It is sufficient — stating that the officer feared for their safety satisfies the policy.'
+        'It is sufficient — stating that the officer feared for their safety satisfies the policy.',
+        'General Order 1.3, Policy, requires officers to articulate the need and justification for the force used and the reason the level selected was appropriate — "feared for my safety" is a conclusion, not the supporting facts.'
       ],
     },
     {
@@ -428,8 +428,8 @@ function getUseOfForceQuestions() {
       scenario: 'During a use of force debrief, your sergeant asks why you advanced toward a subject holding an impact weapon rather than creating distance and issuing verbal commands.',
       text: 'How does General Order 1.3.1 frame the relationship between Verbal Control (Level 1) and higher levels of force?',
       options: [
-        'Officers must always begin at Level 1 and may never skip to a higher level regardless of circumstances.',
         'The continuum is escalated only when each lower level has been examined or discarded as impractical, or has been tried and failed — though the policy also notes that any level can be skipped in escalation, or de-escalated, given the presenting circumstances.',
+        'Officers must always begin at Level 1 and may never skip to a higher level regardless of circumstances.',
         'Higher levels of force become mandatory the moment a subject is non-compliant for any reason at all, so once someone refuses a lawful order the officer is required to move up the continuum rather than hold at the current level or attempt to de-escalate the situation.',
         'The continuum applies only to arrests, not to officer-safety encounters like this one.'
       ],
@@ -439,9 +439,9 @@ function getUseOfForceQuestions() {
       text: 'How does General Order 1.3\'s Policy section address force against a subject who is no longer resisting?',
       options: [
         'The hold is justified because the subject was under arrest and force may continue throughout custody.',
-        '"The use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished." A handcuffed, compliant subject presents none of these conditions for continued force.',
         'The hold is justified if the officer subjectively perceived any risk, regardless of the subject\'s compliance.',
-        'General Order 1.3 does not address the use of force against subjects who are already in custody and handcuffed at all, so continued control force applied to a restrained person falls outside the policy and is left entirely to the individual officer\'s discretion.'
+        'General Order 1.3 does not address the use of force against subjects who are already in custody and handcuffed at all, so continued control force applied to a restrained person falls outside the policy and is left entirely to the individual officer\'s discretion.',
+        '"The use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished." A handcuffed, compliant subject presents none of these conditions for continued force.'
       ],
     },
     {
@@ -512,9 +512,9 @@ function getUseOfForceSupervisorQuestions() {
       text: 'Under General Order 1.3.6(D), what is the purpose of your review?',
       options: [
         'To re-decide whether you personally would have used force, substituting your judgment for the officer\'s.',
-        'To review the report for compliance with General Order 1.3 — testing whether the force is articulated and justified under policy — and to determine whether the matter is compliant, needs more documentation, or warrants a Professional Conduct investigation under 1.3.6(F).',
         'To forward the use-of-force report straight to the District Attorney without any supervisory review at all, on the reasoning that a use of force is fundamentally a legal question for prosecutors rather than something a supervisor should be evaluating for policy compliance.',
-        'To file the report as written; supervisory review of use-of-force reports is optional under the policy.'
+        'To file the report as written; supervisory review of use-of-force reports is optional under the policy.',
+        'To review the report for compliance with General Order 1.3 — testing whether the force is articulated and justified under policy — and to determine whether the matter is compliant, needs more documentation, or warrants a Professional Conduct investigation under 1.3.6(F).'
       ],
     },
     {
@@ -531,8 +531,8 @@ function getUseOfForceSupervisorQuestions() {
       scenario: 'A report\'s timeline shows the subject was handcuffed, seated, and no longer resisting when the officer applied a control hold that caused an injury.',
       text: 'How should you assess this on review?',
       options: [
-        'It is acceptable because the subject was under arrest, and force may continue throughout custody.',
         'It is outside policy on its face: GO 1.3 requires that force "end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished." This is a conduct issue to investigate, not a documentation issue to rewrite.',
+        'It is acceptable because the subject was under arrest, and force may continue throughout custody.',
         'It is acceptable as long as the officer subjectively perceived at least some degree of risk in the moment, since an officer\'s honest perception of danger is what governs whether continued force was justified, regardless of what the subject was actually doing at the time.',
         'It cannot be evaluated because General Order 1.3 does not address force after handcuffing.'
       ],
@@ -542,8 +542,8 @@ function getUseOfForceSupervisorQuestions() {
       text: 'What does General Order 1.3.4 require you to look for here?',
       options: [
         'Nothing further is needed — justifying the first discharge cycle in the report adequately covers the entire deployment, so there is no need to separately articulate the second and third cycles or address the fall-risk and verbal-warning factors before approving and signing off on it.',
-        'Each discharge cycle is a separate use of force that must be separately justified. The report must justify the second and third cycles as well, and address the 1.3.4(D) fall-risk and vulnerability factors and the verbal warning — so it goes back for that justification.',
         'The report should be rejected outright because more than one CEW cycle is always excessive.',
+        'Each discharge cycle is a separate use of force that must be separately justified. The report must justify the second and third cycles as well, and address the 1.3.4(D) fall-risk and vulnerability factors and the verbal warning — so it goes back for that justification.',
         'Only the total number of cycles matters; individual justification is not required.'
       ],
     },
@@ -551,8 +551,8 @@ function getUseOfForceSupervisorQuestions() {
       scenario: 'An officer\'s report characterizes an aluminum flashlight the subject was holding as "a deadly weapon" to support the decision to present a firearm under General Order 1.3.2.',
       text: 'How should you treat this characterization on review?',
       options: [
-        'Accept it — any object in a subject\'s hand can be characterized as a deadly weapon at the officer\'s discretion.',
         'Scrutinize it: GO 1.3.2 is narrow, and an object that is not a deadly weapon does not place the incident in 1.3.2. Overstating the threat to fit the force is a flag — an honestly imperfect decision is more defensible than an inflated one.',
+        'Accept it — any object in a subject\'s hand can be characterized as a deadly weapon at the officer\'s discretion.',
         'Accept it because the subject was advancing, which automatically justifies deadly-force options.',
         'Reject the entire report and impose discipline solely because a firearm was drawn.'
       ],
@@ -562,9 +562,9 @@ function getUseOfForceSupervisorQuestions() {
       text: 'What is the correct supervisory response?',
       options: [
         'Approve it — the technique was effective and the subject was resisting.',
-        'Treat it as a conduct issue: carotid restraints and other neck restraints are "specifically and strictly prohibited" under General Order 1.3, so this is escalated to a Professional Conduct review, not returned for a rewrite.',
         'Return it for a rewrite so the officer can describe the neck restraint more favorably.',
-        'Approve it but recommend the officer attend a refresher on neck-restraint technique.'
+        'Approve it but recommend the officer attend a refresher on neck-restraint technique.',
+        'Treat it as a conduct issue: carotid restraints and other neck restraints are "specifically and strictly prohibited" under General Order 1.3, so this is escalated to a Professional Conduct review, not returned for a rewrite.'
       ],
     },
     {
@@ -582,8 +582,8 @@ function getUseOfForceSupervisorQuestions() {
       text: 'Under General Order 1.3.6(F), what outcome best fits this finding?',
       options: [
         'Immediate disciplinary action, because any tactical gap is misconduct.',
-        'Remedial training under 1.3.6(F)(a): a tactical or policy gap paired with an honest, self-aware account points to training, while patterns, prohibited acts, and false reports point to a Professional Conduct investigation or discipline.',
         'No action of any kind — tactical gaps are never a supervisory concern.',
+        'Remedial training under 1.3.6(F)(a): a tactical or policy gap paired with an honest, self-aware account points to training, while patterns, prohibited acts, and false reports point to a Professional Conduct investigation or discipline.',
         'Forward the entire matter straight to the District Attorney for a criminal review, treating an honest, self-aware account of a tactical gap as something that belongs in front of a prosecutor rather than as an opportunity for remedial training and coaching.'
       ],
     },

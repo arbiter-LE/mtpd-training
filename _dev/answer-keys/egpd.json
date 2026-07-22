@@ -2,7 +2,7 @@
  "egpd-search-seizure": {
   "patrol": [
    {
-    "c": 1,
+    "c": 2,
     "f": "Correct. Florida v. Jimeno (1991) established that the scope of consent is determined by objective reasonableness — what a reasonable person would have understood by the exchange. A general consent to search a vehicle does not automatically include a locked container. Clarify the scope or obtain specific consent."
    },
    {
@@ -10,7 +10,7 @@
     "f": "Correct. Chimel v. California (1969) established that a search incident to arrest extends to the person and the area within their immediate control at the time of arrest. A backpack being worn qualifies. Note: Arizona v. Gant (2009) significantly limits vehicle searches incident to arrest — know the distinction."
    },
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. Under the plain view doctrine (Horton v. California, 1990), you may seize evidence without a warrant when you are lawfully present, the item is in plain view, and its incriminating character is immediately apparent. A scale with white powder residue in a residence meets this standard."
    },
    {
@@ -18,11 +18,11 @@
     "f": "Correct. Pennsylvania courts require specific, articulable facts — not conclusory statements. \"Appeared nervous\" is a conclusion. A legally defensible report requires specificity: what specific behaviors, what odor characteristics, from what distance, and how your training and experience informed your assessment. This matters doubly after Commonwealth v. Barr (2021), where odor is only a factor in the totality — and at the suppression hearing the Commonwealth bears the burden of proving the search lawful (Commonwealth v. Enimpah, 2014), which a conclusory report cannot carry."
    },
    {
-    "c": 1,
+    "c": 0,
     "f": "Correct. When a person voluntarily abandons property, they forfeit their Fourth Amendment expectation of privacy in it. This is the abandonment doctrine. The location on private property is less determinative than the voluntary act of abandonment — courts look at whether the person intended to relinquish control over the item."
    },
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. Consent is limited to the scope described or reasonably implied. Consent to search a living room does not automatically extend to an attached garage. If the consent was ambiguous about scope, you should have clarified before entering additional areas."
    },
    {
@@ -30,13 +30,13 @@
     "f": "Correct. Terry v. Ohio (1968) established that a protective pat-down for weapons requires only reasonable suspicion that the person is armed and dangerous — it does not require consent. Consent is a separate authority. A refusal of consent does not eliminate Terry authority, nor does it extend your detention authority beyond what reasonable suspicion independently supports."
    },
    {
-    "c": 1,
+    "c": 2,
     "f": "Correct. The plain view doctrine (Horton v. California) permits seizure of items not named in the warrant when: (1) the officer is lawfully present, (2) the item is in plain view, and (3) the incriminating nature is immediately apparent. The white powder meets all three criteria. Locked safes, documents, and unlisted electronics do not independently satisfy the immediately apparent incriminating nature requirement without more."
    }
   ],
   "supervisor": [
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. Commonwealth v. Barr (2021) holds that the odor of marijuana cannot establish probable cause by itself. A search resting solely on odor is unlawful regardless of how specifically it is documented — this is a search problem, not a writing problem, and the appropriate response is corrective action and training, not a rewrite."
    },
    {
@@ -44,23 +44,23 @@
     "f": "Correct. Commonwealth v. Alexander (2020) requires both probable cause and exigent circumstances for a warrantless vehicle search in Pennsylvania. A controlled scene undercuts exigency — the lawful path was to secure the vehicle and seek a warrant. This is the most common post-Alexander review catch."
    },
    {
-    "c": 2,
+    "c": 0,
     "f": "Correct. The core supervisory skill is distinguishing a documentation problem from a legal defect. Report A is fixable with articulable facts; Report B cannot be saved by any amount of specificity because the search itself was unlawful. Always assess the legality of the search before the quality of the writing."
    },
    {
-    "c": 1,
+    "c": 2,
     "f": "Correct. Under Schneckloth v. Bustamonte (1973) voluntariness is judged on the totality of the circumstances. A bare \"driver consented\" gives a suppression court nothing to weigh. The report should be returned to capture the voluntariness factors before it becomes the record."
    },
    {
-    "c": 1,
+    "c": 0,
     "f": "Correct. Florida v. Jimeno (1991) measures consent scope by what a reasonable person would have understood. A general vehicle consent does not automatically include a locked container. Absent clarification or an independent legal basis (plain view, probable cause), opening it is a suppression risk you should flag before filing."
    },
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. Commonwealth v. Macolino (1983) requires more than proximity for constructive possession. Approving a dual arrest built on proximity alone is approving exposure. The investigation — separation, independent interviews, location and packaging — must support each arrest, and that should be visible in the report before you sign it."
    },
    {
-    "c": 2,
+    "c": 1,
     "f": "Correct. One instance is a coaching moment; a repeated pattern after coaching is a supervisory and training issue that must be documented and escalated. An unaddressed pattern of unlawful searches becomes the department's liability. Review, document, coach, and escalate when the pattern warrants it."
    },
    {
@@ -72,15 +72,15 @@
  "egpd-use-of-force": {
   "patrol": [
    {
-    "c": 1,
+    "c": 2,
     "f": "Correct. General Order 1.3.1(B)(1) establishes Verbal Control as Use of Force Level 1 — advice, persuasion, admonitions, or orders, where the manner, volume, and tone of an officer's commands can be an effective means of exerting control without having to progress to a higher level of force."
    },
    {
-    "c": 1,
+    "c": 0,
     "f": "Correct. General Order 1.3.6(A) lists the triggers for a Use of Force Report broadly: firearm discharge (with the animal-disposal exception, which uses an incident report instead), any action resulting in or alleged to result in injury or death, use or alleged use of physical force, application of force through lethal or less-lethal weapons, and Level 3 (OC) force or anything greater than Level 4."
    },
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. General Order 1.3, Policy section, states: \"Officers using force must be able to articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected. Full disclosure of the circumstances requiring the use of force, and the type and extent of force, shall be thoroughly documented.\" A conclusory statement of fear does not meet this standard — the report must describe what was observed."
    },
    {
@@ -88,11 +88,11 @@
     "f": "Correct. General Order 1.3.2(A) limits deadly force to situations where it is in defense of human life or a person in imminent danger of serious physical injury, or where the subject has committed or attempted a forcible felony or is attempting to escape while possessing a deadly weapon or otherwise indicating they will endanger life or inflict serious bodily injury unless arrested without delay. An aluminum flashlight at 25 feet, without more, does not establish these conditions."
    },
    {
-    "c": 1,
+    "c": 0,
     "f": "Correct. General Order 1.3.1(B) frames the continuum as escalating \"only when each lower level of force has been examined or discarded as impractical in the current circumstance, or which has been tried and has failed.\" 1.3.1(C)(2) clarifies that any given level can be skipped in escalation, or reduced, depending on the presenting circumstances — but that flexibility does not excuse failing to consider Level 1 (distance, cover, verbal commands) as the starting point absent a reason to skip it."
    },
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. General Order 1.3, Policy, states that \"the use of physical force will end immediately when resistance ceases, when resistance has been overcome, or when the arrest has been accomplished.\" A handcuffed, compliant subject who is not resisting falls squarely within this requirement — continued force in this situation is inconsistent with the policy."
    },
    {
@@ -106,7 +106,7 @@
   ],
   "supervisor": [
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. General Order 1.3.6(D) provides that all Use of Force Reports are reviewed by the Chief of Police or designee for compliance. The reviewing supervisor tests the report against GO 1.3 and, under 1.3.6(F), the finding can lead to remedial training, a Professional Conduct investigation, or discipline."
    },
    {
@@ -114,19 +114,19 @@
     "f": "Correct. General Order 1.3, Policy, requires officers to \"articulate the need and justification for the use of force and the reason(s) why the level of force utilized was selected.\" A conclusory statement of fear does not meet that standard. The report goes back for the specific facts before it becomes the record."
    },
    {
-    "c": 1,
+    "c": 0,
     "f": "Correct. GO 1.3, Policy, requires force to end when resistance ceases or the arrest is accomplished. Force against a handcuffed, compliant, non-resisting subject falls outside the policy on its face — a finding that points to a Professional Conduct investigation under 1.3.6(F), not a return for better wording."
    },
    {
-    "c": 1,
+    "c": 2,
     "f": "Correct. GO 1.3.4 states that \"each separate discharge cycle of the CEW is a separate use of force that must be justified.\" A report justifying only the first cycle is incomplete; on review you require justification for every cycle, plus the 1.3.4(D) factors and the verbal-warning question."
    },
    {
-    "c": 1,
+    "c": 0,
     "f": "Correct. General Order 1.3.2 limits deadly force to a narrow set of circumstances. An aluminum flashlight, without more, does not make the encounter a 1.3.2 situation. Threat overstatement to justify a force decision is a review flag; honest acknowledgment of an imperfect-but-reasonable decision is more defensible."
    },
    {
-    "c": 1,
+    "c": 3,
     "f": "Correct. GO 1.3 (Level 4) states that carotid restraints and other \"choke holds\" or neck restraints are \"specifically and strictly prohibited.\" Effectiveness does not cure a prohibited act. This is a conduct matter for investigation under 1.3.6(F), not a documentation problem."
    },
    {
@@ -134,7 +134,7 @@
     "f": "Correct. A report that conflicts with the footage is the most serious finding a reviewer can make. Under 18 Pa. C.S. § 4906 a false report is a crime, separate from the justification analysis. GO 1.3.6(D)-(F) review exists precisely to catch this — the justified force does not rescue the false statement."
    },
    {
-    "c": 1,
+    "c": 2,
     "f": "Correct. GO 1.3.6(F) provides graduated outcomes. A tactical or policy gap with an honest, self-aware account is the classic remedial-training case under 1.3.6(F)(a). Matching the outcome to the finding — training for gaps, investigation/discipline for patterns, prohibited acts, or false reports — is the core supervisory judgment."
    }
   ]

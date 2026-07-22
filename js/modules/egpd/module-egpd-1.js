@@ -503,8 +503,8 @@ function getSearchSeizureQuestions() {
       text: 'Regarding the scope of the consent, which statement is most accurate under Pennsylvania law?',
       options: [
         'General consent to search the vehicle automatically includes every locked container found inside it, so no separate clarification of the scope of that consent is ever required once the driver has agreed to a search.',
-        'The scope of consent is measured by objective reasonableness — you must clarify whether the consent extends to the locked box or obtain specific additional consent.',
         'A locked container automatically establishes probable cause to search further without additional consent.',
+        'The scope of consent is measured by objective reasonableness — you must clarify whether the consent extends to the locked box or obtain specific additional consent.',
         'You may force the lock open only if you have reasonable suspicion that it contains contraband.'
       ],
     },
@@ -523,9 +523,9 @@ function getSearchSeizureQuestions() {
       text: 'Which doctrine authorizes seizure of the scale without a separate warrant?',
       options: [
         'Fruit of the poisonous tree — you were there on a different basis and cannot seize unrelated items.',
-        'Plain view — you are lawfully present and the incriminating nature of the scale is immediately apparent.',
         'You cannot seize it without a separate warrant because your consent only covered what the occupant authorized.',
-        'Exigent circumstances — the powder residue may be destroyed before a warrant can be obtained.'
+        'Exigent circumstances — the powder residue may be destroyed before a warrant can be obtained.',
+        'Plain view — you are lawfully present and the incriminating nature of the scale is immediately apparent.'
       ],
     },
     {
@@ -542,8 +542,8 @@ function getSearchSeizureQuestions() {
       scenario: 'During a foot pursuit, a suspect tosses a bag into an open dumpster on the side of a private parking lot before you apprehend him.',
       text: 'Do you need a warrant to retrieve and search the bag?',
       options: [
-        'Yes — it is located on private property and requires a warrant before you can access it.',
         'No — the suspect voluntarily abandoned the bag, relinquishing his Fourth Amendment expectation of privacy in it.',
+        'Yes — it is located on private property and requires a warrant before you can access it.',
         'No — the hot pursuit exception permits you to retrieve any evidence connected to the pursuit.',
         'Yes — abandonment only applies to property left in public locations, not private property.'
       ],
@@ -553,9 +553,9 @@ function getSearchSeizureQuestions() {
       text: 'Was your entry into the garage within the scope of the given consent?',
       options: [
         'Yes — consent to search the home includes all attached structures.',
-        'No — consent is limited to the areas specifically described or reasonably implied by the consent given.',
         'Yes — garages are not protected under the Fourth Amendment because they are not living spaces.',
-        'No — you needed a separate warrant to enter any room not explicitly named.'
+        'No — you needed a separate warrant to enter any room not explicitly named.',
+        'No — consent is limited to the areas specifically described or reasonably implied by the consent given.'
       ],
     },
     {
@@ -573,8 +573,8 @@ function getSearchSeizureQuestions() {
       text: 'Which item would you be authorized to seize under the plain view doctrine during execution of this warrant?',
       options: [
         'A locked safe — its contents might contain stolen electronics.',
-        'A small bag of white powder on the kitchen counter with an incriminating nature immediately apparent.',
         'A cell phone, because electronics are specifically listed in the warrant.',
+        'A small bag of white powder on the kitchen counter with an incriminating nature immediately apparent.',
         'Documents sitting on a desk nearby that might help to identify possible co-conspirators involved in the offense currently under investigation.'
       ],
     },
@@ -627,9 +627,9 @@ function getSearchSeizureSupervisorQuestions() {
       text: 'What is the correct supervisory assessment of this search?',
       options: [
         'Return the report for a rewrite — once the odor is described with more specificity, the search is justified.',
-        'This is a legal defect in the search itself, not a documentation problem: under Commonwealth v. Barr odor alone cannot establish probable cause, and better writing cannot cure it. Address it as training and corrective action.',
         'Approve it — the odor of marijuana is probable cause to search a vehicle in Pennsylvania.',
-        'Approve it but add a note that exigent circumstances were present because the vehicle could be driven away.'
+        'Approve it but add a note that exigent circumstances were present because the vehicle could be driven away.',
+        'This is a legal defect in the search itself, not a documentation problem: under Commonwealth v. Barr odor alone cannot establish probable cause, and better writing cannot cure it. Address it as training and corrective action.'
       ],
     },
     {
@@ -646,9 +646,9 @@ function getSearchSeizureSupervisorQuestions() {
       scenario: 'Two arrest reports cross your desk the same shift. Both contain the phrase "the driver appeared nervous." In Report A, the underlying stop and search were lawful and well-supported; the officer simply wrote conclusions. In Report B, the search had no lawful basis to begin with.',
       text: 'What is the correct supervisory response to each?',
       options: [
+        'Return Report A for a rewrite to the specificity standard; flag Report B as an unlawful search that better writing cannot cure. Assess legality first, then documentation.',
         'Return both for the same specificity rewrite — the problem in each is the conclusory language.',
         'Approve both — "appeared nervous" is acceptable shorthand in a police report.',
-        'Return Report A for a rewrite to the specificity standard; flag Report B as an unlawful search that better writing cannot cure. Assess legality first, then documentation.',
         'Return Report B for a rewrite and approve Report A as written.'
       ],
     },
@@ -657,8 +657,8 @@ function getSearchSeizureSupervisorQuestions() {
       text: 'What is the appropriate supervisory action before this report is filed?',
       options: [
         'Approve it — the officer stated that consent was given, which is all that is required.',
-        'Return it before filing — consent documentation must address voluntariness under Schneckloth: the exact words of the request and response, weapon status, tone and demeanor, the subject\'s apparent condition, and the absence of coercion.',
         'Approve the report as written, but instruct the officer to make a habit of obtaining signed written consent forms going forward, treating the missing voluntariness documentation on this particular report as a minor thing to improve on next time rather than a defect to fix now.',
+        'Return it before filing — consent documentation must address voluntariness under Schneckloth: the exact words of the request and response, weapon status, tone and demeanor, the subject\'s apparent condition, and the absence of coercion.',
         'Reject the arrest entirely — a verbal consent search can never be documented sufficiently.'
       ],
     },
@@ -666,8 +666,8 @@ function getSearchSeizureSupervisorQuestions() {
       scenario: 'During your review you find that an officer obtained a general verbal consent to "search the vehicle," then opened a locked container in the trunk and found contraband. The report does not show that the officer clarified whether the consent reached the locked container.',
       text: 'How should you assess the scope of this search?',
       options: [
-        'General consent to search a vehicle automatically includes every locked container inside it, so the search is clean.',
         'Under Florida v. Jimeno, consent scope is measured by objective reasonableness; a general consent does not automatically reach a locked container. This is a suppression exposure and should be flagged, with the legal basis for opening the container documented if one exists.',
+        'General consent to search a vehicle automatically includes every locked container inside it, so the search is clean.',
         'The locked container itself created independent probable cause the moment the officer encountered it, so the scope of the general consent the driver gave is irrelevant to whether opening that container was lawful, and no separate authorization or documentation of the scope is needed before the search is approved.',
         'The search is fine as long as the officer believed the consent covered the container.'
       ],
@@ -677,9 +677,9 @@ function getSearchSeizureSupervisorQuestions() {
       text: 'Should you approve the dual arrest as documented?',
       options: [
         'Yes — proximity to contraband in a shared vehicle establishes constructive possession for everyone present.',
-        'No. Under Commonwealth v. Macolino, constructive possession requires knowledge plus the intent and power to control — proximity alone is not enough. The report should show separation, independent interviews, and the location and packaging of the contraband before a dual arrest is approved.',
         'Yes — the spontaneous ownership claim from one of the occupants can simply be sorted out by the district attorney later in the process, so a dual arrest of both people now is reasonable and the report needs no constructive-possession analysis before it is approved and forwarded for charging on both subjects.',
-        'No — release both occupants, because a disputed ownership claim defeats probable cause entirely.'
+        'No — release both occupants, because a disputed ownership claim defeats probable cause entirely.',
+        'No. Under Commonwealth v. Macolino, constructive possession requires knowledge plus the intent and power to control — proximity alone is not enough. The report should show separation, independent interviews, and the location and packaging of the contraband before a dual arrest is approved.'
       ],
     },
     {
@@ -687,8 +687,8 @@ function getSearchSeizureSupervisorQuestions() {
       text: 'What is the appropriate supervisory response now?',
       options: [
         'Continue with informal verbal coaching for now — simply repeating the same conversation each time will eventually correct the behavior on its own, without any need for documented corrective action or a formal training referral being opened.',
-        'Nothing further is needed; each stop is a separate event and the officer means well.',
         'Move beyond a single coaching moment: documented corrective action and targeted training, because an unaddressed pattern is now a department exposure, not just an individual officer\'s error, and should be escalated as the pattern warrants.',
+        'Nothing further is needed; each stop is a separate event and the officer means well.',
         'Reassign the officer away from traffic enforcement permanently without documentation.'
       ],
     },

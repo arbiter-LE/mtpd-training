@@ -254,6 +254,53 @@ function checkAnswerKeys(registry) {
   });
 }
 
+// Answer-pattern guard: an officer must not be able to pass a quiz by always
+// picking the same letter, or always the wordiest option. For each module+track
+// set, fail if the correct answer sits in ONE position — or is the longest
+// option — in more than 60% of questions (the pass line is 70%, and balanced
+// content runs ~25%). This is the regression backstop for the 2026-07-22
+// platform-wide fix; see _database/HANDOFF-2026-07-22-length-tell-fix.md and
+// the _dev/length-tell-*.js / reposition-answers.js tooling.
+function checkAnswerPatterns(registry) {
+  console.log('\n▸ quiz answer-pattern integrity (no "pick B" / "pick the longest" tell)');
+  const THRESH = 0.6;
+  let clean = true;
+  registry.forEach(dept => {
+    const tag = dept.subdomain;
+    const jsonPath = path.join(__dirname, 'answer-keys', `${tag}.json`);
+    if (!fs.existsSync(jsonPath)) return; // checkAnswerKeys already reports a missing key file
+    const keys = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+    const M = buildModules(dept);
+    if (!M) return;
+    M.forEach(m => {
+      for (const [setName, trackName] of [['questions', 'patrol'], ['supervisorQuestions', 'supervisor']]) {
+        const set = m[setName];
+        if (!Array.isArray(set) || !set.length) continue;
+        const k = keys[m.id] && keys[m.id][trackName];
+        if (!Array.isArray(k) || k.length !== set.length) continue; // shape mismatches handled by checkAnswerKeys
+        const N = set.length, pos = [0, 0, 0, 0];
+        let longest = 0;
+        set.forEach((q, i) => {
+          const c = k[i].c;
+          pos[c]++;
+          const lens = q.options.map(o => (o || '').length);
+          if (lens.indexOf(Math.max(...lens)) === c) longest++;
+        });
+        const maxPos = Math.max(...pos);
+        if (maxPos / N > THRESH) {
+          clean = false;
+          fail(tag, `${m.id} ${trackName}: correct answer is "${'ABCD'[pos.indexOf(maxPos)]}" in ${maxPos}/${N} questions — an officer could pass by always picking that letter; vary the correct-answer position (tool: _dev/reposition-answers.js)`);
+        }
+        if (longest / N > THRESH) {
+          clean = false;
+          fail(tag, `${m.id} ${trackName}: correct answer is the longest option in ${longest}/${N} questions — an officer could pass by picking the wordiest; length-balance the distractors (tool: _dev/length-tell-dump.js / length-tell-apply.js)`);
+        }
+      }
+    });
+  });
+  if (clean) console.log('  ✓ every set holds correct-position and correct-is-longest under 60% (both were exploitable platform-wide before 2026-07-22)');
+}
+
 console.log('Multi-tenant smoke test — building every registered department\n' + '─'.repeat(60));
 const registry = loadRegistry();
 console.log(`Registry: ${registry.length} department(s) — ${registry.map(d => d.subdomain).join(', ')}`);
@@ -262,6 +309,7 @@ checkIdCollisions();
 checkSharedPurity();
 checkWiring();
 checkAnswerKeys(registry);
+checkAnswerPatterns(registry);
 
 console.log('\n' + '─'.repeat(60));
 if (failures === 0) { console.log('ALL DEPARTMENTS PASS ✓'); process.exit(0); }
