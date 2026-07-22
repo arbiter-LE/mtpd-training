@@ -502,7 +502,7 @@ function getSearchSeizureQuestions() {
       scenario: 'You stop a vehicle for a defective headlight. The driver consents to a search. During the search, you locate a locked box in the trunk.',
       text: 'Regarding the scope of the consent, which statement is most accurate under Pennsylvania law?',
       options: [
-        'General consent to search the vehicle includes all locked containers found inside.',
+        'General consent to search the vehicle automatically includes every locked container found inside it, so no separate clarification of the scope of that consent is ever required once the driver has agreed to a search.',
         'The scope of consent is measured by objective reasonableness — you must clarify whether the consent extends to the locked box or obtain specific additional consent.',
         'A locked container automatically establishes probable cause to search further without additional consent.',
         'You may force the lock open only if you have reasonable suspicion that it contains contraband.'
@@ -534,7 +534,7 @@ function getSearchSeizureQuestions() {
       options: [
         'Nervousness alone can never contribute to a probable cause determination in Pennsylvania.',
         'The documentation uses conclusory language without the specific, articulable facts required to support the probable cause determination.',
-        'Reports may only describe observations made after the search began, not before.',
+        'Reports may only describe the officer\'s observations made after the search had already begun, not any observations from before it, so the pre-search nervousness cannot properly be written into the narrative at all.',
         'There is no legal problem — odor plus nervous behavior always establishes probable cause in Pennsylvania courts.'
       ],
     },
@@ -565,7 +565,7 @@ function getSearchSeizureQuestions() {
         'The refusal eliminates all search authority — you cannot conduct a pat-down.',
         'If you have independent reasonable suspicion that the person is armed and dangerous, you may conduct a Terry pat-down for weapons regardless of their refusal to consent.',
         'Refusing consent is itself a basis to detain the person further for investigation.',
-        'You may search only outer clothing because the person is already detained.'
+        'You may search only the outer clothing and nothing beneath it, because the person is already detained during the encounter and a detention by itself limits any search to a light pat of the outer garments.'
       ],
     },
     {
@@ -575,7 +575,7 @@ function getSearchSeizureQuestions() {
         'A locked safe — its contents might contain stolen electronics.',
         'A small bag of white powder on the kitchen counter with an incriminating nature immediately apparent.',
         'A cell phone, because electronics are specifically listed in the warrant.',
-        'Documents on a desk that might identify co-conspirators.'
+        'Documents sitting on a desk nearby that might help to identify possible co-conspirators involved in the offense currently under investigation.'
       ],
     },
   ];
@@ -639,7 +639,7 @@ function getSearchSeizureSupervisorQuestions() {
         'Nothing — probable cause alone authorizes a warrantless vehicle search in Pennsylvania.',
         'The report is missing exigent circumstances. Under Commonwealth v. Alexander, a warrantless vehicle search requires probable cause AND exigency; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.',
         'The report should be approved because the probable cause is strong enough to make exigency unnecessary.',
-        'The only problem is that the officer did not get written consent before searching.'
+        'The only problem here is that the officer did not obtain a signed written consent before conducting the search, and once a consent form is added to the file the warrantless roadside search on a controlled scene is fully supported and ready to file.'
       ],
     },
     {
@@ -658,7 +658,7 @@ function getSearchSeizureSupervisorQuestions() {
       options: [
         'Approve it — the officer stated that consent was given, which is all that is required.',
         'Return it before filing — consent documentation must address voluntariness under Schneckloth: the exact words of the request and response, weapon status, tone and demeanor, the subject\'s apparent condition, and the absence of coercion.',
-        'Approve it but instruct the officer to obtain written consent forms going forward.',
+        'Approve the report as written, but instruct the officer to make a habit of obtaining signed written consent forms going forward, treating the missing voluntariness documentation on this particular report as a minor thing to improve on next time rather than a defect to fix now.',
         'Reject the arrest entirely — a verbal consent search can never be documented sufficiently.'
       ],
     },
@@ -668,7 +668,7 @@ function getSearchSeizureSupervisorQuestions() {
       options: [
         'General consent to search a vehicle automatically includes every locked container inside it, so the search is clean.',
         'Under Florida v. Jimeno, consent scope is measured by objective reasonableness; a general consent does not automatically reach a locked container. This is a suppression exposure and should be flagged, with the legal basis for opening the container documented if one exists.',
-        'The locked container itself created probable cause, so consent scope is irrelevant.',
+        'The locked container itself created independent probable cause the moment the officer encountered it, so the scope of the general consent the driver gave is irrelevant to whether opening that container was lawful, and no separate authorization or documentation of the scope is needed before the search is approved.',
         'The search is fine as long as the officer believed the consent covered the container.'
       ],
     },
@@ -678,7 +678,7 @@ function getSearchSeizureSupervisorQuestions() {
       options: [
         'Yes — proximity to contraband in a shared vehicle establishes constructive possession for everyone present.',
         'No. Under Commonwealth v. Macolino, constructive possession requires knowledge plus the intent and power to control — proximity alone is not enough. The report should show separation, independent interviews, and the location and packaging of the contraband before a dual arrest is approved.',
-        'Yes — the spontaneous ownership claim can be sorted out by the district attorney later.',
+        'Yes — the spontaneous ownership claim from one of the occupants can simply be sorted out by the district attorney later in the process, so a dual arrest of both people now is reasonable and the report needs no constructive-possession analysis before it is approved and forwarded for charging on both subjects.',
         'No — release both occupants, because a disputed ownership claim defeats probable cause entirely.'
       ],
     },
@@ -686,7 +686,7 @@ function getSearchSeizureSupervisorQuestions() {
       scenario: 'Over a two-month span, the same officer has now conducted three separate vehicle searches whose only documented basis was the odor of marijuana. You have already coached the officer once after the first instance.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'Continue informal verbal coaching — repetition will eventually correct the behavior.',
+        'Continue with informal verbal coaching for now — simply repeating the same conversation each time will eventually correct the behavior on its own, without any need for documented corrective action or a formal training referral being opened.',
         'Nothing further is needed; each stop is a separate event and the officer means well.',
         'Move beyond a single coaching moment: documented corrective action and targeted training, because an unaddressed pattern is now a department exposure, not just an individual officer\'s error, and should be escalated as the pattern warrants.',
         'Reassign the officer away from traffic enforcement permanently without documentation.'
@@ -699,7 +699,7 @@ function getSearchSeizureSupervisorQuestions() {
         'Yes — the officer made the correct legal decision not to search, so minimal documentation is sufficient.',
         'Yes — no arrest was made, so no further documentation is required.',
         'No — the decision not to search can be legally correct while the documentation is still deficient. Hold the same standard as an arrest report: the officer\'s observations should be documented completely, because field intelligence that is not recorded does not exist.',
-        'No — the officer should have searched the vehicle to be thorough.'
+        'No — the officer should have gone ahead and searched the vehicle anyway simply to be thorough, and the real documentation shortcoming on this stop flows directly from that failure to conduct a search in the first place rather than from anything about the write-up itself.'
       ],
     },
   ];

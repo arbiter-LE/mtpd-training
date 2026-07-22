@@ -244,7 +244,7 @@ function getReportWritingQuestions() {
       text: 'What does this discrepancy most directly demonstrate?',
       options: [
         'That a report written from memory — without first reviewing available footage or notes — can contain imprecise language that gives the defense an opening to attack the officer\'s credibility.',
-        'That the officer knowingly filed a false report and is subject to criminal prosecution for the inconsistency.',
+        'That the officer knowingly filed a false report and is now subject to criminal prosecution for the inconsistency between the written account and the footage, since any discrepancy of this kind is automatically treated as a deliberate falsehood by the officer.',
         'That body camera footage may not be used at a preliminary hearing to contradict an officer\'s sworn written narrative.',
         'That the defense has no valid argument, because brief timing discrepancies are expected and carry no weight in court.'
       ],
@@ -253,7 +253,7 @@ function getReportWritingQuestions() {
       scenario: 'You arrest a subject for resisting arrest after a foot pursuit. Your report documents the use of force as: "Subject resisted arrest. Force was used and was proportionate to the resistance encountered."',
       text: 'What is the fundamental legal problem with this documentation?',
       options: [
-        'The report should have been written by the supervising officer, not the officer who used the force.',
+        'The report should properly have been written by the supervising officer on duty rather than by the officer who actually used the force, on the view that a supervisor\'s account carries more weight and avoids the appearance of self-interest in the record.',
         'The report is legally sufficient — courts routinely accept general use-of-force summaries from trained officers.',
         'The report fails to include the subject\'s prior criminal history, which is required for legal sufficiency.',
         '"Resisted arrest" and "proportionate" are legal conclusions, not factual descriptions — they tell a reader what to conclude without the specific facts that support it.'
@@ -264,7 +264,7 @@ function getReportWritingQuestions() {
       text: 'Why is this approach legally problematic?',
       options: [
         'It is acceptable — assigning the strongest writer to the narrative is standard practice in high-stress incidents.',
-        'It is problematic only if your partner was off-duty or outside their jurisdiction at the time of the incident.',
+        'It is problematic only in the narrow circumstance where your partner happened to be off-duty or operating outside their jurisdiction at the time of the incident; otherwise either officer may freely write up the other\'s observations in a single report.',
         'A police report is a sworn account of personal observations — your partner can document only what they witnessed on arrival, not the stop, the chase, or the use of force they did not see.',
         'It is a concern only if the case reaches trial — preliminary hearings do not require the reporting officer to testify.'
       ],
@@ -276,7 +276,7 @@ function getReportWritingQuestions() {
         '"As I attempted to apply handcuffs, the subject tensed both arms, pulled away, and rotated his body toward me. I applied a forward leg sweep, bringing him to a controlled ground position. The subject ceased active resistance and handcuffs were applied."',
         '"Subject actively resisted a lawful arrest and became combative; reasonable physical force was applied and was proportionate to the level of resistance encountered until compliance was achieved."',
         '"Used an approved takedown technique on the resisting subject, consistent with the defensive tactics training received at the academy."',
-        '"Subject resisted arrest. Physical force was used. The incident was resolved without serious injury to either party."'
+        '"The subject actively resisted arrest and became combative during the encounter. Physical force that was reasonable and proportionate under the circumstances was used to overcome that resistance, and the incident was ultimately resolved without any serious injury to either party involved."'
       ],
     },
     {
@@ -284,7 +284,7 @@ function getReportWritingQuestions() {
       text: 'Why does failing to document observations from an inconclusive stop create a problem?',
       options: [
         'It does not create a problem — documentation is only required when an arrest is actually made.',
-        'It is a minor administrative oversight that a supervisor can correct after the fact.',
+        'It is a minor administrative oversight that a supervisor can readily correct after the fact by simply adding a supplemental note to the file, so leaving field observations out of the original report carries no real consequence for any later case.',
         'It creates a problem only if the same vehicle is later stopped again by the same officer.',
         'Undocumented field intelligence cannot support probable cause in a future encounter, cannot corroborate another agency\'s investigation, and is lost if the officer is later called to testify.'
       ],
@@ -293,7 +293,7 @@ function getReportWritingQuestions() {
       scenario: 'Your report documents that a subject "seemed nervous" during a traffic stop. Defense counsel objects that this is a conclusory opinion, not a fact.',
       text: 'How should officer observations be documented to withstand this challenge?',
       options: [
-        '"Seemed nervous" is adequate — courts recognize that officers rely on experiential shorthand.',
+        '"Seemed nervous" is perfectly adequate on its own — courts routinely recognize that experienced officers rely on this kind of experiential shorthand, so there is no real need to spell out the specific observable behaviors behind the impression.',
         'Document the specific, observable behaviors behind that assessment: "the subject\'s hands were visibly trembling, his voice was elevated in pitch, he avoided eye contact, and he repeatedly checked his mirrors after stopping."',
         'Replace "seemed nervous" with the more precise legal term "appeared agitated and noncompliant."',
         'Omit the observation entirely, since a subjective impression cannot be quantified for the record.'
@@ -370,7 +370,7 @@ function getReportWritingSupervisorQuestions() {
         '"Approved with reservations — I\'ll note my concerns to you verbally at some point later."',
         '"Rewrite the whole thing from scratch; this draft simply is not good enough to file."',
         '"Timeline unclear — sequence the takedown movement by movement, tie each force application to the specific resistance that prompted it, and replace \'resisted arrest\' with what the subject physically did."',
-        '"Needs work — please revise the weak sections and resubmit for review."'
+        '"Needs work overall — please go back through and revise the weaker sections of the narrative for clarity and completeness, and then resubmit the whole report to me for another review before it is filed with the case."'
       ],
     },
     {
@@ -379,7 +379,7 @@ function getReportWritingSupervisorQuestions() {
       options: [
         'Return it — "resisted arrest" and "proportionate" are conclusions, not facts. Require the body-movement-level detail (which arm, which direction, the triggering movement, the officer\'s response, the outcome) that supports the charge and survives cross-examination.',
         'Edit the conclusions into specific facts yourself, then approve the report so it does not bounce again.',
-        'Forward it to discipline, since wording this inadequate reflects a performance problem.',
+        'Forward the report straight to discipline, on the view that wording this inadequate reflects an underlying performance problem with the officer that should be handled as a formal personnel matter rather than simply returned to him for a rewrite of the deficient narrative.',
         'Approve it — courts accept general use-of-force summaries from officers in routine cases.'
       ],
     },
@@ -388,7 +388,7 @@ function getReportWritingSupervisorQuestions() {
       text: 'How should you handle this on review?',
       options: [
         'Reject the arrest outright, since an officer who cites "training and experience" has effectively admitted the stop lacked probable cause.',
-        'Approve it, but instruct the officer to delete the training-and-experience language, which courts do not allow.',
+        'Approve the report, but instruct the officer to delete the training-and-experience language from it entirely, on the mistaken view that courts do not allow an officer to tie their observations to their training and experience when establishing probable cause in a report.',
         'Approve it — a reference to the officer\'s training and experience is enough to establish probable cause on its own.',
         'Return it — under Illinois v. Gates, probable cause must rest on specific articulable facts. "I believed" is a conclusion; the report must state what was observed, heard, and detected, with training and experience tethered to those facts.'
       ],
@@ -400,7 +400,7 @@ function getReportWritingSupervisorQuestions() {
         'As a routine revise-and-resubmit — return it for the officer to align the wording with the footage.',
         'As a possible integrity matter — a report conflicting with the footage may be a false official statement under 18 Pa. C.S. § 4904 and § 4906, handled as a Professional Conduct matter rather than a writing correction.',
         'As acceptable — a written report and body-camera footage are not expected to match in detail.',
-        'As a footage error; defer to the officer\'s written account over the video.'
+        'As a likely footage or camera error; when the written report and the body-camera video conflict with each other, defer to the officer\'s contemporaneous written account over the recording, since the officer was the one actually present at the scene.'
       ],
     },
     {
@@ -408,7 +408,7 @@ function getReportWritingSupervisorQuestions() {
       text: 'What is the essential discipline of report review that catches integrity problems?',
       options: [
         'Comparing the report against the available body-camera footage and field notes — not just reading the words — so reconstructed quotes, mismatched sequences, and after-the-fact facts are caught before the report becomes the record.',
-        'Reading the report carefully for clarity and grammar, then approving it once it reads cleanly and professionally.',
+        'Reading the report carefully for clarity, grammar, and professional tone, and then approving it once the narrative reads cleanly and professionally, without separately comparing it against the available body-camera footage and the field notes.',
         'Confirming that the report contains both a probable cause section and a use-of-force section before approving it.',
         'Relying on the officer\'s certification that the report is accurate, since the officer was the one present at the scene.'
       ],
@@ -420,7 +420,7 @@ function getReportWritingSupervisorQuestions() {
         'Direct the officer to reconstruct the victim\'s statement from memory, since the officer recalls the gist of what was said.',
         'Direct the officer to insert an approximate quote in quotation marks and add a note that it is "close enough."',
         'Direct the officer to contact the victim to clarify, document the follow-up (date, time, method), and distinguish in the report between direct quotes, paraphrased summaries, and the officer\'s own observations.',
-        'Direct the officer to leave the statement out entirely rather than risk any inaccuracy in the record.'
+        'Direct the officer to leave the victim\'s statement out of the report entirely rather than risk introducing any inaccuracy into the record, on the theory that an omitted statement is always safer than one that might later be challenged in court.'
       ],
     },
     {

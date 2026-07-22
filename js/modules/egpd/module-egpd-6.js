@@ -288,7 +288,7 @@ function getVehiclePursuitQuestions() {
       text: 'Under the Motor Vehicle Pursuits Directive, what offense level is required before a pursuit may be initiated or continued?',
       options: [
         'Any offense — fleeing a lawful stop is itself sufficient grounds for pursuit.',
-        'Any offense above a summary citation, including misdemeanors of any kind.',
+        'Any offense above the level of a summary citation, including misdemeanors of any kind, is by itself enough to justify initiating and continuing a pursuit, so the seriousness of the underlying offense does not meaningfully limit when an officer may pursue a fleeing vehicle in the first place.',
         'The directive does not specify an offense threshold — it is left to officer discretion.',
         'The offense must constitute, or be an attempt to commit, a forcible felony against a person, or the offender must be attempting to escape while possessing a deadly weapon or otherwise indicating they will endanger life or inflict serious bodily injury unless arrested without delay.'
       ],
@@ -298,7 +298,7 @@ function getVehiclePursuitQuestions() {
       text: 'As the initiating police officer (primary unit), what information must you provide to the police dispatcher?',
       options: [
         'Location and direction of travel, a description of the fleeing vehicle and occupants if possible, the reason for the pursuit including the seriousness of the offense, information that would aid apprehension, and any information useful in evaluating the risks of the pursuit.',
-        'Only your unit number and that a pursuit is occurring.',
+        'Only your unit number and a brief statement that a pursuit is currently occurring, since the priority the moment a pursuit begins is keeping the fleeing vehicle in sight rather than broadcasting a detailed running account of the location, offense, and vehicle description over the radio to dispatch.',
         'Only the vehicle description and license plate, once available.',
         'Nothing — the secondary unit is responsible for all dispatcher communication.'
       ],
@@ -308,7 +308,7 @@ function getVehiclePursuitQuestions() {
       text: 'What do the Vehicle Pursuit Regulations require regarding the number of units in a pursuit?',
       options: [
         'Any marked unit may join a pursuit at will, as additional units improve the odds of apprehension.',
-        'A maximum of four units may participate, two per direction of travel.',
+        'A maximum of four units may participate in the pursuit at any one time, arranged as two units per direction of travel, so additional cars beyond the primary and secondary may freely join in as long as that overall four-unit limit is respected.',
         'The pursuit shall consist of the primary and secondary unit only, unless otherwise approved by a supervisor — other units should position to monitor escape routes and channel, not block, the pursuit.',
         'Unit count is unrestricted as long as each unit notifies dispatch before joining.'
       ],
@@ -319,7 +319,7 @@ function getVehiclePursuitQuestions() {
       options: [
         'Whenever a supervisor authorizes it, regardless of the underlying offense.',
         'They are strictly prohibited in all circumstances, with no exceptions.',
-        'They are permitted at speeds below 25 mph regardless of the offense.',
+        'They are permitted at low speeds below 25 miles per hour regardless of the underlying offense, on the theory that a slow-speed ramming or boxing maneuver carries little real risk and therefore falls outside the policy\'s deadly-force restrictions entirely.',
         'They involve the use or potential use of deadly force under 18 PA C.S.A. § 508 and General Orders 1.3.1/1.3.2, and are strictly prohibited unless and only if deadly force is authorized.'
       ],
     },
@@ -327,7 +327,7 @@ function getVehiclePursuitQuestions() {
       scenario: 'During a pursuit, an occupant of the fleeing vehicle displays a firearm but has not fired it.',
       text: 'Under Regulation 8, when may an officer discharge a firearm at a vehicle during a pursuit?',
       options: [
-        'Whenever a weapon is visible in the suspect vehicle.',
+        'Whenever a weapon of any kind becomes visible inside the suspect vehicle during the pursuit, the officer is permitted to discharge a firearm from the moving patrol car, on the reasoning that the mere sight of a weapon establishes the threat on its own.',
         'The discharge of firearms from a moving vehicle during a pursuit is strictly prohibited, except as the ultimate measure of self-defense or defense of another when the suspect is employing deadly force.',
         'Only with prior verbal authorization from a supervisor over the radio.',
         'At the discretion of the secondary unit, to support the primary unit.'
@@ -348,7 +348,7 @@ function getVehiclePursuitQuestions() {
       text: 'Under Vehicle Pursuit Regulation 17, what is the obligation of East Greenville Police Officers regarding this pursuit?',
       options: [
         'East Greenville officers shall immediately join and take over the pursuit since it is now in their jurisdiction.',
-        'East Greenville officers must establish a roadblock at the borough line to stop the pursuit before it enters.',
+        'East Greenville officers must establish a roadblock at the borough line in order to stop the outside pursuit before it can enter the borough, treating an immediate physical barricade as the required response whenever a pursuit approaches from a neighboring jurisdiction.',
         'Pursuits originating outside East Greenville and entering East Greenville shall not be joined or continued by East Greenville Police Officers; the supervisor/OIC shall request information about the pursuit and determine what assistance, if any, is to be provided.',
         'No action is required or permitted — East Greenville officers must remain uninvolved entirely, including declining requests for information.'
       ],
@@ -434,7 +434,7 @@ function getVehiclePursuitSupervisorQuestions() {
         'Counsel the officer — terminating a pursuit that could have ended in an arrest reflects poorly on the unit.',
         'Take no position; pursuit decisions are not a supervisory concern once the pursuit ends.',
         'Support the officer: Regulation 5 states that disciplinary action will not be taken against personnel for deciding to terminate a pursuit, and the directive makes public and officer safety the highest priority. Her decision should be reinforced, not punished.',
-        'Discipline the primary unit\'s partner instead for not taking over.'
+        'Discipline the primary unit\'s partner instead for failing to take over the pursuit once the primary officer chose to terminate it, on the view that someone should be held accountable for letting the fleeing vehicle get away from the units that were in a position to continue.'
       ],
     },
     {
@@ -444,7 +444,7 @@ function getVehiclePursuitSupervisorQuestions() {
         'Allow it — the seriousness of an armed robbery justifies additional units joining the pursuit.',
         'Redirect it: under Regulation 11 the pursuit is the primary and secondary unit only unless you approve otherwise. Direct the third unit to position to monitor escape routes and channel — not join — the pursuit. Severity does not expand the unit count; only your approval does.',
         'Order all three units to box in the suspect vehicle immediately.',
-        'Remove the secondary unit so the third can take its place.'
+        'Remove the secondary unit from the pursuit so that the waiting third unit can simply take its place in the two-car formation, treating the units as fully interchangeable and the swap as something that does not require any particular supervisory authorization or evaluation from you.'
       ],
     },
     {
@@ -453,7 +453,7 @@ function getVehiclePursuitSupervisorQuestions() {
       options: [
         'Do not authorize a PIT on these facts: ramming and vehicular contact are deadly force under Regulation 9, strictly prohibited unless deadly force is authorized under 18 PA C.S.A. § 508 and GO 1.3.1/1.3.2. A displayed-but-not-fired weapon is not an active deadly-force attack; communicate the threat and continuously reassess termination.',
         'Authorize the PIT — a displayed weapon justifies using the vehicle to stop the threat.',
-        'Tell the primary it is their call to make in the moment.',
+        'Tell the primary unit that whether to carry out the PIT or ramming maneuver is entirely their own call to make in the moment, treating a deadly-force tactic as a discretionary decision that the pursuing officer is best positioned to make on the spot without needing your authorization or any review of whether deadly force is even permitted on these particular facts.',
         'Authorize the secondary unit to discharge a firearm at the tires instead.'
       ],
     },
@@ -462,7 +462,7 @@ function getVehiclePursuitSupervisorQuestions() {
       text: 'What is your decision under Regulation 17?',
       options: [
         'Direct the officer to join and assume the pursuit, since it is now in East Greenville.',
-        'Order a roadblock at the borough line to stop the pursuit before it enters.',
+        'Order officers to set up a roadblock at the borough line in order to stop the outside pursuit before it can enter East Greenville, treating a physical barricade as the appropriate way to keep an outside pursuit out of the borough entirely.',
         'Tell the officer to stay completely uninvolved, including refusing to gather any information.',
         'Direct that East Greenville officers shall not join or continue the pursuit; as supervisor/OIC you request information about the nature of the pursuit and determine what assistance, if any, is to be provided.'
       ],
@@ -474,7 +474,7 @@ function getVehiclePursuitSupervisorQuestions() {
         'It can be documented in the after-action report; immediate communication is not required.',
         'Only the primary unit needs to hear it, by phone, after the pursuit.',
         'The decision to terminate shall be immediately and clearly communicated to the dispatcher via the Montgomery County Department of Emergency Communications Police Radio System — and you should confirm it was acknowledged, not just transmitted.',
-        'It takes effect only once the suspect vehicle is out of sight.'
+        'The termination decision takes effect only once the suspect vehicle is actually out of sight of the units, so officers may continue following it until they lose visual contact, at which point the pursuit is finally considered over and cleared.'
       ],
     },
     {
@@ -484,7 +484,7 @@ function getVehiclePursuitSupervisorQuestions() {
         'Praise only the apprehension — results are what matter in pursuit work.',
         'Reinforce the disciplined termination as the model: public and officer safety is the directive\'s highest priority, Regulation 5 protects the decision to terminate, and what you praise is what officers will repeat on the next pursuit.',
         'Criticize the officer who terminated for not finding a way to make the arrest.',
-        'Avoid comment on either decision to prevent second-guessing.'
+        'Avoid making any comment at all on either officer\'s decision, in order to prevent the appearance of second-guessing their judgment after the fact, on the view that staying silent about pursuit decisions keeps morale up and avoids unnecessary friction with the officers.'
       ],
     },
   ];

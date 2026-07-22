@@ -389,7 +389,7 @@ function getCrisisQuestions() {
         'For a person in mental health crisis, authoritative commands and a direct approach frequently trigger escalation rather than compliance; a calm, low-key approach reduces that risk.',
         'Mental health subjects are inherently unpredictable, so the outcome cannot be attributed to the officer\'s approach at all.',
         'Authoritative commands are always appropriate during mental health calls, because officers must establish control immediately.',
-        'The officer should never have made contact without a mental health co-responder physically present.'
+        'The officer should never have made any contact at all with the subject without a mental health co-responder physically present on the scene, since crisis calls of this kind are outside the scope of what a patrol officer should ever be handling on their own.'
       ],
     },
     {
@@ -417,7 +417,7 @@ function getCrisisQuestions() {
       text: 'How should knowledge of the shotgun affect your approach?',
       options: [
         'It should sharpen your tactical awareness and partner positioning without changing your calm, non-threatening approach — the goal is still de-escalation through contact.',
-        'It should not affect your approach at all — the firearm is inside the residence and the subject is outside.',
+        'It should not affect your approach at all — because the firearm is inside the residence and the subject is standing outside of it, the weapon is simply not a factor in how you position yourself or in how you make contact with him.',
         'It should trigger a full tactical response, since the presence of a firearm makes this a SWAT-level incident.',
         'It should prompt an immediate 302 — access to a firearm combined with suicidal ideation satisfies the legal threshold.'
       ],
@@ -426,7 +426,7 @@ function getCrisisQuestions() {
       scenario: 'You arrive at a call and observe a subject sitting on a rooftop ledge, legs dangling, not responding to initial verbal contact. Witnesses say the subject has been there for 20 minutes.',
       text: 'What is the priority sequence for this CIT response?',
       options: [
-        'Physical containment first, then verbal contact once the subject is in custody.',
+        'Physical containment and control of the subject first, using whatever hands-on force is needed to secure him, and then attempting calm verbal contact only afterward, once he is safely in custody and fully restrained.',
         'Immediate forced intervention — time on the ledge only creates increasing danger.',
         'Wait for a mental health professional to arrive before attempting any engagement at all.',
         'Establish a safe perimeter, reduce stimulation, request CIT and the mobile crisis team, and begin calm, non-threatening verbal contact through one primary voice.'
@@ -439,7 +439,7 @@ function getCrisisQuestions() {
         'Challenge the hallucinations directly to help the subject distinguish reality from the experience.',
         'Request immediate psychiatric hold authority, since active psychosis automatically meets § 302 criteria.',
         'Avoid confirming or challenging the hallucinations; focus on the person\'s emotional state and safety, use a calm low tone, and offer limited choices to restore a sense of control.',
-        'Match the subject\'s emotional intensity for a few minutes to build rapport before redirecting.'
+        'Match the subject\'s emotional intensity and volume yourself for the first few minutes in order to build rapport with him, and only then begin to gradually redirect him toward a calmer state once he feels that you understand him.'
       ],
     },
     {
@@ -448,7 +448,7 @@ function getCrisisQuestions() {
       options: [
         'Give an honest status update — the subject is de-escalating and the approach is working, and an abrupt change in tactics now may re-escalate — and recommend continuing for a defined additional period.',
         'Follow the supervisor\'s direction and begin moving toward a physical resolution.',
-        'Tell the subject you have to leave, which will force a decision from them.',
+        'Tell the subject that you have to leave the scene shortly, on the theory that imposing a hard deadline like that will force a quick decision from them and bring the drawn-out encounter to a much faster conclusion.',
         'Immediately initiate a § 302 hold — the time already spent justifies an involuntary commitment.'
       ],
     },
@@ -502,7 +502,7 @@ function getCrisisSupervisorQuestions() {
       text: 'What is the correct supervisory response?',
       options: [
         'Direct the officer to move to a physical resolution to clear the call.',
-        'Order an immediate 302, since the call has already taken too long.',
+        'Order an immediate 302 to bring the call to a close, on the reasoning that the encounter has already taken far too long and forcing an involuntary evaluation is the quickest way to clear the scene and free the units up for other calls.',
         'Support a defined additional window: a subject who is de-escalating reflects the approach succeeding, and an abrupt tactical change after relationship-building risks re-escalation. Time on the call is a tactic when it is working.',
         'Pull the officer off and replace them with a fresh unit to restart the contact.'
       ],
@@ -512,7 +512,7 @@ function getCrisisSupervisorQuestions() {
       text: 'How should you calibrate the response?',
       options: [
         'Request a SWAT/tactical team — the presence of a firearm makes this a tactical incident.',
-        'Order officers to make immediate entry to secure the firearm before continuing.',
+        'Order officers to make an immediate forced entry into the residence to locate and secure the firearm before continuing any further attempt at de-escalation, treating the presence of a weapon somewhere inside as reason enough to move on the house right away.',
         'Clear all units and disengage entirely, since a firearm is present in the home.',
         'Calibrate to the threat actually presented: establish a perimeter, reduce stimulation, and request CIT and mobile-crisis resources while the contact officer maintains a calm approach. A distressed person on his porch is not a SWAT call.'
       ],
@@ -523,7 +523,7 @@ function getCrisisSupervisorQuestions() {
       options: [
         'Flag it — under 50 P.S. § 7302 a 302 requires a clear and present danger based on a recent overt act, attempt, or threat. History, agitation, and medication non-compliance alone do not meet the standard; the report must state the specific dangerous conduct or it does not support an involuntary commitment.',
         'Approve it — agitation plus a psychiatric history and medication non-compliance satisfies the 302 standard.',
-        'Approve it, since the officer was clearly acting out of concern for the subject\'s welfare.',
+        'Approve the 302 as submitted, since the officer was clearly acting out of genuine concern for the subject\'s welfare and safety, and that good-faith concern for a struggling person should be enough to support an involuntary commitment even without a specific recent overt act documented in the report before it is approved.',
         'Forward it to the magistrate without review, since 302 determinations are medical, not supervisory.'
       ],
     },
@@ -544,7 +544,7 @@ function getCrisisSupervisorQuestions() {
         'Accept it — the subject ultimately agreed, so consent was given.',
         'Flag it as coercion: implying the subject had no choice when he legally did is pressure, not consent. Coerced transport is not voluntary, creates civil liability, and undermines the evaluation.',
         'Accept it because logistics had already been arranged.',
-        'Treat it as a 302, since the subject was transported.'
+        'Treat the whole encounter as a proper 302, on the basis that the subject was ultimately transported for a psychiatric evaluation, so however that transport was actually obtained, the outcome still fits neatly within the involuntary-commitment framework.'
       ],
     },
     {
@@ -552,7 +552,7 @@ function getCrisisSupervisorQuestions() {
       text: 'What should your review of the entry conclude?',
       options: [
         'The entry was clearly justified — any mention of a means of self-harm authorizes entry.',
-        'The entry was lawful because the officer was conducting a welfare check at the time.',
+        'The entry into the residence was lawful because the officer was in the middle of conducting a welfare check at the time, and a welfare check by itself provides a standing basis to enter a private home without either a warrant or specific consent from anyone present.',
         'Entry into a residence never requires separate justification during a mental health call.',
         'The entry is questionable: a statement about access to a means of self-harm, without more, may not meet the exigency threshold for a warrantless entry. The report needs an immediate, specific threat or documented consent — flag the gap.'
       ],
@@ -564,7 +564,7 @@ function getCrisisSupervisorQuestions() {
         'Recognize it as a professional success: a well-documented welfare contact with de-escalation, resources, and family coordination is a sound outcome — and acknowledging it reinforces the practice you want repeated on the next call.',
         'Mark it deficient, because no enforcement action or transport resulted from the call.',
         'Require the officer to file a 302 retroactively to justify the time spent on scene.',
-        'Take no notice — outcomes without arrests do not warrant supervisory attention.'
+        'Take no particular notice of it — outcomes that do not end in an arrest simply do not warrant any supervisory attention or comment, since there is really nothing to review when no charges were filed and no force was used during the contact.'
       ],
     },
     {

@@ -268,7 +268,7 @@ function getTrafficStopQuestions() {
       options: [
         'The odor is one factor in the totality of the circumstances — it cannot establish probable cause alone — and even with probable cause, a warrantless vehicle search requires exigent circumstances. The default is to secure the vehicle and obtain a warrant.',
         'The odor alone establishes probable cause, and probable cause alone supports an immediate warrantless search.',
-        'The odor is legally meaningless in Pennsylvania and may not be considered at all.',
+        'The odor of marijuana is now legally meaningless in Pennsylvania and may not be considered at all for any purpose after recent changes in the law, so the officer cannot factor the smell into the probable-cause assessment in any way whatsoever during the stop.',
         'The odor establishes reasonable suspicion that obligates you to call a K9 before any further action.'
       ],
     },
@@ -278,7 +278,7 @@ function getTrafficStopQuestions() {
       options: [
         'The objection requires you to stop and re-apply for a warrant that addresses it.',
         'The objection is a valid invocation of Fourth Amendment rights that suspends the search.',
-        'You must obtain a supervisor\'s approval to continue over an explicit objection.',
+        'You must first obtain a supervisor\'s approval before you can continue a warrant-authorized search over the subject\'s explicit verbal objection, since an objection raised at the scene raises the level of authorization required before you may proceed.',
         'The objection is irrelevant — a warrant-authorized search does not depend on consent. Document the objection verbatim and proceed.'
       ],
     },
@@ -288,7 +288,7 @@ function getTrafficStopQuestions() {
       options: [
         'It does not include the driver\'s response to the search.',
         'It is a conclusion without the specific, articulable facts that support it — insufficient for a suppression hearing.',
-        'It does not specify which officer detected the odor.',
+        'It does not specify which one of the several officers present at the scene actually detected the odor, and without tying the observation to a particular officer the statement cannot be supported by that officer\'s sworn testimony later on.',
         'It must reference Commonwealth v. Alexander by name to be legally sufficient.'
       ],
     },
@@ -296,7 +296,7 @@ function getTrafficStopQuestions() {
       scenario: 'During a routine traffic stop, the driver produces a valid driver\'s license but no registration. The driver states the registration is in the mail and shows you a receipt for a recently purchased vehicle.',
       text: 'What is the appropriate course of action?',
       options: [
-        'Issue a citation for failure to produce registration and impound the vehicle.',
+        'Issue a citation for failure to produce valid registration and have the vehicle impounded on the spot, rather than attempting to verify the temporary documentation the driver offered, on the view that a paper receipt simply cannot be relied upon at the roadside.',
         'Release the driver without any documentation — a receipt is sufficient proof of ownership.',
         'Verify the vehicle\'s status through your MDT, document the driver\'s explanation and the receipt, and use discretion consistent with department policy — temporary registration documentation may be verifiable.',
         'Arrest the driver for operating without registration until ownership can be confirmed.'
@@ -308,7 +308,7 @@ function getTrafficStopQuestions() {
       options: [
         'Make the arrest anyway based on your gut — officers have broad discretion in DUI cases.',
         'Release the driver — passing field sobriety tests is a complete defense to DUI arrest.',
-        'Administer a preliminary breath test and arrest only if it returns above .08.',
+        'Administer a preliminary breath test at the scene and base the arrest decision solely on that single reading, taking the driver into custody only if the portable device returns a result above .08 and otherwise releasing them regardless of other observations.',
         'Document your specific observations thoroughly, consider requesting a DRE evaluation if available, and make an arrest decision based on the totality of articulable, documented facts — not on intuition alone.'
       ],
     },
@@ -319,7 +319,7 @@ function getTrafficStopQuestions() {
         'You have reasonable suspicion to investigate further. Ask the driver to step out, request additional identifying information, and determine through investigation whether the driver is the registered owner or another person.',
         'Arrest the driver immediately — the vehicle is registered to a felony warrant subject.',
         'The plate return is not sufficient — release the driver since the license came back clean.',
-        'Run the license only — if it comes back clean the stop must end.'
+        'Run only the license the driver actually presented to you — if that license comes back clean and valid, then the traffic stop must end at that point, and you have no lawful basis to investigate whether the driver might be someone else entirely.'
       ],
     },
   ];
@@ -381,7 +381,7 @@ function getTrafficStopSupervisorQuestions() {
       text: 'How should you treat that articulation?',
       options: [
         'Accept it — a refusal to consent is a reasonable factor to weigh.',
-        'Accept it if the officer also noted the driver seemed nervous.',
+        'Accept the extension of the stop if the officer also noted somewhere in the report that the driver seemed nervous during the encounter, on the view that nervousness combined with the refusal to consent adds up to just enough suspicion to justify prolonging it.',
         'Accept it because the driver could have consented if he had nothing to hide.',
         'Reject it: exercising a constitutional right cannot be the basis for detention, so a refusal to consent is not reasonable suspicion and cannot justify extending the stop. The extension is unlawful absent independent articulable facts.'
       ],
@@ -393,7 +393,7 @@ function getTrafficStopSupervisorQuestions() {
         'Mark it inefficient — the officer should have searched immediately to save time.',
         'Flag it because obtaining a warrant suggests the probable cause was weak.',
         'Recognize it as exactly correct under current Pennsylvania law: Commonwealth v. Alexander requires probable cause and exigent circumstances for a warrantless vehicle search, a controlled scene is rarely exigent, and the warrant is the default — acknowledge the officer\'s judgment.',
-        'Require the officer to justify why no exigency existed before approving.'
+        'Require the officer to go back and affirmatively justify in writing why no exigency existed before you will approve the report, treating the officer\'s correct decision to secure the vehicle and obtain a warrant as something that itself needs a written defense before it can be signed off.'
       ],
     },
     {
@@ -402,7 +402,7 @@ function getTrafficStopSupervisorQuestions() {
       options: [
         'Forward it — the odor of marijuana is sufficient probable cause for the warrant.',
         'Return it: "detected an odor of marijuana" is a conclusion and the most common suppression vulnerability. After Barr the affidavit must state where the odor was detected, its strength and character, when, and the corroborating observations that complete the probable cause.',
-        'Forward it but tell the officer to cite Alexander by name.',
+        'Forward the affidavit as it is but tell the officer to add a citation to Commonwealth v. Alexander by name, on the view that naming the leading case in the paperwork is what cures the conclusory odor language, rather than adding the specific underlying observations behind it.',
         'Reject the warrant entirely because odor can never support a vehicle search.'
       ],
     },
@@ -412,7 +412,7 @@ function getTrafficStopSupervisorQuestions() {
       options: [
         'Correct it: a warrant-authorized search does not depend on consent, and an objection does not suspend it. The officer should have proceeded within the warrant\'s scope and documented the objection verbatim — stopping was an error to address.',
         'Approve it — the driver\'s objection properly suspended the search.',
-        'Approve it but require a new warrant addressing the objection.',
+        'Approve the report but require the officer to obtain a brand-new warrant specifically addressing the subject\'s objection before any further search, on the mistaken view that an objection raised at the scene somehow suspends the authority of the warrant that was already issued.',
         'Treat the objection as withdrawal of consent that ended the search.'
       ],
     },
@@ -422,7 +422,7 @@ function getTrafficStopSupervisorQuestions() {
       options: [
         'Accept the officer-safety rationale at face value and approve the report.',
         'Approve it because any recording during a stop is a legitimate safety concern.',
-        'Take no action unless the bystander files a formal complaint.',
+        'Take no action at all on the recording issue unless and until the bystander who was filming actually files a formal written complaint with the department, on the view that without a complaint on file there is nothing for you as the supervisor to review or address about the officer\'s conduct here.',
         'Address it directly: under Fields v. City of Philadelphia the First Amendment protects recording police in public, courts look to the actual motivation, and a recording objection dressed up as "officer safety" — contradicted here by the footage — is a constitutional and complaint exposure.'
       ],
     },
@@ -443,7 +443,7 @@ function getTrafficStopSupervisorQuestions() {
         'None — each stop is evaluated alone and prior stops are irrelevant.',
         'Review the pattern: correct the documentation and detention habits that produce suppression and complaints, reinforce the Rodriguez and Barr standards, and keep the stop data clean — the aggregate is a public-trust and liability issue you are first positioned to see.',
         'Wait until a suppression motion is granted before addressing anything.',
-        'Increase the officer\'s stop quota to improve enforcement numbers.'
+        'Increase the officer\'s traffic-stop quota going forward in order to improve the unit\'s overall enforcement numbers, treating a higher stop volume as the appropriate response to the pattern rather than correcting the documentation and detention habits behind it on his stops.'
       ],
     },
   ];

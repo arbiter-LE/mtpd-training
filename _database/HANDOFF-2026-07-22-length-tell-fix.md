@@ -1,7 +1,12 @@
 # Length-Tell Fix — Platform-Wide (MTPD + EGPD)
 
 **Opened:** 2026-07-22 · **Authorized by:** Andrew (explicit, incl. touching live content)
-**Status:** SPEC READY — awaiting execution-vehicle decision
+**Status:** COMPLETE 2026-07-22 — both departments done inline, all gates pass.
+- MTPD: 193 questions, pick-longest 92% → **25%** (committed a8b4fa6)
+- EGPD: 192 questions, pick-longest 96% → **25%**
+- Method held: distractor text only; correct answers, option order, and answer
+  keys byte-identical (no grade.js change). ~2 questions per set intentionally
+  keep the correct answer longest, to avoid a reverse "never pick the longest" tell.
 
 ## The defect
 

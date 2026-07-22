@@ -299,7 +299,7 @@ function getDomesticViolenceQuestions() {
         'Honor the victim\'s preference — she is the protected party, and her consent controls the arrest decision.',
         'Consult your supervisor before making an arrest; mandatory arrest requires supervisor authorization when the victim objects.',
         'If you observe recent physical injury and probable cause exists to believe Simple Assault was committed against a household member, arrest without a warrant is required — victim consent is not a required element.',
-        'Make a report and refer the case to detectives for a follow-up arrest.'
+        'Make a report at the scene and refer the case to detectives for a possible follow-up arrest at a later date, rather than making a warrantless arrest now, on the view that an investigator is better placed to make the charging decision after reviewing everything.'
       ],
     },
     {
@@ -307,7 +307,7 @@ function getDomesticViolenceQuestions() {
       text: 'What is your obligation regarding the phone under EGPD General Order 4.13.6?',
       options: [
         'Seize the phone. A weapon used by the defendant in the commission of an alleged offense must be seized, secured, and entered into the property management system with chain of custody.',
-        'Advise her to hold onto the phone for him and document the advisory in your report.',
+        'Advise the victim to hold onto the phone for the defendant for safekeeping and simply document that advisory in your report, treating the phone as ordinary personal property rather than as an item that must be seized and entered as evidence.',
         'Leave the phone — the subject is already in custody and no longer has access to it.',
         'Request a warrant before seizing personal property belonging to the arrested subject.'
       ],
@@ -317,7 +317,7 @@ function getDomesticViolenceQuestions() {
       text: 'Under EGPD General Order 4.13.11, what documentation standard applies when an officer has probable cause but elects not to arrest?',
       options: [
         'No additional documentation is required beyond noting that no arrest was made.',
-        'The officer must document only the victim\'s refusal to cooperate.',
+        'The officer must document only the victim\'s refusal to cooperate with the investigation, and that single notation about the uncooperative victim is by itself a sufficient explanation in the narrative for why no arrest was ultimately made on the call that night.',
         'The officer must obtain supervisor sign-off in the report acknowledging the decision not to arrest.',
         'If the officer did not arrest even though probable cause existed and an arrest was authorized, a detailed explanation of the reason(s) for the decision not to arrest must be included in the narrative — "No arrest made" is not sufficient.'
       ],
@@ -329,7 +329,7 @@ function getDomesticViolenceQuestions() {
         'Do not include unverified injuries in the report — document only what you directly observed.',
         'Photograph the area and include your own assessment of whether the injury appears credible.',
         'Include a description of any injuries observed by the officer, AND a description of any injuries described by the victim but not observed, with an indication that the injury was not observed.',
-        'Have the victim sign a separate statement about the injury and attach it to your report.'
+        'Have the victim write out and sign a separate statement describing the injury herself and then attach that signed statement to your report, in place of the officer documenting the observed and reported injuries directly within the narrative.'
       ],
     },
     {
@@ -346,7 +346,7 @@ function getDomesticViolenceQuestions() {
       scenario: 'A victim in a domestic violence case discloses, during a follow-up call, that the offender — who is subject to a final PFA order against her — appeared at her workplace last week, which she never reported.',
       text: 'Under EGPD General Order 4.13.9, what is your obligation regarding this disclosure?',
       options: [
-        'The PFA violation is a civil matter — refer her to court to report it.',
+        'The PFA violation is a civil matter between the two parties — refer the victim back to the court that issued the order to report the violation there, on the view that enforcement of a protection order is handled entirely through the civil process rather than by an arrest.',
         'Take no action, since the violation occurred in the past and was not witnessed by an officer.',
         'Advise her to file a private criminal complaint with the District Attorney\'s office.',
         'Document the violation. A police officer shall arrest a defendant for violating a final PFA order issued under 23 Pa.C.S. Chapter 61, with a charge of Indirect Criminal Contempt prepared in addition to any other charges.'
@@ -358,7 +358,7 @@ function getDomesticViolenceQuestions() {
       options: [
         'A verbal acknowledgment that you understand the situation — written notice is optional.',
         'Oral and written notice of the availability of safe shelter and domestic violence services, including the hotline number, and the victim\'s rights under 23 Pa.C.S. Ch. 61 — with the victim signing a receipt to be attached to the incident report.',
-        'A copy of the arrest report only, once charges are filed.',
+        'A copy of the completed arrest report only, provided to the victim once the charges have been formally filed, which by itself satisfies the department\'s obligation to keep the victim informed about the case after a domestic-violence arrest has been made.',
         'Notice is only required if the victim explicitly requests information about her legal options.'
       ],
     },
@@ -421,7 +421,7 @@ function getDomesticViolenceSupervisorQuestions() {
       text: 'What is the correct supervisory action?',
       options: [
         'Approve it — the officer documented that the parties separated, which resolves the incident.',
-        'Approve it, but add a note reminding the officer to write more next time.',
+        'Approve the report as submitted, but add a brief note reminding the officer to write a fuller explanation next time, treating the missing detailed justification for the non-arrest as a minor habit to improve on rather than a defect that has to be corrected now before filing.',
         'Approve it, because arrest is discretionary when the parties separate voluntarily.',
         'Reject it: GO 4.13.11(A)(3)(b) requires a detailed explanation when probable cause existed but no arrest was made — and where observed injury plus PC for a 4.13.5 offense were present, the deeper question is why a mandatory arrest was not made at all.'
       ],
@@ -443,7 +443,7 @@ function getDomesticViolenceSupervisorQuestions() {
         'Correct the stated basis: under GO 4.13.6 a weapon used in the commission of the offense shall be seized as evidence regardless of consent. Framing a mandatory evidence seizure as a consent seizure creates a vulnerability, because consent can be refused and the stated basis matters in court.',
         'Approve it — consent was obtained, so the seizure is properly documented.',
         'Reject the seizure entirely, because the victim should not be asked about the defendant\'s property.',
-        'Require a warrant before the phone can be held as evidence.'
+        'Require the officer to go back and obtain a separate search warrant before the phone can be held as evidence at all, on the view that a personal item taken from inside a residence is protected by the warrant requirement regardless of the fact that it was used by the defendant in committing the assault.'
       ],
     },
     {
@@ -463,7 +463,7 @@ function getDomesticViolenceSupervisorQuestions() {
         'Nothing — the workplace incident is in the past and was not witnessed by an officer.',
         'The disclosed final-PFA violation must be acted on: GO 4.13.9 makes arrest mandatory for a Chapter 61 final-order violation whether or not it occurred in an officer\'s presence, with an Indirect Criminal Contempt charge and protected-party notification documented as a Supplemental Incident Report.',
         'Refer the victim to civil court to handle the PFA violation herself.',
-        'Note it for intelligence only; a past violation cannot be charged.'
+        'Note the disclosed violation for intelligence purposes only, on the reasoning that a past final-order violation which the officer did not personally witness cannot be charged after the fact, so there is really nothing further for the officer to act on here beyond recording it in the file for later reference.'
       ],
     },
     {
@@ -471,7 +471,7 @@ function getDomesticViolenceSupervisorQuestions() {
       text: 'What is the correct supervisory guidance?',
       options: [
         'Redirect it: once a mandatory arrest is made the charging decision belongs to the Commonwealth, not the victim. Informal contact about dropping charges threatens case integrity; explain the framework professionally and document all post-arrest victim contact.',
-        'Approve the informal meeting — accommodating the victim builds trust.',
+        'Approve the informal meeting between the officer and the victim about dropping the charges, on the view that accommodating the victim\'s stated wishes builds trust with the community and keeps her cooperating, so on balance it does the case more good than harm in the long run.',
         'Tell the officer to grant the request and release the phone, since the victim no longer wants to proceed.',
         'Have the officer avoid all contact with the victim until the case is closed.'
       ],
@@ -481,7 +481,7 @@ function getDomesticViolenceSupervisorQuestions() {
       text: 'What is your supervisory responsibility?',
       options: [
         'None — each call stands on its own, and prior calls are not relevant to new ones.',
-        'Bar officers from responding to that address to avoid liability.',
+        'Bar officers from responding to that particular address going forward in order to limit the department\'s liability, on the theory that reducing all contact with a repeat-violence location is by far the safest way to keep the agency out of a bad outcome down the road at that residence.',
         'Treat the pattern as a high-priority signal: track the repeat location, flag the escalation, correct the non-arrest documentation going forward, and ensure the history informs the response — DV patterns across reports precede the worst outcomes and only the supervisor sees them.',
         'Wait until a serious injury occurs before treating the address differently.'
       ],
@@ -493,7 +493,7 @@ function getDomesticViolenceSupervisorQuestions() {
         'A full lights-and-sirens code-3 response to establish presence quickly.',
         'No sirens or emergency lights in the vicinity of the scene, a flanking approach rather than parking directly in front, and an external assessment before any committed approach — with containment and a supervisor, not entry, on any hostage or barricade indication.',
         'A single officer making rapid entry to separate the parties before backup arrives.',
-        'Staging a block away indefinitely until the parties exit on their own.'
+        'Staging a block away from the scene indefinitely and simply waiting until the involved parties exit the residence on their own, rather than making any external assessment or committed approach, so that officers never have to enter a potentially dangerous scene at all.'
       ],
     },
   ];

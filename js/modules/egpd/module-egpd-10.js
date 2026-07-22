@@ -253,14 +253,14 @@ function getEvidenceQuestions() {
         'Advise the supervisor of the situation, including the detective ETA, and request a brief delay or a second unit to hold the scene.',
         'Follow the order — supervisor authority supersedes standard evidence protocols.',
         'Collect the items and transport them, but document the supervisor\'s name in the chain of custody.',
-        'Refuse the order and remain on scene regardless of the supervisor\'s directive.'
+        'Refuse the supervisor\'s order outright and remain on the scene regardless of the directive to leave, on the view that personally protecting the chain of custody justifies overriding a supervisor who has told you to clear the scene.'
       ],
     },
     {
       scenario: 'You need to document a piece of evidence before a detective arrives. The scene is outdoors and the item is on the ground.',
       text: 'Which of the following best describes proper in-place documentation before collection?',
       options: [
-        'Write a detailed description of the item in your notebook.',
+        'Write out a detailed written description of the item in your field notebook, capturing its appearance and its exact location in words, and rely on that written account rather than photographing the item in its discovered position first.',
         'Sketch the scene and mark the item\'s approximate location.',
         'Verbally describe the item to dispatch so it is recorded on the radio log.',
         'Photograph the item from multiple angles in its exact discovered position, including a scale reference if available, before anyone touches it.'
@@ -270,7 +270,7 @@ function getEvidenceQuestions() {
       scenario: 'You collect a biological swab from a crime scene. What is the correct packaging for this item?',
       text: 'Biological evidence must be packaged in:',
       options: [
-        'A sealed plastic bag with an evidence sticker.',
+        'A tightly sealed, airtight plastic bag with an evidence sticker applied across the seal, chosen specifically to lock the item in and keep any outside air or moisture from reaching it at all.',
         'A paper bag or paper envelope — never airtight plastic — to allow moisture to escape and prevent degradation.',
         'Any available container, as long as it is sealed and labeled.',
         'Aluminum foil wrap with a chain of custody tag attached.'
@@ -280,7 +280,7 @@ function getEvidenceQuestions() {
       scenario: 'You collect a blood sample from a DUI suspect at the hospital. The sample is collected by a nurse using a department-approved kit. You witness the collection.',
       text: 'What documentation steps are required to preserve the chain of custody for this sample?',
       options: [
-        'Document that you were present — the nurse\'s records handle the rest.',
+        'Document only that you were present for the collection — the hospital and the examining nurse\'s own records will handle the rest of the documentation, so there is no need to separately record the sealing, the transport, and the continuous control yourself.',
         'The hospital\'s records constitute the chain of custody for any sample collected in a medical facility.',
         'Document the collection: time, location, who collected it, the kit number, how it was sealed, and how it was transported from the hospital to the property room — with your continuous control or handoff documentation at each step.',
         'Chain of custody only applies to physical evidence at crime scenes, not medical samples.'
@@ -292,7 +292,7 @@ function getEvidenceQuestions() {
       options: [
         'Follow the suggestion — detectives have the authority and training to collect firearms.',
         'Secure the area around the firearm and await detective arrival without touching or documenting it.',
-        'The suggestion is correct if detectives will arrive within two hours.',
+        'The other officer\'s suggestion is correct here, as long as the detectives are expected to arrive within about two hours, since a short wait for investigators makes it reasonable to simply leave the firearm where it is rather than recovering it yourself.',
         'Recover the firearm yourself according to department protocol: photograph it in place, note the exact location, collect it using appropriate safety procedures, and document the recovery in your report.'
       ],
     },
@@ -302,7 +302,7 @@ function getEvidenceQuestions() {
       options: [
         'Refuse to sign it out, notify the property room supervisor immediately, document the observation, and notify the prosecutor before the court date. The integrity of the evidence is now in question.',
         'Sign it out and proceed to court — it may just be a storage issue.',
-        'Re-seal the evidence and note the re-sealing in your report.',
+        'Re-seal the compromised evidence package yourself right there on the spot and simply note the re-sealing in your report afterward, treating a fresh seal and a line in the narrative as enough to cure the fact that it was found already opened.',
         'Inspect the contents to determine if anything is missing before deciding how to proceed.'
       ],
     },
@@ -376,7 +376,7 @@ function getEvidenceSupervisorQuestions() {
         'Nothing — minor gaps are common and the defense probably will not notice.',
         'Instruct the officer to fill in a plausible name and time from memory.',
         'Catch it now: the unsigned, unnamed transfer is a fixable, disclosable vulnerability. Flag it to the prosecutor before trial so it can be addressed, rather than letting the officer discover it under cross-examination.',
-        'Remove the evidence from the case to avoid the issue.'
+        'Remove the evidence from the case file entirely in order to avoid the issue with the unsigned transfer altogether, on the theory that a piece of evidence carrying a documentation gap is more trouble than it is worth and is cleaner simply left out.'
       ],
     },
     {
@@ -385,7 +385,7 @@ function getEvidenceSupervisorQuestions() {
       options: [
         'Approve it — any sealed, labeled container is acceptable for evidence.',
         'Correct it: biological evidence must be packaged in paper, not airtight plastic, which traps moisture and degrades DNA. Address the specific item and treat the error as a training and kit-standardization issue.',
-        'Approve it as long as the bag was labeled correctly.',
+        'Approve it as long as the plastic bag itself was labeled correctly with the case and item numbers, treating accurate labeling as the thing that really matters and the choice of plastic over paper as a minor detail not worth returning the submission over.',
         'Reject the entire case because the swab is now worthless.'
       ],
     },
@@ -395,7 +395,7 @@ function getEvidenceSupervisorQuestions() {
       options: [
         'Stop: have the officer document the observation contemporaneously, notify the property-room supervisor, and notify the prosecutor before the court date — a known integrity question is never carried into a courtroom undisclosed.',
         'Tell the officer to take it to court anyway — it is probably just a storage artifact.',
-        'Have the officer re-seal the evidence and note the re-sealing.',
+        'Have the officer simply re-seal the evidence package and note the re-sealing in a supplement, treating the apparent tampering as a packaging issue to quietly close out rather than an integrity question that has to be disclosed to the prosecutor.',
         'Tell the officer to open it and confirm nothing is missing before court.'
       ],
     },
@@ -404,7 +404,7 @@ function getEvidenceSupervisorQuestions() {
       text: 'What is the best explanation?',
       options: [
         'It is not — chain of custody is entirely the collecting officer\'s job.',
-        'Because supervisors personally collect all evidence.',
+        'Because supervisors are the ones who personally collect all of the physical evidence in the first place, so the integrity of the chain ultimately rests on the supervisor\'s own careful collection work rather than on any system of seals, logs, and packaging standards.',
         'Because only supervisors are allowed to testify about evidence.',
         'Because integrity depends on systems the supervisor owns — seals, logs, submission discipline, an auditable property room, and standardized packaging — and a weak system turns every officer\'s careful collection into a vulnerability.'
       ],
@@ -416,7 +416,7 @@ function getEvidenceSupervisorQuestions() {
         'Tell the officer to assert confidently that the evidence was never tampered with, to project authority.',
         'Advise the officer to answer every chain-of-custody question with "standard procedure was followed."',
         'Have the officer review the documentation beforehand, identify the gap before the defense does, flag it to the prosecutor, and testify to exactly what the record shows — acknowledging the gap without speculating, since false certainty about an unremembered window risks perjury under 18 Pa. C.S. § 4902.',
-        'Tell the officer to avoid the subject and let the prosecutor handle it.'
+        'Tell the officer to simply avoid the subject of the custody gap on the stand and to let the prosecutor handle it however they see fit, on the view that the less the officer says about the unremembered window the less exposure there is, so silence is the safest approach to the officer\'s testimony at trial.'
       ],
     },
     {
@@ -425,7 +425,7 @@ function getEvidenceSupervisorQuestions() {
       options: [
         'Authorize shortcuts during busy periods — efficiency has to win when the board is full.',
         'Hold the standard when it is inconvenient: every shortcut you authorize or refuse signals the real standard to your officers, so resource the scenes that need holding and make proper collection the path of least resistance rather than the heroic exception.',
-        'Leave it to each officer to decide how much to cut under pressure.',
+        'Leave it entirely to each individual officer to decide for themselves how much to cut and where to compromise on collection under pressure, on the view that the officers on scene are best placed to judge what corners can safely be cut when resources are thin.',
         'Reduce evidence collection requirements during high-call-volume shifts.'
       ],
     },

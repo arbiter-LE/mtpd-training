@@ -260,7 +260,7 @@ function getEIQuestions() {
       scenario: 'During a follow-up contact, a DV victim shows you a bruise on her arm that was not documented in the original report.',
       text: 'What is the correct documentation action?',
       options: [
-        'Note the bruise verbally in your CAD entry and follow up at the next contact.',
+        'Note the bruise verbally in your CAD entry for the call and plan to follow up on it at the next victim contact, treating a brief radio-log mention as sufficient documentation for now instead of a supplemental report with a description and photographs.',
         'The follow-up contact is welfare only — injuries discovered during welfare checks are documented by the detective assigned to the case.',
         'Document only if the victim signs a medical release authorizing you to include her injury in official reports.',
         'Document the injury in a supplemental report, including a description of the injury, its location, the victim\'s account of how it occurred, and any photographs taken.'
@@ -272,7 +272,7 @@ function getEIQuestions() {
       options: [
         'Completing all required reports and documentation within department timeframes.',
         'The ability to manage your emotional response under pressure — absorbing provocation and responding from training rather than reaction.',
-        'Regulating the use of force to the minimum required by the circumstances.',
+        'Regulating the amount of force used down to the minimum required by the circumstances of the encounter, so that the emotional side of the job is really just another way of describing keeping physical force proportionate to the threat.',
         'Managing officer wellness through exercise, sleep, and mental health practices.'
       ],
     },
@@ -283,7 +283,7 @@ function getEIQuestions() {
         'Correct your partner\'s approach out loud — the subject needs to see you are handling it.',
         'Follow your partner\'s lead — contradicting them on scene undermines unit authority.',
         'Step in front of your partner, calmly redirect the subject\'s attention to you, and use a quiet, steady tone to re-establish rapport. Address your partner\'s approach privately after the scene is resolved.',
-        'Request a supervisor to take over — the call has been compromised.'
+        'Request a supervisor to respond to the scene and take over the call entirely, on the reasoning that once your partner\'s approach has compromised the contact, the situation is no longer yours to salvage and should be handed off to someone else.'
       ],
     },
     {
@@ -292,7 +292,7 @@ function getEIQuestions() {
       options: [
         'Acknowledge the disclosure with brief, genuine recognition: "That sounds really hard." Do not interrogate, do not dismiss. Remain professional and compassionate without soliciting further statements.',
         'Redirect immediately to booking logistics — personal disclosures during transport are not your role.',
-        'Encourage them to keep talking — it builds rapport and may produce admissible statements.',
+        'Encourage them to keep talking and to share as much as they are willing to, on the view that letting the emotional disclosure continue builds rapport and may well produce additional admissible statements that you can use later in the case.',
         'Inform them that anything they say can be used against them before they say anything further.'
       ],
     },
@@ -301,7 +301,7 @@ function getEIQuestions() {
       text: 'This pattern most likely reflects which occupational health phenomenon, and what is the recommended response?',
       options: [
         'Adaptation — officers develop appropriate emotional distance over time. No action needed.',
-        'Burnout — which requires immediate medical leave.',
+        'Burnout — a condition which, once it is recognized in an officer, requires the department to place that officer on an immediate mandatory period of medical leave until they have recovered and are cleared to return to full duty.',
         'Compassion fatigue — which resolves on its own with adequate rest.',
         'Secondary traumatic stress or emotional numbing, which are recognized risk factors for burnout and long-term psychological impact. The recommended response is early engagement with peer support or EAP resources.'
       ],
@@ -356,7 +356,7 @@ function getEISupervisorQuestions() {
         'Examine the contact itself: did the officer lead with the evidence or acknowledge before asking? Hostility and a closed door are trauma responses, not a closed case, and the technique is coachable — especially since the follow-up often holds the most damaging DV evidence.',
         'Accept the summary — if the victim refused to talk, there is nothing more to examine.',
         'Direct the officer to force the issue more firmly at the next contact.',
-        'Close the case, since an uncooperative victim cannot be prosecuted.'
+        'Close the case out entirely, on the reasoning that an uncooperative victim who will not engage with the officer cannot realistically be prosecuted anyway, so there is very little point in scrutinizing the quality of the officer\'s initial contact with her at the door that morning.'
       ],
     },
     {
@@ -364,7 +364,7 @@ function getEISupervisorQuestions() {
       text: 'What is your supervisory assessment?',
       options: [
         'It was a kind and appropriate way to calm the victim.',
-        'It was fine because the officer was trying to help.',
+        'It was fine and does not really need to be addressed at all, because the officer was genuinely trying to help and reassure a frightened victim in the moment, and good intentions like that are what matter most when judging how the contact was ultimately handled by the responding officer.',
         'It was acceptable as long as the officer also took a report.',
         'It was a mistake to coach: a system-experienced victim recognizes false reassurance about arraignment and bail, and it collapses trust. GO 4.13.7 requires accurate information about services and rights under 23 Pa.C.S. Ch. 61 — honest and actionable beats reassuring and inaccurate.'
       ],
@@ -374,7 +374,7 @@ function getEISupervisorQuestions() {
       text: 'What is the right response, in the moment and afterward?',
       options: [
         'Correct the officer out loud immediately so the subject sees you are taking control.',
-        'Let the officer continue so as not to undermine their authority.',
+        'Let the officer continue with the escalating approach so as not to undermine their authority in front of the subject and the rest of the squad, on the view that publicly stepping in would do more damage to the officer\'s standing than the escalation itself does to the call.',
         'Absorb the escalation in the moment — step in, redirect the subject\'s attention, re-stabilize with a calm tone — and address the officer\'s approach privately afterward, because public correction of an officer is itself an escalation and you model regulation for the squad.',
         'Pull the officer from the scene and finish the call yourself without comment.'
       ],
@@ -396,7 +396,7 @@ function getEISupervisorQuestions() {
         'Treat it as a red flag, not resilience: emotional numbing is an early indicator of secondary traumatic stress and a pathway to burnout. Name it as such and encourage early, confidential engagement with peer support or EAP.',
         'Affirm it — emotional distance is healthy adaptation that comes with experience.',
         'Note it approvingly as evidence the officer is ready for higher-stress assignments.',
-        'Take no action unless the officer\'s performance declines.'
+        'Take no action at all for now unless and until the officer\'s actual job performance visibly declines, on the view that emotional numbing on its own is not something a supervisor should act on before it has clearly started affecting the officer\'s work.'
       ],
     },
     {
@@ -416,7 +416,7 @@ function getEISupervisorQuestions() {
         'It does not — the officer should use the resources regardless of the details.',
         'Because you are required to record which officers use which services.',
         'Because an officer will not engage a resource they believe is not confidential, and accurate knowledge — that 42 Pa.C.S. § 5950 protects critical incident stress management communications, § 5952 extends it to trained peer support members, and EAP is confidential — lets you tell them the truth about the low risk, which is often what decides whether they reach out.',
-        'Because confidentiality protections do not apply to law enforcement.'
+        'Because the statutory confidentiality protections simply do not apply to law enforcement officers in the same way they apply to civilians, so you cannot honestly promise an officer that anything they say in peer support or an EAP session is truly protected, and the safest course is to warn them plainly that it may all be discoverable and reportable up the chain of command later on.'
       ],
     },
     {
@@ -425,7 +425,7 @@ function getEISupervisorQuestions() {
       options: [
         'Nothing specific — each officer is expected to handle whatever calls come their way.',
         'Manage the cumulative load: it is the accumulation, not a single call, that breaks officers, and you are positioned to see it. Track the exposure, rotate hard calls where possible, and build debriefs and check-ins into the unit\'s rhythm rather than reserving them for after a catastrophe.',
-        'Wait until the officer requests time off before taking any action.',
+        'Wait until the officer himself comes to you and requests time off before taking any action at all, on the reasoning that cumulative stress is a personal matter and it is not really the supervisor\'s place to intervene until the officer decides on his own that he needs a break from the work.',
         'Assign the officer additional high-stress calls to build tolerance.'
       ],
     },

@@ -257,7 +257,7 @@ function getLeadershipQuestions() {
         'The property owner\'s verbal request to officers is sufficient to authorize trespass enforcement.',
         'Any commercial property open to the public is exempt from trespass protections.',
         'The property must be posted with conspicuous signage, fenced to exclude intruders, or the subject must have received prior direct communication that entry is prohibited.',
-        'Repeated calls to police by the property owner establish the required notice.'
+        'Repeated calls to police by the frustrated property owner are themselves enough to establish the required notice, so once an owner has complained often enough the posting, fencing, and direct-communication elements no longer need to be separately shown.'
       ],
     },
     {
@@ -305,7 +305,7 @@ function getLeadershipQuestions() {
       text: 'What is the supervisory best practice at this stage?',
       options: [
         'Wait for a fourth occurrence before taking action — three is within normal variation.',
-        'Issue a formal written reprimand immediately to establish a record.',
+        'Issue a formal written reprimand immediately, before speaking with the officer at all, in order to establish a documented record right away, treating the paper trail as more important than first having a direct conversation about the pattern of lateness.',
         'Have a direct, documented conversation now: name the pattern, state the expectation clearly, and ask if there is something you should know. Give the officer the opportunity to respond before any formal action.',
         'Mention it casually to the officer — a formal conversation would be disproportionate for a performance issue.'
       ],
@@ -315,7 +315,7 @@ function getLeadershipQuestions() {
       text: 'What is the appropriate supervisory response?',
       options: [
         'Acknowledge their concern, explain what the policy requires and why it exists to the extent you know, and encourage them to raise concerns through the appropriate channel (union, chain of command, formal feedback process) if they believe it warrants review.',
-        'Agree with the officer and validate their frustration — it builds trust.',
+        'Agree openly with the officer and validate their frustration with the policy, on the view that taking their side builds trust and rapport, even though it means quietly undercutting a department policy that you are responsible for upholding in front of the rest of the squad.',
         'Tell the officer policies are not up for discussion and redirect them to their duties.',
         'Promise to raise the issue at the next supervisors\' meeting without follow-through.'
       ],
@@ -380,7 +380,7 @@ function getLeadershipSupervisorQuestions() {
       text: 'Why does holding this line matter beyond the single call?',
       options: [
         'It does not really matter — running names is harmless and clears scenes quickly.',
-        'Because the subjects might file complaints, which is the only real risk.',
+        'Because the subjects who were swept up in the suspicionless stop might later file formal complaints against the department, and the possibility of those complaints is really the only meaningful risk the situation actually presents to you and to the officer as the supervisor on duty.',
         'Because senior officers are required to make all stop decisions personally.',
         'Because the legal floor you hold becomes the floor your officers hold when you are off shift: Terry requires individualized reasonable suspicion, and allowing a suspicionless sweep both creates Fourth Amendment exposure now and trains the next violation on a call you will not be on.'
       ],
@@ -392,14 +392,14 @@ function getLeadershipSupervisorQuestions() {
         'Separate them immediately, move the conversation out of public view, hear each perspective individually, and then address the public conduct and the underlying disagreement as two distinct matters — without taking a public side.',
         'Let them work it out — interpersonal disputes are not a supervisor\'s concern.',
         'Side openly with whichever officer is correct about the call to settle it fast.',
-        'Document it and forward it up the chain without intervening.'
+        'Document the public argument between the two officers and forward the matter straight up the chain of command without personally intervening at the scene at all, on the view that a higher-ranking supervisor is better placed to sort out the underlying dispute.'
       ],
     },
     {
       scenario: 'An officer on your squad is frustrated with a command-level policy they believe is unfair. You do not have authority to change it.',
       text: 'What is the appropriate supervisory response?',
       options: [
-        'Agree with the officer and vent alongside them — it builds rapport.',
+        'Agree with the officer\'s complaint and vent alongside them about the policy, on the theory that commiserating openly builds rapport and shows the officer that you are on their side, even though the policy is one you are personally charged with enforcing.',
         'Acknowledge the concern, explain what the policy requires and why to the extent you know it, and route the officer to the proper channel — union, chain of command, or formal feedback — if they believe it warrants review.',
         'Tell the officer that policy is not open for discussion and send them back to work.',
         'Promise to raise it at the next supervisors\' meeting without intending to follow through.'
@@ -411,7 +411,7 @@ function getLeadershipSupervisorQuestions() {
       options: [
         'Adjust the report discreetly — protecting a developing officer\'s record is part of supporting your people.',
         'Have the officer rewrite it to say whatever keeps it off his record.',
-        'Approve it as written and say nothing, since it is not your report.',
+        'Approve the report as written and say nothing at all about the altered account, on the reasoning that it is ultimately the officer\'s own report and not yours, so the responsibility for what it says rests entirely with the officer who wrote and submitted it in the first place.',
         'Refuse: a report reflects what occurred, and altering it is unsworn falsification under 18 Pa. C.S. § 4904. Your rank makes that worse, not better — handle the underlying performance issue through coaching or progressive discipline, not by changing the record.'
       ],
     },
@@ -421,7 +421,7 @@ function getLeadershipSupervisorQuestions() {
       options: [
         'Document the report of pressure and act on it through the chain of command — if it is happening to this officer it is likely happening to others, and your response signals whether your people can trust the chain with the truth.',
         'Tell the officer to handle it themselves and avoid the senior officer.',
-        'Advise the officer to quietly change the report to avoid conflict.',
+        'Advise the officer to quietly change the report to smooth things over and avoid any further conflict with the person who applied the pressure, treating a quiet edit to the record as the path of least resistance for everyone involved here.',
         'Take no action unless the officer files a formal written complaint first.'
       ],
     },
@@ -439,7 +439,7 @@ function getLeadershipSupervisorQuestions() {
       scenario: 'You want to build the judgment of the officers on your squad over time, not just correct mistakes as they happen.',
       text: 'What distinguishes deliberate development from simply correcting errors?',
       options: [
-        'There is no difference — correcting errors as they occur is the whole of officer development.',
+        'There is really no difference between the two at all — correcting officers\' errors as they happen to occur, one at a time, is the entire substance of officer development, and there is nothing further a supervisor needs to do deliberately to build good judgment over the course of a career.',
         'Deliberate development creates judgment reps on purpose: debrief calls that went right and ask why, assign a capable officer the next ambiguous call and observe their reasoning, and name and praise the judgment you want — building officers who hold the line on shifts you do not work.',
         'Deliberate development means sending officers to more outside training and otherwise leaving them alone.',
         'Deliberate development is the responsibility of the training division, not the field supervisor.'

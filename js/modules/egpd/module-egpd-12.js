@@ -252,7 +252,7 @@ function getDeescalationQuestions() {
       text: 'Under Graham v. Connor, use of force is evaluated by:',
       options: [
         'The subjective good faith of the officer at the time of the incident.',
-        'Whether the officer followed department policy to the letter.',
+        'Whether the officer followed the department\'s own written policy to the letter in every respect, since strict compliance with the agency\'s internal procedures is ultimately what determines whether the force that was used will be considered acceptable.',
         'Whether the subject sustained injury as a result of the force.',
         'Whether the force used was objectively reasonable from the perspective of a reasonable officer on the scene, given the totality of circumstances.'
       ],
@@ -274,7 +274,7 @@ function getDeescalationQuestions() {
         'Has committed a crime and appears to have a mental health condition.',
         'Is severely mentally disabled and in need of immediate treatment — presenting a clear and present danger to themselves or others.',
         'Has been voluntarily diagnosed with a mental health condition.',
-        'Has refused to follow officer commands on a previous call.'
+        'Has at some earlier point refused to follow an officer\'s lawful commands on a previous and unrelated call, whether or not there is any current danger to themselves or to anyone else present at the scene right now.'
       ],
     },
     {
@@ -283,7 +283,7 @@ function getDeescalationQuestions() {
       options: [
         'Consider the suggestion — bystander observations can provide tactical intelligence.',
         'Use the taser immediately — public expectation for fast resolution creates accountability.',
-        'Ask the bystander to leave and then reassess whether the taser is appropriate.',
+        'Ask the interfering bystander to leave the immediate area and then reassess whether deploying the taser on the subject has now become appropriate, treating the removal of the onlooker as the thing that clears the way for the force decision.',
         'Maintain focus on the subject and direct a partner or bystander management unit to move the crowd back. Do not let bystander pressure influence tactical decision-making.'
       ],
     },
@@ -293,7 +293,7 @@ function getDeescalationQuestions() {
       options: [
         'Prioritize time, distance, and communication. Maintain a calm, unhurried tone. Keep the subject talking. Avoid ultimatums. Allow time for their emotional state to stabilize.',
         'Establish authority immediately — the subject needs to understand they have no option but to comply.',
-        'Attempt to enter the residence to remove the immediate threat of self-harm.',
+        'Attempt to make entry into the residence right away in order to physically remove the immediate threat of self-harm, treating a forced entry and a hands-on intervention as the fastest available way to resolve a barricaded self-harm situation.',
         'Advise dispatch that the situation requires SWAT — barricaded subjects are outside patrol scope.'
       ],
     },
@@ -302,7 +302,7 @@ function getDeescalationQuestions() {
       text: 'How should the prior history factor into your de-escalation approach?',
       options: [
         'Prior violence history automatically justifies a higher level of force readiness that overrides de-escalation.',
-        'Disregard prior history — each contact must be evaluated on its own without bias.',
+        'Disregard the subject\'s prior history entirely — each contact must be evaluated strictly on its own facts without any influence from what came before, so the officer should set aside everything already known about past encounters when deciding how to proceed.',
         'Prior history informs your situational awareness and tactical positioning without determining the force level applied to current behavior. De-escalate based on current conduct; maintain awareness based on background.',
         'Inform the subject that you are aware of their history so they understand your level of preparation.'
       ],
@@ -311,7 +311,7 @@ function getDeescalationQuestions() {
       scenario: 'After a successful de-escalation in which a § 302 involuntary commitment was avoided, you return to the station to complete your paperwork. A colleague asks: "Why did you spend 45 minutes on that call? You could have 302\'d them in 10 minutes and been done."',
       text: 'Which response best reflects the professional value of de-escalation?',
       options: [
-        '"You\'re right — I should have moved faster."',
+        '"You\'re right — looking back on it, I probably should have just moved things along faster and wrapped up the whole encounter much sooner than I actually did, instead of drawing it out the slow way I ended up doing on the call that afternoon."',
         '"It felt like the right call but I\'m not sure I can always do it that way."',
         '"Some calls just take longer — it\'s not always about speed."',
         '"The de-escalation worked. He left the scene calm and connected to follow-up services. That outcome is better for him and for the community, and it avoids an involuntary commitment that may not have been legally warranted."'
@@ -367,7 +367,7 @@ function getDeescalationSupervisorQuestions() {
         'Name the outcome as the win it is: a subject who left calm and connected to services, without unnecessary trauma or an involuntary commitment that may not have been warranted, is the best police work on the shift — and de-escalation only becomes a habit if the supervisor rewards it.',
         'Agree — efficiency matters, and a faster 302 would have cleared the call sooner.',
         'Stay neutral — it is not a supervisor\'s place to weigh in on how long a call took.',
-        'Counsel the officer to be faster next time to keep the unit available.'
+        'Counsel the officer to be faster and more efficient next time in order to keep the unit available for other calls, treating the length of the de-escalation as the problem to correct rather than recognizing the calm, no-force resolution as exactly the model outcome you want repeated by your officers.'
       ],
     },
     {
@@ -375,7 +375,7 @@ function getDeescalationSupervisorQuestions() {
       text: 'How should you assess the force decision on review?',
       options: [
         'Approve it — any subject holding a weapon justifies a drawn firearm.',
-        'Approve it because the officer felt unsafe.',
+        'Approve the use of force simply because the officer stated that he felt unsafe in the moment, on the view that an officer\'s subjective sense of danger is enough on its own to justify drawing a firearm at initial contact, without examining the actual threat picture the subject presented.',
         'Examine it under Graham v. Connor: a self-directed threat, a subject who is not advancing and is engaging verbally, does not present the threat picture that justifies a drawn firearm at initial contact, and de-escalation is required where tactically feasible.',
         'Refer it straight to discipline without review.'
       ],
@@ -385,7 +385,7 @@ function getDeescalationSupervisorQuestions() {
       text: 'How should the prior history factor into your review?',
       options: [
         'Prior violence history justifies a higher force level regardless of current behavior.',
-        'Disregard the history entirely as irrelevant bias.',
+        'Disregard the subject\'s prior history entirely as nothing more than irrelevant bias, treating everything known about the person\'s past conduct as something that must be excluded completely from any assessment of the force the officer chose to use on this call.',
         'Approve it because any history of violence makes force reasonable.',
         'Flag the reasoning: prior history informs positioning and awareness, not the force applied to current behavior. Graham evaluates the threat as it existed at the moment force was used, so importing history to justify present force is a review concern.'
       ],
@@ -416,7 +416,7 @@ function getDeescalationSupervisorQuestions() {
       options: [
         'Nothing — a 302 is always justified when an officer wants to resolve a call.',
         'Approve it because any mental health crisis automatically meets the 302 standard.',
-        'Approve it because the call was resolved without a use of force.',
+        'Approve the 302 simply because the call was ultimately resolved without any use of force, on the view that an outcome that avoided force is a good one regardless of whether the clear-and-present-danger standard for an involuntary commitment was actually met here.',
         'Confirm the 302 rests on a clear-and-present-danger observation under 50 P.S. § 7302: it is a civil tool for situations that require it, not a shortcut around a de-escalation that is working, and a 302 used for convenience is a review concern.'
       ],
     },
@@ -424,7 +424,7 @@ function getDeescalationSupervisorQuestions() {
       scenario: 'After a crisis call, an upset family member loudly demands an officer\'s badge number and announces an intent to file a complaint, in front of a gathered crowd.',
       text: 'What standard should you reinforce — and model when the supervisor offered is you?',
       options: [
-        'Have the officer refuse to engage and walk away to avoid escalation.',
+        'Have the officer refuse to engage with the complaining bystander at all and simply walk away from the exchange to avoid any escalation, treating disengagement and silence as the safest possible response to someone questioning the officer\'s conduct on the street in front of others.',
         'Have the officer explain in detail why every action was justified to settle the matter on scene.',
         'Provide name and badge number without hesitation, acknowledge the concern without defensiveness, explain the complaint process, and offer a supervisor — without litigating the incident on the sidewalk, since the body camera and documentation are where conduct is recorded.',
         'Tell the family member that complaints are not accepted at the scene.'
@@ -434,7 +434,7 @@ function getDeescalationSupervisorQuestions() {
       scenario: 'Your shift metrics count arrests and cleared calls but do not capture the standoff that ended with a subject voluntarily surrendering a weapon and getting treatment.',
       text: 'What is the supervisor\'s role in light of that gap?',
       options: [
-        'Accept the metrics as the complete picture of performance.',
+        'Accept the raw enforcement metrics as the complete and sufficient picture of the officer\'s performance, on the view that the numbers speak for themselves and there is no real need for the supervisor to separately recognize or defend de-escalation efforts that do not show up anywhere in the statistics at all.',
         'Close the gap by defending de-escalation explicitly — in debriefs, evaluations, and in answering the "why did it take so long" question — because recognition is what turns de-escalation from a slogan into a habit, and CIT-trained responses measurably reduce use of force in mental health contacts.',
         'Adjust the metrics to penalize calls that take longer than average.',
         'Leave recognition to formal awards and stay out of it day to day.'
