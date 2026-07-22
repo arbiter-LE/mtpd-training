@@ -192,10 +192,10 @@ function getSearchSeizureQuestions() {
       scenario: 'You stop a vehicle for a defective headlight. The driver consents to a search. During the search, you locate a locked box in the trunk.',
       text: 'Regarding the scope of the consent, which statement is most accurate under Pennsylvania law?',
       options: [
-        'General consent to search the vehicle includes all locked containers found inside.',
+        'General consent to search the vehicle automatically includes every locked container found inside it, with no separate clarification of scope required once consent is given.',
+        'The presence of a locked container by itself establishes probable cause to search it, so you may open it without additional consent or a warrant.',
         'The scope of consent is measured by objective reasonableness — you must clarify whether the consent extends to the locked box or obtain specific additional consent.',
-        'A locked container automatically establishes probable cause to search further without additional consent.',
-        'You may force the lock open only if you have reasonable suspicion that it contains contraband.'
+        'You may force the lock open based on reasonable suspicion alone that it contains contraband, without clarifying the scope of the consent that was given.'
       ],
     },
     {
@@ -203,8 +203,8 @@ function getSearchSeizureQuestions() {
       text: 'Regarding search incident to arrest, which action is lawful?',
       options: [
         'You may search the backpack immediately, as it was on his person at the time of arrest.',
-        'You may only search his person — a backpack is separate property requiring a warrant.',
-        'You must secure the backpack and apply for a warrant before opening it.',
+        'You may only search his person — a backpack is separate property that requires a warrant before it can be opened.',
+        'You must secure the backpack and apply for a warrant before opening it under any circumstances.',
         'You may search the backpack only if you observe a weapon-shaped object through the fabric.'
       ],
     },
@@ -212,60 +212,60 @@ function getSearchSeizureQuestions() {
       scenario: 'While on a consent search of an apartment, you observe a digital scale with white powder residue sitting openly on the kitchen counter.',
       text: 'Which doctrine authorizes seizure of the scale without a separate warrant?',
       options: [
-        'Fruit of the poisonous tree — you were there on a different basis and cannot seize unrelated items.',
-        'Plain view — you are lawfully present and the incriminating nature of the scale is immediately apparent.',
-        'You cannot seize it without a separate warrant because your consent only covered what the occupant authorized.',
-        'Exigent circumstances — the powder residue may be destroyed before a warrant can be obtained.'
+        'Fruit of the poisonous tree — you were there on a different basis and cannot seize items unrelated to that original purpose.',
+        'You cannot seize it without a separate warrant, because your consent only covered what the occupant specifically authorized.',
+        'Exigent circumstances — the powder residue may be destroyed before a warrant can be obtained, so seizure is justified on that basis.',
+        'Plain view — you are lawfully present and the incriminating nature of the scale is immediately apparent.'
       ],
     },
     {
       scenario: 'You stop a vehicle and develop probable cause to search based on the odor of marijuana. Your report later states only that the driver "appeared nervous" and you "detected an odor of marijuana."',
       text: 'What is the primary legal problem with this documentation in a Pennsylvania suppression hearing?',
       options: [
-        'Nervousness alone can never contribute to a probable cause determination in Pennsylvania.',
+        'Nervousness alone can never contribute to a probable cause determination in Pennsylvania, so any report that mentions it is legally defective on its face.',
         'The documentation uses conclusory language without the specific, articulable facts required to support the probable cause determination.',
-        'Odor-based probable cause is no longer recognized in Pennsylvania following recent legislative changes.',
-        'There is no legal problem — odor plus nervous behavior always establishes probable cause in Pennsylvania courts.'
+        'Odor-based probable cause is no longer recognized in Pennsylvania at all after recent legislative changes, so the odor observation cannot be used for any purpose.',
+        'There is no legal problem here — odor combined with nervous behavior always establishes probable cause in Pennsylvania courts without any further detail.'
       ],
     },
     {
       scenario: 'During a foot pursuit, a suspect tosses a bag into an open dumpster on the side of a private parking lot before you apprehend him.',
       text: 'Do you need a warrant to retrieve and search the bag?',
       options: [
-        'Yes — it is located on private property and requires a warrant before you can access it.',
         'No — the suspect voluntarily abandoned the bag, relinquishing his Fourth Amendment expectation of privacy in it.',
-        'No — the hot pursuit exception permits you to retrieve any evidence connected to the pursuit.',
-        'Yes — abandonment only applies to property left in public locations, not private property.'
+        'Yes — because the bag is located on private property, you must obtain a warrant before you can access it, regardless of how it came to be there.',
+        'No — the hot pursuit exception independently permits you to retrieve any evidence connected to the pursuit, so no other justification is required.',
+        'Yes — the abandonment doctrine only applies to property left in public locations and never to items discarded on private property.'
       ],
     },
     {
       scenario: 'You respond to a call and the homeowner gives you permission to search the living room for a missing item. While searching, you enter the attached garage without being told you could.',
       text: 'Was your entry into the garage within the scope of the given consent?',
       options: [
-        'Yes — consent to search the home includes all attached structures.',
-        'No — consent is limited to the areas specifically described or reasonably implied by the consent given.',
-        'Yes — garages are not protected under the Fourth Amendment because they are not living spaces.',
-        'No — you needed a separate warrant to enter any room not explicitly named.'
+        'Yes — consent to search the home automatically includes every attached structure, so the garage was fair game without any further permission.',
+        'Yes — garages are not protected under the Fourth Amendment because they are not living spaces, so no consent was required to enter at all.',
+        'No — you needed a separate warrant to enter any room or space in the home that the homeowner did not explicitly name when giving consent.',
+        'No — consent is limited to the areas specifically described or reasonably implied by the consent given.'
       ],
     },
     {
       scenario: 'You stop a pedestrian and develop reasonable suspicion during the encounter. Before conducting a pat-down, the person states: "I do not consent to any search."',
       text: 'Which statement most accurately reflects your authority at this point?',
       options: [
-        'The refusal eliminates all search authority — you cannot conduct a pat-down.',
+        'The refusal eliminates all of your search authority in this encounter, so you cannot conduct a pat-down of any kind once consent has been denied.',
         'If you have independent reasonable suspicion that the person is armed and dangerous, you may conduct a Terry pat-down for weapons regardless of their refusal to consent.',
-        'Refusing consent is itself a basis to detain the person further for investigation.',
-        'You may search only outer clothing because the person is already detained.'
+        'Refusing consent is itself a sufficient basis to detain the person further for investigation, independent of any other reasonable suspicion.',
+        'You may search only the outer clothing and nothing more, because the person has already been detained during the encounter.'
       ],
     },
     {
       scenario: 'You are executing a search warrant for a residential address. The warrant specifically authorizes a search for stolen electronics.',
       text: 'Which item would you be authorized to seize under the plain view doctrine during execution of this warrant?',
       options: [
-        'A locked safe — its contents might contain stolen electronics.',
+        'A locked safe, because its contents might contain the stolen electronics the warrant authorizes you to search for.',
+        'A cell phone sitting on the counter, because electronics of every kind are specifically listed in the warrant.',
         'A small bag of white powder on the kitchen counter with an incriminating nature immediately apparent.',
-        'A cell phone, because electronics are specifically listed in the warrant.',
-        'Documents on a desk that might identify co-conspirators.'
+        'Documents on a desk that might help identify co-conspirators involved in the theft under investigation.'
       ],
     },
   ];

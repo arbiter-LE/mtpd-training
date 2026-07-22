@@ -134,90 +134,90 @@ function getSearchSeizureSupervisorQuestions() {
       scenario: 'You are reviewing an arrest report before it is filed. The officer establishes solid probable cause to search a vehicle stopped on Route 29 — but the narrative shows the vehicle was stopped, the driver was detained, and a second unit was on scene. The officer then searched the vehicle at the roadside without a warrant. The report says nothing about exigent circumstances.',
       text: 'What should your review flag under MTPD Order 1.2?',
       options: [
-        'Nothing — probable cause alone authorizes a warrantless vehicle search.',
-        'The report is missing exigent circumstances. Order 1.2 and Commonwealth v. Alexander require probable cause AND exigency for a warrantless vehicle search; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.',
-        'Approve it — the probable cause is strong enough that exigency is unnecessary.',
-        'The only problem is that the officer did not photograph the vehicle before searching.'
+        'Nothing — probable cause by itself authorizes a warrantless vehicle search in Pennsylvania, so the report is complete as written and needs no exigency.',
+        'Approve it — the probable cause here is strong enough that establishing separate exigent circumstances is unnecessary and the search will hold up on that strength alone.',
+        'The only problem is that the officer did not photograph the vehicle before searching it; once that documentation is added the warrantless search is fully supported.',
+        'The report is missing exigent circumstances. Order 1.2 and Commonwealth v. Alexander require probable cause AND exigency for a warrantless vehicle search; with the scene controlled, the officer should have secured the vehicle and obtained a warrant.'
       ],
     },
     {
       scenario: 'An officer\'s report establishes probable cause to search a vehicle, but the warrantless search was conducted at the roadside on a controlled scene with no exigency stated. A colleague suggests you return the report for a more specific, detailed write-up of the probable cause so the search will hold up.',
       text: 'Is "rewrite the probable cause section" the correct supervisory response?',
       options: [
-        'Yes — once the probable cause is described with enough specificity, the search is justified.',
+        'Yes — once the probable cause is described with enough specificity and detail, the warrantless search becomes justified and the report will survive a suppression motion.',
         'No. The probable cause is not the weak point — the missing exigency Order 1.2 requires is. A better-written justification of the same warrantless search on a controlled scene does not cure it; address it as training and corrective action.',
-        'Yes — probable cause is never enough in Pennsylvania, so only the wording can save it.',
-        'No — simply approve it, because probable cause by itself authorizes the search.'
+        'Yes — probable cause is never sufficient on its own in Pennsylvania, so rewriting the narrative more persuasively is the only thing that can save this particular search.',
+        'No — you should simply approve it as written, because probable cause by itself authorizes the vehicle search and no further justification is needed.'
       ],
     },
     {
       scenario: 'Two arrest reports cross your desk the same shift. Both contain the phrase "the driver appeared nervous." In Report A, the underlying stop and search were lawful and well-supported; the officer simply wrote conclusions. In Report B, the search had no lawful basis to begin with.',
       text: 'What is the correct supervisory response to each?',
       options: [
-        'Return both for the same specificity rewrite — the problem in each is the conclusory language.',
-        'Approve both — "appeared nervous" is acceptable shorthand in a police report.',
         'Return Report A for a rewrite to the specificity standard; flag Report B as an unlawful search that better writing cannot cure. Assess legality first, then documentation.',
-        'Return Report B for a rewrite and approve Report A as written.'
+        'Return both reports for the same specificity rewrite, because the underlying problem in each one is the conclusory "appeared nervous" language and nothing more.',
+        'Approve both as written — "appeared nervous" is an acceptable and well-understood shorthand in a police report, so neither report needs to be returned.',
+        'Return Report B for a specificity rewrite and approve Report A as written, since the unlawful search can be cured with a more detailed narrative.'
       ],
     },
     {
       scenario: 'An officer\'s report documents a consent search of a vehicle on Route 29. The only entry regarding consent reads, in full: "Driver consented to the search." No Consent Form is attached and the narrative does not mention the mobile vehicle camera.',
       text: 'What is the appropriate supervisory action before this report is filed?',
       options: [
-        'Approve it — the officer stated that consent was given, which is all that is required.',
+        'Approve it — the officer stated in the narrative that the driver consented to the search, and that statement is all that department policy requires for a consent search.',
+        'Approve it as written, but verbally tell the officer to do a better and more thorough job of documenting consent the next time a situation like this comes up.',
         'Return it before filing — Order 1.2 requires the Search and Seizure Consent Form (Attachment D) or a mobile-vehicle-camera recording; absent either, the officer must provide a detailed written explanation of how consent was given, the officer\'s demeanor, whether weapons were drawn, and the subject\'s apparent condition.',
-        'Approve it but tell the officer to do better next time.',
-        'Reject the arrest entirely — a verbal consent search can never be documented sufficiently.'
+        'Reject the arrest entirely — a consent search supported only by a verbal exchange can never be documented sufficiently to survive a challenge, so the whole case fails.'
       ],
     },
     {
       scenario: 'During your review you find that an officer obtained a general verbal consent to "search the vehicle," then opened a locked container in the trunk and recovered contraband. The report does not show that the officer clarified whether the consent reached the locked container or that any other basis authorized opening it.',
       text: 'How should you assess the scope of this search?',
       options: [
-        'General consent to search a vehicle automatically includes every locked container inside it, so the search is clean.',
         'Under Florida v. Jimeno, consent scope is measured by objective reasonableness; a general consent does not automatically reach a locked container. Flag it as a suppression exposure and require the independent legal basis for opening it to be documented if one exists.',
-        'The locked container itself created probable cause, so consent scope is irrelevant.',
-        'The search is fine as long as the officer believed the consent covered the container.'
+        'General consent to search a vehicle automatically includes every locked container found inside it, so the officer\'s search of the locked container was clean and needs no further review.',
+        'The locked container itself created independent probable cause the moment the officer saw it, so the scope of the driver\'s consent is irrelevant to whether the search was lawful.',
+        'The search is fine as long as the officer genuinely believed the general consent covered the locked container, since an officer\'s good-faith belief controls the scope question.'
       ],
     },
     {
       scenario: 'An officer\'s report describes an inventory search of an impounded vehicle. Midway through, the narrative notes the officer located a small quantity of suspected narcotics in a closed console compartment — and then kept searching the rest of the vehicle and its containers for additional evidence.',
       text: 'What is the supervisory catch under MTPD Order 1.2?',
       options: [
-        'Nothing — an inventory search authorizes a complete search of the vehicle and everything in it.',
-        'Order 1.2 requires that once evidence is discovered during an inventory the officer stop the inventory and secure a search warrant before continuing; an inventory whose evident purpose becomes finding evidence is a pretext that circumvents the warrant requirement.',
-        'The officer should have arrested the registered owner before continuing the inventory.',
-        'The only issue is that the inventory was not logged on the Vehicle Inventory Report form.'
+        'Nothing is wrong here — an inventory search authorizes a complete search of the vehicle and everything inside it, so the officer was entitled to keep going after finding the narcotics.',
+        'The officer should have first arrested the registered owner of the vehicle before continuing the inventory search of the remaining compartments and containers.',
+        'The only issue is a paperwork one — the inventory was not logged on the Vehicle Inventory Report form, and once that is corrected the search itself is fine.',
+        'Order 1.2 requires that once evidence is discovered during an inventory the officer stop the inventory and secure a search warrant before continuing; an inventory whose evident purpose becomes finding evidence is a pretext that circumvents the warrant requirement.'
       ],
     },
     {
       scenario: 'A report documents a vehicle stop and a subsequent vehicle search on Route 29. There is no MDVARS recording associated with the stop in the file, and the narrative does not mention the in-car camera at all.',
       text: 'How should you handle this on review under MTPD Order 2.1?',
       options: [
-        'Approve it — MDVARS recordings are optional and the report stands on its own.',
+        'Approve it — MDVARS recordings are optional under department policy, and the written report stands on its own without any accompanying video of the stop.',
         'Order 2.1 makes MDVARS recording mandatory for vehicle stops and searches; treat the missing recording as an open question — require the officer to locate and document the recording, and if the system was not activated, address that as a separate policy issue rather than letting it ride.',
-        'Suppress the search yourself because the recording is missing.',
-        'Approve it but quietly delete the report so the gap is not discoverable.'
+        'Suppress the search yourself at the review stage, because the missing MDVARS recording alone renders the entire vehicle search legally invalid.',
+        'Approve it, but quietly delete the report from the system so that the recording gap can never be discovered by the defense later on.'
       ],
     },
     {
       scenario: 'Over a one-month span, the same officer has now submitted three vehicle-search reports that establish probable cause but never articulate the exigent circumstances Order 1.2 requires. You coached the officer verbally after the first one.',
       text: 'What is the appropriate supervisory response now?',
       options: [
-        'One more verbal reminder — he\'s a good officer and will come around.',
-        'Nothing further is needed; each stop is a separate event and he means well.',
-        'Move beyond a single coaching moment: documented corrective action and targeted training now, because a repeated pattern after coaching is a supervisory and training issue and an unaddressed pattern becomes the department\'s exposure — escalate as the pattern warrants.',
-        'Reassign the officer away from traffic enforcement permanently without any documentation.'
+        'Give him one more verbal reminder — he is a good officer, he means well, and he will almost certainly come around on his own after another informal conversation.',
+        'Nothing further is needed here; each of the three stops is a separate event, the officer means well, and there is no real pattern that requires a formal response.',
+        'Reassign the officer away from all traffic enforcement duties permanently and effective immediately, without creating any documentation of the reason for the move.',
+        'Move beyond a single coaching moment: documented corrective action and targeted training now, because a repeated pattern after coaching is a supervisory and training issue and an unaddressed pattern becomes the department\'s exposure — escalate as the pattern warrants.'
       ],
     },
     {
       scenario: 'An officer lawfully decided not to search a vehicle after a Route 29 stop because the basis was lacking. The CAD entry for the stop reads, in full: "Traffic stop — equipment violation — written warning issued — released."',
       text: 'Is this documentation acceptable on supervisory review?',
       options: [
-        'Yes — the officer made the correct legal decision not to search, so minimal documentation is sufficient.',
-        'Yes — no arrest was made, so no further documentation is required.',
+        'Yes — the officer made the correct legal decision not to search the vehicle, so a minimal CAD entry is entirely sufficient and nothing more needs to be recorded.',
+        'Yes — because no arrest was made and no evidence was seized during this stop, no further documentation beyond the brief CAD entry is required of the officer.',
         'No — the decision not to search can be legally correct while the documentation is still deficient. Hold the same standard as an arrest report: the officer\'s observations should be documented completely, because field intelligence that is not recorded does not exist.',
-        'No — the officer should have searched the vehicle to be thorough.'
+        'No — the officer should have gone ahead and searched the vehicle anyway in order to be thorough, and the documentation problem flows from that failure to search.'
       ],
     },
   ];
