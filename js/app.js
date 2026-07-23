@@ -1156,13 +1156,15 @@ function showDebrief() {
    supervisor reading addendum + quiz set when the module provides them.
    Everyone else — and any module without supervisor variants — falls back
    to the standard patrol content. One resolver, used at every read site. */
-// The track whose content is currently served. Admins can override their
-// own track via the "Viewing as" toggle (previewTrackOverride); everyone
-// else — including admins who haven't touched the toggle — uses their real
-// track, so Halteman/Mascio still get the graded supervisor track by default.
+// The track whose content is currently served. ONLY the platform owner
+// (Andrew, currentUser.isOwner via can_preview) can override their own track
+// via the "Viewing as" toggle (previewTrackOverride). Everyone else — including
+// agency admins (Morgan/Baird, Halteman/Mascio) — uses their real track, so a
+// supervisor gets the graded supervisor track with no toggle, and a patrol
+// officer gets patrol. Command staff no longer flip between the two.
 function effectiveTrack() {
   if (!currentUser) return null;
-  if (currentUser.role === 'admin' && previewTrackOverride) return previewTrackOverride;
+  if (currentUser.isOwner && previewTrackOverride) return previewTrackOverride;
   return currentUser.track || 'patrol';
 }
 function activeQuestions(m) {
@@ -1181,17 +1183,20 @@ function activeScenario(m) {
     : (m ? m.scenario : null);
 }
 
-// Admin-only "Viewing as" toggle. Renders a Patrol/Supervisor segmented
-// control into containerId (hidden for non-admins), highlighting the
-// effective track. Flipping it re-renders whatever the admin is viewing.
+// Owner-only "Viewing as" toggle. Renders a Patrol/Supervisor segmented
+// control into containerId (hidden for everyone but the platform owner),
+// highlighting the effective track. Flipping it re-renders what the owner is
+// viewing. Agency command staff (chiefs, sergeants) do NOT get this — they
+// see their own real track only; the preview is Andrew's authoring tool.
 function renderTrackToggle(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
-  // Only for admins, and only where the active department declares the
-  // supervisor track in the registry (features.supervisorTrack). Branch on
-  // the declared capability, never on the subdomain.
+  // Only for the platform owner (can_preview → isOwner), and only where the
+  // active department declares the supervisor track in the registry
+  // (features.supervisorTrack). Branch on the declared capability, never on
+  // the subdomain.
   const deptHasSupervisorTrack = !!(ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.features && ACTIVE_DEPARTMENT.features.supervisorTrack);
-  if (!currentUser || currentUser.role !== 'admin' || !deptHasSupervisorTrack) { el.style.display = 'none'; return; }
+  if (!currentUser || !currentUser.isOwner || !deptHasSupervisorTrack) { el.style.display = 'none'; return; }
   const cur = effectiveTrack();
   el.style.display = '';
   el.innerHTML =
