@@ -130,6 +130,7 @@ MTPD and EGPD are both active in the registry. EGPD agreement signed (Chief Halt
 | Main Street | Generic; use sparingly |
 | Green Lane (area) | Reference only — "Green Lane reservoir area", "Red Trail parking area at Green Lane" |
 | Geryville Pike | Confirmed by Andrew 2026-06-25 |
+| Campbell Road | Confirmed by Andrew 2026-07-23 (town was mislabeled "Harleysville" — corrected to Marlborough Township) |
 
 ### Approved Roads — EGPD (East Greenville Borough)
 

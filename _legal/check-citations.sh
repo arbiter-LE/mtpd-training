@@ -36,11 +36,15 @@ FILES=()
 if [ "$#" -gt 0 ]; then
   for f in "$@"; do FILES+=("$f"); done
 else
-  staged=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.(js|html)$' || true)
+  # .js/.html anywhere (includes api/grade.js) + the answer-key JSON, whose
+  # compiled form carries officer-facing case cites in grading feedback.
+  staged=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.(js|html)$|^_dev/answer-keys/.*\.json$' || true)
   if [ -n "$staged" ]; then
     while IFS= read -r f; do [ -n "$f" ] && FILES+=("$f"); done <<< "$staged"
   else
-    while IFS= read -r f; do [ -n "$f" ] && FILES+=("$f"); done < <(git ls-files 'js/*.js' 'index.html')
+    # Grading feedback (api/grade.js) + answer-key JSON are officer-facing legal
+    # content too — scan them, not just the client module/reading files.
+    while IFS= read -r f; do [ -n "$f" ] && FILES+=("$f"); done < <(git ls-files 'js/*.js' 'index.html' 'api/grade.js' '_dev/answer-keys/*.json')
   fi
 fi
 # keep only files that exist on disk

@@ -2218,7 +2218,7 @@ const SCENARIO_EI = {
 /* ── Scenario: Evidence & Chain of Custody ─ */
 const SCENARIO_EVIDENCE = {
   title: 'Evidence & Chain of Custody',
-  location: 'Residential Burglary — 412 E Campbell Road, Harleysville',
+  location: 'Residential Burglary — 412 E Campbell Road, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     start: {
@@ -2578,7 +2578,7 @@ const SCENARIO_WELLNESS = {
 /* ── Scenario: De-escalation ────────────── */
 const SCENARIO_DEESCALATION = {
   title: 'De-escalation',
-  location: 'Indian Head Shopping Center Parking Lot, Route 63, Harleysville',
+  location: 'Indian Head Shopping Center Parking Lot, Route 63, Marlborough Township, PA',
   totalDecisions: 3,
   nodes: {
     start: {
