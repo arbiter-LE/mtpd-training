@@ -259,8 +259,8 @@ function checkAnswerKeys(registry) {
 // set, fail if the correct answer sits in ONE position — or is the longest
 // option — in more than 60% of questions (the pass line is 70%, and balanced
 // content runs ~25%). This is the regression backstop for the 2026-07-22
-// platform-wide fix; see _database/HANDOFF-2026-07-22-length-tell-fix.md and
-// the _dev/length-tell-*.js / reposition-answers.js tooling.
+// platform-wide fix; see the _dev/length-tell-*.js / reposition-answers.js
+// tooling.
 function checkAnswerPatterns(registry) {
   console.log('\n▸ quiz answer-pattern integrity (no "pick B" / "pick the longest" tell)');
   const THRESH = 0.6;
