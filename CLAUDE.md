@@ -34,11 +34,13 @@ Multi-agency SaaS law enforcement training platform. Departments subscribe via s
 
 ## Business Context
 
-**The only metric that matters right now: Chief Halteman signs a paid agreement at the end of the 3-month pilot.** Everything during the pilot — officer completion rate, platform stability, content quality, swift problem resolution — serves that outcome. EGPD's experience is the proof of concept for everything that follows.
+**The priority is taking Arbiter LE to market.** Andrew has decided to pursue the broader PA market regardless of whether EGPD converts — the case for going to market is that the product is real, functions in a live department, and serves a genuinely underserved need, NOT that EGPD signs. The critical path to launch is **E&O insurance binding + the lawyer's sign-off** (no outreach until insurance is bound). Point "meantime" energy at GTM-readiness — the leave-behind rate card, the prospect list, the outreach sequence for the PA prospects — so Andrew can move the day insurance clears. Reframe adopted 2026-07-15.
+
+**EGPD's role (updated 2026-07-15).** The pilot's primary value — early product learning through direct chief/officer conversation — is largely **banked**; Andrew learned the most from the early mistakes and real-use feedback, not from completion metrics. EGPD conversion and officer completion rates are **no longer the north-star metric**, and their verdict does not gate the market decision. BUT EGPD is NOT going cold: keep the relationship warm because its remaining high-leverage asset is **Chief Halteman's reference to peer chiefs** — a working PA chief who runs this and will take a peer call is the strongest thing in the sales bag, worth more than the pilot revenue. Downshift from "convert them" to "preserve the relationship + earn one quote / peer intro." Don't over-index on their completion numbers.
 
 MTPD is Andrew's own department — free forever, the creation lab. It exists to test, iterate, and demonstrate. It is never a revenue source.
 
-Pricing, contract structure, and the model for Agency #3 will be informed by how the EGPD pilot goes. Don't push Andrew toward those decisions prematurely — lock in EGPD first.
+Pricing, contract structure, and the model for Agency #3 will be informed by the market response, not by EGPD's outcome alone. Avoid sunk-cost reasoning ("we've put too much in") as a basis for decisions — decide on forward market logic.
 
 When business questions come up (pricing strategy, contract terms, client communication, growth decisions), offer the advisor's perspective — what an experienced operator in this space would do — then let Andrew decide.
 
@@ -200,7 +202,7 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 ## Current Live State (as of 2026-06-15)
 
 - **MTPD** — Andrew's own department. **Free forever — never a revenue source.** Creation lab and reference site. Live; schedule started June 1. 12 modules, weekly unlock, biweekly due dates. RLS hardened 2026-06-12 (anon access closed; own-record + is_admin() model, mirrors EGPD).
-- **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). Agreement signed (Chief Halteman); pilot terms: free for 3 months, 12 modules. Registry entry active with its own Supabase project; **schedule starts June 17.** 12 scenario-based modules live in code (`js/modules/egpd/module-egpd-N.js`). Live at egpd.arbiterle.com (DNS + Vercel alias verified 2026-06-11). Roster seeded + verified; RLS recursion fix applied (2026-06-11). Outstanding: welcome-email infrastructure not built (build only when Andrew approves the send); reading content not yet authored (scenario-first fallback covers it); PENDING legal citations must be cleared before June 17.
+- **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). Agreement signed (Chief Halteman); pilot terms: free for 3 months, 12 modules. Registry entry active with its own Supabase project; **schedule starts June 17.** 12 scenario-based modules live in code (`js/modules/egpd/module-egpd-N.js`). Live at egpd.arbiterle.com (DNS + Vercel alias verified 2026-06-11). Roster seeded + verified; RLS recursion fix applied (2026-06-11). **Status update 2026-07-15:** all 12 modules have full authored reading content (`READING_*` → `contentHtml`) plus scenario + quiz + supervisor overlay — do NOT treat reading as unauthored (grep the module files before believing any tracker that says otherwise); welcome-email cron fired + self-unscheduled on launch (6/17); all legal citations cleared to GOOD LAW (per `_legal/citations-registry.md`, 7/6). Pilot risk now is officer ENGAGEMENT, not content or tech — conversion decision 2026-09-17.
 - **Email** — Full stack live: Cloudflare routing → Resend SMTP → Supabase auth emails from noreply@arbiterle.com.
 
 ---
