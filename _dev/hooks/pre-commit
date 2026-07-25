@@ -1,0 +1,45 @@
+#!/bin/sh
+# Arbiter LE pre-commit gate.
+# Runs all three quality gates before any commit. Each is silent when green
+# and prints its full output only on failure. Any red blocks the commit.
+#   1. citation firewall  — no unregistered/overruled legal cites
+#   2. multi-tenant smoke  — shared-engine purity, wiring, quiz answer-pattern
+#   3. scenario validator  — every scenario graph reaches a debrief, no orphans
+#
+# This hook is version-controlled (unlike .git/hooks). Git uses it because
+# core.hooksPath is set to _dev/hooks. On a fresh clone, re-enable with:
+#   git config core.hooksPath _dev/hooks
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT" || exit 2
+FAILED=0
+
+run_gate() {
+  # $1 = label, rest = command
+  label="$1"; shift
+  out="$("$@" 2>&1)"; code=$?
+  if [ "$code" -ne 0 ]; then
+    echo "✗ pre-commit gate failed: $label"
+    echo "$out"
+    echo "─────────────────────────────────────────────"
+    FAILED=1
+  fi
+}
+
+# Node is required for gates 2 and 3.
+if ! command -v node >/dev/null 2>&1; then
+  echo "✗ pre-commit: node not found on PATH — cannot run smoke/scenario gates."
+  echo "  Install node or commit with --no-verify only if you know why."
+  exit 2
+fi
+
+run_gate "citation firewall"      "$ROOT/_legal/check-citations.sh"
+run_gate "multi-tenant smoke"     node "$ROOT/_dev/smoke-departments.js"
+run_gate "scenario validator"     node "$ROOT/_dev/validate-scenarios.js"
+
+if [ "$FAILED" -ne 0 ]; then
+  echo "Commit blocked. Fix the gate(s) above, or bypass with 'git commit --no-verify' if you know why."
+  exit 1
+fi
+
+exit 0
