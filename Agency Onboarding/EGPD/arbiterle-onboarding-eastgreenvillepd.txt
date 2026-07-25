@@ -1,0 +1,38 @@
+================================================
+  ARBITER LE — AGENCY ONBOARDING SUBMISSION
+================================================
+Submitted: 6/10/2026, 2:59:47 PM
+
+--- AGENCY IDENTITY -------------------------
+Full Legal Name:   East Greenville Police Department
+Abbreviation:      EGPD
+State:             Pennsylvania
+Jurisdiction Type: Borough Police Department
+Platform URL:      eastgreenvillepd.arbiterle.com
+
+--- ROSTER ----------------------------------
+Roster File:       2026-06-05-officer-roster-template.xlsx
+SOP / Policy Link: https://www.google.com/?zx=1781117583060
+Admin Badge #s:    85C, 85S1
+
+--- LOCALIZATION ----------------------------
+Roads/Intersections:
+  1. Main St & 4th St
+  2. Main St & 6th St
+  3. Main St & 2nd St
+  4. 3rd St & State St
+
+Use of Force Policy:       (not provided)
+Motor Vehicle Pursuits:    (not provided)
+Domestic Violence Policy:  (not provided)
+Additional Notes:          (none)
+
+--- PROGRAM SETUP ---------------------------
+Requested Go-Live: 06/17/2026
+Billing Name:      Josh Halteman
+Billing Email:     jhalteman@egreenville.org
+
+================================================
+Send this file + roster spreadsheet + badge image to:
+andrew@arbiterle.com
+================================================
