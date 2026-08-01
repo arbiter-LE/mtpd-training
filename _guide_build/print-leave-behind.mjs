@@ -1,6 +1,6 @@
 /* Render leave-behind.html -> PDF via headless Chrome (DevTools Page.printToPDF).
    Build-time tool — client-facing leave-behind, review before sending.
-   Output lands at repo root as the dated chief leave-behind. */
+   Output lands in _marketing/collateral/ as the dated chief leave-behind. */
 import { spawn } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -8,7 +8,7 @@ import { setTimeout as sleep } from 'node:timers/promises';
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const HTML = pathToFileURL(fileURLToPath(new URL('./leave-behind.html', import.meta.url))).href;
-const OUT = fileURLToPath(new URL('../2026-07-10-arbiter-le-chief-leave-behind.pdf', import.meta.url));
+const OUT = fileURLToPath(new URL('../_marketing/collateral/2026-08-01-arbiter-le-chief-leave-behind.pdf', import.meta.url));
 const PORT = 9351;
 
 let msgId = 0; const pending = new Map();
