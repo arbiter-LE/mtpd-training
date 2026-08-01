@@ -161,6 +161,8 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 **Quiz traceability.** Every quiz question must be answerable solely from that module's reading or policy text. No outside knowledge, no trick questions. If an answer can't be traced to the module, it doesn't ship.
 
+**Answer-pattern integrity.** An officer must not be able to pass a quiz by gaming the answer shape rather than knowing the material. Two tells are enforced platform-wide (fixed 2026-07-22): the correct answer must not sit in one position (A/B/C/D) — nor be the longest option — in more than **60%** of a module's questions (pass line is 70%). Author distractors at plausible, comparable length to the correct answer, and vary the correct position across the quiz. `node _dev/smoke-departments.js` hard-fails on a violation; `_dev/reposition-answers.js` and `_dev/length-tell-*.js` are the remediation tooling. New content must be authored balanced — don't rely on a later fix pass.
+
 **Case law verification.** Any court case cited in a module (Graham v. Connor, Terry v. Ohio, etc.) must be verified for accurate holding and current status before inclusion. Never paraphrase a holding from memory.
 
 **Legal citations — the registry is law.** `_legal/citations-registry.md` is the single source of truth for every statute, case, and legal authority in the platform. Hard rules:
