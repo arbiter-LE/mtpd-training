@@ -9,6 +9,8 @@ This document is your master runbook for onboarding a new police department onto
 
 Estimated time from signed agreement to live platform: **2–4 hours of active operator work** spread over 1–3 days.
 
+> **Execution path:** the `onboard-agency` skill runs this end-to-end (Supabase project, registry entry, theme, module localization, deploy, live verification) — invoke it once the service agreement is signed and the Supabase project is ready. New agencies also arrive through the intake form (`api/onboard.js`), which auto-emails andrew@ with the collected details. This document remains the reference for *what* each phase does and *why*; the skill is *how* you run it.
+
 ---
 
 ## Information to Collect First
@@ -40,17 +42,18 @@ Before opening Claude or touching any code, get these items from the department 
 
 ---
 
-## ⛔ GATE — Before any PAYING agency goes live (Agency #3 onward)
+## ✅ GATE — Server-side integrity for paying agencies (Agency #3 onward)
 
 **Server-side quiz grading: ✅ CLOSED 2026-07-05 (commit `0b440eb`).** Quiz payloads in `js/modules/` now carry questions and options only; answer keys + feedback live in `_dev/answer-keys/<dept>.json` (never deployed) and compile into the serverless grader `api/grade.js`, which resolves the department from the request host and verifies the officer's Supabase JWT against that department's own project before grading. The smoke test hard-fails if a key ever reappears client-side.
 
-**Onboarding step this adds:** after authoring a new agency's modules, run `node _dev/build-answer-keys.js` — it extracts the new agency's keys, strips them from the client files, and regenerates the grader. A new agency's quizzes will not grade until this has been run.
+**Server-side completion write: ✅ CLOSED 2026-07-14.** The final completion write (score/pass) no longer originates client-side. `api/grade.js` re-grades from the hidden answer key and **upserts the completion row server-side** using each department's service key (`SUPABASE_SERVICE_KEY_<DEPT>`, set in Vercel, never in source). An officer can no longer forge their own completion record.
 
-**Remaining before the first paying agency** (smaller, but still gated):
-- The final completion write (score/pass) still originates client-side under the officer's own RLS-scoped session — a determined officer could forge their own completion record. Move that write server-side (edge function / RPC validates and writes).
-- Module reading content is still publicly fetchable from the static deploy (content exposure only — no keys, no PII). Decide whether to gate it behind auth for paying agencies.
+**Onboarding step the grading gate adds:** after authoring a new agency's modules, run `node _dev/build-answer-keys.js` — it extracts the new agency's keys, strips them from the client files, and regenerates the grader. A new agency's quizzes will not grade until this has been run.
 
-**Do not onboard a paying agency until the completion write is server-side.**
+**Lone residual — a decision, not a blocker:**
+- Module reading content is still publicly fetchable from the static deploy (content exposure only — no keys, no PII, no grading impact). Decide whether to gate it behind auth for paying agencies. This does **not** block onboarding; it's a content-exposure call to make deliberately per agency.
+
+**Technical gate status: clear.** Both integrity blockers (grading + completion write) are closed. The real gate before onboarding Agency #3 is the business one — E&O insurance bound + lawyer sign-off — not this.
 
 ---
 
@@ -180,15 +183,14 @@ I have a police department badge image at [path].
 Convert it to a PNG with a transparent background, ~200×200px, suitable for use as a nav logo on a dark background. Save it as assets/[subdomain]-badge.png.
 ```
 
-### 2C. Set the Program Start Date
+### 2C. Set the Program Start Date & Cadence
 
-Open [`js/config.js`](js/config.js) and update `SCHEDULE_START` to the department's contract start date:
+Schedule is **per-department data in the registry** — there is no global `SCHEDULE_START` to edit anymore. You already set both fields in the registry entry (2A):
 
-```js
-const SCHEDULE_START = new Date('[YYYY-MM-DD]T00:00:00');
-```
+- `scheduleStart` — the date the first module opens.
+- `cadence` — `{ unlockEveryDays, duePeriodDays, modulesPerPeriod, bufferPeriods }`. The standard paying-agency cadence is two modules/month: `{ unlockEveryDays: 14, duePeriodDays: 30, modulesPerPeriod: 2, bufferPeriods: 1 }`.
 
-> **Note:** This is currently a single global value. When multiple departments are live simultaneously, this will need to move into the department registry per entry. Flag this before onboarding department #2.
+`js/config.js` reads these off `ACTIVE_DEPARTMENT` at runtime — no per-agency edits to shared engine files. If `cadence` is omitted the engine falls back to a safe default, but always set it explicitly.
 
 ---
 
@@ -230,7 +232,7 @@ Return the full updated file content.
 js/modules/[subdomain]/
 ```
 
-Store localized module files here so the main files stay as defaults. *(This directory structure is not yet implemented — see Phase 5 note.)*
+Store this agency's module files here. This is the live architecture — every department's content lives in its own `js/modules/<subdomain>/` folder, loaded via the registry's `moduleScripts` list (no `index.html` edit needed). See `js/modules/egpd/` and `js/modules/mtpd/` as working references.
 
 ---
 
@@ -324,17 +326,19 @@ Run through this 48–72 hours after go-live:
 
 ---
 
-## Known Technical Debt to Address Before Department #2
+## Resolved Scaling Debt (kept for history)
 
-These are issues that will cause problems at scale — fix them before the second department goes live:
+Every item that once blocked multi-department scaling is now closed. Recorded here so the fixes aren't re-litigated:
 
-1. **`SCHEDULE_START` is global** — currently a single date in `config.js`. Needs to move into `DEPARTMENT_REGISTRY` as a per-department field so multiple departments can have different start dates.
+1. **~~`SCHEDULE_START` global~~ — RESOLVED.** `scheduleStart` and `cadence` are per-department fields in `DEPARTMENT_REGISTRY`; `config.js` reads them off `ACTIVE_DEPARTMENT` at runtime.
 
-2. **Module files are not per-department** — scenarios are baked into the main JS files with MTPD content. Either implement `js/modules/[subdomain]/` directory loading or add a localization layer to the registry.
+2. **~~Module files not per-department~~ — RESOLVED.** Content lives in `js/modules/<subdomain>/`, loaded via the registry's `moduleScripts` list. No shared-file forking.
 
-3. **Password hashing is client-side SHA-256** — acceptable for a pilot but not production-grade. Plan the Supabase Auth migration (partially drafted in `2026-05-29-supabase-auth-migration-plan.docx`) before department #3 or any public-facing deployment.
+3. **~~Client-side SHA-256 password hashing~~ — RESOLVED.** Migrated to Supabase Auth; RLS (own-record + `is_admin()`) hardened on both live projects.
 
-4. **No automated health checks per subdomain** — `checkly-health-check.js` exists but appears configured for one URL. Extend it to iterate the department registry.
+4. **~~No per-subdomain health checks~~ — RESOLVED.** A single Checkly check covers both live subdomains (Hobby plan).
+
+**Open item (a decision, not debt):** module reading content is publicly fetchable from the static deploy — see the GATE section above.
 
 ---
 
@@ -345,9 +349,10 @@ These are issues that will cause problems at scale — fix them before the secon
 | Department registry | `js/departments/registry.js` |
 | Supabase schema | `_database/2026-05-18-supabase-schema.sql` |
 | RLS setup | `_database/2026-05-31-rls-and-auth-uid.sql` |
-| Module list | `js/modules.js` |
-| Scenario files | `js/modules/module-1.js` through `module-12.js` |
-| Config / schedule | `js/config.js` |
+| Module list (per dept) | `js/modules/<subdomain>/modules-<subdomain>.js` |
+| Scenario / content files | `js/modules/<subdomain>/module-<subdomain>-N.js` |
+| Answer keys (never deployed) | `_dev/answer-keys/<subdomain>.json` → `node _dev/build-answer-keys.js` |
+| Config / schedule engine | `js/config.js` (reads `scheduleStart` + `cadence` from the registry) |
 | Vercel config | `vercel.json` |
-| Pilot agreements | `Arbiter LE - Pilot Program/` |
+| Agency documents | `Agency Onboarding/<DEPT>/` |
 | Rate card (current) | The chief leave-behind in `_marketing/collateral/` carries the current tiers — there's no separate rate card. Retired versions in `_archive/rate-cards/`. |
