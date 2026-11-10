@@ -7,14 +7,19 @@
 
 ---
 
-## 0. What changed (2026-07-06)
+## 0. What changed (2026-07-25)
+
+- **Reframe alignment (2026-07-15).** Updated §2.3's justification: a paid MSA template is still the highest-leverage item for the lawyer, but it no longer hangs on "Chief Halteman signing" as the one metric — the market push proceeds regardless (Agency #3+), and EGPD conversion is a bonus, not the plan. No legal substance changed; framing only.
+- **Insurance section needs reconciliation — FLAG for Andrew.** §2.3 and §3 describe only the RSUI MPL application "in negotiation, NOT bound (as of 6/18)." A newer **CNA quote (`_legal-docs/insurance/Arbiter LE CNA Quote.pdf`, 7/8)** now exists and isn't reflected here. Confirm which carrier path is active (CNA vs. RSUI) and update §3 — insurance binding is the current launch gate, so this section should be accurate. *(Not edited automatically — I won't state carrier facts I can't verify.)*
+
+## 0a. What changed (2026-07-06)
 
 - **Ran a contract-review pass** (Claude's `legal:triage-nda` / `legal:review-contract` skills) across every current legal document as a first-pass screen ahead of the lawyer.
 - **Fixed a real gap in the Pilot NDA template:** it protected Arbiter's IP/business info from the agency (unilateral, correctly) but had no clause protecting an agency's own general orders/SOPs from being shared or reused across agencies — the informal cross-agency-confidentiality rule this platform already runs by wasn't actually promised to the agency in writing. Added new **Section 4 — Confidentiality of Agency-Provided Materials** to `agreements/2026-06-05-pilot-nda.docx` (mutual obligation, mirrors Section 2/3 structure, explicitly excludes Officer Data so it doesn't collide with the DPA's terms). Template-only fix — EGPD never signed a separate NDA, so nothing retroactive to execute there. Subsequent sections renumbered 5–11.
 - **Independently corroborated §2.3 (no paid MSA yet) and §2.5 (confirm EGPD executed the DPA)** — the skill-based review surfaced the same two gaps already tracked below. Did not touch §2.5 / DPA execution this pass — Andrew is handling that directly.
 - This screening pass is not a substitute for Leah's review — flagging it as a first-pass only, per the skill's own disclaimer.
 
-## 0a. What changed (2026-06-22)
+## 0b. What changed (2026-06-22)
 
 - **Consolidated** all legal documents into `_legal-docs/`; retired the scattered `_business/` and `_legal-review/` shelves and the duplicate templates in `Agency Onboarding/`.
 - **Drafted the Platform User Agreement (Terms of Use)** — the item Andrew listed to the lawyer and the #1 structural gap (§2.1). Draft, for counsel.
@@ -68,7 +73,7 @@
 
 **2.2 — Privacy Policy exists in two places.** The live `privacy-policy.html` and Part I of the DPA `.docx` are maintained separately and already differ slightly in section numbering. Pick one canonical source; generate the other from it. Ask the lawyer to bless one version.
 
-**2.3 — No *paid* Service Agreement yet.** Only the no-cost pilot agreement exists. The pilot's "Path to Paid Engagement" clause defers paid terms to a future contract. **EGPD's pilot ends ~Sept 17.** A paid MSA template ready before then directly serves the one metric that matters — Chief Halteman signing. Highest-leverage item for the lawyer to draft.
+**2.3 — No *paid* Service Agreement yet.** Only the no-cost pilot agreement exists. The pilot's "Path to Paid Engagement" clause defers paid terms to a future contract. **EGPD's pilot ends ~Sept 17.** A paid MSA template is the highest-leverage item for the lawyer to draft — it's the instrument every *paying* agency signs (Agency #3+ under the market push), and the vehicle if EGPD converts. Not gated on EGPD's outcome (reframe 2026-07-15); needed either way before any paid engagement.
 
 **2.4 — Liability exposure on the core product.** Training → officer acts → agency sued → training gets pointed at. Ask the lawyer: are the disclaimers enforceable as-is, are they stronger now that the User Agreement makes them accepted terms, and which way should indemnification run in the *paid* agreement? (The User Agreement flags this in a bracketed note.)
 

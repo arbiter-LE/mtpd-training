@@ -97,7 +97,7 @@ Everything else: skip unless you have a specific reason.
 | Cadence | What | Trigger |
 |---|---|---|
 | Weekly (auto) | Full-repo backup to Google Drive | Mondays ~9 AM, launchd — verify it ran if in doubt |
-| Quarterly | Re-verify every GOOD-LAW citation vs. primary source | **Next due 2026-09-13** |
+| Quarterly | Re-verify every GOOD-LAW citation vs. primary source | Last pass 2026-11-10 · **next due 2027-02-10** |
 | Before every new agency | Full legal-registry pass; clear any PENDING cites that agency relies on | Part of `onboard-agency` |
 | 48–72h after any go-live | Post-onboarding checklist (login landed, no errors, admin sees roster) | Part of `onboard-agency` |
 

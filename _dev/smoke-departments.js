@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// Registry dates parse in local time; pin to the agencies' zone so results match on any machine.
+process.env.TZ = 'America/New_York';
 /* ──────────────────────────────────────────────────────────────────────
    Multi-tenant smoke test — run before shipping ANY change to a shared
    file (js/app.js, js/config.js, index.html, js/departments/registry.js).

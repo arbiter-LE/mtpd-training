@@ -34,6 +34,8 @@ Multi-agency SaaS law enforcement training platform. Departments subscribe via s
 
 ## Business Context
 
+**Current direction (updated 2026-11-10).** The project stalled after July: the legal packet went to a lawyer who never came back, and E&O insurance was never bound, so the market push never launched. Andrew's new direction is to bring Arbiter LE to **Aspirant Consulting Group** (aspirantllc.com — PA public-safety consultancy: policy development, PLEAC/CALEA accreditation, training; founders Madeline Lewis and Chief John String, both Lower Merion PD alumni). His stated goal: he would like to **work for Aspirant**, with Arbiter LE as the proof of what he builds. Whether Arbiter is offered as a licensed product, a partnership, or portfolio only is **not yet decided**. Don't hand over code, content, or IP terms until he decides. The sections below describe the July market-push plan and are kept as history; they don't override this paragraph.
+
 **The priority is taking Arbiter LE to market.** Andrew has decided to pursue the broader PA market regardless of whether EGPD converts — the case for going to market is that the product is real, functions in a live department, and serves a genuinely underserved need, NOT that EGPD signs. The critical path to launch is **E&O insurance binding + the lawyer's sign-off** (no outreach until insurance is bound). Point "meantime" energy at GTM-readiness — the leave-behind rate card, the prospect list, the outreach sequence for the PA prospects — so Andrew can move the day insurance clears. Reframe adopted 2026-07-15.
 
 **EGPD's role (updated 2026-07-15).** The pilot's primary value — early product learning through direct chief/officer conversation — is largely **banked**; Andrew learned the most from the early mistakes and real-use feedback, not from completion metrics. EGPD conversion and officer completion rates are **no longer the north-star metric**, and their verdict does not gate the market decision. BUT EGPD is NOT going cold: keep the relationship warm because its remaining high-leverage asset is **Chief Halteman's reference to peer chiefs** — a working PA chief who runs this and will take a peer call is the strongest thing in the sales bag, worth more than the pilot revenue. Downshift from "convert them" to "preserve the relationship + earn one quote / peer intro." Don't over-index on their completion numbers.
@@ -108,7 +110,7 @@ MTPD and EGPD are both active in the registry. EGPD agreement signed (Chief Halt
 
 **Check `git log --oneline -10` at the start of any session** involving routing, deployment, or anything structural. The revert history matters.
 
-**Weekly Claude Skills review.** Once a week, scan the available Claude Skills (the Skill tool list and any new plugins/skills Anthropic has released) and flag any that are applicable to Arbiter LE — content authoring, onboarding, legal/compliance, deployment safety, marketing, business ops, scheduling. Surface what's new or newly relevant, recommend whether to adopt it, and note anything that should replace a current manual workflow. This is a standing scan, not a one-time setup — the skill ecosystem changes, and staying current is an edge.
+**Claude Skills review — on request or after a long gap between sessions** (was weekly; never ran on that cadence). Scan the available Claude Skills (the Skill tool list and any new plugins/skills Anthropic has released) and flag any that are applicable to Arbiter LE — content authoring, onboarding, legal/compliance, deployment safety, marketing, business ops, scheduling. Surface what's new or newly relevant, recommend whether to adopt it, and note anything that should replace a current manual workflow. This is a standing scan, not a one-time setup — the skill ecosystem changes, and staying current is an edge.
 
 **Never compare one department's SOPs/general orders to another's.** When drafting or reviewing content for an agency, use only that agency's provided policy text as the source of truth. Don't cite, reference, or borrow framing from another agency's policy — each agency's content stands on its own.
 
@@ -169,7 +171,7 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 - **No legal citation ships unless it is in the registry as `GOOD LAW`** with a verification date inside the cadence window. Holdings are verified against a **primary source** (statute text on legis.state.pa.us / pacodeandbulletin.gov, or the court opinion on pacourts.us / official reporter) — **never written or "remembered" from model memory.** Cite the source URL in the registry.
 - **Run `_legal/check-citations.sh` before committing any content that touches a legal citation**, and resolve every flag. It hard-blocks overruled law taught as current (e.g. Commonwealth v. Gary) and known conflations (Act 57 of 2020 is the police **hiring/separation-database** law — never use-of-force or de-escalation; that is Act 59 of 2020). It runs automatically at pre-commit — the versioned hook `_dev/hooks/pre-commit` fires all three gates (citation firewall, multi-tenant smoke, scenario validator), silent when green and blocking the commit on any red. Git uses it via `core.hooksPath` (set to `_dev/hooks`); on a fresh clone re-enable with `git config core.hooksPath _dev/hooks`.
 - **Overruled/superseded authority may appear only in explicit "no longer good law" framing** — never as current law.
-- **Re-verification cadence:** re-verify all `GOOD LAW` entries **quarterly** (next due 2026-09-13) and **before every new agency onboard**; clear every `PENDING` row a new agency's content relies on before that agency goes live. EGPD's not-yet-live content still has `PENDING` cites — they must be verified before June 17.
+- **Re-verification cadence:** re-verify all `GOOD LAW` entries **quarterly** (last pass 2026-11-10; next due 2027-02-10; see the carry-over list at the bottom of the registry) and **before every new agency onboard**; clear every `PENDING` row a new agency's content relies on before that agency goes live.
 
 **No real names.** No real officer, suspect, or civilian names in scenarios. Fictional names only — and never a name matching a real member of the agency.
 
@@ -201,11 +203,13 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 ---
 
-## Current Live State (as of 2026-06-15)
+## Current Live State (as of 2026-06-15; partially updated 2026-11-10)
 
 - **MTPD** — Andrew's own department. **Free forever — never a revenue source.** Creation lab and reference site. Live; schedule started June 1. 12 modules, weekly unlock, biweekly due dates. RLS hardened 2026-06-12 (anon access closed; own-record + is_admin() model, mirrors EGPD).
 - **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). Agreement signed (Chief Halteman); pilot terms: free for 3 months, 12 modules. Registry entry active with its own Supabase project; **schedule starts June 17.** 12 scenario-based modules live in code (`js/modules/egpd/module-egpd-N.js`). Live at egpd.arbiterle.com (DNS + Vercel alias verified 2026-06-11). Roster seeded + verified; RLS recursion fix applied (2026-06-11). **Status update 2026-07-15:** all 12 modules have full authored reading content (`READING_*` → `contentHtml`) plus scenario + quiz + supervisor overlay — do NOT treat reading as unauthored (grep the module files before believing any tracker that says otherwise); welcome-email cron fired + self-unscheduled on launch (6/17); all legal citations cleared to GOOD LAW (per `_legal/citations-registry.md`, 7/6). Pilot risk now is officer ENGAGEMENT, not content or tech — conversion decision 2026-09-17.
-- **Email** — Full stack live: Cloudflare routing → Resend SMTP → Supabase auth emails from noreply@arbiterle.com.
+- **EGPD after the pilot (2026-11-10).** The 3-month pilot term ended around 2026-09-17. Conversion status is **unconfirmed**, so ask Andrew before you assume EGPD is paying, lapsed, or still active. The site still serves.
+- **Email** — Resend was retired 2026-07-12. Supabase Auth reset and confirm mail goes out via Google SMTP. Officer welcome and credential emails are sent **manually** from andrew@arbiterle.com, only with Andrew's explicit OK.
+- **Smoke test is timezone-sensitive.** Registry dates parse in local time, so the test must run in America/New_York. It pins this itself as of 2026-11-10; an un-pinned run on a UTC machine shows false `DEPT_SCHEDULE out of sync` failures.
 
 ---
 

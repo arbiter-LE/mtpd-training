@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// Registry dates parse in local time; pin to the agencies' zone so results match on any machine.
+process.env.TZ = 'America/New_York';
 /* ──────────────────────────────────────────────────────────────────────
    Answer-key extraction & server-side grading build.
 
