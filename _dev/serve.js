@@ -14,8 +14,22 @@ const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css
   '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml',
   '.json': 'application/json', '.pdf': 'application/pdf', '.ico': 'image/x-icon' };
 
-http.createServer((req, res) => {
+http.createServer(async (req, res) => {
   let p = decodeURIComponent((req.url || '/').split('?')[0]);
+  // Dev stand-in for the /api/content function: serves the built bundle for
+  // ?dept=<subdomain> with NO auth check (local only; _dev never deploys).
+  // Rebuilds first, so a content edit shows up on reload.
+  if (p === '/api/content') {
+    const dept = new URL(req.url, 'http://x').searchParams.get('dept');
+    try {
+      delete require.cache[require.resolve('./build-content')];
+      const text = require('./build-content').render();
+      const all = JSON.parse(text.match(/CONTENT = (.*);\n/)[1]);
+      if (!all[dept]) { res.writeHead(403); return res.end('{"error":"Unknown department"}'); }
+      res.writeHead(200, { 'content-type': 'application/json' });
+      return res.end(all[dept].body);
+    } catch (e) { res.writeHead(500); return res.end(JSON.stringify({ error: e.message })); }
+  }
   let file = path.normalize(path.join(ROOT, p));
   if (!file.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
   if (p.endsWith('/')) file = path.join(file, 'index.html');

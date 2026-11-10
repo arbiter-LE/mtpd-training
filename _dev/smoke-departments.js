@@ -303,6 +303,59 @@ function checkAnswerPatterns(registry) {
   if (clean) console.log('  ✓ every set holds correct-position and correct-is-longest under 60% (both were exploitable platform-wide before 2026-07-22)');
 }
 
+// Department content is never a public file: it ships only inside
+// /api/content, which hands it to a signed-in officer of that department.
+// Guards: js/modules is deploy-ignored, the shared page carries no agency
+// content or static module tags, every reference region has a slot to land
+// in, and the server bundle matches the sources byte for byte.
+function checkContentGate(registry) {
+  console.log('\n▸ content gate (module + reference content only after sign-in)');
+  let clean = true;
+  const bad = (msg) => { clean = false; fail('content', msg); };
+  const ignore = fs.readFileSync(path.join(ROOT, '.vercelignore'), 'utf8').split('\n').map(l => l.trim());
+  if (!ignore.includes('js/modules')) bad('.vercelignore must list js/modules — otherwise every agency\'s content is publicly fetchable again');
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  if (/\sdata-dept="/.test(html)) bad('index.html contains data-dept content — agency-specific content belongs in that agency\'s referenceFile, not the shared page');
+  if (/js\/modules\//.test(html.replace(/<!--[\s\S]*?-->/g, '').replace(/\/\*[\s\S]*?\*\//g, ''))) bad('index.html loads js/modules/ directly — content must come from /api/content after sign-in');
+  const { render, OUT_FILE, REGIONS, parseReference } = require('./build-content');
+  registry.forEach(d => {
+    if (!d.referenceFile) return;
+    const abs = path.join(ROOT, d.referenceFile);
+    if (!fs.existsSync(abs)) return bad(`${d.subdomain}: referenceFile missing on disk: ${d.referenceFile}`);
+    if (!d.referenceFile.startsWith('js/modules/' + d.subdomain + '/')) bad(`${d.subdomain}: referenceFile must live in js/modules/${d.subdomain}/`);
+    const regs = parseReference(fs.readFileSync(abs, 'utf8'), d.referenceFile);
+    Object.keys(regs).forEach(r => {
+      if (html.indexOf(`data-dept-slot="${r}"`) === -1) bad(`${d.subdomain}: reference region "${r}" has no data-dept-slot in index.html — it would never render`);
+    });
+    if (new RegExp('data-dept="(?!' + d.subdomain + '")').test(Object.values(regs).join(''))) bad(`${d.subdomain}: referenceFile contains another department's data-dept content`);
+  });
+  // Every file under api/ must actually deploy. A .vercelignore pattern
+  // with no slash matches at ANY depth (gitignore rules): "_content" (the
+  // root authoring-template folder) once silently stripped api/_content/
+  // and crashed /api/content in production (2026-11-10).
+  const globRe = (g) => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '[^/]*').replace(/\?/g, '[^/]') + '$');
+  const pats = ignore.filter(l => l && !l.startsWith('#') && !l.startsWith('!'));
+  const walk = (dir) => fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true })
+    .flatMap(e => e.isDirectory() ? walk(dir + '/' + e.name) : [dir + '/' + e.name]);
+  walk('api').forEach(rel => {
+    const segs = rel.split('/');
+    pats.forEach(raw => {
+      const pat = raw.replace(/\/$/, '');
+      const anchored = pat.startsWith('/') || pat.includes('/');
+      const p = pat.replace(/^\//, '');
+      const hit = anchored
+        ? segs.some((_, i) => globRe(p).test(segs.slice(0, i + 1).join('/')))
+        : segs.some(seg => globRe(p).test(seg));
+      if (hit) bad(`.vercelignore pattern "${raw}" strips ${rel} from the deploy — the function will crash; rename the file/folder or anchor the pattern with a leading /`);
+    });
+  });
+  let expected;
+  try { expected = render(); } catch (e) { return bad('content bundle could not build: ' + e.message); }
+  const actual = fs.existsSync(OUT_FILE) ? fs.readFileSync(OUT_FILE, 'utf8') : '';
+  if (actual !== expected) bad('api/_bundle/departments.js is out of date with js/modules / registry.js — run node _dev/build-content.js');
+  if (clean) console.log('  ✓ js/modules deploy-ignored · no agency content in index.html · bundle in sync for ' + registry.map(d => d.subdomain).join(', ') + ' (REGIONS: ' + REGIONS.join(', ') + ')');
+}
+
 console.log('Multi-tenant smoke test — building every registered department\n' + '─'.repeat(60));
 const registry = loadRegistry();
 console.log(`Registry: ${registry.length} department(s) — ${registry.map(d => d.subdomain).join(', ')}`);
@@ -312,6 +365,7 @@ checkSharedPurity();
 checkWiring();
 checkAnswerKeys(registry);
 checkAnswerPatterns(registry);
+checkContentGate(registry);
 
 console.log('\n' + '─'.repeat(60));
 if (failures === 0) { console.log('ALL DEPARTMENTS PASS ✓'); process.exit(0); }

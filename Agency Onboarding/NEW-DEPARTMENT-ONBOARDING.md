@@ -50,10 +50,9 @@ Before opening Claude or touching any code, get these items from the department 
 
 **Onboarding step the grading gate adds:** after authoring a new agency's modules, run `node _dev/build-answer-keys.js` — it extracts the new agency's keys, strips them from the client files, and regenerates the grader. A new agency's quizzes will not grade until this has been run.
 
-**Lone residual — a decision, not a blocker:**
-- Module reading content is still publicly fetchable from the static deploy (content exposure only — no keys, no PII, no grading impact). Decide whether to gate it behind auth for paying agencies. This does **not** block onboarding; it's a content-exposure call to make deliberately per agency.
+**Content gate: ✅ CLOSED 2026-11-10.** Module content and each agency's reference content (Legal Citations + agency glossary entries) are no longer public files. `js/modules/` is in `.vercelignore`; `node _dev/build-content.js` bundles each department into `api/_bundle/departments.js`, and `/api/content` hands a bundle only to a signed-in officer of the department named by the request host (officers row required — a bare self sign-up gets nothing). Before this, every module of every agency was fetchable without login, and one agency's host served another agency's files. **Onboarding step this adds:** after `build-answer-keys.js`, run `node _dev/build-content.js`; put the agency's citations/glossary entries in `js/modules/<subdomain>/reference-<subdomain>.html` and set `referenceFile` on its registry entry.
 
-**Technical gate status: clear.** Both integrity blockers (grading + completion write) are closed. The real gate before onboarding Agency #3 is the business one — E&O insurance bound + lawyer sign-off — not this.
+**Technical gate status: clear.** All three integrity gates (grading, completion write, content) are closed. The real gate before onboarding Agency #3 is the business one — E&O insurance bound + lawyer sign-off — not this.
 
 ---
 
@@ -352,6 +351,7 @@ Every item that once blocked multi-department scaling is now closed. Recorded he
 | Module list (per dept) | `js/modules/<subdomain>/modules-<subdomain>.js` |
 | Scenario / content files | `js/modules/<subdomain>/module-<subdomain>-N.js` |
 | Answer keys (never deployed) | `_dev/answer-keys/<subdomain>.json` → `node _dev/build-answer-keys.js` |
+| Module + reference content (never a public file) | `js/modules/<subdomain>/` (incl. `reference-<subdomain>.html`) → `node _dev/build-content.js` → `api/_bundle/departments.js`, served by `/api/content` after sign-in |
 | Config / schedule engine | `js/config.js` (reads `scheduleStart` + `cadence` from the registry) |
 | Vercel config | `vercel.json` |
 | Agency documents | `Agency Onboarding/<DEPT>/` |

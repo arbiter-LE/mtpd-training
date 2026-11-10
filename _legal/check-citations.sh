@@ -44,7 +44,7 @@ else
   else
     # Grading feedback (api/grade.js) + answer-key JSON are officer-facing legal
     # content too — scan them, not just the client module/reading files.
-    while IFS= read -r f; do [ -n "$f" ] && FILES+=("$f"); done < <(git ls-files 'js/*.js' 'index.html' 'api/grade.js' '_dev/answer-keys/*.json')
+    while IFS= read -r f; do [ -n "$f" ] && FILES+=("$f"); done < <(git ls-files 'js/*.js' 'js/*.html' 'index.html' 'api/grade.js' '_dev/answer-keys/*.json')
   fi
 fi
 # keep only files that exist on disk
