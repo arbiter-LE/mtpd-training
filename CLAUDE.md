@@ -66,6 +66,8 @@ This standard applies to everything: code, content, proposals, emails, UI copy. 
 
 **Multi-tenancy:** Each department gets a subdomain. Runtime detection in `js/departments/registry.js` maps subdomain → Supabase project. Each department has its own isolated Supabase project.
 
+**Content is sign-in gated (2026-11-10).** `js/modules/` is in `.vercelignore` — module and reference content is never a public file. `node _dev/build-content.js` bundles each department into `api/_content/departments.js`; `/api/content` serves a bundle only to a signed-in officer of the department named by the request host, and `config.js` `loadDepartmentContent()` injects it after sign-in. **Re-run `build-content.js` after any edit under `js/modules/`** (smoke test fails if stale). Agency-specific citations/glossary entries live in `js/modules/<dept>/reference-<dept>.html`, never in the shared `index.html`.
+
 ---
 
 ## Key Files — Check These First
@@ -77,6 +79,7 @@ This standard applies to everything: code, content, proposals, emails, UI copy. 
 | `js/modules/mtpd/modules-mtpd.js` | MTPD module list (titles, week numbers); `scenarios-mtpd.js` holds scenarios + quiz questions |
 | `js/modules/egpd/modules-egpd.js` | EGPD module list; per-module content in `module-egpd-N.js` |
 | `js/config.js` | Schedule engine, Supabase client init, state |
+| `api/content.js` + `_dev/build-content.js` | Sign-in-gated content delivery — the only way module content reaches a browser |
 | `vercel.json` | Routing rules — host-based rewrites |
 | `index.html` | Training platform entry point |
 | `Marketing/index.html` | Marketing site |
@@ -219,7 +222,7 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 2. Get signed service agreement
 3. Create Supabase project for the department
 4. Add entry to `js/departments/registry.js` (uncomment template), including its `moduleScripts` list and any `features` flags
-5. Create `js/modules/<subdomain>/` for its module content — it loads via the registry's `moduleScripts`, so **no `index.html` edit is needed**
+5. Create `js/modules/<subdomain>/` for its module content plus `reference-<subdomain>.html` (citations + agency glossary entries); list them as `moduleScripts` / `referenceFile` in the registry and run `node _dev/build-answer-keys.js` then `node _dev/build-content.js` — **no `index.html` edit is needed**
 6. Add badge to `assets/`
 7. Add subdomain CNAME in Cloudflare (proxy OFF)
 8. Add domain alias in Vercel

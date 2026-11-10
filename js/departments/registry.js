@@ -19,9 +19,11 @@ const DEPARTMENT_REGISTRY = [
     // 30-day grace period before "overdue". EGPD's live pilot cadence is
     // locked and unaffected.
     cadence: { unlockEveryDays: 14, duePeriodDays: 30, modulesPerPeriod: 2, bufferPeriods: 1 },
-    // Content scripts for this department, loaded in order by index.html.
-    // They define the same globals (MODULES, SCENARIO_*, get*Questions);
-    // only the active department's scripts load per page.
+    // Content scripts for this department, in load order. They define the
+    // same globals (MODULES, SCENARIO_*, get*Questions). They are NOT served
+    // as public files: _dev/build-content.js bundles them (with referenceFile)
+    // into api/_content/, and /api/content hands them only to a signed-in
+    // officer of THIS department. Re-run the build after any content edit.
     moduleScripts: [
       'js/modules/mtpd/scenarios-mtpd.js',
       'js/modules/mtpd/module-mtpd-1.js',    // reading consts + supervisor variants, per module
@@ -38,6 +40,7 @@ const DEPARTMENT_REGISTRY = [
       'js/modules/mtpd/module-mtpd-12.js',
       'js/modules/mtpd/modules-mtpd.js',     // builds MODULES from the consts above
     ],
+    referenceFile: 'js/modules/mtpd/reference-mtpd.html', // admin citations + agency glossary entries (delivered after sign-in)
     // Per-department capability flags. Shared code branches on these, never
     // on the subdomain. Absent/false = the feature is off for this department.
     // refresher: ungraded weekly retention nudge on login, drawn from completed
@@ -72,6 +75,7 @@ const DEPARTMENT_REGISTRY = [
       'js/modules/egpd/module-egpd-12.js',
       'js/modules/egpd/modules-egpd.js',   // builds MODULES from the above
     ],
+    referenceFile: 'js/modules/egpd/reference-egpd.html', // admin citations + agency glossary entries (delivered after sign-in)
     features: { supervisorTrack: true, refresher: true, dueDateReminders: true },   // EGPD: supervisor track + knowledge refresher + due-date reminders (engagement, enabled 2026-07-15)
   },
 ];
