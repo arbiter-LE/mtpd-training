@@ -146,52 +146,6 @@ if (_dept) {
   _sb = supabase.createClient(_dept.supabaseUrl, _dept.supabaseKey);
 }
 
-/* ── Department content (loaded after sign-in) ──
-   Module content and the agency's reference content (citations, glossary
-   entries) are not public files. /api/content returns this department's
-   bundle only to a signed-in officer of this department (host-derived
-   server-side). Each script runs as its own classic <script>, exactly as
-   the old static tags did, so the shared globals (MODULES, SCENARIO_*,
-   get*Questions) are defined the same way. Loaded once per page: the
-   scripts declare top-level consts, so they must never run twice. A
-   failed FETCH may be retried; once injection starts there is no retry. */
-let _deptContentPromise = null;
-let _deptContentInjected = false;
-
-function loadDepartmentContent(accessToken) {
-  if (_deptContentPromise) return _deptContentPromise;
-  _deptContentPromise = (async () => {
-    // Local dev server (_dev/serve.js) has no host-derived department, so
-    // it is told which bundle to serve. Production ignores the parameter.
-    const local = !/\.arbiterle\.com$/.test(window.location.hostname);
-    const url = '/api/content' + (local ? '?dept=' + encodeURIComponent(ACTIVE_DEPARTMENT.subdomain) : '');
-    const resp = await fetch(url, { headers: { authorization: 'Bearer ' + accessToken } });
-    if (!resp.ok) throw new Error('content HTTP ' + resp.status);
-    const bundle = await resp.json();
-    if (!bundle || bundle.department !== ACTIVE_DEPARTMENT.subdomain || !Array.isArray(bundle.scripts)) {
-      throw new Error('content bundle does not match this department');
-    }
-    _deptContentInjected = true;
-    bundle.scripts.forEach(s => {
-      const el = document.createElement('script');
-      el.text = s.code + '\n//# sourceURL=' + s.src;
-      document.body.appendChild(el);
-    });
-    const ref = bundle.reference || {};
-    document.querySelectorAll('[data-dept-slot]').forEach(slot => {
-      const html = ref[slot.getAttribute('data-dept-slot')];
-      if (html) slot.insertAdjacentHTML('beforebegin', html);
-    });
-    if (typeof MODULES === 'undefined' || !Array.isArray(MODULES) || !MODULES.length) {
-      throw new Error('content scripts did not define MODULES');
-    }
-  })();
-  _deptContentPromise.catch(() => {
-    if (!_deptContentInjected) _deptContentPromise = null; // network failure: allow a retry
-  });
-  return _deptContentPromise;
-}
-
 /* ── DOM-dependent department branding ── */
 document.addEventListener('DOMContentLoaded', function() {
   if (!_dept) {

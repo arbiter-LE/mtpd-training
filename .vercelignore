@@ -16,11 +16,6 @@ _marketing
 Agency Onboarding
 EGPD-Module-Review.pdf
 
-# Department training content — never a public file. Bundled into
-# api/_content/ by _dev/build-content.js and served only by /api/content
-# to a signed-in officer of that department.
-js/modules
-
 # Dated working notes are internal by default — brand docs, migration plans,
 # starter prompts, meeting notes. They live loose in root but must never deploy.
 # (email-signature.html and the brand/migration docs now live under _marketing

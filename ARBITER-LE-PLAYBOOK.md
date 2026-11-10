@@ -74,7 +74,6 @@ These are built for *this* business. They encode your guardrails so quality does
 - **`node _dev/smoke-departments.js`** — before shipping any change to a shared file. Also enforces answer-pattern integrity (no position/length tell) and server-side-only answer keys.
 - **`node _dev/validate-scenarios.js`** — after authoring/editing scenarios.
 - **`node _dev/build-answer-keys.js`** — after adding or changing any quiz question/answer. Moves keys server-side and regenerates the grader; quizzes won't grade until it's run.
-- **`node _dev/build-content.js`** — after ANY change under `js/modules/` (reading, scenarios, questions, reference citations/glossary). Module content is not a public file: this rebuilds the bundle `/api/content` serves to signed-in officers. Officers keep getting the old content until it's run; the smoke test blocks the commit if you forget.
 - **Show the diff** — before every commit to main. No exceptions.
 
 > These three gates (citations, smoke, scenarios) also fire automatically at pre-commit (`_dev/hooks/pre-commit` via `core.hooksPath`). That's a backstop — run them while iterating, don't discover a red at commit time.

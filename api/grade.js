@@ -9,8 +9,7 @@
 //    agency's client cannot request another agency's grading data.
 //  - The caller's Supabase JWT is verified against that department's own
 //    Supabase project before any grading happens (each department has an
-//    isolated project). No token, no grade. The caller must also have an
-//    officers row there — a bare auth account (self sign-up) gets nothing.
+//    isolated project). No token, no grade.
 //  - Response reveals the correct index + feedback only per answered
 //    question, mirroring what the quiz UI shows after a committed answer.
 //  - The supervisor question set is track-gated server-side (mirrors
@@ -91,18 +90,17 @@ export default async function handler(req, res) {
   const set = mod[track === 'supervisor' ? 'supervisor' : 'patrol'];
   if (!Array.isArray(set)) return res.status(400).json({ error: 'Unknown track' });
 
-  // The caller's own officers row (read with their JWT under RLS — no
-  // service key) is required on EVERY grade. A valid JWT alone is not
-  // enough: the Supabase projects allow self sign-up, so a stranger could
-  // otherwise create an auth account and walk the patrol answer key one
-  // question at a time. The same row then gates two client-asserted things:
+  // Two client-asserted things are gated here against the caller's own
+  // officers row (read with their JWT under RLS — no service key). The row
+  // is fetched only when a gate needs it, so the common path — patrol
+  // officer, open module — costs no extra request.
   //  - Track (mirrors effectiveTrack()): supervisor grading only for a
   //    supervisor-track officer or an admin; otherwise any signed-in
   //    officer could pull the supervisor answer key via the API.
   //  - Unlock date (mirrors isModuleAvailable()): a locked module grades
   //    only for the flagged preview account (officers.can_preview).
   const locked = moduleLocked(dept, moduleId);
-  {
+  if (track === 'supervisor' || locked) {
     const lookup = await fetchOwnOfficer(dept, token, authUser && authUser.id);
     if (!lookup.ok) return res.status(502).json({ error: 'Could not verify account access' });
     const officer = lookup.officer;

@@ -75,22 +75,6 @@ async function mountOfficerSession(authUid) {
     return;
   }
   const o = rows[0];
-
-  // Training content is delivered only now, after sign-in, and only for
-  // this department (see loadDepartmentContent in config.js). Without it
-  // there is nothing to render, so fail back to the login screen cleanly.
-  try {
-    const { data: { session } } = await _sb.auth.getSession();
-    await loadDepartmentContent(session && session.access_token);
-  } catch (e) {
-    console.error('content load failed —', e && e.message);
-    await _sb.auth.signOut();
-    showScreen('screen-login');
-    document.getElementById('login-error').textContent =
-      'Training content could not be loaded. Check your connection and sign in again. If this keeps happening, contact support@arbiterle.com.';
-    return;
-  }
-
   // `can_preview` is the platform-owner flag — set to exactly Andrew's
   // account on every department's Supabase project. It gates two owner-only
   // capabilities that must NEVER ride on the agency admin role: opening
@@ -173,12 +157,10 @@ document.getElementById('reset-pass-2').addEventListener('keydown', e => { if (e
 document.getElementById('reset-pass-1').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('reset-pass-2').focus(); });
 
 /* ── Department-gated reference content ────
-   Agency glossary entries and admin citation sections no longer live in
-   index.html: they arrive after sign-in in this department's own bundle
-   (loadDepartmentContent), so another agency's orders are never even
-   sent to this browser. This pass stays as a backstop for any data-dept
-   element added to the shared page by mistake (the smoke test also
-   blocks that), and labels the citation filter with this agency's name. */
+   Glossary entries and admin citation sections tagged data-dept
+   render only on that department's platform. Cross-agency
+   confidentiality: one agency's orders must never appear on
+   another agency's site. Untagged elements are shared. */
 (function gateDepartmentContent() {
   const sub = (typeof ACTIVE_DEPARTMENT !== 'undefined' && ACTIVE_DEPARTMENT) ? ACTIVE_DEPARTMENT.subdomain : null;
   document.querySelectorAll('[data-dept]').forEach(el => {
