@@ -945,7 +945,7 @@ const SCENARIO_CRISIS = {
         'Your direct approach and commanding tone cause the subject to snap upright. He begins yelling, pacing the porch, and moves toward the front door. You have lost the window for a calm contact. The situation has escalated from a distressed subject to a potential crisis standoff.',
         'For individuals in a mental health crisis, authoritative commands often trigger fight-or-flight responses that have nothing to do with compliance. The approach matters more than the words.'
       ],
-      legal: 'Pennsylvania\'s Mental Health Procedures Act (MHPA, 50 P.S. § 7302) authorizes involuntary examination when a person poses a clear and present danger to themselves or others. But getting to that point safely requires de-escalation, not escalation. PA Act 59 of 2020 requires officers to consider de-escalation whenever it is safe to do so.',
+      legal: 'Pennsylvania\'s Mental Health Procedures Act (MHPA, 50 P.S. § 7302) authorizes involuntary examination when a person poses a clear and present danger to themselves or others. But getting to that point safely requires de-escalation, not escalation. MTPD ALO 5.4 requires officers to consider and employ de-escalation techniques in all situations where it is safe and feasible to do so, and PA Act 59 of 2020 mandates annual training in de-escalation.',
       next: 'd2a'
     },
     'c1b': {
@@ -1012,7 +1012,7 @@ const SCENARIO_CRISIS = {
         'You reduce your own volume, step back slightly, and wait. Your partner arrives and mirrors your calm energy. After approximately three minutes, the subject stops pacing and sits back down. You re-engage with the same low-key approach: "That looked rough. You okay?" He begins to talk.',
         'The situation has returned to a workable contact. You can now work toward a voluntary evaluation or a 302 if criteria are met.'
       ],
-      legal: 'De-escalation is not just a technique — under PA Act 59 of 2020 and department policy, officers are required to consider de-escalation whenever it is safe and feasible. Documented de-escalation efforts protect the officer and the department.',
+      legal: 'De-escalation is not just a technique — under MTPD ALO 5.4, officers are required to consider and employ de-escalation techniques in all situations where it is safe and feasible to do so, and PA Act 59 of 2020 mandates annual training in it. Documented de-escalation efforts protect the officer and the department.',
       next: 'd3'
     },
     'd2b': {
