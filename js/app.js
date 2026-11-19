@@ -983,7 +983,7 @@ function renderScenarioNode(nodeId) {
           ${currentNode.narrative.map(p => `<p>${p}</p>`).join('')}
         </div>
       </div>
-      ${decisionInsightsEnabled() ? `<p class="decision-privacy-note">${icon('shield')}Your choices are recorded anonymously to show department-wide trends. No one — including command staff — can see which options you chose.</p>` : ''}
+      ${decisionInsightsEnabled() ? `<p class="decision-privacy-note">${icon('shield')}Your choices are recorded without your name or badge to show department-wide trends. Command staff see only department-wide percentages, never your individual choices.</p>` : ''}
       <div style="display:flex;justify-content:flex-end">
         <button class="btn-continue" onclick="renderScenarioNode('${currentNode.next}')">Proceed to Situation →</button>
       </div>`;
@@ -2081,7 +2081,7 @@ async function renderDecisionInsights() {
     el.innerHTML = '<div class="feedback-empty" style="color:#8b2635">Decision data could not be loaded. Refresh the page; if it continues, contact support@arbiterle.com.</div>';
     return;
   }
-  const note = `<div class="di-privacy">${icon('shield')}<div><strong>Anonymous by design.</strong> Only each officer's first run through a scenario is counted, and no officer's individual choices are stored or shown. A decision appears here once at least 3 officers have reached it.</div></div>`;
+  const note = `<div class="di-privacy">${icon('shield')}<div><strong>Department-wide view only.</strong> Choices are recorded without officer names or badges, and only each officer's first run through a scenario is counted. This view shows percentages, never an individual officer's choices. A decision appears here once at least 3 officers have reached it.</div></div>`;
   // Group rows by decision node, joined to the current module content.
   const nodes = {};
   rows.forEach(r => {

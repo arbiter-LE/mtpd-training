@@ -6,6 +6,12 @@
 //    timestamp, or sequence — see _database/<dept>/2026-11-19-<dept>-
 //    decision-intelligence.sql. The officer is used here only to enforce
 //    "first run only" and is never written next to a choice.
+//    LIMIT (review 2026-11-19): the scenario_runs row (badge) and the choice
+//    rows are written in one transaction, so a person with direct database /
+//    service-key access can link them via Postgres xmin. Command staff only
+//    ever get aggregates (decision_insights). Officer- and chief-facing copy
+//    must therefore promise "command staff see percentages only" — never
+//    "no one can see your choices".
 //  - First run only. record_scenario_run() (one transaction, service role)
 //    refuses a run if the officer already has a completion for the module
 //    or already contributed a run; this endpoint answers the same either way.

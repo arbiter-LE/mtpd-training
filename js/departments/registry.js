@@ -45,7 +45,7 @@ const DEPARTMENT_REGISTRY = [
     // on the subdomain. Absent/false = the feature is off for this department.
     // refresher: ungraded weekly retention nudge on login, drawn from completed
     // modules. Registry-gated so EGPD's live pilot is unaffected until enabled.
-    features: { supervisorTrack: true, refresher: true, dueDateReminders: true },  // MTPD: supervisor track + knowledge refresher + due-date reminders
+    features: { supervisorTrack: true, refresher: true, dueDateReminders: true, decisionInsights: true },  // MTPD: supervisor track + knowledge refresher + due-date reminders + decision insights (SQL run 2026-11-19, Andrew)
   },
   // ── Add new agencies below ────────────────
   {
