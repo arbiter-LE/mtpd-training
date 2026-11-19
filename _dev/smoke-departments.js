@@ -356,6 +356,47 @@ function checkContentGate(registry) {
   if (clean) console.log('  ✓ js/modules deploy-ignored · no agency content in index.html · bundle in sync for ' + registry.map(d => d.subdomain).join(', ') + ' (REGIONS: ' + REGIONS.join(', ') + ')');
 }
 
+// Every module anchors to at least one of its agency's own directives, and
+// that anchor is listed in the department's Legal Citations ("Module N"
+// table, a data-type="go" row). The Accreditation Evidence Packet and the
+// admin citations tab both read from there, so a module with no listed
+// directive prints "No agency directive cited" to an assessor.
+// The modules below predate this check and were left as-is by Andrew's
+// decision (2026-11-19) — do not add to this list to get a build through;
+// a new module with no governing directive goes to Andrew for a call.
+const DIRECTIVE_ANCHOR_GRANDFATHERED = {
+  mtpd: ['traffic-stops'],
+  egpd: ['egpd-search-seizure', 'egpd-crisis-intervention', 'egpd-leadership', 'egpd-traffic-stops'],
+};
+function checkDirectiveAnchors(registry) {
+  console.log('\n▸ directive anchors (every module lists ≥1 agency directive in its citations)');
+  const { parseReference } = require('./build-content');
+  let clean = true;
+  registry.forEach(d => {
+    const M = buildModules(d);
+    if (!M || !d.referenceFile) return;
+    const cites = parseReference(fs.readFileSync(path.join(ROOT, d.referenceFile), 'utf8'), d.referenceFile).citations || '';
+    const perModule = {};
+    cites.split('class="cite-module-section"').slice(1).forEach(sec => {
+      const n = parseInt((sec.match(/cite-module-header">\s*Module\s+(\d+)/) || [])[1], 10);
+      if (n) perModule[n] = (sec.match(/data-type="go"/g) || []).length;
+    });
+    const allow = DIRECTIVE_ANCHOR_GRANDFATHERED[d.subdomain] || [];
+    M.forEach(m => {
+      const n = perModule[m.weekNumber] || 0;
+      if (n === 0 && !allow.includes(m.id)) {
+        clean = false;
+        fail(d.subdomain, `module ${m.weekNumber} (${m.id}) lists no agency directive in its citations — anchor it to that agency's own order (verbatim), or stop and get Andrew's call; never invent or borrow one`);
+      }
+      if (n > 0 && allow.includes(m.id)) {
+        console.log(`  ℹ ${d.subdomain}: ${m.id} now cites a directive — remove it from DIRECTIVE_ANCHOR_GRANDFATHERED`);
+      }
+    });
+  });
+  if (clean) console.log('  ✓ every module cites ≥1 agency directive (grandfathered by decision 2026-11-19: ' +
+    Object.entries(DIRECTIVE_ANCHOR_GRANDFATHERED).map(([k, v]) => `${k} ${v.length}`).join(', ') + ')');
+}
+
 console.log('Multi-tenant smoke test — building every registered department\n' + '─'.repeat(60));
 const registry = loadRegistry();
 console.log(`Registry: ${registry.length} department(s) — ${registry.map(d => d.subdomain).join(', ')}`);
@@ -366,6 +407,7 @@ checkWiring();
 checkAnswerKeys(registry);
 checkAnswerPatterns(registry);
 checkContentGate(registry);
+checkDirectiveAnchors(registry);
 
 console.log('\n' + '─'.repeat(60));
 if (failures === 0) { console.log('ALL DEPARTMENTS PASS ✓'); process.exit(0); }
