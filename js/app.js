@@ -983,6 +983,7 @@ function renderScenarioNode(nodeId) {
           ${currentNode.narrative.map(p => `<p>${p}</p>`).join('')}
         </div>
       </div>
+      ${decisionInsightsEnabled() ? `<p class="decision-privacy-note">${icon('shield')}Your choices are recorded anonymously to show department-wide trends. No one — including command staff — can see which options you chose.</p>` : ''}
       <div style="display:flex;justify-content:flex-end">
         <button class="btn-continue" onclick="renderScenarioNode('${currentNode.next}')">Proceed to Situation →</button>
       </div>`;
@@ -1045,6 +1046,8 @@ function selectDecision(idx) {
     choiceText:     option.shortLabel || option.text,
     quality:        option.quality,
     outcomeClass:   currentNode.outcomeClass,
+    nodeId:         currentNodeId,   // decision intelligence (first-run, anonymous)
+    optionIndex:    idx,
     // The scenario's own sound option at this decision (verbatim from the
     // module data) — shown in the debrief next to a missed call.
     soundText:      (() => { const g = currentNode.options.find(o => o.quality === 'good');
@@ -1174,6 +1177,7 @@ function getDebriefLegalSummary() {
 function showDebrief() {
   showScreen('screen-debrief');
   window.scrollTo(0, 0);
+  submitDecisionRun();
 
   const steps = scenarioPath.map((step, i) => {
     const qualityClass = step.quality === 'good' ? 'step-good' : step.quality === 'bad' || step.quality === 'risky' ? 'step-bad' : 'step-neutral';
@@ -1552,6 +1556,8 @@ function renderAdminDashboard() {
   // agency admin (chiefs, sergeants). Defaults safe: hidden unless isOwner.
   const fbTabBtn = document.getElementById('admin-tab-feedback-btn');
   if (fbTabBtn) fbTabBtn.hidden = !(currentUser && currentUser.isOwner);
+  const diTabBtn = document.getElementById('admin-tab-insights-btn');
+  if (diTabBtn) diTabBtn.hidden = !decisionInsightsEnabled();
   renderAdminStats(); renderAdminTable(); renderAdminModules();
 }
 
@@ -1859,7 +1865,9 @@ function adminTab(tab, e) {
   document.getElementById('admin-tab-modules').classList.toggle('hidden', tab!=='modules');
   document.getElementById('admin-tab-citations').classList.toggle('hidden', tab!=='citations');
   document.getElementById('admin-tab-feedback').classList.toggle('hidden', tab!=='feedback');
+  document.getElementById('admin-tab-insights').classList.toggle('hidden', tab!=='insights');
   if (tab === 'feedback') renderAdminFeedback();
+  if (tab === 'insights') renderDecisionInsights();
 }
 
 function filterCitations(type, btn) {
@@ -2015,6 +2023,115 @@ async function renderAdminFeedback() {
   }).join('');
 }
 
+
+/* ── Decision Intelligence ─────────────────
+   Anonymous, aggregate-only record of officers' FIRST run through each
+   module's scenario, so command staff see where the department as a whole
+   misses the sound call. Registry-gated on features.decisionInsights
+   (absent = off). The server (/api/decisions) re-validates every choice,
+   enforces first-run-only, and never stores who chose what. */
+function decisionInsightsEnabled() {
+  return !!(ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.features && ACTIVE_DEPARTMENT.features.decisionInsights);
+}
+const _decisionRunsSent = new Set();
+function activeScenarioKey(m) {
+  const a = m && m._activeScenario;
+  if (!a) return null;
+  if (a === m.supervisorScenario) return 'supervisorScenario';
+  if (a === m.scenario2) return 'scenario2';
+  if (a === m.scenario) return 'scenario';
+  return null;
+}
+function submitDecisionRun() {
+  if (!decisionInsightsEnabled() || !currentUser || currentUser.isOwner || !currentModule || !_sb) return;
+  const done = completionData[currentUser.id] || {};
+  if (done[currentModule.id]) return;                      // not a first run
+  if (_decisionRunsSent.has(currentModule.id)) return;     // already sent this session
+  const scenarioKey = activeScenarioKey(currentModule);
+  const choices = scenarioPath.map(s => ({ nodeId: s.nodeId, optionIndex: s.optionIndex }));
+  if (!scenarioKey || !choices.length || choices.some(c => !c.nodeId || !Number.isInteger(c.optionIndex))) return;
+  _decisionRunsSent.add(currentModule.id);
+  const payload = {
+    moduleId: currentModule.id,
+    track: scenarioKey === 'supervisorScenario' ? 'supervisor' : 'patrol',
+    scenarioKey, choices,
+  };
+  // Fire-and-forget: training never waits on, or fails because of, analytics.
+  _sb.auth.getSession().then(({ data: { session } }) => {
+    if (!session) return;
+    return fetch('/api/decisions', {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
+      body: JSON.stringify(payload),
+    });
+  }).catch(() => {});
+}
+
+async function renderDecisionInsights() {
+  const el = document.getElementById('admin-decision-insights');
+  if (!el || !decisionInsightsEnabled()) return;
+  el.innerHTML = '<div class="feedback-empty">Loading decision data…</div>';
+  let rows;
+  try {
+    const { data, error } = await _sb.rpc('decision_insights');
+    if (error) throw error;
+    rows = data || [];
+  } catch (e) {
+    console.warn('ALE: decision insights load failed —', e && (e.message || e));
+    el.innerHTML = '<div class="feedback-empty" style="color:#8b2635">Decision data could not be loaded. Refresh the page; if it continues, contact support@arbiterle.com.</div>';
+    return;
+  }
+  const note = `<div class="di-privacy">${icon('shield')}<div><strong>Anonymous by design.</strong> Only each officer's first run through a scenario is counted, and no officer's individual choices are stored or shown. A decision appears here once at least 3 officers have reached it.</div></div>`;
+  // Group rows by decision node, joined to the current module content.
+  const nodes = {};
+  rows.forEach(r => {
+    const k = [r.module_id, r.track, r.scenario_key, r.node_id].join('|');
+    (nodes[k] = nodes[k] || { ...r, opts: {} }).opts[r.option_index] = { chose: Number(r.chose), quality: r.quality };
+  });
+  const cards = Object.values(nodes).map(n => {
+    const mod = MODULES.find(m => m.id === n.module_id);
+    const scen = mod && mod[n.scenario_key];
+    const node = scen && scen.nodes && scen.nodes[n.node_id];
+    if (!mod || !node || !Array.isArray(node.options)) return null;
+    const reached = Number(n.reached);
+    const sound = Object.values(n.opts).filter(o => o.quality === 'good').reduce((a, o) => a + o.chose, 0);
+    return { mod, node, track: n.track, reached, opts: n.opts, soundPct: reached ? Math.round(sound / reached * 100) : 0 };
+  }).filter(Boolean);
+  if (!cards.length) {
+    el.innerHTML = note + '<div class="feedback-empty">No decision data yet. Insights build automatically as officers complete scenarios for the first time.</div>';
+    return;
+  }
+  const qLabel = { good: 'Sound', neutral: 'Acceptable', risky: 'High risk', bad: 'Error' };
+  const card = c => {
+    const opts = c.node.options.map((o, i) => {
+      const d = c.opts[i] || { chose: 0, quality: o.quality };
+      const pct = c.reached ? Math.round(d.chose / c.reached * 100) : 0;
+      return `<div class="di-opt q-${d.quality}">
+        <div class="di-opt-head"><span class="di-opt-text">${o.shortLabel || o.text}</span><span class="di-opt-pct">${pct}%</span></div>
+        <div class="di-bar"><span style="width:${pct}%"></span></div>
+        <span class="di-q">${qLabel[d.quality] || d.quality}</span>
+      </div>`;
+    }).join('');
+    return `<div class="di-card">
+      <div class="di-card-head">
+        <div><div class="di-mod">${c.mod.title}${c.track === 'supervisor' ? ' · Supervisor track' : ''} · Decision ${c.node.decisionNumber || ''}</div>
+        <div class="di-question">${c.node.question}</div></div>
+        <div class="di-sound ${c.soundPct < 60 ? 'low' : c.soundPct < 80 ? 'mid' : 'high'}"><strong>${c.soundPct}%</strong>sound call<small>${c.reached} officers</small></div>
+      </div>
+      <div class="di-opts">${opts}</div>
+    </div>`;
+  };
+  const gaps = cards.filter(c => c.soundPct < 80).sort((a, b) => a.soundPct - b.soundPct).slice(0, 5);
+  const byModule = MODULES.map(m => {
+    const list = cards.filter(c => c.mod.id === m.id);
+    return list.length ? `<div class="di-module"><h3>${m.title}</h3>${list.map(card).join('')}</div>` : '';
+  }).join('');
+  el.innerHTML = note +
+    (gaps.length
+      ? `<div class="di-section"><h2>Where the department is missing the sound call</h2><p>Decisions where fewer than 80% of officers chose the sound option on their first run, lowest first. These are your roll-call and remedial training priorities.</p>${gaps.map(card).join('')}</div>`
+      : `<div class="di-section"><h2>No training gaps flagged</h2><p>At every decision with enough data, at least 80% of officers chose the sound option on their first run.</p></div>`) +
+    `<div class="di-section"><h2>All decisions by module</h2>${byModule}</div>`;
+}
 
 /* ── Officer detail (admin) ────────────────
    A chief's first question after the roster is "show me this officer."

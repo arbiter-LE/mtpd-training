@@ -277,6 +277,7 @@
       <div class="admin-nav-tabs" role="tablist" aria-label="Administration sections">
         <button class="admin-tab active" role="tab" aria-selected="true" aria-controls="admin-tab-compliance" onclick="adminTab('compliance', event)">Compliance Overview</button>
         <button class="admin-tab" role="tab" aria-selected="false" aria-controls="admin-tab-modules" onclick="adminTab('modules', event)">Module Summary</button>
+        <button class="admin-tab" id="admin-tab-insights-btn" role="tab" aria-selected="false" aria-controls="admin-tab-insights" onclick="adminTab('insights', event)" hidden>Decision Insights</button>
         <button class="admin-tab" role="tab" aria-selected="false" aria-controls="admin-tab-citations" onclick="adminTab('citations', event)">Legal Citations</button>
         <button class="admin-tab" id="admin-tab-feedback-btn" role="tab" aria-selected="false" aria-controls="admin-tab-feedback" onclick="adminTab('feedback', event)" hidden>Officer Feedback</button>
       </div>
@@ -305,6 +306,10 @@
             <tbody id="admin-modules-body"></tbody>
           </table>
         </div>
+      </div>
+
+      <div id="admin-tab-insights" class="hidden">
+        <div id="admin-decision-insights"></div>
       </div>
 
       <div id="admin-tab-feedback" class="hidden">

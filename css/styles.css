@@ -673,3 +673,38 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 640px) {
   .module-card .btn-module { width: 100%; margin-left: 0; padding: 11px 18px; }
 }
+
+/* ── Decision Insights (admin) + scenario privacy note ─────────────────── */
+.decision-privacy-note { display: flex; align-items: flex-start; gap: 2px; font-size: 12px; color: var(--text-muted); line-height: 1.5; margin: -6px 2px 4px; }
+.decision-privacy-note .ico { margin-top: 2px; color: var(--steel); }
+.di-privacy { display: flex; gap: 10px; align-items: flex-start; background: var(--steel-light); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; font-size: 13px; color: var(--text); line-height: 1.5; margin-bottom: 24px; }
+.di-privacy .ico { width: 18px; height: 18px; color: var(--steel); margin: 1px 0 0; }
+.di-section { margin-bottom: 32px; }
+.di-section > h2 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.di-section > p { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+.di-module > h3 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--steel); margin: 20px 0 10px; }
+.di-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.di-card-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
+.di-mod { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.di-question { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.4; }
+.di-sound { flex-shrink: 0; text-align: center; border-radius: var(--radius); padding: 8px 14px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; min-width: 104px; }
+.di-sound strong { display: block; font-size: 22px; letter-spacing: 0; line-height: 1.1; }
+.di-sound small { display: block; font-size: 10px; letter-spacing: .5px; text-transform: none; opacity: .8; margin-top: 2px; }
+.di-sound.low  { background: #fde4e8; color: #b02840; }
+.di-sound.mid  { background: #fff0d4; color: #8a5200; }
+.di-sound.high { background: #d4f5e5; color: #1a6b40; }
+.di-opts { display: flex; flex-direction: column; gap: 10px; }
+.di-opt { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; }
+.di-opt-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--text); grid-column: 1 / 2; }
+.di-opt-pct { font-weight: 700; font-variant-numeric: tabular-nums; }
+.di-bar { grid-column: 1 / 2; height: 6px; background: var(--navy-light); border-radius: 3px; overflow: hidden; }
+.di-bar span { display: block; height: 100%; border-radius: 3px; background: var(--steel-mid); }
+.di-opt.q-good .di-bar span { background: #2e8a52; }
+.di-opt.q-bad .di-bar span, .di-opt.q-risky .di-bar span { background: #c0304a; }
+.di-q { grid-column: 2; grid-row: 1 / span 2; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; background: var(--steel-light); color: var(--steel); }
+.di-opt.q-good .di-q { background: #d4f5e5; color: #1a6b40; }
+.di-opt.q-bad .di-q, .di-opt.q-risky .di-q { background: #fde4e8; color: #b02840; }
+@media (max-width: 640px) {
+  .di-card-head { flex-direction: column; }
+  .di-sound { align-self: flex-start; }
+}
