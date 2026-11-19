@@ -6,7 +6,7 @@ import { sendMail, cleanHeader, esc, GMAIL_USER, GMAIL_APP_PASSWORD } from './_l
 // The form degrades gracefully: if this endpoint fails, the chief still gets
 // the file plus the manual "email it to andrew@" instructions.
 //
-// Attachments (roster spreadsheet, badge image, signed documents) still
+// Attachments (roster spreadsheet, badge image, policy documents) still
 // arrive by email from the agency — this carries the form data only.
 
 export default async function handler(req, res) {
@@ -79,7 +79,7 @@ export default async function handler(req, res) {
 
         <div style="margin-top:24px;padding-top:24px;border-top:1px solid #e5e5e5">
           <a href="mailto:${esc(billingEmail)}?subject=Re: Arbiter LE Onboarding — ${esc(agencyShort || agencyName)}" style="background:#c8902a;color:#fff;text-decoration:none;padding:12px 28px;border-radius:3px;font-weight:700;font-size:13px;letter-spacing:1px">Reply to ${esc(billingName || 'the agency')}</a>
-          <p style="margin:16px 0 0;color:#8aabcc;font-size:12px">Still to arrive by email: roster spreadsheet, badge image, signed NDA + Service Agreement.</p>
+          <p style="margin:16px 0 0;color:#8aabcc;font-size:12px">Still to arrive by email: roster spreadsheet and badge image. No agreement goes out automatically: send one for signature yourself.</p>
         </div>
       </div>
     </div>
