@@ -76,7 +76,7 @@ const DEPARTMENT_REGISTRY = [
       'js/modules/egpd/modules-egpd.js',   // builds MODULES from the above
     ],
     referenceFile: 'js/modules/egpd/reference-egpd.html', // admin citations + agency glossary entries (delivered after sign-in)
-    features: { supervisorTrack: true, refresher: true, dueDateReminders: true },   // EGPD: supervisor track + knowledge refresher + due-date reminders (engagement, enabled 2026-07-15)
+    features: { supervisorTrack: true, refresher: true, dueDateReminders: true, decisionInsights: true },   // EGPD: supervisor track + knowledge refresher + due-date reminders (engagement, enabled 2026-07-15) + decision insights (SQL run + enabled 2026-11-19, Andrew)
   },
 ];
 
