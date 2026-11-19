@@ -1614,7 +1614,7 @@ function renderAdminStats() {
   document.getElementById('admin-stats-row').innerHTML = `
     <div class="stat-card"><div class="stat-label">Total Officers</div><div class="stat-value">${officers.length}</div></div>
     <div class="stat-card"><div class="stat-label">Fully Compliant</div><div class="stat-value success">${compliant}</div></div>
-    <div class="stat-card"><div class="stat-label">Officers With Overdue</div><div class="stat-value attention ${overdueCount ? '' : 'is-zero'}">${overdueCount}</div></div>
+    <div class="stat-card"><div class="stat-label">Overdue Officers</div><div class="stat-value attention ${overdueCount ? '' : 'is-zero'}">${overdueCount}</div></div>
     <div class="stat-card"><div class="stat-label">Completion Rate</div><div class="stat-value">${compRate}%</div></div>
     <div class="stat-card"><div class="stat-label">Avg Best Score</div><div class="stat-value">${avgScore ? avgScore+'%' : '—'}</div></div>`;
 }
