@@ -319,7 +319,7 @@ Run through this 48–72 hours after go-live:
 - [ ] At least one officer has logged in (check Supabase `completions` table for any rows)
 - [ ] No JavaScript errors in Vercel function logs
 - [ ] Admin has accessed the dashboard and can see their roster
-- [ ] Checkly health check passing (if configured for this department's URL)
+- [ ] Daily health check scheduled task created for this department (copy `egpd-daily-health-check` in the Claude app, swap subdomain + Supabase URL/key) and one "Run now" passes 6/6
 - [ ] Contract copy filed in `Arbiter LE - Pilot Program/` folder
 - [ ] Department added to your internal tracking (rate card tier, billing date, contact)
 
@@ -335,7 +335,7 @@ Every item that once blocked multi-department scaling is now closed. Recorded he
 
 3. **~~Client-side SHA-256 password hashing~~ — RESOLVED.** Migrated to Supabase Auth; RLS (own-record + `is_admin()`) hardened on both live projects.
 
-4. **~~No per-subdomain health checks~~ — RESOLVED.** A single Checkly check covers both live subdomains (Hobby plan).
+4. **~~No per-subdomain health checks~~ — RESOLVED.** Each live department has its own daily health-check scheduled task in the Claude app (`mtpd-daily-health-check`, `egpd-daily-health-check`). Checkly is not used.
 
 **Open item (a decision, not debt):** module reading content is publicly fetchable from the static deploy — see the GATE section above.
 
