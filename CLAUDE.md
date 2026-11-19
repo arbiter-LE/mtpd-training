@@ -79,7 +79,8 @@ This standard applies to everything: code, content, proposals, emails, UI copy. 
 | `js/modules/mtpd/modules-mtpd.js` | MTPD module list (titles, week numbers); `scenarios-mtpd.js` holds scenarios + quiz questions |
 | `js/modules/egpd/modules-egpd.js` | EGPD module list; per-module content in `module-egpd-N.js` |
 | `js/config.js` | Schedule engine, Supabase client init, state |
-| `api/content.js` + `_dev/build-content.js` | Sign-in-gated content delivery — the only way module content reaches a browser |
+| `api/content.js` + `_dev/build-content.js` | Sign-in-gated content delivery — the only way module content reaches a browser. `build-content.js` also emits `DECISION_INDEX` (every scenario decision's option qualities) for `api/decisions.js` |
+| `api/decisions.js` | Decision Insights recorder — anonymous, first-run-only scenario choices; writes via `record_scenario_run()` (SQL: `_database/<dept>/2026-11-19-<dept>-decision-intelligence.sql`) |
 | `vercel.json` | Routing rules — host-based rewrites |
 | `index.html` | Training platform entry point |
 | `Marketing/index.html` | Marketing site |
@@ -216,6 +217,7 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 - **EGPD (East Greenville PD, Borough, PA)** — **The pilot** (first paying agency). Agreement signed (Chief Halteman); pilot terms: free for 3 months, 12 modules. Registry entry active with its own Supabase project; **schedule starts June 17.** 12 scenario-based modules live in code (`js/modules/egpd/module-egpd-N.js`). Live at egpd.arbiterle.com (DNS + Vercel alias verified 2026-06-11). Roster seeded + verified; RLS recursion fix applied (2026-06-11). **Status update 2026-07-15:** all 12 modules have full authored reading content (`READING_*` → `contentHtml`) plus scenario + quiz + supervisor overlay — do NOT treat reading as unauthored (grep the module files before believing any tracker that says otherwise); welcome-email cron fired + self-unscheduled on launch (6/17); all legal citations cleared to GOOD LAW (per `_legal/citations-registry.md`, 7/6). Pilot risk now is officer ENGAGEMENT, not content or tech — conversion decision 2026-09-17.
 - **EGPD after the pilot (2026-11-10).** The 3-month pilot term ended around 2026-09-17. Conversion status is **unconfirmed**, so ask Andrew before you assume EGPD is paying, lapsed, or still active. The site still serves.
 - **Email** — Resend was retired 2026-07-12. Supabase Auth reset and confirm mail goes out via Google SMTP. Officer welcome and credential emails are sent **manually** from andrew@arbiterle.com, only with Andrew's explicit OK.
+- **Shipped 2026-11-19 (both departments, verified live):** shared-engine UI polish pass. Admin Completed / Completion Rate now count **passed** modules only (failed attempts used to inflate them). Also added: Up Next card, officer drill-down, debrief "Sound call," and Arbiter LE attribution on the printed report. **Decision Insights** is on for MTPD and EGPD (`features.decisionInsights`; SQL run and verified on both projects). It is aggregate-only and first-run-only, with nothing shown under 3 officers, and the copy promises only "command staff see department-wide percentages" (see `api/decisions.js` header for why). The **Accreditation Evidence Packet** (admin → Compliance Overview; print/PDF + CSV) is organized by the agency directives in its citations. It has no PLEAC/CALEA standard numbers until Andrew supplies an authoritative crosswalk. User guides (`_guide_build/guide*.html`) and their screenshots were refreshed to match the same day.
 - **Smoke test is timezone-sensitive.** Registry dates parse in local time, so the test must run in America/New_York. It pins this itself as of 2026-11-10; an un-pinned run on a UTC machine shows false `DEPT_SCHEDULE out of sync` failures.
 
 ---
@@ -231,6 +233,8 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 7. Add subdomain CNAME in Cloudflare (proxy OFF)
 8. Add domain alias in Vercel
 9. File its SQL under `_database/<subdomain>/` and agency documents under `Agency Onboarding/<DEPT>/`
+10. **Decision Insights:** Andrew runs the decision-intelligence SQL in the new project. It's the same SQL as `_database/egpd/2026-11-19-egpd-decision-intelligence.sql`; copy it under `_database/<subdomain>/` with the project ref changed. Verify (tables RLS-on with 0 policies, `record_scenario_run` service-role only, `decision_insights` admin-gated). Then set `features.decisionInsights: true` and run `build-content.js`. Don't set the flag before the SQL has run.
+11. **Directive anchors:** every module must list ≥1 of the agency's own orders in its citations table. The smoke test enforces this, and the Accreditation Evidence Packet reads from it.
 
 ---
 

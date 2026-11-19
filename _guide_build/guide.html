@@ -112,14 +112,16 @@
       <li>Platform use &amp; disclaimer</li>
     </ol>
     <ol class="p2"><li><b>Part 2 — For Administrators &amp; Supervisors</b></li></ol>
-    <ol style="margin-top:2px">
+    <ol start="14" style="margin-top:2px">
       <li>The administration dashboard</li>
-      <li>Reading the roster</li>
+      <li>Reading the roster &amp; officer records</li>
       <li>Module summary</li>
       <li>Printing a compliance report</li>
       <li>Previewing modules</li>
       <li>The supervisor track</li>
-      <li>Legal citations &amp; officer feedback</li>
+      <li>Legal citations</li>
+      <li>Decision Insights</li>
+      <li>Accreditation evidence packet</li>
     </ol>
   </div>
 
@@ -162,27 +164,30 @@
     <ul>
       <li><b>Assigned</b> — total modules assigned to you.</li>
       <li><b>Completed</b> — modules you've passed.</li>
-      <li><b>Overdue</b> — anything past its due date that still needs attention.</li>
+      <li><b>Overdue</b> — anything past its due date that still needs attention (shown in red when it's above zero).</li>
       <li><b>Avg. Score</b> — your average across passed modules.</li>
     </ul>
-    <h4>The two tabs</h4>
-    <p><b class="btn">TRAINING MODULES</b> shows every module as a card. <b class="btn">MY PROGRESS</b> shows your completed record in a table (Section 4).</p>
+    <h4>Up Next</h4>
+    <p>When you have training past due or coming due, a dark <b>Up Next</b> card at the top names the one module to do now — the oldest past-due module first, otherwise the next one due — with a <b class="btn btngold">START MODULE →</b> button.</p>
+    <h4>The three tabs</h4>
+    <p><b class="btn">TRAINING MODULES</b> shows every module as a card. <b class="btn">LIBRARY</b> groups the same modules into Completed, Available Now, and Upcoming. <b class="btn">MY PROGRESS</b> shows your assessment record in a table (Section 4).</p>
     <h4>Reading a module card</h4>
     <p>Each card shows the topic category, title, and a short description. The colored badge and button tell you its status:</p>
     <table class="kvs">
-      <tr><td>Complete</td><td>Passed. The button reads <b>✓ Review Module</b> — you can revisit it any time.</td></tr>
-      <tr><td>Available</td><td><b>Start Module →</b> — open and begin.</td></tr>
-      <tr><td>Due / Buffer</td><td>Open now, with a due date approaching. Don't let these slip to overdue.</td></tr>
+      <tr><td>Complete</td><td>Passed. The button reads <b>Review</b> — you can revisit it any time without affecting your recorded score.</td></tr>
+      <tr><td>Due [date]</td><td><b>Start Module →</b> — open now, with its due date shown. Within two days of the due date the badge turns red.</td></tr>
+      <tr><td>Past due · grace</td><td>The due date has passed; the badge shows how many grace days remain before it counts as <b>Overdue</b>.</td></tr>
+      <tr><td>Not Passed</td><td>Attempted but not yet passed. The button reads <b>Retake (2 of 3) →</b>, showing which attempt is next.</td></tr>
       <tr><td>Opens [date]</td><td>Locked until its scheduled open date — it unlocks automatically.</td></tr>
       <tr><td>Remediation</td><td>Three attempts used without passing. Your supervisor must review and authorize a retake.</td></tr>
     </table>
-    <div class="figure"><img src="screens/04-officer-dashboard.png" /><div class="cap"><b>The dashboard.</b> Summary cards across the top, progress bar, the two tabs, and module cards in each status.</div></div>
+    <div class="figure"><img src="screens/04-officer-dashboard.png" /><div class="cap"><b>The dashboard.</b> Summary cards, progress bar, the three tabs, the Up Next card, and module cards in each status.</div></div>
   </section>
 
   <section>
     <h3>4 · Tracking Your Progress</h3>
-    <p>Click the <b class="btn">MY PROGRESS</b> tab for a clean record of everything you've completed: each module's best score, attempts used, time spent, and the date you finished.</p>
-    <div class="figure"><img src="screens/05-progress-tab.png" /><div class="cap"><b>My Progress.</b> Your completed modules with best score, attempts, time, and completion date.</div></div>
+    <p>Click the <b class="btn">MY PROGRESS</b> tab for a clean record of every assessment you've taken: each module's best score, attempts used, time spent, the result (<b>Passed</b>, <b>Not Passed</b>, or <b>Remediation</b>), and the date.</p>
+    <div class="figure"><img src="screens/05-progress-tab.png" /><div class="cap"><b>My Progress.</b> Best score, attempts, time, result, and date for every module you've attempted.</div></div>
   </section>
 
   <section>
@@ -190,8 +195,8 @@
     <p>Tap <b>Start Module</b> on any available card. Every module opens with its reading content — the law, your department's policy, and the principles the scenario will test.</p>
     <ul>
       <li><b>Case-law and policy boxes</b> highlight the controlling authority. Read these carefully — the quiz draws only from this material.</li>
-      <li>The <b>Reading Time</b> clock in the corner tracks your time; it's informational.</li>
-      <li>In the top bar: <b class="btn">📖 REFERENCE</b> opens the reference library, <b class="btn">FLAG ISSUE</b> reports a content problem (Section 12), and <b>← Dashboard</b> returns home.</li>
+      <li>The <b>Time on module</b> clock in the corner tracks your time; it's informational.</li>
+      <li>In the top bar: <b class="btn">REFERENCE</b> opens the reference library and <b class="btn">FLAG ISSUE</b> reports a content problem (Section 12). <b>← Dashboard</b> returns home.</li>
       <li>Scroll to the bottom and press <b>Proceed to Scenario →</b> when you're ready.</li>
     </ul>
     <div class="figure"><img src="screens/06-module-reading.png" /><div class="cap"><b>Module reading.</b> Scenario framing, core principles, and verified case-law boxes. Controls sit in the top bar.</div></div>
@@ -200,6 +205,7 @@
   <section>
     <h3>6 · The Scenario Exercise</h3>
     <p>The scenario drops you into a realistic call. It opens with a <b>scene card</b> — time, conditions, your assignment, and location — followed by the situation as it unfolds. Press <b>Proceed to Situation →</b> to continue.</p>
+    <div class="callout"><b>Your choices and privacy.</b> On your first run through a module's scenario, your choices are recorded <b>without your name or badge</b> to show department-wide trends. Command staff see only department-wide percentages — never your individual choices. A note on the opening scene says so.</div>
     <div class="figure"><img src="screens/07-scenario-scene.png" /><div class="cap"><b>The opening scene.</b> Context for the call before any decisions are required.</div></div>
   </section>
 
@@ -208,26 +214,26 @@
     <p>At each <b>decision point</b>, you'll read the situation and choose from the numbered options. Pick the response you'd make on the street — the platform shows you the consequence of that choice and the legal reasoning behind it before moving on.</p>
     <ul>
       <li>Click the option you'd choose. The scenario responds, then continues to the next decision.</li>
-      <li><b class="btn">⏸ PAUSE</b> (top right) saves your place and returns you to the dashboard. When you come back, a banner offers to pick up right where you left off — handy if a call comes in mid-training.</li>
-      <li><b class="btn">📖 REFERENCE</b> opens the reference library without losing your place.</li>
+      <li><b class="btn">PAUSE</b> (top right) saves your place and returns you to the dashboard. When you come back, a banner offers to pick up right where you left off — handy if a call comes in mid-training.</li>
+      <li><b class="btn">REFERENCE</b> opens the reference library without losing your place.</li>
     </ul>
     <div class="figure"><img src="screens/08-scenario-decision.png" /><div class="cap"><b>A decision point.</b> The situation, the numbered options, and the <b>Pause</b> / <b>Reference</b> controls in the top bar.</div></div>
   </section>
 
   <section>
     <h3>8 · The Debrief</h3>
-    <p>After the final decision, the <b>debrief</b> reviews the path you took. Each decision is marked — <b>Sound Decision</b>, <b>Error Identified</b>, or noted — with the key legal principles summarized. From here you can <b>← Review Module</b> or <b>Proceed to Knowledge Assessment →</b>.</p>
-    <div class="figure"><img src="screens/09-debrief.png" /><div class="cap"><b>The debrief.</b> Your decision record with outcome badges, plus a legal-principles recap before the quiz.</div></div>
+    <p>After the final decision, the <b>debrief</b> reviews the path you took and shows how many of your decisions were sound. Each decision is marked — <b>Sound Decision</b>, <b>Error Identified</b>, <b>High Risk</b>, or noted — and wherever your choice differed, the <b>Sound call</b> is shown right beneath it. The key legal principles follow. From here you can <b>← Review Module</b> or <b>Proceed to Knowledge Assessment →</b>.</p>
+    <div class="figure"><img src="screens/09-debrief.png" /><div class="cap"><b>The debrief.</b> Your decision record with outcome badges and the sound call for any missed decision, plus a legal-principles recap before the quiz.</div></div>
   </section>
 
   <section>
     <h3>9 · The Knowledge Check</h3>
     <p>The assessment confirms what you took from the module. Every question is answerable from the reading you just completed.</p>
     <ul>
-      <li>Read the scenario and question, then select an answer (A–D).</li>
-      <li>The platform tells you immediately whether you were <b>right or wrong</b> and explains why, revealing the correct answer.</li>
+      <li>Read the scenario and question, then select an answer (A–D). You can change your selection until you press <b class="btn btngold">SUBMIT ANSWER</b>.</li>
+      <li>Once submitted, the platform tells you immediately whether you were <b>right or wrong</b> and explains why, revealing the correct answer.</li>
       <li>Press <b>Next Question →</b> to continue; on the last question it reads <b>Submit Assessment →</b>.</li>
-      <li><b class="btn">⏸ PAUSE</b> saves your progress and returns you to the dashboard — your place is held for when you come back.</li>
+      <li><b class="btn">PAUSE</b> saves your progress and returns you to the dashboard — your place is held for when you come back.</li>
       <li>The running <b>Score</b> and progress bar track how you're doing. You need <b>70%</b> to pass.</li>
     </ul>
     <div class="figure"><img src="screens/10-quiz-question.png" /><div class="cap"><b>A quiz question.</b> Question counter, running score, answer choices, and the <b>Pause</b> / <b>Reference</b> controls.</div></div>
@@ -239,7 +245,7 @@
     <p>When you submit, you'll see your score, whether you passed, and a breakdown of correct answers and time spent.</p>
     <table class="kvs">
       <tr><td>Passed (70%+)</td><td>Your score is recorded and the module shows <b>Complete</b> on your dashboard.</td></tr>
-      <tr><td>Did not pass</td><td>You can retake it — the dots show how many of your three attempts you've used.</td></tr>
+      <tr><td>Did not pass</td><td>Choose <b>Review Module</b> to go back over the material, or retake it — the dots show how many of your three attempts you've used.</td></tr>
       <tr><td>Three attempts used</td><td>The module flags for <b>remediation</b>. Your supervisor reviews your record and authorizes a retake before you continue.</td></tr>
     </table>
     <div class="figure"><img src="screens/12-results-pass.png" /><div class="cap"><b>Results.</b> Score ring, attempt indicators, and your correct/total/time summary. <b>Return to Dashboard</b> takes you home.</div></div>
@@ -247,7 +253,7 @@
 
   <section>
     <h3>11 · The Reference Library</h3>
-    <p>The <b class="btn">📖 REFERENCE</b> button — available throughout the platform — opens a searchable library of the cases, statutes, terms, and policy references used in training. Use the search box or filter by <b>Case Law</b>, <b>Terms</b>, or <b>SOPs</b>.</p>
+    <p>The <b class="btn">REFERENCE</b> button — available throughout the platform — opens a searchable library of the cases, statutes, terms, and policy references used in training. Use the search box or filter by <b>Case Law</b>, <b>Terms</b>, or <b>SOPs</b>.</p>
     <div class="figure"><img src="screens/13-reference-glossary.png" /><div class="cap"><b>Reference &amp; glossary.</b> Search and filter verified legal citations and key terms any time.</div></div>
   </section>
 
@@ -273,43 +279,60 @@
     <h3>14 · The Administration Dashboard</h3>
     <p>The top of the dashboard summarizes the whole department at a glance:</p>
     <ul>
-      <li><b>Total Officers</b>, <b>Fully Compliant</b> (passed everything assigned), <b>Overdue</b>, <b>Completion Rate</b>, and <b>Avg Score</b>.</li>
-      <li>Four tabs organize the detail: <b>Compliance Overview</b>, <b>Module Summary</b>, <b>Legal Citations</b>, and <b>Officer Feedback</b>.</li>
-      <li><b class="btn">BROWSE MODULES</b> (top right) lets you preview the training as officers see it (Section 18).</li>
+      <li><b>Total Officers</b>, <b>Fully Compliant</b> (passed everything assigned), <b>Officers With Overdue</b>, <b>Completion Rate</b> (modules <i>passed</i> across the roster — a failed attempt does not count), and <b>Avg Best Score</b>.</li>
+      <li>Four tabs organize the detail: <b>Compliance Overview</b>, <b>Module Summary</b>, <b>Decision Insights</b> (Section 21), and <b>Legal Citations</b>.</li>
+      <li><b class="btn">BROWSE MODULES</b> (top right) shows the training as officers see it (Section 18).</li>
     </ul>
-    <div class="figure"><img src="screens/16-admin-dashboard.png" /><div class="cap"><b>Administration dashboard.</b> Department-wide stats, the four tabs, the status filter, and the roster table.</div></div>
+    <div class="figure"><img src="screens/16-admin-dashboard.png" /><div class="cap"><b>Administration dashboard.</b> Department-wide stats, the four tabs, the status filter, the report buttons, and the roster table.</div></div>
   </section>
 
   <section>
     <h3>15 · Reading the Roster</h3>
-    <p>The <b>Compliance Overview</b> table lists every officer with badge number, modules assigned and completed (with attempt notes), average score, last activity, and a status badge — <b>Complete</b>, <b>In Progress</b>, <b>Overdue</b>, or <b>Remediation</b>. Officers in <b>remediation</b> are highlighted so they're easy to spot. Use the <b>Filter</b> dropdown to narrow the list by status.</p>
+    <p>The <b>Compliance Overview</b> table lists every officer with badge number, modules assigned and passed (with attempt notes), average best score, last activity, and a status badge — <b>Complete</b>, <b>In Progress</b>, <b>Overdue</b>, or <b>Remediation</b>. Officers in <b>remediation</b> are highlighted so they're easy to spot. Use the <b>Filter</b> dropdown to narrow the list by status.</p>
+    <p><b>Click any officer</b> to open their full training record: every module with best score, attempts, status, and date.</p>
   </section>
 
   <section>
     <h3>16 · Module Summary</h3>
-    <p>The <b>Module Summary</b> tab flips the view from officers to modules: for each module you see how many officers are assigned, the completion rate, the average score, and its due-date status. This is the fastest way to see which topics the department is keeping up with — and which need a nudge.</p>
+    <p>The <b>Module Summary</b> tab flips the view from officers to modules: for each module you see how many officers are assigned, the completion rate (officers who <i>passed</i>), the average best score, and its due-date status. This is the fastest way to see which topics the department is keeping up with — and which need a nudge.</p>
     <div class="figure"><img src="screens/17-admin-modules.png" /><div class="cap"><b>Module Summary.</b> Completion rate and average score per module, with due-date status at a glance.</div></div>
   </section>
 
   <section>
     <h3>17 · Printing a Compliance Report</h3>
-    <p>Press <b class="btn">PRINT COMPLIANCE REPORT</b> on the Compliance Overview tab. The platform opens a clean, date-stamped report in a new tab — the full roster, per-module scores in a grid, and department summary statistics. Use your browser's print dialog to print it or <b>save it as a PDF</b> for your records, accreditation files, or a chief's briefing.</p>
+    <p>Press <b class="btn">PRINT COMPLIANCE REPORT</b> on the Compliance Overview tab. The platform opens a clean, date-stamped report in a new tab — the full roster, per-module scores in a grid (M1–M12), and department summary statistics. Use your browser's print dialog to print it or <b>save it as a PDF</b> for your records or a chief's briefing. For accreditation files, use the Accreditation Evidence Packet (Section 22).
     <div class="callout"><b>Tip.</b> Generated on demand, the report always reflects the current state of training — a reliable snapshot for any given date.</div>
   </section>
 
   <section>
     <h3>18 · Previewing Modules</h3>
-    <p><b class="btn">BROWSE MODULES</b> switches you into the officer view so you can read any module exactly as your officers will — including modules that haven't opened yet, which carry an <b>Admin Preview</b> banner. A <b>← Back to Admin</b> button returns you to the dashboard. This is how you review content before a module goes live.</p>
+    <p><b class="btn">BROWSE MODULES</b> switches you into the officer view so you can read modules exactly as your officers do. Command staff follow the same unlock schedule as officers — a module opens for you on its scheduled date. An <b>← Admin Console</b> button returns you to the dashboard.</p>
   </section>
 
   <section>
     <h3>19 · The Supervisor Track</h3>
-    <p>Supervisors receive an expanded version of each module: an additional command-lens reading section and a separate set of graded supervisor questions, on top of the standard patrol content. Admin accounts can preview either version using the <b>Viewing as</b> toggle (<b class="btn">Patrol</b> / <b class="btn">Supervisor</b>) that appears on the dashboard and module screens — useful for reviewing both tracks before assigning them.</p>
+    <p>Supervisors receive an expanded version of each module: an additional command-lens reading section, a supervisor scenario, and a separate set of graded supervisor questions, on top of the standard patrol content. Each account is set to the patrol or supervisor track by the platform administrator; supervisors see their track automatically.</p>
   </section>
 
   <section>
-    <h3>20 · Legal Citations &amp; Officer Feedback</h3>
-    <p>The <b>Legal Citations</b> tab lists every case and statute used across the platform with its verification status, so command staff can confirm the legal basis of any module at a glance. The <b>Officer Feedback</b> tab collects the content issues officers flag (Section 12), so corrections can be reviewed and actioned.</p>
+    <h3>20 · Legal Citations</h3>
+    <p>The <b>Legal Citations</b> tab lists, module by module, every case, statute, and department order the training relies on, with the key rule from each — so command staff can confirm the legal and policy basis of any module at a glance. Filter by <b>Case Law</b>, <b>Statutes</b>, department <b>Orders</b>, or <b>Research</b>. Content issues officers flag (Section 12) go to the platform administrator for review and correction.</p>
+  </section>
+
+  <section>
+    <h3>21 · Decision Insights</h3>
+    <p>The <b>Decision Insights</b> tab shows where the department as a whole is choosing the sound call in scenarios — and where it isn't. It opens with <b>Where the department is missing the sound call</b>: decisions where fewer than 80% of officers chose the sound option on their first run, lowest first. These are natural roll-call and remedial training priorities. Below that, every decision is listed by module, with the share of officers who chose each option.</p>
+    <div class="callout"><b>Department-wide view only.</b> Choices are recorded without officer names or badges, only each officer's first run through a scenario is counted, and a decision appears only once at least 3 officers have reached it. This view never shows an individual officer's choices.</div>
+  </section>
+
+  <section>
+    <h3>22 · Accreditation Evidence Packet</h3>
+    <p>Press <b class="btn">ACCREDITATION EVIDENCE</b> on the Compliance Overview tab, choose a training period, and decide whether to include a transcript page for each officer. Two outputs are available:</p>
+    <ul>
+      <li><b>Printable packet</b> — a cover summary; a <b>directive training index</b> listing each department order cited in the curriculum, the module(s) that train it, and how many officers passed; module-by-module completion records; attestation lines for the training coordinator and Chief; and optional officer transcripts. Print it or save it as a PDF for accreditation files.</li>
+      <li><b>CSV</b> — the same records, one row per officer per module, for your own spreadsheets.</li>
+    </ul>
+    <div class="callout"><b>Note.</b> Directive titles appear exactly as listed in the department's citations. A module with no department order cited is shown as such rather than filled in. The packet records training participation and assessment results; it is not a certification of legal compliance.</div>
   </section>
 </div>
 

@@ -138,6 +138,12 @@ In the new project: **Authentication → Emails → SMTP Settings**
 
 ---
 
+### 1G. Decision Insights (aggregate scenario analytics)
+
+Copy `_database/egpd/2026-11-19-egpd-decision-intelligence.sql` to `_database/<subdomain>/`, changing only the project ref/name in its header, and run it in the new project's SQL Editor. It is add-only. It creates `scenario_decisions` (choices, with no officer identity) and `scenario_runs` (dedupe only), both with RLS on and no policies. It also creates `record_scenario_run()` (service role only) and `decision_insights()` (admins only, suppressed under 3 officers). Confirm the final verification query shows both tables with `rowsecurity = true` and `policies = 0`. Only after that, set `features.decisionInsights: true` in the registry (Phase 2A).
+
+---
+
 ## Phase 2 — Platform Configuration
 
 ### 2A. Add the Department to the Registry
@@ -319,6 +325,8 @@ Run through this 48–72 hours after go-live:
 - [ ] At least one officer has logged in (check Supabase `completions` table for any rows)
 - [ ] No JavaScript errors in Vercel function logs
 - [ ] Admin has accessed the dashboard and can see their roster
+- [ ] Decision Insights tab loads (empty until 3+ officers finish a first scenario run) and the Accreditation Evidence modal opens
+- [ ] Every module lists ≥1 agency directive in its Legal Citations (smoke test enforces; the evidence packet depends on it)
 - [ ] Daily health check scheduled task created for this department (copy `egpd-daily-health-check` in the Claude app, swap subdomain + Supabase URL/key) and one "Run now" passes 6/6
 - [ ] Contract copy filed in `Arbiter LE - Pilot Program/` folder
 - [ ] Department added to your internal tracking (rate card tier, billing date, contact)

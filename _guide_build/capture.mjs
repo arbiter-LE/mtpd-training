@@ -9,7 +9,8 @@ import { fileURLToPath } from 'node:url';
 import { setTimeout as sleep } from 'node:timers/promises';
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
-const APP_URL = 'http://localhost:3000/?dept=egpd';
+// Dev server from .claude/launch.json ("static-preview": node _dev/serve.js 4173).
+const APP_URL = 'http://localhost:4173/?dept=egpd';
 const OUT = fileURLToPath(new URL('./screens/', import.meta.url));
 const PORT = 9333;
 const W = 1280, H = 900, SCALE = 2;
@@ -28,6 +29,9 @@ const BASE_SETUP = `
     'egpd-report-writing': { attempts:1, passed:true, bestScore:100, score:100, scores:[100], date:'2026-06-07', correct:10, total:10, time:'11:40' }
   };
   previewTrackOverride = null;
+  _refresherState = 'done';   // keep the weekly refresher card out of guide shots
+  // Server-side finalize (/api/grade) does not exist on the local dev server.
+  window.finalizeCompletionOnServer = function(p){ return Promise.resolve({ record: { attempts:1, passed:true, bestScore:92, score:92, scores:[92], correct:11, total:12, time:'14:22', date:'2026-06-14', remediation:false }, error:null }); };
   ['officer-name-display','module-officer-name','scenario-officer-name','quiz-officer-name','debrief-officer-name'].forEach(function(id){ var e=document.getElementById(id); if(e) e.textContent=currentUser.name; });
   var b=document.getElementById('officer-badge-display'); if(b) b.textContent='Badge #'+currentUser.badge;
   var tm=document.getElementById('officer-tab-modules'); if(tm) tm.classList.remove('hidden');
@@ -89,17 +93,31 @@ const SCREENS = [
   ` },
   { name: '09-debrief', setup: `
       ${BASE_SETUP} startScenario('egpd-search-seizure');
-      scenarioPath = [
-        { decisionNumber:1, question:'', choiceText:'Secured the scene and requested a warrant', quality:'good', outcomeClass:'outcome-good' },
-        { decisionNumber:2, question:'', choiceText:'Documented consent on the department form', quality:'good', outcomeClass:'outcome-good' },
-        { decisionNumber:3, question:'', choiceText:'Extended the stop without new suspicion', quality:'bad', outcomeClass:'outcome-bad' }
-      ];
+      // Walk the module's REAL scenario: sound choices, except one miss at decision 2,
+      // so the debrief shows the module's own "Sound call" text (nothing invented).
+      var scen=currentModule._activeScenario||currentModule.scenario; scenarioPath=[];
+      var id=scen.nodes.start.next, n, g=0;
+      while((n=scen.nodes[id]) && n.type!=='debrief' && g++<40){
+        if(n.type==='decision'){
+          var good=n.options.find(function(o){return o.quality==='good';});
+          var pickIdx = n.decisionNumber===2 ? n.options.findIndex(function(o){return o.quality!=='good';}) : n.options.indexOf(good);
+          if(pickIdx<0) pickIdx = n.options.indexOf(good);
+          var o=n.options[pickIdx];
+          scenarioPath.push({ decisionNumber:n.decisionNumber, question:n.question, choiceText:o.shortLabel||o.text, quality:o.quality, soundText: good&&good!==o?(good.shortLabel||good.text):null, nodeId:id, optionIndex:pickIdx });
+          id=o.next;
+        } else id=n.next;
+      }
       showDebrief(); window.scrollTo(0,0);
   ` },
   { name: '10-quiz-question', setup: `${BASE_SETUP} startQuiz('egpd-search-seizure'); window.scrollTo(0,0);` },
   { name: '11-quiz-feedback', setup: `
       ${BASE_SETUP} startQuiz('egpd-search-seizure');
-      var q=activeQuestions(currentModule)[0]; selectAnswer(q.correct); window.scrollTo(0,0);
+      // Grading is server-side (/api/grade), absent on the dev server. Answer with this
+      // question's REAL key + feedback from _dev/answer-keys/egpd.json (embedded at build).
+      var KEY = {"c": 2, "f": "Correct. Florida v. Jimeno (1991) established that the scope of consent is determined by objective reasonableness \u2014 what a reasonable person would have understood by the exchange. A general consent to search a vehicle does not automatically include a locked container. Clarify the scope or obtain specific consent."};
+      var _f = window.fetch; window.fetch = function(u,o){ if(String(u).indexOf('/api/grade')>-1) return Promise.resolve(new Response(JSON.stringify({correct:true, correctIndex:KEY.c, feedback:KEY.f}),{status:200})); return _f(u,o); };
+      _sb.auth.getSession = function(){ return Promise.resolve({data:{session:{access_token:'demo'}}}); };
+      selectAnswer(KEY.c); submitAnswer(); window.scrollTo(0,0);
   ` },
   { name: '12-results-pass', setup: `
       ${BASE_SETUP} currentModule = MODULES.find(function(m){return m.id==='egpd-search-seizure';});
@@ -117,6 +135,7 @@ const SCREENS = [
       document.getElementById('admin-tab-compliance').classList.add('hidden');
       document.getElementById('admin-tab-citations').classList.add('hidden');
       document.getElementById('admin-tab-feedback').classList.add('hidden');
+      document.getElementById('admin-tab-insights').classList.add('hidden');
       document.getElementById('admin-tab-modules').classList.remove('hidden');
       window.scrollTo(0,0);
   ` }
@@ -181,7 +200,8 @@ await send(ws, 'Emulation.setDeviceMetricsOverride', { width: W, height: H, devi
 
 // wait until app + content fully loaded
 for (let i = 0; i < 60; i++) {
-  const r = await send(ws, 'Runtime.evaluate', { expression: `(typeof MODULES!=='undefined' && MODULES.length>=12 && typeof showOfficerDashboard==='function') ? MODULES.length : 0`, returnByValue: true });
+  // Content is sign-in gated (/api/content); the dev server serves it for ?dept= without auth.
+  const r = await send(ws, 'Runtime.evaluate', { expression: `(typeof MODULES!=='undefined' && MODULES.length>=12 && typeof showOfficerDashboard==='function') ? MODULES.length : ((window.__ld = window.__ld || (typeof loadDepartmentContent==='function' && loadDepartmentContent('local'))), 0)`, returnByValue: true });
   if (r.result.value) break;
   await sleep(250);
 }
