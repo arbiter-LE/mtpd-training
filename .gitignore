@@ -22,3 +22,6 @@ push.sh
 # Claude Code config (local only)
 .claude/
 EGPD-Module-Review.pdf
+
+# Marketing product screenshots (fictional sample department) must deploy.
+!Marketing/shots/*.jpg

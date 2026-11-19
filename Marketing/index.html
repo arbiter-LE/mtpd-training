@@ -37,7 +37,7 @@
       {
         "@type": "Question",
         "name": "What happens to my officers' data, and who can see it?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Your department runs on its own private, isolated database — your data never mixes with another agency's. Each officer sees only their own record; command staff see only their own department. Training records are never sold, shared, or used to train any outside system or AI." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Your department runs on its own private, isolated database — your data never mixes with another agency's. Each officer sees only their own record; command staff see only their own department. Scenario choices used for Decision Insights are recorded without officer names or badges, and command staff see only department-wide percentages. Training records are never sold, shared, or used to train any outside system or AI." }
       },
       {
         "@type": "Question",
@@ -47,7 +47,7 @@
       {
         "@type": "Question",
         "name": "How do I know officers actually completed the training?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Every module pairs decision-based scenarios with a knowledge check drawn directly from that module's material. The command dashboard tracks completions, scores, and attempts automatically — giving you a clear, defensible record of who was trained on what, and when." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Every module pairs decision-based scenarios with a knowledge check drawn directly from that module's material. The command dashboard tracks completions, scores, and attempts automatically — giving you a clear, defensible record of who was trained on what, and when. For accreditation files, a training evidence packet organizes those records by your own general orders, with officer transcripts and attestation lines." }
       },
       {
         "@type": "Question",
@@ -317,6 +317,19 @@
       margin: 0;
     }
 
+    /* ── SEE IT (product screenshots, sample department) ── */
+    #see-it { background: var(--card); }  /* alternates with the Platform section above */
+    .section-inner.wide { max-width: 1100px; }
+    .section-inner.wide > p { max-width: 720px; }
+    .shot-grid { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 28px; }
+    .shot { margin: 0; }
+    .shot-frame { position: relative; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--card); box-shadow: 0 10px 30px rgba(10, 24, 40, .12); }
+    .shot-frame img { display: block; width: 100%; height: auto; }
+    .shot-tag { position: absolute; top: 10px; right: 10px; background: rgba(10, 24, 40, .82); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 9px; border-radius: 3px; }
+    .shot figcaption { margin-top: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+    .shot figcaption strong { color: var(--navy); }
+    @media (max-width: 760px) { .shot-grid { grid-template-columns: 1fr; } }
+
     /* ── FAQ ── */
     #faq { background: var(--bg); }
 
@@ -559,6 +572,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="#product">The Platform</a></li>
+        <li><a href="#see-it">See It</a></li>
         <li><a href="#why">Why It Matters</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -618,6 +632,43 @@
           <h3>No Infrastructure Required</h3>
           <p>No software to install, no scheduling headaches, no outside instructors. Accessible from any phone, anywhere — because we know an officer's time is never guaranteed.</p>
         </div>
+        <div class="feature">
+          <div class="feature-num">05</div>
+          <h3>Decision Insights</h3>
+          <p>See where your department is missing the sound call. Command staff see how officers handled each scenario decision on their first run — department-wide percentages only, never an individual officer's choices — so roll-call training goes where it's needed.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-num">06</div>
+          <h3>Accreditation-Ready Records</h3>
+          <p>Generate a training evidence packet organized by your own general orders: which module trained each directive, who passed it and when, officer transcripts, and attestation lines — ready for your accreditation files.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEE IT -->
+  <section id="see-it">
+    <div class="section-inner wide">
+      <p class="section-label">See It</p>
+      <h2>What Officers and Command Staff Actually See</h2>
+      <p>Screens from the live platform, shown with a fictional sample department. Your department's version carries your patch, your roster, and your own general orders.</p>
+      <div class="shot-grid">
+        <figure class="shot">
+          <div class="shot-frame"><img src="shots/officer-dashboard.jpg" alt="Officer training dashboard showing assigned, completed, and overdue counts, an Up Next card, and module cards" loading="lazy" width="1600" height="1025" /><span class="shot-tag">Sample data</span></div>
+          <figcaption><strong>The officer's dashboard.</strong> Assignments, due dates, and the one module to do next — on any device.</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-frame"><img src="shots/command-roster.jpg" alt="Command dashboard with roster compliance, completion rate, and status for each officer" loading="lazy" width="1600" height="1025" /><span class="shot-tag">Sample data</span></div>
+          <figcaption><strong>The command dashboard.</strong> Completion, scores, and who's overdue at a glance — open any officer's full record in one click.</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-frame"><img src="shots/decision-insights.jpg" alt="Decision Insights showing the share of officers choosing each option at a scenario decision" loading="lazy" width="1600" height="1025" /><span class="shot-tag">Sample data</span></div>
+          <figcaption><strong>Decision Insights.</strong> Where the department as a whole is missing the sound call — percentages only, never an individual's choices.</figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-frame"><img src="shots/evidence-packet.jpg" alt="Training evidence packet with a directive training index listing general orders, modules, and officers passed" loading="lazy" width="1600" height="1025" /><span class="shot-tag">Sample data</span></div>
+          <figcaption><strong>The evidence packet.</strong> Training records organized by your own directives, with transcripts and attestation lines.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -680,7 +731,7 @@
 
         <div class="faq-item">
           <h3>What happens to my officers' data, and who can see it?</h3>
-          <p>Your department runs on its <strong>own private, isolated database</strong> — your data never mixes with another agency's. Each officer sees only their own record; command staff see only their own department. Training records are never sold, shared, or used to train any outside system or AI. Your policies and your data stay yours.</p>
+          <p>Your department runs on its <strong>own private, isolated database</strong> — your data never mixes with another agency's. Each officer sees only their own record; command staff see only their own department. Scenario choices used for Decision Insights are recorded <strong>without officer names or badges</strong>, and command staff see only department-wide percentages. Training records are never sold, shared, or used to train any outside system or AI. Your policies and your data stay yours.</p>
         </div>
 
         <div class="faq-item">
@@ -690,7 +741,7 @@
 
         <div class="faq-item">
           <h3>How do I know officers actually completed the training?</h3>
-          <p>Every module pairs decision-based scenarios with a knowledge check drawn directly from that module's material. The command dashboard tracks completions, scores, and attempts automatically — giving you a clear, defensible record of who was trained on what, and when.</p>
+          <p>Every module pairs decision-based scenarios with a knowledge check drawn directly from that module's material. The command dashboard tracks completions, scores, and attempts automatically — giving you a clear, defensible record of who was trained on what, and when. For accreditation files, a training evidence packet organizes those records by your own general orders, with officer transcripts and attestation lines.</p>
         </div>
 
         <div class="faq-item">
