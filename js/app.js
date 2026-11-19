@@ -2,6 +2,30 @@
    Arbiter LE — Application Logic
 ═══════════════════════════════════════════ */
 
+/* Inline SVG icons + status marks — replace emoji in the chrome so the UI
+   renders identically on every device and reads as professional software. */
+const ICON_PATHS = {
+  check:  '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  x:      '<path d="M6 6l12 12M18 6L6 18"/>',
+  alert:  '<path d="M12 8v5"/><path d="M12 16.5v.01"/><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>',
+  clock:  '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  lock:   '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  book:   '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+  doc:    '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+  shield: '<path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+};
+function icon(name) { return '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + (ICON_PATHS[name] || '') + '</svg>'; }
+function statusMark(kind, name) {
+  return '<span class="status-mark ' + kind + '" aria-hidden="true"><svg viewBox="0 0 24 24">' + (ICON_PATHS[name] || '') + '</svg></span>';
+}
+function fmtDate(d) {
+  if (!d) return '—';
+  // Date-only strings (YYYY-MM-DD) parse as UTC midnight; pin to local noon so
+  // they never display as the previous day in US time zones.
+  const dt = /^\d{4}-\d{2}-\d{2}$/.test(d) ? new Date(d + 'T12:00:00') : new Date(d);
+  return isNaN(dt) ? '—' : dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -278,20 +302,26 @@ function renderProgressTable() {
     const score = rec.bestScore || rec.score || 0;
     const pillClass = score >= 90 ? 'high' : score >= 70 ? 'mid' : score >= 50 ? 'low' : 'fail';
     const attemptsUsed = rec.attempts || 1;
-    const dateStr = rec.date ? new Date(rec.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : '—';
+    const dateStr = fmtDate(rec.date);
+    const status = rec.passed
+      ? '<span class="badge-status complete">Passed</span>'
+      : rec.remediation
+        ? '<span class="badge-status remediation">Remediation</span>'
+        : '<span class="badge-status failed">Not Passed</span>';
     return `<tr>
       <td><strong>${m.title}</strong></td>
       <td><span style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--steel)">${m.category}</span></td>
       <td><span class="score-pill ${pillClass}">${score}%</span></td>
       <td style="text-align:center">${attemptsUsed} / 3</td>
       <td style="text-align:center;color:var(--text-muted)">${rec.time || '—'}</td>
+      <td>${status}</td>
       <td style="color:var(--text-muted);font-size:12px">${dateStr}</td>
     </tr>`;
   }).filter(Boolean);
   const tbody = document.getElementById('progress-table-body');
   if (!tbody) return;
   if (rows.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6"><div class="prog-empty">No modules completed yet. Complete your first module to see your progress here.</div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7"><div class="prog-empty">No assessments taken yet. Your scores and completion dates will appear here.</div></td></tr>';
   } else {
     tbody.innerHTML = rows.join('');
   }
@@ -518,7 +548,9 @@ function renderOfficerDashboard() {
   }).length;
   document.getElementById('stat-assigned').textContent  = total;
   document.getElementById('stat-completed').textContent = completed;
-  document.getElementById('stat-overdue').textContent   = overdue;
+  const overdueEl = document.getElementById('stat-overdue');
+  overdueEl.textContent = overdue;
+  overdueEl.classList.toggle('is-zero', overdue === 0);
   const scores = Object.values(done).filter(r => r.passed).map(d => d.bestScore || d.score);
   document.getElementById('stat-score').textContent = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length)+'%' : '—';
   document.getElementById('overall-progress').style.width = Math.round((completed/total)*100)+'%';
@@ -552,33 +584,34 @@ function maybeRenderReminders() {
 }
 
 function renderReminderCard(overdue, dueSoon) {
+  // "Up Next": one card that names the single module the officer should open
+  // now — most-overdue first, then soonest-due — instead of a count alone.
   const slot = document.getElementById('reminder-slot');
   const byDue = (a, b) => getModuleSchedule(a.weekNumber).dueDate - getModuleSchedule(b.weekNumber).dueDate;
-  let cls, heading, sub, target;
+  let cls, kicker, sub, target;
   if (overdue.length) {
     const n = overdue.length;
-    cls = 'reminder-overdue';
-    heading = `${n} module${n > 1 ? 's' : ''} overdue`;
-    sub = 'Complete overdue training as soon as possible to stay compliant.';
     target = overdue.slice().sort(byDue)[0];
+    cls = 'is-late';
+    kicker = n > 1 ? `Up next · ${n} modules past due` : 'Up next · Past due';
+    sub = n > 1
+      ? `Start with the oldest. ${n - 1} more past-due module${n - 1 > 1 ? 's' : ''} after this one.`
+      : 'This module is past its due date. Complete it to stay current.';
   } else {
     const n = dueSoon.length;
-    const nearest = getModuleSchedule(dueSoon.slice().sort(byDue)[0].weekNumber);
-    cls = 'reminder-due';
-    heading = `${n} module${n > 1 ? 's' : ''} due soon`;
-    sub = `Soonest: ${nearest.label}.`;
     target = dueSoon.slice().sort(byDue)[0];
+    cls = '';
+    kicker = `Up next · ${getModuleSchedule(target.weekNumber).label}`;
+    sub = n > 1 ? `${n} modules are due soon. This one is first.` : 'Due soon. Est. ' + target.duration + '.';
   }
   slot.innerHTML = `
-    <div class="reminder-card ${cls}" role="region" aria-label="Training deadline reminder">
-      <div class="reminder-body">
-        <span class="reminder-icon" aria-hidden="true">⏰</span>
-        <div>
-          <p class="reminder-heading">${heading}</p>
-          <p class="reminder-sub">${sub}</p>
-        </div>
+    <div class="up-next ${cls}" role="region" aria-label="Next assigned module">
+      <div>
+        <div class="up-next-kicker">${kicker}</div>
+        <h3>${target.title}</h3>
+        <p>${sub}</p>
       </div>
-      <button class="reminder-cta" onclick="startModule('${target.id}')">Start now →</button>
+      <button class="btn-module" onclick="startModule('${target.id}')">Start Module →</button>
     </div>`;
 }
 
@@ -726,7 +759,7 @@ function moduleCardHtml(m, done) {
 
   if (isPassed) {
     statusLabel = 'Complete';  statusClass = 'complete';
-    btnLabel = '✓ Review Module'; btnClass = 'btn-module completed-btn';
+    btnLabel = 'Review'; btnClass = 'btn-module completed-btn';
     scoreStr = `Score: ${rec.bestScore}%`;
     disabled = '';
   } else if (isRemediation) {
@@ -736,8 +769,8 @@ function moduleCardHtml(m, done) {
     disabled = 'disabled';
   } else if (isFailed) {
     const remaining = 3 - rec.attempts;
-    statusLabel = `${rec.attempts}/3 Attempts`; statusClass = 'failed';
-    btnLabel = `Retake — Attempt ${rec.attempts + 1} of 3 →`; btnClass = 'btn-module';
+    statusLabel = 'Not Passed'; statusClass = 'failed';
+    btnLabel = `Retake (${rec.attempts + 1} of 3) →`; btnClass = 'btn-module';
     scoreStr = `Best: ${rec.bestScore}% — ${remaining} attempt${remaining!==1?'s':''} left`;
     disabled = '';
   } else {
@@ -746,7 +779,7 @@ function moduleCardHtml(m, done) {
       const openDate = getModuleOpenDate(m.weekNumber);
       const openFmt  = openDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       statusLabel = `Opens ${openFmt}`; statusClass = 'locked-status';
-      btnLabel = '🔒 Not Yet Available'; btnClass = 'btn-module locked-btn';
+      btnLabel = icon('lock') + 'Locked'; btnClass = 'btn-module locked-btn';
       scoreStr = `Est. ${m.duration}`;
       disabled = 'disabled';
     } else {
@@ -847,7 +880,7 @@ function startModule(moduleId) {
     if (isLockedForOfficers && currentUser && currentUser.canPreview) {
       const openFmt = getModuleOpenDate(currentModule.weekNumber)
         .toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-      banner.textContent = `🔒 Admin Preview — This module opens for officers on ${openFmt}`;
+      banner.textContent = `Owner preview — this module opens for officers on ${openFmt}`;
       banner.style.display = 'block';
     } else {
       banner.style.display = 'none';
@@ -1003,6 +1036,10 @@ function selectDecision(idx) {
     choiceText:     option.shortLabel || option.text,
     quality:        option.quality,
     outcomeClass:   currentNode.outcomeClass,
+    // The scenario's own sound option at this decision (verbatim from the
+    // module data) — shown in the debrief next to a missed call.
+    soundText:      (() => { const g = currentNode.options.find(o => o.quality === 'good');
+                             return g && g !== option ? (g.shortLabel || g.text) : null; })(),
   });
   // Brief pause then navigate
   setTimeout(() => renderScenarioNode(option.next), 300);
@@ -1140,6 +1177,7 @@ function showDebrief() {
         </div>
         <div class="debrief-step-body">
           <div class="step-choice">You chose: <span>${step.choiceText}</span></div>
+          ${step.quality !== 'good' && step.soundText ? `<div class="step-better">Sound call: <span>${step.soundText}</span></div>` : ''}
         </div>
       </div>`;
   }).join('');
@@ -1150,9 +1188,10 @@ function showDebrief() {
 
   document.getElementById('debrief-body').innerHTML = `
     <div class="debrief-header">
-      <div class="debrief-icon">${allGood ? '✅' : '📋'}</div>
-      <h2>Scenario Complete</h2>
-      <p>${allGood ? 'You navigated this scenario with sound legal judgment. Proceed to the knowledge assessment.' : 'Review the decisions below before proceeding to the knowledge assessment.'}</p>
+      <div class="debrief-icon">${allGood ? statusMark('good', 'check') : statusMark('review', 'doc')}</div>
+      <h2>Scenario Debrief</h2>
+      <p>${allGood ? 'Every decision was sound. Review the key principles, then take the assessment.' : 'Review each decision — and the sound call where yours differed — before the assessment.'}</p>
+      ${totalDecisions ? `<span class="debrief-score">${goodDecisions} of ${totalDecisions} decisions sound</span>` : ''}
     </div>
     <div class="debrief-timeline">
       <h3>Your Decision Record</h3>
@@ -1270,8 +1309,7 @@ function renderQuestion() {
       <span class="opt-text">${o}</span>
     </button>`).join('');
   document.getElementById('question-card').innerHTML = `
-    <div class="q-label">Question ${currentQuizIdx+1} of ${quizTotal}</div>
-    <div class="q-scenario">${q.scenario}</div>
+    ${q.scenario ? `<div class="q-scenario">${q.scenario}</div>` : ''}
     <div class="q-text">${q.text}</div>
     <div class="answer-options">${opts}</div>
     <div id="answer-feedback"></div>`;
@@ -1389,7 +1427,7 @@ async function finishQuiz() {
     document.getElementById('res-correct').textContent       = quizCorrect;
     document.getElementById('res-total').textContent         = quizTotal;
     document.getElementById('res-time').textContent          = timeStr;
-    document.getElementById('results-icon').textContent      = '📖';
+    document.getElementById('results-icon').innerHTML        = statusMark('neutral', 'book');
     document.getElementById('results-heading').textContent   = 'Practice Review Complete';
     document.getElementById('results-sub').textContent       = `This module is already complete — your recorded score of ${prev.bestScore}% is unchanged.`;
     document.getElementById('results-action').innerHTML      = `<button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>`;
@@ -1448,12 +1486,12 @@ async function finishQuiz() {
   document.getElementById('res-time').textContent    = timeStr;
 
   if (rec.passed) {
-    document.getElementById('results-icon').textContent    = '✅';
+    document.getElementById('results-icon').innerHTML      = statusMark('good', 'check');
     document.getElementById('results-heading').textContent = 'Assessment Passed';
     document.getElementById('results-sub').textContent     = `Passed on attempt ${rec.attempts} of 3. Score recorded.`;
     document.getElementById('results-action').innerHTML    = `<button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>`;
   } else if (rec.remediation) {
-    document.getElementById('results-icon').textContent    = '⚠️';
+    document.getElementById('results-icon').innerHTML      = statusMark('bad', 'alert');
     document.getElementById('results-heading').textContent = 'Maximum Attempts Reached';
     document.getElementById('results-sub').textContent     = `Best score: ${rec.bestScore}%. A passing score of 70% is required.`;
     document.getElementById('results-action').innerHTML    = `
@@ -1463,12 +1501,12 @@ async function finishQuiz() {
       <button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>`;
   } else {
     const remaining = 3 - rec.attempts;
-    document.getElementById('results-icon').textContent    = '📋';
+    document.getElementById('results-icon').innerHTML      = statusMark('review', 'doc');
     document.getElementById('results-heading').textContent = `Attempt ${rec.attempts} of 3 — Not Passed`;
     document.getElementById('results-sub').textContent     = `A score of 70% or higher is required. You have ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining.`;
     document.getElementById('results-action').innerHTML    = `
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <button class="btn-dashboard" onclick="showOfficerDashboard()">Return to Dashboard</button>
+        <button class="btn-dashboard" onclick="startModule('${modId}')">Review Module</button>
         <button class="btn-retake" onclick="retakeQuiz()">Retake — Attempt ${rec.attempts + 1} of 3 →</button>
       </div>`;
   }
@@ -1478,7 +1516,7 @@ async function finishQuiz() {
   if (saveError) {
     const warn = document.createElement('div');
     warn.className = 'save-warning';
-    warn.innerHTML = '<p>⚠️ Your score could not reach the server, but it has been saved on this device and will sync automatically the next time you sign in here. If it still shows as incomplete after your next sign-in, notify your supervisor.</p>';
+    warn.innerHTML = '<p>Your score could not reach the server, but it has been saved on this device and will sync automatically the next time you sign in here. If it still shows as incomplete after your next sign-in, notify your supervisor.</p>';
     const actionEl = document.getElementById('results-action');
     if (actionEl) actionEl.after(warn);
   }
@@ -1541,7 +1579,9 @@ function renderAdminStats() {
   let compliant=0, overdueCount=0, totalComps=0, totalScores=[];
   officers.forEach(uid => {
     const done = completionData[uid]||{};
-    const doneCount = Object.keys(done).length;
+    // A module counts toward completion only when PASSED — a failed attempt
+    // is not a completion (it previously inflated Completion Rate).
+    const doneCount = MODULES.filter(m => done[m.id] && done[m.id].passed).length;
     totalComps += doneCount;
     const allPassed = MODULES.every(m => done[m.id] && done[m.id].passed);
     if (allPassed) compliant++;
@@ -1551,7 +1591,7 @@ function renderAdminStats() {
       return s.status === 'overdue' || s.status === 'buffer';
     });
     if (anyOverdue) overdueCount++;
-    Object.values(done).forEach(r => totalScores.push(r.score));
+    Object.values(done).forEach(r => totalScores.push(r.bestScore || r.score));
   });
   const avgScore = totalScores.length ? Math.round(totalScores.reduce((a,b)=>a+b,0)/totalScores.length) : 0;
   const compDenom = officers.length * MODULES.length;
@@ -1559,9 +1599,9 @@ function renderAdminStats() {
   document.getElementById('admin-stats-row').innerHTML = `
     <div class="stat-card"><div class="stat-label">Total Officers</div><div class="stat-value">${officers.length}</div></div>
     <div class="stat-card"><div class="stat-label">Fully Compliant</div><div class="stat-value success">${compliant}</div></div>
-    <div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-value accent">${overdueCount}</div></div>
+    <div class="stat-card"><div class="stat-label">Officers With Overdue</div><div class="stat-value attention ${overdueCount ? '' : 'is-zero'}">${overdueCount}</div></div>
     <div class="stat-card"><div class="stat-label">Completion Rate</div><div class="stat-value">${compRate}%</div></div>
-    <div class="stat-card"><div class="stat-label">Avg Score</div><div class="stat-value">${avgScore ? avgScore+'%' : '—'}</div></div>`;
+    <div class="stat-card"><div class="stat-label">Avg Best Score</div><div class="stat-value">${avgScore ? avgScore+'%' : '—'}</div></div>`;
 }
 
 function renderAdminTable() {
@@ -1570,8 +1610,8 @@ function renderAdminTable() {
   const rows = officers.map(uid => {
     const user = USERS[uid];
     const done = completionData[uid]||{};
-    const doneCount = Object.keys(done).length;
-    const scores    = Object.values(done).map(r=>r.score);
+    const doneCount = MODULES.filter(m => done[m.id] && done[m.id].passed).length;
+    const scores    = Object.values(done).map(r=>r.bestScore || r.score);
     const avgScore  = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : null;
     const hasOverdue     = MODULES.some(m => {
       if (done[m.id] && done[m.id].passed) return false;
@@ -1579,7 +1619,7 @@ function renderAdminTable() {
       return s.status === 'overdue' || s.status === 'buffer';
     });
     const hasRemediation = Object.values(done).some(r => r.remediation);
-    const isComplete     = doneCount===MODULES.length && Object.values(done).every(r => r.passed);
+    const isComplete     = doneCount===MODULES.length;
     const statusStr  = isComplete ? 'complete' : hasRemediation ? 'remediation' : hasOverdue ? 'overdue' : 'pending';
     const statusLabel = isComplete ? 'Complete' : hasRemediation ? 'Remediation' : hasOverdue ? 'Overdue' : 'In Progress';
     if (filterVal!=='all' && filterVal!==statusStr) return null;
@@ -1591,13 +1631,13 @@ function renderAdminTable() {
         const mod = MODULES.find(m => m.id === id);
         return `${mod ? mod.title.split(' ').slice(0, 2).join(' ') : id}: ${r.attempts}/3 attempts`;
       }).join(', ');
-    return `<tr ${hasRemediation ? 'style="background:rgba(139,38,53,.08)"' : ''}>
+    return `<tr class="officer-row" tabindex="0" onclick="openOfficerDetail('${uid}')" onkeydown="if(event.key==='Enter'){openOfficerDetail('${uid}')}" ${hasRemediation ? 'style="background:rgba(139,38,53,.08)"' : ''}>
       <td><strong>${user.name}</strong><br/><small style="color:var(--text-muted)">${user.rank}</small></td>
       <td>${user.badge}</td>
       <td>${MODULES.length}</td>
       <td>${doneCount} / ${MODULES.length}${attemptsNote ? `<br/><small style="color:var(--text-muted);font-size:10px">${attemptsNote}</small>` : ''}</td>
       <td class="score-cell ${scoreClass}">${avgScore!==null ? avgScore+'%' : '—'}</td>
-      <td>${dates[0]||'—'}</td>
+      <td>${fmtDate(dates[0])}</td>
       <td><span class="badge-status ${statusStr}">${statusLabel}</span></td>
     </tr>`;
   }).filter(Boolean);
@@ -1607,8 +1647,9 @@ function renderAdminTable() {
 function renderAdminModules() {
   const officers = rosterBadges();
   document.getElementById('admin-modules-body').innerHTML = MODULES.map(m => {
-    const completions = officers.filter(uid => completionData[uid]?.[m.id]);
-    const scores = completions.map(uid => completionData[uid][m.id].score);
+    const attempted = officers.filter(uid => completionData[uid]?.[m.id]);
+    const completions = attempted.filter(uid => completionData[uid][m.id].passed);
+    const scores = attempted.map(uid => completionData[uid][m.id].bestScore || completionData[uid][m.id].score);
     const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : null;
     const compRate = officers.length ? Math.round((completions.length/officers.length)*100) : 0;
     const scoreClass = avgScore ? (avgScore>=90?'high':avgScore>=70?'mid':'low') : '';
@@ -1633,8 +1674,8 @@ function printComplianceReport() {
   const rows = officers.map(uid => {
     const user = USERS[uid];
     const done = completionData[uid] || {};
-    const doneCount = Object.keys(done).length;
-    const scores = Object.values(done).map(r => r.score);
+    const doneCount = MODULES.filter(m => done[m.id] && done[m.id].passed).length;
+    const scores = Object.values(done).map(r => r.bestScore || r.score);
     const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : null;
     const allPassed = MODULES.every(m => done[m.id] && done[m.id].passed);
     const hasOverdue = MODULES.some(m => {
@@ -1659,7 +1700,7 @@ function printComplianceReport() {
         <td style="padding:10px 14px;color:#666">${user.rank}</td>
         <td style="padding:10px 14px;text-align:center;font-weight:600">${doneCount} / ${MODULES.length}</td>
         <td style="padding:10px 14px;text-align:center;font-weight:700;color:${avgScore >= 90 ? '#1a7a40' : avgScore >= 70 ? '#2d6fa3' : avgScore !== null ? '#c8902a' : '#aaa'}">${avgScore !== null ? avgScore + '%' : '—'}</td>
-        <td style="padding:10px 14px;text-align:center">${dates[0] || '—'}</td>
+        <td style="padding:10px 14px;text-align:center">${fmtDate(dates[0])}</td>
         <td style="padding:10px 14px;text-align:center;font-weight:700;color:${statusColor}">${status}</td>
         ${moduleDetail}
       </tr>`;
@@ -1671,13 +1712,13 @@ function printComplianceReport() {
     const done = completionData[uid] || {};
     return MODULES.every(m => done[m.id] && done[m.id].passed);
   }).length;
-  const totalComps = officers.reduce((sum, uid) => sum + Object.keys(completionData[uid] || {}).length, 0);
+  const totalComps = officers.reduce((sum, uid) => { const d = completionData[uid] || {}; return sum + MODULES.filter(m => d[m.id] && d[m.id].passed).length; }, 0);
   const _compDenom = totalOfficers * MODULES.length;
   const compRate = _compDenom ? Math.round((totalComps / _compDenom) * 100) : 0;
-  const allScores = officers.flatMap(uid => Object.values(completionData[uid] || {}).map(r => r.score));
+  const allScores = officers.flatMap(uid => Object.values(completionData[uid] || {}).map(r => r.bestScore || r.score));
   const avgScore = allScores.length ? Math.round(allScores.reduce((a,b)=>a+b,0)/allScores.length) : 0;
 
-  const moduleHeaders = MODULES.map(m => `<th style="padding:8px 6px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#3c6478;white-space:nowrap;max-width:70px;overflow:hidden;text-overflow:ellipsis">Wk${m.weekNumber}</th>`).join('');
+  const moduleHeaders = MODULES.map(m => `<th style="padding:8px 6px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#3c6478;white-space:nowrap;max-width:70px;overflow:hidden;text-overflow:ellipsis" title="${m.title.replace(/"/g, '&quot;')}">M${m.weekNumber}</th>`).join('');
 
   // Brand the report from the active department — never hardcode an agency.
   // A printed compliance report is a client-facing artifact the chief keeps.
@@ -1729,7 +1770,7 @@ function printComplianceReport() {
     <div class="report-meta">
       <strong>Generated:</strong> ${dateStr}<br/>
       <strong>Time:</strong> ${timeStr}<br/>
-      <strong>Generated by:</strong> ${deptName} Training Platform<br/>
+      <strong>Platform:</strong> Arbiter LE<br/>
       <strong>Program Start:</strong> ${programStart}
     </div>
   </div>
@@ -1775,7 +1816,7 @@ function printComplianceReport() {
   </table>
 
   <div style="margin-top:10px;font-size:9px;color:#aaa">
-    Module columns show score % for completed modules. Multiple attempts noted where applicable.
+    Completed counts passed modules only (70% required). Module columns (M1–M${MODULES.length}) show the latest score; green = passed, amber = not yet passed. Multiple attempts noted where applicable.
   </div>
 
   <div class="signature-block">
@@ -1788,8 +1829,8 @@ function printComplianceReport() {
   </div>
 
   <div class="report-footer">
-    <span>Law Enforcement Training Platform — Confidential Training Record</span>
-    <span>${deptName} Training Platform — ${dateStr}</span>
+    <span>Confidential Training Record — ${deptName}</span>
+    <span>Generated by Arbiter LE · ${dateStr}</span>
   </div>
 
   <script>window.onload = function() { window.print(); }<\/script>
@@ -1909,7 +1950,7 @@ async function submitFeedback() {
       err.style.cssText = 'margin:0 0 12px;padding:10px 12px;border-radius:6px;background:rgba(139,38,53,.12);color:#8b2635;font-size:13px;line-height:1.4';
       document.getElementById('feedback-form-body').prepend(err);
     }
-    err.textContent = '⚠ Your flag could not be submitted. Check your connection and tap Submit again. If it keeps failing, email your training administrator directly.';
+    err.textContent = 'Your flag could not be submitted. Check your connection and tap Submit again. If it keeps failing, email your training administrator directly.';
     return;
   }
   // Show success
@@ -1965,6 +2006,58 @@ async function renderAdminFeedback() {
   }).join('');
 }
 
+
+/* ── Officer detail (admin) ────────────────
+   A chief's first question after the roster is "show me this officer."
+   Read-only view of data already loaded for the dashboard. */
+function openOfficerDetail(uid) {
+  const user = USERS[uid];
+  if (!user) return;
+  const done = completionData[uid] || {};
+  const passed = MODULES.filter(m => done[m.id] && done[m.id].passed).length;
+  const rows = MODULES.map(m => {
+    const rec = done[m.id];
+    let status;
+    if (rec && rec.passed)          status = '<span class="badge-status complete">Passed</span>';
+    else if (rec && rec.remediation) status = '<span class="badge-status remediation">Remediation</span>';
+    else if (rec)                    status = '<span class="badge-status failed">Not Passed</span>';
+    else if (!isModuleAvailable(m) && new Date() < getModuleOpenDate(m.weekNumber)) status = '<span class="badge-status locked-status">Not Yet Open</span>';
+    else { const s = getModuleSchedule(m.weekNumber); status = `<span class="badge-status ${s.class}">${s.label}</span>`; }
+    return `<tr>
+      <td><strong>${m.title}</strong></td>
+      <td style="text-align:center">${rec ? (rec.bestScore || rec.score) + '%' : '—'}</td>
+      <td style="text-align:center">${rec ? rec.attempts + ' / 3' : '—'}</td>
+      <td>${status}</td>
+      <td style="color:var(--text-muted)">${rec ? fmtDate(rec.date) : '—'}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('officer-detail-title').textContent = user.name;
+  document.getElementById('officer-detail-body').innerHTML = `
+    <div class="officer-detail-head">
+      <div>Rank<strong>${user.rank || '—'}</strong></div>
+      <div>Badge<strong>${user.badge}</strong></div>
+      <div>Passed<strong>${passed} / ${MODULES.length}</strong></div>
+    </div>
+    <div class="table-wrap">
+      <table class="officer-detail-table">
+        <thead><tr><th>Module</th><th style="text-align:center">Best</th><th style="text-align:center">Attempts</th><th>Status</th><th>Date</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  document.getElementById('officer-detail-overlay').classList.add('open');
+}
+function closeOfficerDetail() {
+  document.getElementById('officer-detail-overlay').classList.remove('open');
+}
+
+// Every modal closes on Escape and on a click outside the card.
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+});
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+});
 
 /* ── Glossary ───────────────────────────── */
 var _glossaryActiveTab = 'all';

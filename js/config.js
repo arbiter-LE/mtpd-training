@@ -52,7 +52,7 @@ function getModuleSchedule(weekNumber) {
     return { label: `Due ${fmt(dueDate)}`, class: 'pending', status: 'upcoming', dueDate };
   } else if (now <= bufferEnd) {
     const days = daysUntil(bufferEnd);
-    return { label: `Buffer — ${days}d left`, class: 'overdue', status: 'buffer', dueDate: bufferEnd };
+    return { label: `Past due · ${days}d grace`, class: 'overdue', status: 'buffer', dueDate: bufferEnd };
   } else {
     return { label: 'Overdue', class: 'overdue', status: 'overdue', dueDate };
   }

@@ -84,13 +84,13 @@
     <div class="main-content">
       <div class="section-header">
         <h2>My Training Dashboard</h2>
-        <p>Complete all assigned modules to maintain compliance. Overdue modules require immediate attention.</p>
+        <p>Your assigned training, due dates, and training record.</p>
       </div>
       <div id="officer-resume-banner" style="display:none"></div>
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">Assigned</div><div class="stat-value" id="stat-assigned">4</div></div>
+        <div class="stat-card"><div class="stat-label">Assigned</div><div class="stat-value" id="stat-assigned">—</div></div>
         <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value success" id="stat-completed">0</div></div>
-        <div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-value accent" id="stat-overdue">1</div></div>
+        <div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-value attention" id="stat-overdue">—</div></div>
         <div class="stat-card"><div class="stat-label">Avg. Score</div><div class="stat-value" id="stat-score">—</div></div>
       </div>
       <div class="progress-bar-wrap"><div class="progress-bar-fill" id="overall-progress" style="width:0%"></div></div>
@@ -109,7 +109,7 @@
       <div id="officer-tab-progress" class="hidden">
         <div class="progress-table-wrap">
           <table class="progress-table">
-            <thead><tr><th>Module</th><th>Category</th><th>Best Score</th><th>Attempts</th><th>Time</th><th>Completed</th></tr></thead>
+            <thead><tr><th>Module</th><th>Category</th><th>Best Score</th><th>Attempts</th><th>Time</th><th>Result</th><th>Date</th></tr></thead>
             <tbody id="progress-table-body"></tbody>
           </table>
         </div>
@@ -129,7 +129,7 @@
           <small>Training Portal</small>
         </div>
       </div>
-      <div class="nav-right"><div class="nav-user"><strong id="module-officer-name">Officer</strong></div><button class="btn-flag-content" onclick="openFeedbackModal()" title="Flag a content issue">📋 Flag Issue</button><button class="btn-open-glossary" onclick="openGlossary()">📖 Reference</button><button class="btn-logout" onclick="doLogout()">Sign Out</button></div>
+      <div class="nav-right"><div class="nav-user"><strong id="module-officer-name">Officer</strong></div><button class="btn-flag-content" onclick="openFeedbackModal()" title="Flag a content issue"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22V4"/><path d="M4 4h12l-2 4 2 4H4"/></svg>Flag Issue</button><button class="btn-open-glossary" onclick="openGlossary()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>Reference</button><button class="btn-logout" onclick="doLogout()">Sign Out</button></div>
     </nav>
     <div id="admin-preview-banner" class="admin-preview-banner">🔒 Admin Preview — This module is not yet open to officers.</div>
     <div id="track-toggle-module" class="track-toggle" style="display:none"></div>
@@ -139,7 +139,7 @@
         <small id="module-category-label">Legal Training</small>
         <h3 id="module-title-label">Module Title</h3>
       </div>
-      <div class="module-timer">Reading Time: <strong id="module-timer-display">00:00</strong></div>
+      <div class="module-timer">Time on module: <strong id="module-timer-display">00:00</strong></div>
     </div>
     <div class="module-body" id="module-content-body"></div>
   </div>
@@ -156,14 +156,14 @@
           <small>Training Portal</small>
         </div>
       </div>
-      <div class="nav-right"><div class="nav-user"><strong id="scenario-officer-name">Officer</strong></div><button class="btn-open-glossary" onclick="openGlossary()">📖 Reference</button><button class="btn-pause-scenario" onclick="pauseScenario()" title="Save your progress and return to the dashboard">⏸ Pause</button></div>
+      <div class="nav-right"><div class="nav-user"><strong id="scenario-officer-name">Officer</strong></div><button class="btn-open-glossary" onclick="openGlossary()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>Reference</button><button class="btn-pause-scenario" onclick="pauseScenario()" title="Save your progress and return to the dashboard"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>Pause</button></div>
     </nav>
     <div class="scenario-header-bar">
       <div>
         <div class="scenario-location" id="scenario-location-label">Marlborough Township, PA</div>
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <div class="scenario-title" id="scenario-title-label">Scenario</div>
-          <span class="field-exp-badge" id="field-exp-badge" style="display:none">⚡ Field Experience</span>
+          <span class="field-exp-badge" id="field-exp-badge" style="display:none">Field Experience</span>
         </div>
       </div>
       <div class="scenario-step-indicator" id="scenario-step-indicator">Decision <strong>1</strong> of <strong>2</strong></div>
@@ -200,7 +200,7 @@
           <small>Training Portal</small>
         </div>
       </div>
-      <div class="nav-right"><div class="nav-user"><strong id="quiz-officer-name">Officer</strong></div><button class="btn-open-glossary" onclick="openGlossary()">📖 Reference</button><button class="btn-pause-scenario" onclick="pauseQuiz()" title="Save your progress and return to the dashboard">⏸ Pause</button><div class="module-timer">Time: <strong id="quiz-timer-display">00:00</strong></div></div>
+      <div class="nav-right"><div class="nav-user"><strong id="quiz-officer-name">Officer</strong></div><button class="btn-open-glossary" onclick="openGlossary()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>Reference</button><button class="btn-pause-scenario" onclick="pauseQuiz()" title="Save your progress and return to the dashboard"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>Pause</button><div class="module-timer">Time: <strong id="quiz-timer-display">00:00</strong></div></div>
     </nav>
     <div class="module-header-bar">
       <div class="module-title-group">
@@ -233,7 +233,7 @@
       </div>
     </nav>
     <div class="results-body">
-      <div class="results-icon" id="results-icon">✅</div>
+      <div class="results-icon" id="results-icon"></div>
       <h2 id="results-heading">Module Complete</h2>
       <p class="results-sub" id="results-sub">Your results have been recorded.</p>
       <div class="results-score-ring" id="results-ring">
@@ -271,7 +271,7 @@
     <div class="main-content">
       <div class="section-header">
         <h2>Training Administration</h2>
-        <p>Officer compliance, module completion, and assessment records — Law Enforcement Training Platform.</p>
+        <p>Officer compliance, module completion, and assessment records. Select an officer to see their full training record.</p>
       </div>
       <div class="admin-stats-row" id="admin-stats-row"></div>
       <div class="admin-nav-tabs" role="tablist" aria-label="Administration sections">
@@ -289,7 +289,7 @@
             <option value="overdue">Overdue</option>
             <option value="pending">Pending</option>
           </select>
-          <button class="btn-print-report" onclick="printComplianceReport()">⬛ Print Compliance Report</button>
+          <button class="btn-print-report" onclick="printComplianceReport()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1"/><path d="M7 14h10v7H7z"/></svg>Print Compliance Report</button>
         </div>
         <div class="table-wrap">
           <table>
@@ -333,6 +333,17 @@
      JAVASCRIPT
 ═══════════════════════════════════════ -->
 
+<!-- ═══════════════ OFFICER DETAIL MODAL (admin) ═══════════════ -->
+<div id="officer-detail-overlay" class="modal-overlay">
+  <div class="modal-card modal-card-wide" role="dialog" aria-modal="true" aria-labelledby="officer-detail-title">
+    <div class="modal-header">
+      <h3 id="officer-detail-title">Officer Training Record</h3>
+      <button class="modal-close" onclick="closeOfficerDetail()" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="officer-detail-body"></div>
+  </div>
+</div>
+
 <!-- ═══════════════ FEEDBACK MODAL ═══════════════ -->
 <div id="feedback-modal-overlay" class="modal-overlay">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title">
@@ -348,7 +359,7 @@
 <div id="glossary-overlay" class="modal-overlay">
   <div class="modal-card modal-card-wide" role="dialog" aria-modal="true" aria-labelledby="glossary-modal-title">
     <div class="modal-header">
-      <h3 id="glossary-modal-title">📖 Legal Reference & Glossary</h3>
+      <h3 id="glossary-modal-title">Legal Reference &amp; Glossary</h3>
       <button class="modal-close" onclick="closeGlossary()" aria-label="Close">✕</button>
     </div>
     <div class="modal-body">
