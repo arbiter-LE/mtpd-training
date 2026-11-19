@@ -196,7 +196,11 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 **Main is production.** Show the diff before any commit. Never push structural changes without Andrew confirming.
 
-**Verify after deploy.** Any change touching `vercel.json`, routing, or `registry.js` gets verified on the live URL before the task is called done.
+**Verify after deploy — every push, both subdomains, in a real session (rule set by Andrew 2026-11-19).** No shipped change is called done until it's confirmed live:
+1. Wait for Vercel to serve the new code, then curl-check both `mtpd.` and `egpd.arbiterle.com`: each page returns 200, the new code is present, and internal files still 404.
+2. Then exercise the change in Andrew's signed-in Chrome on **both** subdomains (Claude in Chrome opens its own tab and inherits his session). curl can't see branding, sign-in-gated screens, or what an admin actually gets.
+3. Report **counts and pass/fail only**. Never copy, screenshot into a doc, or download real officer records while verifying (officer data stays in Supabase). Don't trigger real downloads, print dialogs, or officer-facing email.
+4. Close any tab you opened, and say plainly what couldn't be verified (e.g. a flow that needs a non-owner officer account).
 
 **No destructive SQL.** Never run DROP/DELETE/TRUNCATE or schema migrations against any department's Supabase project without explicit confirmation naming that specific project.
 
