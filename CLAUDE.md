@@ -188,7 +188,7 @@ Only add a road after Andrew explicitly confirms it is within that agency's juri
 
 **Cross-agency confidentiality.** Never reference one agency's pricing, terms, or content in another agency's materials. Each engagement is siloed.
 
-**Officer data stays in Supabase.** Never export, screenshot, or paste real officer training records into documents, demos, or marketing. Demo data only.
+**Officer data stays in Supabase.** Never export, screenshot, or paste real officer training records into documents, demos, or marketing. Demo data only. **Exception (Andrew confirmed 2026-11-19):** Andrew has EGPD's permission to use EGPD for demos, so the live EGPD site is the demo environment (e.g. for Aspirant). That covers Andrew showing EGPD live. It does not cover copying EGPD records into collateral, decks, or other agencies' materials. Ask before doing that.
 
 ---
 
