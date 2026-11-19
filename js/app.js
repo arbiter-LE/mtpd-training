@@ -135,14 +135,22 @@ async function mountOfficerSession(authUid) {
     // "not started," with only modules finished in the current session
     // appearing. (loadOfficerCompletions was defined but never called.)
     await loadOfficerCompletions(o.badge_number);
-    document.getElementById('officer-name-display').textContent  = o.name;
-    document.getElementById('officer-badge-display').textContent = 'Badge #' + o.badge_number;
-    document.getElementById('module-officer-name').textContent   = o.name;
-    document.getElementById('scenario-officer-name').textContent = o.name;
-    document.getElementById('quiz-officer-name').textContent     = o.name;
-    document.getElementById('debrief-officer-name').textContent  = o.name;
+    fillHeaderIdentity();
     showOfficerDashboard();
   }
+}
+// Name the signed-in user in every officer-view header. Called for officers at
+// sign-in and for admins entering the officer view via Browse Modules —
+// otherwise admins saw the "Officer / Badge #" placeholder.
+function fillHeaderIdentity() {
+  if (!currentUser) return;
+  const isAdmin = currentUser.role === 'admin';
+  document.getElementById('officer-name-display').textContent  = currentUser.name;
+  document.getElementById('officer-badge-display').textContent = isAdmin
+    ? (currentUser.rank || 'Command Staff')
+    : 'Badge #' + currentUser.badge;
+  ['module-officer-name', 'scenario-officer-name', 'quiz-officer-name', 'debrief-officer-name']
+    .forEach(id => { document.getElementById(id).textContent = currentUser.name; });
 }
 document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
 document.getElementById('login-user').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('login-pass').focus(); });
@@ -851,6 +859,7 @@ function renderLibrary() {
 
 /* ── Module Reading ─────────────────────── */
 function browseModulesAsAdmin() {
+  fillHeaderIdentity();
   showOfficerDashboard();
   // Show the back-to-admin button when admin is browsing officer view
   const backBtn = document.getElementById('btn-back-admin');
