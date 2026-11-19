@@ -662,5 +662,14 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .up-next { flex-direction: column; align-items: flex-start; }
   .up-next .btn-module { width: 100%; }
 }
-.module-card-bottom { gap: 12px; }
-.module-card .btn-module { white-space: nowrap; flex-shrink: 0; }
+/* Card footer wraps instead of overflowing: a long status badge ("Past due ·
+   3d grace") plus a no-wrap button pushed the button off the card on phones
+   and in the 3-column desktop grid. When space runs out the button drops to
+   its own line, right-aligned; on phones it goes full width. */
+.module-card-bottom { flex-wrap: wrap; gap: 10px 12px; }
+.module-card .module-meta { flex: 1 1 auto; min-width: 0; }
+.module-card .btn-module { white-space: nowrap; margin-left: auto; max-width: 100%; }
+.modules-grid { grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
+@media (max-width: 640px) {
+  .module-card .btn-module { width: 100%; margin-left: 0; padding: 11px 18px; }
+}
