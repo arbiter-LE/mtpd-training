@@ -708,3 +708,16 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .di-card-head { flex-direction: column; }
   .di-sound { align-self: flex-start; }
 }
+
+/* ── Accreditation evidence (admin) ─────────────────────────────────── */
+.btn-evidence { margin-left: 8px; display: inline-flex; align-items: center; background: var(--card); color: var(--steel); border: 1px solid var(--steel); border-radius: var(--radius); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 16px; cursor: pointer; font-family: var(--font); transition: background .2s, color .2s; }
+.btn-evidence:hover { background: var(--steel); color: #fff; }
+.evidence-intro { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 18px; }
+.evidence-range { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.evidence-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); margin: 2px 0 14px; cursor: pointer; }
+.evidence-check input { width: 16px; height: 16px; accent-color: var(--steel); }
+.evidence-error { color: var(--attention); font-size: 12px; min-height: 16px; margin-bottom: 6px; }
+@media (max-width: 640px) {
+  .evidence-range { grid-template-columns: 1fr; }
+  .btn-evidence { margin-left: 0; }
+}

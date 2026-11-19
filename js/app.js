@@ -2133,6 +2133,194 @@ async function renderDecisionInsights() {
     `<div class="di-section"><h2>All decisions by module</h2>${byModule}</div>`;
 }
 
+/* ── Accreditation evidence packet (admin) ─
+   A training record organized by the department's own directives, built
+   only from data the dashboard already has: completions (server-written)
+   and the department's Legal Citations section, whose "Module N" tables
+   list each agency order a module trains — quoted exactly as the agency
+   titles them. No standards crosswalk (PLEAC/CALEA numbers) until an
+   authoritative source is supplied; nothing here is written from memory.
+   Platform accounts are excluded (rosterBadges). */
+function evidenceDirectiveMap() {
+  // weekNumber -> [directive titles], read from the injected citations.
+  const map = {};
+  document.querySelectorAll('#admin-tab-citations .cite-module-section').forEach(sec => {
+    const h = sec.querySelector('.cite-module-header');
+    const n = h && parseInt((h.textContent.match(/Module\s+(\d+)/) || [])[1], 10);
+    if (!n) return;
+    map[n] = [...sec.querySelectorAll('tr[data-type="go"] .cite-name')].map(td => td.textContent.trim());
+  });
+  return map;
+}
+function evidenceRange() {
+  const from = document.getElementById('evidence-from').value;
+  const to   = document.getElementById('evidence-to').value;
+  const err  = document.getElementById('evidence-error');
+  err.textContent = '';
+  if (!from || !to || from > to) { err.textContent = 'Choose a start date on or before the end date.'; return null; }
+  return { from, to };
+}
+// One row per officer x module, with the result as of the chosen period.
+function evidenceRows(range) {
+  const directives = evidenceDirectiveMap();
+  const rows = [];
+  rosterBadges().forEach(uid => {
+    const u = USERS[uid], done = completionData[uid] || {};
+    MODULES.forEach(m => {
+      const rec = done[m.id];
+      const d = rec && rec.date ? String(rec.date).slice(0, 10) : '';
+      const inRange = d && d >= range.from && d <= range.to;
+      let result = 'Not completed';
+      if (rec && inRange) result = rec.passed ? 'Passed' : rec.remediation ? 'Remediation' : 'Not passed';
+      else if (rec && d && d < range.from) result = rec.passed ? 'Passed before period' : 'Attempted before period';
+      else if (rec && d && d > range.to) result = 'Recorded after period';
+      rows.push({ uid, name: u.name, badge: u.badge, rank: u.rank || '', module: m, directives: directives[m.weekNumber] || [],
+                  result, score: rec ? (rec.bestScore || rec.score) : null, attempts: rec ? rec.attempts : null, date: d });
+    });
+  });
+  return rows;
+}
+function openEvidenceModal() {
+  const start = ACTIVE_DEPARTMENT && ACTIVE_DEPARTMENT.scheduleStart ? new Date(ACTIVE_DEPARTMENT.scheduleStart) : new Date();
+  const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  document.getElementById('evidence-from').value = iso(start);
+  document.getElementById('evidence-to').value = iso(new Date());
+  document.getElementById('evidence-error').textContent = '';
+  document.getElementById('evidence-overlay').classList.add('open');
+}
+function closeEvidenceModal() { document.getElementById('evidence-overlay').classList.remove('open'); }
+
+function downloadEvidenceCsv() {
+  const range = evidenceRange(); if (!range) return;
+  const deptName = ACTIVE_DEPARTMENT.displayName || ACTIVE_DEPARTMENT.shortName || ACTIVE_DEPARTMENT.name;
+  const q = v => { const t = String(v == null ? '' : v); return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
+  const head = ['Department','Officer','Badge','Rank','Module #','Module','Category','Agency directives trained','Result','Best score %','Attempts','Date recorded','Period start','Period end'];
+  const lines = [head.join(',')].concat(evidenceRows(range).map(r => [
+    deptName, r.name, r.badge, r.rank, r.module.weekNumber, r.module.title, r.module.category,
+    r.directives.join('; ') || 'No agency directive cited', r.result, r.score == null ? '' : r.score,
+    r.attempts == null ? '' : r.attempts, r.date, range.from, range.to].map(q).join(',')));
+  const blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${ACTIVE_DEPARTMENT.subdomain}-training-evidence-${range.from}-to-${range.to}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+function openEvidencePacket() {
+  const range = evidenceRange(); if (!range) return;
+  const e = escapeHtml;
+  const rows = evidenceRows(range);
+  const officers = rosterBadges();
+  const deptName = ACTIVE_DEPARTMENT.displayName || ACTIVE_DEPARTMENT.shortName || ACTIVE_DEPARTMENT.name;
+  const fmtD = iso => fmtDate(iso);
+  const now = new Date();
+  const passedIn = r => r.result === 'Passed';
+  const withTranscripts = document.getElementById('evidence-transcripts').checked;
+
+  // Directive index: each directive -> modules that train it + officers passed.
+  const dIndex = {};
+  MODULES.forEach(m => {
+    const list = (rows.find(r => r.module.id === m.id) || { directives: [] }).directives;
+    list.forEach(t => { (dIndex[t] = dIndex[t] || { modules: [], ids: [] }); dIndex[t].modules.push(m); dIndex[t].ids.push(m.id); });
+  });
+  const dirRows = Object.keys(dIndex).map(t => {
+    const passers = new Set(rows.filter(r => dIndex[t].ids.includes(r.module.id) && passedIn(r)).map(r => r.uid));
+    return `<tr><td>${e(t)}</td><td>${dIndex[t].modules.map(m => 'M' + m.weekNumber + ' · ' + e(m.title)).join('<br>')}</td><td class="c">${passers.size} / ${officers.length}</td></tr>`;
+  }).join('') || '<tr><td colspan="3" class="muted">No agency directives are listed in this department\'s citations.</td></tr>';
+
+  const moduleSections = MODULES.map(m => {
+    const mr = rows.filter(r => r.module.id === m.id);
+    const nPass = mr.filter(passedIn).length;
+    const dirs = mr[0] ? mr[0].directives : [];
+    return `<section class="mod">
+      <h3>Module ${m.weekNumber} — ${e(m.title)}</h3>
+      <div class="meta">${e(m.category)} · Opened ${fmtD(getModuleOpenDate(m.weekNumber).toISOString().slice(0,10))} · Due ${fmtD(getModuleDueDate(m.weekNumber).toISOString().slice(0,10))} · ${nPass} of ${officers.length} officers passed in period</div>
+      <div class="dirs"><strong>Agency directives trained:</strong> ${dirs.length ? dirs.map(e).join('; ') : '<span class="muted">No agency directive cited for this module.</span>'}</div>
+      <table><thead><tr><th>Officer</th><th>Badge</th><th>Result</th><th class="c">Best score</th><th class="c">Attempts</th><th>Date</th></tr></thead>
+      <tbody>${mr.map(r => `<tr><td>${e(r.name)}<span class="rk">${e(r.rank)}</span></td><td>${e(r.badge)}</td><td class="res ${r.result === 'Passed' ? 'ok' : r.result === 'Not completed' ? 'none' : 'warn'}">${e(r.result)}</td><td class="c">${r.score == null ? '—' : r.score + '%'}</td><td class="c">${r.attempts == null ? '—' : r.attempts + ' / 3'}</td><td>${r.date ? fmtD(r.date) : '—'}</td></tr>`).join('')}</tbody></table>
+    </section>`;
+  }).join('');
+
+  const transcripts = !withTranscripts ? '' : officers.map(uid => {
+    const u = USERS[uid];
+    const tr = rows.filter(r => r.uid === uid);
+    return `<section class="page">
+      <h2>Officer Training Transcript</h2>
+      <div class="who"><div><span>Officer</span>${e(u.name)}</div><div><span>Rank</span>${e(u.rank || '—')}</div><div><span>Badge</span>${e(u.badge)}</div><div><span>Passed in period</span>${tr.filter(passedIn).length} / ${MODULES.length}</div></div>
+      <table><thead><tr><th>Module</th><th>Agency directives trained</th><th>Result</th><th class="c">Best</th><th>Date</th></tr></thead>
+      <tbody>${tr.map(r => `<tr><td>M${r.module.weekNumber} · ${e(r.module.title)}</td><td class="small">${r.directives.length ? r.directives.map(e).join('<br>') : '<span class="muted">None cited</span>'}</td><td class="res ${r.result === 'Passed' ? 'ok' : r.result === 'Not completed' ? 'none' : 'warn'}">${e(r.result)}</td><td class="c">${r.score == null ? '—' : r.score + '%'}</td><td>${r.date ? fmtD(r.date) : '—'}</td></tr>`).join('')}</tbody></table>
+      <div class="sigs"><div>Officer signature / date</div><div>Training coordinator / date</div></div>
+    </section>`;
+  }).join('');
+
+  const totalPass = rows.filter(passedIn).length;
+  const win = window.open('', '_blank', 'width=1100,height=850');
+  if (!win) { document.getElementById('evidence-error').textContent = 'Your browser blocked the packet window. Allow pop-ups for this site and try again.'; return; }
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>${e(deptName)} — Training Evidence Packet — ${range.from} to ${range.to}</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: #1a2a3a; background: #fff; padding: 36px 44px; line-height: 1.45; }
+  .cover { border-bottom: 3px solid #3c6478; padding-bottom: 18px; margin-bottom: 22px; display: flex; justify-content: space-between; gap: 24px; }
+  .cover h1 { font-size: 22px; letter-spacing: 1px; text-transform: uppercase; color: #0a1828; }
+  .cover h2 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #3c6478; font-weight: 400; margin-top: 4px; }
+  .cover .meta2 { text-align: right; color: #555; line-height: 1.7; }
+  .cover .meta2 strong { color: #1a2a3a; }
+  .stats { display: flex; gap: 12px; margin-bottom: 22px; }
+  .stat { flex: 1; border: 1px solid #dde8f0; border-top: 3px solid #3c6478; border-radius: 6px; padding: 10px 14px; }
+  .stat b { display: block; font-size: 22px; } .stat span { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #777; }
+  h2.sec { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #3c6478; border-bottom: 1px solid #dde8f0; padding-bottom: 6px; margin: 22px 0 10px; }
+  p.note { color: #555; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  th { text-align: left; font-size: 8.5px; letter-spacing: 1.2px; text-transform: uppercase; color: #3c6478; background: #eef4f8; padding: 7px 9px; border-bottom: 2px solid #3c6478; }
+  td { padding: 6px 9px; border-bottom: 1px solid #e6edf2; vertical-align: top; }
+  .c { text-align: center; } .small { font-size: 10px; } .muted { color: #999; font-style: italic; }
+  .rk { display: block; font-size: 9px; color: #888; }
+  .res.ok { color: #1a7a40; font-weight: 700; } .res.warn { color: #a86a00; font-weight: 700; } .res.none { color: #999; }
+  .mod { margin-bottom: 18px; page-break-inside: avoid; }
+  .mod h3 { font-size: 13px; color: #0a1828; margin-bottom: 2px; }
+  .mod .meta { color: #666; font-size: 10px; margin-bottom: 4px; }
+  .mod .dirs { margin-bottom: 6px; }
+  .page { page-break-before: always; padding-top: 4px; }
+  .page h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 1px; color: #0a1828; border-bottom: 3px solid #3c6478; padding-bottom: 8px; margin-bottom: 12px; }
+  .who { display: flex; gap: 28px; margin-bottom: 12px; } .who span { display: block; font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: #888; } .who div { font-size: 13px; font-weight: 700; }
+  .sigs { display: flex; gap: 60px; margin-top: 36px; } .sigs div { border-top: 1px solid #333; width: 240px; padding-top: 5px; font-size: 9.5px; color: #555; }
+  .attest { margin-top: 26px; border: 1px solid #dde8f0; border-radius: 6px; padding: 14px 16px; page-break-inside: avoid; }
+  .attest p { margin-bottom: 8px; color: #333; }
+  .foot { margin-top: 26px; padding-top: 10px; border-top: 1px solid #dde8f0; color: #999; font-size: 9px; display: flex; justify-content: space-between; gap: 20px; }
+  @media print { body { padding: 18px 22px; } .no-print { display: none; } }
+</style></head><body>
+  <div class="cover">
+    <div><h1>${e(deptName)}</h1><h2>Training Evidence Packet</h2></div>
+    <div class="meta2"><strong>Training period:</strong> ${fmtD(range.from)} – ${fmtD(range.to)}<br><strong>Generated:</strong> ${now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}<br><strong>Generated by:</strong> ${e(currentUser && currentUser.name || 'Administrator')}<br><strong>Platform:</strong> Arbiter LE</div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>${officers.length}</b><span>Officers on roster</span></div>
+    <div class="stat"><b>${MODULES.length}</b><span>Training modules</span></div>
+    <div class="stat"><b>${Object.keys(dIndex).length}</b><span>Directive citations trained</span></div>
+    <div class="stat"><b>${totalPass}</b><span>Module passes in period</span></div>
+  </div>
+
+  <h2 class="sec">A · Directive training index</h2>
+  <p class="note">Each agency directive citation in the training curriculum (one directive may have several cited sections), the module(s) that train it, and how many officers passed at least one of those modules during the period. Directive titles appear exactly as listed in the department's citations.</p>
+  <table><thead><tr><th style="width:42%">Agency directive</th><th>Trained in</th><th class="c" style="width:16%">Officers passed</th></tr></thead><tbody>${dirRows}</tbody></table>
+
+  <h2 class="sec">B · Module completion records</h2>
+  <p class="note">Every officer's result for every module. "Passed" means a score of 70% or higher on the server-graded assessment, recorded within the period. Scores are each officer's best score; attempts are out of 3.</p>
+  ${moduleSections}
+
+  <div class="attest">
+    <p><strong>Attestation.</strong> I have reviewed this training record and attest that it accurately reflects the training records maintained for ${e(deptName)} for the period shown.</p>
+    <div class="sigs"><div>Training coordinator signature / date</div><div>Chief of Police signature / date</div></div>
+  </div>
+  ${transcripts}
+  <div class="foot"><span>Confidential training record — ${e(deptName)}. Completion reflects participation in and assessment on platform training; it is not a certification of legal compliance and does not modify any department directive.</span><span>Generated by Arbiter LE</span></div>
+  <script>window.onload = function () { window.print(); };<\/script>
+</body></html>`);
+  win.document.close();
+}
+
 /* ── Officer detail (admin) ────────────────
    A chief's first question after the roster is "show me this officer."
    Read-only view of data already loaded for the dashboard. */

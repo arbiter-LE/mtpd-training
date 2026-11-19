@@ -291,6 +291,7 @@
             <option value="pending">Pending</option>
           </select>
           <button class="btn-print-report" onclick="printComplianceReport()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="1"/><path d="M7 14h10v7H7z"/></svg>Print Compliance Report</button>
+          <button class="btn-evidence" onclick="openEvidenceModal()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Accreditation Evidence</button>
         </div>
         <div class="table-wrap">
           <table>
@@ -346,6 +347,29 @@
       <button class="modal-close" onclick="closeOfficerDetail()" aria-label="Close">✕</button>
     </div>
     <div class="modal-body" id="officer-detail-body"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ ACCREDITATION EVIDENCE MODAL (admin) ═══════════════ -->
+<div id="evidence-overlay" class="modal-overlay">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="evidence-title">
+    <div class="modal-header">
+      <h3 id="evidence-title">Accreditation Evidence Packet</h3>
+      <button class="modal-close" onclick="closeEvidenceModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="evidence-intro">A training record organized by your department's directives: which module trained each order, which officers passed it and when, with an officer-by-officer transcript and attestation lines. Built from the same records as your compliance dashboard.</p>
+      <div class="evidence-range">
+        <div class="form-group"><label for="evidence-from">Training period from</label><input type="date" id="evidence-from" /></div>
+        <div class="form-group"><label for="evidence-to">To</label><input type="date" id="evidence-to" /></div>
+      </div>
+      <label class="evidence-check"><input type="checkbox" id="evidence-transcripts" checked /> Include a transcript page for each officer</label>
+      <div class="evidence-error" id="evidence-error"></div>
+      <div class="feedback-actions">
+        <button class="btn-feedback-cancel" onclick="downloadEvidenceCsv()">Download CSV</button>
+        <button class="btn-feedback-submit" onclick="openEvidencePacket()">Open Printable Packet →</button>
+      </div>
+    </div>
   </div>
 </div>
 
